@@ -1,0 +1,20 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [
+    "**/.env.*local",
+    "tsconfig.json",
+    ".eslintrc.json"
+  ],
+  "pipeline": {
+    "codegen": {
+      "dependsOn": [
+        "^codegen"
+      ]
+    },
+    "build": {
+      "dependsOn": [
+        "^build"
+      ]
+    }
+  }
+}
