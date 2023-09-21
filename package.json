@@ -1,0 +1,16 @@
+{
+  "name": "eslint-config-sukka-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "",
+  "scripts": {},
+  "keywords": [],
+  "author": "Sukka <https://skk.moe>",
+  "license": "MIT",
+  "devDependencies": {
+    "@stylistic/eslint-plugin-migrate": "^0.0.4",
+    "bumpp": "^9.2.0",
+    "eslint": "^8.49.0",
+    "typescript": "^5.2.2"
+  }
+}

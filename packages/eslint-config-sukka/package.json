@@ -1,0 +1,25 @@
+{
+  "name": "eslint-config-sukka",
+  "version": "4.0.0",
+  "description": "Sukka's ESLint config",
+  "author": "Sukka <https://skk.moe>",
+  "license": "MIT",
+  "homepage": "https://github.com/sukkaw/eslint-config-sukka",
+  "keywords": [
+    "eslint-config"
+  ],
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "peerDependencies": {
+    "eslint": ">=7.4.0"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.49.0"
+  }
+}

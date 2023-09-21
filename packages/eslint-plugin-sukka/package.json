@@ -1,0 +1,18 @@
+{
+  "name": "eslint-plugin-sukka",
+  "version": "4.0.0",
+  "license": "MIT",
+  "homepage": "https://github.com/sukkaw/eslint-config-sukka",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "files": [
+    "dist"
+  ],
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^20.6.2",
+    "@typescript-eslint/rule-tester": "^6.7.2",
+    "@typescript-eslint/utils": "^6.7.2"
+  }
+}
