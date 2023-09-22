@@ -1,8 +1,19 @@
 {
   "extends": [
-    "sukka/node",
-    "sukka/typescript",
     "plugin:@stylistic/migrate/recommended"
+  ],
+  "overrides": [
+    {
+      "files": ["packages/**/*.ts"],
+      "extends": ["sukka/node", "sukka/typescript"]
+    },
+    {
+      "files": ["packages/**/*.js"],
+      "extends": ["sukka/node"]
+    }
+  ],
+  "ignorePatterns": [
+    "packages/*/dist/**/*"
   ],
   "parserOptions": {
     "project": "./tsconfig.json"

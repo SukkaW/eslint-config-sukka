@@ -42,7 +42,14 @@ export default {
     // I still use them
     'n/no-deprecated-api': ['error', {
       ignoreModuleItems: ['url.parse', 'url.resolve']
-    }]
+    }],
+
+    // eslint-plugin-i & eslint-plugin-unused-import will get me covered
+    'n/no-missing-import': 'off',
+    'n/no-missing-require': 'off',
+    // replaced by i/no-extraneous-dependencies
+    'n/no-extraneous-import': 'off',
+    'n/no-extraneous-require': 'off'
   },
   env: {
     node: true,

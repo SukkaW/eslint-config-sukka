@@ -23,7 +23,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rimraf dist && rollup -c rollup.config.ts --configPlugin swc3"
+    "build": "rollup -c rollup.config.ts --configPlugin swc3"
   },
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",

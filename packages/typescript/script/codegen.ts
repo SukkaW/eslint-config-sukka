@@ -10,7 +10,11 @@ import { runInContext, createContext } from 'vm';
   const script = `((module) => {${typescriptESLintBuiltinOverridesScript}\n})(module);`;
 
   const ctx = {
-    module: {} as any
+    module: {
+      exports: {
+        overrides: {}
+      }
+    }
   };
   createContext(ctx);
   runInContext(script, ctx);
