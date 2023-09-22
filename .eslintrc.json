@@ -1,15 +1,20 @@
 {
-  "extends": [
-    "plugin:@stylistic/migrate/recommended"
-  ],
+  "plugins": ["@stylistic/migrate"],
   "overrides": [
     {
       "files": ["packages/**/*.ts"],
-      "extends": ["sukka/node", "sukka/typescript"]
+      "extends": ["sukka/node", "sukka/typescript"],
+      "rules": {
+        "@stylistic/migrate/rules": "error",
+        "camelcase": "off"
+      }
     },
     {
       "files": ["packages/**/*.js"],
-      "extends": ["sukka/node"]
+      "extends": ["sukka/node"],
+      "rules": {
+        "@stylistic/migrate/rules": "error"
+      }
     }
   ],
   "ignorePatterns": [

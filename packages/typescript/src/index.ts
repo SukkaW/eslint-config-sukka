@@ -1,4 +1,4 @@
-import { rules } from '@eslint-sukka/shared';
+import { best_practices, errors, es6, style, variables } from '@eslint-sukka/shared';
 import { typescript } from './typescript';
 
 /**
@@ -9,7 +9,14 @@ import { typescript } from './typescript';
 import { overrides as typescriptESLintBuiltinOverrides } from './generated/typescript-eslint-builtin-overrides';
 
 export default {
-  plugins: ['@typescript-eslint', '@fluffyfox'],
+  plugins: Array.from(new Set([
+    ...best_practices.plugins,
+    ...errors.plugins,
+    ...es6.plugins,
+    ...style.plugins,
+    ...variables.plugins,
+    '@typescript-eslint', '@fluffyfox'
+  ])),
   parser: '@typescript-eslint/parser',
   extends: [
     'eslint:recommended',
@@ -22,12 +29,12 @@ export default {
   ],
   overrides: typescriptESLintBuiltinOverrides,
   rules: {
-    ...rules.best_practices,
-    ...rules.errors,
-    ...rules.es6,
-    ...rules.style,
-    ...rules.variables,
-    ...typescript
+    ...best_practices.rules,
+    ...errors.rules,
+    ...es6.rules,
+    ...style.rules,
+    ...variables.rules,
+    ...typescript.rules
   },
   settings: {
     'import/parsers': {

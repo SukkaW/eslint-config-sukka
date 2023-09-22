@@ -1,14 +1,21 @@
-import { rules } from '@eslint-sukka/shared';
+import { best_practices, errors, es6, style, variables } from '@eslint-sukka/shared';
 
 export default {
   extends: ['eslint:recommended', 'plugin:n/recommended', 'plugin:i/recommended'],
-  plugins: ['n', '@fluffyfox'],
+  plugins: Array.from(new Set([
+    ...best_practices.plugins,
+    ...errors.plugins,
+    ...es6.plugins,
+    ...style.plugins,
+    ...variables.plugins,
+    'n', '@fluffyfox'
+  ])),
   rules: {
-    ...rules.best_practices,
-    ...rules.errors,
-    ...rules.es6,
-    ...rules.style,
-    ...rules.variables,
+    ...best_practices.rules,
+    ...errors.rules,
+    ...es6.rules,
+    ...style.rules,
+    ...variables.rules,
 
     // Strict Mode
     strict: 'warn',

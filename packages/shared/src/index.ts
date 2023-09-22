@@ -1,13 +1,5 @@
-import { best_practices } from './best-practices';
-import { errors } from './errors';
-import { es6 } from './es6';
-import { style } from './style';
-import { variables } from './variables';
-
-export const rules = {
-  best_practices,
-  errors,
-  es6,
-  style,
-  variables
-};
+export { best_practices } from './best-practices';
+export { errors } from './errors';
+export { es6 } from './es6';
+export { style } from './style';
+export { variables } from './variables';
