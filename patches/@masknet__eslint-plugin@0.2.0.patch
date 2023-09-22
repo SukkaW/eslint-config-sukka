@@ -1,0 +1,15 @@
+diff --git a/package.json b/package.json
+index 0fda1b98fa2a8cc95c1032717eb02d8540246194..633519ff2ee06b2b072edf2060565b6f23342576 100644
+--- a/package.json
++++ b/package.json
+@@ -25,8 +25,8 @@
+       "types": "./lib/index.d.ts",
+       "default": "./lib/index.js"
+     },
+-    "./configs/": "./lib/configs/",
+-    "./rules/": "./lib/rules/"
++    "./configs/*": "./lib/configs/*",
++    "./rules/*": "./lib/rules/*"
+   },
+   "files": [
+     "src/",
