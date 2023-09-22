@@ -5,9 +5,7 @@
   "homepage": "https://github.com/sukkaw/eslint-config-sukka",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {},
   "dependencies": {},
   "devDependencies": {

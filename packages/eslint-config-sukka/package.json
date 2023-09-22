@@ -10,16 +10,13 @@
   ],
   "main": "index.js",
   "files": [
-    "index.js"
+    "base.js",
+    "index.js",
+    "legacy.js",
+    "node.js",
+    "react.js",
+    "typescript.js"
   ],
-  "peerDependencies": {
-    "eslint": ">=7.4.0"
-  },
-  "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.7.2",
-    "@typescript-eslint/parser": "^6.7.2"
-  },
-  "devDependencies": {
-    "eslint": "^8.49.0"
-  }
+  "scripts": {},
+  "dependencies": {}
 }

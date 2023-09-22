@@ -1,5 +1,5 @@
 export const style = {
-    // enforce line breaks after opening and before closing array brackets
+  // enforce line breaks after opening and before closing array brackets
   // https://eslint.org/docs/rules/array-bracket-newline
   'array-bracket-newline': ['off', 'consistent'], // object option alternative: { multiline: true, minItems: 3 }
 
@@ -237,4 +237,4 @@ export const style = {
 
   // require regex literals to be wrapped in parentheses
   'wrap-regex': 'off'
-}
+};

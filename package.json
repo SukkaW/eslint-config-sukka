@@ -4,12 +4,16 @@
   "private": true,
   "description": "",
   "scripts": {
-    "build": "turbo build"
+    "build": "turbo build",
+    "lint": "eslint --ext .ts,.js,.json ."
   },
   "keywords": [],
   "author": "Sukka <https://skk.moe>",
   "license": "MIT",
   "devDependencies": {
+    "@eslint-sukka/node": "workspace:*",
+    "@eslint-sukka/typescript": "workspace:*",
+    "@fluffyfox/eslint-plugin": "^0.1.0",
     "@rollup/plugin-node-resolve": "^15.2.1",
     "@stylistic/eslint-plugin-migrate": "^0.0.4",
     "@swc-node/register": "^1.6.7",

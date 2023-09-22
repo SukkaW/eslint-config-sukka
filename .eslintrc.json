@@ -1,5 +1,10 @@
 {
   "extends": [
+    "sukka/node",
+    "sukka/typescript",
     "plugin:@stylistic/migrate/recommended"
-  ]
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  }
 }

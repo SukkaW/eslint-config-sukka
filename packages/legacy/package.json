@@ -1,5 +1,5 @@
 {
-  "name": "@eslint-sukka/shared",
+  "name": "@eslint-sukka/legacy",
   "version": "4.0.0",
   "description": "Sukka's ESLint config",
   "author": "Sukka <https://skk.moe>",
@@ -26,7 +26,6 @@
     "build": "rimraf dist && rollup -c rollup.config.ts --configPlugin swc3"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.7.2",
-    "@typescript-eslint/parser": "^6.7.2"
+    "@eslint-sukka/shared": "workspace:*"
   }
 }

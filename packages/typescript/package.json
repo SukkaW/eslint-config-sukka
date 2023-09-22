@@ -1,5 +1,5 @@
 {
-  "name": "@eslint-sukka/shared",
+  "name": "@eslint-sukka/typescript",
   "version": "4.0.0",
   "description": "Sukka's ESLint config",
   "author": "Sukka <https://skk.moe>",
@@ -23,10 +23,13 @@
     "dist"
   ],
   "scripts": {
+    "codegen": "node -r @swc-node/register script/codegen.ts",
     "build": "rimraf dist && rollup -c rollup.config.ts --configPlugin swc3"
   },
   "dependencies": {
+    "@eslint-sukka/shared": "workspace:*",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
-    "@typescript-eslint/parser": "^6.7.2"
+    "@typescript-eslint/parser": "^6.7.2",
+    "eslint-import-resolver-typescript": "^3.6.0"
   }
 }
