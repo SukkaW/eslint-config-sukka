@@ -21,6 +21,8 @@ export const sukka: FlatESLintConfigItem = {
     'sukka/prefer-early-return': ['error', { maximumStatements: 16 }],
     'sukka/prefer-fetch': 'error',
     'sukka/prefer-timer-id': 'warn',
+    // disallow nested ternary expressions
+    'sukka/unicorn/no-nested-ternary': 'warn',
 
     'sukka/unicorn/require-array-join-separator': 'warn',
     'sukka/unicorn/no-thenable': 'error', // export function then()'
@@ -44,7 +46,6 @@ export const sukka: FlatESLintConfigItem = {
     'sukka/unicorn/prefer-date-now': 'warn',
     'sukka/unicorn/prefer-dom-node-dataset': 'warn',
     'sukka/unicorn/prefer-math-trunc': 'warn',
-    'sukka/unicorn/prefer-modern-dom-apis': 'warn',
     'sukka/unicorn/prefer-modern-math-apis': 'warn',
     'sukka/unicorn/prefer-number-properties': 'warn',
     'sukka/unicorn/prefer-reflect-apply': 'warn',

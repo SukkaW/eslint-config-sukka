@@ -1,0 +1,13 @@
+diff --git a/index.js b/index.js
+index 5c0ba9876a5e0fb96ada92206eb4b22aa93a534a..d80f00671346c9ebc963903ae7f07df46694d49b 100644
+--- a/index.js
++++ b/index.js
+@@ -50,7 +50,7 @@ module.exports = function (rows_, opts) {
+             }
+             
+             return c + s;
+-        }).join(hsep).replace(/\s+$/, '');
++        }).join(hsep).trimEnd(); // .replace(/\s+$/, '');
+     }).join('\n');
+ };
+ 

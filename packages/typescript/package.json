@@ -32,7 +32,7 @@
     "@stylistic/eslint-plugin-ts": "^0.0.4",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
-    "eslint-import-resolver-typescript": "^3.6.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-i": "^2.28.1",
     "eslint-plugin-sukka": "workspace:*"
   }

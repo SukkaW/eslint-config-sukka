@@ -159,7 +159,7 @@ export const style: FlatESLintConfigItem = {
     'no-negated-condition': 'off',
 
     // disallow nested ternary expressions
-    'no-nested-ternary': 'warn',
+    'no-nested-ternary': 'off', // replaced by sukka/unicorn/no-nested-ternary
 
     // disallow use of the Object constructor
     'no-new-object': 'error',

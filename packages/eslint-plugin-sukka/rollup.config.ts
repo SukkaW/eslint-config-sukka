@@ -4,6 +4,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import { defineConfig } from 'rollup';
 import alias from '@rollup/plugin-alias';
+import json from '@rollup/plugin-json';
 
 export default defineConfig([{
   input: 'src/index.ts',
@@ -24,17 +25,19 @@ export default defineConfig([{
         { find: 'lodash', replacement: 'lodash-unified' }
       ]
     }),
+    json(),
     swc({
-      minify: true,
+      minify: false,
       jsc: {
         minify: {
-          mangle: true,
-          compress: true,
-          module: true
+          mangle: false,
+          compress: false,
+          module: false
         }
       }
     })
-  ]
+  ],
+  external: ['eslint']
 }, {
   input: 'src/index.ts',
   output: {

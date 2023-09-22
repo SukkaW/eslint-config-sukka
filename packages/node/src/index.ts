@@ -15,6 +15,7 @@ const eslintPluginNRecommendedConfig = eslintPluginN.configs['flat/recommended']
 const allExtensions = ['.js', '.jsx', '.mjs', '.cjs'];
 export const node = (): FlatESLintConfigItem[] => {
   return [
+    eslintJs.configs.recommended,
     eslintPluginNRecommendedConfig,
     {
       plugins: {
@@ -26,6 +27,7 @@ export const node = (): FlatESLintConfigItem[] => {
         ...sukka.plugins,
         n: eslintPluginN,
         i: eslintPluginI,
+        import: eslintPluginI, // legacy
         sukka: eslintPluginSukka
       },
       languageOptions: {
@@ -54,8 +56,6 @@ export const node = (): FlatESLintConfigItem[] => {
         ...variables.rules,
         ...sukka.rules,
 
-        // eslint:recommended
-        ...eslintJs.configs.recommended.rules,
         // plugin:i/recommended
         ...eslintPluginI.configs.recommended.rules,
 
@@ -102,5 +102,6 @@ export const node = (): FlatESLintConfigItem[] => {
 
         'sukka/unicorn/no-new-buffer': 'error' // NodeJS
       }
-    }];
+    }
+  ];
 }

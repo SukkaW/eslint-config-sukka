@@ -22,6 +22,9 @@ import no_default_error from '@masknet/eslint-plugin/rules/no-default-error.js';
 
 // eslint-plugin-unicorn
 // eslint-plugin-unicorn introduces way too many dependencies, let's bundle & tree shake them
+import getDocumentationUrl from 'eslint-plugin-unicorn/rules/utils/get-documentation-url.js'
+
+import no_nested_ternary from 'eslint-plugin-unicorn/rules/no-nested-ternary.js';
 import prefer_event_target from 'eslint-plugin-unicorn/rules/prefer-event-target.js';
 import prefer_keyboard_event_key from 'eslint-plugin-unicorn/rules/prefer-keyboard-event-key.js';
 import prefer_dom_node_text_content from 'eslint-plugin-unicorn/rules/prefer-dom-node-text-content.js';
@@ -81,44 +84,44 @@ export default {
     'prefer-fetch': prefer_fetch,
     'prefer-timer-id': prefer_timer_id,
 
-    'unicorn/prefer-event-target': prefer_event_target,
-    'unicorn/prefer-keyboard-event-key': prefer_keyboard_event_key,
-    'unicorn/prefer-text-content': prefer_dom_node_text_content,
-    'unicorn/require-array-join-separator': require_array_join_separator,
-    'unicorn/no-thenable': no_thenable,
-    'unicorn/no-invalid-remove-event-listener': no_invalid_remove_event_listener,
-    'unicorn/consistent-function-scoping': consistent_function_scoping,
-    'unicorn/no-new-buffer': no_new_buffer,
-    'unicorn/no-console-spaces': no_console_spaces,
-    'unicorn/no-empty-file': no_empty_file,
-    'unicorn/no-useless-fallback-in-spread': no_useless_fallback_in_spread,
-    'unicorn/no-useless-length-check': no_useless_length_check,
-    'unicorn/no-useless-promise-resolve-reject': no_useless_promise_resolve_reject,
-    'unicorn/no-zero-fractions': no_zero_fractions,
-    'unicorn/prefer-export-from': prefer_export_from,
-    'unicorn/prefer-native-coercion-functions': prefer_native_coercion_functions,
-
-    'unicorn/no-document-cookie': no_document_cookie,
-    'unicorn/prefer-add-event-listener': prefer_add_event_listener,
-    'unicorn/prefer-array-index-of': prefer_array_index_of,
-    'unicorn/prefer-blob-reading-methods': prefer_blob_reading_methods,
-    'unicorn/prefer-date-now': prefer_date_now,
-    'unicorn/prefer-dom-node-dataset': prefer_dom_node_dataset,
-    'unicorn/prefer-math-trunc': prefer_math_trunc,
-    'unicorn/prefer-modern-math-apis': prefer_modern_math_apis,
-    'unicorn/prefer-number-properties': prefer_number_properties,
-    'unicorn/prefer-reflect-apply': prefer_reflect_apply,
-    'unicorn/prefer-set-size': prefer_set_size,
-    'unicorn/prefer-string-replace-all': prefer_string_replace_all,
-    'unicorn/prefer-string-slice': prefer_string_slice,
-    'unicorn/prefer-string-trim-start-end': prefer_string_trim_start_end,
-    'unicorn/no-unreadable-iife': no_unreadable_iife,
-    'unicorn/throw-new-error': throw_new_error,
-    'unicorn/better-regex': better_regex,
-    'unicorn/escape-case': escape_case,
-    'unicorn/no-hex-escape': no_hex_escape,
-    'unicorn/prefer-prototype-methods':prefer_prototype_methods,
-    'unicorn/relative-url-style': relative_url_style,
+    'unicorn/no-nested-ternary': loadUnicorn(no_nested_ternary, 'unicorn/no-nested-ternary'),
+    'unicorn/prefer-event-target': loadUnicorn(prefer_event_target, 'unicorn/prefer-event-target'),
+    'unicorn/prefer-keyboard-event-key': loadUnicorn(prefer_keyboard_event_key, 'unicorn/prefer-keyboard-event-key'),
+    'unicorn/prefer-text-content': loadUnicorn(prefer_dom_node_text_content, 'unicorn/prefer-text-content'),
+    'unicorn/require-array-join-separator': loadUnicorn(require_array_join_separator, 'unicorn/require-array-join-separator'),
+    'unicorn/no-thenable': loadUnicorn(no_thenable, 'unicorn/no-thenable'),
+    'unicorn/no-invalid-remove-event-listener': loadUnicorn(no_invalid_remove_event_listener, 'unicorn/no-invalid-remove-event-listener'),
+    'unicorn/consistent-function-scoping': loadUnicorn(consistent_function_scoping, 'unicorn/consistent-function-scoping'),
+    'unicorn/no-new-buffer': loadUnicorn(no_new_buffer, 'unicorn/no-new-buffer'),
+    'unicorn/no-console-spaces': loadUnicorn(no_console_spaces, 'unicorn/no-console-spaces'),
+    'unicorn/no-empty-file': loadUnicorn(no_empty_file, 'unicorn/no-empty-file'),
+    'unicorn/no-useless-fallback-in-spread': loadUnicorn(no_useless_fallback_in_spread, 'unicorn/no-useless-fallback-in-spread'),
+    'unicorn/no-useless-length-check': loadUnicorn(no_useless_length_check, 'unicorn/no-useless-length-check'),
+    'unicorn/no-useless-promise-resolve-reject': loadUnicorn(no_useless_promise_resolve_reject, 'unicorn/no-useless-promise-resolve-reject'),
+    'unicorn/no-zero-fractions': loadUnicorn(no_zero_fractions, 'unicorn/no-zero-fractions'),
+    'unicorn/prefer-export-from': loadUnicorn(prefer_export_from, 'unicorn/prefer-export-from'),
+    'unicorn/prefer-native-coercion-functions': loadUnicorn(prefer_native_coercion_functions, 'unicorn/prefer-native-coercion-functions'),
+    'unicorn/no-document-cookie': loadUnicorn(no_document_cookie, 'unicorn/no-document-cookie'),
+    'unicorn/prefer-add-event-listener': loadUnicorn(prefer_add_event_listener, 'unicorn/prefer-add-event-listener'),
+    'unicorn/prefer-array-index-of': loadUnicorn(prefer_array_index_of, 'unicorn/prefer-array-index-of'),
+    'unicorn/prefer-blob-reading-methods': loadUnicorn(prefer_blob_reading_methods, 'unicorn/prefer-blob-reading-methods'),
+    'unicorn/prefer-date-now': loadUnicorn(prefer_date_now, 'unicorn/prefer-date-now'),
+    'unicorn/prefer-dom-node-dataset': loadUnicorn(prefer_dom_node_dataset, 'unicorn/prefer-dom-node-dataset'),
+    'unicorn/prefer-math-trunc': loadUnicorn(prefer_math_trunc, 'unicorn/prefer-math-trunc'),
+    'unicorn/prefer-modern-math-apis': loadUnicorn(prefer_modern_math_apis, 'unicorn/prefer-modern-math-apis'),
+    'unicorn/prefer-number-properties': loadUnicorn(prefer_number_properties, 'unicorn/prefer-number-properties'),
+    'unicorn/prefer-reflect-apply': loadUnicorn(prefer_reflect_apply, 'unicorn/prefer-reflect-apply'),
+    'unicorn/prefer-set-size': loadUnicorn(prefer_set_size, 'unicorn/prefer-set-size'),
+    'unicorn/prefer-string-replace-all': loadUnicorn(prefer_string_replace_all, 'unicorn/prefer-string-replace-all'),
+    'unicorn/prefer-string-slice': loadUnicorn(prefer_string_slice, 'unicorn/prefer-string-slice'),
+    'unicorn/prefer-string-trim-start-end': loadUnicorn(prefer_string_trim_start_end, 'unicorn/prefer-string-trim-start-end'),
+    'unicorn/no-unreadable-iife': loadUnicorn(no_unreadable_iife, 'unicorn/no-unreadable-iife'),
+    'unicorn/throw-new-error': loadUnicorn(throw_new_error, 'unicorn/throw-new-error'),
+    'unicorn/better-regex': loadUnicorn(better_regex, 'unicorn/better-regex'),
+    'unicorn/escape-case': loadUnicorn(escape_case, 'unicorn/escape-case'),
+    'unicorn/no-hex-escape': loadUnicorn(no_hex_escape, 'unicorn/no-hex-escape'),
+    'unicorn/prefer-prototype-methods': loadUnicorn(prefer_prototype_methods, 'unicorn/prefer-prototype-methods'),
+    'unicorn/relative-url-style': loadUnicorn(relative_url_style, 'unicorn/relative-url-style'),
 
     // Require TS
     'string/no-unneeded-to-string': string$no_unneeded_to_string,
@@ -128,3 +131,141 @@ export default {
     'no-default-error': no_default_error
   }
 };
+
+function loadUnicorn(rule, ruleId): import('eslint').Rule.RuleModule {
+  return {
+    meta: {
+      // If there is are, options add `[]` so ESLint can validate that no data is passed to the rule.
+      // https://github.com/not-an-aardvark/eslint-plugin-eslint-plugin/blob/master/docs/rules/require-meta-schema.md
+      schema: [],
+      ...rule.meta,
+      docs: {
+        ...rule.meta.docs,
+        url: getDocumentationUrl(ruleId),
+      },
+    },
+    create: reportProblems(rule.create),
+  };
+}
+
+const isIterable = object => typeof object?.[Symbol.iterator] === 'function';
+
+class FixAbortError extends Error { }
+const fixOptions = {
+  abort() {
+    throw new FixAbortError('Fix aborted.');
+  },
+};
+
+function wrapFixFunction(fix) {
+  return fixer => {
+    const result = fix(fixer, fixOptions);
+
+    if (isIterable(result)) {
+      try {
+        return [...result];
+      } catch (error) {
+        if (error instanceof FixAbortError) {
+          return;
+        }
+
+        /* c8 ignore next */
+        throw error;
+      }
+    }
+
+    return result;
+  };
+}
+
+function reportListenerProblems(problems, context) {
+  if (!problems) {
+    return;
+  }
+
+  if (!isIterable(problems)) {
+    problems = [problems];
+  }
+
+  for (const problem of problems) {
+    if (problem.fix) {
+      problem.fix = wrapFixFunction(problem.fix);
+    }
+
+    if (Array.isArray(problem.suggest)) {
+      for (const suggest of problem.suggest) {
+        if (suggest.fix) {
+          suggest.fix = wrapFixFunction(suggest.fix);
+        }
+
+        suggest.data = {
+          ...problem.data,
+          ...suggest.data,
+        };
+      }
+    }
+
+    context.report(problem);
+  }
+}
+
+// `checkVueTemplate` function will wrap `create` function, there is no need to wrap twice
+// const wrappedFunctions = new WeakSet();
+function reportProblems(create) {
+  // if (wrappedFunctions.has(create)) {
+  //   return create;
+  // }
+
+  const wrapped = context => {
+    const listeners = {};
+    const addListener = (selector, listener) => {
+      listeners[selector] ??= [];
+      listeners[selector].push(listener);
+    };
+
+    const contextProxy = new Proxy(context, {
+      get(target, property, receiver) {
+        if (property === 'on') {
+          return (selectorOrSelectors, listener) => {
+            const selectors = Array.isArray(selectorOrSelectors) ? selectorOrSelectors : [selectorOrSelectors];
+            for (const selector of selectors) {
+              addListener(selector, listener);
+            }
+          };
+        }
+
+        if (property === 'onExit') {
+          return (selectorOrSelectors, listener) => {
+            const selectors = Array.isArray(selectorOrSelectors) ? selectorOrSelectors : [selectorOrSelectors];
+            for (const selector of selectors) {
+              addListener(`${selector}:exit`, listener);
+            }
+          };
+        }
+
+        return Reflect.get(target, property, receiver);
+      },
+    });
+
+    for (const [selector, listener] of Object.entries(create(contextProxy) ?? {})) {
+      addListener(selector, listener);
+    }
+
+    return Object.fromEntries(
+      Object.entries(listeners)
+        .map(([selector, listeners]) => [
+          selector,
+          // Listener arguments can be `codePath, node` or `node`
+          (...listenerArguments) => {
+            for (const listener of listeners) {
+              reportListenerProblems(listener(...listenerArguments), context);
+            }
+          },
+        ]),
+    );
+  };
+
+  // wrappedFunctions.add(wrapped);
+
+  return wrapped;
+}
