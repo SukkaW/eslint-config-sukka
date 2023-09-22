@@ -1,5 +1,13 @@
-export const typescript = {
-  plugins: ['@stylistic/ts'],
+import type { FlatESLintConfigItem } from 'eslint-define-config';
+import tsEslint from '@typescript-eslint/eslint-plugin';
+// @ts-expect-error -- no types
+import stylisticTs from '@stylistic/eslint-plugin-ts';
+
+export const typescript: FlatESLintConfigItem = {
+  plugins: {
+    '@stylistic/ts': stylisticTs,
+    '@typescript-eslint': tsEslint as any
+  },
   rules: {
     '@typescript-eslint/ban-ts-comment': [
       'error',

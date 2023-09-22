@@ -1,6 +1,6 @@
-import type { FlatESLintConfig } from 'eslint-define-config';
+import type { FlatESLintConfigItem } from 'eslint-define-config';
 
-export const errors: FlatESLintConfig = {
+export const errors: FlatESLintConfigItem = {
   rules: {
   // Disallow await inside of loops
   // https://eslint.org/docs/rules/no-await-in-loop

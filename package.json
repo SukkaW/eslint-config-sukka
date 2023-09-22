@@ -14,6 +14,8 @@
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/typescript": "workspace:*",
     "@fluffyfox/eslint-plugin": "^0.1.0",
+    "@rollup/plugin-alias": "^5.0.0",
+    "@rollup/plugin-commonjs": "^25.0.4",
     "@rollup/plugin-node-resolve": "^15.2.1",
     "@stylistic/eslint-plugin-migrate": "^0.0.4",
     "@swc-node/register": "^1.6.7",
@@ -25,11 +27,30 @@
     "eslint-config-sukka": "workspace:*",
     "eslint-define-config": "^1.23.0",
     "eslint-plugin-sukka": "workspace:*",
+    "lodash-unified": "^1.0.3",
     "rimraf": "^5.0.1",
     "rollup": "^3.29.2",
     "rollup-plugin-dts": "5",
     "rollup-plugin-swc3": "^0.10.1",
     "turbo": "^1.10.14",
     "typescript": "^5.2.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "array-includes": "npm:@nolyfill/array-includes@latest",
+      "array.prototype.findlastindex": "npm:@nolyfill/array.prototype.findlastindex@latest",
+      "array.prototype.flat": "npm:@nolyfill/array.prototype.flat@latest",
+      "array.prototype.flatmap": "npm:@nolyfill/array.prototype.flatmap@latest",
+      "array.prototype.tosorted": "npm:@nolyfill/array.prototype.tosorted@latest",
+      "es-iterator-helpers": "npm:@nolyfill/es-iterator-helpers@latest",
+      "has": "npm:@nolyfill/has@latest",
+      "object.assign": "npm:@nolyfill/object.assign@latest",
+      "object.entries": "npm:@nolyfill/object.entries@latest",
+      "object.fromentries": "npm:@nolyfill/object.fromentries@latest",
+      "object.groupby": "npm:@nolyfill/object.groupby@latest",
+      "object.hasown": "npm:@nolyfill/object.hasown@latest",
+      "object.values": "npm:@nolyfill/object.values@latest",
+      "string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@latest"
+    }
   }
 }

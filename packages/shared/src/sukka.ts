@@ -1,9 +1,9 @@
-import type { FlatESLintConfig } from 'eslint-define-config';
-import sukka from 'eslint-plugin-sukka';
+import type { FlatESLintConfigItem } from 'eslint-define-config';
+import sukkaPlugin from 'eslint-plugin-sukka';
 
-export const sukka: FlatESLintConfig = {
+export const sukka: FlatESLintConfigItem = {
   plugins: {
-    sukka
+    sukka: sukkaPlugin
   },
   rules: {
     'sukka/array/no-unneeded-flat-map': 'error',
@@ -20,6 +20,22 @@ export const sukka: FlatESLintConfig = {
     'sukka/no-single-return': 'error',
     'sukka/prefer-early-return': ['error', { maximumStatements: 16 }],
     'sukka/prefer-fetch': 'error',
-    'sukka/prefer-timer-id': 'warn'
+    'sukka/prefer-timer-id': 'warn',
+
+    'sukka/unicorn/require-array-join-separator': 'warn',
+    'sukka/unicorn/no-thenable': 'error', // export function then()'
+    'sukka/unicorn/no-invalid-remove-event-listener': 'error', // removeEventListener('click', f.bind(...))
+    'sukka/unicorn/consistent-function-scoping': 'warn', // hoist unnecessary higher order functions
+    'sukka/unicorn/prefer-event-target': 'warn',
+    'sukka/unicorn/prefer-keyboard-event-key': 'warn',
+    'sukka/unicorn/prefer-text-content': 'warn',
+    'sukka/unicorn/no-console-spaces': 'warn', // console.log('id: ', id)
+    'sukka/unicorn/no-empty-file': 'warn',
+    'sukka/unicorn/no-useless-fallback-in-spread': 'warn', // {...(foo || {})}
+    'sukka/unicorn/no-useless-length-check': 'warn', // array.length === 0 || array.every(...)
+    'sukka/unicorn/no-useless-promise-resolve-reject': 'warn', // return Promise.resolve(value) in async function
+    'sukka/unicorn/no-zero-fractions': 'warn', // 1.0
+    'sukka/unicorn/prefer-export-from': 'warn', // prefer export { } from than import-and-export
+    'sukka/unicorn/prefer-native-coercion-functions': 'warn' // no coercion wrapper v => Boolean(v)
   }
 };

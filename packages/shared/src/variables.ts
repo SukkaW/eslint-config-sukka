@@ -1,5 +1,6 @@
-export const variables = {
-  plugins: ['@stylistic/js'],
+import type { FlatESLintConfigItem } from 'eslint-define-config';
+
+export const variables: FlatESLintConfigItem = {
   rules: {
   // disallow labels that share a name with a variable
   // https://eslint.org/docs/rules/no-label-var

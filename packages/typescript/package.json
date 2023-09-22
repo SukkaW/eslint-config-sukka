@@ -10,6 +10,7 @@
   ],
   "main": "dist/index.js",
   "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -23,14 +24,16 @@
     "dist"
   ],
   "scripts": {
-    "codegen": "node -r @swc-node/register script/codegen.ts",
     "build": "rollup -c rollup.config.ts --configPlugin swc3"
   },
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",
+    "@eslint/js": "^8.49.0",
     "@stylistic/eslint-plugin-ts": "^0.0.4",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
-    "eslint-import-resolver-typescript": "^3.6.0"
+    "eslint-import-resolver-typescript": "^3.6.0",
+    "eslint-plugin-i": "^2.28.1",
+    "eslint-plugin-sukka": "workspace:*"
   }
 }

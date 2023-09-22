@@ -2,6 +2,11 @@ import { swc } from 'rollup-plugin-swc3';
 import { dts } from 'rollup-plugin-dts';
 import { defineConfig } from 'rollup';
 
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const packageJson = require('./package.json');
+const external = Object.keys(packageJson.dependencies);
+
 export default defineConfig([{
   input: 'src/index.ts',
   output: [
@@ -21,7 +26,7 @@ export default defineConfig([{
       }
     })
   ],
-  external: ['@eslint-sukka/shared']
+  external
 }, {
   input: 'src/index.ts',
   output: {
@@ -30,5 +35,5 @@ export default defineConfig([{
   plugins: [
     dts()
   ],
-  external: ['@eslint-sukka/shared']
+  external
 }]);

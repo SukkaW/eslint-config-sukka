@@ -1,8 +1,8 @@
-import type { FlatESLintConfig } from 'eslint-define-config';
+import type { FlatESLintConfigItem } from 'eslint-define-config';
 // @ts-expect-error -- missing -- eslint plugin
-import * as stylisticJs from '@stylistic/eslint-plugin-js'
+import * as stylisticJs from '@stylistic/eslint-plugin-js';
 
-export const style: FlatESLintConfig = {
+export const style: FlatESLintConfigItem = {
   plugins: {
     '@stylistic/js': stylisticJs
   },

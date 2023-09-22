@@ -3,6 +3,11 @@ import { dts } from 'rollup-plugin-dts';
 import { defineConfig } from 'rollup';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const packageJson = require('./package.json');
+const external = Object.keys(packageJson.dependencies);
+
 export default defineConfig([{
   input: 'src/index.ts',
   output: [
@@ -23,10 +28,7 @@ export default defineConfig([{
       }
     })
   ],
-  external: [
-    '@stylistic/eslint-plugin-js',
-    // '@masknet/eslint-plugin' // not stable, bundle the dependency with me
-  ]
+  external
 }, {
   input: 'src/index.ts',
   output: {
@@ -35,5 +37,5 @@ export default defineConfig([{
   plugins: [
     dts()
   ],
-  external: ['@stylistic/eslint-plugin-js']
+  external
 }]);
