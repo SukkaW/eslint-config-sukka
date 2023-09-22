@@ -1,5 +1,5 @@
 export const typescript = {
-  plugins: [],
+  plugins: ['@stylistic/ts'],
   rules: {
     '@typescript-eslint/ban-ts-comment': [
       'error',

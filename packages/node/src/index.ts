@@ -1,4 +1,4 @@
-import { best_practices, errors, es6, style, variables } from '@eslint-sukka/shared';
+import { best_practices, errors, es6, style, variables, sukka } from '@eslint-sukka/shared';
 
 export default {
   extends: ['eslint:recommended', 'plugin:n/recommended', 'plugin:i/recommended'],
@@ -8,7 +8,8 @@ export default {
     ...es6.plugins,
     ...style.plugins,
     ...variables.plugins,
-    'n', '@fluffyfox'
+    ...sukka.plugins,
+    'n'
   ])),
   rules: {
     ...best_practices.rules,
@@ -16,6 +17,7 @@ export default {
     ...es6.rules,
     ...style.rules,
     ...variables.rules,
+    ...sukka.rules,
 
     // Strict Mode
     strict: 'warn',

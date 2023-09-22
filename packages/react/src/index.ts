@@ -1,4 +1,4 @@
-import { best_practices, errors, es6, style, variables } from '@eslint-sukka/shared';
+import { best_practices, errors, es6, style, variables, sukka } from '@eslint-sukka/shared';
 
 export default {
   extends: [
@@ -14,6 +14,7 @@ export default {
     ...es6.plugins,
     ...style.plugins,
     ...variables.plugins,
+    ...sukka.plugins,
     'import', 'react', 'jsx-a11y', '@fluffyfox'
   ])),
   rules: {
@@ -22,6 +23,7 @@ export default {
     ...es6.rules,
     ...style.rules,
     ...variables.rules,
+    ...sukka.rules,
 
     'react-hooks/exhaustive-deps': ['warn', {
       additionalHooks: '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)'

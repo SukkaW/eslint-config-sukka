@@ -41,6 +41,9 @@ importers:
       eslint-config-sukka:
         specifier: workspace:*
         version: link:packages/eslint-config-sukka
+      eslint-plugin-sukka:
+        specifier: workspace:*
+        version: link:packages/eslint-plugin-sukka
       rimraf:
         specifier: ^5.0.1
         version: 5.0.1
@@ -115,18 +118,18 @@ importers:
 
   packages/shared:
     dependencies:
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^6.7.2
-        version: 6.7.2(@typescript-eslint/parser@6.7.2)(eslint@8.49.0)(typescript@5.2.2)
-      '@typescript-eslint/parser':
-        specifier: ^6.7.2
-        version: 6.7.2(eslint@8.49.0)(typescript@5.2.2)
+      '@stylistic/eslint-plugin-js':
+        specifier: ^0.0.4
+        version: 0.0.4
 
   packages/typescript:
     dependencies:
       '@eslint-sukka/shared':
         specifier: workspace:*
         version: link:../shared
+      '@stylistic/eslint-plugin-ts':
+        specifier: ^0.0.4
+        version: 0.0.4(eslint@8.49.0)(typescript@5.2.2)
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.7.2
         version: 6.7.2(@typescript-eslint/parser@6.7.2)(eslint@8.49.0)(typescript@5.2.2)
@@ -466,6 +469,17 @@ packages:
       rollup: 3.29.2
     dev: true
 
+  /@stylistic/eslint-plugin-js@0.0.4:
+    resolution: {integrity: sha512-W1rq2xxlFNhgZZJO+L59wtvlDI0xARYxx0WD8EeWNBO7NDybUSYSozCIcY9XvxQbTAsEXBjwqokeYm0crt7RxQ==}
+    dependencies:
+      acorn: 8.10.0
+      escape-string-regexp: 4.0.0
+      eslint-visitor-keys: 3.4.3
+      espree: 9.6.1
+      esutils: 2.0.3
+      graphemer: 1.4.0
+    dev: false
+
   /@stylistic/eslint-plugin-migrate@0.0.4(eslint@8.49.0)(typescript@5.2.2):
     resolution: {integrity: sha512-3rrerhj6xnhnZelOa6gzqFs9LiDqrY3tKZKSJpmCSQCijdfZYOJi6y00uCHGsSJK+gXNhRXgWU35q7DKu6dxsg==}
     dependencies:
@@ -476,6 +490,23 @@ packages:
       - supports-color
       - typescript
     dev: true
+
+  /@stylistic/eslint-plugin-ts@0.0.4(eslint@8.49.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-sWL4Km5j8S+TLyzya/3adxMWGkCm3lVasJIVQqhxVfwnlGkpMI0GgYVIu/ubdKPS+dSvqjUHpsXgqWfMRF2+cQ==}
+    peerDependencies:
+      eslint: '*'
+      typescript: '*'
+    dependencies:
+      '@stylistic/eslint-plugin-js': 0.0.4
+      '@typescript-eslint/scope-manager': 6.7.2
+      '@typescript-eslint/type-utils': 6.7.2(eslint@8.49.0)(typescript@5.2.2)
+      '@typescript-eslint/utils': 6.7.2(eslint@8.49.0)(typescript@5.2.2)
+      eslint: 8.49.0
+      graphemer: 1.4.0
+      typescript: 5.2.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /@swc-node/core@1.10.5(@swc/core@1.3.86):
     resolution: {integrity: sha512-G+Me0sTApMy6WY9mT0TluFxdO633P1GWMllbT3LWeJlknqQxJo8dAQcV0Uc0+rvBVXt7rRo/BMUZNJp88qarzg==}

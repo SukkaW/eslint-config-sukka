@@ -22,6 +22,7 @@
     "bumpp": "^9.2.0",
     "eslint": "^8.49.0",
     "eslint-config-sukka": "workspace:*",
+    "eslint-plugin-sukka": "workspace:*",
     "rimraf": "^5.0.1",
     "rollup": "^3.29.2",
     "rollup-plugin-dts": "5",

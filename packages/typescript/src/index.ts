@@ -1,5 +1,6 @@
 import { best_practices, errors, es6, style, variables } from '@eslint-sukka/shared';
 import { typescript } from './typescript';
+import { sukka } from './sukka';
 
 /**
  * This is a compatibility ruleset that:
@@ -15,7 +16,8 @@ export default {
     ...es6.plugins,
     ...style.plugins,
     ...variables.plugins,
-    '@typescript-eslint', '@fluffyfox'
+    ...sukka.plugins,
+    '@typescript-eslint'
   ])),
   parser: '@typescript-eslint/parser',
   extends: [
@@ -34,7 +36,8 @@ export default {
     ...es6.rules,
     ...style.rules,
     ...variables.rules,
-    ...typescript.rules
+    ...typescript.rules,
+    ...sukka.rules
   },
   settings: {
     'import/parsers': {

@@ -1,4 +1,4 @@
-import { best_practices, errors, es6, style, variables } from '@eslint-sukka/shared';
+import { best_practices, errors, es6, style, variables, sukka } from '@eslint-sukka/shared';
 
 export default {
   extends: ['eslint:recommended'],
@@ -7,7 +7,8 @@ export default {
     ...errors.plugins,
     ...es6.plugins,
     ...style.plugins,
-    ...variables.plugins
+    ...variables.plugins,
+    ...sukka.plugins
   ])),
   rules: {
     ...best_practices.rules,
@@ -15,6 +16,7 @@ export default {
     ...es6.rules,
     ...style.rules,
     ...variables.rules,
+    ...sukka.rules,
 
     'prefer-numeric-literals': 'off',
     'no-restricted-properties': ['error', {

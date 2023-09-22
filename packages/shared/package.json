@@ -26,7 +26,6 @@
     "build": "rollup -c rollup.config.ts --configPlugin swc3"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.7.2",
-    "@typescript-eslint/parser": "^6.7.2"
+    "@stylistic/eslint-plugin-js": "^0.0.4"
   }
 }
