@@ -10,6 +10,7 @@
   ],
   "main": "dist/index.js",
   "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -26,6 +27,7 @@
     "build": "rollup -c rollup.config.ts --configPlugin swc3"
   },
   "dependencies": {
-    "@eslint-sukka/shared": "workspace:*"
+    "@eslint-sukka/shared": "workspace:*",
+    "@eslint/js": "^8.49.0"
   }
 }

@@ -99,6 +99,9 @@ importers:
       '@eslint-sukka/shared':
         specifier: workspace:*
         version: link:../shared
+      '@eslint/js':
+        specifier: ^8.49.0
+        version: 8.49.0
 
   packages/eslint-config-sukka: {}
 
@@ -128,6 +131,12 @@ importers:
       '@eslint-sukka/shared':
         specifier: workspace:*
         version: link:../shared
+      '@eslint/js':
+        specifier: ^8.49.0
+        version: 8.49.0
+      globals:
+        specifier: ^13.22.0
+        version: 13.22.0
 
   packages/node:
     dependencies:
