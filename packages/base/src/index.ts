@@ -1,5 +1,5 @@
 import { best_practices, errors, es6, style, variables, sukka } from '@eslint-sukka/shared';
-import { FlatESLintConfigItem } from 'eslint-define-config';
+import type { FlatESLintConfigItem } from 'eslint-define-config';
 
 // @ts-expect-error -- no types
 import eslintJs from '@eslint/js';
@@ -24,5 +24,5 @@ export const base = (): FlatESLintConfigItem[] => {
         ...variables.rules,
         ...sukka.rules
       }
-    }]
+    }];
 };

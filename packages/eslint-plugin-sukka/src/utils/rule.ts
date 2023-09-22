@@ -35,7 +35,6 @@ export function createRule<
   TOptions extends unknown[],
   TMessageIDs extends string,
   TRuleListener extends RuleListener = RuleListener,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 >({ name, meta, create, resolveOptions }: RuleModule<TResolvedOptions, TOptions, TMessageIDs, TRuleListener>): any {
   if (meta.docs) {
     meta.docs.url ??= new URL(name, BASE_URL).toString();

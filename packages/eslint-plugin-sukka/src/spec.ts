@@ -21,8 +21,8 @@ const tester = new RuleTester({
 type TestCaseGenerator<T, R = T> = (cast: (input: T) => T) => Generator<R>
 
 interface RunOptions<TOptions extends readonly unknown[], TMessageIds extends string> {
-  module: ExportedRuleModule<TOptions, TMessageIds>
-  valid?: TestCaseGenerator<ValidTestCase<TOptions>, string | ValidTestCase<TOptions>>
+  module: ExportedRuleModule<TOptions, TMessageIds>,
+  valid?: TestCaseGenerator<ValidTestCase<TOptions>, string | ValidTestCase<TOptions>>,
   invalid?: TestCaseGenerator<InvalidTestCase<TMessageIds, TOptions>>
 }
 
@@ -31,7 +31,6 @@ export function runTest<TOptions extends readonly unknown[], TMessageIds extends
 ) {
   const { module, valid, invalid } = options;
   it(module.name, () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     tester.run(module.name, module as any, {
       valid: [...(valid?.(identifier) ?? [])].flat(),
       invalid: [...(invalid?.(identifier) ?? [])].flat()

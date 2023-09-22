@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment -- eslint-plugin-unicorn has no types at all
 // @ts-nocheck
 
 // @masknet/eslint-plugin
@@ -22,7 +23,7 @@ import no_default_error from '@masknet/eslint-plugin/rules/no-default-error.js';
 
 // eslint-plugin-unicorn
 // eslint-plugin-unicorn introduces way too many dependencies, let's bundle & tree shake them
-import getDocumentationUrl from 'eslint-plugin-unicorn/rules/utils/get-documentation-url.js'
+import getDocumentationUrl from 'eslint-plugin-unicorn/rules/utils/get-documentation-url.js';
 
 import no_nested_ternary from 'eslint-plugin-unicorn/rules/no-nested-ternary.js';
 import prefer_event_target from 'eslint-plugin-unicorn/rules/prefer-event-target.js';
@@ -141,10 +142,10 @@ function loadUnicorn(rule, ruleId): import('eslint').Rule.RuleModule {
       ...rule.meta,
       docs: {
         ...rule.meta.docs,
-        url: getDocumentationUrl(ruleId),
-      },
+        url: getDocumentationUrl(ruleId)
+      }
     },
-    create: reportProblems(rule.create),
+    create: reportProblems(rule.create)
   };
 }
 
@@ -154,7 +155,7 @@ class FixAbortError extends Error { }
 const fixOptions = {
   abort() {
     throw new FixAbortError('Fix aborted.');
-  },
+  }
 };
 
 function wrapFixFunction(fix) {
@@ -200,7 +201,7 @@ function reportListenerProblems(problems, context) {
 
         suggest.data = {
           ...problem.data,
-          ...suggest.data,
+          ...suggest.data
         };
       }
     }
@@ -216,7 +217,9 @@ function reportProblems(create) {
   //   return create;
   // }
 
-  const wrapped = context => {
+  // wrappedFunctions.add(wrapped);
+
+  return context => {
     const listeners = {};
     const addListener = (selector, listener) => {
       listeners[selector] ??= [];
@@ -244,7 +247,7 @@ function reportProblems(create) {
         }
 
         return Reflect.get(target, property, receiver);
-      },
+      }
     });
 
     for (const [selector, listener] of Object.entries(create(contextProxy) ?? {})) {
@@ -260,12 +263,8 @@ function reportProblems(create) {
             for (const listener of listeners) {
               reportListenerProblems(listener(...listenerArguments), context);
             }
-          },
-        ]),
+          }
+        ])
     );
   };
-
-  // wrappedFunctions.add(wrapped);
-
-  return wrapped;
 }

@@ -1,5 +1,5 @@
 import { best_practices, errors, es6, style, variables, sukka, constants } from '@eslint-sukka/shared';
-import { FlatESLintConfigItem } from 'eslint-define-config';
+import type { FlatESLintConfigItem } from 'eslint-define-config';
 
 // @ts-expect-error -- no types
 import eslintJs from '@eslint/js';
@@ -44,7 +44,7 @@ export const react = (): FlatESLintConfigItem[] => {
         'import/external-module-folders': ['node_modules', 'node_modules/@types'],
         'import/resolver': {
           node: {
-            extensions: allExtensions,
+            extensions: allExtensions
           }
         },
         react: {
@@ -68,13 +68,6 @@ export const react = (): FlatESLintConfigItem[] => {
         globals: globals.browser
       },
       rules: {
-        ...best_practices.rules,
-        ...errors.rules,
-        ...es6.rules,
-        ...style.rules,
-        ...variables.rules,
-        ...sukka.rules,
-
         // plugin:i/recommended
         ...eslintPluginI.configs.recommended.rules,
         // plugin:react/recommended
@@ -84,10 +77,16 @@ export const react = (): FlatESLintConfigItem[] => {
         // plugin:react-hooks/recommended
         ...eslintPluginReactHooks.configs.recommended.rules,
 
+        ...best_practices.rules,
+        ...errors.rules,
+        ...es6.rules,
+        ...style.rules,
+        ...variables.rules,
+        ...sukka.rules,
+
         'react-hooks/exhaustive-deps': ['warn', {
           additionalHooks: '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)'
         }],
-
         'react/react-in-jsx-scope': 'off',
         'react/jsx-filename-extension': ['warn', {
           extensions: ['.jsx', '.tsx']

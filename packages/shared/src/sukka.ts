@@ -59,6 +59,6 @@ export const sukka: FlatESLintConfigItem = {
     'sukka/unicorn/escape-case': 'warn', // correct casing of escape '\xA9'
     'sukka/unicorn/no-hex-escape': 'warn', // correct casing of escape '\u001B'
     'sukka/unicorn/prefer-prototype-methods': 'warn', // prefer Array.prototype.slice than [].slice
-    'sukka/unicorn/relative-url-style': ['warn', 'always'], // prefer relative url starts with ./
+    'sukka/unicorn/relative-url-style': ['warn', 'always'] // prefer relative url starts with ./
   }
 };

@@ -10,7 +10,7 @@
     "./packages/**/*.ts"
   ],
   "exclude": [
-    "./fixtures/**/*.*",
+    "**/fixtures/**/*",
     "./packages/*/dist/**/*"
   ]
 }

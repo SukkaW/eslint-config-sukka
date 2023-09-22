@@ -36,7 +36,7 @@ export const node = (): FlatESLintConfigItem[] => {
           ...globals.es2015,
           ...globals.es2017,
           ...globals.es2020,
-          ...globals.es2021,
+          ...globals.es2021
         }
       },
       settings: {
@@ -44,20 +44,20 @@ export const node = (): FlatESLintConfigItem[] => {
         'import/external-module-folders': ['node_modules', 'node_modules/@types'],
         'import/resolver': {
           node: {
-            extensions: allExtensions,
+            extensions: allExtensions
           }
         }
       },
       rules: {
+        // plugin:i/recommended
+        ...eslintPluginI.configs.recommended.rules,
+
         ...best_practices.rules,
         ...errors.rules,
         ...es6.rules,
         ...style.rules,
         ...variables.rules,
         ...sukka.rules,
-
-        // plugin:i/recommended
-        ...eslintPluginI.configs.recommended.rules,
 
         // Strict Mode
         strict: 'warn',
@@ -102,6 +102,14 @@ export const node = (): FlatESLintConfigItem[] => {
 
         'sukka/unicorn/no-new-buffer': 'error' // NodeJS
       }
+    },
+    {
+      files: ['**/*.mjs'],
+      languageOptions: {
+        parserOptions: {
+          sourceType: 'module'
+        }
+      }
     }
   ];
-}
+};

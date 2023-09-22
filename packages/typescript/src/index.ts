@@ -12,16 +12,17 @@ import eslintPluginI from 'eslint-plugin-i';
 import type { FlatESLintConfigItem } from 'eslint-define-config';
 
 export interface OptionsTypeScript {
-  tsconfigPath: string | string[]
-  tsconfigRootDir?: string
+  tsconfigPath: string | string[],
+  tsconfigRootDir?: string,
   componentExtentions?: string[]
 }
 
 const typeScriptExtensions = ['.ts', '.cts', '.mts', '.tsx', '.d.ts'];
-const allExtensions = ['.js', '.jsx', '.mjs', '.cjs', ...typeScriptExtensions];
+const javaScriptExtensions = ['.js', '.jsx', '.mjs', '.cjs'];
+const allExtensions = [...typeScriptExtensions, ...javaScriptExtensions];
 
 export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] => {
-  const { tsconfigPath, tsconfigRootDir = process.cwd(), componentExtentions = [] } = options
+  const { tsconfigPath, tsconfigRootDir = process.cwd(), componentExtentions = [] } = options;
 
   return [
     eslintJs.configs.recommended,
@@ -29,7 +30,7 @@ export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] =
       files: [
         constants.GLOB_TS,
         constants.GLOB_TSX,
-        ...componentExtentions.map(ext => `**/*.${ext}`),
+        ...componentExtentions.map(ext => `**/*.${ext}`)
       ],
       plugins: {
         ...best_practices.plugins,
@@ -42,7 +43,7 @@ export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] =
         ...sukkaTypeScript.plugins,
         '@typescript-eslint': tsEslintPlugin as any,
         i: eslintPluginI,
-        import: eslintPluginI, // legacy
+        import: eslintPluginI // legacy
       },
       // extends: [
       //   'plugin:i/recommended',
@@ -58,14 +59,16 @@ export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] =
         }
       },
       settings: {
+        ...eslintPluginI.configs.typescript.settings,
         'import/extensions': allExtensions,
-        'import/external-module-folders': ['node_modules', 'node_modules/@types'],
         'import/parsers': {
-          '@typescript-eslint/parser': typeScriptExtensions,
+          // TODO: remove this line once eslint-plugin-import #2556 is fixed
+          espree: javaScriptExtensions,
+          '@typescript-eslint/parser': typeScriptExtensions
         },
         'import/resolver': {
           node: {
-            extensions: allExtensions,
+            extensions: allExtensions
           },
           typescript: {
             alwaysTryTypes: true
@@ -73,15 +76,6 @@ export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] =
         }
       },
       rules: {
-        ...best_practices.rules,
-        ...errors.rules,
-        ...es6.rules,
-        ...style.rules,
-        ...variables.rules,
-        ...sukka.rules,
-        ...typescriptConfig.rules,
-        ...sukkaTypeScript.rules,
-
         // overwritten eslint:recommended
         /**
          * This is a compatibility ruleset that:
@@ -102,26 +96,35 @@ export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] =
         ...eslintPluginI.configs.recommended.rules,
         // plugin:i/typescript
         ...eslintPluginI.configs.typescript.rules,
+
+        ...best_practices.rules,
+        ...errors.rules,
+        ...es6.rules,
+        ...style.rules,
+        ...variables.rules,
+        ...sukka.rules,
+        ...typescriptConfig.rules,
+        ...sukkaTypeScript.rules
       }
     },
     {
       files: ['**/*.d.ts'],
       rules: {
-        'import/no-duplicates': 'off',
+        'import/no-duplicates': 'off'
         // 'unused-imports/no-unused-vars': 'off'
-      },
+      }
     },
     {
       files: ['**/*.{test,spec}.ts?(x)'],
       rules: {
-        'no-unused-expressions': 'off',
-      },
+        'no-unused-expressions': 'off'
+      }
     },
     {
       files: ['**/*.js', '**/*.cjs'],
       rules: {
         '@typescript-eslint/no-require-imports': 'off',
-        '@typescript-eslint/no-var-requires': 'off',
-      },
-    }]
+        '@typescript-eslint/no-var-requires': 'off'
+      }
+    }];
 };
