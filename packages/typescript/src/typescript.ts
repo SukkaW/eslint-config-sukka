@@ -70,7 +70,6 @@ export const typescript = {
     '@typescript-eslint/no-unnecessary-condition': 'warn',
     '@typescript-eslint/no-unnecessary-type-arguments': 'error',
     '@typescript-eslint/no-unsafe-declaration-merging': 'error',
-    '@typescript-eslint/no-unsafe-enum-comparison': 'error',
     '@typescript-eslint/non-nullable-type-assertion-style': 'error',
     '@typescript-eslint/prefer-includes': 'error',
     '@typescript-eslint/prefer-string-starts-ends-with': 'warn',
@@ -138,6 +137,7 @@ export const typescript = {
     '@typescript-eslint/no-floating-promises': 'off',
     '@typescript-eslint/no-unsafe-call': 'off', // bans any()
     '@typescript-eslint/no-unsafe-member-access': 'off', // bans a = any.prop
-    '@typescript-eslint/no-unsafe-return': 'off' // bans return any
+    '@typescript-eslint/no-unsafe-return': 'off', // bans return any
+    '@typescript-eslint/no-unsafe-enum-comparison': 'warn'
   }
 };

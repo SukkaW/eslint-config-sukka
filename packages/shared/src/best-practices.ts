@@ -1,5 +1,11 @@
-export const best_practices = {
-  plugins: ['@stylistic/js'],
+import type { FlatESLintConfig } from 'eslint-define-config';
+// @ts-expect-error -- missing -- eslint plugin
+import * as stylisticJs from '@stylistic/eslint-plugin-js'
+
+export const best_practices: FlatESLintConfig = {
+  plugins: {
+    '@stylistic/js': stylisticJs
+  },
   rules: {
     // enforces getter/setter pairs in objects
     // https://eslint.org/docs/rules/accessor-pairs

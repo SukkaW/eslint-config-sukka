@@ -1,5 +1,11 @@
-export const es6 = {
-  plugins: ['@stylistic/js'],
+import type { FlatESLintConfig } from 'eslint-define-config';
+// @ts-expect-error -- missing -- eslint plugin
+import * as stylisticJs from '@stylistic/eslint-plugin-js'
+
+export const es6: FlatESLintConfig = {
+  plugins: {
+    '@stylistic/js': stylisticJs
+  },
   rules: {
   // require parens in arrow function arguments
   // https://eslint.org/docs/rules/arrow-parens

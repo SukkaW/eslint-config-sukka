@@ -1,6 +1,7 @@
 import { swc } from 'rollup-plugin-swc3';
 import { dts } from 'rollup-plugin-dts';
 import { defineConfig } from 'rollup';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 
 export default defineConfig([{
   input: 'src/index.ts',
@@ -10,6 +11,7 @@ export default defineConfig([{
     { file: 'dist/index.mjs', format: 'esm' }
   ],
   plugins: [
+    nodeResolve(),
     swc({
       minify: true,
       jsc: {
@@ -20,6 +22,10 @@ export default defineConfig([{
         }
       }
     })
+  ],
+  external: [
+    '@stylistic/eslint-plugin-js',
+    // '@masknet/eslint-plugin' // not stable, bundle the dependency with me
   ]
 }, {
   input: 'src/index.ts',
@@ -28,5 +34,6 @@ export default defineConfig([{
   },
   plugins: [
     dts()
-  ]
+  ],
+  external: ['@stylistic/eslint-plugin-js']
 }]);

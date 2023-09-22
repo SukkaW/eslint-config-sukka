@@ -1,5 +1,6 @@
-export const errors = {
-  plugins: [],
+import type { FlatESLintConfig } from 'eslint-define-config';
+
+export const errors: FlatESLintConfig = {
   rules: {
   // Disallow await inside of loops
   // https://eslint.org/docs/rules/no-await-in-loop
@@ -83,7 +84,6 @@ export const errors = {
 
     // Disallow new operators with global non-constructor functions
     // https://eslint.org/docs/latest/rules/no-new-native-nonconstructor
-    // TODO: semver-major, enable
     'no-new-native-nonconstructor': 'error'
   }
 };

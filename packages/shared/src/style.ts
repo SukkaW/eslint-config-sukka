@@ -1,8 +1,14 @@
-export const style = {
-  plugins: ['@stylistic/js'],
+import type { FlatESLintConfig } from 'eslint-define-config';
+// @ts-expect-error -- missing -- eslint plugin
+import * as stylisticJs from '@stylistic/eslint-plugin-js'
+
+export const style: FlatESLintConfig = {
+  plugins: {
+    '@stylistic/js': stylisticJs
+  },
   rules: {
-  // enforce line breaks after opening and before closing array brackets
-  // https://eslint.org/docs/rules/array-bracket-newline
+    // enforce line breaks after opening and before closing array brackets
+    // https://eslint.org/docs/rules/array-bracket-newline
     '@stylistic/js/array-bracket-newline': ['off', 'consistent'], // object option alternative: { multiline: true, minItems: 3 }
 
     // enforce line breaks between array elements
@@ -27,6 +33,7 @@ export const style = {
       ignoreDestructuring: false,
       ignoreImports: true,
       ignoreGlobals: true,
+      // @ts-expect-error -- the type is wrong here
       allow: ['^UNSAFE_', '^experimental_', '^__DEV__']
     }],
 

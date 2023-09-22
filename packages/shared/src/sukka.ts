@@ -1,20 +1,25 @@
-export const sukka = {
-  plugins: ['sukka'],
+import type { FlatESLintConfig } from 'eslint-define-config';
+import sukka from 'eslint-plugin-sukka';
+
+export const sukka: FlatESLintConfig = {
+  plugins: {
+    sukka
+  },
   rules: {
-    '@fluffyfox/no-unneeded-array-flat-map': 'error',
-    '@fluffyfox/browser/prefer-location-assign': 'warn',
-    '@fluffyfox/jsx/no-template-literal': 'error',
-    '@fluffyfox/jsx/no-unneeded-nested': 'error',
-    '@fluffyfox/string/no-locale-case': 'warn',
-    '@fluffyfox/string/no-simple-template-literal': 'error',
-    '@fluffyfox/type/no-instanceof-wrapper': 'error',
-    '@fluffyfox/unicode/no-bidi': 'warn',
-    '@fluffyfox/unicode/no-invisible': 'warn',
-    '@fluffyfox/ban-eslint-disable': ['error', 'allow-with-description'],
-    '@fluffyfox/no-redundant-variable': 'error',
-    '@fluffyfox/no-single-return': 'error',
-    '@fluffyfox/prefer-early-return': ['error', { maximumStatements: 10 }],
-    '@fluffyfox/prefer-fetch': 'error',
-    '@fluffyfox/prefer-timer-id': 'warn'
+    'sukka/array/no-unneeded-flat-map': 'error',
+    'sukka/browser/prefer-location-assign': 'warn',
+    'sukka/jsx/no-template-literal': 'error',
+    'sukka/jsx/no-unneeded-nested': 'error',
+    'sukka/string/no-locale-case': 'warn',
+    'sukka/string/no-simple-template-literal': 'error',
+    'sukka/type/no-instanceof-wrapper': 'error',
+    'sukka/unicode/no-bidi': 'warn',
+    'sukka/unicode/no-invisible': 'warn',
+    'sukka/ban-eslint-disable': ['error', 'allow-with-description'],
+    'sukka/no-redundant-variable': 'error',
+    'sukka/no-single-return': 'error',
+    'sukka/prefer-early-return': ['error', { maximumStatements: 16 }],
+    'sukka/prefer-fetch': 'error',
+    'sukka/prefer-timer-id': 'warn'
   }
 };
