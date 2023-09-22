@@ -29,8 +29,5 @@
   "dependencies": {
     "@stylistic/eslint-plugin-js": "^0.0.4",
     "eslint-plugin-sukka": "workspace:*"
-  },
-  "devDependencies": {
-    "@masknet/eslint-plugin": "^0.2.0"
   }
 }

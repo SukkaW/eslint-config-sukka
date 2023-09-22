@@ -104,6 +104,9 @@ importers:
 
   packages/eslint-plugin-sukka:
     devDependencies:
+      '@masknet/eslint-plugin':
+        specifier: ^0.2.0
+        version: 0.2.0(eslint@8.49.0)
       '@types/node':
         specifier: ^20.6.2
         version: 20.6.3
@@ -535,6 +538,15 @@ packages:
       cross-spawn: 7.0.3
       string-argv: 0.3.2
       type-detect: 4.0.8
+    dev: true
+
+  /@masknet/eslint-plugin@0.2.0(eslint@8.49.0):
+    resolution: {integrity: sha512-tpYFKDk6lYZHZUGluyVCR2yH55I6/dqmF2nBzIabvoW6xr9fEsZOefB9a4UfONobCXHlQ0hvk1jU5wHMKffKBA==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      eslint: '>= 8'
+    dependencies:
+      eslint: 8.49.0
     dev: true
 
   /@napi-rs/magic-string-android-arm-eabi@0.3.4:

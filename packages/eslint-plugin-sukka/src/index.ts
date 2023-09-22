@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 // @masknet/eslint-plugin
 import array$no_unneeded_flat_map from '@masknet/eslint-plugin/rules/array/no-unneeded-flat-map.js';
 import browser$prefer_location_assign from '@masknet/eslint-plugin/rules/browser/prefer-location-assign.js';
@@ -19,38 +21,44 @@ import type$no_wrapper_type_reference from '@masknet/eslint-plugin/rules/type/no
 import no_default_error from '@masknet/eslint-plugin/rules/no-default-error.js';
 
 // eslint-plugin-unicorn
-// @ts-expect-error -- no types
+// eslint-plugin-unicorn introduces way too many dependencies, let's bundle & tree shake them
 import prefer_event_target from 'eslint-plugin-unicorn/rules/prefer-event-target.js';
-// @ts-expect-error -- no types
 import prefer_keyboard_event_key from 'eslint-plugin-unicorn/rules/prefer-keyboard-event-key.js';
-// @ts-expect-error -- no types
 import prefer_dom_node_text_content from 'eslint-plugin-unicorn/rules/prefer-dom-node-text-content.js';
-// @ts-expect-error -- no types
 import require_array_join_separator from 'eslint-plugin-unicorn/rules/require-array-join-separator.js';
-// @ts-expect-error -- no types
 import no_thenable from 'eslint-plugin-unicorn/rules/no-thenable.js';
-// @ts-expect-error -- no types
 import no_invalid_remove_event_listener from 'eslint-plugin-unicorn/rules/no-invalid-remove-event-listener.js';
-// @ts-expect-error -- no types
 import consistent_function_scoping from 'eslint-plugin-unicorn/rules/consistent-function-scoping.js';
-// @ts-expect-error -- no new buffer
 import no_new_buffer from 'eslint-plugin-unicorn/rules/no-new-buffer.js';
-// @ts-expect-error -- no types
 import no_console_spaces from 'eslint-plugin-unicorn/rules/no-console-spaces.js';
-// @ts-expect-error -- no types
 import no_empty_file from 'eslint-plugin-unicorn/rules/no-empty-file.js';
-// @ts-expect-error -- no types
 import no_useless_fallback_in_spread from 'eslint-plugin-unicorn/rules/no-useless-fallback-in-spread.js';
-// @ts-expect-error -- no types
 import no_useless_length_check from 'eslint-plugin-unicorn/rules/no-useless-length-check.js';
-// @ts-expect-error -- no types
 import no_useless_promise_resolve_reject from 'eslint-plugin-unicorn/rules/no-useless-promise-resolve-reject.js';
-// @ts-expect-error -- no types
 import no_zero_fractions from 'eslint-plugin-unicorn/rules/no-zero-fractions.js';
-// @ts-expect-error -- no types
 import prefer_export_from from 'eslint-plugin-unicorn/rules/prefer-export-from.js';
-// @ts-expect-error -- no types
 import prefer_native_coercion_functions from 'eslint-plugin-unicorn/rules/prefer-native-coercion-functions.js';
+import no_document_cookie from 'eslint-plugin-unicorn/rules/no-document-cookie.js';
+import prefer_add_event_listener from 'eslint-plugin-unicorn/rules/prefer-add-event-listener.js';
+import prefer_array_index_of from 'eslint-plugin-unicorn/rules/prefer-array-index-of.js';
+import prefer_blob_reading_methods from 'eslint-plugin-unicorn/rules/prefer-blob-reading-methods.js';
+import prefer_date_now from 'eslint-plugin-unicorn/rules/prefer-date-now.js';
+import prefer_dom_node_dataset from 'eslint-plugin-unicorn/rules/prefer-dom-node-dataset.js';
+import prefer_math_trunc from 'eslint-plugin-unicorn/rules/prefer-math-trunc.js';
+import prefer_modern_math_apis from 'eslint-plugin-unicorn/rules/prefer-modern-math-apis.js';
+import prefer_number_properties from 'eslint-plugin-unicorn/rules/prefer-number-properties.js';
+import prefer_reflect_apply from 'eslint-plugin-unicorn/rules/prefer-reflect-apply.js';
+import prefer_set_size from 'eslint-plugin-unicorn/rules/prefer-set-size.js';
+import prefer_string_replace_all from 'eslint-plugin-unicorn/rules/prefer-string-replace-all.js';
+import prefer_string_slice from 'eslint-plugin-unicorn/rules/prefer-string-slice.js';
+import prefer_string_trim_start_end from 'eslint-plugin-unicorn/rules/prefer-string-trim-start-end.js';
+import no_unreadable_iife from 'eslint-plugin-unicorn/rules/no-unreadable-iife.js';
+import throw_new_error from 'eslint-plugin-unicorn/rules/throw-new-error.js';
+import better_regex from 'eslint-plugin-unicorn/rules/better-regex.js';
+import escape_case from 'eslint-plugin-unicorn/rules/escape-case.js';
+import no_hex_escape from 'eslint-plugin-unicorn/rules/no-hex-escape.js';
+import prefer_prototype_methods from 'eslint-plugin-unicorn/rules/prefer-prototype-methods.js';
+import relative_url_style from 'eslint-plugin-unicorn/rules/relative-url-style.js';
 
 // eslint-plugin-sukka
 import ban_eslint_disable from './rules/ban-eslint-disable';
@@ -89,6 +97,28 @@ export default {
     'unicorn/no-zero-fractions': no_zero_fractions,
     'unicorn/prefer-export-from': prefer_export_from,
     'unicorn/prefer-native-coercion-functions': prefer_native_coercion_functions,
+
+    'unicorn/no-document-cookie': no_document_cookie,
+    'unicorn/prefer-add-event-listener': prefer_add_event_listener,
+    'unicorn/prefer-array-index-of': prefer_array_index_of,
+    'unicorn/prefer-blob-reading-methods': prefer_blob_reading_methods,
+    'unicorn/prefer-date-now': prefer_date_now,
+    'unicorn/prefer-dom-node-dataset': prefer_dom_node_dataset,
+    'unicorn/prefer-math-trunc': prefer_math_trunc,
+    'unicorn/prefer-modern-math-apis': prefer_modern_math_apis,
+    'unicorn/prefer-number-properties': prefer_number_properties,
+    'unicorn/prefer-reflect-apply': prefer_reflect_apply,
+    'unicorn/prefer-set-size': prefer_set_size,
+    'unicorn/prefer-string-replace-all': prefer_string_replace_all,
+    'unicorn/prefer-string-slice': prefer_string_slice,
+    'unicorn/prefer-string-trim-start-end': prefer_string_trim_start_end,
+    'unicorn/no-unreadable-iife': no_unreadable_iife,
+    'unicorn/throw-new-error': throw_new_error,
+    'unicorn/better-regex': better_regex,
+    'unicorn/escape-case': escape_case,
+    'unicorn/no-hex-escape': no_hex_escape,
+    'unicorn/prefer-prototype-methods':prefer_prototype_methods,
+    'unicorn/relative-url-style': relative_url_style,
 
     // Require TS
     'string/no-unneeded-to-string': string$no_unneeded_to_string,

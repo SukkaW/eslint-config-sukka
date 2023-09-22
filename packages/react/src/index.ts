@@ -290,6 +290,7 @@ export const react = (): FlatESLintConfigItem[] => {
       'react/no-object-type-as-default-prop': 'warn',
       // default type is "submit" which refresh the page
       'react/button-has-type': 'error',
+      'react/no-namespace': 'error', // <svg:rect> react does not support
 
       'class-methods-use-this': ['error', {
         exceptMethods: [

@@ -36,6 +36,28 @@ export const sukka: FlatESLintConfigItem = {
     'sukka/unicorn/no-useless-promise-resolve-reject': 'warn', // return Promise.resolve(value) in async function
     'sukka/unicorn/no-zero-fractions': 'warn', // 1.0
     'sukka/unicorn/prefer-export-from': 'warn', // prefer export { } from than import-and-export
-    'sukka/unicorn/prefer-native-coercion-functions': 'warn' // no coercion wrapper v => Boolean(v)
+    'sukka/unicorn/prefer-native-coercion-functions': 'warn', // no coercion wrapper v => Boolean(v)
+    'sukka/unicorn/no-document-cookie': 'error', // even if you have to do so, use CookieJar
+    'sukka/unicorn/prefer-add-event-listener': 'warn',
+    'sukka/unicorn/prefer-array-index-of': 'warn',
+    'sukka/unicorn/prefer-blob-reading-methods': 'warn',
+    'sukka/unicorn/prefer-date-now': 'warn',
+    'sukka/unicorn/prefer-dom-node-dataset': 'warn',
+    'sukka/unicorn/prefer-math-trunc': 'warn',
+    'sukka/unicorn/prefer-modern-dom-apis': 'warn',
+    'sukka/unicorn/prefer-modern-math-apis': 'warn',
+    'sukka/unicorn/prefer-number-properties': 'warn',
+    'sukka/unicorn/prefer-reflect-apply': 'warn',
+    'sukka/unicorn/prefer-set-size': 'warn',
+    'sukka/unicorn/prefer-string-replace-all': 'warn', // str.replaceAll(...)
+    'sukka/unicorn/prefer-string-slice': 'warn',
+    'sukka/unicorn/prefer-string-trim-start-end': 'warn', // str.trimStart(...)
+    'sukka/unicorn/no-unreadable-iife': 'warn', // (bar => (bar ? bar.baz : baz))(getBar())
+    'sukka/unicorn/throw-new-error': 'warn',
+    'sukka/unicorn/better-regex': 'error', // RegEx
+    'sukka/unicorn/escape-case': 'warn', // correct casing of escape '\xA9'
+    'sukka/unicorn/no-hex-escape': 'warn', // correct casing of escape '\u001B'
+    'sukka/unicorn/prefer-prototype-methods': 'warn', // prefer Array.prototype.slice than [].slice
+    'sukka/unicorn/relative-url-style': ['warn', 'always'], // prefer relative url starts with ./
   }
 };

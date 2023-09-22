@@ -23,6 +23,7 @@
     "build": "rollup -c rollup.config.ts --configPlugin swc3"
   },
   "devDependencies": {
+    "@masknet/eslint-plugin": "^0.2.0",
     "@types/node": "^20.6.2",
     "@typescript-eslint/rule-tester": "^6.7.2",
     "@typescript-eslint/utils": "^6.7.2",
