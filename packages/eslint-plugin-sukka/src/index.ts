@@ -63,6 +63,9 @@ import escape_case from 'eslint-plugin-unicorn/rules/escape-case.js';
 import no_hex_escape from 'eslint-plugin-unicorn/rules/no-hex-escape.js';
 import prefer_prototype_methods from 'eslint-plugin-unicorn/rules/prefer-prototype-methods.js';
 import relative_url_style from 'eslint-plugin-unicorn/rules/relative-url-style.js';
+import error_message from 'eslint-plugin-unicorn/rules/error-message.js';
+import no_instanceof_array from 'eslint-plugin-unicorn/rules/no-instanceof-array.js';
+import prefer_type_error from 'eslint-plugin-unicorn/rules/prefer-type-error.js';
 
 // eslint-plugin-sukka
 import ban_eslint_disable from './rules/ban-eslint-disable';
@@ -85,6 +88,7 @@ export default {
     'prefer-fetch': prefer_fetch,
     'prefer-timer-id': prefer_timer_id,
 
+    // eslint-plugin-unicorn
     'unicorn/no-nested-ternary': loadUnicorn(no_nested_ternary, 'unicorn/no-nested-ternary'),
     'unicorn/prefer-event-target': loadUnicorn(prefer_event_target, 'unicorn/prefer-event-target'),
     'unicorn/prefer-keyboard-event-key': loadUnicorn(prefer_keyboard_event_key, 'unicorn/prefer-keyboard-event-key'),
@@ -123,6 +127,9 @@ export default {
     'unicorn/no-hex-escape': loadUnicorn(no_hex_escape, 'unicorn/no-hex-escape'),
     'unicorn/prefer-prototype-methods': loadUnicorn(prefer_prototype_methods, 'unicorn/prefer-prototype-methods'),
     'unicorn/relative-url-style': loadUnicorn(relative_url_style, 'unicorn/relative-url-style'),
+    'unicorn/error-message': loadUnicorn(error_message, 'unicorn/error-message'),
+    'unicorn/no-instanceof-array': loadUnicorn(no_instanceof_array, 'unicorn/no-instanceof-array'),
+    'unicorn/prefer-type-error': loadUnicorn(prefer_type_error, 'unicorn/prefer-type-error'),
 
     // Require TS
     'string/no-unneeded-to-string': string$no_unneeded_to_string,
@@ -133,7 +140,7 @@ export default {
   }
 };
 
-function loadUnicorn(rule, ruleId): import('eslint').Rule.RuleModule {
+function loadUnicorn(rule: any, ruleId: string): import('eslint').Rule.RuleModule {
   return {
     meta: {
       // If there is are, options add `[]` so ESLint can validate that no data is passed to the rule.
@@ -193,7 +200,7 @@ function reportListenerProblems(problems, context) {
       problem.fix = wrapFixFunction(problem.fix);
     }
 
-    if (Array.isArray(problem.suggest)) {
+    if (isIterable(problem.suggest)) {
       for (const suggest of problem.suggest) {
         if (suggest.fix) {
           suggest.fix = wrapFixFunction(suggest.fix);

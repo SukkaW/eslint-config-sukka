@@ -1,13 +1,13 @@
-import { best_practices, errors, es6, style, variables, sukka, constants } from '@eslint-sukka/shared';
-import { typescript as typescriptConfig } from './typescript';
-import { sukkaTypeScript } from './sukka';
+import { constants } from '@eslint-sukka/shared';
 
+import { typescript as typescriptConfig } from './modules/typescript';
+import { sukkaTypeScript } from './modules/sukka';
+import { generated_overrides } from './modules/generated_overrides';
+
+import ts_eslint_plugin from '@typescript-eslint/eslint-plugin';
+import es_eslint_parser from '@typescript-eslint/parser';
 // @ts-expect-error -- no types
-import eslintJs from '@eslint/js';
-import tsEslintPlugin from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
-// @ts-expect-error -- no types
-import eslintPluginI from 'eslint-plugin-i';
+import eslint_plugin_i from 'eslint-plugin-i';
 
 import type { FlatESLintConfigItem } from 'eslint-define-config';
 
@@ -25,7 +25,6 @@ export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] =
   const { tsconfigPath, tsconfigRootDir = process.cwd(), componentExtentions = [] } = options;
 
   return [
-    eslintJs.configs.recommended,
     {
       files: [
         constants.GLOB_TS,
@@ -33,24 +32,19 @@ export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] =
         ...componentExtentions.map(ext => `**/*.${ext}`)
       ],
       plugins: {
-        ...best_practices.plugins,
-        ...errors.plugins,
-        ...es6.plugins,
-        ...style.plugins,
-        ...variables.plugins,
-        ...sukka.plugins,
         ...typescriptConfig.plugins,
         ...sukkaTypeScript.plugins,
-        '@typescript-eslint': tsEslintPlugin as any,
-        i: eslintPluginI,
-        import: eslintPluginI // legacy
+        ...generated_overrides.plugins,
+        '@typescript-eslint': ts_eslint_plugin as any,
+        i: eslint_plugin_i,
+        import: eslint_plugin_i // legacy
       },
       // extends: [
       //   'plugin:i/recommended',
       //   'plugin:i/typescript'
       // ],
       languageOptions: {
-        parser: tsParser,
+        parser: es_eslint_parser,
         parserOptions: {
           sourceType: 'module',
           ecmaVersion: 'latest',
@@ -59,13 +53,8 @@ export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] =
         }
       },
       settings: {
-        ...eslintPluginI.configs.typescript.settings,
         'import/extensions': allExtensions,
-        'import/parsers': {
-          // TODO: remove this line once eslint-plugin-import #2556 is fixed
-          espree: javaScriptExtensions,
-          '@typescript-eslint/parser': typeScriptExtensions
-        },
+        'import/external-module-folders': ['node_modules', 'node_modules/@types'],
         'import/resolver': {
           node: {
             extensions: allExtensions
@@ -73,6 +62,11 @@ export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] =
           typescript: {
             alwaysTryTypes: true
           }
+        },
+        'import/parsers': {
+          // TODO: remove this line once eslint-plugin-import #2556 is fixed
+          espree: javaScriptExtensions,
+          '@typescript-eslint/parser': typeScriptExtensions
         }
       },
       rules: {
@@ -82,33 +76,32 @@ export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] =
          * - disables rules from eslint:recommended which are already handled by TypeScript.
          * - enables rules that make sense due to TS's typechecking / transpilation.
          */
-        ...tsEslintPlugin.configs['eslint-recommended'].overrides![0].rules,
+        ...ts_eslint_plugin.configs['eslint-recommended'].overrides![0].rules,
         // plugin:@typescript-eslint/recommended
-        ...tsEslintPlugin.configs.base.rules,
-        ...tsEslintPlugin.configs.recommended.rules, // plugin:@typescript-eslint/recommended
+        ...ts_eslint_plugin.configs.base.rules,
+        ...ts_eslint_plugin.configs.recommended.rules, // plugin:@typescript-eslint/recommended
         // plugin:@typescript-eslint/recommended-type-checked
-        ...tsEslintPlugin.configs['recommended-type-checked'].rules,
+        ...ts_eslint_plugin.configs['recommended-type-checked'].rules,
         // plugin:@typescript-eslint/stylistic
-        ...tsEslintPlugin.configs.stylistic.rules,
+        ...ts_eslint_plugin.configs.stylistic.rules,
         // plugin:@typescript-eslint/stylistic-type-checked
-        ...tsEslintPlugin.configs['stylistic-type-checked'].rules,
+        ...ts_eslint_plugin.configs['stylistic-type-checked'].rules,
         // plugin:i/recommended
-        ...eslintPluginI.configs.recommended.rules,
+        ...eslint_plugin_i.configs.recommended.rules,
         // plugin:i/typescript
-        ...eslintPluginI.configs.typescript.rules,
+        ...eslint_plugin_i.configs.typescript.rules,
 
-        ...best_practices.rules,
-        ...errors.rules,
-        ...es6.rules,
-        ...style.rules,
-        ...variables.rules,
-        ...sukka.rules,
         ...typescriptConfig.rules,
-        ...sukkaTypeScript.rules
+        ...sukkaTypeScript.rules,
+        ...generated_overrides.rules
       }
     },
     {
       files: ['**/*.d.ts'],
+      plugins: {
+        i: eslint_plugin_i,
+        import: eslint_plugin_i // legacy
+      },
       rules: {
         'import/no-duplicates': 'off'
         // 'unused-imports/no-unused-vars': 'off'
@@ -122,9 +115,13 @@ export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] =
     },
     {
       files: ['**/*.js', '**/*.cjs'],
+      plugins: {
+        '@typescript-eslint': ts_eslint_plugin as any
+      },
       rules: {
         '@typescript-eslint/no-require-imports': 'off',
         '@typescript-eslint/no-var-requires': 'off'
       }
-    }];
+    }
+  ];
 };

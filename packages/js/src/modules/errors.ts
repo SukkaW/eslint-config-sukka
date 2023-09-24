@@ -1,11 +1,11 @@
-import type { SukkaESLintRuleConfig } from '../types';
+import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
 
 // @ts-expect-error -- no types
 import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
 
 export const errors: SukkaESLintRuleConfig = {
   plugins: {
-    'unused-imports': eslint_plugin_unused_imports,
+    'unused-imports': eslint_plugin_unused_imports
   },
   rules: {
   // Disallow await inside of loops
@@ -62,7 +62,7 @@ export const errors: SukkaESLintRuleConfig = {
     }], */
     'unused-imports/no-unused-vars': [
       'error',
-      { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_', ignoreRestSiblings: true },
+      { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_', ignoreRestSiblings: true }
     ],
 
     // Disallow Unused Private Class Members

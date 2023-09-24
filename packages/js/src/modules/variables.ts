@@ -1,4 +1,4 @@
-import type { SukkaESLintRuleConfig } from '../types';
+import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
 
 export const variables: SukkaESLintRuleConfig = {
   rules: {

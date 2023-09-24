@@ -1,9 +1,9 @@
-import type { FlatESLintConfigItem } from 'eslint-define-config';
-import sukkaPlugin from 'eslint-plugin-sukka';
+import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
+import eslint_plugin_sukka from 'eslint-plugin-sukka';
 
-export const sukkaTypeScript: FlatESLintConfigItem = {
+export const sukkaTypeScript: SukkaESLintRuleConfig = {
   plugins: {
-    sukka: sukkaPlugin
+    sukka: eslint_plugin_sukka
   },
   rules: {
     'sukka/string/no-unneeded-to-string': 'error',

@@ -4,18 +4,16 @@ import { ignores } from './modules/ignores';
 import { isPackageExists } from 'local-pkg';
 
 interface ESLineSukkaOptions {
-  ignores?: string | string[],
-  typescript?: boolean
+  isInEditor?: boolean,
+  ignores?: string[] | string
 }
 
 export const sukka = (options: ESLineSukkaOptions, ...userConfig: FlatESLintConfigItem[]): FlatESLintConfigItem[] => {
+  const isInEditor = options.isInEditor ?? !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI);
+
   const configs: FlatESLintConfigItem[] = [];
 
   configs.push(...ignores(options.ignores ?? []));
 
-  const enableTypeScript = options.typescript ?? isPackageExists('typescript');
-
-  if (enableTypeScript) {
-    configs.push(...require('./modules/typescript'));
-  }
+  configs.push(...userConfig);
 };

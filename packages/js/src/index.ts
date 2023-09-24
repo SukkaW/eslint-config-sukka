@@ -107,13 +107,6 @@ export const javascript = (options: OptionsJavaScript): FlatESLintConfigItem[] =
       },
       settings: {
         'import/extensions': allExtensions
-        // TODO: TS default
-        // 'import/external-module-folders': ['node_modules', 'node_modules/@types'],
-        // 'import/resolver': {
-        //   node: {
-        //     extensions: allExtensions
-        //   }
-        // }
       },
       plugins: {
         ...best_practices.plugins,
@@ -149,4 +142,14 @@ export const javascript = (options: OptionsJavaScript): FlatESLintConfigItem[] =
   }
 
   return configs;
+};
+
+export const __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED__ = {
+  best_practices,
+  errors,
+  es6,
+  style,
+  variables,
+  sukka,
+  imports
 };

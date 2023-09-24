@@ -4,11 +4,12 @@ module.exports = [
   {
     ignores: [
       'packages/*/dist/**/*',
-      '**/fixtures/**/*'
+      '**/fixtures/**/*',
+      '**/generated*'
     ]
   },
   ...require('@eslint-sukka/node').node(),
-  ...require('@eslint-sukka/typescript').typescript({
+  ...require('@eslint-sukka/ts').typescript({
     tsconfigPath: './tsconfig.json'
   }),
   {

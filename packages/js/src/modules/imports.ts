@@ -1,4 +1,4 @@
-import type { SukkaESLintRuleConfig } from '../types';
+import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
 // @ts-expect-error -- no types
 import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
 // @ts-expect-error -- no types
@@ -14,4 +14,4 @@ export const imports: SukkaESLintRuleConfig = {
     ...eslint_plugin_i.configs.recommended.rules,
     'unused-imports/no-unused-imports': 'warn'
   }
-}
+};

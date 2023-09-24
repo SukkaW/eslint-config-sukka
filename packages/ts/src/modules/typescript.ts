@@ -1,12 +1,12 @@
-import type { FlatESLintConfigItem } from 'eslint-define-config';
-import tsEslint from '@typescript-eslint/eslint-plugin';
+import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
+import ts_eslint_plugin from '@typescript-eslint/eslint-plugin';
 // @ts-expect-error -- no types
 import stylisticTs from '@stylistic/eslint-plugin-ts';
 
-export const typescript: FlatESLintConfigItem = {
+export const typescript: SukkaESLintRuleConfig = {
   plugins: {
     '@stylistic/ts': stylisticTs,
-    '@typescript-eslint': tsEslint as any
+    '@typescript-eslint': ts_eslint_plugin as any
   },
   rules: {
     '@typescript-eslint/ban-ts-comment': [

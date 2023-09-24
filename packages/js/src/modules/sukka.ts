@@ -1,4 +1,4 @@
-import type { SukkaESLintRuleConfig } from '../types';
+import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
 import sukkaPlugin from 'eslint-plugin-sukka';
 
 export const sukka: SukkaESLintRuleConfig = {
@@ -21,6 +21,7 @@ export const sukka: SukkaESLintRuleConfig = {
     'sukka/prefer-early-return': ['error', { maximumStatements: 16 }],
     'sukka/prefer-fetch': 'error',
     'sukka/prefer-timer-id': 'warn',
+
     // disallow nested ternary expressions
     'sukka/unicorn/no-nested-ternary': 'warn',
 
@@ -59,6 +60,9 @@ export const sukka: SukkaESLintRuleConfig = {
     'sukka/unicorn/escape-case': 'warn', // correct casing of escape '\xA9'
     'sukka/unicorn/no-hex-escape': 'warn', // correct casing of escape '\u001B'
     'sukka/unicorn/prefer-prototype-methods': 'warn', // prefer Array.prototype.slice than [].slice
-    'sukka/unicorn/relative-url-style': ['warn', 'always'] // prefer relative url starts with ./
+    'sukka/unicorn/relative-url-style': ['warn', 'always'], // prefer relative url starts with ./
+    'sukka/unicorn/error-message': 'error', // Pass error message when throwing errors
+    'sukka/unicorn/no-instanceof-array': 'error', // Array.isArray
+    'sukka/unicorn/prefer-type-error': 'error' // throw new TypeError
   }
 };
