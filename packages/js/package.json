@@ -1,5 +1,5 @@
 {
-  "name": "@eslint-sukka/node",
+  "name": "@eslint-sukka/js",
   "version": "4.0.0",
   "description": "Sukka's ESLint config",
   "author": "Sukka <https://skk.moe>",
@@ -28,7 +28,13 @@
   },
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",
-    "eslint-plugin-n": "^16.1.0",
-    "eslint-plugin-sukka": "workspace:*"
+    "@eslint/js": "^8.49.0",
+    "eslint-plugin-i": "^2.28.1",
+    "eslint-plugin-sukka": "workspace:*",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "globals": "^13.22.0"
+  },
+  "devDependencies": {
+    "@stylistic/eslint-plugin-js": "^0.0.4"
   }
 }

@@ -1,67 +1,23 @@
-import { best_practices, errors, es6, style, variables, sukka } from '@eslint-sukka/shared';
 import type { FlatESLintConfigItem } from 'eslint-define-config';
-import eslintPluginSukka from 'eslint-plugin-sukka';
 
-// @ts-expect-error -- no types
-import eslintJs from '@eslint/js';
-// @ts-expect-error -- no types
-import eslintPluginI from 'eslint-plugin-i';
-// @ts-expect-error -- no types
-import eslintPluginN from 'eslint-plugin-n';
+import { getPackageJson } from '@eslint-sukka/shared';
 
-import globals from 'globals';
+import eslint_plugin_sukka from 'eslint-plugin-sukka';
+// @ts-expect-error -- no types
+import eslint_plugin_n from 'eslint-plugin-n';
 
-const eslintPluginNRecommendedConfig = eslintPluginN.configs['flat/recommended'];
-const allExtensions = ['.js', '.jsx', '.mjs', '.cjs'];
 export const node = (): FlatESLintConfigItem[] => {
+  const packageJson = getPackageJson();
+  const isModule = packageJson?.type === 'module';
+
   return [
-    eslintJs.configs.recommended,
-    eslintPluginNRecommendedConfig,
+    eslint_plugin_n.configs['flat/mixed-esm-and-cjs'],
     {
       plugins: {
-        ...best_practices.plugins,
-        ...errors.plugins,
-        ...es6.plugins,
-        ...style.plugins,
-        ...variables.plugins,
-        ...sukka.plugins,
-        n: eslintPluginN,
-        i: eslintPluginI,
-        import: eslintPluginI, // legacy
-        sukka: eslintPluginSukka
-      },
-      languageOptions: {
-        ...eslintPluginNRecommendedConfig.languageOptions,
-        globals: {
-          ...globals.es2015,
-          ...globals.es2017,
-          ...globals.es2020,
-          ...globals.es2021
-        }
-      },
-      settings: {
-        'import/extensions': allExtensions,
-        'import/external-module-folders': ['node_modules', 'node_modules/@types'],
-        'import/resolver': {
-          node: {
-            extensions: allExtensions
-          }
-        }
+        sukka: eslint_plugin_sukka,
+        n: eslint_plugin_n
       },
       rules: {
-        // plugin:i/recommended
-        ...eslintPluginI.configs.recommended.rules,
-
-        ...best_practices.rules,
-        ...errors.rules,
-        ...es6.rules,
-        ...style.rules,
-        ...variables.rules,
-        ...sukka.rules,
-
-        // Strict Mode
-        strict: 'warn',
-
         // enforces error handling in callbacks (node environment)
         'handle-callback-err': 'off',
 
@@ -100,15 +56,14 @@ export const node = (): FlatESLintConfigItem[] => {
         'n/no-extraneous-import': 'off',
         'n/no-extraneous-require': 'off',
 
-        'sukka/unicorn/no-new-buffer': 'error' // NodeJS
+        'sukka/unicorn/no-new-buffer': 'error' // ban new Buffer, prefer Buffer.from
       }
     },
     {
-      files: ['**/*.mjs'],
-      languageOptions: {
-        parserOptions: {
-          sourceType: 'module'
-        }
+      files: isModule ? ['*.cjs', '.*.cjs'] : ['*.cjs', '.*.cjs', '*.js', '.*.js'],
+      rules: {
+        // enable strict mode for cjs
+        strict: 'warn'
       }
     }
   ];

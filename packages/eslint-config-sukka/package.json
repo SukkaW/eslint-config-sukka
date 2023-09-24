@@ -18,5 +18,10 @@
     "typescript.js"
   ],
   "scripts": {},
-  "dependencies": {}
+  "dependencies": {
+    "@eslint-sukka/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "local-pkg": "^0.4.3"
+  }
 }
