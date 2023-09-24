@@ -48,6 +48,7 @@ export const sukka: SukkaESLintRuleConfig = {
     'sukka/unicorn/prefer-dom-node-dataset': 'warn',
     'sukka/unicorn/prefer-math-trunc': 'warn',
     'sukka/unicorn/prefer-modern-math-apis': 'warn',
+    'sukka/unicorn/number-literal-case': 'error', // prefer 0x1 over 0X1
     'sukka/unicorn/prefer-number-properties': 'warn',
     'sukka/unicorn/prefer-reflect-apply': 'warn',
     'sukka/unicorn/prefer-set-size': 'warn',

@@ -50,6 +50,7 @@ import prefer_date_now from 'eslint-plugin-unicorn/rules/prefer-date-now.js';
 import prefer_dom_node_dataset from 'eslint-plugin-unicorn/rules/prefer-dom-node-dataset.js';
 import prefer_math_trunc from 'eslint-plugin-unicorn/rules/prefer-math-trunc.js';
 import prefer_modern_math_apis from 'eslint-plugin-unicorn/rules/prefer-modern-math-apis.js';
+import number_literal_case from 'eslint-plugin-unicorn/rules/number-literal-case.js';
 import prefer_number_properties from 'eslint-plugin-unicorn/rules/prefer-number-properties.js';
 import prefer_reflect_apply from 'eslint-plugin-unicorn/rules/prefer-reflect-apply.js';
 import prefer_set_size from 'eslint-plugin-unicorn/rules/prefer-set-size.js';
@@ -114,6 +115,7 @@ export default {
     'unicorn/prefer-dom-node-dataset': loadUnicorn(prefer_dom_node_dataset, 'unicorn/prefer-dom-node-dataset'),
     'unicorn/prefer-math-trunc': loadUnicorn(prefer_math_trunc, 'unicorn/prefer-math-trunc'),
     'unicorn/prefer-modern-math-apis': loadUnicorn(prefer_modern_math_apis, 'unicorn/prefer-modern-math-apis'),
+    'unicorn/number-literal-case': loadUnicorn(number_literal_case, 'unicorn/number-literal-case'),
     'unicorn/prefer-number-properties': loadUnicorn(prefer_number_properties, 'unicorn/prefer-number-properties'),
     'unicorn/prefer-reflect-apply': loadUnicorn(prefer_reflect_apply, 'unicorn/prefer-reflect-apply'),
     'unicorn/prefer-set-size': loadUnicorn(prefer_set_size, 'unicorn/prefer-set-size'),
