@@ -11,7 +11,7 @@ export interface RuleModule<
   TResolvedOptions,
   TOptions extends readonly unknown[],
   TMessageIDs extends string,
-  TRuleListener extends RuleListener,
+  TRuleListener extends RuleListener
 > {
   readonly name: string,
   readonly meta: Metadata<TMessageIDs>,
@@ -22,7 +22,7 @@ export interface RuleModule<
 export interface ExportedRuleModule<
   TOptions extends readonly unknown[] = unknown[],
   TMessageIDs extends string = string,
-  TRuleListener extends RuleListener = RuleListener,
+  TRuleListener extends RuleListener = RuleListener
 > {
   readonly name: string,
   readonly meta: Metadata<TMessageIDs>,
@@ -34,7 +34,7 @@ export function createRule<
   TResolvedOptions,
   TOptions extends unknown[],
   TMessageIDs extends string,
-  TRuleListener extends RuleListener = RuleListener,
+  TRuleListener extends RuleListener = RuleListener
 >({ name, meta, create, resolveOptions }: RuleModule<TResolvedOptions, TOptions, TMessageIDs, TRuleListener>): any {
   if (meta.docs) {
     meta.docs.url ??= new URL(name, BASE_URL).toString();

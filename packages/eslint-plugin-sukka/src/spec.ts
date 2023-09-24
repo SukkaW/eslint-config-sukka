@@ -18,7 +18,7 @@ const tester = new RuleTester({
   }
 });
 
-type TestCaseGenerator<T, R = T> = (cast: (input: T) => T) => Generator<R>
+type TestCaseGenerator<T, R = T> = (cast: (input: T) => T) => Generator<R>;
 
 interface RunOptions<TOptions extends readonly unknown[], TMessageIds extends string> {
   module: ExportedRuleModule<TOptions, TMessageIds>,
