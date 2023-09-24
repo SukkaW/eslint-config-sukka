@@ -12,7 +12,7 @@
   "license": "MIT",
   "devDependencies": {
     "@eslint-sukka/node": "workspace:*",
-    "@eslint-sukka/typescript": "workspace:*",
+    "@eslint-sukka/ts": "workspace:*",
     "@fluffyfox/eslint-plugin": "^0.1.0",
     "@rollup/plugin-alias": "^5.0.0",
     "@rollup/plugin-commonjs": "^25.0.4",

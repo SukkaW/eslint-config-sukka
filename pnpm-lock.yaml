@@ -32,9 +32,9 @@ importers:
       '@eslint-sukka/node':
         specifier: workspace:*
         version: link:packages/node
-      '@eslint-sukka/typescript':
+      '@eslint-sukka/ts':
         specifier: workspace:*
-        version: link:packages/typescript
+        version: link:packages/ts
       '@fluffyfox/eslint-plugin':
         specifier: ^0.1.0
         version: 0.1.0(eslint@8.49.0)
@@ -102,16 +102,15 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2
 
-  packages/base:
+  packages/eslint-config-sukka:
     dependencies:
       '@eslint-sukka/shared':
         specifier: workspace:*
         version: link:../shared
-      '@eslint/js':
-        specifier: ^8.49.0
-        version: 8.49.0
-
-  packages/eslint-config-sukka: {}
+    devDependencies:
+      local-pkg:
+        specifier: ^0.4.3
+        version: 0.4.3
 
   packages/eslint-plugin-sukka:
     devDependencies:
@@ -134,6 +133,31 @@ importers:
         specifier: ^0.34.5
         version: 0.34.5
 
+  packages/js:
+    dependencies:
+      '@eslint-sukka/shared':
+        specifier: workspace:*
+        version: link:../shared
+      '@eslint/js':
+        specifier: ^8.49.0
+        version: 8.49.0
+      eslint-plugin-i:
+        specifier: ^2.28.1
+        version: 2.28.1(@typescript-eslint/parser@6.7.2)(eslint-import-resolver-typescript@3.6.1)(eslint@8.49.0)
+      eslint-plugin-sukka:
+        specifier: workspace:*
+        version: link:../eslint-plugin-sukka
+      eslint-plugin-unused-imports:
+        specifier: ^3.0.0
+        version: 3.0.0(eslint@8.49.0)
+      globals:
+        specifier: ^13.22.0
+        version: 13.22.0
+    devDependencies:
+      '@stylistic/eslint-plugin-js':
+        specifier: ^0.0.4
+        version: 0.0.4
+
   packages/legacy:
     dependencies:
       '@eslint-sukka/shared':
@@ -151,21 +175,12 @@ importers:
       '@eslint-sukka/shared':
         specifier: workspace:*
         version: link:../shared
-      '@eslint/js':
-        specifier: ^8.49.0
-        version: 8.49.0
-      eslint-plugin-i:
-        specifier: ^2.28.1
-        version: 2.28.1(@typescript-eslint/parser@6.7.2)(eslint-import-resolver-typescript@3.6.1)(eslint@8.49.0)
       eslint-plugin-n:
         specifier: ^16.1.0
         version: 16.1.0(eslint@8.49.0)
       eslint-plugin-sukka:
         specifier: workspace:*
         version: link:../eslint-plugin-sukka
-      globals:
-        specifier: ^13.22.0
-        version: 13.22.0
 
   packages/react:
     dependencies:
@@ -200,7 +215,7 @@ importers:
         specifier: workspace:*
         version: link:../eslint-plugin-sukka
 
-  packages/typescript:
+  packages/ts:
     dependencies:
       '@eslint-sukka/shared':
         specifier: workspace:*
@@ -931,7 +946,6 @@ packages:
       espree: 9.6.1
       esutils: 2.0.3
       graphemer: 1.4.0
-    dev: false
 
   /@stylistic/eslint-plugin-migrate@0.0.4(eslint@8.49.0)(typescript@5.2.2):
     resolution: {integrity: sha512-3rrerhj6xnhnZelOa6gzqFs9LiDqrY3tKZKSJpmCSQCijdfZYOJi6y00uCHGsSJK+gXNhRXgWU35q7DKu6dxsg==}
@@ -2034,6 +2048,25 @@ packages:
       semver: 7.5.4
       strip-indent: 3.0.0
     dev: true
+
+  /eslint-plugin-unused-imports@3.0.0(eslint@8.49.0):
+    resolution: {integrity: sha512-sduiswLJfZHeeBJ+MQaG+xYzSWdRXoSw61DpU13mzWumCkR0ufD0HmO4kdNokjrkluMHpj/7PJeN35pgbhW3kw==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    peerDependencies:
+      '@typescript-eslint/eslint-plugin': ^6.0.0
+      eslint: ^8.0.0
+    peerDependenciesMeta:
+      '@typescript-eslint/eslint-plugin':
+        optional: true
+    dependencies:
+      eslint: 8.49.0
+      eslint-rule-composer: 0.3.0
+    dev: false
+
+  /eslint-rule-composer@0.3.0:
+    resolution: {integrity: sha512-bt+Sh8CtDmn2OajxvNO+BX7Wn4CIWMpTRm3MaiKPCQcnnlm0CS2mhui6QaoeQugs+3Kj2ESKEEGJUdVafwhiCg==}
+    engines: {node: '>=4.0.0'}
+    dev: false
 
   /eslint-scope@7.2.2:
     resolution: {integrity: sha512-dOt21O7lTMhDM+X9mB4GX+DZrZtCUJPL/wlcTqxyrx5IvO0IYtILdtrQGQp+8n5S0gwSVmOf9NQrjMOgfQZlIg==}

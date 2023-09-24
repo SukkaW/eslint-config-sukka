@@ -1,6 +1,12 @@
-import type { FlatESLintConfigItem } from 'eslint-define-config';
+import type { SukkaESLintRuleConfig } from '../types';
 
-export const errors: FlatESLintConfigItem = {
+// @ts-expect-error -- no types
+import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
+
+export const errors: SukkaESLintRuleConfig = {
+  plugins: {
+    'unused-imports': eslint_plugin_unused_imports,
+  },
   rules: {
   // Disallow await inside of loops
   // https://eslint.org/docs/rules/no-await-in-loop
@@ -46,13 +52,18 @@ export const errors: FlatESLintConfigItem = {
       ignore: [] // WhileStatement, DoWhileStatement, ForStatement, ForInStatement, ForOfStatement
     }],
 
-    'no-unused-vars': ['error', {
+    // replaced by unused-imports/no-unused-vars
+    'no-unused-vars': 'off', /* ['error', {
       vars: 'all',
       varsIgnorePattern: '^_',
       args: 'after-used',
       argsIgnorePattern: '^_',
       ignoreRestSiblings: true
-    }],
+    }], */
+    'unused-imports/no-unused-vars': [
+      'error',
+      { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_', ignoreRestSiblings: true },
+    ],
 
     // Disallow Unused Private Class Members
     // https://eslint.org/docs/rules/no-unused-private-class-members

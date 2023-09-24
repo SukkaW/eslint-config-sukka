@@ -1,7 +1,7 @@
-import type { FlatESLintConfigItem } from 'eslint-define-config';
+import type { SukkaESLintRuleConfig } from '../types';
 import sukkaPlugin from 'eslint-plugin-sukka';
 
-export const sukka: FlatESLintConfigItem = {
+export const sukka: SukkaESLintRuleConfig = {
   plugins: {
     sukka: sukkaPlugin
   },

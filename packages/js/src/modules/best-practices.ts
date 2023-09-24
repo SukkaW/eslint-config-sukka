@@ -1,8 +1,8 @@
-import type { FlatESLintConfigItem } from 'eslint-define-config';
+import type { SukkaESLintRuleConfig } from '../types';
 // @ts-expect-error -- missing -- eslint plugin
 import * as stylisticJs from '@stylistic/eslint-plugin-js';
 
-export const best_practices: FlatESLintConfigItem = {
+export const best_practices: SukkaESLintRuleConfig = {
   plugins: {
     '@stylistic/js': stylisticJs
   },

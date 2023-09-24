@@ -1,6 +1,6 @@
-import type { FlatESLintConfigItem } from 'eslint-define-config';
+import type { SukkaESLintRuleConfig } from '../types';
 
-export const variables: FlatESLintConfigItem = {
+export const variables: SukkaESLintRuleConfig = {
   rules: {
   // disallow labels that share a name with a variable
   // https://eslint.org/docs/rules/no-label-var
