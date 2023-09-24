@@ -11,7 +11,7 @@ export const node = (): FlatESLintConfigItem[] => {
   const isModule = packageJson?.type === 'module';
 
   return [
-    eslint_plugin_n.configs['flat/mixed-esm-and-cjs'],
+    ...eslint_plugin_n.configs['flat/mixed-esm-and-cjs'],
     {
       plugins: {
         sukka: eslint_plugin_sukka,

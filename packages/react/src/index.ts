@@ -1,24 +1,20 @@
-import { best_practices, errors, es6, style, variables, sukka, constants } from '@eslint-sukka/shared';
+import { constants } from '@eslint-sukka/shared';
 import type { FlatESLintConfigItem } from 'eslint-define-config';
 
 // @ts-expect-error -- no types
-import eslintJs from '@eslint/js';
+import eslint_plugin_i from 'eslint-plugin-i';
 // @ts-expect-error -- no types
-import eslintPluginI from 'eslint-plugin-i';
+import eslint_plugin_react from 'eslint-plugin-react';
 // @ts-expect-error -- no types
-import eslintPluginReact from 'eslint-plugin-react';
+import eslint_plugin_jsx_a11y from 'eslint-plugin-jsx-a11y';
 // @ts-expect-error -- no types
-import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
-// @ts-expect-error -- no types
-import eslintPluginReactHooks from 'eslint-plugin-react-hooks';
-import tsParser from '@typescript-eslint/parser';
+import eslint_plugin_react_hooks from 'eslint-plugin-react-hooks';
 
 import globals from 'globals';
 
 const allExtensions = ['.js', '.jsx', '.mjs', '.cjs'];
 export const react = (): FlatESLintConfigItem[] => {
   return [
-    eslintJs.configs.recommended,
     {
       files: [
         constants.GLOB_TS,
@@ -27,21 +23,14 @@ export const react = (): FlatESLintConfigItem[] => {
         constants.GLOB_JSX
       ],
       plugins: {
-        ...best_practices.plugins,
-        ...errors.plugins,
-        ...es6.plugins,
-        ...style.plugins,
-        ...variables.plugins,
-        ...sukka.plugins,
-        i: eslintPluginI,
-        import: eslintPluginI, // legacy
-        react: eslintPluginReact,
-        'jsx-a11y': eslintPluginJsxA11y,
-        'react-hooks': eslintPluginReactHooks
+        i: eslint_plugin_i,
+        import: eslint_plugin_i, // legacy
+        react: eslint_plugin_react,
+        'jsx-a11y': eslint_plugin_jsx_a11y,
+        'react-hooks': eslint_plugin_react_hooks
       },
       settings: {
         'import/extensions': allExtensions,
-        'import/external-module-folders': ['node_modules', 'node_modules/@types'],
         'import/resolver': {
           node: {
             extensions: allExtensions
@@ -53,7 +42,6 @@ export const react = (): FlatESLintConfigItem[] => {
       },
       languageOptions: {
         sourceType: 'module',
-        ecmaVersion: 'latest',
         parserOptions: {
           ecmaFeatures: {
             jsx: true
@@ -61,28 +49,15 @@ export const react = (): FlatESLintConfigItem[] => {
           // for @typescript/eslint-parser
           jsxPragma: undefined
         },
-        // env: {
-        //   browser: true,
-        //   node: false
-        // },
         globals: globals.browser
       },
       rules: {
-        // plugin:i/recommended
-        ...eslintPluginI.configs.recommended.rules,
         // plugin:react/recommended
-        ...eslintPluginReact.configs.recommended.rules,
+        ...eslint_plugin_react.configs.recommended.rules,
         // plugin:react/jsx-runtime
-        ...eslintPluginReact.configs['jsx-runtime'].rules,
+        ...eslint_plugin_react.configs['jsx-runtime'].rules,
         // plugin:react-hooks/recommended
-        ...eslintPluginReactHooks.configs.recommended.rules,
-
-        ...best_practices.rules,
-        ...errors.rules,
-        ...es6.rules,
-        ...style.rules,
-        ...variables.rules,
-        ...sukka.rules,
+        ...eslint_plugin_react_hooks.configs.recommended.rules,
 
         'react-hooks/exhaustive-deps': ['warn', {
           additionalHooks: '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)'
@@ -325,21 +300,6 @@ export const react = (): FlatESLintConfigItem[] => {
         'jsx-a11y/role-has-required-aria-props': 'warn',
         'jsx-a11y/role-supports-aria-props': 'warn'
       }
-    },
-    {
-      files: [
-        constants.GLOB_TS,
-        constants.GLOB_TSX
-      ],
-      languageOptions: {
-        parser: tsParser,
-        parserOptions: {
-          sourceType: 'module',
-          ecmaFeatures: {
-            jsx: true
-          },
-          warnOnUnsupportedTypeScriptVersion: true
-        }
-      }
-    }];
+    }
+  ];
 };

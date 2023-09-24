@@ -1,11 +1,11 @@
 import { constants } from '@eslint-sukka/shared';
 
 import { typescript as typescriptConfig } from './modules/typescript';
-import { sukkaTypeScript } from './modules/sukka';
+import { sukka_typeScript } from './modules/sukka';
 import { generated_overrides } from './modules/generated_overrides';
 
 import ts_eslint_plugin from '@typescript-eslint/eslint-plugin';
-import es_eslint_parser from '@typescript-eslint/parser';
+import ts_eslint_parser from '@typescript-eslint/parser';
 // @ts-expect-error -- no types
 import eslint_plugin_i from 'eslint-plugin-i';
 
@@ -33,7 +33,7 @@ export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] =
       ],
       plugins: {
         ...typescriptConfig.plugins,
-        ...sukkaTypeScript.plugins,
+        ...sukka_typeScript.plugins,
         ...generated_overrides.plugins,
         '@typescript-eslint': ts_eslint_plugin as any,
         i: eslint_plugin_i,
@@ -44,12 +44,16 @@ export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] =
       //   'plugin:i/typescript'
       // ],
       languageOptions: {
-        parser: es_eslint_parser,
+        parser: ts_eslint_parser,
         parserOptions: {
           sourceType: 'module',
           ecmaVersion: 'latest',
           project: tsconfigPath,
-          tsconfigRootDir
+          tsconfigRootDir,
+          ecmaFeatures: {
+            jsx: true
+          },
+          warnOnUnsupportedTypeScriptVersion: true
         }
       },
       settings: {
@@ -86,13 +90,11 @@ export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] =
         ...ts_eslint_plugin.configs.stylistic.rules,
         // plugin:@typescript-eslint/stylistic-type-checked
         ...ts_eslint_plugin.configs['stylistic-type-checked'].rules,
-        // plugin:i/recommended
-        ...eslint_plugin_i.configs.recommended.rules,
         // plugin:i/typescript
         ...eslint_plugin_i.configs.typescript.rules,
 
         ...typescriptConfig.rules,
-        ...sukkaTypeScript.rules,
+        ...sukka_typeScript.rules,
         ...generated_overrides.rules
       }
     },

@@ -29,6 +29,9 @@ importers:
 
   .:
     devDependencies:
+      '@eslint-sukka/js':
+        specifier: workspace:*
+        version: link:packages/js
       '@eslint-sukka/node':
         specifier: workspace:*
         version: link:packages/node

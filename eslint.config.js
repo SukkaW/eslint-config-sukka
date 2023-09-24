@@ -8,6 +8,7 @@ module.exports = [
       '**/generated*'
     ]
   },
+  ...require('@eslint-sukka/js').javascript(),
   ...require('@eslint-sukka/node').node(),
   ...require('@eslint-sukka/ts').typescript({
     tsconfigPath: './tsconfig.json'
@@ -18,7 +19,8 @@ module.exports = [
     },
     rules: {
       '@stylistic/migrate/rules': 'error',
-      camelcase: 'off'
+      camelcase: 'off',
+      '@typescript-eslint/naming-convention': 'off'
     }
   }
 ];

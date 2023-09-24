@@ -1,6 +1,6 @@
 import { createRule } from '../../utils/rule';
 
-type Options = boolean | 'allow-with-description'
+type Options = boolean | 'allow-with-description';
 
 export default createRule({
   name: 'ban-eslint-disable',

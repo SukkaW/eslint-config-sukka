@@ -1,5 +1,5 @@
 // @ts-expect-error -- no types
-import eslintJs from '@eslint/js';
+import eslint_js from '@eslint/js';
 
 import { best_practices } from './modules/best-practices';
 import { errors } from './modules/errors';
@@ -70,7 +70,7 @@ export interface OptionsJavaScript {
 
 const allExtensions = ['.js', '.jsx', '.mjs', '.cjs'];
 
-export const javascript = (options: OptionsJavaScript): FlatESLintConfigItem[] => {
+export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigItem[] => {
   const {
     files,
     isInEditor = false,
@@ -80,9 +80,9 @@ export const javascript = (options: OptionsJavaScript): FlatESLintConfigItem[] =
   const { node = false, browser = true, webextensions = false, greasemonkey = false, customGlobals = {} } = env;
 
   const configs: FlatESLintConfigItem[] = [
-    eslintJs.configs.recommended,
+    eslint_js.configs.recommended,
     {
-      files,
+      ...(files ? files : {}),
       linterOptions: {
         reportUnusedDisableDirectives: true
       },
@@ -134,7 +134,7 @@ export const javascript = (options: OptionsJavaScript): FlatESLintConfigItem[] =
   if (disableNoConsoleInCLI !== false) {
     const customGlobs = typeof disableNoConsoleInCLI !== 'boolean' ? (Array.isArray(disableNoConsoleInCLI) ? disableNoConsoleInCLI : [disableNoConsoleInCLI]) : null;
     configs.push({
-      files: customGlobs ?? [`scripts/${constants.GLOB_SRC}`, `cli/${constants.GLOB_SRC}`, `cli.${constants.GLOB_SRC_EXT}`],
+      files: customGlobs ?? [`**/scripts/${constants.GLOB_SRC}`, `**/cli/${constants.GLOB_SRC}`, `**/cli.${constants.GLOB_SRC_EXT}`],
       rules: {
         'no-console': 'off'
       }

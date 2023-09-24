@@ -4,14 +4,18 @@ import fs from 'fs';
 import path from 'path';
 
 (() => {
-  const ts_eslint_plugin_config_all = ts_eslint_plugin.configs.all.rules;
-
-  const needOverriddenRules = new Set(
-    Object.entries(ts_eslint_plugin_config_all || {})
-      .filter(
-        ([key, value]) => (value === 'off' || value === 0) && (!key.startsWith('@typescript-eslint/'))
+  // TODO: support eslint-stylistic
+  const BASE_RULES_TO_BE_OVERRIDDEN = new Map(
+    Object.entries(ts_eslint_plugin.rules)
+      .filter(([, rule]) => rule.meta.docs?.extendsBaseRule)
+      .map(
+        ([ruleName, rule]) => [
+          typeof rule.meta.docs?.extendsBaseRule === 'string'
+            ? rule.meta.docs.extendsBaseRule
+            : ruleName,
+          ruleName
+        ] as const
       )
-      .map(([key]) => key)
   );
 
   const rules = Object.fromEntries(
@@ -31,12 +35,18 @@ import path from 'path';
         }
         return true;
       })
-      .reduce((acc, [key, value]) => {
-        if (needOverriddenRules.has(key)) {
+      .reduce((acc, [baseRuleName, value]) => {
+        if (BASE_RULES_TO_BE_OVERRIDDEN.has(baseRuleName)) {
+          const replacementRulename = BASE_RULES_TO_BE_OVERRIDDEN.get(baseRuleName)!;
+
           // @ts-expect-error -- no type overlap between eslint and typescript-eslint
-          acc.push([key, 'off']);
+          acc.push([baseRuleName, 'off']);
           // @ts-expect-error -- no type overlap between eslint and typescript-eslint
-          acc.push([`@typescript-eslint/${key}`, value]);
+          acc.push([`@typescript-eslint/${replacementRulename}`, value]);
+        }
+        if (baseRuleName === 'camelcase') {
+          // @ts-expect-error -- no type overlap between eslint and typescript-eslint
+          acc.push([baseRuleName, 'off']);
         }
         return acc;
       }, [])

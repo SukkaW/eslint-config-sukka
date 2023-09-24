@@ -27,8 +27,6 @@
     "build": "rollup -c rollup.config.ts --configPlugin swc3"
   },
   "dependencies": {
-    "@eslint-sukka/shared": "workspace:*",
-    "@eslint/js": "^8.49.0",
     "globals": "^13.22.0"
   }
 }
