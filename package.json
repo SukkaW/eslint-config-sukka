@@ -8,6 +8,7 @@
     "lint": "eslint .",
     "release": "bumpp --all --commit=\"release: %s\" --tag=\"%s\""
   },
+  "packageManager": "pnpm@8.7.6",
   "keywords": [],
   "author": "Sukka <https://skk.moe>",
   "license": "MIT",
