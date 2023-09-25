@@ -1,15 +1,16 @@
 import type { FlatESLintConfigItem } from 'eslint-define-config';
 
 import { ignores } from './modules/ignores';
-import type { OptionsIgnores } from './modules/ignores';
 
 import { isPackageExists } from 'local-pkg';
 
-import type { OptionsJavaScript } from '@eslint-sukka/js';
-import type { OptionsTypeScript } from '@eslint-sukka/ts';
-import type { OptionsReact } from '@eslint-sukka/react';
-import type { OptionsNode } from '@eslint-sukka/node';
-import type { OptionsLegacy } from '@eslint-sukka/legacy';
+import type { OptionsIgnores } from './modules/ignores';
+// This is a small hack to make rollup-plugin-dts bundle all these types
+import type { OptionsJavaScript } from '../../js/src';
+import type { OptionsTypeScript } from '../../ts/src';
+import type { OptionsReact } from '../../react';
+import type { OptionsNode } from '../../node';
+import type { OptionsLegacy } from '../../legacy';
 
 type SharedOptions<T = {}> = Omit<T, 'isInEditor'> & {
   enable?: boolean

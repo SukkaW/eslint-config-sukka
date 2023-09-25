@@ -1,12 +1,11 @@
 'use strict';
 
-const { sukka } = require('eslint-config-sukka');
+const { sukka, constants } = require('eslint-config-sukka');
 
 module.exports = sukka({
   ignores: {
     customGlobs: [
-      'packages/*/dist/**/*',
-      '**/fixtures/**/*',
+      ...constants.GLOB_EXCLUDE,
       '**/generated*'
     ]
   },

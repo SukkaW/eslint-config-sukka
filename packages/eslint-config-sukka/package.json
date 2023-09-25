@@ -28,7 +28,8 @@
   },
   "dependencies": {
     "@eslint-sukka/js": "workspace:*",
-    "@eslint-sukka/shared": "workspace:*"
+    "@eslint-sukka/shared": "workspace:*",
+    "eslint-define-config": "^1.23.0"
   },
   "devDependencies": {
     "@eslint-sukka/legacy": "workspace:*",
