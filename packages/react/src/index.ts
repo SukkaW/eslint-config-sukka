@@ -12,8 +12,15 @@ import eslint_plugin_react_hooks from 'eslint-plugin-react-hooks';
 
 import globals from 'globals';
 
+export interface OptionsReact {
+  /**
+   * @default '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)'
+   */
+  additionalHooks?: string
+}
+
 const allExtensions = ['.js', '.jsx', '.mjs', '.cjs'];
-export const react = (): FlatESLintConfigItem[] => {
+export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
   return [
     {
       files: [
@@ -60,7 +67,7 @@ export const react = (): FlatESLintConfigItem[] => {
         ...eslint_plugin_react_hooks.configs.recommended.rules,
 
         'react-hooks/exhaustive-deps': ['warn', {
-          additionalHooks: '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)'
+          additionalHooks: options.additionalHooks ?? '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)'
         }],
         'react/react-in-jsx-scope': 'off',
         'react/jsx-filename-extension': ['warn', {

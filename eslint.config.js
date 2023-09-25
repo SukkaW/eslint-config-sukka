@@ -1,26 +1,29 @@
 'use strict';
 
-module.exports = [
-  {
-    ignores: [
+const { sukka } = require('eslint-config-sukka');
+
+module.exports = sukka({
+  ignores: {
+    customGlobs: [
       'packages/*/dist/**/*',
       '**/fixtures/**/*',
       '**/generated*'
     ]
   },
-  ...require('@eslint-sukka/js').javascript(),
-  ...require('@eslint-sukka/node').node(),
-  ...require('@eslint-sukka/ts').typescript({
+  node: {
+    enable: true
+  },
+  ts: {
+    enable: true,
     tsconfigPath: './tsconfig.json'
-  }),
-  {
-    plugins: {
-      '@stylistic/migrate': require('@stylistic/eslint-plugin-migrate')
-    },
-    rules: {
-      '@stylistic/migrate/rules': 'error',
-      camelcase: 'off',
-      '@typescript-eslint/naming-convention': 'off'
-    }
   }
-];
+}, {
+  plugins: {
+    '@stylistic/migrate': require('@stylistic/eslint-plugin-migrate')
+  },
+  rules: {
+    '@stylistic/migrate/rules': 'error',
+    camelcase: 'off',
+    '@typescript-eslint/naming-convention': 'off'
+  }
+});

@@ -8,20 +8,34 @@
   "keywords": [
     "eslint-config"
   ],
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
-    "base.js",
-    "index.js",
-    "legacy.js",
-    "node.js",
-    "react.js",
-    "typescript.js"
+    "dist"
   ],
-  "scripts": {},
+  "scripts": {
+    "build": "rollup -c rollup.config.ts --configPlugin swc3"
+  },
   "dependencies": {
+    "@eslint-sukka/js": "workspace:*",
     "@eslint-sukka/shared": "workspace:*"
   },
   "devDependencies": {
+    "@eslint-sukka/legacy": "workspace:*",
+    "@eslint-sukka/node": "workspace:*",
+    "@eslint-sukka/react": "workspace:*",
+    "@eslint-sukka/ts": "workspace:*",
+    "eslint-config-flat-gitignore": "^0.1.0",
     "local-pkg": "^0.4.3"
   }
 }

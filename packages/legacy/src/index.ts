@@ -2,8 +2,15 @@ import type { FlatESLintConfigItem } from 'eslint-define-config';
 
 import globals from 'globals';
 
-export const legacy = (): FlatESLintConfigItem[] => {
+export interface OptionsLegacy {
+  browser?: boolean,
+  node?: boolean,
+  files?: FlatESLintConfigItem['files']
+}
+
+export const legacy = (options: OptionsLegacy = {}): FlatESLintConfigItem[] => {
   return [{
+    ...(options.files ? { files: options.files } : {}),
     rules: {
       'prefer-numeric-literals': 'off',
       'no-restricted-properties': ['error', {
@@ -22,7 +29,10 @@ export const legacy = (): FlatESLintConfigItem[] => {
       strict: ['error', 'safe']
     },
     languageOptions: {
-      globals: globals.browser
+      globals: {
+        ...((options.browser ?? true) ? globals.browser : {}),
+        ...((options.node ?? false) ? globals.node : {})
+      }
     }
   }];
 };

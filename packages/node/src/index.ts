@@ -6,13 +6,17 @@ import eslint_plugin_sukka from 'eslint-plugin-sukka';
 // @ts-expect-error -- no types
 import eslint_plugin_n from 'eslint-plugin-n';
 
-export const node = (): FlatESLintConfigItem[] => {
-  const packageJson = getPackageJson();
-  const isModule = packageJson?.type === 'module';
+export interface OptionsNode {
+  strict?: boolean,
+  module?: boolean,
+  files?: FlatESLintConfigItem['files']
+}
 
-  return [
+export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
+  const configs = [
     ...eslint_plugin_n.configs['flat/mixed-esm-and-cjs'],
     {
+      ...(options.files ? { files: options.files } : {}),
       plugins: {
         sukka: eslint_plugin_sukka,
         n: eslint_plugin_n
@@ -58,13 +62,20 @@ export const node = (): FlatESLintConfigItem[] => {
 
         'sukka/unicorn/no-new-buffer': 'error' // ban new Buffer, prefer Buffer.from
       }
-    },
-    {
+    }
+  ];
+
+  if (options.strict !== false) {
+    const isModule = options.module ?? (getPackageJson()?.type === 'module');
+
+    configs.push({
       files: isModule ? ['*.cjs', '.*.cjs'] : ['*.cjs', '.*.cjs', '*.js', '.*.js'],
       rules: {
         // enable strict mode for cjs
         strict: 'warn'
       }
-    }
-  ];
+    });
+  }
+
+  return configs;
 };

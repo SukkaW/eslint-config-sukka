@@ -1,0 +1,82 @@
+import { swc } from 'rollup-plugin-swc3';
+import { dts } from 'rollup-plugin-dts';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+
+import { MagicString } from '@napi-rs/magic-string';
+import { defineConfig } from 'rollup';
+
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const packageJson = require('./package.json');
+const external = Object.keys(packageJson.dependencies);
+
+const CJSShim = `
+// -- CommonJS Shims --
+const foxquire = (id) => Promise.resolve(require(id));
+`;
+const ESMShim = `
+// -- ESM Shims --
+const foxquire = (id) => import(id);
+`;
+
+export default defineConfig([{
+  input: 'src/index.ts',
+  output: [
+    { file: 'dist/index.cjs', format: 'cjs', freeze: false, compact: true },
+    { file: 'dist/index.js', format: 'cjs', freeze: false, compact: true },
+    { file: 'dist/index.mjs', format: 'esm', compact: true }
+  ],
+  plugins: [
+    {
+      name: 'esm-cjs-bridge',
+      renderChunk(code, _chunk, opts) {
+        if (code.includes('foxquire')) {
+          const ms = new MagicString(code);
+          if (opts.format === 'es') {
+            if (code.includes(ESMShim)) {
+              return null;
+            }
+            ms.prepend(ESMShim);
+          } else {
+            if (code.includes(CJSShim)) {
+              return null;
+            }
+            ms.prepend(CJSShim);
+          }
+          return {
+            code: ms.toString(),
+            map: ms.generateMap({ hires: true }).toMap()
+          };
+        }
+        return null;
+      }
+    },
+    nodeResolve({
+      exportConditions: ['import', 'require', 'default']
+    }),
+    commonjs({
+      esmExternals: true
+    }),
+    swc({
+      // minify: true,
+      // jsc: {
+      //   minify: {
+      //     mangle: true,
+      //     compress: true,
+      //     module: true
+      //   }
+      // }
+    })
+  ],
+  external
+}, {
+  input: 'src/index.ts',
+  output: {
+    file: 'dist/index.d.ts'
+  },
+  plugins: [
+    dts()
+  ],
+  external
+}]);

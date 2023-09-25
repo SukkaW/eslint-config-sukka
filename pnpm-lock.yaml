@@ -32,15 +32,24 @@ importers:
       '@eslint-sukka/js':
         specifier: workspace:*
         version: link:packages/js
+      '@eslint-sukka/legacy':
+        specifier: workspace:*
+        version: link:packages/legacy
       '@eslint-sukka/node':
         specifier: workspace:*
         version: link:packages/node
+      '@eslint-sukka/react':
+        specifier: workspace:*
+        version: link:packages/react
       '@eslint-sukka/ts':
         specifier: workspace:*
         version: link:packages/ts
       '@fluffyfox/eslint-plugin':
         specifier: ^0.1.0
         version: 0.1.0(eslint@8.49.0)
+      '@napi-rs/magic-string':
+        specifier: ^0.3.4
+        version: 0.3.4
       '@rollup/plugin-alias':
         specifier: ^5.0.0
         version: 5.0.0(rollup@3.29.2)
@@ -107,10 +116,28 @@ importers:
 
   packages/eslint-config-sukka:
     dependencies:
+      '@eslint-sukka/js':
+        specifier: workspace:*
+        version: link:../js
       '@eslint-sukka/shared':
         specifier: workspace:*
         version: link:../shared
     devDependencies:
+      '@eslint-sukka/legacy':
+        specifier: workspace:*
+        version: link:../legacy
+      '@eslint-sukka/node':
+        specifier: workspace:*
+        version: link:../node
+      '@eslint-sukka/react':
+        specifier: workspace:*
+        version: link:../react
+      '@eslint-sukka/ts':
+        specifier: workspace:*
+        version: link:../ts
+      eslint-config-flat-gitignore:
+        specifier: ^0.1.0
+        version: 0.1.0
       local-pkg:
         specifier: ^0.4.3
         version: 0.4.3
@@ -160,12 +187,6 @@ importers:
 
   packages/legacy:
     dependencies:
-      '@eslint-sukka/shared':
-        specifier: workspace:*
-        version: link:../shared
-      '@eslint/js':
-        specifier: ^8.49.0
-        version: 8.49.0
       globals:
         specifier: ^13.22.0
         version: 13.22.0
@@ -1813,6 +1834,12 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
+  /eslint-config-flat-gitignore@0.1.0:
+    resolution: {integrity: sha512-5nQMQFRkkhCb+ejFhKSATn/41I7ot9oRcnEDzfqwMlBE9036qM9ioYBDtKLpwmlICXr/J7naMFfb39pa4v4sGA==}
+    dependencies:
+      parse-gitignore: 2.0.0
+    dev: true
+
   /eslint-define-config@1.23.0:
     resolution: {integrity: sha512-4mMyu0JuBkQHsCtR+42irIQdFLmLIW+pMAVcyOV/gZRL4O1R8iuH0eMG3oL3Cbi1eo9fDAfT5CIHVHgdyxcf6w==}
     engines: {node: ^16.13.0 || >=18.0.0, npm: '>=7.0.0', pnpm: '>= 8.6.0'}
@@ -2812,6 +2839,11 @@ packages:
     engines: {node: '>=6'}
     dependencies:
       callsites: 3.1.0
+
+  /parse-gitignore@2.0.0:
+    resolution: {integrity: sha512-RmVuCHWsfu0QPNW+mraxh/xjQVw/lhUCUru8Zni3Ctq3AoMhpDTq0OVdKS6iesd6Kqb7viCV3isAL43dciOSog==}
+    engines: {node: '>=14'}
+    dev: true
 
   /parse-json@5.2.0:
     resolution: {integrity: sha512-ayCKvm/phCGxOkYRSCM82iDwct8/EonSEgCSxWxD7ve6jHggsFl4fZVQBPRNgQoKiuV/odhFrGzQXZwbifC8Rg==}
