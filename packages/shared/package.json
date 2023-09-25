@@ -5,6 +5,10 @@
   "author": "Sukka <https://skk.moe>",
   "license": "MIT",
   "homepage": "https://github.com/sukkaw/eslint-config-sukka",
+  "repository": {
+    "url": "https://github.com/sukkaw/eslint-config-sukka",
+    "directory": "packages/shared"
+  },
   "keywords": [
     "eslint-config"
   ],
