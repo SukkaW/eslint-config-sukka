@@ -18,53 +18,70 @@ type SharedOptions<T = {}> = Omit<T, 'isInEditor'> & {
 
 interface ESLineSukkaOptions {
   isInEditor?: boolean,
-  ignores?: OptionsIgnores,
-  js?: SharedOptions<OptionsJavaScript>,
+  ignores?: SharedOptions<OptionsIgnores>,
+  js?: SharedOptions<OptionsJavaScript> | boolean,
   ts?: SharedOptions<OptionsTypeScript>,
-  react?: SharedOptions<OptionsReact>,
-  node?: SharedOptions<OptionsNode>,
-  legacy?: SharedOptions<OptionsLegacy>
+  react?: SharedOptions<OptionsReact> | boolean,
+  node?: SharedOptions<OptionsNode> | boolean,
+  legacy?: SharedOptions<OptionsLegacy> | boolean
+}
+
+const enabled = (options: SharedOptions | boolean | undefined, defaults = false): boolean => {
+  if (typeof options === 'boolean') {
+    return options;
+  }
+  return options?.enable ?? defaults;
+};
+const config = <T>(options: SharedOptions<T> | boolean | undefined, defaults?: T | undefined): T | undefined => {
+  if (typeof options === 'boolean') {
+    return defaults;
+  }
+  if (options) {
+    const { enable, ...rest } = options;
+    return rest as T;
+  }
+  return defaults;
 }
 
 export const sukka = async (options: ESLineSukkaOptions, ...userConfig: FlatESLintConfigItem[]): Promise<FlatESLintConfigItem[]> => {
   const isInEditor = options.isInEditor ?? !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI);
 
-  const configs: FlatESLintConfigItem[][] = [];
+  const flatConfigs: FlatESLintConfigItem[][] = [];
 
   // ignores
-  configs.push(ignores(options.ignores));
+  flatConfigs.push(ignores(options.ignores));
   // javascript
-  if (options.js?.enable ?? true) {
-    configs.push(
-      (await foxquire<typeof import('@eslint-sukka/js')>('@eslint-sukka/js')).javascript({ ...options.js, isInEditor })
+  if (enabled(options.js, true)) {
+    flatConfigs.push(
+      (await foxquire<typeof import('@eslint-sukka/js')>('@eslint-sukka/js')).javascript({ ...config(options.js), isInEditor })
     );
   }
   // typescript
   if (options.ts && (options.ts.enable ?? isPackageExists('typescript'))) {
-    configs.push(
+    flatConfigs.push(
       (await foxquire<typeof import('@eslint-sukka/ts')>('@eslint-sukka/ts')).typescript(options.ts)
     );
   }
   // react
-  if (options.react?.enable ?? (isPackageExists('react') || isPackageExists('next') || isPackageExists('preact'))) {
-    configs.push(
-      (await foxquire<typeof import('@eslint-sukka/react')>('@eslint-sukka/react')).react(options.react)
+  if (enabled(options.react)) {
+    flatConfigs.push(
+      (await foxquire<typeof import('@eslint-sukka/react')>('@eslint-sukka/react')).react(config(options.react))
     );
   }
   // node
-  if (options.node?.enable ?? false) {
-    configs.push(
-      (await foxquire<typeof import('@eslint-sukka/node')>('@eslint-sukka/node')).node(options.node)
+  if (enabled(options.node)) {
+    flatConfigs.push(
+      (await foxquire<typeof import('@eslint-sukka/node')>('@eslint-sukka/node')).node(config(options.node))
     );
   }
   // legacy
-  if (options.legacy?.enable ?? false) {
-    configs.push(
-      (await foxquire<typeof import('@eslint-sukka/legacy')>('@eslint-sukka/legacy')).legacy(options.legacy)
+  if (enabled(options.legacy)) {
+    flatConfigs.push(
+      (await foxquire<typeof import('@eslint-sukka/legacy')>('@eslint-sukka/legacy')).legacy(config(options.legacy))
     );
   }
 
-  configs.push(userConfig);
+  flatConfigs.push(userConfig);
 
-  return configs.flat();
+  return flatConfigs.flat();
 };

@@ -10,6 +10,11 @@ module.exports = sukka(
         '**/generated*'
       ]
     },
+    js: {
+      env: {
+        node: true
+      }
+    },
     node: {
       enable: true
     },
