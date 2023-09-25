@@ -5,7 +5,8 @@
   "description": "",
   "scripts": {
     "build": "turbo build",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "release": "bumpp --all --commit=\"release: %s\" --tag=\"%s\""
   },
   "keywords": [],
   "author": "Sukka <https://skk.moe>",
