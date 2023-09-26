@@ -138,6 +138,9 @@ importers:
       '@eslint-sukka/ts':
         specifier: workspace:*
         version: link:../ts
+      ci-info:
+        specifier: ^3.8.0
+        version: 3.8.0
       eslint-config-flat-gitignore:
         specifier: ^0.1.0
         version: 0.1.0

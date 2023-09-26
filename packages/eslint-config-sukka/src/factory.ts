@@ -3,6 +3,7 @@ import type { FlatESLintConfigItem } from 'eslint-define-config';
 import { ignores } from './modules/ignores';
 
 import { isPackageExists } from 'local-pkg';
+import { isCI } from 'ci-info';
 
 import type { OptionsIgnores } from './modules/ignores';
 // This is a small hack to make rollup-plugin-dts bundle all these types
@@ -40,7 +41,7 @@ function config<T>(options: SharedOptions<T> | undefined | boolean): T | undefin
 }
 
 export const sukka = async (options: ESLineSukkaOptions, ...userConfig: FlatESLintConfigItem[]): Promise<FlatESLintConfigItem[]> => {
-  const isInEditor = options.isInEditor ?? !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI);
+  const isInEditor = options.isInEditor ?? !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !isCI);
 
   const flatConfigs: FlatESLintConfigItem[][] = [];
 
