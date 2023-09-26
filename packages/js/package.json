@@ -37,7 +37,5 @@
     "eslint-plugin-unused-imports": "^3.0.0",
     "globals": "^13.22.0"
   },
-  "devDependencies": {
-    "@stylistic/eslint-plugin-ts": "^0.0.4"
-  }
+  "devDependencies": {}
 }

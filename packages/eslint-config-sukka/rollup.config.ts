@@ -1,6 +1,7 @@
 import { swc } from 'rollup-plugin-swc3';
 import { dts } from 'rollup-plugin-dts';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import json from '@rollup/plugin-json';
 import commonjs from '@rollup/plugin-commonjs';
 
 import { MagicString } from '@napi-rs/magic-string';
@@ -52,6 +53,7 @@ export default defineConfig([{
         return null;
       }
     },
+    json(),
     nodeResolve({
       exportConditions: ['import', 'require', 'default']
     }),
