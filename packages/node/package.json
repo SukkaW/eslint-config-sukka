@@ -4,9 +4,9 @@
   "description": "Sukka's ESLint config",
   "author": "Sukka <https://skk.moe>",
   "license": "MIT",
-  "homepage": "https://github.com/sukkaw/eslint-config-sukka",
+  "homepage": "https://github.com/SukkaW/eslint-config-sukka",
   "repository": {
-    "url": "https://github.com/sukkaw/eslint-config-sukka",
+    "url": "https://github.com/SukkaW/eslint-config-sukka",
     "directory": "packages/node"
   },
   "keywords": [
