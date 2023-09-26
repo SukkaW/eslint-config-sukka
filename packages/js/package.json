@@ -1,6 +1,6 @@
 {
   "name": "@eslint-sukka/js",
-  "version": "4.0.0",
+  "version": "4.0.0-beta.5",
   "description": "Sukka's ESLint config",
   "author": "Sukka <https://skk.moe>",
   "license": "MIT",
