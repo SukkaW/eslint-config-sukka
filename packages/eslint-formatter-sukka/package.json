@@ -1,0 +1,40 @@
+{
+  "name": "eslint-formatter-sukka",
+  "version": "4.0.0-beta.6",
+  "description": "Sukka's ESLint config",
+  "author": "Sukka <https://skk.moe>",
+  "license": "MIT",
+  "homepage": "https://github.com/SukkaW/eslint-config-sukka",
+  "repository": {
+    "url": "https://github.com/SukkaW/eslint-config-sukka",
+    "directory": "packages/formatter-sukka"
+  },
+  "keywords": [
+    "eslint-config"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c rollup.config.ts --configPlugin swc3"
+  },
+  "devDependencies": {
+    "ansi-escapes": "^6.2.0",
+    "picocolors": "^1.0.0",
+    "sisteransi": "^1.0.5",
+    "string-width": "^6.1.0",
+    "supports-hyperlinks": "^3.0.0"
+  }
+}
