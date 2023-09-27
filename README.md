@@ -1,8 +1,13 @@
-This is the ongoing development repo of eslint-config-sukka v4.
+# eslint-config-sukka
 
-This will be merge back to eslint-config-sukka after the development is finished.
+ESLint config for [Sukka](https://skk.moe).
 
-TODO:
+## License
 
-- [ ] Use ESLint flat configuration
-- [ ] Build ESLint plugins
+[MIT](./LICENSE)
+
+## Maintainer
+
+**eslint-config-sukka** © [Sukka](https://github.com/SukkaW), Released under the [MIT](./LICENSE) License.
+
+> [Personal Website](https://skk.moe) · [Blog](https://blog.skk.moe) · GitHub [@SukkaW](https://github.com/SukkaW) · Telegram Channel [@SukkaChannel](https://t.me/SukkaChannel) · Twitter [@isukkaw](https://twitter.com/isukkaw) · Keybase [@sukka](https://keybase.io/sukka)
