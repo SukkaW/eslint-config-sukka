@@ -125,7 +125,8 @@ export const style: SukkaESLintRuleConfig = {
     '@stylistic/js/lines-around-comment': 'off',
 
     // https://eslint.style/rules/js/lines-around-directive
-    '@stylistic/js/lines-around-directive': ['error', 'always'],
+    // replaced by padding-line-between-statements
+    '@stylistic/js/lines-around-directive': 'off', // ['error', 'always'],
 
     // https://eslint.style/rules/js/lines-between-class-members
     '@stylistic/js/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
@@ -210,10 +211,14 @@ export const style: SukkaESLintRuleConfig = {
     'sukka/unicorn/no-nested-ternary': 'warn',
 
     // disallow use of the Object constructor
-    'no-new-object': 'error',
+    // deprecated and replaced by no-object-constructor
+    'no-new-object': 'off',
+    // https://eslint.org/docs/latest/rules/no-object-constructor
+    'no-object-constructor': 'error',
 
     // https://eslint.style/rules/js/no-spaced-func
-    '@stylistic/js/no-spaced-func': 'error',
+    // replaced by func-call-spacing
+    '@stylistic/js/no-spaced-func': 'off',
 
     // https://eslint.style/rules/js/no-tabs
     '@stylistic/js/no-tabs': 'error',
@@ -256,7 +261,14 @@ export const style: SukkaESLintRuleConfig = {
     '@stylistic/js/padded-blocks': ['error', 'never'],
 
     // https://eslint.style/rules/js/padding-line-between-statements
-    '@stylistic/js/padding-line-between-statements': 'off',
+    '@stylistic/js/padding-line-between-statements': [
+      'error',
+      // add line after
+      { blankLine: 'always', prev: 'directive', next: '*' },
+      // add line around (both before and after)
+      { blankLine: 'always', prev: '*', next: ['class', 'with'] },
+      { blankLine: 'always', prev: ['class', 'with'], next: '*' }
+    ],
 
     // https://eslint.style/rules/js/quotes
     '@stylistic/js/quotes': ['error', 'single'],

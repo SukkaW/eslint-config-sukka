@@ -161,6 +161,7 @@ function loadUnicorn(rule: any, ruleId: string): import('eslint').Rule.RuleModul
 const isIterable = object => typeof object?.[Symbol.iterator] === 'function';
 
 class FixAbortError extends Error { }
+
 const fixOptions = {
   abort() {
     throw new FixAbortError('Fix aborted.');

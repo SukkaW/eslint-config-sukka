@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'fs';
 
 const SKIP_TIME = 20000;
+
 /**
  * The class of cache.
  * The cache will dispose of each value if the value has not been accessed

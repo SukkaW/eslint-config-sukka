@@ -1,4 +1,5 @@
 import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
+
 import ts_eslint_plugin from '@typescript-eslint/eslint-plugin';
 // @ts-expect-error -- no types
 import stylisticTs from '@stylistic/eslint-plugin-ts';
@@ -155,14 +156,15 @@ export const typescript: SukkaESLintRuleConfig = {
       { exceptAfterSingleLine: true, exceptAfterOverload: true }
     ],
     // https://eslint.style/rules/ts/padding-line-between-statements
-    '@stylistic/ts/padding-line-between-statements': 'off', /* [
+    '@stylistic/ts/padding-line-between-statements': [
       'error',
-      {
-        blankLine: 'always',
-        prev: ['interface', 'type'],
-        next: ['interface', 'type']
-      }
-    ] */
+      // add line after
+      { blankLine: 'always', prev: 'directive', next: '*' },
+      // add line around (both before and after)
+      { blankLine: 'always', prev: '*', next: ['class', 'with'] },
+      { blankLine: 'always', prev: ['class', 'with'], next: '*' },
+      { blankLine: 'any', prev: ['interface', 'type'], next: ['interface', 'type'] } // ts
+    ],
     // https://eslint.style/rules/ts/type-annotation-spacing
     '@stylistic/ts/type-annotation-spacing': ['error', {
       before: false,

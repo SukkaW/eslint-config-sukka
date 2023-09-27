@@ -34,8 +34,6 @@ interface Line {
   column: string
 }
 
-const simple_plur = (num: number, word: string) => `${num} ${word}${num === 1 ? '' : 's'}`;
-
 const pretty: ESLint.Formatter['format'] = (results, data): string => {
   const lines: Array<Line | Separator | Header> = [];
   let errorCount = 0;
@@ -43,6 +41,7 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
   let fatalErrorCount = 0;
   let fixableWarningCount = 0;
   let fixableErrorCount = 0;
+  const deprecatedReplacedBy: Record<string, string[]> = {};
 
   let maxLineWidth = 0;
   let maxColumnWidth = 0;
@@ -66,6 +65,10 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
       fatalErrorCount += result.fatalErrorCount;
       fixableWarningCount += result.fixableWarningCount;
       fixableErrorCount += result.fixableErrorCount;
+
+      result.usedDeprecatedRules.forEach(d => {
+        deprecatedReplacedBy[d.ruleId] ||= d.replacedBy;
+      });
 
       if (lines.length !== 0) {
         lines.push({ type: 'separator' });
@@ -179,35 +182,36 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
     return '';
   }).join('\n')}\n\n`;
 
-  if (warningCount > 0) {
-    output += picocolors.yellow(simple_plur(warningCount, 'warning'));
+  const deprecatedEntries = Object.entries(deprecatedReplacedBy);
+  const deprecatedSize = deprecatedEntries.length;
 
-    output += ', ';
-  }
+  const stats = Object.entries({
+    problem: [true, errorCount + warningCount + fatalErrorCount] as const,
+    warning: [true, warningCount > 0 ? picocolors.yellow(warningCount) : picocolors.green(0)] as const,
+    error: [true, errorCount > 0 ? picocolors.red(errorCount) : picocolors.green(0)] as const,
+    fatal: [fatalErrorCount > 0, picocolors.red(fatalErrorCount)] as const,
+    fixable: [(fixableErrorCount + fixableWarningCount) > 0, fixableErrorCount + fixableWarningCount] as const,
+    deprecated: [deprecatedSize > 0, picocolors.bold(picocolors.gray(deprecatedSize))] as const
+  }).filter(([, [show]]) => show);
 
-  if (errorCount > 0) {
-    output += picocolors.red(simple_plur(errorCount, 'error'));
-  } else {
-    output += picocolors.green('0 error');
-  }
+  const maxKeyWidth = Math.max(...stats.map(([key]) => key.length));
 
-  if (fatalErrorCount > 0) {
-    output += `, ${picocolors.red(simple_plur(fatalErrorCount, 'fatal error'))}`;
-  }
+  stats.forEach(stat => {
+    const [key, [, value]] = stat;
+    output += `${' '.repeat(maxKeyWidth - key.length)}${picocolors.bold(`${key}:`)}  ${value}\n`;
+  });
 
-  if (fixableWarningCount > 0 || fixableErrorCount > 0) {
-    output += '\n';
-    output += [
-      fixableWarningCount > 0 && simple_plur(fixableWarningCount, 'warning'),
-      fixableErrorCount > 0 && simple_plur(fixableErrorCount, 'error')
-    ].filter(Boolean).join(' and ');
-
-    output += ' potentially automatically fixable via the `--fix` option.';
+  if (deprecatedSize > 0) {
+    deprecatedEntries.forEach(([ruleId, replacedBy]) => {
+      output += '\n';
+      output += `${picocolors.gray('deprecated:')}  ${ruleId}`;
+      output += replacedBy.length > 0 ? picocolors.gray(` (replaced by ${replacedBy.map(picocolors.white).join(', ')})`) : '';
+    });
   }
 
   output += '\n';
 
-  return (errorCount + warningCount) > 0 ? output : '';
+  return (errorCount + warningCount + fatalErrorCount + deprecatedSize) > 0 ? output : '';
 };
 
 export default pretty;

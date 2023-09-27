@@ -27,14 +27,20 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
 
         // disallow use of the Buffer() constructor
         // https://eslint.org/docs/rules/no-buffer-constructor
-        'no-buffer-constructor': 'error',
+        // replaced by sukka/unicorn/no-new-buffer
+        'no-buffer-constructor': 'off',
+        'sukka/unicorn/no-new-buffer': 'error', // ban new Buffer, prefer Buffer.from
 
         // disallow use of new operator with the require function
-        'no-new-require': 'error',
+        // replaced by eslint-plugin-n
+        'no-new-require': 'off',
+        'n/no-new-require': 'error',
 
         // disallow string concatenation with __dirname and __filename
         // https://eslint.org/docs/rules/no-path-concat
-        'no-path-concat': 'error',
+        // replaced by eslint-plugin-n
+        'no-path-concat': 'off',
+        'n/no-path-concat': 'error',
 
         // disallow use of process.env
         'no-process-env': 'off',
@@ -58,9 +64,7 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
         'n/no-missing-require': 'off',
         // replaced by i/no-extraneous-dependencies
         'n/no-extraneous-import': 'off',
-        'n/no-extraneous-require': 'off',
-
-        'sukka/unicorn/no-new-buffer': 'error' // ban new Buffer, prefer Buffer.from
+        'n/no-extraneous-require': 'off'
       }
     }
   ];
