@@ -1,4 +1,4 @@
-import { runTest } from '../../spec';
+import { runTest } from '../../../tests/spec';
 import module from './index';
 
 runTest({

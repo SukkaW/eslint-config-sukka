@@ -30,8 +30,5 @@
   "scripts": {
     "build": "rollup -c rollup.config.ts --configPlugin swc3"
   },
-  "dependencies": {
-    "@stylistic/eslint-plugin-js": "^0.0.5",
-    "eslint-plugin-sukka": "workspace:*"
-  }
+  "dependencies": {}
 }

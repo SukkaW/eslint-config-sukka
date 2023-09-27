@@ -30,9 +30,11 @@
   "scripts": {
     "build": "rollup -c rollup.config.ts --configPlugin swc3"
   },
-  "devDependencies": {
+  "dependencies": {
     "ci-info": "^3.8.0",
-    "picocolors": "^1.0.0",
+    "picocolors": "^1.0.0"
+  },
+  "devDependencies": {
     "string-width": "^6.1.0",
     "supports-hyperlinks": "^3.0.0"
   }
