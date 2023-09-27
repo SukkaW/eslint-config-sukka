@@ -39,7 +39,7 @@ const logSymbols = {
   error: picocolors.red('×')
 };
 
-export const pretty: ESLint.Formatter['format'] = (results, data): string => {
+const pretty: ESLint.Formatter['format'] = (results, data): string => {
   const lines: Array<Line | Separator | Header> = [];
   let errorCount = 0;
   let warningCount = 0;
@@ -179,3 +179,5 @@ export const pretty: ESLint.Formatter['format'] = (results, data): string => {
 
   return (errorCount + warningCount) > 0 ? output : '';
 };
+
+export default pretty;
