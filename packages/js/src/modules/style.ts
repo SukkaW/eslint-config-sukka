@@ -174,6 +174,10 @@ export const style: SukkaESLintRuleConfig = {
     // https://eslint.org/docs/rules/no-whitespace-before-property
     '@stylistic/js/no-whitespace-before-property': 'error',
 
+    // Enforce consistent spacing inside braces
+    // https://eslint.style/rules/js/object-curly-spacing
+    '@stylistic/js/object-curly-spacing': ['error', 'always'],
+
     // Disallow the use of Math.pow in favor of the ** operator
     // https://eslint.org/docs/rules/prefer-exponentiation-operator
     'prefer-exponentiation-operator': 'error',
