@@ -32,13 +32,6 @@ interface Line {
   column: string
 }
 
-const logSymbols = {
-  info: picocolors.blue('i'),
-  success: picocolors.green('√'),
-  warning: picocolors.yellow('‼'),
-  error: picocolors.red('×')
-};
-
 const pretty: ESLint.Formatter['format'] = (results, data): string => {
   const lines: Array<Line | Separator | Header> = [];
   let errorCount = 0;
@@ -105,9 +98,15 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
           const messageWidth = stringWidth(message);
 
           maxLineWidth = Math.max(lineWidth, maxLineWidth);
-          maxColumnWidth = Math.max(columnWidth, maxColumnWidth);
-          maxMessageWidth = Math.max(messageWidth, maxMessageWidth);
-          showLineNumbers = showLineNumbers || x.line || x.column;
+
+          if (columnWidth > maxColumnWidth) {
+            maxColumnWidth = columnWidth;
+          }
+          if (messageWidth > maxMessageWidth) {
+            maxMessageWidth = messageWidth;
+          }
+
+          showLineNumbers ||= x.line || x.column;
 
           lines.push({
             type: 'message',
@@ -136,7 +135,7 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
       // Use dim & gray for terminals like iTerm that doesn't support `hidden`
       const position = showLineNumbers ? picocolors.hidden(picocolors.dim(picocolors.gray(`:${x.firstLineCol}`))) : '';
 
-      return `  ${picocolors.underline(x.relativeFilePath)}${position}`;
+      return `${picocolors.underline(x.relativeFilePath)}${position}`;
     }
 
     if (x.type === 'message') {
@@ -144,19 +143,19 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
 
       try {
         ruleUrl = data?.rulesMeta[x.ruleId]?.docs?.url;
-      } catch {
-        try {
-          // ruleUrl = getRuleDocs(x.ruleId).url;
-        } catch { }
-      }
+      } catch { }
 
       const line = [
         '',
-        x.severity === 'warning' ? logSymbols.warning : logSymbols.error,
+        x.severity === 'warning' ? picocolors.yellow('?') : picocolors.red('x'),
         ' '.repeat(maxLineWidth - x.lineWidth) + picocolors.dim(x.line + picocolors.gray(':') + x.column),
         ' '.repeat(maxColumnWidth - x.columnWidth) + x.message,
         ' '.repeat(maxMessageWidth - x.messageWidth)
-        + (ruleUrl && supportsHyperlink(process.stdout) ? (picocolors.dim(x.ruleId), ruleUrl) : picocolors.dim(x.ruleId))
+        + (
+          (ruleUrl && supportsHyperlink(process.stdout))
+            ? ansiEscapes.link(picocolors.dim(x.ruleId), ruleUrl)
+            : picocolors.dim(x.ruleId)
+        )
       ];
 
       if (!showLineNumbers) {
@@ -170,12 +169,18 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
   }).join('\n')}\n\n`;
 
   if (warningCount > 0) {
-    output += `  ${picocolors.yellow(`${warningCount} warning`)}\n`;
+    output += ' ';
+    output += picocolors.yellow(`${warningCount} warning`);
+    output += ', ';
   }
 
   if (errorCount > 0) {
-    output += `  ${picocolors.red(`${errorCount} error`)}\n`;
+    output += picocolors.red(`${errorCount} error`);
+  } else {
+    output += picocolors.green('0 error');
   }
+
+  output += '\n';
 
   return (errorCount + warningCount) > 0 ? output : '';
 };

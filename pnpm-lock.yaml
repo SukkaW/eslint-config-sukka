@@ -89,6 +89,9 @@ importers:
       eslint-define-config:
         specifier: ^1.23.0
         version: 1.23.0
+      eslint-formatter-sukka:
+        specifier: workspace:4.0.0-beta.7
+        version: link:packages/eslint-formatter-sukka
       eslint-plugin-sukka:
         specifier: workspace:*
         version: link:packages/eslint-plugin-sukka
