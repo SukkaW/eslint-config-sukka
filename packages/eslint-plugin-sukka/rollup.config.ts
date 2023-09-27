@@ -27,12 +27,12 @@ export default defineConfig([{
     }),
     json(),
     swc({
-      minify: false,
+      minify: true,
       jsc: {
         minify: {
-          mangle: false,
-          compress: false,
-          module: false
+          mangle: true,
+          compress: true,
+          module: true
         }
       }
     })

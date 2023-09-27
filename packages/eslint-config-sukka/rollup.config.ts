@@ -61,14 +61,14 @@ export default defineConfig([{
       esmExternals: true
     }),
     swc({
-      // minify: true,
-      // jsc: {
-      //   minify: {
-      //     mangle: true,
-      //     compress: true,
-      //     module: true
-      //   }
-      // }
+      minify: true,
+      jsc: {
+        minify: {
+          mangle: true,
+          compress: true,
+          module: true
+        }
+      }
     })
   ],
   external
