@@ -16,18 +16,6 @@ const CJSShim = `
 // -- CommonJS Shims --
 const foxquire = (id) => Promise.resolve(require(id));
 `;
-const CJSExportDefault = `
-if (
-  (
-    typeof exports.default === 'function'
-    || (typeof exports.default === 'object' && exports.default !== null)
-  ) && typeof exports.default.__esModule === 'undefined'
-) {
-  Object.defineProperty(exports.default, '__esModule', { value: true });
-  Object.assign(exports.default, exports);
-  module.exports = exports.default;
-}
-`;
 const ESMShim = `
 // -- ESM Shims --
 const foxquire = (id) => import(id);
@@ -50,13 +38,8 @@ export default defineConfig([{
             if (!code.includes(ESMShim)) {
               ms.prepend(ESMShim);
             }
-          } else {
-            if (!code.includes(CJSExportDefault)) {
-              ms.append(CJSExportDefault);
-            }
-            if (!code.includes(CJSShim)) {
-              ms.prepend(CJSShim);
-            }
+          } else if (!code.includes(CJSShim)) {
+            ms.prepend(CJSShim);
           }
           return {
             code: ms.toString(),
