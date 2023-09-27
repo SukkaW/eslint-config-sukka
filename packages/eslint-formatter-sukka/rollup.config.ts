@@ -3,6 +3,7 @@ import { dts } from 'rollup-plugin-dts';
 import { defineConfig } from 'rollup';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
 
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
@@ -23,6 +24,7 @@ export default defineConfig([{
     commonjs({
       esmExternals: true
     }),
+    json(),
     swc({
       minify: true,
       jsc: {

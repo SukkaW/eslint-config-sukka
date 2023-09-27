@@ -31,9 +31,8 @@
     "build": "rollup -c rollup.config.ts --configPlugin swc3"
   },
   "devDependencies": {
-    "ansi-escapes": "^6.2.0",
+    "ci-info": "^3.8.0",
     "picocolors": "^1.0.0",
-    "sisteransi": "^1.0.5",
     "string-width": "^6.1.0",
     "supports-hyperlinks": "^3.0.0"
   }

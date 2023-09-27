@@ -2,8 +2,10 @@ import path from 'path';
 
 import picocolors from 'picocolors';
 import stringWidth from 'string-width';
-import ansiEscapes from 'ansi-escapes';
 import { supportsHyperlink } from 'supports-hyperlinks';
+
+import { link, iTermSetCwd } from './ansi-escape';
+import { isCI } from 'ci-info';
 
 import type { ESLint } from 'eslint';
 
@@ -32,10 +34,16 @@ interface Line {
   column: string
 }
 
+const simple_plur = (num: number, word: string) => `${num} ${word}${num === 1 ? '' : 's'}`;
+
 const pretty: ESLint.Formatter['format'] = (results, data): string => {
   const lines: Array<Line | Separator | Header> = [];
   let errorCount = 0;
   let warningCount = 0;
+  let fatalErrorCount = 0;
+  let fixableWarningCount = 0;
+  let fixableErrorCount = 0;
+
   let maxLineWidth = 0;
   let maxColumnWidth = 0;
   let maxMessageWidth = 0;
@@ -55,6 +63,9 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
 
       errorCount += result.errorCount;
       warningCount += result.warningCount;
+      fatalErrorCount += result.fatalErrorCount;
+      fixableWarningCount += result.fixableWarningCount;
+      fixableErrorCount += result.fixableErrorCount;
 
       if (lines.length !== 0) {
         lines.push({ type: 'separator' });
@@ -124,9 +135,9 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
 
   let output = '\n';
 
-  if (process.stdout.isTTY && !process.env.CI) {
+  if (process.stdout.isTTY && !isCI) {
     // Make relative paths Command-clickable in iTerm
-    output += ansiEscapes.iTerm.setCwd();
+    output += iTermSetCwd();
   }
 
   output += `${lines.map(x => {
@@ -147,13 +158,13 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
 
       const line = [
         '',
-        x.severity === 'warning' ? picocolors.yellow('?') : picocolors.red('x'),
+        x.severity === 'warning' ? picocolors.yellow('!') : picocolors.red('X'),
         ' '.repeat(maxLineWidth - x.lineWidth) + picocolors.dim(x.line + picocolors.gray(':') + x.column),
         ' '.repeat(maxColumnWidth - x.columnWidth) + x.message,
         ' '.repeat(maxMessageWidth - x.messageWidth)
         + (
           (ruleUrl && supportsHyperlink(process.stdout))
-            ? ansiEscapes.link(picocolors.dim(x.ruleId), ruleUrl)
+            ? link(picocolors.dim(x.ruleId), ruleUrl)
             : picocolors.dim(x.ruleId)
         )
       ];
@@ -162,22 +173,36 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
         line.splice(2, 1);
       }
 
-      return line.join('  ');
+      return line.join(' ');
     }
 
     return '';
   }).join('\n')}\n\n`;
 
   if (warningCount > 0) {
-    output += ' ';
-    output += picocolors.yellow(`${warningCount} warning`);
+    output += picocolors.yellow(simple_plur(warningCount, 'warning'));
+
     output += ', ';
   }
 
   if (errorCount > 0) {
-    output += picocolors.red(`${errorCount} error`);
+    output += picocolors.red(simple_plur(errorCount, 'error'));
   } else {
     output += picocolors.green('0 error');
+  }
+
+  if (fatalErrorCount > 0) {
+    output += `, ${picocolors.red(simple_plur(fatalErrorCount, 'fatal error'))}`;
+  }
+
+  if (fixableWarningCount > 0 || fixableErrorCount > 0) {
+    output += '\n';
+    output += [
+      fixableWarningCount > 0 && simple_plur(fixableWarningCount, 'warning'),
+      fixableErrorCount > 0 && simple_plur(fixableErrorCount, 'error')
+    ].filter(Boolean).join(' and ');
+
+    output += ' potentially automatically fixable via the `--fix` option.';
   }
 
   output += '\n';
