@@ -22,9 +22,6 @@ export const sukka: SukkaESLintRuleConfig = {
     'sukka/prefer-fetch': 'error',
     'sukka/prefer-timer-id': 'warn',
 
-    // disallow nested ternary expressions
-    'sukka/unicorn/no-nested-ternary': 'warn',
-
     'sukka/unicorn/require-array-join-separator': 'warn',
     'sukka/unicorn/no-thenable': 'error', // export function then()'
     'sukka/unicorn/no-invalid-remove-event-listener': 'error', // removeEventListener('click', f.bind(...))

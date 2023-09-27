@@ -1,30 +1,36 @@
 import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
+
+import sukkaPlugin from 'eslint-plugin-sukka';
 // @ts-expect-error -- missing -- eslint plugin
 import * as stylisticJs from '@stylistic/eslint-plugin-js';
 
 export const style: SukkaESLintRuleConfig = {
   plugins: {
-    '@stylistic/js': stylisticJs
+    '@stylistic/js': stylisticJs,
+    sukka: sukkaPlugin
   },
   rules: {
     // enforce line breaks after opening and before closing array brackets
     // https://eslint.org/docs/rules/array-bracket-newline
     '@stylistic/js/array-bracket-newline': ['off', 'consistent'], // object option alternative: { multiline: true, minItems: 3 }
 
-    // enforce line breaks between array elements
-    // https://eslint.org/docs/rules/array-element-newline
-    '@stylistic/js/array-element-newline': ['off', { multiline: true, minItems: 5 }],
-
-    // enforce spacing inside array brackets
+    // enforce spacing inside array
+    // https://eslint.style/rules/js/array-bracket-spacing
     '@stylistic/js/array-bracket-spacing': ['error', 'never'],
 
-    // enforce spacing inside single-line blocks
-    // https://eslint.org/docs/rules/block-spacing
-    '@stylistic/js/block-spacing': ['error', 'always'],
+    // enforce line breaks between array elements
+    // https://eslint.style/rules/js/array-element-newline
+    '@stylistic/js/array-element-newline': ['off', { multiline: true, minItems: 5 }],
 
+    // https://eslint.style/rules/js/arrow-spacing
     '@stylistic/js/arrow-spacing': ['error', { before: true, after: true }],
 
+    // enforce spacing inside single-line blocks
+    // https://eslint.style/rules/js/block-spacing
+    '@stylistic/js/block-spacing': ['error', 'always'],
+
     // enforce one true brace style
+    // https://eslint.style/rules/js/brace-style
     '@stylistic/js/brace-style': ['error', '1tbs', { allowSingleLine: true }],
 
     // require camel case names
@@ -37,12 +43,13 @@ export const style: SukkaESLintRuleConfig = {
       allow: ['^UNSAFE_', '^experimental_', '^__DEV__']
     }],
 
-    'comma-dangle': ['error', 'never'],
+    '@stylistic/js/comma-dangle': ['error', 'never'/* 'always-multiline' */],
 
     // enforce spacing before and after comma
     '@stylistic/js/comma-spacing': ['error', { before: false, after: true }],
 
     // enforce one true comma style
+    // https://eslint.style/rules/js/comma-style
     '@stylistic/js/comma-style': ['error', 'last', {
       exceptions: {
         ArrayExpression: false,
@@ -60,6 +67,7 @@ export const style: SukkaESLintRuleConfig = {
     }],
 
     // disallow padding inside computed properties
+    // https://eslint.style/rules/js/computed-property-spacing
     '@stylistic/js/computed-property-spacing': ['error', 'never'],
 
     // enforces consistent naming when capturing the current execution context
@@ -76,19 +84,25 @@ export const style: SukkaESLintRuleConfig = {
     '@stylistic/js/func-call-spacing': ['error', 'never'],
 
     // enforce consistent line breaks inside function parentheses
-    // https://eslint.org/docs/rules/function-paren-newline
+    // https://eslint.style/rules/js/function-paren-newline
     '@stylistic/js/function-paren-newline': ['error', 'consistent'],
 
+    // https://eslint.style/rules/js/generator-star-spacing
+    '@stylistic/js/generator-star-spacing': ['error', 'before'],
+
     // Enforce the location of arrow function bodies with implicit returns
-    // https://eslint.org/docs/rules/implicit-arrow-linebreak
+    // https://eslint.style/rules/js/implicit-arrow-linebreak
     '@stylistic/js/implicit-arrow-linebreak': ['error', 'beside'],
 
+    // https://eslint.style/rules/js/indent
     '@stylistic/js/indent': ['error', 2, { SwitchCase: 1 }],
 
     // enforces spacing between keys and values in object literal properties
+    // https://eslint.style/rules/js/key-spacing
     '@stylistic/js/key-spacing': ['error', { beforeColon: false, afterColon: true }],
 
     // require a space before & after certain keywords
+    // https://eslint.style/rules/js/keyword-spacing
     '@stylistic/js/keyword-spacing': ['error', {
       before: true,
       after: true,
@@ -99,7 +113,9 @@ export const style: SukkaESLintRuleConfig = {
       }
     }],
 
+    // https://eslint.style/rules/js/linebreak-style
     '@stylistic/js/linebreak-style': 'error',
+    // https://eslint.style/rules/js/lines-between-class-members
     '@stylistic/js/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
 
     // require a capital letter for constructors
@@ -118,7 +134,7 @@ export const style: SukkaESLintRuleConfig = {
 
     // disallow use of bitwise operators
     // https://eslint.org/docs/rules/no-bitwise
-    'no-bitwise': 'warn',
+    'no-bitwise': 'off',
 
     // disallow if as the only statement in an else block
     // https://eslint.org/docs/rules/no-lonely-if
@@ -160,6 +176,8 @@ export const style: SukkaESLintRuleConfig = {
 
     // disallow nested ternary expressions
     'no-nested-ternary': 'off', // replaced by sukka/unicorn/no-nested-ternary
+    // disallow nested ternary expressions
+    'sukka/unicorn/no-nested-ternary': 'warn',
 
     // disallow use of the Object constructor
     'no-new-object': 'error',
@@ -183,7 +201,9 @@ export const style: SukkaESLintRuleConfig = {
     'prefer-exponentiation-operator': 'error',
 
     '@stylistic/js/operator-linebreak': ['error', 'before'],
-    quotes: ['error', 'single'],
+
+    // https://eslint.style/rules/js/quotes
+    '@stylistic/js/quotes': ['error', 'single'],
 
     // require quotes around object literal property names
     // https://eslint.org/docs/rules/quote-props.html
@@ -192,7 +212,7 @@ export const style: SukkaESLintRuleConfig = {
     'jsx-quotes': ['error', 'prefer-double'],
 
     // require or disallow use of semicolons instead of ASI
-    semi: ['error', 'always'],
+    '@stylistic/js/semi': ['error', 'always'],
 
     // enforce spacing before and after semicolons
     '@stylistic/js/semi-spacing': ['error', { before: false, after: true }],
@@ -241,7 +261,7 @@ export const style: SukkaESLintRuleConfig = {
     }],
 
     // Require or disallow spacing between template tags and their literals
-    // https://eslint.org/docs/rules/template-tag-spacing
+    // https://eslint.style/rules/js/template-tag-spacing
     '@stylistic/js/template-tag-spacing': ['error', 'never'],
 
     // require or disallow the Unicode Byte Order Mark
@@ -249,6 +269,9 @@ export const style: SukkaESLintRuleConfig = {
     'unicode-bom': ['error', 'never'],
 
     // require regex literals to be wrapped in parentheses
-    'wrap-regex': 'off'
+    'wrap-regex': 'off',
+
+    // https://eslint.style/rules/js/yield-star-spacing
+    '@stylistic/js/yield-star-spacing': ['error', 'before']
   }
 };
