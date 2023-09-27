@@ -32,7 +32,6 @@ export const es6: SukkaESLintRuleConfig = {
     // https://eslint.org/docs/rules/no-restricted-exports
     'no-restricted-exports': ['error', {
       restrictedNamedExports: [
-        'default', // use `export default` to provide a default export
         'then' // this will cause tons of confusion when your module is dynamically `import()`ed, and will break in most node ESM versions
       ]
     }],

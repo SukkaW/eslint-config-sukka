@@ -35,7 +35,7 @@ export const sukka: SukkaESLintRuleConfig = {
     'sukka/unicorn/no-useless-length-check': 'warn', // array.length === 0 || array.every(...)
     'sukka/unicorn/no-useless-promise-resolve-reject': 'warn', // return Promise.resolve(value) in async function
     'sukka/unicorn/no-zero-fractions': 'warn', // 1.0
-    'sukka/unicorn/prefer-export-from': 'warn', // prefer export { } from than import-and-export
+    'sukka/unicorn/prefer-export-from': ['warn', { ignoreUsedVariables: true }], // prefer export { } from than import-and-export
     'sukka/unicorn/prefer-native-coercion-functions': 'warn', // no coercion wrapper v => Boolean(v)
     'sukka/unicorn/no-document-cookie': 'error', // even if you have to do so, use CookieJar
     'sukka/unicorn/prefer-add-event-listener': 'warn',

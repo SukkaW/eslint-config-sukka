@@ -20,7 +20,7 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
   const configs = [
     ...eslint_plugin_n.configs['flat/mixed-esm-and-cjs'],
     {
-      files: options.files ?? (isModule ? ['*.cjs', '.*.cjs'] : ['*.cjs', '.*.cjs', '*.js', '.*.js']),
+      files: options.files ?? (isModule ? ['*.mjs', '.*.mjs', '*.js', '.*.js'] : ['*.cjs', '.*.cjs', '*.js', '.*.js']),
       plugins: {
         sukka: eslint_plugin_sukka,
         n: eslint_plugin_n
