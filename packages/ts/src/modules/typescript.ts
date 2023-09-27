@@ -57,10 +57,6 @@ export const typescript: SukkaESLintRuleConfig = {
     '@typescript-eslint/consistent-type-exports': ['warn', { fixMixedExportsWithInlineTypeSpecifier: true }],
     '@typescript-eslint/consistent-type-definitions': 'warn',
     '@typescript-eslint/prefer-ts-expect-error': 'warn',
-    '@stylistic/ts/member-delimiter-style': ['error', {
-      multiline: { delimiter: 'comma', requireLast: false },
-      singleline: { delimiter: 'comma', requireLast: false }
-    }],
     '@typescript-eslint/consistent-generic-constructors': ['error', 'constructor'],
     '@typescript-eslint/no-base-to-string': ['error', { ignoredTypeNames: ['Error', 'RegExp', 'URL', 'URLSearchParams'] }],
     '@typescript-eslint/no-confusing-non-null-assertion': 'error', // a! == b
@@ -146,6 +142,37 @@ export const typescript: SukkaESLintRuleConfig = {
     '@typescript-eslint/no-unsafe-call': 'off', // bans any()
     '@typescript-eslint/no-unsafe-member-access': 'off', // bans a = any.prop
     '@typescript-eslint/no-unsafe-return': 'off', // bans return any
-    '@typescript-eslint/no-unsafe-enum-comparison': 'warn'
+    '@typescript-eslint/no-unsafe-enum-comparison': 'warn',
+
+    // https://eslint.style/rules/ts/member-delimiter-style
+    '@stylistic/ts/member-delimiter-style': ['error', {
+      multiline: { delimiter: 'comma', requireLast: false/** true */ },
+      singleline: { delimiter: 'comma', requireLast: false }
+    }],
+    // https://eslint.style/rules/ts/lines-between-class-members
+    '@stylistic/ts/lines-between-class-members': [
+      'error', 'always',
+      { exceptAfterSingleLine: true, exceptAfterOverload: true }
+    ],
+    // https://eslint.style/rules/ts/padding-line-between-statements
+    '@stylistic/ts/padding-line-between-statements': 'off', /* [
+      'error',
+      {
+        blankLine: 'always',
+        prev: ['interface', 'type'],
+        next: ['interface', 'type']
+      }
+    ] */
+    // https://eslint.style/rules/ts/type-annotation-spacing
+    '@stylistic/ts/type-annotation-spacing': ['error', {
+      before: false,
+      after: true,
+      overrides: {
+        arrow: {
+          before: true,
+          after: true
+        }
+      }
+    }]
   }
 };

@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^8.50.0",
+    "@stylistic/eslint-plugin-js": "^0.0.5",
     "@eslint-sukka/js": "workspace:*"
   }
 }

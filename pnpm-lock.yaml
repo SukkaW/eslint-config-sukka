@@ -286,6 +286,9 @@ importers:
       '@eslint/js':
         specifier: ^8.50.0
         version: 8.50.0
+      '@stylistic/eslint-plugin-js':
+        specifier: ^0.0.5
+        version: 0.0.5
 
 packages:
 
@@ -991,7 +994,6 @@ packages:
       espree: 9.6.1
       esutils: 2.0.3
       graphemer: 1.4.0
-    dev: false
 
   /@stylistic/eslint-plugin-migrate@0.0.5(eslint@8.50.0)(typescript@5.2.2):
     resolution: {integrity: sha512-4gBsKZFKFUNUYTSz2KEpr9Zg14f/tkhFGEwkfRuf3edZl6fIXNBZijmeYmmq8UnMZVe7PsUE/diUsz++i855MA==}

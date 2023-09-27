@@ -1,22 +1,31 @@
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED__ } from '@eslint-sukka/js';
+
 import ts_eslint_plugin from '@typescript-eslint/eslint-plugin';
+// @ts-expect-error -- no types
+import stylistic_eslint_plugin_js from '@stylistic/eslint-plugin-js';
+// @ts-expect-error -- no types
+import stylistic_eslint_plugin_ts from '@stylistic/eslint-plugin-ts';
+
 import fs from 'fs';
 import path from 'path';
 
 (() => {
-  // TODO: support eslint-stylistic
-  const BASE_RULES_TO_BE_OVERRIDDEN = new Map([
-    ...Object.entries(ts_eslint_plugin.rules)
-      .filter(([, rule]) => rule.meta.docs?.extendsBaseRule)
-      .map(
-        ([ruleName, rule]) => [
-          typeof rule.meta.docs?.extendsBaseRule === 'string'
-            ? rule.meta.docs.extendsBaseRule
-            : ruleName,
-          ruleName
-        ] as const
-      )
-  ]);
+  const stylistic_eslint_plugin_ts_rulenames = new Set(Object.keys(stylistic_eslint_plugin_ts.rules));
+
+  const TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN = new Map(Object.entries(ts_eslint_plugin.rules)
+    .filter(([, rule]) => rule.meta.docs?.extendsBaseRule)
+    .map(
+      ([ruleName, rule]) => [
+        typeof rule.meta.docs?.extendsBaseRule === 'string'
+          ? rule.meta.docs.extendsBaseRule
+          : ruleName,
+        ruleName
+      ] as const
+    ));
+
+  const STYLISTIC_JS_RULES_TO_BE_OVERRIDEN = new Set(Object.keys(stylistic_eslint_plugin_js.rules)
+    .filter((ruleName) => stylistic_eslint_plugin_ts_rulenames.has(ruleName))
+    .map(ruleName => `@stylistic/js/${ruleName}`));
 
   const rules = Object.fromEntries(
     Object.entries(
@@ -36,15 +45,18 @@ import path from 'path';
         return true;
       })
       .reduce((acc, [baseRuleName, value]) => {
-        if (BASE_RULES_TO_BE_OVERRIDDEN.has(baseRuleName)) {
-          const replacementRulename = BASE_RULES_TO_BE_OVERRIDDEN.get(baseRuleName)!;
-
+        if (TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.has(baseRuleName)) {
+          const replacementRulename = TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.get(baseRuleName)!;
           // @ts-expect-error -- no type overlap between eslint and typescript-eslint
           acc.push([baseRuleName, 'off']);
           // @ts-expect-error -- no type overlap between eslint and typescript-eslint
           acc.push([`@typescript-eslint/${replacementRulename}`, value]);
-        }
-        if (baseRuleName === 'camelcase') {
+        } else if (STYLISTIC_JS_RULES_TO_BE_OVERRIDEN.has(baseRuleName)) {
+          // @ts-expect-error -- no type overlap between eslint and typescript-eslint
+          acc.push([baseRuleName, 'off']);
+          // @ts-expect-error -- no type overlap between eslint and typescript-eslint
+          acc.push([baseRuleName.replace('@stylistic/js/', '@stylistic/ts/'), value]);
+        } else if (baseRuleName === 'camelcase') {
           // @ts-expect-error -- no type overlap between eslint and typescript-eslint
           acc.push([baseRuleName, 'off']);
         }

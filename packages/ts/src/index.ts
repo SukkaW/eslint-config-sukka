@@ -93,9 +93,9 @@ export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] =
         // plugin:i/typescript
         ...eslint_plugin_i.configs.typescript.rules,
 
+        ...generated_overrides.rules,
         ...typescriptConfig.rules,
         ...sukka_typeScript.rules,
-        ...generated_overrides.rules,
 
         // replaced by unused-imports/no-unused-imports
         '@typescript-eslint/no-unused-vars': 'off'

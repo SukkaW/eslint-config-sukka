@@ -43,23 +43,111 @@ export const generated_overrides: SukkaESLintRuleConfig = {
     "@typescript-eslint/no-loss-of-precision": "warn",
     "no-useless-constructor": "off",
     "@typescript-eslint/no-useless-constructor": "error",
-    "comma-dangle": "off",
-    "@typescript-eslint/comma-dangle": [
-      "error",
-      "never"
-    ],
-    "no-array-constructor": "off",
-    "@typescript-eslint/no-array-constructor": "error",
-    "quotes": "off",
-    "@typescript-eslint/quotes": [
-      "error",
-      "single"
-    ],
-    "semi": "off",
-    "@typescript-eslint/semi": [
+    "@stylistic/js/block-spacing": "off",
+    "@stylistic/ts/block-spacing": [
       "error",
       "always"
     ],
+    "@stylistic/js/brace-style": "off",
+    "@stylistic/ts/brace-style": [
+      "error",
+      "1tbs",
+      {
+        "allowSingleLine": true
+      }
+    ],
+    "camelcase": "off",
+    "@stylistic/js/comma-dangle": "off",
+    "@stylistic/ts/comma-dangle": [
+      "error",
+      "never"
+    ],
+    "@stylistic/js/comma-spacing": "off",
+    "@stylistic/ts/comma-spacing": [
+      "error",
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "@stylistic/js/func-call-spacing": "off",
+    "@stylistic/ts/func-call-spacing": [
+      "error",
+      "never"
+    ],
+    "@stylistic/js/indent": "off",
+    "@stylistic/ts/indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "@stylistic/js/key-spacing": "off",
+    "@stylistic/ts/key-spacing": [
+      "error",
+      {
+        "beforeColon": false,
+        "afterColon": true
+      }
+    ],
+    "@stylistic/js/keyword-spacing": "off",
+    "@stylistic/ts/keyword-spacing": [
+      "error",
+      {
+        "before": true,
+        "after": true,
+        "overrides": {
+          "return": {
+            "after": true
+          },
+          "throw": {
+            "after": true
+          },
+          "case": {
+            "after": true
+          }
+        }
+      }
+    ],
+    "@stylistic/js/lines-between-class-members": "off",
+    "@stylistic/ts/lines-between-class-members": [
+      "error",
+      "always",
+      {
+        "exceptAfterSingleLine": true
+      }
+    ],
+    "no-array-constructor": "off",
+    "@typescript-eslint/no-array-constructor": "error",
+    "@stylistic/js/object-curly-spacing": "off",
+    "@stylistic/ts/object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "@stylistic/js/quotes": "off",
+    "@stylistic/ts/quotes": [
+      "error",
+      "single"
+    ],
+    "@stylistic/js/semi": "off",
+    "@stylistic/ts/semi": [
+      "error",
+      "always"
+    ],
+    "@stylistic/js/space-before-blocks": "off",
+    "@stylistic/ts/space-before-blocks": "error",
+    "@stylistic/js/space-before-function-paren": "off",
+    "@stylistic/ts/space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "always",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ],
+    "@stylistic/js/space-infix-ops": "off",
+    "@stylistic/ts/space-infix-ops": "error",
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": [
       "error",
