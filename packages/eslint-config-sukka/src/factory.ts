@@ -49,7 +49,10 @@ export const sukka = async (options: ESLineSukkaOptions, ...userConfig: FlatESLi
   flatConfigs.push(ignores(options.ignores));
   // javascript
   if (enabled(options.js, true)) {
-    flatConfigs.push((await foxquire<typeof import('@eslint-sukka/js')>('@eslint-sukka/js')).javascript({ ...config(options.js), isInEditor }));
+    flatConfigs.push((await foxquire<typeof import('@eslint-sukka/js')>('@eslint-sukka/js')).javascript({
+      ...config(options.js),
+      isInEditor
+    }));
   }
   // typescript
   if (options.ts) {

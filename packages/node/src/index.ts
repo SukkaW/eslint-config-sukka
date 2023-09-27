@@ -6,6 +6,8 @@ import eslint_plugin_sukka from 'eslint-plugin-sukka';
 // @ts-expect-error -- no types
 import eslint_plugin_n from 'eslint-plugin-n';
 
+import globals from 'globals';
+
 export interface OptionsNode {
   strict?: boolean,
   module?: boolean,
@@ -13,10 +15,12 @@ export interface OptionsNode {
 }
 
 export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
+  const isModule = options.module ?? (getPackageJson()?.type === 'module');
+
   const configs = [
     ...eslint_plugin_n.configs['flat/mixed-esm-and-cjs'],
     {
-      ...(options.files ? { files: options.files } : {}),
+      files: options.files ?? (isModule ? ['*.cjs', '.*.cjs'] : ['*.cjs', '.*.cjs', '*.js', '.*.js']),
       plugins: {
         sukka: eslint_plugin_sukka,
         n: eslint_plugin_n
@@ -65,15 +69,16 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
         // replaced by i/no-extraneous-dependencies
         'n/no-extraneous-import': 'off',
         'n/no-extraneous-require': 'off'
+      },
+      languageOptions: {
+        globals: globals.node
       }
     }
   ];
 
   if (options.strict !== false) {
-    const isModule = options.module ?? (getPackageJson()?.type === 'module');
-
     configs.push({
-      files: isModule ? ['*.cjs', '.*.cjs'] : ['*.cjs', '.*.cjs', '*.js', '.*.js'],
+      files: options.files ?? (isModule ? ['*.cjs', '.*.cjs'] : ['*.cjs', '.*.cjs', '*.js', '.*.js']),
       rules: {
         // enable strict mode for cjs
         strict: 'warn'

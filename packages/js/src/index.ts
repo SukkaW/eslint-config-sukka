@@ -36,12 +36,6 @@ export interface OptionsJavaScript {
   env?: {
     // env
     /**
-     * Enable Node.js global variables and Node.js scoping.
-     *
-     * @default false
-     */
-    node?: boolean,
-    /**
      * Enable browser global variables.
      *
      * @default true
@@ -77,7 +71,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
     disableNoConsoleInCLI = true,
     env = {}
   } = options;
-  const { node = false, browser = true, webextensions = false, greasemonkey = false, customGlobals = {} } = env;
+  const { browser = true, webextensions = false, greasemonkey = false, customGlobals = {} } = env;
 
   const configs: FlatESLintConfigItem[] = [
     eslint_js.configs.recommended,
@@ -99,7 +93,6 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         globals: {
           ...globals.es2021,
           ...(browser && globals.browser),
-          ...(node && globals.node),
           ...(webextensions && globals.webextensions),
           ...(greasemonkey && globals.greasemonkey),
           ...customGlobals

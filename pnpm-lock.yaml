@@ -90,7 +90,7 @@ importers:
         specifier: ^1.23.0
         version: 1.23.0
       eslint-formatter-sukka:
-        specifier: workspace:4.0.0-beta.7
+        specifier: workspace:*
         version: link:packages/eslint-formatter-sukka
       eslint-plugin-sukka:
         specifier: workspace:*
@@ -229,6 +229,9 @@ importers:
       eslint-plugin-sukka:
         specifier: workspace:*
         version: link:../eslint-plugin-sukka
+      globals:
+        specifier: ^13.22.0
+        version: 13.22.0
 
   packages/react:
     dependencies:
