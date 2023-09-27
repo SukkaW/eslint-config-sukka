@@ -5,8 +5,8 @@ import path from 'path';
 
 (() => {
   // TODO: support eslint-stylistic
-  const BASE_RULES_TO_BE_OVERRIDDEN = new Map(
-    Object.entries(ts_eslint_plugin.rules)
+  const BASE_RULES_TO_BE_OVERRIDDEN = new Map([
+    ...Object.entries(ts_eslint_plugin.rules)
       .filter(([, rule]) => rule.meta.docs?.extendsBaseRule)
       .map(
         ([ruleName, rule]) => [
@@ -16,7 +16,7 @@ import path from 'path';
           ruleName
         ] as const
       )
-  );
+  ]);
 
   const rules = Object.fromEntries(
     Object.entries(

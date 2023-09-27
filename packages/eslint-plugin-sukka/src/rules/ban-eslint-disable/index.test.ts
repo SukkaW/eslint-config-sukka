@@ -3,10 +3,10 @@ import module from './index';
 
 runTest({
   module,
-  * valid() {
+  *valid() {
     yield '// eslint-disable-next-line no-console -- Log a error';
   },
-  * invalid() {
+  *invalid() {
     yield {
       code: '// eslint-disable-next-line',
       errors: [{ messageId: 'require-description', data: { directive: 'eslint-disable-next-line' } }]
