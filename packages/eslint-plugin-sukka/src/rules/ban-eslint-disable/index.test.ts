@@ -9,7 +9,7 @@ runTest({
   *invalid() {
     yield {
       code: '// eslint-disable-next-line',
-      errors: [{ messageId: 'require-description', data: { directive: 'eslint-disable-next-line' } }]
+      errors: [{ messageId: 'require-description', data: { directive: 'eslint-disable-next-line' } }, { messageId: 'require-specific-rule' }]
     };
   }
 });
