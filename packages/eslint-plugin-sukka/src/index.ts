@@ -62,7 +62,7 @@ import better_regex from 'eslint-plugin-unicorn/rules/better-regex.js';
 import escape_case from 'eslint-plugin-unicorn/rules/escape-case.js';
 import no_hex_escape from 'eslint-plugin-unicorn/rules/no-hex-escape.js';
 import prefer_prototype_methods from 'eslint-plugin-unicorn/rules/prefer-prototype-methods.js';
-import relative_url_style from 'eslint-plugin-unicorn/rules/relative-url-style.js';
+// import relative_url_style from 'eslint-plugin-unicorn/rules/relative-url-style.js';
 import error_message from 'eslint-plugin-unicorn/rules/error-message.js';
 import no_instanceof_array from 'eslint-plugin-unicorn/rules/no-instanceof-array.js';
 import prefer_type_error from 'eslint-plugin-unicorn/rules/prefer-type-error.js';
@@ -150,7 +150,7 @@ export default {
     'unicorn/escape-case': loadUnicorn(escape_case, 'unicorn/escape-case'),
     'unicorn/no-hex-escape': loadUnicorn(no_hex_escape, 'unicorn/no-hex-escape'),
     'unicorn/prefer-prototype-methods': loadUnicorn(prefer_prototype_methods, 'unicorn/prefer-prototype-methods'),
-    'unicorn/relative-url-style': loadUnicorn(relative_url_style, 'unicorn/relative-url-style'),
+    // 'unicorn/relative-url-style': loadUnicorn(relative_url_style, 'unicorn/relative-url-style'),
     'unicorn/error-message': loadUnicorn(error_message, 'unicorn/error-message'),
     'unicorn/no-instanceof-array': loadUnicorn(no_instanceof_array, 'unicorn/no-instanceof-array'),
     'unicorn/prefer-type-error': loadUnicorn(prefer_type_error, 'unicorn/prefer-type-error'),

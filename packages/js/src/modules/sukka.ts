@@ -60,7 +60,10 @@ export const sukka: SukkaESLintRuleConfig = {
     'sukka/unicorn/escape-case': 'warn', // correct casing of escape '\xA9'
     'sukka/unicorn/no-hex-escape': 'warn', // correct casing of escape '\u001B'
     'sukka/unicorn/prefer-prototype-methods': 'warn', // prefer Array.prototype.slice than [].slice
-    'sukka/unicorn/relative-url-style': ['warn', 'always'], // prefer relative url starts with ./
+
+    // cause problem with alias import (new URL(, import.meta.url))
+    // 'sukka/unicorn/relative-url-style': ['warn', 'always'], // prefer relative url starts with ./
+
     'sukka/unicorn/error-message': 'error', // Pass error message when throwing errors
     'sukka/unicorn/no-instanceof-array': 'error', // Array.isArray
     'sukka/unicorn/prefer-type-error': 'error', // throw new TypeError
