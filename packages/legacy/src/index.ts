@@ -1,6 +1,7 @@
 import type { FlatESLintConfigItem } from 'eslint-define-config';
 
 import globals from 'globals';
+import eslint_plugin_sukka from 'eslint-plugin-sukka';
 
 export interface OptionsLegacy {
   browser?: boolean,
@@ -11,6 +12,9 @@ export interface OptionsLegacy {
 export const legacy = (options: OptionsLegacy = {}): FlatESLintConfigItem[] => {
   return [{
     ...(options.files ? { files: options.files } : {}),
+    plugins: {
+      sukka: eslint_plugin_sukka
+    },
     rules: {
       'prefer-numeric-literals': 'off',
       'no-restricted-properties': ['error', {
@@ -26,7 +30,14 @@ export const legacy = (options: OptionsLegacy = {}): FlatESLintConfigItem[] => {
       }],
       'no-var': 'off',
       'prefer-object-spread': 'off',
-      strict: ['error', 'safe']
+      strict: ['error', 'safe'],
+
+      // default parameters is not supported in legacy environment
+      'sukka/unicorn/prefer-default-parameters': 'off', // function foo(bar = 1) {}
+      // nullable logical operator is not supported in legacy environment
+      'sukka/unicorn/prefer-logical-operator-over-ternary': 'off', // foo ? foo : bar
+      // optional catch binding is not supported in legacy environment
+      'sukka/unicorn/prefer-optional-catch-binding': 'error' // try {} catch {}
     },
     languageOptions: {
       globals: {
