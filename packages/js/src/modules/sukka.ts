@@ -60,6 +60,31 @@ export const sukka: SukkaESLintRuleConfig = {
     'sukka/unicorn/relative-url-style': ['warn', 'always'], // prefer relative url starts with ./
     'sukka/unicorn/error-message': 'error', // Pass error message when throwing errors
     'sukka/unicorn/no-instanceof-array': 'error', // Array.isArray
-    'sukka/unicorn/prefer-type-error': 'error' // throw new TypeError
+    'sukka/unicorn/prefer-type-error': 'error', // throw new TypeError
+    'sukka/unicorn/consistent-destructuring': 'warn',
+    'sukka/unicorn/new-for-builtins': 'warn', // prefer new Map([...]) over Map([...])
+    'sukka/unicorn/no-array-method-this-argument': 'warn', // bar.find(e => skk(e), ctx);
+    'sukka/unicorn/no-array-push-push': 'warn', // array.push(...); array.push(...);
+    'sukka/unicorn/no-static-only-class': 'warn', // class Foo { static bar() {} }
+    'sukka/unicorn/no-unreadable-array-destructuring': 'error', // [,,,,, bar] = arr;
+    'sukka/unicorn/no-useless-spread': 'warn', // const foo = undefined;
+    'sukka/unicorn/no-useless-switch-case': 'warn', // switch (foo) { case 1: default: return 2; }
+    'sukka/unicorn/no-useless-undefined': 'warn', // let foo = undefined;
+    'sukka/unicorn/numeric-separators-style': [
+      'warn',
+      { minimumDigits: 7, groupLength: 3 }
+    ], // 1_000_000
+    'sukka/unicorn/prefer-array-find': 'warn', // arr.filter(x => skk(x))[0];
+    'sukka/unicorn/prefer-array-flat-map': 'warn', // arr.map(x => skk(x)).flat();
+    'sukka/unicorn/prefer-array-flat': 'warn', // const foo = array.reduce((a, b) => a.concat(b), []);
+    'sukka/unicorn/prefer-array-some': 'warn', // arr.findIndex(x => skk(x)) !== -1;
+    'sukka/unicorn/prefer-code-point': 'warn', // 'foo'.codePointAt(0)
+    'sukka/unicorn/prefer-default-parameters': 'warn', // function foo(bar = 1) {}
+    'sukka/unicorn/prefer-logical-operator-over-ternary': 'warn', // foo ? foo : bar
+    'sukka/unicorn/prefer-optional-catch-binding': 'error', // try {} catch {}
+    'sukka/unicorn/prefer-regexp-test': 'warn', // /foo/.test(bar)
+    'sukka/unicorn/prefer-set-has': 'error', // Set#has is way faster
+    'sukka/unicorn/prefer-switch': 'warn', // Array.from(foo)
+    'sukka/unicorn/require-number-to-fixed-digits-argument': 'warn' // 1.toFixed(2)
   }
 };

@@ -66,6 +66,30 @@ import relative_url_style from 'eslint-plugin-unicorn/rules/relative-url-style.j
 import error_message from 'eslint-plugin-unicorn/rules/error-message.js';
 import no_instanceof_array from 'eslint-plugin-unicorn/rules/no-instanceof-array.js';
 import prefer_type_error from 'eslint-plugin-unicorn/rules/prefer-type-error.js';
+import consistent_destructuring from 'eslint-plugin-unicorn/rules/consistent-destructuring.js';
+import new_for_builtins from 'eslint-plugin-unicorn/rules/new-for-builtins.js';
+import no_array_method_this_argument from 'eslint-plugin-unicorn/rules/no-array-method-this-argument.js';
+import no_array_push_push from 'eslint-plugin-unicorn/rules/no-array-push-push.js';
+import no_process_exit from 'eslint-plugin-unicorn/rules/no-process-exit.js';
+import no_static_only_class from 'eslint-plugin-unicorn/rules/no-static-only-class.js';
+import no_unreadable_array_destructuring from 'eslint-plugin-unicorn/rules/no-unreadable-array-destructuring.js';
+import no_useless_spread from 'eslint-plugin-unicorn/rules/no-useless-spread.js';
+import no_useless_switch_case from 'eslint-plugin-unicorn/rules/no-useless-switch-case.js';
+import no_useless_undefined from 'eslint-plugin-unicorn/rules/no-useless-undefined.js';
+import numeric_separators_style from 'eslint-plugin-unicorn/rules/numeric-separators-style.js';
+import prefer_array_find from 'eslint-plugin-unicorn/rules/prefer-array-find.js';
+import prefer_array_flat_map from 'eslint-plugin-unicorn/rules/prefer-array-flat-map.js';
+import prefer_array_flat from 'eslint-plugin-unicorn/rules/prefer-array-flat.js';
+import prefer_array_some from 'eslint-plugin-unicorn/rules/prefer-array-some.js';
+import prefer_code_point from 'eslint-plugin-unicorn/rules/prefer-code-point.js';
+import prefer_default_parameters from 'eslint-plugin-unicorn/rules/prefer-default-parameters.js';
+import prefer_json_parse_buffer from 'eslint-plugin-unicorn/rules/prefer-json-parse-buffer.js';
+import prefer_logical_operator_over_ternary from 'eslint-plugin-unicorn/rules/prefer-logical-operator-over-ternary.js';
+import prefer_optional_catch_binding from 'eslint-plugin-unicorn/rules/prefer-optional-catch-binding.js';
+import prefer_regexp_test from 'eslint-plugin-unicorn/rules/prefer-regexp-test.js';
+import prefer_set_has from 'eslint-plugin-unicorn/rules/prefer-set-has.js';
+import prefer_switch from 'eslint-plugin-unicorn/rules/prefer-switch.js';
+import require_number_to_fixed_digits_argument from 'eslint-plugin-unicorn/rules/require-number-to-fixed-digits-argument.js';
 
 // eslint-plugin-sukka
 import ban_eslint_disable from './rules/ban-eslint-disable';
@@ -89,6 +113,7 @@ export default {
     'prefer-timer-id': prefer_timer_id,
 
     // eslint-plugin-unicorn
+    'unicorn/better-regex': loadUnicorn(better_regex, 'unicorn/better-regex'),
     'unicorn/no-nested-ternary': loadUnicorn(no_nested_ternary, 'unicorn/no-nested-ternary'),
     'unicorn/prefer-event-target': loadUnicorn(prefer_event_target, 'unicorn/prefer-event-target'),
     'unicorn/prefer-keyboard-event-key': loadUnicorn(prefer_keyboard_event_key, 'unicorn/prefer-keyboard-event-key'),
@@ -122,7 +147,6 @@ export default {
     'unicorn/prefer-string-trim-start-end': loadUnicorn(prefer_string_trim_start_end, 'unicorn/prefer-string-trim-start-end'),
     'unicorn/no-unreadable-iife': loadUnicorn(no_unreadable_iife, 'unicorn/no-unreadable-iife'),
     'unicorn/throw-new-error': loadUnicorn(throw_new_error, 'unicorn/throw-new-error'),
-    'unicorn/better-regex': loadUnicorn(better_regex, 'unicorn/better-regex'),
     'unicorn/escape-case': loadUnicorn(escape_case, 'unicorn/escape-case'),
     'unicorn/no-hex-escape': loadUnicorn(no_hex_escape, 'unicorn/no-hex-escape'),
     'unicorn/prefer-prototype-methods': loadUnicorn(prefer_prototype_methods, 'unicorn/prefer-prototype-methods'),
@@ -130,6 +154,31 @@ export default {
     'unicorn/error-message': loadUnicorn(error_message, 'unicorn/error-message'),
     'unicorn/no-instanceof-array': loadUnicorn(no_instanceof_array, 'unicorn/no-instanceof-array'),
     'unicorn/prefer-type-error': loadUnicorn(prefer_type_error, 'unicorn/prefer-type-error'),
+    'unicorn/consistent-destructuring': loadUnicorn(consistent_destructuring, 'unicorn/consistent-destructuring'),
+    'unicorn/new-for-builtins': loadUnicorn(new_for_builtins, 'unicorn/new-for-builtins'),
+    'unicorn/no-array-method-this-argument': loadUnicorn(no_array_method_this_argument, 'unicorn/no-array-method-this-argument'),
+    'unicorn/no-array-push-push': loadUnicorn(no_array_push_push, 'unicorn/no-array-push-push'),
+    'unicorn/no-process-exit': loadUnicorn(no_process_exit, 'unicorn/no-process-exit'),
+    'unicorn/no-static-only-class': loadUnicorn(no_static_only_class, 'unicorn/no-static-only-class'),
+    'unicorn/no-unreadable-array-destructuring': loadUnicorn(no_unreadable_array_destructuring, 'unicorn/no-unreadable-array-destructuring'),
+    'unicorn/no-useless-spread': loadUnicorn(no_useless_spread, 'unicorn/no-useless-spread'),
+    'unicorn/no-useless-switch-case': loadUnicorn(no_useless_switch_case, 'unicorn/no-useless-switch-case'),
+    'unicorn/no-useless-undefined': loadUnicorn(no_useless_undefined, 'unicorn/no-useless-undefined'),
+    'unicorn/numeric-separators-style': loadUnicorn(numeric_separators_style, 'unicorn/numeric-separators-style'),
+    'unicorn/prefer-array-find': loadUnicorn(prefer_array_find, 'unicorn/prefer-array-find'),
+    'unicorn/prefer-array-flat-map': loadUnicorn(prefer_array_flat_map, 'unicorn/prefer-array-flat-map'),
+    'unicorn/prefer-array-flat': loadUnicorn(prefer_array_flat, 'unicorn/prefer-array-flat'),
+    'unicorn/prefer-array-some': loadUnicorn(prefer_array_some, 'unicorn/prefer-array-some'),
+    'unicorn/prefer-code-point': loadUnicorn(prefer_code_point, 'unicorn/prefer-code-point'),
+    'unicorn/prefer-default-parameters': loadUnicorn(prefer_default_parameters, 'unicorn/prefer-default-parameters'),
+    'unicorn/prefer-json-parse-buffer': loadUnicorn(prefer_json_parse_buffer, 'unicorn/prefer-json-parse-buffer'),
+    'unicorn/prefer-logical-operator-over-ternary': loadUnicorn(prefer_logical_operator_over_ternary, 'unicorn/prefer-logical-operator-over-ternary'),
+    'unicorn/prefer-optional-catch-binding': loadUnicorn(prefer_optional_catch_binding, 'unicorn/prefer-optional-catch-binding'),
+    'unicorn/prefer-prototype-methods': loadUnicorn(prefer_prototype_methods, 'unicorn/prefer-prototype-methods'),
+    'unicorn/prefer-regexp-test': loadUnicorn(prefer_regexp_test, 'unicorn/prefer-regexp-test'),
+    'unicorn/prefer-set-has': loadUnicorn(prefer_set_has, 'unicorn/prefer-set-has'),
+    'unicorn/prefer-switch': loadUnicorn(prefer_switch, 'unicorn/prefer-switch'),
+    'unicorn/require-number-to-fixed-digits-argument': loadUnicorn(require_number_to_fixed_digits_argument, 'unicorn/require-number-to-fixed-digits-argument'),
 
     // Require TS
     'string/no-unneeded-to-string': string$no_unneeded_to_string,

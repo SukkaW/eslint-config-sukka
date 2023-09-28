@@ -50,7 +50,10 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
         'no-process-env': 'off',
 
         // disallow process.exit()
+        // replaced by sukka/unicorn/no-process-exit
         'no-process-exit': 'off',
+        'n/no-process-exit': 'off',
+        'sukka/unicorn/no-process-exit': 'warn',
 
         // restrict usage of specified node modules
         'no-restricted-modules': 'off',
@@ -68,7 +71,10 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
         'n/no-missing-require': 'off',
         // replaced by i/no-extraneous-dependencies
         'n/no-extraneous-import': 'off',
-        'n/no-extraneous-require': 'off'
+        'n/no-extraneous-require': 'off',
+
+        // prefer JSON.parse from buffer with fs
+        'sukka/unicorn/prefer-json-parse-buffer': 'error'
       },
       languageOptions: {
         globals: globals.node
