@@ -1,9 +1,12 @@
 import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
-import sukkaPlugin from 'eslint-plugin-sukka';
+import eslint_plugin_sukka from 'eslint-plugin-sukka';
+// @ts-expect-error -- no types
+import eslint_plugin_antfu from 'eslint-plugin-antfu';
 
 export const sukka: SukkaESLintRuleConfig = {
   plugins: {
-    sukka: sukkaPlugin
+    sukka: eslint_plugin_sukka,
+    antfu: eslint_plugin_antfu
   },
   rules: {
     'sukka/array/no-unneeded-flat-map': 'error',
@@ -72,7 +75,13 @@ export const sukka: SukkaESLintRuleConfig = {
     'sukka/unicorn/no-useless-undefined': 'warn', // let foo = undefined;
     'sukka/unicorn/numeric-separators-style': [
       'warn',
-      { minimumDigits: 7, groupLength: 3 }
+      {
+        onlyIfContainsSeparator: false,
+        number: { minimumDigits: 7, groupLength: 3 },
+        binary: { minimumDigits: 9, groupLength: 4 },
+        octal: { minimumDigits: 9, groupLength: 4 },
+        hexadecimal: { minimumDigits: 5, groupLength: 2 }
+      }
     ], // 1_000_000
     'sukka/unicorn/prefer-array-find': 'warn', // arr.filter(x => skk(x))[0];
     'sukka/unicorn/prefer-array-flat-map': 'warn', // arr.map(x => skk(x)).flat();
@@ -85,6 +94,8 @@ export const sukka: SukkaESLintRuleConfig = {
     'sukka/unicorn/prefer-regexp-test': 'warn', // /foo/.test(bar)
     'sukka/unicorn/prefer-set-has': 'error', // Set#has is way faster
     'sukka/unicorn/prefer-switch': 'warn', // Array.from(foo)
-    'sukka/unicorn/require-number-to-fixed-digits-argument': 'warn' // 1.toFixed(2)
+    'sukka/unicorn/require-number-to-fixed-digits-argument': 'warn', // 1.toFixed(2)
+
+    'antfu/import-dedupe': 'error'
   }
 };

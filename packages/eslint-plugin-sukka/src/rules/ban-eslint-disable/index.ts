@@ -1,4 +1,3 @@
-import { match } from 'assert';
 import { createRule } from '../../utils/rule';
 
 type Options = boolean | 'allow-with-description';

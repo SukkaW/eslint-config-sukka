@@ -68,7 +68,7 @@ function readPackageJson(dir: string): Record<string, any> | null {
       data.filePath = filePath;
       return data;
     }
-  } catch (_err) {
+  } catch {
     // do nothing.
   }
 
