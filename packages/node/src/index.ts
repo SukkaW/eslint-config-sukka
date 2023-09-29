@@ -1,4 +1,4 @@
-import type { FlatESLintConfigItem } from 'eslint-define-config';
+import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import { getPackageJson } from '@eslint-sukka/shared';
 

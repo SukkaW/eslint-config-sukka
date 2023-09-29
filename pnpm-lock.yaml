@@ -92,9 +92,6 @@ importers:
       eslint-config-sukka:
         specifier: workspace:*
         version: link:packages/eslint-config-sukka
-      eslint-define-config:
-        specifier: ^1.23.0
-        version: 1.23.0
       eslint-formatter-sukka:
         specifier: workspace:*
         version: link:packages/eslint-formatter-sukka
@@ -137,9 +134,6 @@ importers:
       ci-info:
         specifier: ^3.8.0
         version: 3.8.0
-      eslint-define-config:
-        specifier: ^1.23.0
-        version: 1.23.0
     devDependencies:
       '@eslint-sukka/legacy':
         specifier: workspace:*
@@ -237,9 +231,9 @@ importers:
 
   packages/legacy:
     dependencies:
-      eslint-plugin-sukka:
+      '@eslint-sukka/shared':
         specifier: workspace:*
-        version: link:../eslint-plugin-sukka
+        version: link:../shared
       globals:
         specifier: ^13.22.0
         version: 13.22.0
@@ -280,7 +274,11 @@ importers:
         specifier: ^13.22.0
         version: 13.22.0
 
-  packages/shared: {}
+  packages/shared:
+    dependencies:
+      '@types/eslint':
+        specifier: ^8.44.3
+        version: 8.44.3
 
   packages/ts:
     dependencies:
@@ -1223,11 +1221,9 @@ packages:
     dependencies:
       '@types/estree': 1.0.1
       '@types/json-schema': 7.0.13
-    dev: true
 
   /@types/estree@1.0.1:
     resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
-    dev: true
 
   /@types/json-schema@7.0.13:
     resolution: {integrity: sha512-RbSSoHliUbnXj3ny0CNFOoxrIDV6SUGyStHsvDqosw6CkdPV8TtWGlfecuK4ToyMEAql6pzNxgCFKanovUzlgQ==}
@@ -1902,10 +1898,6 @@ packages:
     dependencies:
       parse-gitignore: 2.0.0
     dev: true
-
-  /eslint-define-config@1.23.0:
-    resolution: {integrity: sha512-4mMyu0JuBkQHsCtR+42irIQdFLmLIW+pMAVcyOV/gZRL4O1R8iuH0eMG3oL3Cbi1eo9fDAfT5CIHVHgdyxcf6w==}
-    engines: {node: ^16.13.0 || >=18.0.0, npm: '>=7.0.0', pnpm: '>= 8.6.0'}
 
   /eslint-import-resolver-node@0.3.9:
     resolution: {integrity: sha512-WFj2isz22JahUv+B788TlO3N6zL3nNJGU8CcZbPZvVEkBPaJdCV4vy5wyghty5ROFbCRnm132v8BScu5/1BQ8g==}

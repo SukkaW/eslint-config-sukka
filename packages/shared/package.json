@@ -30,5 +30,7 @@
   "scripts": {
     "build": "rollup -c rollup.config.ts --configPlugin swc3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@types/eslint": "^8.44.3"
+  }
 }

@@ -1,5 +1,5 @@
 import { constants } from '@eslint-sukka/shared';
-import type { FlatESLintConfigItem } from 'eslint-define-config';
+import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 // @ts-expect-error -- no types
 import eslint_plugin_i from 'eslint-plugin-i';

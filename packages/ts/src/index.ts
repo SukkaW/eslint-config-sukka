@@ -9,7 +9,7 @@ import ts_eslint_parser from '@typescript-eslint/parser';
 // @ts-expect-error -- no types
 import eslint_plugin_i from 'eslint-plugin-i';
 
-import type { FlatESLintConfigItem } from 'eslint-define-config';
+import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 export interface OptionsTypeScript {
   tsconfigPath: string | string[],
@@ -44,7 +44,7 @@ export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] =
       //   'plugin:i/typescript'
       // ],
       languageOptions: {
-        parser: ts_eslint_parser,
+        parser: ts_eslint_parser as any,
         parserOptions: {
           sourceType: 'module',
           ecmaVersion: 'latest',

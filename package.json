@@ -34,7 +34,6 @@
     "bumpp": "^9.2.0",
     "eslint": "^8.50.0",
     "eslint-config-sukka": "workspace:*",
-    "eslint-define-config": "^1.23.0",
     "eslint-formatter-sukka": "workspace:*",
     "eslint-plugin-sukka": "workspace:*",
     "lodash-unified": "^1.0.3",

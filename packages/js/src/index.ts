@@ -13,7 +13,7 @@ import globals from 'globals';
 
 import { constants } from '@eslint-sukka/shared';
 
-import type { FlatESLintConfigItem, LanguageOptions } from 'eslint-define-config';
+import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 export interface OptionsJavaScript {
   /**
@@ -58,7 +58,7 @@ export interface OptionsJavaScript {
      *
      * @see [Configuring global variables](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#configuring-global-variables)
      */
-    customGlobals?: LanguageOptions['globals']
+    customGlobals?: { [name: string]: boolean | 'off' | 'readonly' | 'readable' | 'writable' | 'writeable' } | undefined
   }
 }
 

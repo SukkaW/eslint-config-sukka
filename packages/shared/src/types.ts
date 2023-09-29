@@ -1,3 +1,4 @@
-import type { FlatESLintConfigItem } from 'eslint-define-config';
+import type { Linter } from 'eslint';
 
+export type FlatESLintConfigItem = Linter.FlatConfig;
 export type SukkaESLintRuleConfig = Pick<FlatESLintConfigItem, 'plugins' | 'rules'>;

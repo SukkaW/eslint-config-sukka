@@ -1,4 +1,4 @@
-import type { FlatESLintConfigItem } from 'eslint-define-config';
+import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import globals from 'globals';
 import eslint_plugin_sukka from 'eslint-plugin-sukka';

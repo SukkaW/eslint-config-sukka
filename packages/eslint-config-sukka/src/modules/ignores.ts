@@ -1,5 +1,5 @@
 import { constants } from '@eslint-sukka/shared';
-import type { FlatESLintConfigItem } from 'eslint-define-config';
+import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 import eslint_config_flat_gitignore from 'eslint-config-flat-gitignore';
 
 export interface OptionsIgnores {
