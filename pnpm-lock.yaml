@@ -234,6 +234,9 @@ importers:
       '@eslint-sukka/shared':
         specifier: workspace:*
         version: link:../shared
+      eslint-plugin-sukka:
+        specifier: workspace:*
+        version: link:../eslint-plugin-sukka
       globals:
         specifier: ^13.22.0
         version: 13.22.0
