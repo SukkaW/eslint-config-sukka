@@ -1,4 +1,4 @@
-import { runTest } from '../../../tests/spec';
+import { runTest } from '../../../../../lib/eslint-plugin-tester';
 import module from './index';
 
 runTest({

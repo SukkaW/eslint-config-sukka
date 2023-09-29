@@ -2,7 +2,7 @@ import path from 'path';
 import { RuleTester } from '@typescript-eslint/utils/ts-eslint';
 import type { InvalidTestCase, ValidTestCase } from '@typescript-eslint/utils/ts-eslint';
 import { it } from 'vitest';
-import type { ExportedRuleModule } from '../src/utils/rule';
+import type { ExportedRuleModule } from './create-eslint-rule';
 
 const tester = new RuleTester({
   parser: require.resolve('@typescript-eslint/parser'),
@@ -32,8 +32,8 @@ export function runTest<TOptions extends readonly unknown[], TMessageIds extends
   const { module, valid, invalid } = options;
   it(module.name, () => {
     tester.run(module.name, module as any, {
-      valid: [...(valid?.(identifier) ?? [])].flat(),
-      invalid: [...(invalid?.(identifier) ?? [])].flat()
+      valid: Array.from(valid?.(identifier) ?? []).flat(),
+      invalid: Array.from(invalid?.(identifier) ?? []).flat()
     });
   });
 }

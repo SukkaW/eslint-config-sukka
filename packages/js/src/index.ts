@@ -76,7 +76,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
   const configs: FlatESLintConfigItem[] = [
     eslint_js.configs.recommended,
     {
-      ...(files ? files : {}),
+      ...(files ? { files } : {}),
       linterOptions: {
         reportUnusedDisableDirectives: true
       },

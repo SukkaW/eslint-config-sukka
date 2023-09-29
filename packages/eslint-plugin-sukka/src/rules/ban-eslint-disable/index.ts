@@ -1,4 +1,4 @@
-import { createRule } from '../../utils/rule';
+import { createRule } from '../../../../../lib/create-eslint-rule';
 
 type Options = boolean | 'allow-with-description';
 

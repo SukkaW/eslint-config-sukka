@@ -60,7 +60,7 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
       return b.errorCount - a.errorCount;
     })
     .forEach(result => {
-      const { messages, filePath } = result;
+      const { messages, filePath, usedDeprecatedRules } = result;
 
       if (messages.length === 0) return;
 
@@ -70,7 +70,7 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
       fixableWarningCount += result.fixableWarningCount;
       fixableErrorCount += result.fixableErrorCount;
 
-      result.usedDeprecatedRules.forEach(d => {
+      usedDeprecatedRules.forEach(d => {
         if (NON_DEPRECATED_RULES.has(d.ruleId)) return;
         deprecatedReplacedBy[d.ruleId] ||= d.replacedBy;
       });
@@ -105,10 +105,8 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
           return -1;
         })
         .forEach(x => {
-          let { message } = x;
-
           // Stylize inline code blocks
-          message = message.replaceAll(/\B`(.*?)`\B|\B'(.*?)'\B/g, (m, p1, p2) => picocolors.bold(p1 || p2));
+          const message = x.message.replaceAll(/\B`(.*?)`\B|\B'(.*?)'\B/g, (m, p1, p2) => picocolors.bold(p1 || p2));
 
           const line = String(x.line || 0);
           const column = String(x.column || 0);

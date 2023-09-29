@@ -47,15 +47,17 @@ import path from 'path';
       .reduce((acc, [baseRuleName, value]) => {
         if (TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.has(baseRuleName)) {
           const replacementRulename = TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.get(baseRuleName)!;
-          // @ts-expect-error -- no type overlap between eslint and typescript-eslint
-          acc.push([baseRuleName, 'off']);
-          // @ts-expect-error -- no type overlap between eslint and typescript-eslint
-          acc.push([`@typescript-eslint/${replacementRulename}`, value]);
+          acc.push(
+            // @ts-expect-error -- no type overlap between eslint and typescript-eslint
+            [baseRuleName, 'off'],
+            [`@typescript-eslint/${replacementRulename}`, value]
+          );
         } else if (STYLISTIC_JS_RULES_TO_BE_OVERRIDEN.has(baseRuleName)) {
-          // @ts-expect-error -- no type overlap between eslint and typescript-eslint
-          acc.push([baseRuleName, 'off']);
-          // @ts-expect-error -- no type overlap between eslint and typescript-eslint
-          acc.push([baseRuleName.replace('@stylistic/js/', '@stylistic/ts/'), value]);
+          acc.push(
+            // @ts-expect-error -- no type overlap between eslint and typescript-eslint
+            [baseRuleName, 'off'],
+            [baseRuleName.replace('@stylistic/js/', '@stylistic/ts/'), value]
+          );
         } else if (baseRuleName === 'camelcase') {
           // @ts-expect-error -- no type overlap between eslint and typescript-eslint
           acc.push([baseRuleName, 'off']);
