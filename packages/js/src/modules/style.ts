@@ -39,7 +39,6 @@ export const style: SukkaESLintRuleConfig = {
       ignoreDestructuring: false,
       ignoreImports: true,
       ignoreGlobals: true,
-      // @ts-expect-error -- the type is wrong here
       allow: ['^UNSAFE_', '^experimental_', '^__DEV__']
     }],
 
@@ -79,7 +78,7 @@ export const style: SukkaESLintRuleConfig = {
     'consistent-this': 'off',
 
     // enforce newline at the end of file, with no multiple empty lines
-    'eol-last': ['error', 'always'],
+    '@stylistic/js/eol-last': ['error', 'always'],
 
     // enforce spacing between functions and their invocations
     // https://eslint.org/docs/rules/func-call-spacing
@@ -153,7 +152,7 @@ export const style: SukkaESLintRuleConfig = {
 
     // disallow the omission of parentheses when invoking a constructor with no arguments
     // https://eslint.org/docs/rules/new-parens
-    'new-parens': 'error',
+    '@stylistic/js/new-parens': 'error',
 
     'no-array-constructor': 'error',
 
@@ -167,7 +166,7 @@ export const style: SukkaESLintRuleConfig = {
 
     // disallow un-paren'd mixes of different operators
     // https://eslint.org/docs/rules/no-mixed-operators
-    'no-mixed-operators': ['error', {
+    '@stylistic/js/no-mixed-operators': ['error', {
       groups: [
         ['**', '+'],
         ['**', '-'],
@@ -275,9 +274,9 @@ export const style: SukkaESLintRuleConfig = {
 
     // require quotes around object literal property names
     // https://eslint.org/docs/rules/quote-props.html
-    'quote-props': ['error', 'as-needed', { keywords: false, unnecessary: true, numbers: false }],
+    '@stylistic/js/quote-props': ['error', 'as-needed', { keywords: false, unnecessary: true, numbers: false }],
 
-    'jsx-quotes': ['error', 'prefer-double'],
+    '@stylistic/js/jsx-quotes': ['error', 'prefer-double'],
 
     // https://eslint.style/rules/js/rest-spread-spacing
     '@stylistic/js/rest-spread-spacing': ['error', 'never'],
@@ -351,7 +350,7 @@ export const style: SukkaESLintRuleConfig = {
     'unicode-bom': ['error', 'never'],
 
     // require regex literals to be wrapped in parentheses
-    'wrap-regex': 'off',
+    '@stylistic/js/wrap-regex': 'off',
 
     // https://eslint.style/rules/js/yield-star-spacing
     '@stylistic/js/yield-star-spacing': ['error', 'before']

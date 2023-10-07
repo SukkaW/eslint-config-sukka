@@ -2,10 +2,13 @@ import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
 
 // @ts-expect-error -- no types
 import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
+// @ts-expect-error -- missing -- eslint plugin
+import * as stylisticJs from '@stylistic/eslint-plugin-js';
 
 export const errors: SukkaESLintRuleConfig = {
   plugins: {
-    'unused-imports': eslint_plugin_unused_imports
+    'unused-imports': eslint_plugin_unused_imports,
+    '@stylistic/js': stylisticJs
   },
   rules: {
   // Disallow await inside of loops
@@ -26,7 +29,7 @@ export const errors: SukkaESLintRuleConfig = {
 
     // disallow unnecessary parentheses
     // https://eslint.org/docs/rules/no-extra-parens
-    'no-extra-parens': ['off', 'all', {
+    '@stylistic/js/no-extra-parens': ['off', 'all', {
       conditionalAssign: true,
       nestedBinaryExpressions: false,
       returnAssign: false,

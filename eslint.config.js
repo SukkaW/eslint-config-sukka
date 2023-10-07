@@ -26,7 +26,7 @@ module.exports = sukka(
       '@stylistic/migrate': require('@stylistic/eslint-plugin-migrate')
     },
     rules: {
-      '@stylistic/migrate/rules': 'error',
+      '@stylistic/migrate/migrate': 'error',
       camelcase: 'off',
       '@typescript-eslint/naming-convention': 'off'
     }

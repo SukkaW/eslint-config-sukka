@@ -286,7 +286,7 @@ export const best_practices: SukkaESLintRuleConfig = {
 
     // require immediate function invocation to be wrapped in parentheses
     // https://eslint.org/docs/rules/wrap-iife.html
-    'wrap-iife': ['error', 'outside', { functionPrototypeMethods: false }],
+    '@stylistic/js/wrap-iife': ['error', 'outside', { functionPrototypeMethods: false }],
 
     // require or disallow Yoda conditions
     yoda: 'error'

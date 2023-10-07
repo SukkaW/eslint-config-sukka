@@ -21,7 +21,7 @@ export const es6: SukkaESLintRuleConfig = {
 
     // disallow arrow functions where they could be confused with comparisons
     // https://eslint.org/docs/rules/no-confusing-arrow
-    'no-confusing-arrow': ['error', { allowParens: true }],
+    '@stylistic/js/no-confusing-arrow': ['error', { allowParens: true }],
 
     // disallow importing from the same path more than once
     // https://eslint.org/docs/rules/no-duplicate-imports
