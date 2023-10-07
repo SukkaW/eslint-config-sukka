@@ -214,9 +214,6 @@ importers:
       '@stylistic/eslint-plugin-js':
         specifier: 0.0.6
         version: 0.0.6(eslint@8.51.0)
-      eslint-plugin-antfu:
-        specifier: 1.0.0-beta.10
-        version: 1.0.0-beta.10(eslint@8.51.0)(typescript@5.2.2)
       eslint-plugin-i:
         specifier: ^2.28.1
         version: 2.28.1(@typescript-eslint/parser@6.7.4)(eslint-import-resolver-typescript@3.6.1)(eslint@8.51.0)

@@ -89,6 +89,7 @@ import require_number_to_fixed_digits_argument from 'eslint-plugin-unicorn/rules
 
 // eslint-plugin-sukka
 import ban_eslint_disable from './rules/ban-eslint-disable';
+import import_dedupe from './rules/import-dedupe';
 
 export default {
   rules: {
@@ -107,6 +108,7 @@ export default {
     'prefer-early-return': prefer_early_return,
     'prefer-fetch': prefer_fetch,
     'prefer-timer-id': prefer_timer_id,
+    'import-dedupe': import_dedupe,
 
     // eslint-plugin-unicorn
     'unicorn/better-regex': loadUnicorn(better_regex, 'unicorn/better-regex'),

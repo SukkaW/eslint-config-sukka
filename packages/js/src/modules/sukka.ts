@@ -1,12 +1,9 @@
 import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
 import eslint_plugin_sukka from 'eslint-plugin-sukka';
-// @ts-expect-error -- no types
-import eslint_plugin_antfu from 'eslint-plugin-antfu';
 
 export const sukka: SukkaESLintRuleConfig = {
   plugins: {
-    sukka: eslint_plugin_sukka,
-    antfu: eslint_plugin_antfu
+    sukka: eslint_plugin_sukka
   },
   rules: {
     'sukka/array/no-unneeded-flat-map': 'error',
@@ -98,7 +95,6 @@ export const sukka: SukkaESLintRuleConfig = {
     'sukka/unicorn/prefer-set-has': 'error', // Set#has is way faster
     'sukka/unicorn/prefer-switch': 'warn', // Array.from(foo)
     'sukka/unicorn/require-number-to-fixed-digits-argument': 'warn', // 1.toFixed(2)
-
-    'antfu/import-dedupe': 'error'
+    'sukka/import-dedupe': 'error' // ban import { a, b, a, a, c, a } from 'sukka'
   }
 };
