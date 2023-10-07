@@ -31,7 +31,7 @@
     "build": "rollup -c rollup.config.ts --configPlugin swc3"
   },
   "dependencies": {
-    "ci-info": "^3.8.0",
+    "ci-info": "^3.9.0",
     "picocolors": "^1.0.0"
   },
   "devDependencies": {

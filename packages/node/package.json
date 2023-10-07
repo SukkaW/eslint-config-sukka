@@ -34,6 +34,6 @@
     "@eslint-sukka/shared": "workspace:*",
     "eslint-plugin-n": "^16.1.0",
     "eslint-plugin-sukka": "workspace:*",
-    "globals": "^13.22.0"
+    "globals": "^13.23.0"
   }
 }

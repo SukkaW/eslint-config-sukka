@@ -27,11 +27,11 @@
     "build": "rollup -c rollup.config.ts --configPlugin swc3"
   },
   "dependencies": {
-    "@typescript-eslint/type-utils": "^6.7.3",
-    "@typescript-eslint/utils": "^6.7.3"
+    "@typescript-eslint/type-utils": "^6.7.4",
+    "@typescript-eslint/utils": "^6.7.4"
   },
   "devDependencies": {
     "@masknet/eslint-plugin": "^0.2.0",
-    "@types/node": "^20.6.2"
+    "@types/node": "^20.8.3"
   }
 }

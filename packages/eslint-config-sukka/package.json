@@ -33,7 +33,7 @@
   "dependencies": {
     "@eslint-sukka/js": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
-    "ci-info": "^3.8.0"
+    "ci-info": "^3.9.0"
   },
   "devDependencies": {
     "@eslint-sukka/legacy": "workspace:*",
@@ -41,6 +41,6 @@
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/ts": "workspace:*",
     "eslint-config-flat-gitignore": "^0.1.0",
-    "local-pkg": "^0.4.3"
+    "local-pkg": "^0.5.0"
   }
 }
