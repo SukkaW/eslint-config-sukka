@@ -55,6 +55,7 @@ export const typescript: SukkaESLintRuleConfig = {
     '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true, allowAny: true, allowBoolean: true }],
     '@typescript-eslint/unbound-method': 'error',
     '@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports', disallowTypeAnnotations: false, fixStyle: 'separate-type-imports' }],
+    '@typescript-eslint/no-import-type-side-effects': 'warn',
     '@typescript-eslint/consistent-type-exports': ['warn', { fixMixedExportsWithInlineTypeSpecifier: true }],
     '@typescript-eslint/consistent-type-definitions': 'warn',
     '@typescript-eslint/prefer-ts-expect-error': 'warn',
