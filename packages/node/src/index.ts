@@ -1,6 +1,6 @@
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
-import { getPackageJson } from '@eslint-sukka/shared';
+import { RESTRICTED_IMPORT_NODE_REQUIRE, getPackageJson } from '@eslint-sukka/shared';
 
 import eslint_plugin_sukka from 'eslint-plugin-sukka';
 // @ts-expect-error -- no types
@@ -72,6 +72,8 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
         // replaced by i/no-extraneous-dependencies
         'n/no-extraneous-import': 'off',
         'n/no-extraneous-require': 'off',
+
+        'n/no-restricted-require': ['error', RESTRICTED_IMPORT_NODE_REQUIRE],
 
         // prefer JSON.parse from buffer with fs
         'sukka/unicorn/prefer-json-parse-buffer': 'error'

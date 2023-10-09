@@ -94,6 +94,7 @@ export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] =
         ...eslint_plugin_i.configs.typescript.rules,
 
         ...generated_overrides.rules,
+
         ...typescriptConfig.rules,
         ...sukka_typeScript.rules,
 

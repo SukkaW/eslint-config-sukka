@@ -125,6 +125,31 @@ export const generated_overrides: SukkaESLintRuleConfig = {
       "error",
       "always"
     ],
+    "@stylistic/js/padding-line-between-statements": "off",
+    "@stylistic/ts/padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": "directive",
+        "next": "*"
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": [
+          "class",
+          "with"
+        ]
+      },
+      {
+        "blankLine": "always",
+        "prev": [
+          "class",
+          "with"
+        ],
+        "next": "*"
+      }
+    ],
     "@stylistic/js/quotes": "off",
     "@stylistic/ts/quotes": [
       "error",
@@ -156,6 +181,7 @@ export const generated_overrides: SukkaESLintRuleConfig = {
         "classes": true,
         "variables": true
       }
-    ]
+    ],
+    "no-restricted-imports": "off"
   }
 };

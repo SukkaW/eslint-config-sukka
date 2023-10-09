@@ -45,7 +45,13 @@ import path from 'path';
         return true;
       })
       .reduce((acc, [baseRuleName, value]) => {
-        if (TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.has(baseRuleName)) {
+        if (baseRuleName === 'camelcase' || baseRuleName === 'no-restricted-imports') {
+          // disable camelcase directly, use custom @typescript-eslint/naming-convention instead
+          // disable no-restricted-imports directly, use @typescript-eslint/no-restricted-imports instead
+
+          // @ts-expect-error -- no type overlap between eslint and typescript-eslint
+          acc.push([baseRuleName, 'off']);
+        } else if (TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.has(baseRuleName)) {
           const replacementRulename = TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.get(baseRuleName)!;
           acc.push(
             // @ts-expect-error -- no type overlap between eslint and typescript-eslint
@@ -58,9 +64,6 @@ import path from 'path';
             [baseRuleName, 'off'],
             [baseRuleName.replace('@stylistic/js/', '@stylistic/ts/'), value]
           );
-        } else if (baseRuleName === 'camelcase') {
-          // @ts-expect-error -- no type overlap between eslint and typescript-eslint
-          acc.push([baseRuleName, 'off']);
         }
         return acc;
       }, [])

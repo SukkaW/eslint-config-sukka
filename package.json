@@ -5,6 +5,7 @@
   "description": "",
   "scripts": {
     "build": "turbo build",
+    "codegen": "turbo codegen",
     "lint": "eslint --format=sukka .",
     "release": "bumpp -r --all --commit=\"release: %s\" --tag=\"%s\""
   },
