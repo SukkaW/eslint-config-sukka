@@ -4,6 +4,31 @@ import ts_eslint_plugin from '@typescript-eslint/eslint-plugin';
 // @ts-expect-error -- no types
 import stylisticTs from '@stylistic/eslint-plugin-ts';
 
+const BETTER_ALTERNATIVES = Object.entries({
+  ahooks: 'https://foxact.skk.moe and https://swr.vercel.app',
+  classnames: 'https://www.npmjs.com/package/clsx',
+  'deep-equal': 'https://www.npmjs.com/package/dequal',
+  'fast-deep-equal': 'https://www.npmjs.com/package/dequal',
+  chalk: 'https://www.npmjs.com/package/picocolors',
+  kleur: 'https://www.npmjs.com/package/picocolors',
+  'mime-db': 'https://www.npmjs.com/package/mrmime',
+  'mime-types': 'https://www.npmjs.com/package/mrmime',
+  'node-fetch': 'https://www.npmjs.com/package/undici',
+  mkdirp: 'Node.js built-in fs.mkdir API',
+  'make-dir': 'Node.js built-in fs.mkdir API',
+  'mk-dirs': 'Node.js built-in fs.mkdir API',
+  'tiny-lru': 'https://www.npmjs.com/package/flru',
+  'lru-cache': 'https://www.npmjs.com/package/flru',
+  'tmp-cache': 'https://www.npmjs.com/package/flru',
+  premove: 'Node.js built-in fs.rmdir & fs.rm API',
+  ms: 'https://www.npmjs.com/package/@lukeed/ms',
+  'clone-deep': 'https://www.npmjs.com/package/rfdc for Node.js / https://www.npmjs.com/package/klona for Browser',
+  'deep-copy': 'https://www.npmjs.com/package/rfdc for Node.js / https://www.npmjs.com/package/klona for Browser',
+  'fast-copy': 'https://www.npmjs.com/package/rfdc for Node.js / https://www.npmjs.com/package/klona for Browser',
+  'lodash.clonedeep': 'https://www.npmjs.com/package/rfdc for Node.js / https://www.npmjs.com/package/klona for Browser',
+  clone: 'https://www.npmjs.com/package/rfdc for Node.js / https://www.npmjs.com/package/klona for Browser'
+}).map(([key, value]) => ({ name: key, message: `Use ${value} instead.` }));
+
 export const typescript: SukkaESLintRuleConfig = {
   plugins: {
     '@stylistic/ts': stylisticTs,
@@ -102,7 +127,12 @@ export const typescript: SukkaESLintRuleConfig = {
           { name: 'date-fns/esm', message: 'Please use date-fns/{submodule} instead.' },
           { name: 'idb/with-async-ittr-cjs', message: 'Please use idb/with-async-ittr instead.' },
           { name: 'async-call-rpc', message: 'Please use async-call-rpc/full instead.', allowTypeImports: true },
-          { name: 'lodash-es', message: 'Avoid using type unsafe methods.', importNames: ['get'] }
+          { name: 'lodash-es', message: 'Avoid using type unsafe methods.', importNames: ['get'] },
+          { name: 'lodash-es', message: 'Use https://www.npmjs.com/package/rfdc for Node.js / https://www.npmjs.com/package/klona for Browser instead', importNames: ['cloneDeep'] },
+          { name: 'react-fast-compare', message: 'What\'s faster than a really fast deep comparison? No deep comparison at all.' },
+          { name: 'uuid', importNames: ['v4'], message: 'Use https://www.npmjs.com/package/@lukeed/uuid instead' },
+          // Always prefer lightweight/better alternatives
+          ...BETTER_ALTERNATIVES
         ]
       }
     ],
@@ -113,7 +143,7 @@ export const typescript: SukkaESLintRuleConfig = {
       'error',
       {
         types: {
-        // {} is widely used with "& {}" approach
+          // {} is widely used with "& {}" approach
           '{}': false,
           FC: {
             message: 'To declare a component, you don\'t have to use FC to annotate it. To type something that accepts/is a React Component, use ComponentType<T>.',
