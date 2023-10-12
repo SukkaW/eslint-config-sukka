@@ -16,6 +16,11 @@
         "^codegen",
         "^build"
       ]
+    },
+    "@eslint-sukka/ts#codegen": {
+      "dependsOn": [
+        "@eslint-sukka/js#build"
+      ]
     }
   }
 }
