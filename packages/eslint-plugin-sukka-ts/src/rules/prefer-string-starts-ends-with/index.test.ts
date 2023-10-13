@@ -260,6 +260,21 @@ runTest({
       (s)[0] === ("a")
     }
     `;
+    yield `
+      function f(s: string) {
+        s.slice(0, length) === needle // the 'length' can be different to 'needle.length'
+      }
+    `;
+    yield `
+      function f(s: string) {
+        s.slice(-length) === needle // 'length' can be different
+      }
+    `;
+    yield `
+      function f(s: string) {
+        s.slice(0, 3) === needle
+      }
+    `;
   },
   *invalid() {
     yield {
@@ -771,15 +786,6 @@ runTest({
     yield {
       code: `
         function f(s: string) {
-          s.slice(0, length) === needle // the 'length' can be different to 'needle.length'
-        }
-      `,
-      output: null,
-      errors: [{ messageId: 'preferStartsWith' }]
-    };
-    yield {
-      code: `
-        function f(s: string) {
           s.slice(0, needle.length) == needle // hating implicit type conversion
         }
       `,
@@ -836,15 +842,6 @@ runTest({
           s.endsWith(needle)
         }
       `,
-      errors: [{ messageId: 'preferEndsWith' }]
-    };
-    yield {
-      code: `
-        function f(s: string) {
-          s.slice(-length) === needle // 'length' can be different
-        }
-      `,
-      output: null,
       errors: [{ messageId: 'preferEndsWith' }]
     };
     yield {
