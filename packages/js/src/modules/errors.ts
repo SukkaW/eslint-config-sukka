@@ -2,8 +2,7 @@ import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
 
 // @ts-expect-error -- no types
 import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
-// @ts-expect-error -- missing -- eslint plugin
-import * as stylisticJs from '@stylistic/eslint-plugin-js';
+import stylisticJs from '@stylistic/eslint-plugin-js';
 
 export const errors: SukkaESLintRuleConfig = {
   plugins: {

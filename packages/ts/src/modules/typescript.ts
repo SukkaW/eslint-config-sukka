@@ -2,7 +2,6 @@ import { RESTRICTED_IMPORT_TS } from '@eslint-sukka/shared';
 import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
 
 import ts_eslint_plugin from '@typescript-eslint/eslint-plugin';
-// @ts-expect-error -- no types
 import stylisticTs from '@stylistic/eslint-plugin-ts';
 
 export const typescript: SukkaESLintRuleConfig = {

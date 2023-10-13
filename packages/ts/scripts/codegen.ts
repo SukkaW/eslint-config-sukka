@@ -1,9 +1,7 @@
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED__ } from '@eslint-sukka/js';
 
 import ts_eslint_plugin from '@typescript-eslint/eslint-plugin';
-// @ts-expect-error -- no types
 import stylistic_eslint_plugin_js from '@stylistic/eslint-plugin-js';
-// @ts-expect-error -- no types
 import stylistic_eslint_plugin_ts from '@stylistic/eslint-plugin-ts';
 
 import fs from 'fs';
