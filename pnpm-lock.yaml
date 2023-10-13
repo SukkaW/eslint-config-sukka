@@ -267,6 +267,10 @@ importers:
       globals:
         specifier: ^13.23.0
         version: 13.23.0
+    devDependencies:
+      '@stylistic/eslint-plugin-jsx':
+        specifier: ^0.0.10
+        version: 0.0.10(eslint@8.51.0)
 
   packages/shared:
     dependencies:
@@ -815,7 +819,6 @@ packages:
     engines: {node: '>=12.4.0'}
     dependencies:
       '@nolyfill/shared': 1.0.21
-    dev: false
 
   /@nolyfill/array.prototype.findlastindex@1.0.21:
     resolution: {integrity: sha512-chPKEkDdglpJjaP8WhZSlittmV+XsHFv0CmhQVWnif3mJvpxK4/oFwrszkwP4+jXyR9njKeaUIrLKuuTsL7yjw==}
@@ -829,7 +832,6 @@ packages:
     engines: {node: '>=12.4.0'}
     dependencies:
       '@nolyfill/shared': 1.0.21
-    dev: false
 
   /@nolyfill/array.prototype.flatmap@1.0.21:
     resolution: {integrity: sha512-VWUiJBWk4qDgktkeQRzrtYlQdBRnEU3vfjoQxcBmdn3vSnq7ujKCBox4cdpZe9LZK9FU9Y1L4UteyW5THat2CQ==}
@@ -863,7 +865,6 @@ packages:
     engines: {node: '>=12.4.0'}
     dependencies:
       '@nolyfill/shared': 1.0.21
-    dev: false
 
   /@nolyfill/object.entries@1.0.21:
     resolution: {integrity: sha512-5RKcuhKMp2cBT3I4iwI1DCX54CkxiNlHrtPFZMRpHewGFIUyVnNsC0AL4JimgppWDbBSl0oVHY1GX7XsvvHIiw==}
@@ -898,7 +899,6 @@ packages:
     engines: {node: '>=12.4.0'}
     dependencies:
       '@nolyfill/shared': 1.0.21
-    dev: false
 
   /@nolyfill/shared@1.0.21:
     resolution: {integrity: sha512-qDc/NoaFU23E0hhiDPeUrvWzTXIPE+RbvRQtRWSeHHNmCIgYI9HS1jKzNYNJxv4jvZ/1VmM3L6rNVxbj+LBMNA==}
@@ -1114,6 +1114,16 @@ packages:
       graphemer: 1.4.0
     transitivePeerDependencies:
       - eslint
+
+  /@stylistic/eslint-plugin-jsx@0.0.10(eslint@8.51.0):
+    resolution: {integrity: sha512-MBJpaML+Mwsh5iT0MMCUnEFY4jScomc4bB5R/3FzozCPYog2ssEfzg9KygFGEzZg8NcrnykbgNhHQYvtaRXhwA==}
+    dependencies:
+      '@stylistic/eslint-plugin-js': 0.0.10(eslint@8.51.0)
+      estraverse: 5.3.0
+      jsx-ast-utils: 3.3.5
+    transitivePeerDependencies:
+      - eslint
+    dev: true
 
   /@stylistic/eslint-plugin-migrate@0.0.10(eslint@8.51.0)(typescript@5.2.2):
     resolution: {integrity: sha512-7zPB41yrQekzWMBcCQUdLi9u4N4zbmBE+1g0A/GC5HkxMyDpOYIP0sFv+mzUb+V8bqx2wWaFcPIIXIYIyUQJgg==}
@@ -2730,7 +2740,6 @@ packages:
       array.prototype.flat: /@nolyfill/array.prototype.flat@1.0.21
       object.assign: /@nolyfill/object.assign@1.0.21
       object.values: /@nolyfill/object.values@1.0.21
-    dev: false
 
   /keyv@4.5.3:
     resolution: {integrity: sha512-QCiSav9WaX1PgETJ+SpNnx2PRRapJ/oRSXM4VO5OGYGSjrxbKPVFVhB3l2OCbLCk329N8qyAtsJjSjvVBWzEug==}

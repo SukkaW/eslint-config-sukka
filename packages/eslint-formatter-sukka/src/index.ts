@@ -72,6 +72,7 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
 
       usedDeprecatedRules.forEach(d => {
         if (NON_DEPRECATED_RULES.has(d.ruleId)) return;
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- strictNullChecks
         deprecatedReplacedBy[d.ruleId] ||= d.replacedBy;
       });
 

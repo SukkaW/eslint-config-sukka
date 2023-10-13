@@ -37,5 +37,8 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "globals": "^13.23.0"
+  },
+  "devDependencies": {
+    "@stylistic/eslint-plugin-jsx": "^0.0.10"
   }
 }

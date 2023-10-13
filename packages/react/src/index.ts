@@ -10,6 +10,8 @@ import eslint_plugin_jsx_a11y from 'eslint-plugin-jsx-a11y';
 // @ts-expect-error -- no types
 import eslint_plugin_react_hooks from 'eslint-plugin-react-hooks';
 
+import stylisticJsx from '@stylistic/eslint-plugin-jsx';
+
 import globals from 'globals';
 
 export interface OptionsReact {
@@ -34,7 +36,8 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
         import: eslint_plugin_i, // legacy
         react: eslint_plugin_react,
         'jsx-a11y': eslint_plugin_jsx_a11y,
-        'react-hooks': eslint_plugin_react_hooks
+        'react-hooks': eslint_plugin_react_hooks,
+        '@stylistic/jsx': stylisticJsx
       },
       settings: {
         'import/extensions': allExtensions,
@@ -82,7 +85,7 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
         'react/jsx-boolean-value': ['error', 'never', { always: [] }],
         // Enforce or disallow spaces inside of curly braces in JSX attributes
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-curly-spacing.md
-        'react/jsx-curly-spacing': ['error', 'never', { allowMultiline: true }],
+        '@stylistic/jsx/jsx-curly-spacing': ['error', 'never', { allowMultiline: true }],
         // Enforce event handler naming conventions in JSX
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md
         'react/jsx-handler-names': ['off', {
@@ -91,10 +94,10 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
         }],
         // Validate props indentation in JSX
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-indent-props.md
-        'react/jsx-indent-props': ['error', 2],
+        '@stylistic/jsx/jsx-indent-props': ['error', 2],
         // Limit maximum of props on a single line in JSX
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-max-props-per-line.md
-        'react/jsx-max-props-per-line': ['error', { maximum: 1, when: 'multiline' }],
+        '@stylistic/jsx/jsx-max-props-per-line': ['error', { maximum: 1, when: 'multiline' }],
         // Prevent usage of .bind() in JSX props
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
         'react/jsx-no-bind': ['error', {
@@ -172,7 +175,7 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
         }],
         // Prevent missing parentheses around multilines JSX
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/jsx-wrap-multilines.md
-        'react/jsx-wrap-multilines': ['error', {
+        '@stylistic/jsx/jsx-wrap-multilines': ['error', {
           declaration: 'parens-new-line',
           assignment: 'parens-new-line',
           return: 'parens-new-line',
@@ -183,19 +186,19 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
         }],
         // Require that the first prop in a JSX element be on a new line when the element is multiline
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-first-prop-new-line.md
-        'react/jsx-first-prop-new-line': ['error', 'multiline-multiprop'],
+        '@stylistic/jsx/jsx-first-prop-new-line': ['error', 'multiline-multiprop'],
         // Enforce spacing around jsx equals signs
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-equals-spacing.md
-        'react/jsx-equals-spacing': ['error', 'never'],
+        '@stylistic/jsx/jsx-equals-spacing': ['error', 'never'],
         // Enforce JSX indentation
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md
-        'react/jsx-indent': ['error', 2],
+        '@stylistic/jsx/jsx-indent': ['error', 2],
         // Require style prop value be an object or var
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/style-prop-object.md
-        'react/style-prop-object': 'error',
+        '@stylistic/jsx/style-prop-object': 'error',
         // Validate whitespace in and around the JSX opening and closing brackets
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/jsx-tag-spacing.md
-        'react/jsx-tag-spacing': ['error', {
+        '@stylistic/jsx/jsx-tag-spacing': ['error', {
           closingSlash: 'never',
           beforeSelfClosing: 'always',
           afterOpening: 'never',
@@ -212,7 +215,7 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
         'react/no-unused-state': 'error',
         // Enforce curly braces or disallow unnecessary curly braces in JSX props and/or children
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md
-        'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }],
+        '@stylistic/jsx/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }],
         // Prevent using this.state within a this.setState
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/no-access-state-in-setstate.md
         'react/no-access-state-in-setstate': 'error',
@@ -221,13 +224,13 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
         'react/no-this-in-sfc': 'error',
         // Disallow multiple spaces between inline JSX props
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/ac102885765be5ff37847a871f239c6703e1c7cc/docs/rules/jsx-props-no-multi-spaces.md
-        'react/jsx-props-no-multi-spaces': 'error',
+        '@stylistic/jsx/jsx-props-no-multi-spaces': 'error',
         // Enforce shorthand or standard form for React fragments
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/bc976b837abeab1dffd90ac6168b746a83fc83cc/docs/rules/jsx-fragments.md
         'react/jsx-fragments': ['error', 'syntax'],
         // Enforce linebreaks in curly braces in JSX attributes and expressions.
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-curly-newline.md
-        'react/jsx-curly-newline': ['error', {
+        '@stylistic/jsx/jsx-curly-newline': ['error', {
           multiline: 'consistent',
           singleline: 'consistent'
         }],
