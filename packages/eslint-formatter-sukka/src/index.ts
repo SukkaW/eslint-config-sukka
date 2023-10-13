@@ -165,7 +165,7 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
 
       const line = [
         '',
-        x.severity === 'warning' ? picocolors.yellow('!') : picocolors.red('X'),
+        x.severity === 'warning' ? picocolors.yellow('warn ') : picocolors.red('error'),
         ' '.repeat(maxLineWidth - x.lineWidth) + picocolors.dim(x.line + picocolors.gray(':') + x.column),
         ' '.repeat(maxColumnWidth - x.columnWidth) + x.message,
         ' '.repeat(maxMessageWidth - x.messageWidth)

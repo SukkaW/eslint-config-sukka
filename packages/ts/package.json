@@ -33,7 +33,6 @@
   },
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",
-    "@stylistic/eslint-plugin-ts": "0.0.10",
     "@typescript-eslint/eslint-plugin": "^6.7.5",
     "@typescript-eslint/parser": "^6.7.5",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -44,6 +43,7 @@
   "devDependencies": {
     "@eslint-sukka/js": "workspace:*",
     "@eslint/js": "^8.51.0",
-    "@stylistic/eslint-plugin-js": "^0.0.10"
+    "@stylistic/eslint-plugin-js": "^0.0.11",
+    "@stylistic/eslint-plugin-ts": "0.0.11"
   }
 }

@@ -39,6 +39,6 @@
     "globals": "^13.23.0"
   },
   "devDependencies": {
-    "@stylistic/eslint-plugin-jsx": "^0.0.10"
+    "@stylistic/eslint-plugin-jsx": "^0.0.11"
   }
 }
