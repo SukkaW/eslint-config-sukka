@@ -72,7 +72,7 @@ export const sukka: SukkaESLintRuleConfig = {
     'sukka/unicorn/no-unreadable-array-destructuring': 'error', // [,,,,, bar] = arr;
     'sukka/unicorn/no-useless-spread': 'warn', // const foo = undefined;
     'sukka/unicorn/no-useless-switch-case': 'warn', // switch (foo) { case 1: default: return 2; }
-    'sukka/unicorn/no-useless-undefined': 'warn', // let foo = undefined;
+    'sukka/unicorn/no-useless-undefined': ['error', { checkArguments: false }], // let foo = undefined;
     'sukka/unicorn/numeric-separators-style': [
       'warn',
       {

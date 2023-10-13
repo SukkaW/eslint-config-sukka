@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",
-    "eslint-plugin-n": "^16.1.0",
+    "eslint-plugin-n": "^16.2.0",
     "eslint-plugin-sukka": "workspace:*",
     "globals": "^13.23.0"
   }

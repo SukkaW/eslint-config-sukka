@@ -2,7 +2,6 @@ import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
 
 import eslint_plugin_sukka_ts from 'eslint-plugin-sukka-ts';
 import ts_eslint_plugin from '@typescript-eslint/eslint-plugin';
-// @ts-expect-error -- no types
 import eslint_plugin_antfu from 'eslint-plugin-antfu';
 
 export const sukka_typeScript: SukkaESLintRuleConfig = {
