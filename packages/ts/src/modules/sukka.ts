@@ -23,9 +23,9 @@ export const sukka_typeScript: SukkaESLintRuleConfig = {
     'sukka-ts/type/no-force-cast-via-top-type': 'error',
     'sukka-ts/type/no-wrapper-type-reference': 'error',
     'sukka-ts/no-default-error': 'off', // disable since this is way too slow
+    'sukka-ts/no-const-enum': 'error', // not tree-shakable by swc/babel/esbuild
 
     'antfu/generic-spacing': 'error',
-    'antfu/named-tuple-spacing': 'error',
-    'antfu/no-const-enum': 'error' // not tree-shakable by swc/babel/esbuild
+    'antfu/named-tuple-spacing': 'error'
   }
 };

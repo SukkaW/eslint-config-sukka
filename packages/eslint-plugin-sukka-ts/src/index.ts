@@ -1,4 +1,5 @@
 import prefer_string_starts_ends_with from './rules/prefer-string-starts-ends-with';
+import no_const_enum from './rules/no-const-enum';
 
 // @masknet/eslint-plugin
 import string$no_unneeded_to_string from '@masknet/eslint-plugin/rules/string/no-unneeded-to-string.js';
@@ -14,6 +15,7 @@ export default {
     // If you have a good reason to do this, please ignore this error and provide a comment about why this is type safe.
     'type/no-force-cast-via-top-type': type$no_force_cast_via_top_type,
     'type/no-wrapper-type-reference': type$no_wrapper_type_reference,
-    'no-default-error': no_default_error
+    'no-default-error': no_default_error,
+    'no-const-enum': no_const_enum
   }
 };
