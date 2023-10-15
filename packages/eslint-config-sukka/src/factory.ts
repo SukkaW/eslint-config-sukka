@@ -56,22 +56,15 @@ export const sukka = async (options?: ESLineSukkaOptions, ...userConfig: FlatESL
     }));
   }
   // typescript
-  if (options?.ts) {
-    if (typeof options.ts === 'boolean') {
-      throw new TypeError('You must provide `tsconfigPath` settings for @eslint-sukka/ts');
-    } else if (options.ts.enable ?? isPackageExists('typescript')) {
-      if (!options.ts.tsconfigPath) {
-        throw new TypeError('You must provide `tsconfigPath` settings for @eslint-sukka/ts');
-      }
-      flatConfigs.push((await foxquire<typeof import('@eslint-sukka/ts')>('@eslint-sukka/ts')).typescript(options.ts));
-    }
+  if (enabled(options?.ts, isPackageExists('typescript'))) {
+    flatConfigs.push((await foxquire<typeof import('@eslint-sukka/ts')>('@eslint-sukka/ts')).typescript(config(options?.ts)));
   }
   // react
-  if (enabled(options?.react)) {
+  if (enabled(options?.react, isPackageExists('react') || isPackageExists('next'))) {
     flatConfigs.push((await foxquire<typeof import('@eslint-sukka/react')>('@eslint-sukka/react')).react(config(options?.react)));
   }
   // node
-  if (enabled(options?.node)) {
+  if (enabled(options?.node, isPackageExists('@types/node'))) {
     flatConfigs.push((await foxquire<typeof import('@eslint-sukka/node')>('@eslint-sukka/node')).node(config(options?.node)));
   }
   // legacy

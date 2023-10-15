@@ -21,7 +21,7 @@ const typeScriptExtensions = ['.ts', '.cts', '.mts', '.tsx', '.d.ts'];
 const javaScriptExtensions = ['.js', '.jsx', '.mjs', '.cjs'];
 const allExtensions = [...typeScriptExtensions, ...javaScriptExtensions];
 
-export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] => {
+export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigItem[] => {
   const { tsconfigPath = true, tsconfigRootDir = process.cwd(), componentExtentions = [] } = options;
 
   return [
