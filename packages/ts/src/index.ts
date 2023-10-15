@@ -12,7 +12,7 @@ import eslint_plugin_i from 'eslint-plugin-i';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 export interface OptionsTypeScript {
-  tsconfigPath: string | string[],
+  tsconfigPath?: string | string[] | true,
   tsconfigRootDir?: string,
   componentExtentions?: string[]
 }
@@ -22,7 +22,7 @@ const javaScriptExtensions = ['.js', '.jsx', '.mjs', '.cjs'];
 const allExtensions = [...typeScriptExtensions, ...javaScriptExtensions];
 
 export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] => {
-  const { tsconfigPath, tsconfigRootDir = process.cwd(), componentExtentions = [] } = options;
+  const { tsconfigPath = true, tsconfigRootDir = process.cwd(), componentExtentions = [] } = options;
 
   return [
     {
@@ -109,8 +109,8 @@ export const typescript = (options: OptionsTypeScript): FlatESLintConfigItem[] =
         import: eslint_plugin_i // legacy
       },
       rules: {
-        'import/no-duplicates': 'off'
-        // 'unused-imports/no-unused-vars': 'off'
+        'import/no-duplicates': 'off',
+        'unused-imports/no-unused-vars': 'off'
       }
     },
     {
