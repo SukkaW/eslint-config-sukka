@@ -43,6 +43,7 @@
   },
   "devDependencies": {
     "@eslint-sukka/js": "workspace:*",
+    "@eslint-sukka/rollup-config": "workspace:*",
     "@eslint/js": "^8.51.0",
     "@stylistic/eslint-plugin-js": "^0.0.11"
   }

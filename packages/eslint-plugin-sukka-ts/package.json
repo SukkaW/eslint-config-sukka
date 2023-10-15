@@ -31,6 +31,7 @@
     "@typescript-eslint/utils": "^6.7.5"
   },
   "devDependencies": {
+    "@eslint-sukka/rollup-config": "workspace:*",
     "@masknet/eslint-plugin": "^0.2.0"
   }
 }

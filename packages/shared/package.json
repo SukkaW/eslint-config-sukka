@@ -32,5 +32,8 @@
   },
   "dependencies": {
     "@types/eslint": "^8.44.4"
+  },
+  "devDependencies": {
+    "@eslint-sukka/rollup-config": "workspace:*"
   }
 }

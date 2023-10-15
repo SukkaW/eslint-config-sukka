@@ -1,13 +1,14 @@
 {
-  "name": "eslint-formatter-sukka",
+  "name": "@eslint-sukka/rollup-config",
   "version": "4.0.6",
+  "private": true,
   "description": "Sukka's ESLint config",
   "author": "Sukka <https://skk.moe>",
   "license": "MIT",
   "homepage": "https://github.com/SukkaW/eslint-config-sukka",
   "repository": {
     "url": "https://github.com/SukkaW/eslint-config-sukka",
-    "directory": "packages/formatter-sukka"
+    "directory": "packages/rollup-config"
   },
   "keywords": [
     "eslint-config"
@@ -29,14 +30,5 @@
   ],
   "scripts": {
     "build": "rollup -c rollup.config.ts --configPlugin swc3"
-  },
-  "dependencies": {
-    "ci-info": "^3.9.0",
-    "picocolors": "^1.0.0"
-  },
-  "devDependencies": {
-    "@eslint-sukka/rollup-config": "workspace:*",
-    "string-width": "^6.1.0",
-    "supports-hyperlinks": "^3.0.0"
   }
 }

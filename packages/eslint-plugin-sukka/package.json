@@ -30,6 +30,7 @@
     "@eslint-sukka/shared": "workspace:*"
   },
   "devDependencies": {
+    "@eslint-sukka/rollup-config": "workspace:*",
     "@masknet/eslint-plugin": "^0.2.0",
     "eslint-plugin-unicorn": "48.0.1"
   }
