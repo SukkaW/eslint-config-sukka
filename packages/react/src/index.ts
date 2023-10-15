@@ -41,6 +41,10 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
       },
       settings: {
         'import/extensions': allExtensions,
+        'import/parsers': {
+          // TODO: remove this line once eslint-plugin-import #2556 is fixed
+          espree: allExtensions
+        },
         'import/resolver': {
           node: {
             extensions: allExtensions

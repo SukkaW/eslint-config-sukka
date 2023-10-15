@@ -99,6 +99,10 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         }
       },
       settings: {
+        'import/parsers': {
+          // TODO: remove this line once eslint-plugin-import #2556 is fixed
+          espree: allExtensions
+        },
         'import/extensions': allExtensions
       },
       plugins: {
