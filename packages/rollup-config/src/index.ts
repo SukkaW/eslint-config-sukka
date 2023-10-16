@@ -9,7 +9,7 @@ import type { RollupAliasOptions } from '@rollup/plugin-alias';
 
 import { rollupFoxquire } from './rollup-foxquire';
 
-import { defineConfig } from 'rollup';
+import type { RollupOptions } from 'rollup';
 
 import fs from 'fs';
 import type { PathLike } from 'fs';
@@ -40,11 +40,11 @@ export const createRollupConfig = (
     alias = false,
     foxquire = false
   }: RollupConfigPlugin = {}
-) => {
+): RollupOptions[] => {
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath));
   const external = Object.keys(packageJson.dependencies || {}).concat(builtinModules, externalDependencies, ['eslint']);
 
-  return defineConfig([{
+  return [{
     input: 'src/index.ts',
     output: [
       { file: 'dist/index.cjs', format: 'cjs' },
@@ -82,5 +82,5 @@ export const createRollupConfig = (
       dts()
     ],
     external
-  }]);
+  }];
 };
