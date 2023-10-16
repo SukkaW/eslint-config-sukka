@@ -9,9 +9,11 @@ import { isCI } from 'ci-info';
 
 import type { ESLint } from 'eslint';
 
-interface Separator {
+const separatorLine = {
   type: 'separator'
-}
+} as const;
+
+type Separator = typeof separatorLine;
 
 interface Header {
   type: 'header',
@@ -23,7 +25,7 @@ interface Header {
 interface Line {
   type: 'message',
   relativeFilePath?: string,
-  severity?: 'error' | 'warning' | 1 | 2,
+  severity?: 'fatal' | 'error' | 'warning',
   firstLineCol?: `${string}:${string}`,
   ruleId: string,
   lineWidth: number,
@@ -77,7 +79,7 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
       });
 
       if (lines.length !== 0) {
-        lines.push({ type: 'separator' });
+        lines.push(separatorLine);
       }
 
       const firstErrorOrWarning = messages.find(({ severity }) => severity === 2) || messages[0];
@@ -130,7 +132,13 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
 
           lines.push({
             type: 'message',
-            severity: (x.fatal || x.severity === 2 || (x.severity as any) === 'error') ? 'error' : 'warning',
+            severity: x.fatal
+              ? 'fatal'
+              : (
+                (x.severity === 2 || (x.severity as any) === 'error')
+                  ? 'error'
+                  : 'warning'
+              ),
             line,
             lineWidth,
             column,
