@@ -3,19 +3,17 @@
   "version": "4.0.6",
   "private": true,
   "description": "Sukka's ESLint config",
-  "author": "Sukka <https://skk.moe>",
-  "license": "MIT",
   "homepage": "https://github.com/SukkaW/eslint-config-sukka",
   "repository": {
     "url": "https://github.com/SukkaW/eslint-config-sukka",
     "directory": "packages/rollup-config"
   },
-  "keywords": [
-    "eslint-config"
-  ],
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -25,10 +23,12 @@
     },
     "./package.json": "./package.json"
   },
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "build": "rollup -c rollup.config.ts --configPlugin swc3"
-  }
+  },
+  "keywords": [
+    "eslint-config"
+  ],
+  "author": "Sukka <https://skk.moe>",
+  "license": "MIT"
 }

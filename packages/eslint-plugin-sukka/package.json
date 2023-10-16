@@ -1,7 +1,6 @@
 {
   "name": "eslint-plugin-sukka",
   "version": "4.0.6",
-  "license": "MIT",
   "homepage": "https://github.com/SukkaW/eslint-config-sukka",
   "repository": {
     "url": "https://github.com/SukkaW/eslint-config-sukka",
@@ -10,6 +9,9 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -19,13 +21,11 @@
     },
     "./package.json": "./package.json"
   },
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "test": "vitest",
     "build": "rollup -c rollup.config.ts --configPlugin swc3"
   },
+  "license": "MIT",
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*"
   },
