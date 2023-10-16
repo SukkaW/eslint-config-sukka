@@ -115,7 +115,9 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
           const columnWidth = stringWidth(column);
           const messageWidth = stringWidth(message);
 
-          maxLineWidth = Math.max(lineWidth, maxLineWidth);
+          if (lineWidth > maxLineWidth) {
+            maxLineWidth = lineWidth;
+          }
 
           if (columnWidth > maxColumnWidth) {
             maxColumnWidth = columnWidth;
@@ -187,7 +189,7 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
   }).join('\n')}\n\n`;
 
   const deprecatedEntries = Object.entries(deprecatedReplacedBy);
-  const deprecatedSize = deprecatedEntries.length;
+  const deprecatedCount = deprecatedEntries.length;
 
   const stats = Object.entries({
     problem: [true, errorCount + warningCount + fatalErrorCount] as const,
@@ -195,7 +197,7 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
     error: [true, errorCount > 0 ? picocolors.red(errorCount) : picocolors.green(0)] as const,
     fatal: [fatalErrorCount > 0, picocolors.red(fatalErrorCount)] as const,
     fixable: [(fixableErrorCount + fixableWarningCount) > 0, fixableErrorCount + fixableWarningCount] as const,
-    deprecated: [deprecatedSize > 0, picocolors.bold(picocolors.gray(deprecatedSize))] as const
+    deprecated: [deprecatedCount > 0, picocolors.bold(picocolors.gray(deprecatedCount))] as const
   }).filter(([, [show]]) => show);
 
   const maxKeyWidth = Math.max(...stats.map(([key]) => key.length));
@@ -205,7 +207,7 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
     output += `${' '.repeat(maxKeyWidth - key.length)}${picocolors.bold(`${key}:`)}  ${value}\n`;
   });
 
-  if (deprecatedSize > 0) {
+  if (deprecatedCount > 0) {
     deprecatedEntries.forEach(([ruleId, replacedBy]) => {
       output += '\n';
       output += `${picocolors.gray('deprecated:')}  ${ruleId}`;
@@ -215,7 +217,7 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
 
   output += '\n';
 
-  return (errorCount + warningCount + fatalErrorCount + deprecatedSize) > 0 ? output : '';
+  return (errorCount + warningCount + fatalErrorCount + deprecatedCount) > 0 ? output : '';
 };
 
 export default pretty;
