@@ -7,15 +7,17 @@ import { SHARED_OPTIONS } from './shared-option';
 import { sortPackageJson } from './sort-package-json';
 import { sortTsconfigJson } from './sort-tsconfig-json';
 
+import type { Linter } from 'eslint';
+
 const RULES_BASE = eslint_plugin_jsonc.configs.base.overrides.map((override) => override.rules).reduce((prev, curr) => ({ ...prev, ...curr }), {});
 
-const SHARED_RULES = {
+const SHARED_RULES: Linter.RulesRecord = {
   'jsonc/array-bracket-spacing': ['error', 'never'],
   'jsonc/comma-dangle': ['error', 'never'],
   'jsonc/comma-style': ['error', 'last'],
   'jsonc/indent': ['error', 2],
-  'jsonc/key-spacing': ['error', { afterColon: true, beforeColon: false }],
-  'jsonc/object-curly-newline': ['error', { consistent: true, multiline: true }],
+  'jsonc/key-spacing': ['error', { beforeColon: false, afterColon: true }],
+  'jsonc/object-curly-newline': 'off', // ['error', { consistent: true, multiline: true }],
   'jsonc/object-curly-spacing': ['error', 'always'],
   'jsonc/object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }],
   'jsonc/quote-props': 'error',
