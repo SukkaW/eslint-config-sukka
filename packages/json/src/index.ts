@@ -90,9 +90,9 @@ export const jsonc = (): FlatESLintConfigItem[] => {
               'module',
               'types',
               'typesVersions',
+              'bin',
               'files',
               'exports',
-              'bin',
               'icon',
               'unpkg',
               'jsdelivr',
@@ -124,18 +124,19 @@ export const jsonc = (): FlatESLintConfigItem[] => {
             order: { type: 'asc' },
             pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies$'
           },
-          {
-            order: { type: 'asc' },
-            pathPattern: '^resolutions$'
-          },
-          {
-            order: { type: 'asc' },
-            pathPattern: '^pnpm.overrides$'
-          },
+          // {
+          //   order: { type: 'asc' },
+          //   pathPattern: '^resolutions$'
+          // },
+          // {
+          //   order: { type: 'asc' },
+          //   pathPattern: '^pnpm.overrides$'
+          // },
           {
             order: [
               'types',
               'import',
+              'module',
               'require',
               'default'
             ],
