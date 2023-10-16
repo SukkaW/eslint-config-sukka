@@ -41,6 +41,7 @@
     "@eslint-sukka/legacy": "workspace:*",
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/react": "workspace:*",
+    "@eslint-sukka/rollup-config": "workspace:*",
     "@eslint-sukka/ts": "workspace:*",
     "eslint-config-flat-gitignore": "^0.1.1"
   }

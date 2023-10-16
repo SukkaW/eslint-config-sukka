@@ -1,0 +1,35 @@
+import type { Plugin } from 'rollup';
+
+import { MagicString } from '@napi-rs/magic-string';
+
+const CJSShim = `
+// -- CommonJS Shims --
+const foxquire = (id) => Promise.resolve(require(id));
+`;
+const ESMShim = `
+// -- ESM Shims --
+const foxquire = (id) => import(id);
+`;
+
+export const rollupFoxquire = (): Plugin => {
+  return {
+    name: 'esm-cjs-bridge',
+    renderChunk(code, _chunk, opts) {
+      if (code.includes('foxquire')) {
+        const ms = new MagicString(code);
+        if (opts.format === 'es') {
+          if (!code.includes(ESMShim)) {
+            ms.prepend(ESMShim);
+          }
+        } else if (!code.includes(CJSShim)) {
+          ms.prepend(CJSShim);
+        }
+        return {
+          code: ms.toString(),
+          map: ms.generateMap({ hires: true }).toMap()
+        };
+      }
+      return null;
+    }
+  };
+};

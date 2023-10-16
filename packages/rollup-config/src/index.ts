@@ -7,6 +7,8 @@ import jsonPlugin from '@rollup/plugin-json';
 import aliasPlugin from '@rollup/plugin-alias';
 import type { RollupAliasOptions } from '@rollup/plugin-alias';
 
+import { rollupFoxquire } from './rollup-foxquire';
+
 import { defineConfig } from 'rollup';
 
 import fs from 'fs';
@@ -24,7 +26,8 @@ interface RollupConfigPlugin {
   nodeResolve?: boolean,
   commonjs?: boolean,
   json?: boolean,
-  alias?: RollupAliasOptions | false
+  alias?: RollupAliasOptions | false,
+  foxquire?: boolean
 }
 
 export const createRollupConfig = (
@@ -34,7 +37,8 @@ export const createRollupConfig = (
     nodeResolve = false,
     commonjs = false,
     json = false,
-    alias = false
+    alias = false,
+    foxquire = false
   }: RollupConfigPlugin = {}
 ) => {
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath));
@@ -48,6 +52,7 @@ export const createRollupConfig = (
       { file: 'dist/index.mjs', format: 'esm' }
     ],
     plugins: [
+      foxquire && rollupFoxquire(),
       alias && aliasPlugin(alias),
       nodeResolve && nodeResolvePlugin({
         exportConditions: ['import', 'require', 'default']
