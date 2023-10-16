@@ -29,11 +29,9 @@ export const ignores = (options: OptionsIgnores = {}): FlatESLintConfigItem[] =>
   if (gitignore === false || gitignore === null) {
     // do nothing
   } else if (gitignore === true) {
-    configs.push(eslint_config_flat_gitignore({ files: ['.gitignore'] }));
-  } else if (typeof gitignore === 'string') {
-    configs.push(eslint_config_flat_gitignore({ files: [gitignore] }));
-  } else if (Array.isArray(gitignore)) {
-    configs.push(eslint_config_flat_gitignore({ files: gitignore }));
+    configs.push(eslint_config_flat_gitignore({ files: ['.gitignore'], strict: false }));
+  } else if (typeof gitignore === 'string' || Array.isArray(gitignore)) {
+    configs.push(eslint_config_flat_gitignore({ files: gitignore, strict: false }));
   } else {
     const _typeguard: never = gitignore;
   }

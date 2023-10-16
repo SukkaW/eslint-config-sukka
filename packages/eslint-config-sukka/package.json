@@ -42,6 +42,6 @@
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/ts": "workspace:*",
-    "eslint-config-flat-gitignore": "^0.1.0"
+    "eslint-config-flat-gitignore": "^0.1.1"
   }
 }
