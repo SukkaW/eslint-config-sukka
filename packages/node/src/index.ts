@@ -73,10 +73,7 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
         'n/no-extraneous-import': 'off',
         'n/no-extraneous-require': 'off',
 
-        'n/no-restricted-require': ['error', RESTRICTED_IMPORT_NODE_REQUIRE],
-
-        // prefer JSON.parse from buffer with fs
-        'sukka/unicorn/prefer-json-parse-buffer': 'error'
+        'n/no-restricted-require': ['error', RESTRICTED_IMPORT_NODE_REQUIRE]
       },
       languageOptions: {
         globals: globals.node

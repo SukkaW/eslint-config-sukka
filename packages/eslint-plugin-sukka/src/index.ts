@@ -79,7 +79,6 @@ import prefer_array_flat from 'eslint-plugin-unicorn/rules/prefer-array-flat.js'
 import prefer_array_some from 'eslint-plugin-unicorn/rules/prefer-array-some.js';
 import prefer_code_point from 'eslint-plugin-unicorn/rules/prefer-code-point.js';
 import prefer_default_parameters from 'eslint-plugin-unicorn/rules/prefer-default-parameters.js';
-import prefer_json_parse_buffer from 'eslint-plugin-unicorn/rules/prefer-json-parse-buffer.js';
 import prefer_logical_operator_over_ternary from 'eslint-plugin-unicorn/rules/prefer-logical-operator-over-ternary.js';
 import prefer_optional_catch_binding from 'eslint-plugin-unicorn/rules/prefer-optional-catch-binding.js';
 import prefer_regexp_test from 'eslint-plugin-unicorn/rules/prefer-regexp-test.js';
@@ -169,7 +168,6 @@ export default {
     'unicorn/prefer-array-some': loadUnicorn(prefer_array_some, 'unicorn/prefer-array-some'),
     'unicorn/prefer-code-point': loadUnicorn(prefer_code_point, 'unicorn/prefer-code-point'),
     'unicorn/prefer-default-parameters': loadUnicorn(prefer_default_parameters, 'unicorn/prefer-default-parameters'),
-    'unicorn/prefer-json-parse-buffer': loadUnicorn(prefer_json_parse_buffer, 'unicorn/prefer-json-parse-buffer'),
     'unicorn/prefer-logical-operator-over-ternary': loadUnicorn(prefer_logical_operator_over_ternary, 'unicorn/prefer-logical-operator-over-ternary'),
     'unicorn/prefer-optional-catch-binding': loadUnicorn(prefer_optional_catch_binding, 'unicorn/prefer-optional-catch-binding'),
     'unicorn/prefer-prototype-methods': loadUnicorn(prefer_prototype_methods, 'unicorn/prefer-prototype-methods'),
