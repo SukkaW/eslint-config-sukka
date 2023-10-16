@@ -32,6 +32,9 @@ importers:
       '@eslint-sukka/js':
         specifier: workspace:*
         version: link:packages/js
+      '@eslint-sukka/json':
+        specifier: workspace:*
+        version: link:packages/json
       '@eslint-sukka/legacy':
         specifier: workspace:*
         version: link:packages/legacy
@@ -44,9 +47,6 @@ importers:
       '@eslint-sukka/ts':
         specifier: workspace:*
         version: link:packages/ts
-      '@fluffyfox/eslint-plugin':
-        specifier: ^0.1.0
-        version: 0.1.0(eslint@8.51.0)
       '@napi-rs/magic-string':
         specifier: ^0.3.4
         version: 0.3.4
@@ -128,6 +128,9 @@ importers:
       '@eslint-sukka/js':
         specifier: workspace:*
         version: link:../js
+      '@eslint-sukka/json':
+        specifier: workspace:*
+        version: link:../json
       '@eslint-sukka/shared':
         specifier: workspace:*
         version: link:../shared
@@ -207,6 +210,9 @@ importers:
 
   packages/js:
     dependencies:
+      '@eslint-sukka/json':
+        specifier: workspace:*
+        version: link:../json
       '@eslint-sukka/shared':
         specifier: workspace:*
         version: link:../shared
@@ -228,6 +234,22 @@ importers:
       globals:
         specifier: ^13.23.0
         version: 13.23.0
+    devDependencies:
+      '@eslint-sukka/rollup-config':
+        specifier: workspace:*
+        version: link:../rollup-config
+
+  packages/json:
+    dependencies:
+      '@eslint-sukka/shared':
+        specifier: workspace:*
+        version: link:../shared
+      eslint-plugin-jsonc:
+        specifier: ^2.10.0
+        version: 2.10.0(eslint@8.51.0)
+      jsonc-eslint-parser:
+        specifier: ^2.3.0
+        version: 2.3.0
     devDependencies:
       '@eslint-sukka/rollup-config':
         specifier: workspace:*
@@ -620,15 +642,6 @@ packages:
 
   /@fastify/deepmerge@1.3.0:
     resolution: {integrity: sha512-J8TOSBq3SoZbDhM9+R/u77hP93gz/rajSA+K2kGyijPpORPWUXHUpTaleoj+92As0S9uPRP7Oi8IqMf0u+ro6A==}
-    dev: true
-
-  /@fluffyfox/eslint-plugin@0.1.0(eslint@8.51.0):
-    resolution: {integrity: sha512-akpFZb5VGXaja0zrndWNsp8pjxGVNvhmT34sk9MsXAVrVlv7LB4pqfSGJ684y6kR2FIDsT1cVcPIbGuD5W00Sg==}
-    engines: {node: '>= 16'}
-    peerDependencies:
-      eslint: '>= 8'
-    dependencies:
-      eslint: 8.51.0
     dev: true
 
   /@humanwhocodes/config-array@0.11.11:
@@ -2032,6 +2045,15 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
+  /eslint-compat-utils@0.1.2(eslint@8.51.0):
+    resolution: {integrity: sha512-Jia4JDldWnFNIru1Ehx1H5s9/yxiRHY/TimCuUc0jNexew3cF1gI6CYZil1ociakfWO3rRqFjl1mskBblB3RYg==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      eslint: '>=6.0.0'
+    dependencies:
+      eslint: 8.51.0
+    dev: false
+
   /eslint-config-flat-gitignore@0.1.0:
     resolution: {integrity: sha512-5nQMQFRkkhCb+ejFhKSATn/41I7ot9oRcnEDzfqwMlBE9036qM9ioYBDtKLpwmlICXr/J7naMFfb39pa4v4sGA==}
     dependencies:
@@ -2180,6 +2202,19 @@ packages:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
       - supports-color
+    dev: false
+
+  /eslint-plugin-jsonc@2.10.0(eslint@8.51.0):
+    resolution: {integrity: sha512-9d//o6Jyh4s1RxC9fNSt1+MMaFN2ruFdXPG9XZcb/mR2KkfjADYiNL/hbU6W0Cyxfg3tS/XSFuhl5LgtMD8hmw==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    peerDependencies:
+      eslint: '>=6.0.0'
+    dependencies:
+      '@eslint-community/eslint-utils': 4.4.0(eslint@8.51.0)
+      eslint: 8.51.0
+      eslint-compat-utils: 0.1.2(eslint@8.51.0)
+      jsonc-eslint-parser: 2.3.0
+      natural-compare: 1.4.0
     dev: false
 
   /eslint-plugin-jsx-a11y@6.7.1(eslint@8.51.0):
@@ -2741,6 +2776,16 @@ packages:
     hasBin: true
     dependencies:
       minimist: 1.2.8
+    dev: false
+
+  /jsonc-eslint-parser@2.3.0:
+    resolution: {integrity: sha512-9xZPKVYp9DxnM3sd1yAsh/d59iIaswDkai8oTxbursfKYbg/ibjX0IzFt35+VZ8iEW453TVTXztnRvYUQlAfUQ==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    dependencies:
+      acorn: 8.10.0
+      eslint-visitor-keys: 3.4.3
+      espree: 9.6.1
+      semver: 7.5.4
     dev: false
 
   /jsonc-parser@3.2.0:

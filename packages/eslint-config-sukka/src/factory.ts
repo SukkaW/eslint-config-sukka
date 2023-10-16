@@ -21,6 +21,7 @@ interface ESLineSukkaOptions {
   isInEditor?: boolean,
   ignores?: SharedOptions<OptionsIgnores>,
   js?: SharedOptions<OptionsJavaScript> | boolean,
+  json?: boolean,
   ts?: SharedOptions<OptionsTypeScript> | boolean,
   react?: SharedOptions<OptionsReact> | boolean,
   node?: SharedOptions<OptionsNode> | boolean,
@@ -54,6 +55,10 @@ export const sukka = async (options?: ESLineSukkaOptions, ...userConfig: FlatESL
       ...config(options?.js),
       isInEditor
     }));
+  }
+  // json
+  if (enabled(options?.json, true)) {
+    flatConfigs.push((await foxquire<typeof import('@eslint-sukka/json')>('@eslint-sukka/json')).jsonc());
   }
   // typescript
   if (enabled(options?.ts, isPackageExists('typescript'))) {

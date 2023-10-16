@@ -15,11 +15,11 @@
   "license": "MIT",
   "devDependencies": {
     "@eslint-sukka/js": "workspace:*",
+    "@eslint-sukka/json": "workspace:*",
     "@eslint-sukka/legacy": "workspace:*",
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/ts": "workspace:*",
-    "@fluffyfox/eslint-plugin": "^0.1.0",
     "@napi-rs/magic-string": "^0.3.4",
     "@rollup/plugin-alias": "^5.0.1",
     "@rollup/plugin-commonjs": "^25.0.5",

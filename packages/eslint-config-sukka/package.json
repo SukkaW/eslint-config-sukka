@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@eslint-sukka/js": "workspace:*",
+    "@eslint-sukka/json": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
     "ci-info": "^3.9.0",
     "local-pkg": "^0.5.0"

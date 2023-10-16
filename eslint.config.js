@@ -16,10 +16,7 @@ module.exports = sukka(
       }
     },
     node: true,
-    ts: {
-      enable: true,
-      tsconfigPath: './tsconfig.json'
-    }
+    ts: true
   },
   {
     plugins: {

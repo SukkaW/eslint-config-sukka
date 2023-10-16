@@ -80,7 +80,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
          * - disables rules from eslint:recommended which are already handled by TypeScript.
          * - enables rules that make sense due to TS's typechecking / transpilation.
          */
-        ...ts_eslint_plugin.configs['eslint-recommended'].overrides![0].rules,
+        ...ts_eslint_plugin.configs['eslint-recommended'].overrides?.map((override) => override.rules).reduce((prev, curr) => ({ ...prev, ...curr }), {}),
         // plugin:@typescript-eslint/recommended
         ...ts_eslint_plugin.configs.base.rules,
         ...ts_eslint_plugin.configs.recommended.rules, // plugin:@typescript-eslint/recommended

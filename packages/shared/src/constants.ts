@@ -6,6 +6,11 @@ export const GLOB_JSX = '**/*.?([cm])jsx';
 export const GLOB_SRC_EXT = '?([cm])[jt]s?(x)';
 export const GLOB_SRC = '**/*.?([cm])[jt]s?(x)';
 
+export const GLOB_JSON = '**/*.json';
+export const GLOB_JSONC = '**/*.jsonc';
+export const GLOB_JSON5 = '**/*.json5';
+export const GLOB_ALL_JSON = [GLOB_JSON, GLOB_JSONC, GLOB_JSON5];
+
 export const GLOB_TESTS = [
   `**/__tests__/**/*.${GLOB_SRC_EXT}`,
   `**/*.spec.${GLOB_SRC_EXT}`,
