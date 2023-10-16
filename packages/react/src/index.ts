@@ -199,7 +199,7 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
         '@stylistic/jsx/jsx-indent': ['error', 2],
         // Require style prop value be an object or var
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/style-prop-object.md
-        '@stylistic/jsx/style-prop-object': 'error',
+        'react/style-prop-object': 'error',
         // Validate whitespace in and around the JSX opening and closing brackets
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/jsx-tag-spacing.md
         '@stylistic/jsx/jsx-tag-spacing': ['error', {
