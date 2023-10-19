@@ -31,9 +31,11 @@
   "author": "Sukka <https://skk.moe>",
   "license": "MIT",
   "dependencies": {
-    "@eslint-sukka/rollup-config": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
     "eslint-plugin-sukka": "workspace:*",
     "globals": "^13.23.0"
+  },
+  "devDependencies": {
+    "@eslint-sukka/rollup-config": "workspace:*"
   }
 }
