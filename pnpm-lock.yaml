@@ -239,9 +239,6 @@ importers:
 
   packages/legacy:
     dependencies:
-      '@eslint-sukka/rollup-config':
-        specifier: workspace:*
-        version: link:../rollup-config
       '@eslint-sukka/shared':
         specifier: workspace:*
         version: link:../shared
@@ -251,6 +248,10 @@ importers:
       globals:
         specifier: ^13.23.0
         version: 13.23.0
+    devDependencies:
+      '@eslint-sukka/rollup-config':
+        specifier: workspace:*
+        version: link:../rollup-config
 
   packages/node:
     dependencies:
