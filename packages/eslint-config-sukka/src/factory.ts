@@ -17,7 +17,7 @@ type SharedOptions<T = {}> = Omit<T, 'isInEditor'> & {
   enable?: boolean
 };
 
-interface ESLineSukkaOptions {
+interface ESLintSukkaOptions {
   isInEditor?: boolean,
   ignores?: SharedOptions<OptionsIgnores>,
   js?: SharedOptions<OptionsJavaScript> | boolean,
@@ -42,7 +42,7 @@ function config<T>(options: SharedOptions<T> | undefined | boolean): T | undefin
   return { ...rest } as T;
 }
 
-export const sukka = async (options?: ESLineSukkaOptions, ...userConfig: FlatESLintConfigItem[]): Promise<FlatESLintConfigItem[]> => {
+export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESLintConfigItem[]): Promise<FlatESLintConfigItem[]> => {
   const isInEditor = options?.isInEditor ?? !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !isCI);
 
   const flatConfigs: FlatESLintConfigItem[][] = [];
