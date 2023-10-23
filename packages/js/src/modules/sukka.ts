@@ -66,7 +66,6 @@ export const sukka: SukkaESLintRuleConfig = {
     'sukka/unicorn/prefer-type-error': 'error', // throw new TypeError
     'sukka/unicorn/consistent-destructuring': 'warn',
     'sukka/unicorn/new-for-builtins': 'warn', // prefer new Map([...]) over Map([...])
-    'sukka/unicorn/no-array-method-this-argument': 'warn', // bar.find(e => skk(e), ctx);
     'sukka/unicorn/no-array-push-push': 'warn', // array.push(...); array.push(...);
     'sukka/unicorn/no-static-only-class': 'warn', // class Foo { static bar() {} }
     'sukka/unicorn/no-unreadable-array-destructuring': 'error', // [,,,,, bar] = arr;

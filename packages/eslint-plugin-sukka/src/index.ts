@@ -64,7 +64,7 @@ import no_instanceof_array from 'eslint-plugin-unicorn/rules/no-instanceof-array
 import prefer_type_error from 'eslint-plugin-unicorn/rules/prefer-type-error.js';
 import consistent_destructuring from 'eslint-plugin-unicorn/rules/consistent-destructuring.js';
 import new_for_builtins from 'eslint-plugin-unicorn/rules/new-for-builtins.js';
-import no_array_method_this_argument from 'eslint-plugin-unicorn/rules/no-array-method-this-argument.js';
+// import no_array_method_this_argument from 'eslint-plugin-unicorn/rules/no-array-method-this-argument.js';
 import no_array_push_push from 'eslint-plugin-unicorn/rules/no-array-push-push.js';
 import no_process_exit from 'eslint-plugin-unicorn/rules/no-process-exit.js';
 import no_static_only_class from 'eslint-plugin-unicorn/rules/no-static-only-class.js';
@@ -153,7 +153,7 @@ export default {
     'unicorn/prefer-type-error': loadUnicorn(prefer_type_error, 'unicorn/prefer-type-error'),
     'unicorn/consistent-destructuring': loadUnicorn(consistent_destructuring, 'unicorn/consistent-destructuring'),
     'unicorn/new-for-builtins': loadUnicorn(new_for_builtins, 'unicorn/new-for-builtins'),
-    'unicorn/no-array-method-this-argument': loadUnicorn(no_array_method_this_argument, 'unicorn/no-array-method-this-argument'),
+    // 'unicorn/no-array-method-this-argument': loadUnicorn(no_array_method_this_argument, 'unicorn/no-array-method-this-argument'),
     'unicorn/no-array-push-push': loadUnicorn(no_array_push_push, 'unicorn/no-array-push-push'),
     'unicorn/no-process-exit': loadUnicorn(no_process_exit, 'unicorn/no-process-exit'),
     'unicorn/no-static-only-class': loadUnicorn(no_static_only_class, 'unicorn/no-static-only-class'),
