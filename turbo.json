@@ -3,7 +3,7 @@
   "globalDependencies": [
     "**/.env.*local",
     "tsconfig.json",
-    ".eslintrc.json"
+    "eslint.config.js"
   ],
   "pipeline": {
     "codegen": {
