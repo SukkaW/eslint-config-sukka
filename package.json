@@ -34,7 +34,7 @@
     "lodash-unified": "^1.0.3",
     "rimraf": "^5.0.5",
     "rollup": "^4.1.4",
-    "turbo": "^1.10.15",
+    "turbo": "^1.10.16",
     "typescript": "^5.2.2",
     "vitest": "^0.34.6"
   },
