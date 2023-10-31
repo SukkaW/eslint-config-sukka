@@ -53,7 +53,8 @@ const restrictedImportWithImportNames = [
   { name: 'lodash-es', message: 'Avoid using type unsafe methods.', importNames: ['get'] },
   { name: 'lodash', message: 'Use https://www.npmjs.com/package/rfdc for Node.js / https://www.npmjs.com/package/klona for Browser instead', importNames: ['cloneDeep'] },
   { name: 'lodash-es', message: 'Use https://www.npmjs.com/package/rfdc for Node.js / https://www.npmjs.com/package/klona for Browser instead', importNames: ['cloneDeep'] },
-  { name: 'uuid', importNames: ['v4'], message: 'Use https://www.npmjs.com/package/@lukeed/uuid instead' }
+  { name: 'uuid', importNames: ['v4'], message: 'Use https://www.npmjs.com/package/@lukeed/uuid instead' },
+  { name: 'react', importNames: ['default'], message: 'Use named import instead' }
 ];
 
 export const RESTRICTED_IMPORT_JS = [
