@@ -11,11 +11,11 @@ import path from 'path';
   const stylistic_eslint_plugin_ts_rulenames = new Set(Object.keys(stylistic_eslint_plugin_ts.rules));
 
   const TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN = new Map(Object.entries(ts_eslint_plugin.rules)
-    .filter(([, rule]) => rule.meta.docs?.extendsBaseRule)
+    .filter(([, rule]) => (rule as any).meta.docs?.extendsBaseRule)
     .map(
       ([ruleName, rule]) => [
-        typeof rule.meta.docs?.extendsBaseRule === 'string'
-          ? rule.meta.docs.extendsBaseRule
+        typeof (rule as any).meta.docs?.extendsBaseRule === 'string'
+          ? (rule as any).meta.docs.extendsBaseRule
           : ruleName,
         ruleName
       ] as const
