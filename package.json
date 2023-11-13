@@ -26,6 +26,7 @@
     "@types/node": "^20.9.0",
     "@typescript-eslint/rule-tester": "^6.10.0",
     "@typescript-eslint/utils": "^6.10.0",
+    "axe-core": "^4.8.2",
     "bumpp": "^9.2.0",
     "eslint": "^8.53.0",
     "eslint-config-sukka": "workspace:*",
@@ -41,6 +42,7 @@
   "packageManager": "pnpm@8.9.2",
   "pnpm": {
     "overrides": {
+      "axe-core": "$axe-core",
       "array-includes": "npm:@nolyfill/array-includes@latest",
       "array.prototype.findlastindex": "npm:@nolyfill/array.prototype.findlastindex@latest",
       "array.prototype.flat": "npm:@nolyfill/array.prototype.flat@latest",
@@ -57,7 +59,8 @@
       "string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@latest"
     },
     "patchedDependencies": {
-      "text-table@0.2.0": "patches/text-table@0.2.0.patch"
+      "text-table@0.2.0": "patches/text-table@0.2.0.patch",
+      "axe-core@4.8.2": "patches/axe-core@4.8.2.patch"
     }
   }
 }

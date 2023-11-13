@@ -5,6 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
+  axe-core: ^4.8.2
   array-includes: npm:@nolyfill/array-includes@latest
   array.prototype.findlastindex: npm:@nolyfill/array.prototype.findlastindex@latest
   array.prototype.flat: npm:@nolyfill/array.prototype.flat@latest
@@ -21,6 +22,9 @@ overrides:
   string.prototype.matchall: npm:@nolyfill/string.prototype.matchall@latest
 
 patchedDependencies:
+  axe-core@4.8.2:
+    hash: wdu7hhqzfdp6iwnefmf3vhdnzm
+    path: patches/axe-core@4.8.2.patch
   text-table@0.2.0:
     hash: lefbezyqsfd4xxzalfkwfjnhgi
     path: patches/text-table@0.2.0.patch
@@ -68,6 +72,9 @@ importers:
       '@typescript-eslint/utils':
         specifier: ^6.10.0
         version: 6.10.0(eslint@8.53.0)(typescript@5.2.2)
+      axe-core:
+        specifier: ^4.8.2
+        version: 4.8.2(patch_hash=wdu7hhqzfdp6iwnefmf3vhdnzm)
       bumpp:
         specifier: ^9.2.0
         version: 9.2.0
@@ -1696,10 +1703,11 @@ packages:
     resolution: {integrity: sha512-OH/2E5Fg20h2aPrbe+QL8JZQFko0YZaF+j4mnQ7BGhfavO7OpSLa8a0y9sBwomHdSbkhTS8TQNayBfnW5DwbvQ==}
     dev: true
 
-  /axe-core@4.7.0:
-    resolution: {integrity: sha512-M0JtH+hlOL5pLQwHOLNYZaXuhqmvS8oExsqB1SBYgA4Dk7u/xx+YdGHXaK5pyUfed5mYXdlYiphWq3G8cRi5JQ==}
+  /axe-core@4.8.2(patch_hash=wdu7hhqzfdp6iwnefmf3vhdnzm):
+    resolution: {integrity: sha512-/dlp0fxyM3R8YW7MFzaHWXrf4zzbr0vaYb23VBFCl83R7nWNPg/yaQw2Dc8jzCMmDVLhSdzH8MjrsuIUuvX+6g==}
     engines: {node: '>=4'}
     dev: true
+    patched: true
 
   /axobject-query@3.2.1:
     resolution: {integrity: sha512-jsyHu61e6N4Vbz/v18DHwWYKK0bSWLqn47eeDSKPB7m8tqMHF9YJ+mhIk2lVteyZrY8tnSj/jHOv4YiTCuCJgg==}
@@ -2197,7 +2205,7 @@ packages:
       array-includes: /@nolyfill/array-includes@1.0.24
       array.prototype.flatmap: /@nolyfill/array.prototype.flatmap@1.0.24
       ast-types-flow: 0.0.8
-      axe-core: 4.7.0
+      axe-core: 4.8.2(patch_hash=wdu7hhqzfdp6iwnefmf3vhdnzm)
       axobject-query: 3.2.1
       damerau-levenshtein: 1.0.8
       emoji-regex: 9.2.2
