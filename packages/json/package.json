@@ -33,7 +33,7 @@
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",
     "eslint-plugin-jsonc": "^2.10.0",
-    "jsonc-eslint-parser": "^2.3.0"
+    "jsonc-eslint-parser": "^2.4.0"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*"
