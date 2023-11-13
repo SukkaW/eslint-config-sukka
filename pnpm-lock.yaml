@@ -159,7 +159,7 @@ importers:
         specifier: workspace:*
         version: link:../rollup-config
       string-width:
-        specifier: ^6.1.0
+        specifier: 6.1.0
         version: 6.1.0
       supports-hyperlinks:
         specifier: ^3.0.0
@@ -296,6 +296,9 @@ importers:
       '@nolyfill/array.prototype.tosorted':
         specifier: ^1.0.24
         version: 1.0.24
+      '@nolyfill/es-iterator-helpers':
+        specifier: ^1.0.21
+        version: 1.0.21
       '@nolyfill/object.assign':
         specifier: ^1.0.24
         version: 1.0.24
@@ -937,7 +940,6 @@ packages:
     engines: {node: '>=12.4.0'}
     dependencies:
       '@nolyfill/shared': 1.0.21
-    dev: true
 
   /@nolyfill/has@1.0.24:
     resolution: {integrity: sha512-K4lhz7hkFuqZZ008F9xOy3zVywGN+YPVmNAxnaIkvoj3Z0z9FFVLk2awZv/RERdY3OqxDLpxFdVLl2AogMe1jg==}
@@ -978,7 +980,6 @@ packages:
 
   /@nolyfill/shared@1.0.21:
     resolution: {integrity: sha512-qDc/NoaFU23E0hhiDPeUrvWzTXIPE+RbvRQtRWSeHHNmCIgYI9HS1jKzNYNJxv4jvZ/1VmM3L6rNVxbj+LBMNA==}
-    dev: true
 
   /@nolyfill/shared@1.0.24:
     resolution: {integrity: sha512-TGCpg3k5N7jj9AgU/1xFw9K1g4AC1vEE5ZFkW77oPNNLzprxT17PvFaNr/lr3BkkT5fJ5LNMntaTIq+pyWaeEA==}
