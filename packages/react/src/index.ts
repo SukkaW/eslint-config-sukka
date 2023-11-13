@@ -2,7 +2,7 @@ import { constants } from '@eslint-sukka/shared';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 // @ts-expect-error -- no types
-import eslint_plugin_i from 'eslint-plugin-i';
+import eslint_plugin_i from 'eslint-plugin-import';
 // @ts-expect-error -- no types
 import eslint_plugin_react from 'eslint-plugin-react';
 // @ts-expect-error -- no types

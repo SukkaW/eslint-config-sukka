@@ -35,7 +35,7 @@
     "@eslint-sukka/shared": "workspace:*",
     "@eslint/js": "^8.53.0",
     "@stylistic/eslint-plugin-js": "0.1.1",
-    "eslint-plugin-i": "^2.29.0",
+    "eslint-plugin-import": "npm:eslint-plugin-i@^2.29.0",
     "eslint-plugin-sukka": "workspace:*",
     "eslint-plugin-unused-imports": "^3.0.0",
     "globals": "^13.23.0"

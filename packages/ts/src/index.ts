@@ -7,7 +7,7 @@ import { generated_overrides } from './modules/generated_overrides';
 import ts_eslint_plugin from '@typescript-eslint/eslint-plugin';
 import ts_eslint_parser from '@typescript-eslint/parser';
 // @ts-expect-error -- no types
-import eslint_plugin_i from 'eslint-plugin-i';
+import eslint_plugin_i from 'eslint-plugin-import';
 
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 

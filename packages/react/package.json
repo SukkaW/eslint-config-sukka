@@ -43,7 +43,7 @@
     "@nolyfill/object.values": "^1.0.24",
     "@nolyfill/string.prototype.matchall": "^1.0.24",
     "@stylistic/eslint-plugin-jsx": "^0.1.2",
-    "eslint-plugin-i": "^2.29.0",
+    "eslint-plugin-import": "npm:eslint-plugin-i@^2.29.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "globals": "^13.23.0"
   },

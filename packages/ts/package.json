@@ -38,7 +38,7 @@
     "@typescript-eslint/parser": "^6.10.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-antfu": "1.0.0-beta.12",
-    "eslint-plugin-i": "^2.29.0",
+    "eslint-plugin-import": "npm:eslint-plugin-i@^2.29.0",
     "eslint-plugin-sukka-ts": "workspace:*"
   },
   "devDependencies": {

@@ -3,7 +3,7 @@ import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
 // @ts-expect-error -- no types
 import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
 // @ts-expect-error -- no types
-import eslint_plugin_i from 'eslint-plugin-i';
+import eslint_plugin_i from 'eslint-plugin-import';
 
 export const imports: SukkaESLintRuleConfig = {
   plugins: {
