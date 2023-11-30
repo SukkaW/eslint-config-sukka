@@ -10,6 +10,8 @@ import eslint_plugin_jsx_a11y from 'eslint-plugin-jsx-a11y';
 // @ts-expect-error -- no types
 import eslint_plugin_react_hooks from 'eslint-plugin-react-hooks';
 
+import eslint_react from '@eslint-react/eslint-plugin';
+
 import stylisticJsx from '@stylistic/eslint-plugin-jsx';
 
 import globals from 'globals';
@@ -37,7 +39,8 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
         react: eslint_plugin_react,
         'jsx-a11y': eslint_plugin_jsx_a11y,
         'react-hooks': eslint_plugin_react_hooks,
-        '@stylistic/jsx': stylisticJsx
+        '@stylistic/jsx': stylisticJsx,
+        '@eslint-react': eslint_react as any
       },
       settings: {
         'import/extensions': allExtensions,
@@ -86,7 +89,9 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
         'react/no-unknown-property': ['error', { ignore: ['css', 'jsx'] }],
         // Enforce boolean attributes notation in JSX
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md
-        'react/jsx-boolean-value': ['error', 'never', { always: [] }],
+        // 'react/jsx-boolean-value': ['error', 'never', { always: [] }],
+        '@eslint-react/jsx/prefer-shorthand-boolean': ['error'],
+
         // Enforce or disallow spaces inside of curly braces in JSX attributes
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-curly-spacing.md
         '@stylistic/jsx/jsx-curly-spacing': ['error', 'never', { allowMultiline: true }],
