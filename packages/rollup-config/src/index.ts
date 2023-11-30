@@ -2,8 +2,8 @@ import { swc } from 'rollup-plugin-swc3';
 import { dts } from 'rollup-plugin-dts';
 import { nodeResolve as nodeResolvePlugin } from '@rollup/plugin-node-resolve';
 import commonjsPlugin from '@rollup/plugin-commonjs';
+import type { RollupCommonJSOptions } from '@rollup/plugin-commonjs';
 import jsonPlugin from '@rollup/plugin-json';
-
 import aliasPlugin from '@rollup/plugin-alias';
 import type { RollupAliasOptions } from '@rollup/plugin-alias';
 
@@ -24,7 +24,7 @@ declare global {
 
 interface RollupConfigPlugin {
   nodeResolve?: boolean,
-  commonjs?: boolean,
+  commonjs?: boolean | RollupCommonJSOptions,
   json?: boolean,
   alias?: RollupAliasOptions | false,
   foxquire?: boolean
@@ -57,7 +57,8 @@ export const createRollupConfig = (
         exportConditions: ['import', 'require', 'default']
       }),
       commonjs && commonjsPlugin({
-        esmExternals: true
+        esmExternals: true,
+        ...(typeof commonjs === 'object' ? commonjs : {})
       }),
       json && jsonPlugin(),
       swc({
