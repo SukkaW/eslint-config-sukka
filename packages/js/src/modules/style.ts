@@ -1,12 +1,12 @@
-import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
+import { memo, type SukkaESLintRuleConfig } from '@eslint-sukka/shared';
 
-import sukkaPlugin from 'eslint-plugin-sukka';
+import eslint_plugin_sukka from 'eslint-plugin-sukka';
 import stylisticJs from '@stylistic/eslint-plugin-js';
 
 export const style: SukkaESLintRuleConfig = {
   plugins: {
-    '@stylistic/js': stylisticJs,
-    sukka: sukkaPlugin
+    '@stylistic/js': memo(stylisticJs, '@stylistic/eslint-plugin-js'),
+    sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka')
   },
   rules: {
     // enforce line breaks after opening and before closing array brackets

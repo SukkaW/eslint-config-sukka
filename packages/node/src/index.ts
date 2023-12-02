@@ -1,6 +1,6 @@
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
-import { RESTRICTED_IMPORT_NODE_REQUIRE, getPackageJson } from '@eslint-sukka/shared';
+import { RESTRICTED_IMPORT_NODE_REQUIRE, getPackageJson, memo } from '@eslint-sukka/shared';
 
 import eslint_plugin_sukka from 'eslint-plugin-sukka';
 // @ts-expect-error -- no types
@@ -22,8 +22,8 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
     {
       files: options.files ?? (isModule ? ['*.mjs', '.*.mjs', '*.js', '.*.js'] : ['*.cjs', '.*.cjs', '*.js', '.*.js']),
       plugins: {
-        sukka: eslint_plugin_sukka,
-        n: eslint_plugin_n
+        sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka'),
+        n: memo(eslint_plugin_n, 'eslint-plugin-n')
       },
       rules: {
         // enforces error handling in callbacks (node environment)

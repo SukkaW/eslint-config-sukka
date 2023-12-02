@@ -1,4 +1,4 @@
-import { RESTRICTED_IMPORT_TS } from '@eslint-sukka/shared';
+import { RESTRICTED_IMPORT_TS, memo } from '@eslint-sukka/shared';
 import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
 
 import ts_eslint_plugin from '@typescript-eslint/eslint-plugin';
@@ -6,8 +6,8 @@ import stylisticTs from '@stylistic/eslint-plugin-ts';
 
 export const typescript: SukkaESLintRuleConfig = {
   plugins: {
-    '@stylistic/ts': stylisticTs,
-    '@typescript-eslint': ts_eslint_plugin as any
+    '@stylistic/ts': memo(stylisticTs, '@stylistic/eslint-plugin-ts'),
+    '@typescript-eslint': memo<any>(ts_eslint_plugin, '@typescript-eslint/eslint-plugin')
   },
   rules: {
     '@typescript-eslint/ban-ts-comment': [

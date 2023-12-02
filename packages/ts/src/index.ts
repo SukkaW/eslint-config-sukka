@@ -1,4 +1,4 @@
-import { constants } from '@eslint-sukka/shared';
+import { constants, memo } from '@eslint-sukka/shared';
 
 import { typescript as typescriptConfig } from './modules/typescript';
 import { sukka_typeScript } from './modules/sukka';
@@ -36,8 +36,8 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         ...sukka_typeScript.plugins,
         ...generated_overrides.plugins,
         '@typescript-eslint': ts_eslint_plugin as any,
-        i: eslint_plugin_i,
-        import: eslint_plugin_i // legacy
+        i: memo(eslint_plugin_i, 'eslint-plugin-i'),
+        import: memo(eslint_plugin_i, 'eslint-plugin-i') // legacy alias
       },
       // extends: [
       //   'plugin:i/recommended',
@@ -105,8 +105,8 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
     {
       files: ['**/*.d.ts'],
       plugins: {
-        i: eslint_plugin_i,
-        import: eslint_plugin_i // legacy
+        i: memo(eslint_plugin_i, 'eslint-plugin-i'),
+        import: memo(eslint_plugin_i, 'eslint-plugin-i') // legacy alias
       },
       rules: {
         'import/no-duplicates': 'off',

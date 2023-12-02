@@ -1,9 +1,9 @@
-import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
+import { memo, type SukkaESLintRuleConfig } from '@eslint-sukka/shared';
 import stylisticJs from '@stylistic/eslint-plugin-js';
 
 export const es6: SukkaESLintRuleConfig = {
   plugins: {
-    '@stylistic/js': stylisticJs
+    '@stylistic/js': memo(stylisticJs, '@stylistic/eslint-plugin-js')
   },
   rules: {
     // require parens in arrow function arguments

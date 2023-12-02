@@ -1,9 +1,9 @@
-import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
+import { memo, type SukkaESLintRuleConfig } from '@eslint-sukka/shared';
 import eslint_plugin_sukka from 'eslint-plugin-sukka';
 
 export const sukka: SukkaESLintRuleConfig = {
   plugins: {
-    sukka: eslint_plugin_sukka
+    sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka')
   },
   rules: {
     'sukka/array/no-unneeded-flat-map': 'error',

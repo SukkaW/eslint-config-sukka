@@ -1,4 +1,4 @@
-import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
+import { memo, type FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import globals from 'globals';
 import eslint_plugin_sukka from 'eslint-plugin-sukka';
@@ -13,7 +13,7 @@ export const legacy = (options: OptionsLegacy = {}): FlatESLintConfigItem[] => {
   return [{
     ...(options.files ? { files: options.files } : {}),
     plugins: {
-      sukka: eslint_plugin_sukka
+      sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka')
     },
     rules: {
       'prefer-numeric-literals': 'off',

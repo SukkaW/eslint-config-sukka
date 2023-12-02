@@ -1,4 +1,4 @@
-import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
+import { memo, type SukkaESLintRuleConfig } from '@eslint-sukka/shared';
 
 import eslint_plugin_sukka_ts from 'eslint-plugin-sukka-ts';
 import ts_eslint_plugin from '@typescript-eslint/eslint-plugin';
@@ -6,8 +6,8 @@ import eslint_plugin_antfu from 'eslint-plugin-antfu';
 
 export const sukka_typeScript: SukkaESLintRuleConfig = {
   plugins: {
-    'sukka-ts': eslint_plugin_sukka_ts,
-    '@typescript-eslint': ts_eslint_plugin as any,
+    'sukka-ts': memo(eslint_plugin_sukka_ts, 'eslint-plugin-sukka-ts'),
+    '@typescript-eslint': memo<any>(ts_eslint_plugin, '@typescript-eslint/eslint-plugin'),
     antfu: eslint_plugin_antfu
   },
   rules: {

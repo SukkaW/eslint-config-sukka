@@ -1,4 +1,4 @@
-import { constants } from '@eslint-sukka/shared';
+import { constants, memo } from '@eslint-sukka/shared';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 // @ts-expect-error -- no types
@@ -33,13 +33,13 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
         constants.GLOB_JSX
       ],
       plugins: {
-        i: eslint_plugin_i,
-        import: eslint_plugin_i, // legacy
-        react: eslint_plugin_react,
-        'jsx-a11y': eslint_plugin_jsx_a11y,
-        'react-hooks': eslint_plugin_react_hooks,
-        '@stylistic/jsx': stylisticJsx,
-        '@eslint-react': eslint_react as any
+        i: memo(eslint_plugin_i, 'eslint-plugin-i'),
+        import: memo(eslint_plugin_i, 'eslint-plugin-i'), // legacy
+        react: memo(eslint_plugin_react, '@eslint-sukka/eslint-plugin-react-jsx-a11y#eslint_plugin_react'),
+        'jsx-a11y': memo(eslint_plugin_jsx_a11y, '@eslint-sukka/eslint-plugin-react-jsx-a11y#eslint_plugin_jsx_a11y'),
+        'react-hooks': memo(eslint_plugin_react_hooks, 'eslint-plugin-react-hooks'),
+        '@stylistic/jsx': memo(stylisticJsx, '@stylistic/eslint-plugin-jsx'),
+        '@eslint-react': memo<any>(eslint_react, '@eslint-react/eslint-plugin')
       },
       settings: {
         'import/extensions': allExtensions,

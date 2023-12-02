@@ -1,9 +1,10 @@
+import { memo } from '@eslint-sukka/shared';
 import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
 import stylisticJs from '@stylistic/eslint-plugin-js';
 
 export const best_practices: SukkaESLintRuleConfig = {
   plugins: {
-    '@stylistic/js': stylisticJs
+    '@stylistic/js': memo(stylisticJs, '@stylistic/eslint-plugin-js')
   },
   rules: {
     // enforces getter/setter pairs in objects

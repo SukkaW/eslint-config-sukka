@@ -1,3 +1,4 @@
+import { memo } from '@eslint-sukka/shared';
 import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
 
 // @ts-expect-error -- no types
@@ -6,8 +7,8 @@ import stylisticJs from '@stylistic/eslint-plugin-js';
 
 export const errors: SukkaESLintRuleConfig = {
   plugins: {
-    'unused-imports': eslint_plugin_unused_imports,
-    '@stylistic/js': stylisticJs
+    'unused-imports': memo(eslint_plugin_unused_imports, 'eslint-plugin-unused-imports'),
+    '@stylistic/js': memo(stylisticJs, '@stylistic/eslint-plugin-js')
   },
   rules: {
   // Disallow await inside of loops
