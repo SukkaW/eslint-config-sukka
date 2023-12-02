@@ -3,10 +3,7 @@ import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 // @ts-expect-error -- no types
 import eslint_plugin_i from 'eslint-plugin-import';
-// @ts-expect-error -- no types
-import eslint_plugin_react from 'eslint-plugin-react';
-// @ts-expect-error -- no types
-import eslint_plugin_jsx_a11y from 'eslint-plugin-jsx-a11y';
+import { eslint_plugin_react, eslint_plugin_jsx_a11y } from '@eslint-sukka/eslint-plugin-react-jsx-a11y';
 // @ts-expect-error -- no types
 import eslint_plugin_react_hooks from 'eslint-plugin-react-hooks';
 
@@ -15,6 +12,8 @@ import eslint_react from '@eslint-react/eslint-plugin';
 import stylisticJsx from '@stylistic/eslint-plugin-jsx';
 
 import globals from 'globals';
+
+import type { ESLint } from 'eslint';
 
 export interface OptionsReact {
   /**
@@ -69,14 +68,14 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
         globals: globals.browser
       },
       rules: {
-        // plugin:react/recommended
-        ...eslint_plugin_react.configs.recommended.rules,
-        // plugin:react/jsx-runtime
-        ...eslint_plugin_react.configs['jsx-runtime'].rules,
         // plugin:react-hooks/recommended
         ...eslint_plugin_react_hooks.configs.recommended.rules,
+        // plugin:react/recommended
+        ...(eslint_plugin_react.configs!.recommended as Record<string, ESLint.ConfigData>).rules,
+        // plugin:react/jsx-runtime
+        ...(eslint_plugin_react.configs!['jsx-runtime'] as Record<string, ESLint.ConfigData>).rules,
 
-        'react-hooks/exhaustive-deps': ['warn', {
+        'react-hooks/exhaustive-deps': ['error', {
           additionalHooks: options.additionalHooks ?? '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)'
         }],
 

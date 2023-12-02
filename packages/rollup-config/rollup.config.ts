@@ -10,6 +10,7 @@ export default createRollupConfig(
     '@rollup/plugin-json',
     '@rollup/plugin-commonjs',
     'fs',
-    '@rollup/plugin-alias'
+    '@rollup/plugin-alias',
+    'rollup-plugin-visualizer'
   ]
 );

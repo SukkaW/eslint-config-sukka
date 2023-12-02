@@ -32,26 +32,14 @@
   "license": "MIT",
   "dependencies": {
     "@eslint-react/eslint-plugin": "^0.8.12",
+    "@eslint-sukka/eslint-plugin-react-jsx-a11y": "workspace:^",
     "@eslint-sukka/shared": "workspace:*",
-    "@nolyfill/array-includes": "^1.0.24",
-    "@nolyfill/array.prototype.flat": "^1.0.24",
-    "@nolyfill/array.prototype.flatmap": "^1.0.24",
-    "@nolyfill/array.prototype.tosorted": "^1.0.24",
-    "@nolyfill/es-iterator-helpers": "^1.0.21",
-    "@nolyfill/object.assign": "^1.0.24",
-    "@nolyfill/object.entries": "^1.0.24",
-    "@nolyfill/object.fromentries": "^1.0.24",
-    "@nolyfill/object.hasown": "^1.0.24",
-    "@nolyfill/object.values": "^1.0.24",
-    "@nolyfill/string.prototype.matchall": "^1.0.24",
     "@stylistic/eslint-plugin-jsx": "^1.1.0",
-    "eslint-plugin-imRport": "npm:eslint-plugin-i@2.29.0",
+    "eslint-plugin-import": "npm:eslint-plugin-i@2.29.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "globals": "^13.23.0"
   },
   "devDependencies": {
-    "@eslint-sukka/rollup-config": "workspace:^",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-react": "^7.33.2"
+    "@eslint-sukka/rollup-config": "workspace:^"
   }
 }

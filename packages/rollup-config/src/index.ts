@@ -3,32 +3,34 @@ import { dts } from 'rollup-plugin-dts';
 import { nodeResolve as nodeResolvePlugin } from '@rollup/plugin-node-resolve';
 import commonjsPlugin from '@rollup/plugin-commonjs';
 import type { RollupCommonJSOptions } from '@rollup/plugin-commonjs';
+import type { RollupJsonOptions } from '@rollup/plugin-json';
 import jsonPlugin from '@rollup/plugin-json';
 import aliasPlugin from '@rollup/plugin-alias';
 import type { RollupAliasOptions } from '@rollup/plugin-alias';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 import { rollupFoxquire } from './rollup-foxquire';
 
-import type { RollupOptions } from 'rollup';
+import type { RollupOptions, OutputOptions as RollupOutputOptions } from 'rollup';
 
 import fs from 'fs';
 import type { PathLike } from 'fs';
 
 import { builtinModules } from 'module';
 
-declare global {
-  interface JSON {
-    parse(text: string | Buffer, reviver?: (this: any, key: string, value: any) => any): any
-  }
-}
-
 interface RollupConfigPlugin {
+  // Rollup Plugins
   nodeResolve?: boolean,
   commonjs?: boolean | RollupCommonJSOptions,
-  json?: boolean,
+  json?: boolean | RollupJsonOptions,
   alias?: RollupAliasOptions | false,
-  foxquire?: boolean
+  foxquire?: boolean,
+  // Rollup output behaviors
+  buildCjsOnly?: boolean,
+  analyze?: boolean
 }
+
+const nonNullable = <T>(value: T): value is NonNullable<T> => value !== null && value !== undefined;
 
 export const createRollupConfig = (
   packageJsonPath: PathLike,
@@ -38,18 +40,20 @@ export const createRollupConfig = (
     commonjs = false,
     json = false,
     alias = false,
-    foxquire = false
+    foxquire = false,
+    buildCjsOnly = false,
+    analyze = false
   }: RollupConfigPlugin = {}
 ): RollupOptions[] => {
-  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath));
+  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
   const external = Object.keys(packageJson.dependencies || {}).concat(builtinModules, externalDependencies, ['eslint']);
 
   return [{
     input: 'src/index.ts',
-    output: [
+    output: ([
       { file: 'dist/index.cjs', format: 'cjs' },
-      { file: 'dist/index.mjs', format: 'esm' }
-    ],
+      buildCjsOnly ? null : { file: 'dist/index.mjs', format: 'esm' }
+    ] satisfies Array<RollupOutputOptions | null>).filter(nonNullable),
     plugins: [
       foxquire && rollupFoxquire(),
       alias && aliasPlugin(alias),
@@ -58,9 +62,13 @@ export const createRollupConfig = (
       }),
       commonjs && commonjsPlugin({
         esmExternals: true,
-        ...(typeof commonjs === 'object' ? commonjs : {})
+        ...(typeof commonjs === 'boolean' ? {} : commonjs)
       }),
-      json && jsonPlugin(),
+      json && jsonPlugin({
+        compact: true,
+        preferConst: true,
+        ...(typeof json === 'boolean' ? {} : json)
+      }),
       swc({
         minify: true,
         jsc: {
@@ -70,9 +78,12 @@ export const createRollupConfig = (
             module: true
           }
         }
-      })
+      }),
+      analyze && visualizer({})
     ],
-    external
+    external(source) {
+      return external.some((name) => source === name || source.startsWith(`${name}/`));
+    }
   }, {
     input: 'src/index.ts',
     output: {

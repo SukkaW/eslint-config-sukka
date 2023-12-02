@@ -1,0 +1,45 @@
+{
+  "name": "@eslint-sukka/eslint-plugin-react-jsx-a11y",
+  "version": "4.1.10-beta.0",
+  "homepage": "https://github.com/SukkaW/eslint-config-sukka",
+  "repository": {
+    "url": "https://github.com/SukkaW/eslint-config-sukka",
+    "directory": "packages/eslint-plugin-r"
+  },
+  "main": "dist/index.cjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "rollup -c rollup.config.ts --configPlugin swc3"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@nolyfill/array-includes": "^1.0.24",
+    "@nolyfill/array.prototype.flat": "^1.0.24",
+    "@nolyfill/array.prototype.flatmap": "^1.0.24",
+    "@nolyfill/array.prototype.tosorted": "^1.0.24",
+    "@nolyfill/es-iterator-helpers": "^1.0.21",
+    "@nolyfill/hasown": "^1.0.25",
+    "@nolyfill/object.assign": "^1.0.24",
+    "@nolyfill/object.entries": "^1.0.24",
+    "@nolyfill/object.fromentries": "^1.0.24",
+    "@nolyfill/object.hasown": "^1.0.24",
+    "@nolyfill/object.values": "^1.0.24",
+    "@nolyfill/string.prototype.matchall": "^1.0.24"
+  },
+  "devDependencies": {
+    "@eslint-sukka/rollup-config": "workspace:^",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "7.33.2"
+  }
+}
