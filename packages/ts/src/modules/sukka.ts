@@ -2,13 +2,13 @@ import { memo, type SukkaESLintRuleConfig } from '@eslint-sukka/shared';
 
 import eslint_plugin_sukka_ts from 'eslint-plugin-sukka-ts';
 import ts_eslint_plugin from '@typescript-eslint/eslint-plugin';
-import eslint_plugin_antfu from 'eslint-plugin-antfu';
+import stylisticPlus from '@stylistic/eslint-plugin-plus';
 
 export const sukka_typeScript: SukkaESLintRuleConfig = {
   plugins: {
     'sukka-ts': memo(eslint_plugin_sukka_ts, 'eslint-plugin-sukka-ts'),
     '@typescript-eslint': memo<any>(ts_eslint_plugin, '@typescript-eslint/eslint-plugin'),
-    antfu: eslint_plugin_antfu
+    '@stylistic/plus': memo(stylisticPlus, '@stylistic/eslint-plugin-plus')
   },
   rules: {
     '@typescript-eslint/no-namespace': 'off',
@@ -25,7 +25,7 @@ export const sukka_typeScript: SukkaESLintRuleConfig = {
     'sukka-ts/no-default-error': 'off', // disable since this is way too slow
     'sukka-ts/no-const-enum': 'error', // not tree-shakable by swc/babel/esbuild
 
-    'antfu/generic-spacing': 'error',
-    'antfu/named-tuple-spacing': 'error'
+    '@stylistic/plus/generic-spacing': 'error',
+    '@stylistic/plus/type-named-tuple-spacing': 'error'
   }
 };
