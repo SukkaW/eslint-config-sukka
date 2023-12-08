@@ -25,7 +25,7 @@ export const sukka_typeScript: SukkaESLintRuleConfig = {
     'sukka-ts/no-default-error': 'off', // disable since this is way too slow
     'sukka-ts/no-const-enum': 'error', // not tree-shakable by swc/babel/esbuild
 
-    '@stylistic/plus/generic-spacing': 'error',
+    '@stylistic/plus/type-generic-spacing': 'error',
     '@stylistic/plus/type-named-tuple-spacing': 'error'
   }
 };
