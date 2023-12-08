@@ -1,6 +1,6 @@
 {
   "name": "@eslint-sukka/eslint-plugin-react-jsx-a11y",
-  "version": "4.1.10-beta.2",
+  "version": "4.1.10",
   "homepage": "https://github.com/SukkaW/eslint-config-sukka",
   "repository": {
     "url": "https://github.com/SukkaW/eslint-config-sukka",

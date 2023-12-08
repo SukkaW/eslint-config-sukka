@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-sukka",
-  "version": "4.1.10-beta.2",
+  "version": "4.1.10",
   "description": "Sukka's ESLint config",
   "homepage": "https://github.com/SukkaW/eslint-config-sukka",
   "repository": {
