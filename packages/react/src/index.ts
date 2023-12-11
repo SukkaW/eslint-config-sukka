@@ -23,6 +23,9 @@ export interface OptionsReact {
 }
 
 const allExtensions = ['.js', '.jsx', '.mjs', '.cjs'];
+
+const memoized_eslint_react = memo<any>(eslint_react, '@eslint-react/eslint-plugin');
+
 export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
   return [
     {
@@ -39,8 +42,10 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
         'jsx-a11y-minimal': memo(eslint_plugin_jsx_a11y_minimal, '@eslint-sukka/eslint-plugin-react-jsx-a11y#eslint_plugin_jsx_a11y_minimal'),
         'react-hooks': memo(eslint_plugin_react_hooks, 'eslint-plugin-react-hooks'),
         '@stylistic/jsx': memo(stylisticJsx, '@stylistic/eslint-plugin-jsx'),
-        '@eslint-react': memo<any>(eslint_react, '@eslint-react/eslint-plugin'),
-        'react-prefer-function-component': memo(eslint_plugin_react_prefer_function_component, 'eslint-plugin-react-prefer-function-component')
+        'react-prefer-function-component': memo(eslint_plugin_react_prefer_function_component, 'eslint-plugin-react-prefer-function-component'),
+
+        '@eslint-react': memoized_eslint_react,
+        ...memoized_eslint_react.configs.all.plugins
       },
       settings: {
         'import/extensions': allExtensions,
