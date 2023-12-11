@@ -289,7 +289,7 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
         // Prevent void DOM elements from receiving children
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/void-dom-elements-no-children.md
         // 'react/void-dom-elements-no-children': 'off',
-        '@eslint-react/react/no-children-in-vold-dom-elements': 'error',
+        '@eslint-react/react/no-children-in-void-dom-elements': 'error',
 
         // Enforce curly braces or disallow unnecessary curly braces in JSX props and/or children
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md
