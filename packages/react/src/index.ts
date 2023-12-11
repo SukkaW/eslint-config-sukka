@@ -7,13 +7,13 @@ import { eslint_plugin_react, eslint_plugin_jsx_a11y } from '@eslint-sukka/eslin
 // @ts-expect-error -- no types
 import eslint_plugin_react_hooks from 'eslint-plugin-react-hooks';
 
+import eslint_plugin_react_prefer_function_component from 'eslint-plugin-react-prefer-function-component';
+
 import eslint_react from '@eslint-react/eslint-plugin';
 
 import stylisticJsx from '@stylistic/eslint-plugin-jsx';
 
 import globals from 'globals';
-
-import type { ESLint } from 'eslint';
 
 export interface OptionsReact {
   /**
@@ -39,7 +39,8 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
         'jsx-a11y': memo(eslint_plugin_jsx_a11y, '@eslint-sukka/eslint-plugin-react-jsx-a11y#eslint_plugin_jsx_a11y'),
         'react-hooks': memo(eslint_plugin_react_hooks, 'eslint-plugin-react-hooks'),
         '@stylistic/jsx': memo(stylisticJsx, '@stylistic/eslint-plugin-jsx'),
-        '@eslint-react': memo<any>(eslint_react, '@eslint-react/eslint-plugin')
+        '@eslint-react': memo<any>(eslint_react, '@eslint-react/eslint-plugin'),
+        'react-prefer-function-component': memo(eslint_plugin_react_prefer_function_component, 'eslint-plugin-react-prefer-function-component')
       },
       settings: {
         'import/extensions': allExtensions,
@@ -70,28 +71,12 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
       rules: {
         // plugin:react-hooks/recommended
         ...eslint_plugin_react_hooks.configs.recommended.rules,
-        // plugin:react/recommended
-        ...(eslint_plugin_react.configs!.recommended as Record<string, ESLint.ConfigData>).rules,
-        // plugin:react/jsx-runtime
-        ...(eslint_plugin_react.configs!['jsx-runtime'] as Record<string, ESLint.ConfigData>).rules,
 
         'react-hooks/exhaustive-deps': ['error', {
           additionalHooks: options.additionalHooks ?? '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)'
         }],
 
         // TODO: wating for migration
-        // Prevent usage of .bind() in JSX props
-        // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
-        'react/jsx-no-bind': ['error', {
-          ignoreRefs: true,
-          allowArrowFunctions: true,
-          allowFunctions: false,
-          allowBind: false,
-          ignoreDOMComponents: true
-        }],
-        // Prevent extra closing tags for components without children
-        // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
-        'react/self-closing-comp': 'error',
         // Prevent unused state values
         // https://github.com/jsx-eslint/eslint-plugin-react/pull/1103/
         'react/no-unused-state': 'error',
@@ -101,25 +86,72 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
         // Prevent declaring unused methods of component class
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/21e01b61af7a38fc86d94f27eb66cda8054582ed/docs/rules/no-unused-class-component-methods.md
         'react/no-unused-class-component-methods': 'error',
-        // Ensure destructuring and symmetric naming of useState hook value and setter variables
-        // https://github.com/jsx-eslint/eslint-plugin-react/blob/c8833f301314dab3e79ef7ac4cf863e4d5fa0019/docs/rules/hook-use-state.md
-        // Disable for now, fxxking way too many false positives, re-implement it
-        // in eslint-react
-        'react/hook-use-state': 'off',
 
         // ====================================================================
 
+        // eslint-plugin-react recommended rules, migrated
+        'react/no-string-refs': 'off',
+        '@eslint-react/react/no-string-refs': 'error',
+        'react/jsx-no-comment-textnodes': 'off',
+        '@eslint-react/jsx/no-comment-textnodes': 'error',
+        'react/jsx-no-target-blank': 'off',
+        '@eslint-react/react/no-unsafe-target-blank': 'error',
+        'react/no-children-prop': 'off',
+        '@eslint-react/react/no-children-prop': 'error',
+        'react/no-danger-with-children': 'off',
+        '@eslint-react/react/no-dangerously-set-innerhtml-with-children': 'error',
+        'react/no-render-return-value': 'off',
+        '@eslint-react/react/no-render-return-value': 'error',
+        'react/no-direct-mutation-state': 'off',
+        '@eslint-react/react/no-direct-mutation-state': 'error',
+        'react/no-find-dom-node': 'off',
+        '@eslint-react/react/no-find-dom-node': 'error',
+        'react/no-unsafe': 'off',
+        '@eslint-react/react/no-unsafe-component-will-mount': 'warn',
+        '@eslint-react/react/no-unsafe-component-will-receive-props': 'warn',
+        '@eslint-react/react/no-unsafe-component-will-update': 'warn',
+
+        // plugin:react/jsx-runtime
+        // Manually includes rules
+        // ...(eslint_plugin_react.configs!['jsx-runtime'] as Record<string, ESLint.ConfigData>).rules,
         'react/react-in-jsx-scope': 'off',
+        'react/jsx-uses-react': 'off',
+
+        // Unused rules, covered by TypeScript
         'react/prop-types': 'off',
         'react/display-name': ['off', { ignoreTranspilerName: false }],
-        // exclude styled-jsx and css prop
         'react/no-unknown-property': 'off', // ['error', { ignore: ['css', 'jsx'] }], // covered by TypeScript
         'react/jsx-uses-vars': 'off', // covered by TypeScript
+        'react/jsx-no-duplicate-props': 'off', // covered by TypeScript
+        'react/jsx-no-undef': 'off', // covered by TypeScript
+        'react/no-unescaped-entities': 'off',
 
+        // Other rules
         'react/jsx-filename-extension': 'off', /* ['warn', {
           extensions: ['.jsx', '.tsx']
         }], */
         '@eslint-react/naming-convention/filename-extension': ['error', 'as-needed'],
+
+        // Prevent usage of .bind() in JSX props
+        // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
+        'react/jsx-no-bind': 'off',
+
+        // Require stateless functions when not using lifecycle methods, setState or ref
+        // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md
+        // Replaced by eslint-plugin-react-prefer-function-component
+        'react/prefer-stateless-function': 'off',
+        'react-prefer-function-component/react-prefer-function-component': 'error',
+
+        // Ensure destructuring and symmetric naming of useState hook value and setter variables
+        // https://github.com/jsx-eslint/eslint-plugin-react/blob/c8833f301314dab3e79ef7ac4cf863e4d5fa0019/docs/rules/hook-use-state.md
+        // Disable for now, fxxking way too many false positives, re-implement it in eslint-react
+        'react/hook-use-state': 'off',
+        '@eslint-react/naming-convention/use-state': 'error',
+
+        // Prevent extra closing tags for components without children
+        // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
+        'react/self-closing-comp': 'off',
+        '@stylistic/jsx/jsx-self-closing-comp': 'error',
 
         // Enforce boolean attributes notation in JSX
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md
@@ -148,9 +180,6 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
           allowAllCaps: true,
           ignore: []
         }],
-        // Require stateless functions when not using lifecycle methods, setState or ref
-        // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md
-        'react/prefer-stateless-function': ['error', { ignorePureComponents: true }],
         // Require render() methods to return something
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/require-render-return.md
         'react/require-render-return': 'error',

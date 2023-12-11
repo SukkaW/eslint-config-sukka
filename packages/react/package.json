@@ -40,6 +40,7 @@
     "globals": "^13.23.0"
   },
   "devDependencies": {
-    "@eslint-sukka/rollup-config": "workspace:^"
+    "@eslint-sukka/rollup-config": "workspace:^",
+    "eslint-plugin-react-prefer-function-component": "^3.3.0"
   }
 }
