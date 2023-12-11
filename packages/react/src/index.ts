@@ -29,7 +29,7 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
     files: [
       constants.GLOB_TS,
       constants.GLOB_TSX,
-      constants.GLOB_JS,
+      // constants.GLOB_JS,
       constants.GLOB_JSX
     ],
     plugins: {
