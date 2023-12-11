@@ -207,10 +207,12 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
         // 'react/style-prop-object': 'off',
 
         // Other rules
+        '@eslint-react/naming-convention/filename': ['error', { rule: 'kebab-case' }],
+
         /* 'react/jsx-filename-extension': ['warn', {
           extensions: ['.jsx', '.tsx']
         }], */
-        '@eslint-react/naming-convention/filename-extension': ['error', 'as-needed'],
+        '@eslint-react/naming-convention/filename-extension': ['error', { rule: 'as-needed' }],
 
         // Prevent usage of .bind() in JSX props
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
