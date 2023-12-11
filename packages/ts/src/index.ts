@@ -64,7 +64,10 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
             extensions: allExtensions
           },
           typescript: {
-            alwaysTryTypes: true
+            alwaysTryTypes: true,
+            ...(tsconfigPath === true ? {} : {
+              project: tsconfigPath
+            })
           }
         },
         'import/parsers': {
