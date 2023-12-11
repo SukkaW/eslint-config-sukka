@@ -170,9 +170,6 @@ importers:
 
   packages/eslint-plugin-react-jsx-a11y:
     dependencies:
-      '@nolyfill/array-includes':
-        specifier: ^1.0.24
-        version: 1.0.24
       '@nolyfill/array.prototype.flat':
         specifier: ^1.0.24
         version: 1.0.24
@@ -191,19 +188,10 @@ importers:
       '@nolyfill/object.assign':
         specifier: ^1.0.24
         version: 1.0.24
-      '@nolyfill/object.entries':
-        specifier: ^1.0.24
-        version: 1.0.24
       '@nolyfill/object.fromentries':
         specifier: ^1.0.24
         version: 1.0.24
-      '@nolyfill/object.hasown':
-        specifier: ^1.0.24
-        version: 1.0.24
       '@nolyfill/object.values':
-        specifier: ^1.0.24
-        version: 1.0.24
-      '@nolyfill/string.prototype.matchall':
         specifier: ^1.0.24
         version: 1.0.24
     devDependencies:
@@ -1209,6 +1197,7 @@ packages:
     engines: {node: '>=12.4.0'}
     dependencies:
       '@nolyfill/shared': 1.0.24
+    dev: true
 
   /@nolyfill/array.prototype.flat@1.0.24:
     resolution: {integrity: sha512-RCD+BTf2JXc2SexkTOVm7ELYfQRmJjfdHBavuWaE715QP8zvv5zh4hpFqS7jZpDZWC4bTCpmiuDS3CmEepKrLA==}
@@ -1250,6 +1239,7 @@ packages:
     engines: {node: '>=12.4.0'}
     dependencies:
       '@nolyfill/shared': 1.0.24
+    dev: true
 
   /@nolyfill/object.fromentries@1.0.24:
     resolution: {integrity: sha512-nl9e2bebvirv0XE70hdHlHrqXE0Kjwp8BsyHkazOSUM/3Y3YQfcEEIrtf402bdu/jYew4EApcMd8iO4ODyrDcw==}
@@ -1262,6 +1252,7 @@ packages:
     engines: {node: '>=12.4.0'}
     dependencies:
       '@nolyfill/shared': 1.0.24
+    dev: true
 
   /@nolyfill/object.values@1.0.24:
     resolution: {integrity: sha512-FEbvgDQUGDdWZmXHvg8DhKzI9LM3jclZKVmkIx5ZMs3xLb37Sh/c6VG56pmObrHZjwISlDs4cHouVYRsFzwLZw==}
@@ -1280,6 +1271,7 @@ packages:
     engines: {node: '>=12.4.0'}
     dependencies:
       '@nolyfill/shared': 1.0.24
+    dev: true
 
   /@pkgjs/parseargs@0.11.0:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}

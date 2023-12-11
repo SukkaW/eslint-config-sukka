@@ -24,18 +24,14 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@nolyfill/array-includes": "^1.0.24",
     "@nolyfill/array.prototype.flat": "^1.0.24",
     "@nolyfill/array.prototype.flatmap": "^1.0.24",
     "@nolyfill/array.prototype.tosorted": "^1.0.24",
     "@nolyfill/es-iterator-helpers": "^1.0.21",
     "@nolyfill/hasown": "^1.0.25",
     "@nolyfill/object.assign": "^1.0.24",
-    "@nolyfill/object.entries": "^1.0.24",
     "@nolyfill/object.fromentries": "^1.0.24",
-    "@nolyfill/object.hasown": "^1.0.24",
-    "@nolyfill/object.values": "^1.0.24",
-    "@nolyfill/string.prototype.matchall": "^1.0.24"
+    "@nolyfill/object.values": "^1.0.24"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:^",
