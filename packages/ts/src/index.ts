@@ -53,6 +53,8 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
           ecmaFeatures: {
             jsx: true
           },
+          // for @typescript/eslint-parser
+          jsxPragma: undefined,
           warnOnUnsupportedTypeScriptVersion: true
         }
       },

@@ -61,12 +61,18 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
     flatConfigs.push((await foxquire<typeof import('@eslint-sukka/json')>('@eslint-sukka/json')).jsonc());
   }
   // typescript
-  if (enabled(options?.ts, isPackageExists('typescript'))) {
+  const typescriptEnabled = enabled(options?.ts, isPackageExists('typescript'));
+  if (typescriptEnabled) {
     flatConfigs.push((await foxquire<typeof import('@eslint-sukka/ts')>('@eslint-sukka/ts')).typescript(config(options?.ts)));
   }
   // react
-  if (enabled(options?.react, isPackageExists('react') || isPackageExists('next'))) {
-    flatConfigs.push((await foxquire<typeof import('@eslint-sukka/react')>('@eslint-sukka/react')).react(config(options?.react)));
+  const reactEnabled = enabled(options?.react, isPackageExists('react') || isPackageExists('next'));
+  if (reactEnabled) {
+    if (!typescriptEnabled) {
+      console.warn('[eslint-config-sukka] React module will not be enabled when TypeScript is not set up.');
+    } else {
+      flatConfigs.push((await foxquire<typeof import('@eslint-sukka/react')>('@eslint-sukka/react')).react(config(options?.react)));
+    }
   }
   // node
   if (enabled(options?.node, isPackageExists('@types/node'))) {
