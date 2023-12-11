@@ -1,6 +1,6 @@
 {
   "name": "@eslint-sukka/js",
-  "version": "5.0.0-beta.0",
+  "version": "5.0.0-beta.1",
   "description": "Sukka's ESLint config",
   "homepage": "https://github.com/SukkaW/eslint-config-sukka",
   "repository": {
