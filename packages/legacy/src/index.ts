@@ -37,7 +37,7 @@ export const legacy = (options: OptionsLegacy = {}): FlatESLintConfigItem[] => {
       // nullable logical operator is not supported in legacy environment
       'sukka/unicorn/prefer-logical-operator-over-ternary': 'off', // foo ? foo : bar
       // optional catch binding is not supported in legacy environment
-      'sukka/unicorn/prefer-optional-catch-binding': 'error' // try {} catch {}
+      'sukka/unicorn/prefer-optional-catch-binding': 'off' // try {} catch {}
     },
     languageOptions: {
       globals: {
