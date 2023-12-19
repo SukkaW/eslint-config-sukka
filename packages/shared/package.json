@@ -31,7 +31,8 @@
   "author": "Sukka <https://skk.moe>",
   "license": "MIT",
   "dependencies": {
-    "@types/eslint": "^8.44.9"
+    "@types/eslint": "^8.44.9",
+    "@typescript-eslint/utils": "^6.15.0"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*"

@@ -4,7 +4,7 @@ import type { TSESLint, TSESTree } from '@typescript-eslint/utils';
 import { AST_NODE_TYPES, ASTUtils, ESLintUtils } from '@typescript-eslint/utils';
 import { getTypeName } from '@typescript-eslint/type-utils';
 
-import { createRule, ensureParserWithTypeInformation } from '../../../../../lib/create-eslint-rule';
+import { createRule, ensureParserWithTypeInformation } from '@eslint-sukka/shared';
 
 const EQ_OPERATORS = /^[!=]=/;
 const regexpp = new RegExpParser();

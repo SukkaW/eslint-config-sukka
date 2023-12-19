@@ -1,4 +1,4 @@
-import { createRule } from '../../../../../lib/create-eslint-rule';
+import { createRule } from '@eslint-sukka/shared';
 
 type Options = boolean | 'allow-with-description';
 

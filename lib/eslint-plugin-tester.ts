@@ -2,7 +2,7 @@ import path from 'path';
 import { RuleTester } from '@typescript-eslint/utils/ts-eslint';
 import type { InvalidTestCase, ValidTestCase } from '@typescript-eslint/utils/ts-eslint';
 import { it } from 'vitest';
-import type { ExportedRuleModule } from './create-eslint-rule';
+import type { ExportedRuleModule } from '@eslint-sukka/shared';
 
 const tester = new RuleTester({
   parser: require.resolve('@typescript-eslint/parser'),

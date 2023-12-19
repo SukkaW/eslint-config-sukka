@@ -1,4 +1,4 @@
-import { createRule } from '../../../../../lib/create-eslint-rule';
+import { createRule } from '@eslint-sukka/shared';
 
 export default createRule({
   name: 'no-const-enum',

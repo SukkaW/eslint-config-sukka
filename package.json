@@ -18,6 +18,7 @@
     "@eslint-sukka/legacy": "workspace:*",
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/react": "workspace:*",
+    "@eslint-sukka/shared": "workspace:*",
     "@eslint-sukka/ts": "workspace:*",
     "@stylistic/eslint-plugin-migrate": "^1.5.1",
     "@swc-node/register": "^1.6.8",
