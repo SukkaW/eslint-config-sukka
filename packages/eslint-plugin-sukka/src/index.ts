@@ -85,6 +85,7 @@ import prefer_regexp_test from 'eslint-plugin-unicorn/rules/prefer-regexp-test.j
 import prefer_set_has from 'eslint-plugin-unicorn/rules/prefer-set-has.js';
 import prefer_switch from 'eslint-plugin-unicorn/rules/prefer-switch.js';
 import require_number_to_fixed_digits_argument from 'eslint-plugin-unicorn/rules/require-number-to-fixed-digits-argument.js';
+import template_indent from 'eslint-plugin-unicorn/rules/template-indent.js';
 
 // eslint-plugin-sukka
 import ban_eslint_disable from './rules/ban-eslint-disable';
@@ -174,7 +175,8 @@ export default {
     'unicorn/prefer-regexp-test': loadUnicorn(prefer_regexp_test, 'unicorn/prefer-regexp-test'),
     'unicorn/prefer-set-has': loadUnicorn(prefer_set_has, 'unicorn/prefer-set-has'),
     'unicorn/prefer-switch': loadUnicorn(prefer_switch, 'unicorn/prefer-switch'),
-    'unicorn/require-number-to-fixed-digits-argument': loadUnicorn(require_number_to_fixed_digits_argument, 'unicorn/require-number-to-fixed-digits-argument')
+    'unicorn/require-number-to-fixed-digits-argument': loadUnicorn(require_number_to_fixed_digits_argument, 'unicorn/require-number-to-fixed-digits-argument'),
+    'unicorn/template-indent': loadUnicorn(template_indent, 'unicorn/template-indent')
   }
 };
 

@@ -94,6 +94,33 @@ export const sukka: SukkaESLintRuleConfig = {
     'sukka/unicorn/prefer-set-has': 'error', // Set#has is way faster
     'sukka/unicorn/prefer-switch': 'warn', // Array.from(foo)
     'sukka/unicorn/require-number-to-fixed-digits-argument': 'warn', // 1.toFixed(2)
-    'sukka/import-dedupe': 'error' // ban import { a, b, a, a, c, a } from 'sukka'
+    'sukka/import-dedupe': 'error', // ban import { a, b, a, a, c, a } from 'sukka'
+    'sukka/unicorn/template-indent': [
+      'warn',
+      {
+        tags: [
+          'outdent',
+          'dedent',
+          'gql',
+          'sql',
+          'html',
+          'styled',
+          'css'
+        ],
+        functions: [
+          'dedent',
+          'stripIndent',
+          'strip_indent'
+        ],
+        selectors: [],
+        comments: [
+          'HTML',
+          'html',
+          'CSS',
+          'css',
+          'indent'
+        ]
+      }
+    ]
   }
 };
