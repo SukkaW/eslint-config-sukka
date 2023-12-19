@@ -3,7 +3,7 @@ import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 import eslint_config_flat_gitignore from 'eslint-config-flat-gitignore';
 
 export interface OptionsIgnores {
-  customGlobs?: string | string[] | null | false,
+  customGlobs?: string | string[] | null | false | ((builtinGlobs: typeof constants.GLOB_EXCLUDE) => string[]),
   gitignore?: string | string[] | boolean | null
 }
 
@@ -17,6 +17,8 @@ export const ignores = (options: OptionsIgnores = {}): FlatESLintConfigItem[] =>
   let ignores: string[] = [];
   if (customGlobs === false || customGlobs === null) {
     ignores = constants.GLOB_EXCLUDE;
+  } else if (typeof customGlobs === 'function') {
+    ignores = customGlobs(constants.GLOB_EXCLUDE);
   } else if (typeof customGlobs === 'string') {
     ignores.push(customGlobs);
   } else if (Array.isArray(customGlobs)) {
