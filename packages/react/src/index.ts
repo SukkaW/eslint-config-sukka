@@ -22,7 +22,7 @@ export interface OptionsReact {
   additionalHooks?: string
 }
 
-const memoized_eslint_react = memo<any>(eslint_react, '@eslint-react/eslint-plugin');
+const memoized_eslint_react = memo(eslint_react, '@eslint-react/eslint-plugin');
 
 export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
   return [{
@@ -41,8 +41,8 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
       '@stylistic/jsx': memo(stylisticJsx, '@stylistic/eslint-plugin-jsx'),
       'react-prefer-function-component': memo(eslint_plugin_react_prefer_function_component, 'eslint-plugin-react-prefer-function-component'),
 
-      '@eslint-react': memoized_eslint_react,
-      ...memoized_eslint_react.configs.all.plugins
+      '@eslint-react': memoized_eslint_react as any,
+      ...memoized_eslint_react.configs['recommended-type-checked'].plugins as any
     },
     settings: {
       react: {
@@ -142,24 +142,16 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
 
       // ====================================================================
 
+      ...memoized_eslint_react.configs['recommended-type-checked'].rules,
       // eslint-plugin-react recommended rules, migrated
-      // 'react/no-string-refs': 'off',
       '@eslint-react/react/no-string-refs': 'error',
-      // 'react/jsx-no-comment-textnodes': 'off',
       '@eslint-react/jsx/no-comment-textnodes': 'error',
-      // 'react/jsx-no-target-blank': 'off',
       '@eslint-react/react/no-unsafe-target-blank': 'error',
-      // 'react/no-children-prop': 'off',
       '@eslint-react/react/no-children-prop': 'error',
-      // 'react/no-danger-with-children': 'off',
       '@eslint-react/react/no-dangerously-set-innerhtml-with-children': 'error',
-      // 'react/no-render-return-value': 'off',
       '@eslint-react/react/no-render-return-value': 'error',
-      // 'react/no-direct-mutation-state': 'off',
       '@eslint-react/react/no-direct-mutation-state': 'error',
-      // 'react/no-find-dom-node': 'off',
       '@eslint-react/react/no-find-dom-node': 'error',
-      // 'react/no-unsafe': 'off',
       '@eslint-react/react/no-unsafe-component-will-mount': 'warn',
       '@eslint-react/react/no-unsafe-component-will-receive-props': 'warn',
       '@eslint-react/react/no-unsafe-component-will-update': 'warn',
@@ -292,9 +284,6 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
 
       // 'react/jsx-key': 'off', // ['warn', { checkFragmentShorthand: true, checkKeyMustBeforeSpread: true, warnOnDuplicates: true }],
       '@eslint-react/jsx/no-missing-key': 'error',
-      // Prevent usage of Array index in keys
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-array-index-key.md
-      // 'react/no-array-index-key': 'off',
       '@eslint-react/jsx/no-array-index-key': 'error',
       '@eslint-react/jsx/no-duplicate-key': 'error',
       '@eslint-react/jsx/no-spreading-key': 'error',
@@ -305,8 +294,6 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
       '@eslint-react/jsx/no-useless-fragment': 'error',
 
       // Prevent react contexts from taking non-stable values
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/e2eaadae316f9506d163812a09424eb42698470a/docs/rules/jsx-no-constructed-context-values.md
-      // 'react/jsx-no-constructed-context-values': 'off',
       '@eslint-react/react/no-constructed-context-value': 'error',
 
       // Prevent creating unstable components inside components
@@ -328,7 +315,7 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
       // To prevent potential unnecessary rerenders, and performance regressions
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/66b58dd4864678eb869a7bf434c72ff7ac530eb1/docs/rules/no-object-type-as-default-prop.md
       // 'react/no-object-type-as-default-prop': 'off',
-      '@eslint-react/react/no-unstable-default-props': 'warn',
+      '@eslint-react/react/no-unstable-default-props': 'error',
 
       // default type is "submit" which refresh the page
       // 'react/button-has-type': 'off',
