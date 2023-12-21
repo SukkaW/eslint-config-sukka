@@ -191,11 +191,7 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
       /* 'react/jsx-filename-extension': ['warn', {
           extensions: ['.jsx', '.tsx']
         }], */
-      '@eslint-react/naming-convention/filename-extension': ['error', { rule: 'as-needed' }],
-
-      // Prevent usage of .bind() in JSX props
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
-      // 'react/jsx-no-bind': 'off',
+      '@eslint-react/naming-convention/filename-extension': ['error', { allow: 'as-needed' }],
 
       // Require stateless functions when not using lifecycle methods, setState or ref
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md
