@@ -17,9 +17,12 @@ export interface OptionsTypeScript {
   componentExtentions?: string[]
 }
 
-const typeScriptExtensions = ['.ts', '.cts', '.mts', '.tsx', '.d.ts'];
 const javaScriptExtensions = ['.js', '.jsx', '.mjs', '.cjs'];
-const allExtensions = [...typeScriptExtensions, ...javaScriptExtensions];
+const allExtensions = ['.ts', '.cts', '.mts', '.tsx', '.d.ts', ...javaScriptExtensions];
+// Omit `.d.ts` because 1) TypeScript compilation already confirms that
+// types are resolved, and 2) it would mask an unresolved
+// `.ts`/`.tsx`/`.js`/`.jsx` implementation.
+const importResolverExtensions = ['.ts', '.cts', '.mts', '.tsx', ...javaScriptExtensions];
 
 export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigItem[] => {
   const { tsconfigPath = true, tsconfigRootDir = process.cwd(), componentExtentions = [] } = options;
@@ -63,7 +66,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         'import/external-module-folders': ['node_modules', 'node_modules/@types'],
         'import/resolver': {
           node: {
-            extensions: allExtensions
+            extensions: importResolverExtensions
           },
           typescript: {
             alwaysTryTypes: true,
@@ -75,7 +78,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         'import/parsers': {
           // TODO: remove this line once eslint-plugin-import #2556 is fixed
           espree: javaScriptExtensions,
-          '@typescript-eslint/parser': typeScriptExtensions
+          '@typescript-eslint/parser': ['.ts', '.cts', '.mts', '.tsx', '.d.ts']
         }
       },
       rules: {
