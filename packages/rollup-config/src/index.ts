@@ -11,7 +11,7 @@ import { visualizer } from 'rollup-plugin-visualizer';
 
 import { rollupFoxquire } from './rollup-foxquire';
 
-import type { RollupOptions, OutputOptions as RollupOutputOptions } from 'rollup';
+import type { RollupOptions, OutputOptions as RollupOutputOptions, InputOption as RollupInputOption } from 'rollup';
 
 import fs from 'fs';
 import type { PathLike } from 'fs';
@@ -19,6 +19,7 @@ import type { PathLike } from 'fs';
 import { builtinModules } from 'module';
 
 interface RollupConfigPlugin {
+  input?: RollupInputOption,
   // Rollup Plugins
   nodeResolve?: boolean,
   commonjs?: boolean | RollupCommonJSOptions,
@@ -36,6 +37,7 @@ export const createRollupConfig = (
   packageJsonPath: PathLike,
   externalDependencies: string[] = [],
   {
+    input = 'src/index.ts',
     nodeResolve = false,
     commonjs = false,
     json = false,
@@ -49,7 +51,7 @@ export const createRollupConfig = (
   const external = Object.keys(packageJson.dependencies || {}).concat(builtinModules, externalDependencies, ['eslint']);
 
   return [{
-    input: 'src/index.ts',
+    input,
     output: ([
       { file: 'dist/index.cjs', format: 'cjs' },
       buildCjsOnly ? null : { file: 'dist/index.mjs', format: 'esm' }
@@ -85,7 +87,7 @@ export const createRollupConfig = (
       return external.some((name) => source === name || source.startsWith(`${name}/`));
     }
   }, {
-    input: 'src/index.ts',
+    input,
     output: {
       file: 'dist/index.d.ts'
     },

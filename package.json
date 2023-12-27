@@ -41,7 +41,7 @@
     "typescript": "^5.3.3",
     "vitest": "^1.1.0"
   },
-  "packageManager": "pnpm@8.12.0",
+  "packageManager": "pnpm@8.13.1",
   "pnpm": {
     "overrides": {
       "axe-core": "$axe-core",
@@ -58,7 +58,8 @@
       "object.groupby": "npm:@nolyfill/object.groupby@latest",
       "object.hasown": "npm:@nolyfill/object.hasown@latest",
       "object.values": "npm:@nolyfill/object.values@latest",
-      "string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@latest"
+      "string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@latest",
+      "hasown": "npm:@nolyfill/hasown@latest"
     },
     "patchedDependencies": {
       "text-table@0.2.0": "patches/text-table@0.2.0.patch",
