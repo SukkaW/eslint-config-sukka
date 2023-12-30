@@ -34,10 +34,10 @@
   "dependencies": {
     "@eslint-sukka/eslint-import-resolver-ts": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
-    "@stylistic/eslint-plugin-plus": "1.5.1",
-    "@stylistic/eslint-plugin-ts": "1.5.1",
-    "@typescript-eslint/eslint-plugin": "^6.15.0",
-    "@typescript-eslint/parser": "^6.15.0",
+    "@stylistic/eslint-plugin-plus": "1.5.3",
+    "@stylistic/eslint-plugin-ts": "1.5.3",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/parser": "^6.17.0",
     "eslint-plugin-import": "npm:eslint-plugin-i@2.29.0",
     "eslint-plugin-sukka-ts": "workspace:*"
   },
@@ -45,6 +45,6 @@
     "@eslint-sukka/js": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
     "@eslint/js": "^8.56.0",
-    "@stylistic/eslint-plugin-js": "^1.5.1"
+    "@stylistic/eslint-plugin-js": "^1.5.3"
   }
 }

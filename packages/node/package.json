@@ -32,7 +32,7 @@
   "license": "MIT",
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",
-    "eslint-plugin-n": "^16.4.0",
+    "eslint-plugin-n": "^16.6.1",
     "eslint-plugin-sukka": "workspace:*",
     "globals": "^13.24.0"
   },
