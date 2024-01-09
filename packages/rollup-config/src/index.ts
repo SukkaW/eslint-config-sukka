@@ -53,8 +53,8 @@ export const createRollupConfig = (
   return [{
     input,
     output: ([
-      { file: 'dist/index.cjs', format: 'cjs' },
-      buildCjsOnly ? null : { file: 'dist/index.mjs', format: 'esm' }
+      { file: 'dist/index.cjs', format: 'cjs', hoistTransitiveImports: false },
+      buildCjsOnly ? null : { file: 'dist/index.mjs', format: 'esm', hoistTransitiveImports: false }
     ] satisfies Array<RollupOutputOptions | null>).filter(nonNullable),
     plugins: [
       foxquire && rollupFoxquire(),

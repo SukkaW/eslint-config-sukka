@@ -1,5 +1,5 @@
 {
-  "name": "@eslint-sukka/eslint-import-resolver-ts",
+  "name": "eslint-import-resolver-ts-bundled",
   "version": "5.0.0-beta.3",
   "homepage": "https://github.com/SukkaW/eslint-config-sukka",
   "repository": {
@@ -24,6 +24,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "enhanced-resolve": "5.15.0"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:^",

@@ -68,7 +68,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
           node: {
             extensions: importResolverExtensions
           },
-          '@eslint-sukka/eslint-import-resolver-ts': {
+          'ts-bundled': {
             alwaysTryTypes: true,
             ...(tsconfigPath === true ? {} : {
               project: tsconfigPath
