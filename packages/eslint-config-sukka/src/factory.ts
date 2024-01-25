@@ -33,13 +33,13 @@ interface ESLintSukkaOptions {
 // function enabled<T extends SharedOptions>(options: T | boolean | undefined, defaults: boolean): boolean;
 function enabled<T extends SharedOptions>(options: T | boolean | undefined, defaults?: boolean | undefined): boolean {
   if (typeof options === 'boolean') return options;
-  return options?.enable ?? (!!defaults);
+  return options?.enable ?? defaults ?? false;
 }
 
 function config<T>(options: SharedOptions<T> | undefined | boolean): T | undefined {
   if (typeof options === 'boolean' || typeof options === 'undefined') return;
   const { enable, ...rest } = options;
-  return { ...rest } as T;
+  return rest as T;
 }
 
 export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESLintConfigItem[]): Promise<FlatESLintConfigItem[]> => {
@@ -75,7 +75,7 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
     }
   }
   // node
-  if (enabled(options?.node, isPackageExists('@types/node'))) {
+  if (enabled(options?.node, isPackageExists('@types/node') || isPackageExists('@types/bun'))) {
     flatConfigs.push((await foxquire<typeof import('@eslint-sukka/node')>('@eslint-sukka/node')).node(config(options?.node)));
   }
   // legacy
