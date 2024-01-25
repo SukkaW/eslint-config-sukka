@@ -3,6 +3,14 @@ import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 import eslint_config_flat_gitignore from 'eslint-config-flat-gitignore';
 
 export interface OptionsIgnores {
+  /**
+   * If `customGlobs` is not provided, or provided one is set to `false` or `null`, only the built-in globs will be used.
+   *
+   * If `customGlobs` is `string` or `string[]`, it will be appended to the built-in globs.
+   *
+   * If `customGlobs` is `function`, it will be called with the built-in globs as the first argument, and the return value will be used as the final globs.
+   * This is the only way to disable the built-in globs.
+   */
   customGlobs?: string | string[] | null | false | ((builtinGlobs: typeof constants.GLOB_EXCLUDE) => string[]),
   gitignore?: string | string[] | boolean | null
 }
@@ -20,9 +28,9 @@ export const ignores = (options: OptionsIgnores = {}): FlatESLintConfigItem[] =>
   } else if (typeof customGlobs === 'function') {
     ignores = customGlobs(constants.GLOB_EXCLUDE);
   } else if (typeof customGlobs === 'string') {
-    ignores.push(customGlobs);
+    ignores.push(...constants.GLOB_EXCLUDE, customGlobs);
   } else if (Array.isArray(customGlobs)) {
-    ignores = customGlobs;
+    ignores.push(...constants.GLOB_EXCLUDE, ...customGlobs);
   } else {
     const _typeguard: never = customGlobs;
   }
