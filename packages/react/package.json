@@ -31,10 +31,10 @@
   "author": "Sukka <https://skk.moe>",
   "license": "MIT",
   "dependencies": {
-    "@eslint-react/eslint-plugin": "^0.10.2",
+    "@eslint-react/eslint-plugin": "^0.10.12",
     "@eslint-sukka/eslint-plugin-react-jsx-a11y": "workspace:^",
     "@eslint-sukka/shared": "workspace:*",
-    "@stylistic/eslint-plugin-jsx": "^1.5.3",
+    "@stylistic/eslint-plugin-jsx": "^1.5.4",
     "eslint-plugin-import": "npm:eslint-plugin-i@2.29.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "globals": "^13.24.0"
