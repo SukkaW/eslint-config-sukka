@@ -60,16 +60,10 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
         additionalHooks: options.additionalHooks ?? '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)'
       }],
 
-      // TODO: wating for migration
-      // Prevent unused state values
-      // https://github.com/jsx-eslint/eslint-plugin-react/pull/1103/
-      'react-minimal/no-unused-state': 'error',
       // Prevent using this.state within a this.setState
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/no-access-state-in-setstate.md
       'react-minimal/no-access-state-in-setstate': 'error',
-      // Prevent declaring unused methods of component class
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/21e01b61af7a38fc86d94f27eb66cda8054582ed/docs/rules/no-unused-class-component-methods.md
-      'react-minimal/no-unused-class-component-methods': 'error',
+
       // Enforce PascalCase for user-defined JSX components
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md
       'react-minimal/jsx-pascal-case': ['error', {
@@ -155,6 +149,14 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
       '@eslint-react/react/no-unsafe-component-will-mount': 'warn',
       '@eslint-react/react/no-unsafe-component-will-receive-props': 'warn',
       '@eslint-react/react/no-unsafe-component-will-update': 'warn',
+
+      // Prevent unused state values
+      // https://github.com/jsx-eslint/eslint-plugin-react/pull/1103/
+      '@eslint-react/react/no-unused-state': 'error',
+
+      // Prevent declaring unused methods of component class
+      // https://github.com/jsx-eslint/eslint-plugin-react/blob/21e01b61af7a38fc86d94f27eb66cda8054582ed/docs/rules/no-unused-class-component-methods.md
+      '@eslint-react/react/no-unused-class-component-members': 'error',
 
       // plugin:react/jsx-runtime
       // Manually includes rules

@@ -40,6 +40,13 @@ export const generated_overrides: SukkaESLintRuleConfig = {
         "allowTaggedTemplates": false
       }
     ],
+    "prefer-promise-reject-errors": "off",
+    "@typescript-eslint/prefer-promise-reject-errors": [
+      "error",
+      {
+        "allowEmptyReject": true
+      }
+    ],
     "no-loss-of-precision": "off",
     "@typescript-eslint/no-loss-of-precision": "warn",
     "no-useless-constructor": "off",

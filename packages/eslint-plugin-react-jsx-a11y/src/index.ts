@@ -1,11 +1,7 @@
 import type { ESLint } from 'eslint';
 
 // @ts-expect-error -- missing types
-import no_unsed_state from 'eslint-plugin-react/lib/rules/no-unused-state';
-// @ts-expect-error -- missing types
 import no_access_state_in_setstate from 'eslint-plugin-react/lib/rules/no-access-state-in-setstate';
-// @ts-expect-error -- missing types
-import no_unsed_class_component_methods from 'eslint-plugin-react/lib/rules/no-unused-class-component-methods';
 // @ts-expect-error -- missing types
 import jsx_pascal_case from 'eslint-plugin-react/lib/rules/jsx-pascal-case';
 // @ts-expect-error -- missing types
@@ -28,9 +24,7 @@ import role_supports_aria_props from 'eslint-plugin-jsx-a11y/lib/rules/role-supp
 
 export const eslint_plugin_react_minimal: ESLint.Plugin = {
   rules: {
-    'no-unused-state': no_unsed_state,
     'no-access-state-in-setstate': no_access_state_in_setstate,
-    'no-unused-class-component-methods': no_unsed_class_component_methods,
     'jsx-pascal-case': jsx_pascal_case,
     'sort-comp': sort_comp,
     'jsx-no-script-url': jsx_no_script_url
