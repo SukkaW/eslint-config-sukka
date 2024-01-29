@@ -20,8 +20,9 @@ export const BETTER_ALTERNATIVES = Object.entries({
   'mk-dirs': 'Node.js built-in fs.mkdir API',
   // network
   axios: 'https://www.npmjs.com/package/ky',
-  'node-fetch': 'https://www.npmjs.com/package/undici',
+  'node-fetch': 'https://www.npmjs.com/package/undici (preferred) or https://www.npmjs.com/package/node-fetch-native',
   got: 'https://www.npmjs.com/package/undici and https://www.npmjs.com/package/async-retry',
+  'get-port': 'https://www.npmjs.com/package/get-port-please',
   // react
   'react-query': 'https://swr.vercel.app',
   '@tanstack/react-query': 'https://swr.vercel.app',
