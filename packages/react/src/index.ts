@@ -138,25 +138,25 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
 
       ...memoized_eslint_react.configs['recommended-type-checked'].rules,
       // eslint-plugin-react recommended rules, migrated
-      '@eslint-react/react/no-string-refs': 'error',
-      '@eslint-react/jsx/no-comment-textnodes': 'error',
-      '@eslint-react/react/no-unsafe-target-blank': 'error',
-      '@eslint-react/react/no-children-prop': 'error',
-      '@eslint-react/react/no-dangerously-set-innerhtml-with-children': 'error',
-      '@eslint-react/react/no-render-return-value': 'error',
-      '@eslint-react/react/no-direct-mutation-state': 'error',
-      '@eslint-react/react/no-find-dom-node': 'error',
-      '@eslint-react/react/no-unsafe-component-will-mount': 'warn',
-      '@eslint-react/react/no-unsafe-component-will-receive-props': 'warn',
-      '@eslint-react/react/no-unsafe-component-will-update': 'warn',
+      '@eslint-react/no-string-refs': 'error',
+      '@eslint-react/no-comment-textnodes': 'error',
+      '@eslint-react/no-unsafe-target-blank': 'error',
+      '@eslint-react/no-children-prop': 'error',
+      '@eslint-react/no-dangerously-set-innerhtml-with-children': 'error',
+      '@eslint-react/no-render-return-value': 'error',
+      '@eslint-react/no-direct-mutation-state': 'error',
+      '@eslint-react/no-find-dom-node': 'error',
+      '@eslint-react/no-unsafe-component-will-mount': 'warn',
+      '@eslint-react/no-unsafe-component-will-receive-props': 'warn',
+      '@eslint-react/no-unsafe-component-will-update': 'warn',
 
       // Prevent unused state values
       // https://github.com/jsx-eslint/eslint-plugin-react/pull/1103/
-      '@eslint-react/react/no-unused-state': 'error',
+      '@eslint-react/no-unused-state': 'error',
 
       // Prevent declaring unused methods of component class
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/21e01b61af7a38fc86d94f27eb66cda8054582ed/docs/rules/no-unused-class-component-methods.md
-      '@eslint-react/react/no-unused-class-component-members': 'error',
+      '@eslint-react/no-unused-class-component-members': 'error',
 
       // plugin:react/jsx-runtime
       // Manually includes rules
@@ -207,7 +207,7 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
       // Enforce boolean attributes notation in JSX
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md
       // 'react/jsx-boolean-value': 'off',
-      '@eslint-react/jsx/prefer-shorthand-boolean': 'error',
+      '@eslint-react/prefer-shorthand-boolean': 'error',
 
       // Enforce or disallow spaces inside of curly braces in JSX attributes
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-curly-spacing.md
@@ -258,7 +258,7 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
       // Prevent void DOM elements from receiving children
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/void-dom-elements-no-children.md
       // 'react/void-dom-elements-no-children': 'off',
-      '@eslint-react/react/no-children-in-void-dom-elements': 'error',
+      '@eslint-react/no-children-in-void-dom-elements': 'error',
 
       // Enforce curly braces or disallow unnecessary curly braces in JSX props and/or children
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md
@@ -275,7 +275,7 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
       // Enforce shorthand or standard form for React fragments
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/bc976b837abeab1dffd90ac6168b746a83fc83cc/docs/rules/jsx-fragments.md
       // 'react/jsx-fragments': 'off',
-      '@eslint-react/jsx/prefer-shorthand-fragment': 'error',
+      '@eslint-react/prefer-shorthand-fragment': 'error',
 
       // Enforce linebreaks in curly braces in JSX attributes and expressions.
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-curly-newline.md
@@ -285,47 +285,47 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
       }],
 
       // 'react/jsx-key': 'off', // ['warn', { checkFragmentShorthand: true, checkKeyMustBeforeSpread: true, warnOnDuplicates: true }],
-      '@eslint-react/jsx/no-missing-key': 'error',
-      '@eslint-react/jsx/no-array-index-key': 'error',
-      '@eslint-react/jsx/no-duplicate-key': 'error',
-      '@eslint-react/jsx/no-spreading-key': 'error',
+      '@eslint-react/no-missing-key': 'error',
+      '@eslint-react/no-array-index-key': 'error',
+      '@eslint-react/no-duplicate-key': 'error',
+      '@eslint-react/no-implicit-key': 'error',
 
       // Disallow unnecessary fragments
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-useless-fragment.md
       // 'react/jsx-no-useless-fragment': 'off',
-      '@eslint-react/jsx/no-useless-fragment': 'error',
+      '@eslint-react/no-useless-fragment': 'error',
 
       // Prevent react contexts from taking non-stable values
-      '@eslint-react/react/no-constructed-context-value': 'error',
+      '@eslint-react/no-unstable-context-value': 'error',
 
-      // Prevent creating unstable components inside components
+      // Prevent creating uns dable components inside components
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/c2a790a3472eea0f6de984bdc3ee2a62197417fb/docs/rules/no-unstable-nested-components.md
       // 'react/no-unstable-nested-components': 'off',
-      '@eslint-react/react/no-unstable-nested-components': 'error',
+      '@eslint-react/no-nested-components': 'error',
 
       // Enforce sandbox attribute on iframe elements
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/c8833f301314dab3e79ef7ac4cf863e4d5fa0019/docs/rules/iframe-missing-sandbox.md
       // 'react/iframe-missing-sandbox': 'off',
-      '@eslint-react/react/no-missing-iframe-sandbox': 'warn',
-      '@eslint-react/react/no-unsafe-iframe-sandbox': 'warn',
+      '@eslint-react/no-missing-iframe-sandbox': 'warn',
+      '@eslint-react/no-unsafe-iframe-sandbox': 'warn',
 
       // Prevent problematic leaked values from being rendered
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/c42b624d0fb9ad647583a775ab9751091eec066f/docs/rules/jsx-no-leaked-render.md
       // 'react/jsx-no-leaked-render': 'off',
-      '@eslint-react/jsx/no-leaked-conditional-rendering': 'error',
+      '@eslint-react/no-leaked-conditional-rendering': 'error',
 
       // To prevent potential unnecessary rerenders, and performance regressions
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/66b58dd4864678eb869a7bf434c72ff7ac530eb1/docs/rules/no-object-type-as-default-prop.md
       // 'react/no-object-type-as-default-prop': 'off',
-      '@eslint-react/react/no-unstable-default-props': 'error',
+      '@eslint-react/no-unstable-default-props': 'error',
 
       // default type is "submit" which refresh the page
       // 'react/button-has-type': 'off',
-      '@eslint-react/react/no-missing-button-type': 'error',
+      '@eslint-react/no-missing-button-type': 'error',
 
       // <svg:rect> react does not support
       // 'react/no-namespace': 'off',
-      '@eslint-react/react/no-namespace': 'error',
+      '@eslint-react/no-namespace': 'error',
 
       'class-methods-use-this': ['error', {
         exceptMethods: [

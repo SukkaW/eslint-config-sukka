@@ -2,6 +2,7 @@ import type { ESLint } from 'eslint';
 
 // @ts-expect-error -- missing types
 import no_access_state_in_setstate from 'eslint-plugin-react/lib/rules/no-access-state-in-setstate';
+// TODO: replace w/ eslint-stylistic
 // @ts-expect-error -- missing types
 import jsx_pascal_case from 'eslint-plugin-react/lib/rules/jsx-pascal-case';
 // @ts-expect-error -- missing types
