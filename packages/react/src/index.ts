@@ -60,10 +60,6 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
         additionalHooks: options.additionalHooks ?? '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)'
       }],
 
-      // Prevent using this.state within a this.setState
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/no-access-state-in-setstate.md
-      'react-minimal/no-access-state-in-setstate': 'error',
-
       // Enforce PascalCase for user-defined JSX components
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md
       'react-minimal/jsx-pascal-case': ['error', {
@@ -72,67 +68,55 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
       }],
       // Enforce component methods order
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/sort-comp.md
-      'react-minimal/sort-comp': ['error', {
-        order: [
-          'static-variables',
-          'static-methods',
-          'instance-variables',
-          'lifecycle',
-          '/^handle.+$/',
-          '/^on.+$/',
-          'getters',
-          'setters',
-          '/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/',
-          'instance-methods',
-          'everything-else',
-          'rendering'
-        ],
-        groups: {
-          lifecycle: [
-            'displayName',
-            'propTypes',
-            'contextTypes',
-            'childContextTypes',
-            'mixins',
-            'statics',
-            'defaultProps',
-            'constructor',
-            'getDefaultProps',
-            'getInitialState',
-            'state',
-            'getChildContext',
-            'getDerivedStateFromProps',
-            'componentWillMount',
-            'UNSAFE_componentWillMount',
-            'componentDidMount',
-            'componentWillReceiveProps',
-            'UNSAFE_componentWillReceiveProps',
-            'shouldComponentUpdate',
-            'componentWillUpdate',
-            'UNSAFE_componentWillUpdate',
-            'getSnapshotBeforeUpdate',
-            'componentDidUpdate',
-            'componentDidCatch',
-            'componentWillUnmount'
-          ],
-          rendering: [
-            '/^render.+$/',
-            'render'
-          ]
-        }
-      }],
-      // Prevent usage of `javascript:` URLs
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-script-url.md
-      'react-minimal/jsx-no-script-url': ['error', [
-        {
-          name: 'Link',
-          props: ['to', 'href']
-        },
-        {
-          name: 'NextLink',
-          props: ['href']
-        }
-      ]],
+      // 'react-minimal/sort-comp': ['error', {
+      //   order: [
+      //     'static-variables',
+      //     'static-methods',
+      //     'instance-variables',
+      //     'lifecycle',
+      //     '/^handle.+$/',
+      //     '/^on.+$/',
+      //     'getters',
+      //     'setters',
+      //     '/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/',
+      //     'instance-methods',
+      //     'everything-else',
+      //     'rendering'
+      //   ],
+      //   groups: {
+      //     lifecycle: [
+      //       'displayName',
+      //       'propTypes',
+      //       'contextTypes',
+      //       'childContextTypes',
+      //       'mixins',
+      //       'statics',
+      //       'defaultProps',
+      //       'constructor',
+      //       'getDefaultProps',
+      //       'getInitialState',
+      //       'state',
+      //       'getChildContext',
+      //       'getDerivedStateFromProps',
+      //       'componentWillMount',
+      //       'UNSAFE_componentWillMount',
+      //       'componentDidMount',
+      //       'componentWillReceiveProps',
+      //       'UNSAFE_componentWillReceiveProps',
+      //       'shouldComponentUpdate',
+      //       'componentWillUpdate',
+      //       'UNSAFE_componentWillUpdate',
+      //       'getSnapshotBeforeUpdate',
+      //       'componentDidUpdate',
+      //       'componentDidCatch',
+      //       'componentWillUnmount'
+      //     ],
+      //     rendering: [
+      //       '/^render.+$/',
+      //       'render'
+      //     ]
+      //   }
+      // }],
 
       // ====================================================================
 
@@ -153,6 +137,12 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
       // Prevent unused state values
       // https://github.com/jsx-eslint/eslint-plugin-react/pull/1103/
       '@eslint-react/no-unused-state': 'error',
+      // Prevent using this.state within a this.setState
+      // https://github.com/jsx-eslint/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/no-access-state-in-setstate.md
+      '@eslint-react/no-access-state-in-setstate': 'error',
+      // Prevent usage of any `javascript:` URLs
+      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-script-url.md
+      '@eslint-react/dom/no-script-url': 'error',
 
       // Prevent declaring unused methods of component class
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/21e01b61af7a38fc86d94f27eb66cda8054582ed/docs/rules/no-unused-class-component-methods.md

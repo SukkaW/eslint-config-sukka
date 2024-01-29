@@ -1,14 +1,9 @@
 import type { ESLint } from 'eslint';
 
-// @ts-expect-error -- missing types
-import no_access_state_in_setstate from 'eslint-plugin-react/lib/rules/no-access-state-in-setstate';
 // TODO: replace w/ eslint-stylistic
 // @ts-expect-error -- missing types
 import jsx_pascal_case from 'eslint-plugin-react/lib/rules/jsx-pascal-case';
-// @ts-expect-error -- missing types
-import sort_comp from 'eslint-plugin-react/lib/rules/sort-comp';
-// @ts-expect-error -- missing types
-import jsx_no_script_url from 'eslint-plugin-react/lib/rules/jsx-no-script-url';
+// import sort_comp from 'eslint-plugin-react/lib/rules/sort-comp';
 
 // @ts-expect-error -- missing types
 import alt_text from 'eslint-plugin-jsx-a11y/lib/rules/alt-text';
@@ -25,10 +20,8 @@ import role_supports_aria_props from 'eslint-plugin-jsx-a11y/lib/rules/role-supp
 
 export const eslint_plugin_react_minimal: ESLint.Plugin = {
   rules: {
-    'no-access-state-in-setstate': no_access_state_in_setstate,
-    'jsx-pascal-case': jsx_pascal_case,
-    'sort-comp': sort_comp,
-    'jsx-no-script-url': jsx_no_script_url
+    'jsx-pascal-case': jsx_pascal_case
+    // 'sort-comp': sort_comp
   }
 };
 
