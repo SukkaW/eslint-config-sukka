@@ -3,9 +3,10 @@ export const BETTER_ALTERNATIVES = Object.entries({
   // deep equal
   'deep-equal': 'https://www.npmjs.com/package/dequal',
   'fast-deep-equal': 'https://www.npmjs.com/package/dequal',
-  // ansi color
+  // ansi color / cursor
   chalk: 'https://www.npmjs.com/package/picocolors',
   kleur: 'https://www.npmjs.com/package/picocolors',
+  'ansi-escapes': 'https://www.npmjs.com/package/sisteransi',
   // mime
   'mime-db': 'https://www.npmjs.com/package/mrmime',
   'mime-types': 'https://www.npmjs.com/package/mrmime',
