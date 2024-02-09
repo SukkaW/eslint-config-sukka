@@ -3,7 +3,7 @@ import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 // @ts-expect-error -- no types
 import eslint_plugin_i from 'eslint-plugin-import';
-import { eslint_plugin_react_minimal, eslint_plugin_jsx_a11y_minimal } from '@eslint-sukka/eslint-plugin-react-jsx-a11y';
+import { eslint_plugin_jsx_a11y_minimal } from '@eslint-sukka/eslint-plugin-react-jsx-a11y';
 // @ts-expect-error -- no types
 import eslint_plugin_react_hooks from 'eslint-plugin-react-hooks';
 
@@ -35,7 +35,6 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
     plugins: {
       i: memo(eslint_plugin_i, 'eslint-plugin-i'),
       import: memo(eslint_plugin_i, 'eslint-plugin-i'), // legacy
-      'react-minimal': memo(eslint_plugin_react_minimal, '@eslint-sukka/eslint-plugin-react-jsx-a11y#eslint_plugin_react_minimal'),
       'jsx-a11y-minimal': memo(eslint_plugin_jsx_a11y_minimal, '@eslint-sukka/eslint-plugin-react-jsx-a11y#eslint_plugin_jsx_a11y_minimal'),
       'react-hooks': memo(eslint_plugin_react_hooks, 'eslint-plugin-react-hooks'),
       '@stylistic/jsx': memo(stylisticJsx, '@stylistic/eslint-plugin-jsx'),
@@ -62,7 +61,7 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
 
       // Enforce PascalCase for user-defined JSX components
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md
-      'react-minimal/jsx-pascal-case': ['error', {
+      '@stylistic/jsx/jsx-pascal-case': ['error', {
         allowAllCaps: true,
         ignore: []
       }],

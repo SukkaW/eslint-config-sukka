@@ -38,7 +38,6 @@
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:^",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-react": "7.33.2"
+    "eslint-plugin-jsx-a11y": "^6.8.0"
   }
 }
