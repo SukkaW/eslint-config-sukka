@@ -163,6 +163,16 @@ export const generated_overrides: SukkaESLintRuleConfig = {
       "error",
       "single"
     ],
+    "@stylistic/js/quote-props": "off",
+    "@stylistic/ts/quote-props": [
+      "error",
+      "as-needed",
+      {
+        "keywords": false,
+        "unnecessary": true,
+        "numbers": false
+      }
+    ],
     "@stylistic/js/semi": "off",
     "@stylistic/ts/semi": [
       "error",
