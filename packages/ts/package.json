@@ -33,8 +33,8 @@
   "license": "MIT",
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",
-    "@stylistic/eslint-plugin-plus": "1.6.1",
-    "@stylistic/eslint-plugin-ts": "1.6.1",
+    "@stylistic/eslint-plugin-plus": "1.6.2",
+    "@stylistic/eslint-plugin-ts": "1.6.2",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "eslint-import-resolver-ts-bundled": "workspace:^",
@@ -45,6 +45,6 @@
     "@eslint-sukka/js": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
     "@eslint/js": "^8.56.0",
-    "@stylistic/eslint-plugin-js": "^1.6.1"
+    "@stylistic/eslint-plugin-js": "^1.6.2"
   }
 }
