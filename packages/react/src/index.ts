@@ -123,12 +123,12 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
       // eslint-plugin-react recommended rules, migrated
       '@eslint-react/no-string-refs': 'error',
       '@eslint-react/no-comment-textnodes': 'error',
-      '@eslint-react/no-unsafe-target-blank': 'error',
+      '@eslint-react/dom/no-unsafe-target-blank': 'error',
       '@eslint-react/no-children-prop': 'error',
-      '@eslint-react/no-dangerously-set-innerhtml-with-children': 'error',
-      '@eslint-react/no-render-return-value': 'error',
+      '@eslint-react/dom/no-dangerously-set-innerhtml-with-children': 'error',
+      '@eslint-react/dom/no-render-return-value': 'error',
       '@eslint-react/no-direct-mutation-state': 'error',
-      '@eslint-react/no-find-dom-node': 'error',
+      '@eslint-react/dom/no-find-dom-node': 'error',
       '@eslint-react/no-unsafe-component-will-mount': 'warn',
       '@eslint-react/no-unsafe-component-will-receive-props': 'warn',
       '@eslint-react/no-unsafe-component-will-update': 'warn',
@@ -247,7 +247,7 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
       // Prevent void DOM elements from receiving children
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/void-dom-elements-no-children.md
       // 'react/void-dom-elements-no-children': 'off',
-      '@eslint-react/no-children-in-void-dom-elements': 'error',
+      '@eslint-react/dom/no-children-in-void-dom-elements': 'error',
 
       // Enforce curly braces or disallow unnecessary curly braces in JSX props and/or children
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md
@@ -295,8 +295,8 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
       // Enforce sandbox attribute on iframe elements
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/c8833f301314dab3e79ef7ac4cf863e4d5fa0019/docs/rules/iframe-missing-sandbox.md
       // 'react/iframe-missing-sandbox': 'off',
-      '@eslint-react/no-missing-iframe-sandbox': 'warn',
-      '@eslint-react/no-unsafe-iframe-sandbox': 'warn',
+      '@eslint-react/dom/no-missing-iframe-sandbox': 'warn',
+      '@eslint-react/dom/no-unsafe-iframe-sandbox': 'warn',
 
       // Prevent problematic leaked values from being rendered
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/c42b624d0fb9ad647583a775ab9751091eec066f/docs/rules/jsx-no-leaked-render.md
@@ -310,11 +310,11 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
 
       // default type is "submit" which refresh the page
       // 'react/button-has-type': 'off',
-      '@eslint-react/no-missing-button-type': 'error',
+      '@eslint-react/dom/no-missing-button-type': 'error',
 
       // <svg:rect> react does not support
       // 'react/no-namespace': 'off',
-      '@eslint-react/no-namespace': 'error',
+      '@eslint-react/dom/no-namespace': 'error',
 
       'class-methods-use-this': ['error', {
         exceptMethods: [
