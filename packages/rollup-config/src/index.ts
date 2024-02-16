@@ -60,7 +60,7 @@ export const createRollupConfig = (
       foxquire && rollupFoxquire(),
       alias && aliasPlugin(alias),
       nodeResolve && nodeResolvePlugin({
-        exportConditions: ['import', 'require', 'default']
+        exportConditions: ['node', 'import', 'require', 'default']
       }),
       commonjs && commonjsPlugin({
         esmExternals: true,
