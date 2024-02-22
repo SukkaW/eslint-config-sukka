@@ -43,7 +43,15 @@ function config<T>(options: SharedOptions<T> | undefined | boolean): T | undefin
 }
 
 export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESLintConfigItem[]): Promise<FlatESLintConfigItem[]> => {
-  const isInEditor = options?.isInEditor ?? !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !isCI);
+  const isInEditor = options?.isInEditor ?? !!(
+    (
+      process.env.VSCODE_PID
+      || process.env.VSCODE_CWD
+      || process.env.JETBRAINS_IDE
+      || process.env.VIM
+    )
+    && !isCI
+  );
 
   const flatConfigs: FlatESLintConfigItem[][] = [];
 
