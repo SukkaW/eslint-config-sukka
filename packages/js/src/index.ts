@@ -8,7 +8,6 @@ import { style } from './modules/style';
 import { variables } from './modules/variables';
 import { sukka } from './modules/sukka';
 import { imports } from './modules/imports';
-import { generated_eslint_js_deprecated } from './modules/generated_eslint_js_deprecated';
 
 import globals from 'globals';
 
@@ -114,7 +113,6 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         ...variables.plugins,
         ...sukka.plugins,
         ...imports.plugins,
-        ...generated_eslint_js_deprecated.plugins
       },
       rules: {
         ...best_practices.rules,
@@ -124,7 +122,6 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         ...variables.rules,
         ...sukka.rules,
         ...imports.rules,
-        ...generated_eslint_js_deprecated.rules,
 
         'unused-imports/no-unused-imports': isInEditor ? 'off' : 'error'
       }
