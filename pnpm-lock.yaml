@@ -434,12 +434,6 @@ importers:
       '@stylistic/eslint-plugin-ts':
         specifier: 1.7.0
         version: 1.7.0(eslint@8.57.0)(typescript@5.4.5)
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^7.6.0
-        version: 7.6.0(@typescript-eslint/parser@7.6.0)(eslint@8.57.0)(typescript@5.4.5)
-      '@typescript-eslint/parser':
-        specifier: ^7.6.0
-        version: 7.6.0(eslint@8.57.0)(typescript@5.4.5)
       eslint-import-resolver-ts-bundled:
         specifier: workspace:^
         version: link:../eslint-import-resolver-ts-bundled
@@ -449,6 +443,9 @@ importers:
       eslint-plugin-sukka-ts:
         specifier: workspace:*
         version: link:../eslint-plugin-sukka-ts
+      typescript-eslint:
+        specifier: ^7.6.0
+        version: 7.6.0(eslint@8.57.0)(typescript@5.4.5)
     devDependencies:
       '@eslint-sukka/js':
         specifier: workspace:*
@@ -4554,6 +4551,25 @@ packages:
     resolution: {integrity: sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==}
     engines: {node: '>=8'}
     dev: true
+
+  /typescript-eslint@7.6.0(eslint@8.57.0)(typescript@5.4.5):
+    resolution: {integrity: sha512-LY6vH6F1l5jpGqRtU+uK4+mOecIb4Cd4kaz1hAiJrgnNiHUA8wiw8BkJyYS+MRLM69F1QuSKwtGlQqnGl1Rc6w==}
+    engines: {node: ^18.18.0 || >=20.0.0}
+    peerDependencies:
+      eslint: ^8.56.0
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@typescript-eslint/eslint-plugin': 7.6.0(@typescript-eslint/parser@7.6.0)(eslint@8.57.0)(typescript@5.4.5)
+      '@typescript-eslint/parser': 7.6.0(eslint@8.57.0)(typescript@5.4.5)
+      '@typescript-eslint/utils': 7.6.0(eslint@8.57.0)(typescript@5.4.5)
+      eslint: 8.57.0
+      typescript: 5.4.5
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /typescript@5.4.5:
     resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}
