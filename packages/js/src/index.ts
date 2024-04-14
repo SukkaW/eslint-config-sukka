@@ -104,11 +104,11 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         }
       },
       settings: {
-        'import/parsers': {
-          // TODO: remove this line once eslint-plugin-import #2556 is fixed
+        'import-x/parsers': {
+          // TODO: remove this line once  #2556 is fixed
           espree: allExtensions
         },
-        'import/extensions': allExtensions
+        'import-x/extensions': allExtensions
       },
       plugins: {
         ...best_practices.plugins,
@@ -117,7 +117,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         ...style.plugins,
         ...variables.plugins,
         ...sukka.plugins,
-        ...imports.plugins,
+        ...imports.plugins
       },
       rules: {
         ...best_practices.rules,

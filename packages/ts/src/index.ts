@@ -6,8 +6,7 @@ import { generated_overrides } from './modules/generated_overrides';
 
 import ts_eslint_plugin from '@typescript-eslint/eslint-plugin';
 import ts_eslint_parser from '@typescript-eslint/parser';
-// @ts-expect-error -- no types
-import eslint_plugin_i from 'eslint-plugin-import';
+import eslint_plugin_import_x from 'eslint-plugin-import-x';
 
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
@@ -39,8 +38,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         ...sukka_typeScript.plugins,
         ...generated_overrides.plugins,
         '@typescript-eslint': ts_eslint_plugin as any,
-        i: memo(eslint_plugin_i, 'eslint-plugin-i'),
-        import: memo(eslint_plugin_i, 'eslint-plugin-i') // legacy alias
+        'import-x': memo(eslint_plugin_import_x, 'eslint-plugin-import-x') as any
       },
       // extends: [
       //   'plugin:i/recommended',
@@ -62,9 +60,9 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         }
       },
       settings: {
-        'import/extensions': allExtensions,
-        'import/external-module-folders': ['node_modules', 'node_modules/@types'],
-        'import/resolver': {
+        'import-x/extensions': allExtensions,
+        'import-x/external-module-folders': ['node_modules', 'node_modules/@types'],
+        'import-x/resolver': {
           node: {
             extensions: importResolverExtensions
           },
@@ -75,7 +73,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
             })
           }
         },
-        'import/parsers': {
+        'import-x/parsers': {
           // TODO: remove this line once eslint-plugin-import #2556 is fixed
           espree: javaScriptExtensions,
           '@typescript-eslint/parser': ['.ts', '.cts', '.mts', '.tsx', '.d.ts']
@@ -99,7 +97,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         // plugin:@typescript-eslint/stylistic-type-checked
         ...ts_eslint_plugin.configs['stylistic-type-checked'].rules,
         // plugin:i/typescript
-        ...eslint_plugin_i.configs.typescript.rules,
+        ...eslint_plugin_import_x.configs.typescript.rules,
 
         ...generated_overrides.rules,
 
@@ -113,11 +111,10 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
     {
       files: ['**/*.d.ts'],
       plugins: {
-        i: memo(eslint_plugin_i, 'eslint-plugin-i'),
-        import: memo(eslint_plugin_i, 'eslint-plugin-i') // legacy alias
+        'import-x': memo(eslint_plugin_import_x, 'eslint-plugin-import-x') as any
       },
       rules: {
-        'import/no-duplicates': 'off',
+        'import-x/no-duplicates': 'off',
         'unused-imports/no-unused-vars': 'off'
       }
     },
