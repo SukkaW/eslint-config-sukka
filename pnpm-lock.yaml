@@ -242,11 +242,11 @@ importers:
         specifier: workspace:*
         version: link:../rollup-config
       '@masknet/eslint-plugin':
-        specifier: ^0.2.0
-        version: 0.2.0(eslint@8.57.0)
+        specifier: ^0.3.0
+        version: 0.3.0(eslint@9.0.0)
       eslint-plugin-unicorn:
         specifier: 51.0.1
-        version: 51.0.1(eslint@8.57.0)
+        version: 51.0.1(eslint@9.0.0)
 
   packages/eslint-plugin-sukka-ts:
     dependencies:
@@ -264,8 +264,8 @@ importers:
         specifier: workspace:*
         version: link:../rollup-config
       '@masknet/eslint-plugin':
-        specifier: ^0.2.0
-        version: 0.2.0(eslint@8.57.0)
+        specifier: ^0.3.0
+        version: 0.3.0(eslint@8.57.0)
 
   packages/js:
     dependencies:
@@ -983,13 +983,22 @@ packages:
       type-detect: 4.0.8
     dev: true
 
-  /@masknet/eslint-plugin@0.2.0(eslint@8.57.0):
-    resolution: {integrity: sha512-tpYFKDk6lYZHZUGluyVCR2yH55I6/dqmF2nBzIabvoW6xr9fEsZOefB9a4UfONobCXHlQ0hvk1jU5wHMKffKBA==}
+  /@masknet/eslint-plugin@0.3.0(eslint@8.57.0):
+    resolution: {integrity: sha512-JXWUhcmUY20vEr70C6JJwVw7LZ8pGjXTcXWuSc4Ogj9vbASB9QJLPbgVuss66KOGMEDnuVFa2N01wE78+nBpPA==}
     engines: {node: '>= 18'}
     peerDependencies:
       eslint: '>= 8'
     dependencies:
       eslint: 8.57.0
+    dev: true
+
+  /@masknet/eslint-plugin@0.3.0(eslint@9.0.0):
+    resolution: {integrity: sha512-JXWUhcmUY20vEr70C6JJwVw7LZ8pGjXTcXWuSc4Ogj9vbASB9QJLPbgVuss66KOGMEDnuVFa2N01wE78+nBpPA==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      eslint: '>= 8'
+    dependencies:
+      eslint: 9.0.0
     dev: true
 
   /@napi-rs/magic-string-android-arm-eabi@0.3.4:
@@ -2969,19 +2978,19 @@ packages:
     resolution: {integrity: sha512-BJXHT8gn3tLd9pTrX7v9hozZA79p1s29mEPomg/laOK/1yt6KPFgIYWuxpq4I4C+x88APRVVBVtvW1rdCjeFxQ==}
     dev: true
 
-  /eslint-plugin-unicorn@51.0.1(eslint@8.57.0):
+  /eslint-plugin-unicorn@51.0.1(eslint@9.0.0):
     resolution: {integrity: sha512-MuR/+9VuB0fydoI0nIn2RDA5WISRn4AsJyNSaNKLVwie9/ONvQhxOBbkfSICBPnzKrB77Fh6CZZXjgTt/4Latw==}
     engines: {node: '>=16'}
     peerDependencies:
       eslint: '>=8.56.0'
     dependencies:
       '@babel/helper-validator-identifier': 7.22.20
-      '@eslint-community/eslint-utils': 4.4.0(eslint@8.57.0)
+      '@eslint-community/eslint-utils': 4.4.0(eslint@9.0.0)
       '@eslint/eslintrc': 2.1.4
       ci-info: 4.0.0
       clean-regexp: 1.0.0
       core-js-compat: 3.35.1
-      eslint: 8.57.0
+      eslint: 9.0.0
       esquery: 1.5.0
       indent-string: 4.0.0
       is-builtin-module: 3.2.1
