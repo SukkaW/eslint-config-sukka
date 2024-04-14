@@ -35,8 +35,8 @@
     "@eslint-sukka/shared": "workspace:*",
     "@stylistic/eslint-plugin-plus": "1.7.0",
     "@stylistic/eslint-plugin-ts": "1.7.0",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
+    "@typescript-eslint/parser": "^7.6.0",
     "eslint-import-resolver-ts-bundled": "workspace:^",
     "eslint-plugin-import": "npm:eslint-plugin-i@2.29.0",
     "eslint-plugin-sukka-ts": "workspace:*"
