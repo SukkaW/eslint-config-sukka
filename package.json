@@ -1,13 +1,13 @@
 {
   "name": "eslint-config-sukka-monorepo",
-  "version": "6.0.0-beta.1",
+  "version": "6.0.0-beta.2",
   "private": true,
   "description": "",
   "scripts": {
     "build": "turbo build",
     "codegen": "turbo codegen",
     "lint": "eslint --format=sukka .",
-    "release": "bumpp -r --all --commit=\"release: %s\" --tag=\"%s\""
+    "release": "bumpp -r --all --commit \"release: %s\" --tag \"%s\""
   },
   "keywords": [],
   "author": "Sukka <https://skk.moe>",
