@@ -32,6 +32,6 @@
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
     "@masknet/eslint-plugin": "^0.3.0",
-    "eslint-plugin-unicorn": "51.0.1"
+    "eslint-plugin-unicorn": "52.0.0"
   }
 }
