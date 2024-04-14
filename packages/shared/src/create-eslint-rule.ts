@@ -35,7 +35,7 @@ export function createRule<
   TOptions extends unknown[],
   TMessageIDs extends string,
   TRuleListener extends RuleListener = RuleListener
->({ name, meta, create, resolveOptions }: RuleModule<TResolvedOptions, TOptions, TMessageIDs, TRuleListener>): ExportedRuleModule<TOptions, TMessageIDs, TRuleListener> {
+>({ name, meta, create, resolveOptions }: RuleModule<TResolvedOptions, TOptions, TMessageIDs, TRuleListener>): any {
   if (meta.docs) {
     meta.docs.url ??= new URL(name, BASE_URL).toString();
   }
@@ -47,7 +47,7 @@ export function createRule<
       const listener = Object.entries(create(context, options));
       return Object.fromEntries(listener.filter((pair) => pair[1])) as TRuleListener;
     }
-  };
+  } satisfies ExportedRuleModule<TOptions, TMessageIDs, TRuleListener>;
 }
 
 export function ensureParserWithTypeInformation(

@@ -32,10 +32,10 @@
   "license": "MIT",
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",
-    "eslint-plugin-sukka": "workspace:*",
-    "globals": "^13.24.0"
+    "eslint-plugin-sukka": "workspace:*"
   },
   "devDependencies": {
-    "@eslint-sukka/rollup-config": "workspace:*"
+    "@eslint-sukka/rollup-config": "workspace:*",
+    "globals": "^15.0.0"
   }
 }

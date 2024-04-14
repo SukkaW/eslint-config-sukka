@@ -9,7 +9,12 @@ import { variables } from './modules/variables';
 import { sukka } from './modules/sukka';
 import { imports } from './modules/imports';
 
-import globals from 'globals';
+import {
+  es2021 as globalsEs2021,
+  browser as globalsBrowser,
+  webextensions as globalsWebextensions,
+  greasemonkey as globalsGreasemonkey
+} from 'globals';
 
 import { constants } from '@eslint-sukka/shared';
 
@@ -91,10 +96,10 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
           }
         },
         globals: {
-          ...globals.es2021,
-          ...(browser && globals.browser),
-          ...(webextensions && globals.webextensions),
-          ...(greasemonkey && globals.greasemonkey),
+          ...globalsEs2021,
+          ...(browser && globalsBrowser),
+          ...(webextensions && globalsWebextensions),
+          ...(greasemonkey && globalsGreasemonkey),
           ...customGlobals
         }
       },

@@ -6,7 +6,7 @@ import eslint_plugin_sukka from 'eslint-plugin-sukka';
 // @ts-expect-error -- no types
 import eslint_plugin_n from 'eslint-plugin-n';
 
-import globals from 'globals';
+import { node as globalsNode } from 'globals';
 
 export interface OptionsNode {
   strict?: boolean,
@@ -76,7 +76,7 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
         'n/no-restricted-require': ['error', RESTRICTED_IMPORT_NODE_REQUIRE]
       },
       languageOptions: {
-        globals: globals.node
+        globals: globalsNode
       }
     }
   ];

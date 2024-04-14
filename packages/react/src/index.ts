@@ -13,7 +13,7 @@ import eslint_react from '@eslint-react/eslint-plugin';
 
 import stylisticJsx from '@stylistic/eslint-plugin-jsx';
 
-import globals from 'globals';
+import { browser as globalsBrowser } from 'globals';
 
 export interface OptionsReact {
   /**
@@ -49,7 +49,7 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
       }
     },
     languageOptions: {
-      globals: globals.browser
+      globals: globalsBrowser
     },
     rules: {
       // plugin:react-hooks/recommended

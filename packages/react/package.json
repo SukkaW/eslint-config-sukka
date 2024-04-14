@@ -36,11 +36,11 @@
     "@eslint-sukka/shared": "workspace:*",
     "@stylistic/eslint-plugin-jsx": "^1.7.0",
     "eslint-plugin-import": "npm:eslint-plugin-i@2.29.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "globals": "^13.24.0"
+    "eslint-plugin-react-hooks": "^4.6.0"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:^",
-    "eslint-plugin-react-prefer-function-component": "^3.3.0"
+    "eslint-plugin-react-prefer-function-component": "^3.3.0",
+    "globals": "^15.0.0"
   }
 }
