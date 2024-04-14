@@ -6,7 +6,7 @@ import stylisticTs from '@stylistic/eslint-plugin-ts';
 
 export const typescript: SukkaESLintRuleConfig = {
   plugins: {
-    '@stylistic/ts': memo(stylisticTs, '@stylistic/eslint-plugin-ts'),
+    '@stylistic/ts': memo<any>(stylisticTs, '@stylistic/eslint-plugin-ts'),
     '@typescript-eslint': memo<any>(ts_eslint_plugin, '@typescript-eslint/eslint-plugin')
   },
   rules: {

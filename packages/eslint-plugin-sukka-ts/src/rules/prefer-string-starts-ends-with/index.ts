@@ -36,7 +36,7 @@ export default createRule({
     const program = services.program;
     const checker = program.getTypeChecker();
 
-    const globalScope = context.getScope();
+    const globalScope = context.sourceCode.scopeManager?.scopes[0];
 
     /**
      * Check if a given node is a string.

@@ -8,9 +8,13 @@ import { style } from './modules/style';
 import { variables } from './modules/variables';
 import { sukka } from './modules/sukka';
 import { imports } from './modules/imports';
-import { generated_eslint_js_deprecated } from './modules/generated_eslint_js_deprecated';
 
-import globals from 'globals';
+import {
+  es2021 as globalsEs2021,
+  browser as globalsBrowser,
+  webextensions as globalsWebextensions,
+  greasemonkey as globalsGreasemonkey
+} from 'globals';
 
 import { constants } from '@eslint-sukka/shared';
 
@@ -92,19 +96,19 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
           }
         },
         globals: {
-          ...globals.es2021,
-          ...(browser && globals.browser),
-          ...(webextensions && globals.webextensions),
-          ...(greasemonkey && globals.greasemonkey),
+          ...globalsEs2021,
+          ...(browser && globalsBrowser),
+          ...(webextensions && globalsWebextensions),
+          ...(greasemonkey && globalsGreasemonkey),
           ...customGlobals
         }
       },
       settings: {
-        'import/parsers': {
-          // TODO: remove this line once eslint-plugin-import #2556 is fixed
+        'import-x/parsers': {
+          // TODO: remove this line once  #2556 is fixed
           espree: allExtensions
         },
-        'import/extensions': allExtensions
+        'import-x/extensions': allExtensions
       },
       plugins: {
         ...best_practices.plugins,
@@ -113,8 +117,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         ...style.plugins,
         ...variables.plugins,
         ...sukka.plugins,
-        ...imports.plugins,
-        ...generated_eslint_js_deprecated.plugins
+        ...imports.plugins
       },
       rules: {
         ...best_practices.rules,
@@ -124,7 +127,6 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         ...variables.rules,
         ...sukka.rules,
         ...imports.rules,
-        ...generated_eslint_js_deprecated.rules,
 
         'unused-imports/no-unused-imports': isInEditor ? 'off' : 'error'
       }

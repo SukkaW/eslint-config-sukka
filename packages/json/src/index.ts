@@ -9,8 +9,6 @@ import { sortTsconfigJson } from './sort-tsconfig-json';
 
 import type { Linter } from 'eslint';
 
-const RULES_BASE = eslint_plugin_jsonc.configs.base.overrides.map((override) => override.rules).reduce((prev, curr) => ({ ...prev, ...curr }), {});
-
 const SHARED_RULES: Linter.RulesRecord = {
   'jsonc/array-bracket-spacing': ['error', 'never'],
   'jsonc/comma-dangle': ['error', 'never'],
@@ -26,12 +24,11 @@ const SHARED_RULES: Linter.RulesRecord = {
 
 export const jsonc = (): FlatESLintConfigItem[] => {
   return [
+    ...eslint_plugin_jsonc.configs['flat/base'],
     {
-      ...SHARED_OPTIONS,
       files: [constants.GLOB_JSON],
       rules: {
-        ...RULES_BASE,
-        ...eslint_plugin_jsonc.configs['recommended-with-json'].rules as any,
+        ...eslint_plugin_jsonc.configs['flat/recommended-with-json'].reduce((acc, cur) => ({ ...acc, ...cur.rules }), {}),
         ...SHARED_RULES
       }
     },
@@ -39,8 +36,7 @@ export const jsonc = (): FlatESLintConfigItem[] => {
       ...SHARED_OPTIONS,
       files: [constants.GLOB_JSON5],
       rules: {
-        ...RULES_BASE,
-        ...eslint_plugin_jsonc.configs['recommended-with-json5'].rules as any,
+        ...eslint_plugin_jsonc.configs['flat/recommended-with-json5'].reduce((acc, cur) => ({ ...acc, ...cur.rules }), {}),
         ...SHARED_RULES
       }
     },
@@ -48,8 +44,7 @@ export const jsonc = (): FlatESLintConfigItem[] => {
       ...SHARED_OPTIONS,
       files: [constants.GLOB_JSONC],
       rules: {
-        ...RULES_BASE,
-        ...eslint_plugin_jsonc.configs['recommended-with-jsonc'].rules as any,
+        ...eslint_plugin_jsonc.configs['flat/recommended-with-jsonc'].reduce((acc, cur) => ({ ...acc, ...cur.rules }), {}),
         ...SHARED_RULES
       }
     },

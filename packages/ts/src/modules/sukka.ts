@@ -8,7 +8,7 @@ export const sukka_typeScript: SukkaESLintRuleConfig = {
   plugins: {
     'sukka-ts': memo(eslint_plugin_sukka_ts, 'eslint-plugin-sukka-ts'),
     '@typescript-eslint': memo<any>(ts_eslint_plugin, '@typescript-eslint/eslint-plugin'),
-    '@stylistic/plus': memo(stylisticPlus, '@stylistic/eslint-plugin-plus')
+    '@stylistic/plus': memo(stylisticPlus, '@stylistic/eslint-plugin-plus') as any
   },
   rules: {
     '@typescript-eslint/no-namespace': 'off',

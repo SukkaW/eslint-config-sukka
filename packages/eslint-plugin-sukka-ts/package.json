@@ -28,11 +28,11 @@
   "license": "MIT",
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",
-    "@typescript-eslint/type-utils": "^6.21.0",
-    "@typescript-eslint/utils": "^6.21.0"
+    "@typescript-eslint/type-utils": "^7.6.0",
+    "@typescript-eslint/utils": "^7.6.0"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
-    "@masknet/eslint-plugin": "^0.2.0"
+    "@masknet/eslint-plugin": "^0.3.0"
   }
 }

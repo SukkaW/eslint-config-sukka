@@ -1,6 +1,9 @@
 import { memo, type FlatESLintConfigItem } from '@eslint-sukka/shared';
 
-import globals from 'globals';
+import {
+  browser as globalsBrowser,
+  node as globalsNode
+} from 'globals';
 import eslint_plugin_sukka from 'eslint-plugin-sukka';
 
 export interface OptionsLegacy {
@@ -41,8 +44,8 @@ export const legacy = (options: OptionsLegacy = {}): FlatESLintConfigItem[] => {
     },
     languageOptions: {
       globals: {
-        ...((options.browser ?? true) ? globals.browser : {}),
-        ...((options.node ?? false) ? globals.node : {})
+        ...((options.browser ?? true) ? globalsBrowser : {}),
+        ...((options.node ?? false) ? globalsNode : {})
       }
     }
   }];
