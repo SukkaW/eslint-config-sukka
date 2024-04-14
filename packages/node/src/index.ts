@@ -3,7 +3,6 @@ import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 import { RESTRICTED_IMPORT_NODE_REQUIRE, getPackageJson, memo } from '@eslint-sukka/shared';
 
 import eslint_plugin_sukka from 'eslint-plugin-sukka';
-// @ts-expect-error -- no types
 import eslint_plugin_n from 'eslint-plugin-n';
 
 import { node as globalsNode } from 'globals';
@@ -17,7 +16,7 @@ export interface OptionsNode {
 export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
   const isModule = options.module ?? (getPackageJson()?.type === 'module');
 
-  const configs = [
+  const configs: FlatESLintConfigItem[] = [
     ...eslint_plugin_n.configs['flat/mixed-esm-and-cjs'],
     {
       files: options.files ?? (isModule ? ['*.mjs', '.*.mjs', '*.js', '.*.js'] : ['*.cjs', '.*.cjs', '*.js', '.*.js']),
