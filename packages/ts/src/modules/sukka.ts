@@ -1,14 +1,15 @@
 import { memo, type SukkaESLintRuleConfig } from '@eslint-sukka/shared';
 
 import eslint_plugin_sukka_ts from 'eslint-plugin-sukka-ts';
-import ts_eslint_plugin from '@typescript-eslint/eslint-plugin';
 import stylisticPlus from '@stylistic/eslint-plugin-plus';
+
+import { configs as ts_eslint_configs } from 'typescript-eslint';
 
 export const sukka_typeScript: SukkaESLintRuleConfig = {
   plugins: {
     'sukka-ts': memo(eslint_plugin_sukka_ts, 'eslint-plugin-sukka-ts'),
-    '@typescript-eslint': memo<any>(ts_eslint_plugin, '@typescript-eslint/eslint-plugin'),
-    '@stylistic/plus': memo(stylisticPlus, '@stylistic/eslint-plugin-plus') as any
+    '@stylistic/plus': memo(stylisticPlus, '@stylistic/eslint-plugin-plus') as any,
+    ...ts_eslint_configs.base.plugins
   },
   rules: {
     '@typescript-eslint/no-namespace': 'off',

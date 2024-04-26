@@ -32,7 +32,7 @@
   "license": "MIT",
   "dependencies": {
     "@types/eslint": "^8.56.10",
-    "@typescript-eslint/utils": "^7.6.0"
+    "@typescript-eslint/utils": "^7.7.1"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*"
