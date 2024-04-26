@@ -29,10 +29,8 @@ export default createRule({
   },
 
   create(context) {
-    const sourceCode = context.getSourceCode();
-
-    ensureParserWithTypeInformation(sourceCode.parserServices);
-    const services = sourceCode.parserServices;
+    ensureParserWithTypeInformation(context.sourceCode.parserServices);
+    const services = context.sourceCode.parserServices;
     const program = services.program;
     const checker = program.getTypeChecker();
 
@@ -112,8 +110,8 @@ export default createRule({
      * @param node2 Another node to compare.
      */
     function isSameTokens(node1: TSESTree.Node, node2: TSESTree.Node): boolean {
-      const tokens1 = sourceCode.getTokens(node1);
-      const tokens2 = sourceCode.getTokens(node2);
+      const tokens1 = context.sourceCode.getTokens(node1);
+      const tokens2 = context.sourceCode.getTokens(node2);
 
       if (tokens1.length !== tokens2.length) {
         return false;
@@ -219,7 +217,7 @@ export default createRule({
     function getPropertyRange(
       node: TSESTree.MemberExpression
     ): [number, number] {
-      const dotOrOpenBracket = sourceCode.getTokenAfter(
+      const dotOrOpenBracket = context.sourceCode.getTokenAfter(
         node.object,
         ASTUtils.isNotClosingParenToken
       )!;

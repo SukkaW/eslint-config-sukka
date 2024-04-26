@@ -51,7 +51,7 @@ export function createRule<
 }
 
 export function ensureParserWithTypeInformation(
-  parserServices: ParserServices | undefined
+  parserServices: Partial<ParserServices> | undefined
 ): asserts parserServices is ParserServicesWithTypeInformation {
   if (!parserServices?.program) {
     throw new Error('see https://typescript-eslint.io/docs/linting/type-linting');

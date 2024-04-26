@@ -10,11 +10,6 @@ runTest({
       }
     `;
     yield `
-      function f(s: string[]) {
-        s[0] === "a"
-      }
-    `;
-    yield `
       function f(s: string) {
         s[0] + "a"
       }

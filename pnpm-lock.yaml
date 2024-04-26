@@ -74,9 +74,6 @@ importers:
       '@types/node':
         specifier: ^20.12.7
         version: 20.12.7
-      '@typescript-eslint/rule-tester':
-        specifier: ^7.7.1
-        version: 7.7.1(@eslint/eslintrc@3.0.2)(eslint@9.1.1)(typescript@5.4.5)
       '@typescript-eslint/utils':
         specifier: ^7.7.1
         version: 7.7.1(eslint@9.1.1)(typescript@5.4.5)
@@ -98,6 +95,9 @@ importers:
       eslint-plugin-sukka:
         specifier: workspace:*
         version: link:packages/eslint-plugin-sukka
+      globals:
+        specifier: ^15.0.0
+        version: 15.0.0
       lodash-unified:
         specifier: ^1.0.3
         version: 1.0.3(@types/lodash-es@4.17.12)(lodash-es@4.17.21)(lodash@4.17.21)
@@ -1168,13 +1168,6 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
-
-  '@typescript-eslint/rule-tester@7.7.1':
-    resolution: {integrity: sha512-Xdt67cjhISDa9SgakUQPQtISoQBt223hDbFpktjZQqb57VaNmjoi6KfrEvbw1ggCmsnY++SJaXxOK+nVcgL/RA==}
-    engines: {node: ^18.18.0 || >=20.0.0}
-    peerDependencies:
-      '@eslint/eslintrc': '>=2'
-      eslint: ^8.56.0
 
   '@typescript-eslint/scope-manager@6.21.0':
     resolution: {integrity: sha512-OwLUIWZJry80O99zvqXVEioyniJMa+d2GrqpUTqi5/v5D5rOrppJVBPa0yKCblcigC0/aYAzxxqQ1B+DS2RYsg==}
@@ -3538,19 +3531,6 @@ snapshots:
       typescript: 5.4.5
     transitivePeerDependencies:
       - supports-color
-
-  '@typescript-eslint/rule-tester@7.7.1(@eslint/eslintrc@3.0.2)(eslint@9.1.1)(typescript@5.4.5)':
-    dependencies:
-      '@eslint/eslintrc': 3.0.2
-      '@typescript-eslint/typescript-estree': 7.7.1(typescript@5.4.5)
-      '@typescript-eslint/utils': 7.7.1(eslint@9.1.1)(typescript@5.4.5)
-      ajv: 6.12.6
-      eslint: 9.1.1
-      lodash.merge: 4.6.2
-      semver: 7.6.0
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
 
   '@typescript-eslint/scope-manager@6.21.0':
     dependencies:
