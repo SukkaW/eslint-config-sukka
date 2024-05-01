@@ -52,7 +52,10 @@ export const typescript: SukkaESLintRuleConfig = {
     '@typescript-eslint/no-for-in-array': 'error',
     '@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
     '@typescript-eslint/no-unnecessary-type-assertion': 'error',
-    '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true, allowAny: true, allowBoolean: true }],
+    '@typescript-eslint/restrict-template-expressions': [
+      'error',
+      { allowNumber: true, allowAny: true, allowBoolean: true, allowNever: true }
+    ],
     '@typescript-eslint/unbound-method': 'error',
     '@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports', disallowTypeAnnotations: false, fixStyle: 'separate-type-imports' }],
     '@typescript-eslint/no-import-type-side-effects': 'warn',
