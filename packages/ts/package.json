@@ -38,12 +38,12 @@
     "eslint-import-resolver-ts-bundled": "workspace:^",
     "eslint-plugin-import-x": "^0.5.0",
     "eslint-plugin-sukka-ts": "workspace:*",
-    "typescript-eslint": "^7.7.1"
+    "typescript-eslint": "^7.8.0"
   },
   "devDependencies": {
     "@eslint-sukka/js": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
     "@eslint/js": "^9.1.1",
-    "@stylistic/eslint-plugin-js": "^1.7.2"
+    "@stylistic/eslint-plugin-js": "^1.8.0"
   }
 }
