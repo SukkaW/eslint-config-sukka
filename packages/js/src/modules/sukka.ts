@@ -95,6 +95,9 @@ export const sukka: SukkaESLintRuleConfig = {
     'sukka/unicorn/prefer-switch': 'warn', // Array.from(foo)
     'sukka/unicorn/require-number-to-fixed-digits-argument': 'warn', // 1.toFixed(2)
     'sukka/import-dedupe': 'error', // ban import { a, b, a, a, c, a } from 'sukka'
+    'sukka/unicorn/prefer-string-raw': 'warn', // String.raw`foo\nbar`
+    'sukka/unicorn/no-single-promise-in-promise-methods': 'error',
+    'sukka/unicorn/no-await-in-promise-methods': 'error',
     'sukka/unicorn/template-indent': [
       'warn',
       {
