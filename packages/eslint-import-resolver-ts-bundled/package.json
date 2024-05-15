@@ -27,7 +27,7 @@
     "enhanced-resolve": "5.16.1"
   },
   "devDependencies": {
-    "@eslint-sukka/rollup-config": "workspace:^",
+    "@eslint-sukka/rollup-config": "workspace:*",
     "eslint-import-resolver-typescript": "^3.6.1"
   }
 }

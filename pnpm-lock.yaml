@@ -183,7 +183,7 @@ importers:
         version: 5.16.1
     devDependencies:
       '@eslint-sukka/rollup-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../rollup-config
       eslint-import-resolver-typescript:
         specifier: ^3.6.1
@@ -226,7 +226,7 @@ importers:
         version: 1.0.28
     devDependencies:
       '@eslint-sukka/rollup-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../rollup-config
       eslint-plugin-jsx-a11y:
         specifier: ^6.8.0
@@ -355,7 +355,7 @@ importers:
         specifier: ^1.5.11
         version: 1.5.11(@typescript-eslint/parser@7.9.0(eslint@9.2.0)(typescript@5.4.5))(eslint@9.2.0)(typescript@5.4.5)
       '@eslint-sukka/eslint-plugin-react-jsx-a11y':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../eslint-plugin-react-jsx-a11y
       '@eslint-sukka/shared':
         specifier: workspace:*
@@ -371,7 +371,7 @@ importers:
         version: 5.1.0-beta-4508873393-20240430(eslint@9.2.0)
     devDependencies:
       '@eslint-sukka/rollup-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../rollup-config
       eslint-plugin-react-prefer-function-component:
         specifier: ^3.3.0
@@ -435,7 +435,7 @@ importers:
         specifier: 2.1.0
         version: 2.1.0(eslint@9.2.0)(typescript@5.4.5)
       eslint-import-resolver-ts-bundled:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../eslint-import-resolver-ts-bundled
       eslint-plugin-import-x:
         specifier: ^0.5.0
