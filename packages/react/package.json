@@ -34,13 +34,13 @@
     "@eslint-react/eslint-plugin": "^1.5.11",
     "@eslint-sukka/eslint-plugin-react-jsx-a11y": "workspace:^",
     "@eslint-sukka/shared": "workspace:*",
-    "@stylistic/eslint-plugin-jsx": "^1.8.1",
+    "@stylistic/eslint-plugin-jsx": "^2.1.0",
     "eslint-plugin-import-x": "^0.5.0",
     "eslint-plugin-react-hooks": "5.1.0-beta-4508873393-20240430"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:^",
     "eslint-plugin-react-prefer-function-component": "^3.3.0",
-    "globals": "^15.1.0"
+    "globals": "^15.2.0"
   }
 }

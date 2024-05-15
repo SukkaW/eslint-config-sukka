@@ -24,21 +24,21 @@
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
     "@eslint-sukka/ts": "workspace:*",
-    "@stylistic/eslint-plugin-migrate": "^1.8.1",
+    "@stylistic/eslint-plugin-migrate": "^2.1.0",
     "@swc-node/register": "^1.9.1",
-    "@swc/core": "^1.5.3",
+    "@swc/core": "^1.5.7",
     "@types/eslint": "^8.56.10",
-    "@types/node": "^20.12.10",
-    "@typescript-eslint/utils": "^7.8.0",
-    "axe-core": "^4.8.2",
+    "@types/node": "^20.12.12",
+    "@typescript-eslint/utils": "^7.9.0",
+    "axe-core": "^4.9.1",
     "bumpp": "^9.4.1",
     "eslint": "^9.2.0",
     "eslint-config-sukka": "workspace:*",
     "eslint-formatter-sukka": "workspace:*",
     "eslint-plugin-sukka": "workspace:*",
-    "globals": "^15.1.0",
+    "globals": "^15.2.0",
     "lodash-unified": "^1.0.3",
-    "rimraf": "^5.0.5",
+    "rimraf": "^5.0.7",
     "rollup": "^4.17.2",
     "rollup-plugin-visualizer": "^5.12.0",
     "turbo": "^1.13.3",
@@ -67,7 +67,7 @@
     },
     "patchedDependencies": {
       "text-table@0.2.0": "patches/text-table@0.2.0.patch",
-      "axe-core@4.8.2": "patches/axe-core@4.8.2.patch"
+      "axe-core@4.9.1": "patches/axe-core@4.9.1.patch"
     }
   }
 }
