@@ -81,6 +81,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
   const configs: FlatESLintConfigItem[] = [
     eslint_js.configs.recommended,
     {
+      name: '@eslint-sukka/js base',
       ...(files ? { files } : {}),
       linterOptions: {
         reportUnusedDisableDirectives: true
@@ -136,6 +137,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
   if (disableNoConsoleInCLI !== false) {
     const customGlobs = typeof disableNoConsoleInCLI !== 'boolean' ? (Array.isArray(disableNoConsoleInCLI) ? disableNoConsoleInCLI : [disableNoConsoleInCLI]) : null;
     configs.push({
+      name: '@eslint-sukka/js cli specific',
       files: customGlobs ?? [`**/scripts/${constants.GLOB_SRC}`, `**/cli/${constants.GLOB_SRC}`, `**/cli.${constants.GLOB_SRC_EXT}`],
       rules: {
         'no-console': 'off'

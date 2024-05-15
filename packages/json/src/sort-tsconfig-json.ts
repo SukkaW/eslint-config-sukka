@@ -1,8 +1,9 @@
 import { SHARED_OPTIONS } from './shared-option';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 export const sortTsconfigJson: FlatESLintConfigItem = {
+  name: '@eslint-sukka/json tsconfig.json',
   ...SHARED_OPTIONS,
-  files: ['**/tsconfig.json', '**/tsconfig.*.json', '**/jsconfig.json', '**/jsconfig.*.json'],
+  files: ['**/tsconfig.json', '**/tsconfig.*.json', '**/tsconfig-*.json', '**/jsconfig.json', '**/jsconfig.*.json', '**/jsconfig-*.json'],
   rules: {
     'jsonc/sort-keys': [
       'error',

@@ -14,6 +14,7 @@ export interface OptionsLegacy {
 
 export const legacy = (options: OptionsLegacy = {}): FlatESLintConfigItem[] => {
   return [{
+    name: '@eslint-sukka/legacy base',
     ...(options.files ? { files: options.files } : {}),
     plugins: {
       sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka')

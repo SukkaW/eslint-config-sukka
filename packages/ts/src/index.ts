@@ -28,6 +28,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
 
   return [
     {
+      name: '@eslint-sukka/ts base',
       files: [
         constants.GLOB_TS,
         constants.GLOB_TSX,
@@ -108,6 +109,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
       }
     },
     {
+      name: '@eslint-sukka/ts dts',
       files: ['**/*.d.ts'],
       plugins: {
         'import-x': memo(eslint_plugin_import_x, 'eslint-plugin-import-x') as any
@@ -118,12 +120,14 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
       }
     },
     {
+      name: '@eslint-sukka/ts jest/mocha',
       files: ['**/*.{test,spec}.ts?(x)'],
       rules: {
         'no-unused-expressions': 'off'
       }
     },
     {
+      name: '@eslint-sukka/ts commonjs',
       files: ['**/*.js', '**/*.cjs'],
       plugins: ts_eslint_configs.base.plugins as any,
       rules: {

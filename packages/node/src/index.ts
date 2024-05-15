@@ -19,6 +19,7 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
   const configs: FlatESLintConfigItem[] = [
     ...eslint_plugin_n.configs['flat/mixed-esm-and-cjs'],
     {
+      name: '@eslint-sukka/node base',
       files: options.files ?? (isModule ? ['*.mjs', '.*.mjs', '*.js', '.*.js'] : ['*.cjs', '.*.cjs', '*.js', '.*.js']),
       plugins: {
         sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka'),
@@ -82,6 +83,7 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
 
   if (options.strict !== false) {
     configs.push({
+      name: '@eslint-sukka/node use strict',
       files: options.files ?? (isModule ? ['*.cjs', '.*.cjs'] : ['*.cjs', '.*.cjs', '*.js', '.*.js']),
       rules: {
         // enable strict mode for cjs

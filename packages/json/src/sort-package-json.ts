@@ -1,6 +1,7 @@
 import { SHARED_OPTIONS } from './shared-option';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 export const sortPackageJson: FlatESLintConfigItem = {
+  name: '@eslint-sukka/json package.json',
   ...SHARED_OPTIONS,
   files: ['**/package.json'],
   rules: {

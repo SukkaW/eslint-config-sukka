@@ -26,6 +26,7 @@ export const jsonc = (): FlatESLintConfigItem[] => {
   return [
     ...eslint_plugin_jsonc.configs['flat/base'],
     {
+      name: '@eslint-sukka/json json',
       files: [constants.GLOB_JSON],
       rules: {
         ...eslint_plugin_jsonc.configs['flat/recommended-with-json'].reduce((acc, cur) => ({ ...acc, ...cur.rules }), {}),
@@ -33,6 +34,7 @@ export const jsonc = (): FlatESLintConfigItem[] => {
       }
     },
     {
+      name: '@eslint-sukka/json json5',
       ...SHARED_OPTIONS,
       files: [constants.GLOB_JSON5],
       rules: {
@@ -41,6 +43,7 @@ export const jsonc = (): FlatESLintConfigItem[] => {
       }
     },
     {
+      name: '@eslint-sukka/json jsonc',
       ...SHARED_OPTIONS,
       files: [constants.GLOB_JSONC],
       rules: {

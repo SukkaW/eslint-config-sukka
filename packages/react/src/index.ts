@@ -25,6 +25,7 @@ const memoized_eslint_react = memo(eslint_react, '@eslint-react/eslint-plugin');
 
 export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
   return [{
+    name: '@eslint-sukka/react base',
     files: [
       constants.GLOB_TS,
       constants.GLOB_TSX,
