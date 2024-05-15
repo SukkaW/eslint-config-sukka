@@ -434,6 +434,9 @@ importers:
       '@stylistic/eslint-plugin-ts':
         specifier: 2.1.0
         version: 2.1.0(eslint@9.2.0)(typescript@5.4.5)
+      '@typescript-eslint/parser':
+        specifier: ^7.9.0
+        version: 7.9.0(eslint@9.2.0)(typescript@5.4.5)
       eslint-import-resolver-ts-bundled:
         specifier: workspace:*
         version: link:../eslint-import-resolver-ts-bundled
