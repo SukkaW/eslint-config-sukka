@@ -3,8 +3,11 @@ import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import eslint_plugin_import_x from 'eslint-plugin-import-x';
 import { eslint_plugin_jsx_a11y_minimal } from '@eslint-sukka/eslint-plugin-react-jsx-a11y';
+
 // @ts-expect-error -- no types
 import eslint_plugin_react_hooks from 'eslint-plugin-react-hooks';
+// @ts-expect-error -- no types
+import eslint_plugin_react_compiler from 'eslint-plugin-react-compiler';
 
 import eslint_plugin_react_prefer_function_component from 'eslint-plugin-react-prefer-function-component';
 
@@ -18,12 +21,16 @@ export interface OptionsReact {
   /**
    * @default '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)'
    */
-  additionalHooks?: string
+  additionalHooks?: string,
+  /**
+   * @default 'error'
+   */
+  reactCompiler?: 'off' | 'warn' | 'error'
 }
 
 const memoized_eslint_react = memo(eslint_react, '@eslint-react/eslint-plugin');
 
-export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
+export const react = ({ reactCompiler = 'error', additionalHooks = '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)' }: OptionsReact = {}): FlatESLintConfigItem[] => {
   return [{
     name: '@eslint-sukka/react base',
     files: [
@@ -40,6 +47,7 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
       'react-prefer-function-component': memo(eslint_plugin_react_prefer_function_component, 'eslint-plugin-react-prefer-function-component'),
 
       '@eslint-react': memoized_eslint_react as any,
+      'react-compiler': memo(eslint_plugin_react_compiler, 'eslint-plugin-react-compiler'),
       ...memoized_eslint_react.configs['recommended-type-checked'].plugins as any
     },
     settings: {
@@ -53,10 +61,10 @@ export const react = (options: OptionsReact = {}): FlatESLintConfigItem[] => {
     rules: {
       // plugin:react-hooks/recommended
       ...eslint_plugin_react_hooks.configs.recommended.rules,
+      // react compiler rule
+      'react-compiler/react-compiler': reactCompiler,
 
-      'react-hooks/exhaustive-deps': ['error', {
-        additionalHooks: options.additionalHooks ?? '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)'
-      }],
+      'react-hooks/exhaustive-deps': ['error', { additionalHooks }],
 
       // Enforce PascalCase for user-defined JSX components
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md
