@@ -17,7 +17,7 @@ export const typescript: SukkaESLintRuleConfig = {
         'ts-ignore': true,
         'ts-nocheck': true,
         'ts-check': false,
-        minimumDescriptionLength: 5
+        minimumDescriptionLength: 10
       }
     ], // disable a rule requires a reason
     '@typescript-eslint/naming-convention': [
@@ -61,7 +61,6 @@ export const typescript: SukkaESLintRuleConfig = {
     '@typescript-eslint/no-import-type-side-effects': 'warn',
     '@typescript-eslint/consistent-type-exports': ['warn', { fixMixedExportsWithInlineTypeSpecifier: true }],
     '@typescript-eslint/consistent-type-definitions': 'warn',
-    '@typescript-eslint/prefer-ts-expect-error': 'warn',
     '@typescript-eslint/consistent-generic-constructors': ['error', 'constructor'],
     '@typescript-eslint/no-base-to-string': ['error', { ignoredTypeNames: ['Error', 'RegExp', 'URL', 'URLSearchParams'] }],
     '@typescript-eslint/no-confusing-non-null-assertion': 'error', // a! == b
