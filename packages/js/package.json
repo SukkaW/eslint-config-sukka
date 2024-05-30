@@ -33,14 +33,14 @@
   "dependencies": {
     "@eslint-sukka/json": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
-    "@eslint/js": "^9.2.0",
+    "@eslint/js": "^9.3.0",
     "@stylistic/eslint-plugin-js": "2.1.0",
-    "eslint-plugin-import-x": "^0.5.0",
+    "eslint-plugin-import-x": "^0.5.1",
     "eslint-plugin-sukka": "workspace:*",
-    "eslint-plugin-unused-imports": "^3.2.0"
+    "eslint-plugin-unused-imports": "^4.0.0"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
-    "globals": "^15.2.0"
+    "globals": "^15.3.0"
   }
 }

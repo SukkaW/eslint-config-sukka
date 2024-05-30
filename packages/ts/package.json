@@ -35,16 +35,16 @@
     "@eslint-sukka/shared": "workspace:*",
     "@stylistic/eslint-plugin-plus": "2.1.0",
     "@stylistic/eslint-plugin-ts": "2.1.0",
-    "@typescript-eslint/parser": "^7.9.0",
+    "@typescript-eslint/parser": "^7.11.0",
     "eslint-import-resolver-ts-bundled": "workspace:*",
-    "eslint-plugin-import-x": "^0.5.0",
+    "eslint-plugin-import-x": "^0.5.1",
     "eslint-plugin-sukka-ts": "workspace:*",
-    "typescript-eslint": "^7.9.0"
+    "typescript-eslint": "^7.11.0"
   },
   "devDependencies": {
     "@eslint-sukka/js": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
-    "@eslint/js": "^9.2.0",
+    "@eslint/js": "^9.3.0",
     "@stylistic/eslint-plugin-js": "^2.1.0"
   }
 }
