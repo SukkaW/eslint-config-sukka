@@ -363,6 +363,9 @@ importers:
       '@eslint-sukka/shared':
         specifier: workspace:*
         version: link:../shared
+      '@eslint/compat':
+        specifier: ^1.0.3
+        version: 1.0.3
       '@stylistic/eslint-plugin-jsx':
         specifier: ^2.1.0
         version: 2.1.0(eslint@9.4.0)
@@ -790,6 +793,10 @@ packages:
 
   '@eslint-stylistic/metadata@2.1.0':
     resolution: {integrity: sha512-zqO4PkrOj0q/KpzaoPk2jnbV5OIP/fE5aBO02JCAkGzadXFxVAnazWr+xGh5YR1Rxo6mBOuaCVDmAlEoj6nftg==}
+
+  '@eslint/compat@1.0.3':
+    resolution: {integrity: sha512-9RaroPQaU2+SDcWav1YfuipwqnHccoiXZdUsicRQsQ/vH2wkEmRVcj344GapG/FnCeZRtqj0n6PshI+s9xkkAQ==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@eslint/config-array@0.15.1':
     resolution: {integrity: sha512-K4gzNq+yymn/EVsXYmf+SBcBro8MTf+aXJZUphM96CdzUEr+ClGDvAbpmaEK+cGVigVXIgs9gNmvHAlrzzY5JQ==}
@@ -3420,6 +3427,8 @@ snapshots:
       - typescript
 
   '@eslint-stylistic/metadata@2.1.0': {}
+
+  '@eslint/compat@1.0.3': {}
 
   '@eslint/config-array@0.15.1':
     dependencies:

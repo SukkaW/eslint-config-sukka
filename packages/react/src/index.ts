@@ -21,6 +21,8 @@ import eslint_plugin_react_usememo from '@arthurgeron/eslint-plugin-react-usemem
 
 import { browser as globalsBrowser } from 'globals';
 
+import { fixupPluginRules } from '@eslint/compat';
+
 export interface OptionsReact {
   /**
    * @default '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)'
@@ -33,7 +35,7 @@ export interface OptionsReact {
 }
 
 const memoized_eslint_react = memo(eslint_react, '@eslint-react/eslint-plugin');
-const memoized_eslint_plugin_ssr_friendly = memo(eslint_plugin_ssr_friendly, 'eslint-plugin-ssr-friendly');
+const memoized_eslint_plugin_ssr_friendly = memo(fixupPluginRules(eslint_plugin_ssr_friendly), 'eslint-plugin-ssr-friendly');
 
 export const react = ({ reactCompiler = 'error', additionalHooks = '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)' }: OptionsReact = {}): FlatESLintConfigItem[] => {
   return [{
@@ -364,7 +366,7 @@ export const react = ({ reactCompiler = 'error', additionalHooks = '(useIsomorph
       'jsx-a11y-minimal/role-has-required-aria-props': 'warn',
       'jsx-a11y-minimal/role-supports-aria-props': 'warn',
 
-      ...memoized_eslint_plugin_ssr_friendly.configs.recommended.recommended.rules,
+      ...(memoized_eslint_plugin_ssr_friendly.configs as any).recommended.rules,
       '@arthurgeron/react-usememo/require-usememo': 'warn'
     }
   }];

@@ -10,7 +10,8 @@ module.exports = sukka(
         '**/generated*'
       ]
     },
-    node: true
+    node: true,
+    react: true
   },
   {
     plugins: {
