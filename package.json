@@ -26,13 +26,13 @@
     "@eslint-sukka/ts": "workspace:*",
     "@stylistic/eslint-plugin-migrate": "^2.1.0",
     "@swc-node/register": "^1.9.1",
-    "@swc/core": "^1.5.22",
+    "@swc/core": "^1.5.24",
     "@types/eslint": "^8.56.10",
-    "@types/node": "^20.12.13",
-    "@typescript-eslint/utils": "^7.11.0",
+    "@types/node": "^20.14.1",
+    "@typescript-eslint/utils": "^7.12.0",
     "axe-core": "^4.9.1",
     "bumpp": "^9.4.1",
-    "eslint": "^9.3.0",
+    "eslint": "^9.4.0",
     "eslint-config-sukka": "workspace:*",
     "eslint-formatter-sukka": "workspace:*",
     "eslint-plugin-sukka": "workspace:*",
@@ -45,7 +45,7 @@
     "typescript": "^5.4.5",
     "vitest": "^1.6.0"
   },
-  "packageManager": "pnpm@9.1.3",
+  "packageManager": "pnpm@9.1.4",
   "pnpm": {
     "overrides": {
       "array-includes": "npm:@nolyfill/array-includes@latest",
