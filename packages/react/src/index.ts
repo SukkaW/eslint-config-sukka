@@ -364,7 +364,7 @@ export const react = ({ reactCompiler = 'error', additionalHooks = '(useIsomorph
       'jsx-a11y-minimal/role-has-required-aria-props': 'warn',
       'jsx-a11y-minimal/role-supports-aria-props': 'warn',
 
-      ...memoized_eslint_plugin_ssr_friendly.recommended.recommended.rules,
+      ...memoized_eslint_plugin_ssr_friendly.configs.recommended.recommended.rules,
       '@arthurgeron/react-usememo/require-usememo': 'warn'
     }
   }];
