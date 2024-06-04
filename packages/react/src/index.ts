@@ -57,7 +57,7 @@ export const react = ({ reactCompiler = 'error', additionalHooks = '(useIsomorph
       'react-compiler': memo(eslint_plugin_react_compiler, 'eslint-plugin-react-compiler'),
       ...memoized_eslint_react.configs['recommended-type-checked'].plugins as any,
       'ssr-friendly': memoized_eslint_plugin_ssr_friendly,
-      '@arthurgeron/react-usememo': memo(eslint_plugin_react_usememo, '@arthurgeron/eslint-plugin-react-usememo')
+      '@arthurgeron/react-usememo': memo(fixupPluginRules(eslint_plugin_react_usememo), '@arthurgeron/eslint-plugin-react-usememo')
     },
     settings: {
       react: {
