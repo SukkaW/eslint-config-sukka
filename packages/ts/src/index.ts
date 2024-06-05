@@ -1,4 +1,4 @@
-import { constants, memo } from '@eslint-sukka/shared';
+import { constants, memo, importMetaResolve } from '@eslint-sukka/shared';
 
 import { typescript as typescriptConfig } from './modules/typescript';
 import { sukka_typeScript } from './modules/sukka';
@@ -9,6 +9,7 @@ import eslint_plugin_import_x from 'eslint-plugin-import-x';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import { configs as ts_eslint_configs } from 'typescript-eslint';
+import { fileURLToPath, pathToFileURL } from 'url';
 
 export interface OptionsTypeScript {
   tsconfigPath?: string | string[] | true,
@@ -25,6 +26,8 @@ const importResolverExtensions = ['.ts', '.cts', '.mts', '.tsx', ...javaScriptEx
 
 export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigItem[] => {
   const { tsconfigPath = true, tsconfigRootDir = process.cwd(), componentExtentions = [] } = options;
+
+  const typescriptEslintParserPath = fileURLToPath(importMetaResolve('@typescript-eslint/parser', typeof __dirname === 'string' ? pathToFileURL(__dirname).href : import.meta.url));
 
   return [
     {
@@ -78,7 +81,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         'import-x/parsers': {
           // TODO: remove this line once eslint-plugin-import #2556 is fixed
           espree: javaScriptExtensions,
-          '@typescript-eslint/parser': ['.ts', '.cts', '.mts', '.tsx', '.d.ts']
+          [typescriptEslintParserPath]: ['.ts', '.cts', '.mts', '.tsx', '.d.ts']
         }
       },
       rules: {

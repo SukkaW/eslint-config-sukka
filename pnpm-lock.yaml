@@ -409,6 +409,9 @@ importers:
       '@rollup/plugin-node-resolve':
         specifier: ^15.2.3
         version: 15.2.3(rollup@4.18.0)
+      '@rollup/plugin-replace':
+        specifier: ^5.0.6
+        version: 5.0.6(rollup@4.18.0)
       add:
         specifier: ^2.0.6
         version: 2.0.6
@@ -424,6 +427,9 @@ importers:
 
   packages/shared:
     dependencies:
+      '@dual-bundle/import-meta-resolve':
+        specifier: ^4.1.0
+        version: 4.1.0
       '@types/eslint':
         specifier: ^8.56.10
         version: 8.56.10
@@ -613,6 +619,9 @@ packages:
   '@babel/types@7.24.5':
     resolution: {integrity: sha512-6mQNsaLeXTw0nxYUYu+NSa4Hx4BlF1x1x8/PMFbiR+GBSr+2DkECc69b8hgy2frEodNcvPffeH8YfWd3LI6jhQ==}
     engines: {node: '>=6.9.0'}
+
+  '@dual-bundle/import-meta-resolve@4.1.0':
+    resolution: {integrity: sha512-+nxncfwHM5SgAtrVzgpzJOI1ol0PkumhVo469KCf9lUi21IGcY90G98VuHm9VRrUypmAzawAHO9bs6hqeADaVg==}
 
   '@esbuild/aix-ppc64@0.20.2':
     resolution: {integrity: sha512-D+EBOJHXdNZcLJRBkhENNG8Wji2kgc9AZ9KiPr1JuZjsNtyHzrsfLRrY0tk2H2aoFu6RANO1y1iPPUCDYWkb5g==}
@@ -1060,6 +1069,15 @@ packages:
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.78.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+
+  '@rollup/plugin-replace@5.0.6':
+    resolution: {integrity: sha512-n/Eea4MuS38M5iT+0nz7UzSbI4H4hVTKV5hOTAQzNVKT3nYxj8iaG4t9IW86Ugv/jApGY+O+SANAFqWPzZ9xkw==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
     peerDependenciesMeta:
       rollup:
         optional: true
@@ -3243,6 +3261,8 @@ snapshots:
       '@babel/helper-validator-identifier': 7.24.5
       to-fast-properties: 2.0.0
 
+  '@dual-bundle/import-meta-resolve@4.1.0': {}
+
   '@esbuild/aix-ppc64@0.20.2':
     optional: true
 
@@ -3676,6 +3696,13 @@ snapshots:
       is-builtin-module: 3.2.1
       is-module: 1.0.0
       resolve: 1.22.8
+    optionalDependencies:
+      rollup: 4.18.0
+
+  '@rollup/plugin-replace@5.0.6(rollup@4.18.0)':
+    dependencies:
+      '@rollup/pluginutils': 5.1.0(rollup@4.18.0)
+      magic-string: 0.30.10
     optionalDependencies:
       rollup: 4.18.0
 

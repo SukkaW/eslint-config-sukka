@@ -8,6 +8,7 @@ import jsonPlugin from '@rollup/plugin-json';
 import aliasPlugin from '@rollup/plugin-alias';
 import type { RollupAliasOptions } from '@rollup/plugin-alias';
 import { visualizer } from 'rollup-plugin-visualizer';
+import replace from '@rollup/plugin-replace';
 
 import { rollupFoxquire } from './rollup-foxquire';
 
@@ -58,6 +59,13 @@ export const createRollupConfig = (
     ] satisfies Array<RollupOutputOptions | null>).filter(nonNullable),
     plugins: [
       foxquire && rollupFoxquire(),
+      replace({
+        values: {
+          'typeof window': JSON.stringify('undefined'),
+          'typeof document': JSON.stringify('undefined')
+        },
+        preventAssignment: true
+      }),
       alias && aliasPlugin(alias),
       nodeResolve && nodeResolvePlugin({
         exportConditions: ['node', 'import', 'require', 'default']
@@ -78,6 +86,16 @@ export const createRollupConfig = (
             mangle: true,
             compress: true,
             module: true
+          },
+          transform: {
+            optimizer: {
+              globals: {
+                typeofs: {
+                  window: 'undefined',
+                  document: 'undefined'
+                }
+              }
+            }
           }
         }
       }),

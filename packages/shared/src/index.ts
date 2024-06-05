@@ -6,3 +6,5 @@ export type * from './types';
 
 export { createRule, ensureParserWithTypeInformation } from './create-eslint-rule';
 export type { RuleModule, ExportedRuleModule, RuleContext } from './create-eslint-rule';
+
+export { resolve as importMetaResolve } from '@dual-bundle/import-meta-resolve';
