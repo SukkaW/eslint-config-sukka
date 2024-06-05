@@ -47,5 +47,8 @@
     "@eslint-sukka/rollup-config": "workspace:*",
     "@eslint/js": "^9.4.0",
     "@stylistic/eslint-plugin-js": "^2.1.0"
+  },
+  "peerDependencies": {
+    "eslint-plugin-unused-imports": "*"
   }
 }
