@@ -1,6 +1,6 @@
 {
   "name": "@eslint-sukka/shared",
-  "version": "6.0.0-beta.19",
+  "version": "6.0.0-beta.20",
   "description": "Sukka's ESLint config",
   "homepage": "https://github.com/SukkaW/eslint-config-sukka",
   "repository": {
