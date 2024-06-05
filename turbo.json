@@ -5,7 +5,7 @@
     "tsconfig.json",
     "eslint.config.js"
   ],
-  "pipeline": {
+  "tasks": {
     "codegen": {
       "dependsOn": [
         "^codegen"

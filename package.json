@@ -26,7 +26,7 @@
     "@eslint-sukka/ts": "workspace:*",
     "@stylistic/eslint-plugin-migrate": "^2.1.0",
     "@swc-node/register": "^1.9.1",
-    "@swc/core": "^1.5.24",
+    "@swc/core": "^1.5.25",
     "@types/eslint": "^8.56.10",
     "@types/node": "^20.14.1",
     "@typescript-eslint/utils": "^7.12.0",
@@ -41,7 +41,7 @@
     "rimraf": "^5.0.7",
     "rollup": "^4.18.0",
     "rollup-plugin-visualizer": "^5.12.0",
-    "turbo": "^1.13.3",
+    "turbo": "^2.0.1",
     "typescript": "^5.4.5",
     "vitest": "^1.6.0"
   },
