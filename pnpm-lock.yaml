@@ -131,6 +131,9 @@ importers:
       '@eslint-sukka/shared':
         specifier: workspace:*
         version: link:../shared
+      '@eslint-sukka/ts':
+        specifier: workspace:*
+        version: link:../ts
       ci-info:
         specifier: ^4.0.0
         version: 4.0.0
@@ -150,9 +153,6 @@ importers:
       '@eslint-sukka/rollup-config':
         specifier: workspace:*
         version: link:../rollup-config
-      '@eslint-sukka/ts':
-        specifier: workspace:*
-        version: link:../ts
       eslint-config-flat-gitignore:
         specifier: ^0.1.5
         version: 0.1.5
