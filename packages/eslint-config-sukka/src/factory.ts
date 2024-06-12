@@ -1,13 +1,15 @@
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import { ignores } from './modules/ignores';
+import type { OptionsIgnores } from './modules/ignores';
+
+import { javascript } from './modules/javascript';
+import type { OptionsJavaScript } from './modules/javascript';
 
 import { isPackageExists } from 'local-pkg';
-import { isCI } from 'ci-info';
+// import { isCI } from 'ci-info';
 
-import type { OptionsIgnores } from './modules/ignores';
 // This is a small hack to make rollup-plugin-dts bundle all these types
-import type { OptionsJavaScript } from '../../js/src';
 import type { OptionsTypeScript } from '../../ts/src';
 import type { OptionsReact } from '../../react';
 import type { OptionsNode } from '../../node';
@@ -43,15 +45,15 @@ function config<T>(options: SharedOptions<T> | undefined | boolean): T | undefin
 }
 
 export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESLintConfigItem[]): Promise<FlatESLintConfigItem[]> => {
-  const isInEditor = options?.isInEditor ?? !!(
-    (
-      process.env.VSCODE_PID
-      || process.env.VSCODE_CWD
-      || process.env.JETBRAINS_IDE
-      || process.env.VIM
-    )
-    && !isCI
-  );
+  // const isInEditor = options?.isInEditor ?? !!(
+  //   (
+  //     process.env.VSCODE_PID
+  //     || process.env.VSCODE_CWD
+  //     || process.env.JETBRAINS_IDE
+  //     || process.env.VIM
+  //   )
+  //   && !isCI
+  // );
 
   const flatConfigs: FlatESLintConfigItem[][] = [];
 
@@ -59,10 +61,7 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
   flatConfigs.push(ignores(options?.ignores));
   // javascript
   if (enabled(options?.js, true)) {
-    flatConfigs.push((await foxquire<typeof import('@eslint-sukka/js')>('@eslint-sukka/js')).javascript({
-      ...config(options?.js),
-      isInEditor
-    }));
+    flatConfigs.push(javascript(config(options?.js)));
   }
   // json
   if (enabled(options?.json, true)) {

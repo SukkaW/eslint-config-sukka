@@ -38,9 +38,6 @@ importers:
         specifier: workspace:*
         version: link:packages/eslint-import-resolver-ts-bundled
     devDependencies:
-      '@eslint-sukka/js':
-        specifier: workspace:*
-        version: link:packages/js
       '@eslint-sukka/json':
         specifier: workspace:*
         version: link:packages/json
@@ -122,9 +119,6 @@ importers:
 
   packages/eslint-config-sukka:
     dependencies:
-      '@eslint-sukka/js':
-        specifier: workspace:*
-        version: link:../js
       '@eslint-sukka/json':
         specifier: workspace:*
         version: link:../json
@@ -134,9 +128,24 @@ importers:
       '@eslint-sukka/ts':
         specifier: workspace:*
         version: link:../ts
+      '@eslint/js':
+        specifier: ^9.4.0
+        version: 9.4.0
+      '@stylistic/eslint-plugin-js':
+        specifier: 2.1.0
+        version: 2.1.0(eslint@9.4.0)
       ci-info:
         specifier: ^4.0.0
         version: 4.0.0
+      eslint-plugin-import-x:
+        specifier: ^0.5.1
+        version: 0.5.1(eslint@9.4.0)(typescript@5.4.5)
+      eslint-plugin-sukka:
+        specifier: workspace:*
+        version: link:../eslint-plugin-sukka
+      eslint-plugin-unused-imports:
+        specifier: 3.2.0
+        version: 3.2.0(@typescript-eslint/eslint-plugin@7.12.0(eslint@9.4.0)(typescript@5.4.5))(eslint@9.4.0)
       local-pkg:
         specifier: ^0.5.0
         version: 0.5.0
@@ -156,6 +165,9 @@ importers:
       eslint-config-flat-gitignore:
         specifier: ^0.1.5
         version: 0.1.5
+      globals:
+        specifier: ^15.3.0
+        version: 15.3.0
 
   packages/eslint-formatter-sukka:
     dependencies:
@@ -266,40 +278,6 @@ importers:
       '@masknet/eslint-plugin':
         specifier: ^0.3.0
         version: 0.3.0(eslint@9.4.0)
-
-  packages/js:
-    dependencies:
-      '@eslint-sukka/json':
-        specifier: workspace:*
-        version: link:../json
-      '@eslint-sukka/shared':
-        specifier: workspace:*
-        version: link:../shared
-      '@eslint/js':
-        specifier: ^9.4.0
-        version: 9.4.0
-      '@stylistic/eslint-plugin-js':
-        specifier: 2.1.0
-        version: 2.1.0(eslint@9.4.0)
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^7.12.0
-        version: 7.12.0(@typescript-eslint/parser@7.12.0(eslint@9.4.0)(typescript@5.4.5))(eslint@9.4.0)(typescript@5.4.5)
-      eslint-plugin-import-x:
-        specifier: ^0.5.1
-        version: 0.5.1(eslint@9.4.0)(typescript@5.4.5)
-      eslint-plugin-sukka:
-        specifier: workspace:*
-        version: link:../eslint-plugin-sukka
-      eslint-plugin-unused-imports:
-        specifier: 3.2.0
-        version: 3.2.0(@typescript-eslint/eslint-plugin@7.12.0(@typescript-eslint/parser@7.12.0(eslint@9.4.0)(typescript@5.4.5))(eslint@9.4.0)(typescript@5.4.5))(eslint@9.4.0)
-    devDependencies:
-      '@eslint-sukka/rollup-config':
-        specifier: workspace:*
-        version: link:../rollup-config
-      globals:
-        specifier: ^15.3.0
-        version: 15.3.0
 
   packages/json:
     dependencies:
@@ -474,9 +452,6 @@ importers:
         specifier: ^7.12.0
         version: 7.12.0(eslint@9.4.0)(typescript@5.4.5)
     devDependencies:
-      '@eslint-sukka/js':
-        specifier: workspace:*
-        version: link:../js
       '@eslint-sukka/rollup-config':
         specifier: workspace:*
         version: link:../rollup-config
@@ -4483,7 +4458,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-unused-imports@3.2.0(@typescript-eslint/eslint-plugin@7.12.0(@typescript-eslint/parser@7.12.0(eslint@9.4.0)(typescript@5.4.5))(eslint@9.4.0)(typescript@5.4.5))(eslint@9.4.0):
+  eslint-plugin-unused-imports@3.2.0(@typescript-eslint/eslint-plugin@7.12.0(eslint@9.4.0)(typescript@5.4.5))(eslint@9.4.0):
     dependencies:
       eslint: 9.4.0
       eslint-rule-composer: 0.3.0
