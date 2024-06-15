@@ -6,6 +6,11 @@
     "eslint.config.js"
   ],
   "tasks": {
+    "codegen": {
+      "dependsOn": [
+        "^codegen"
+      ]
+    },
     "build": {
       "dependsOn": [
         "^build"
@@ -13,6 +18,11 @@
     },
     "test": {
       "cache": false
+    },
+    "@eslint-sukka/ts#build": {
+      "dependsOn": [
+        "@eslint-sukka/ts#codegen"
+      ]
     }
   }
 }

@@ -7,6 +7,12 @@ import { configs as ts_eslint_configs } from 'typescript-eslint';
 export const generated_overrides: SukkaESLintRuleConfig = {
   plugins: ts_eslint_configs.base.plugins as any, // fuck @typescript-eslint
   rules: {
+    "no-dupe-class-members": "off",
+    "@typescript-eslint/no-dupe-class-members": "error",
+    "no-loss-of-precision": "off",
+    "@typescript-eslint/no-loss-of-precision": "warn",
+    "no-redeclare": "off",
+    "@typescript-eslint/no-redeclare": "error",
     "class-methods-use-this": "off",
     "@typescript-eslint/class-methods-use-this": [
       "error",
@@ -25,6 +31,8 @@ export const generated_overrides: SukkaESLintRuleConfig = {
     ],
     "no-implied-eval": "off",
     "@typescript-eslint/no-implied-eval": "error",
+    "no-invalid-this": "off",
+    "@typescript-eslint/no-invalid-this": "off",
     "no-loop-func": "off",
     "@typescript-eslint/no-loop-func": "error",
     "no-return-await": "off",
@@ -45,8 +53,20 @@ export const generated_overrides: SukkaESLintRuleConfig = {
         "allowEmptyReject": true
       }
     ],
-    "no-loss-of-precision": "off",
-    "@typescript-eslint/no-loss-of-precision": "warn",
+    "require-await": "off",
+    "@typescript-eslint/require-await": "off",
+    "@stylistic/js/no-extra-parens": "off",
+    "@stylistic/ts/no-extra-parens": [
+      "off",
+      "all",
+      {
+        "conditionalAssign": true,
+        "nestedBinaryExpressions": false,
+        "returnAssign": false,
+        "ignoreJSX": "all",
+        "enforceForArrowConditionals": false
+      }
+    ],
     "no-useless-constructor": "off",
     "@typescript-eslint/no-useless-constructor": "error",
     "@stylistic/js/block-spacing": "off",
@@ -116,6 +136,8 @@ export const generated_overrides: SukkaESLintRuleConfig = {
         }
       }
     ],
+    "@stylistic/js/lines-around-comment": "off",
+    "@stylistic/ts/lines-around-comment": "off",
     "@stylistic/js/lines-between-class-members": "off",
     "@stylistic/ts/lines-between-class-members": [
       "error",
