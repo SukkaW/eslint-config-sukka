@@ -34,7 +34,7 @@
     "@eslint-sukka/json": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
     "@eslint-sukka/ts": "workspace:*",
-    "@eslint/js": "^9.4.0",
+    "@eslint/js": "^9.5.0",
     "@stylistic/eslint-plugin-js": "2.1.0",
     "ci-info": "^4.0.0",
     "eslint-plugin-import-x": "^0.5.1",
@@ -48,6 +48,6 @@
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
     "eslint-config-flat-gitignore": "^0.1.5",
-    "globals": "^15.3.0"
+    "globals": "^15.4.0"
   }
 }

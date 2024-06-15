@@ -32,10 +32,10 @@
   "license": "MIT",
   "dependencies": {
     "@arthurgeron/eslint-plugin-react-usememo": "^2.4.0",
-    "@eslint-react/eslint-plugin": "^1.5.14",
+    "@eslint-react/eslint-plugin": "^1.5.15",
     "@eslint-sukka/eslint-plugin-react-jsx-a11y": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
-    "@eslint/compat": "^1.0.3",
+    "@eslint/compat": "^1.1.0",
     "@stylistic/eslint-plugin-jsx": "^2.1.0",
     "eslint-plugin-import-x": "^0.5.1",
     "eslint-plugin-react-compiler": "0.0.0-experimental-53bb89e-20240515",
@@ -45,6 +45,6 @@
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
     "eslint-plugin-react-prefer-function-component": "^3.3.0",
-    "globals": "^15.3.0"
+    "globals": "^15.4.0"
   }
 }
