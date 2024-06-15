@@ -8,11 +8,13 @@ import type { OptionsJavaScript } from './modules/javascript';
 
 import { json } from './modules/json';
 
+import { typescript } from './modules/typescript';
+import type { OptionsTypeScript } from './modules/typescript';
+
 import { isPackageExists } from 'local-pkg';
 // import { isCI } from 'ci-info';
 
 // This is a small hack to make rollup-plugin-dts bundle all these types
-import type { OptionsTypeScript } from '../../ts/src';
 import type { OptionsReact } from '../../react';
 import type { OptionsNode } from '../../node';
 import type { OptionsLegacy } from '../../legacy';
@@ -72,7 +74,7 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
   // typescript
   const typescriptEnabled = enabled(options?.ts, isPackageExists('typescript'));
   if (typescriptEnabled) {
-    flatConfigs.push((await foxquire<typeof import('@eslint-sukka/ts')>('@eslint-sukka/ts')).typescript(config(options?.ts)));
+    flatConfigs.push(typescript(config(options?.ts)));
   }
   // react
   const reactEnabled = enabled(options?.react, isPackageExists('react') || isPackageExists('next'));

@@ -19,9 +19,9 @@
     "test": {
       "cache": false
     },
-    "@eslint-sukka/ts#build": {
+    "eslint-config-sukka#build": {
       "dependsOn": [
-        "@eslint-sukka/ts#codegen"
+        "eslint-config-sukka#codegen"
       ]
     }
   }

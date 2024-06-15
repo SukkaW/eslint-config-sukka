@@ -7,7 +7,7 @@ module.exports = sukka(
     ignores: {
       customGlobs: [
         ...constants.GLOB_EXCLUDE,
-        '**/generated*'
+        '**/_generated*'
       ]
     },
     node: true,
