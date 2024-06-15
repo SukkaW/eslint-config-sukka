@@ -38,9 +38,6 @@ importers:
         specifier: workspace:*
         version: link:packages/eslint-import-resolver-ts-bundled
     devDependencies:
-      '@eslint-sukka/json':
-        specifier: workspace:*
-        version: link:packages/json
       '@eslint-sukka/legacy':
         specifier: workspace:*
         version: link:packages/legacy
@@ -119,9 +116,6 @@ importers:
 
   packages/eslint-config-sukka:
     dependencies:
-      '@eslint-sukka/json':
-        specifier: workspace:*
-        version: link:../json
       '@eslint-sukka/shared':
         specifier: workspace:*
         version: link:../shared
@@ -140,12 +134,18 @@ importers:
       eslint-plugin-import-x:
         specifier: ^0.5.1
         version: 0.5.1(eslint@9.5.0)(typescript@5.4.5)
+      eslint-plugin-jsonc:
+        specifier: ^2.16.0
+        version: 2.16.0(eslint@9.5.0)
       eslint-plugin-sukka:
         specifier: workspace:*
         version: link:../eslint-plugin-sukka
       eslint-plugin-unused-imports:
         specifier: 3.2.0
         version: 3.2.0(@typescript-eslint/eslint-plugin@7.13.0(eslint@9.5.0)(typescript@5.4.5))(eslint@9.5.0)
+      jsonc-eslint-parser:
+        specifier: ^2.4.0
+        version: 2.4.0
       local-pkg:
         specifier: ^0.5.0
         version: 0.5.0
@@ -278,22 +278,6 @@ importers:
       '@masknet/eslint-plugin':
         specifier: ^0.3.0
         version: 0.3.0(eslint@9.5.0)
-
-  packages/json:
-    dependencies:
-      '@eslint-sukka/shared':
-        specifier: workspace:*
-        version: link:../shared
-      eslint-plugin-jsonc:
-        specifier: ^2.16.0
-        version: 2.16.0(eslint@9.5.0)
-      jsonc-eslint-parser:
-        specifier: ^2.4.0
-        version: 2.4.0
-    devDependencies:
-      '@eslint-sukka/rollup-config':
-        specifier: workspace:*
-        version: link:../rollup-config
 
   packages/legacy:
     dependencies:

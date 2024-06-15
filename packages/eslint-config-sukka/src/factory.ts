@@ -6,6 +6,8 @@ import type { OptionsIgnores } from './modules/ignores';
 import { javascript } from './modules/javascript';
 import type { OptionsJavaScript } from './modules/javascript';
 
+import { json } from './modules/json';
+
 import { isPackageExists } from 'local-pkg';
 // import { isCI } from 'ci-info';
 
@@ -65,7 +67,7 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
   }
   // json
   if (enabled(options?.json, true)) {
-    flatConfigs.push((await foxquire<typeof import('@eslint-sukka/json')>('@eslint-sukka/json')).jsonc());
+    flatConfigs.push(json());
   }
   // typescript
   const typescriptEnabled = enabled(options?.ts, isPackageExists('typescript'));
