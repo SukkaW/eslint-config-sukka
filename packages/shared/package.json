@@ -33,7 +33,7 @@
   "dependencies": {
     "@dual-bundle/import-meta-resolve": "^4.1.0",
     "@types/eslint": "^8.56.10",
-    "@typescript-eslint/utils": "^7.13.0"
+    "@typescript-eslint/utils": "^7.13.1"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*"
