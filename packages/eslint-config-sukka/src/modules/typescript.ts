@@ -288,7 +288,12 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         '@stylistic/plus/type-generic-spacing': 'error',
         '@stylistic/plus/type-named-tuple-spacing': 'error',
         // replaced by unused-imports/no-unused-imports
-        '@typescript-eslint/no-unused-vars': 'off'
+        '@typescript-eslint/no-unused-vars': 'off',
+        'unused-imports/no-unused-vars': [
+          'error',
+          { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_', ignoreRestSiblings: true }
+        ],
+        'unused-imports/no-unused-imports': 'error'
       }
     },
     {

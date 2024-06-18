@@ -440,18 +440,12 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
           ignore: [] // WhileStatement, DoWhileStatement, ForStatement, ForInStatement, ForOfStatement
         }],
 
-        // replaced by unused-imports/no-unused-vars
-        'no-unused-vars': 'off', /* ['error', {
-          vars: 'all',
-          varsIgnorePattern: '^_',
-          args: 'after-used',
-          argsIgnorePattern: '^_',
-          ignoreRestSiblings: true
-        }], */
-        'unused-imports/no-unused-vars': [
+        'no-unused-vars': [
           'error',
           { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_', ignoreRestSiblings: true }
         ],
+        'unused-imports/no-unused-vars': 'off',
+        'unused-imports/no-unused-imports': 'off',
 
         // Disallow Unused Private Class Members
         // https://eslint.org/docs/rules/no-unused-private-class-members
@@ -1042,9 +1036,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'no-restricted-imports': [
           'error',
           { paths: RESTRICTED_IMPORT_JS }
-        ],
-
-        'unused-imports/no-unused-imports': 'error'
+        ]
       }
     }
   ];
