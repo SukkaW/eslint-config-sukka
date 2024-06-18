@@ -10,6 +10,17 @@ export const generated_overrides: SukkaESLintRuleConfig = {
     "@typescript-eslint/no-loss-of-precision": "warn",
     "no-redeclare": "off",
     "@typescript-eslint/no-redeclare": "error",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
     "class-methods-use-this": "off",
     "@typescript-eslint/class-methods-use-this": [
       "error",
