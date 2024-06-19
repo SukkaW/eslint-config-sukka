@@ -12,6 +12,7 @@ import { typescript } from './modules/typescript';
 import type { OptionsTypeScript } from './modules/typescript';
 
 import { isPackageExists } from 'local-pkg';
+import picocolors from 'picocolors';
 // import { isCI } from 'ci-info';
 
 // This is a small hack to make rollup-plugin-dts bundle all these types
@@ -48,6 +49,12 @@ function config<T>(options: SharedOptions<T> | undefined | boolean): T | undefin
   return rest as T;
 }
 
+function deprecate(pkg: string): void {
+  if (isPackageExists(pkg)) {
+    console.error(picocolors.yellow(`[eslint-config-sukka] "${pkg}" is deprecated and you should uninstall it`));
+  }
+}
+
 export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESLintConfigItem[]): Promise<FlatESLintConfigItem[]> => {
   // const isInEditor = options?.isInEditor ?? !!(
   //   (
@@ -60,6 +67,10 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
   // );
 
   const flatConfigs: FlatESLintConfigItem[][] = [];
+
+  deprecate('@eslint-sukka/js');
+  deprecate('@eslint-sukka/json');
+  deprecate('@eslint-sukka/ts');
 
   // ignores
   flatConfigs.push(ignores(options?.ignores));
