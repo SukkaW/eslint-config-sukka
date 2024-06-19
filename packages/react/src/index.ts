@@ -16,8 +16,6 @@ import eslint_react from '@eslint-react/eslint-plugin';
 import stylisticJsx from '@stylistic/eslint-plugin-jsx';
 // @ts-expect-error -- no types
 import eslint_plugin_ssr_friendly from 'eslint-plugin-ssr-friendly';
-// @ts-expect-error -- no types
-import eslint_plugin_react_usememo from '@arthurgeron/eslint-plugin-react-usememo';
 
 import { browser as globalsBrowser } from 'globals';
 
@@ -56,8 +54,7 @@ export const react = ({ reactCompiler = 'error', additionalHooks = '(useIsomorph
       '@eslint-react': memoized_eslint_react as any,
       'react-compiler': memo(eslint_plugin_react_compiler, 'eslint-plugin-react-compiler'),
       ...memoized_eslint_react.configs['recommended-type-checked'].plugins as any,
-      'ssr-friendly': memoized_eslint_plugin_ssr_friendly,
-      '@arthurgeron/react-usememo': memo(fixupPluginRules(eslint_plugin_react_usememo), '@arthurgeron/eslint-plugin-react-usememo')
+      'ssr-friendly': memoized_eslint_plugin_ssr_friendly
     },
     settings: {
       react: {
@@ -364,10 +361,7 @@ export const react = ({ reactCompiler = 'error', additionalHooks = '(useIsomorph
       'jsx-a11y-minimal/aria-proptypes': 'warn',
       'jsx-a11y-minimal/aria-unsupported-elements': 'warn',
       'jsx-a11y-minimal/role-has-required-aria-props': 'warn',
-      'jsx-a11y-minimal/role-supports-aria-props': 'warn',
-
-      ...(memoized_eslint_plugin_ssr_friendly.configs as any).recommended.rules,
-      '@arthurgeron/react-usememo/require-usememo': 'warn'
+      'jsx-a11y-minimal/role-supports-aria-props': 'warn'
     }
   }];
 };

@@ -331,9 +331,6 @@ importers:
 
   packages/react:
     dependencies:
-      '@arthurgeron/eslint-plugin-react-usememo':
-        specifier: ^2.4.0
-        version: 2.4.0
       '@eslint-react/eslint-plugin':
         specifier: ^1.5.16
         version: 1.5.16(eslint@9.5.0)(typescript@5.4.5)
@@ -426,9 +423,6 @@ packages:
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
-
-  '@arthurgeron/eslint-plugin-react-usememo@2.4.0':
-    resolution: {integrity: sha512-tjnLR1j+c+akj+hxMpruFFykmL3Kglz8XKFUQ4gx9u42jzOE6yDveCtirANdXtMTdqSXQmId/8yAcjp/6obQuQ==}
 
   '@babel/code-frame@7.24.6':
     resolution: {integrity: sha512-ZJhac6FkEd1yhG2AHOmfcXG4ceoLltoCVJjN5XsWN9BifBQr+cHJbWi0h68HZuSORq+3WtJ2z0hwF2NG1b5kcA==}
@@ -2251,10 +2245,6 @@ packages:
     resolution: {integrity: sha512-lKwV/1brpG6mBUFHtb7NUmtABCb2WZZmm2wNiOA5hAb8VdCS4B3dtMWyvcoViccwAW/COERjXLt0zP1zXUN26g==}
     engines: {node: '>=10'}
 
-  minimatch@9.0.3:
-    resolution: {integrity: sha512-RHiac9mvaRw0x3AYRgDC1CxAP7HTcNrrECeA8YYJeWnpo+2Q5CegtZjaotWTWxDG3UeGA1coE05iH1mPjT/2mg==}
-    engines: {node: '>=16 || 14 >=14.17'}
-
   minimatch@9.0.4:
     resolution: {integrity: sha512-KqWh+VchfxcMNRAJjj2tnsSJdNbHsVgnkBhTNrW7AjVo6OvLtxw8zfT9oLw1JSohlFzJ8jCoTgaoXvJ+kHt6fw==}
     engines: {node: '>=16 || 14 >=14.17'}
@@ -2830,10 +2820,6 @@ packages:
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
-  uuid@9.0.1:
-    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
-    hasBin: true
-
   valibot@0.32.0:
     resolution: {integrity: sha512-FXBnJl4bNOmeg7lQv+jfvo/wADsRBN8e9C3r+O77Re3dEnDma8opp7p4hcIbF7XJJ30h/5SVohdjer17/sHOsQ==}
 
@@ -2964,11 +2950,6 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
-
-  '@arthurgeron/eslint-plugin-react-usememo@2.4.0':
-    dependencies:
-      minimatch: 9.0.3
-      uuid: 9.0.1
 
   '@babel/code-frame@7.24.6':
     dependencies:
@@ -4917,10 +4898,6 @@ snapshots:
     dependencies:
       brace-expansion: 2.0.1
 
-  minimatch@9.0.3:
-    dependencies:
-      brace-expansion: 2.0.1
-
   minimatch@9.0.4:
     dependencies:
       brace-expansion: 2.0.1
@@ -5442,8 +5419,6 @@ snapshots:
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
-
-  uuid@9.0.1: {}
 
   valibot@0.32.0: {}
 
