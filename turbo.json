@@ -19,6 +19,12 @@
     "test": {
       "cache": false
     },
+    "eslint-config-sukka#codegen": {
+      "dependsOn": [
+        "@eslint-sukka/shared#build",
+        "eslint-plugin-sukka#build"
+      ]
+    },
     "eslint-config-sukka#build": {
       "dependsOn": [
         "eslint-config-sukka#codegen"
