@@ -23,7 +23,7 @@
     "@eslint-sukka/shared": "workspace:*",
     "@stylistic/eslint-plugin-migrate": "^2.2.1",
     "@swc-node/register": "^1.9.2",
-    "@swc/core": "^1.6.1",
+    "@swc/core": "^1.6.3",
     "@types/eslint": "^8.56.10",
     "@types/node": "^20.14.5",
     "@typescript-eslint/utils": "^7.13.1",
