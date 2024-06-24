@@ -38,9 +38,6 @@ importers:
         specifier: workspace:*
         version: link:packages/eslint-import-resolver-ts-bundled
     devDependencies:
-      '@eslint-sukka/legacy':
-        specifier: workspace:*
-        version: link:packages/legacy
       '@eslint-sukka/node':
         specifier: workspace:*
         version: link:packages/node
@@ -171,9 +168,6 @@ importers:
         specifier: ^7.13.1
         version: 7.13.1(eslint@9.5.0)(typescript@5.4.5)
     devDependencies:
-      '@eslint-sukka/legacy':
-        specifier: workspace:*
-        version: link:../legacy
       '@eslint-sukka/node':
         specifier: workspace:*
         version: link:../node
@@ -302,22 +296,6 @@ importers:
       '@masknet/eslint-plugin':
         specifier: ^0.3.0
         version: 0.3.0(eslint@9.5.0)
-
-  packages/legacy:
-    dependencies:
-      '@eslint-sukka/shared':
-        specifier: workspace:*
-        version: link:../shared
-      eslint-plugin-sukka:
-        specifier: workspace:*
-        version: link:../eslint-plugin-sukka
-    devDependencies:
-      '@eslint-sukka/rollup-config':
-        specifier: workspace:*
-        version: link:../rollup-config
-      globals:
-        specifier: ^15.6.0
-        version: 15.6.0
 
   packages/node:
     dependencies:

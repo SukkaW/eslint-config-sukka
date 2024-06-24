@@ -3,6 +3,9 @@ import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 import { ignores } from './modules/ignores';
 import type { OptionsIgnores } from './modules/ignores';
 
+import { comment } from './modules/eslint-comment';
+import { promise } from './modules/promise';
+
 import { javascript } from './modules/javascript';
 import type { OptionsJavaScript } from './modules/javascript';
 
@@ -11,6 +14,9 @@ import { json } from './modules/json';
 import { typescript } from './modules/typescript';
 import type { OptionsTypeScript } from './modules/typescript';
 
+import { legacy } from './modules/legacy';
+import type { OptionsLegacy } from './modules/legacy';
+
 import { isPackageExists } from 'local-pkg';
 import picocolors from 'picocolors';
 // import { isCI } from 'ci-info';
@@ -18,9 +24,6 @@ import picocolors from 'picocolors';
 // This is a small hack to make rollup-plugin-dts bundle all these types
 import type { OptionsReact } from '../../react';
 import type { OptionsNode } from '../../node';
-import type { OptionsLegacy } from '../../legacy';
-import { comment } from './modules/eslint-comment';
-import { promise } from './modules/promise';
 
 type SharedOptions<T = {}> = Omit<T, 'isInEditor'> & {
   enable?: boolean
@@ -73,6 +76,7 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
   deprecate('@eslint-sukka/js');
   deprecate('@eslint-sukka/json');
   deprecate('@eslint-sukka/ts');
+  deprecate('@eslint-sukka/legacy');
 
   flatConfigs.push(
     // ignores
@@ -110,7 +114,7 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
   }
   // legacy
   if (enabled(options?.legacy)) {
-    flatConfigs.push((await foxquire<typeof import('@eslint-sukka/legacy')>('@eslint-sukka/legacy')).legacy(config(options?.legacy)));
+    flatConfigs.push(legacy(config(options?.legacy)));
   }
 
   flatConfigs.push(userConfig);

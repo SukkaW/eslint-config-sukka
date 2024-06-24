@@ -17,7 +17,6 @@
     "eslint-import-resolver-ts-bundled": "workspace:*"
   },
   "devDependencies": {
-    "@eslint-sukka/legacy": "workspace:*",
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
