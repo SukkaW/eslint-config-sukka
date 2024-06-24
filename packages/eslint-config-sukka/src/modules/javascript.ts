@@ -76,11 +76,13 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
   const configs: FlatESLintConfigItem[] = [
     eslint_js.configs.recommended,
     {
-      name: '@eslint-sukka/js base',
-      ...(files ? { files } : {}),
       linterOptions: {
         reportUnusedDisableDirectives: true
-      },
+      }
+    },
+    {
+      name: '@eslint-sukka/js base',
+      ...(files ? { files } : {}),
       languageOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
@@ -921,7 +923,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/type/no-instanceof-wrapper': 'error',
         'sukka/unicode/no-bidi': 'warn',
         'sukka/unicode/no-invisible': 'warn',
-        'sukka/ban-eslint-disable': ['error', 'allow-with-description'],
+
         'sukka/no-redundant-variable': 'error',
         'sukka/no-single-return': 'error',
         'sukka/prefer-early-return': ['error', { maximumStatements: 16 }],
