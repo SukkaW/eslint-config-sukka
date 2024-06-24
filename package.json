@@ -63,8 +63,7 @@
     },
     "patchedDependencies": {
       "text-table@0.2.0": "patches/text-table@0.2.0.patch",
-      "axe-core@4.9.1": "patches/axe-core@4.9.1.patch",
-      "eslint-plugin-import-x@0.5.1": "patches/eslint-plugin-import-x@0.5.1.patch"
+      "axe-core@4.9.1": "patches/axe-core@4.9.1.patch"
     }
   }
 }

@@ -26,9 +26,6 @@ patchedDependencies:
   axe-core@4.9.1:
     hash: gv2ymovol6ttfk43qh3spmyllu
     path: patches/axe-core@4.9.1.patch
-  eslint-plugin-import-x@0.5.1:
-    hash: gyurvudpaxmneuocmh2547yw3e
-    path: patches/eslint-plugin-import-x@0.5.1.patch
   text-table@0.2.0:
     hash: lefbezyqsfd4xxzalfkwfjnhgi
     path: patches/text-table@0.2.0.patch
@@ -141,8 +138,8 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0(eslint@9.5.0)
       eslint-plugin-import-x:
-        specifier: ^0.5.1
-        version: 0.5.1(patch_hash=gyurvudpaxmneuocmh2547yw3e)(eslint@9.5.0)(typescript@5.5.2)
+        specifier: ^0.5.2
+        version: 0.5.2(eslint@9.5.0)(typescript@5.5.2)
       eslint-plugin-jsonc:
         specifier: ^2.16.0
         version: 2.16.0(eslint@9.5.0)
@@ -1708,8 +1705,8 @@ packages:
     peerDependencies:
       eslint: '>=4.19.1'
 
-  eslint-plugin-import-x@0.5.1:
-    resolution: {integrity: sha512-2JK8bbFOLes+gG6tgdnM8safCxMAj4u2wjX8X1BRFPfnY7Ct2hFYESoIcVwABX/DDcdpQFLGtKmzbNEWJZD9iQ==}
+  eslint-plugin-import-x@0.5.2:
+    resolution: {integrity: sha512-6f1YMmg3PdLwfiJDYnCRPfh67zJKbwbOKL99l6xGZDmIFkMht/4xyudafGEcDOmDlgp36e41W4RXDfOn7+pGRg==}
     engines: {node: '>=16'}
     peerDependencies:
       eslint: ^8.56.0 || ^9.0.0-0
@@ -4275,7 +4272,7 @@ snapshots:
       eslint: 9.5.0
       ignore: 5.3.1
 
-  eslint-plugin-import-x@0.5.1(patch_hash=gyurvudpaxmneuocmh2547yw3e)(eslint@9.5.0)(typescript@5.5.2):
+  eslint-plugin-import-x@0.5.2(eslint@9.5.0)(typescript@5.5.2):
     dependencies:
       '@typescript-eslint/utils': 7.13.1(eslint@9.5.0)(typescript@5.5.2)
       debug: 4.3.5
