@@ -59,7 +59,10 @@
       "object.hasown": "npm:@nolyfill/object.hasown@latest",
       "object.values": "npm:@nolyfill/object.values@latest",
       "string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@latest",
-      "axe-core": "$axe-core"
+      "axe-core": "$axe-core",
+      "deep-equal": "npm:@nolyfill/deep-equal@latest",
+      "safe-regex-test": "npm:@nolyfill/safe-regex-test@latest",
+      "string.prototype.includes": "npm:@nolyfill/string.prototype.includes@latest"
     },
     "patchedDependencies": {
       "text-table@0.2.0": "patches/text-table@0.2.0.patch",

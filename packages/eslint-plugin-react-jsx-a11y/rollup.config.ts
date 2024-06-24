@@ -25,7 +25,10 @@ export default createRollupConfig(new URL('./package.json', import.meta.url), [
       'object.fromentries': '@nolyfill/object.fromentries',
       'object.hasown/polyfill': '@nolyfill/object.hasown/polyfill',
       'object.hasown': '@nolyfill/object.hasown',
-      hasown: '@nolyfill/hasown'
+      hasown: '@nolyfill/hasown',
+      'safe-regex-test': '@nolyfill/safe-regex-test',
+      'string.prototype.includes': '@nolyfill/string.prototype.includes',
+      'deep-equal': '@nolyfill/deep-equal'
     }
   },
   analyze: false

@@ -21,6 +21,9 @@ overrides:
   object.values: npm:@nolyfill/object.values@latest
   string.prototype.matchall: npm:@nolyfill/string.prototype.matchall@latest
   axe-core: ^4.9.1
+  deep-equal: npm:@nolyfill/deep-equal@latest
+  safe-regex-test: npm:@nolyfill/safe-regex-test@latest
+  string.prototype.includes: npm:@nolyfill/string.prototype.includes@latest
 
 patchedDependencies:
   axe-core@4.9.1:
@@ -254,13 +257,16 @@ importers:
       '@nolyfill/object.values':
         specifier: ^1.0.28
         version: 1.0.28
+      '@nolyfill/safe-regex-test':
+        specifier: ^1.0.29
+        version: 1.0.29
     devDependencies:
       '@eslint-sukka/rollup-config':
         specifier: workspace:*
         version: link:../rollup-config
       eslint-plugin-jsx-a11y:
-        specifier: ^6.8.0
-        version: 6.8.0(eslint@9.5.0)
+        specifier: ^6.9.0
+        version: 6.9.0(eslint@9.5.0)
 
   packages/eslint-plugin-sukka:
     dependencies:
@@ -521,10 +527,6 @@ packages:
     deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-methods instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
-
-  '@babel/runtime@7.24.6':
-    resolution: {integrity: sha512-Ja18XcETdEl5mzzACGd+DKgaGJzPTCow7EglgwTmHdwokzDFYh/MHua6lU6DV/hjF2IaOJ4oX2nqnjG7RElKOw==}
-    engines: {node: '>=6.9.0'}
 
   '@babel/template@7.24.6':
     resolution: {integrity: sha512-3vgazJlLwNXi9jhrR1ef8qiB65L1RK90+lEQwv4OxveHnqC3BfmnHdgySwRLzf6akhlOYenT+b7AfWq+a//AHw==}
@@ -904,6 +906,10 @@ packages:
     resolution: {integrity: sha512-lVo8TVDqaslOaOvEH7iL7glu/WdlX7ZrB+7FZY4BL25hg8TLHvg3e9pxafCp8vAQ96IOL+tdgBdfeoC7qLeQYg==}
     engines: {node: '>=12.4.0'}
 
+  '@nolyfill/deep-equal@1.0.29':
+    resolution: {integrity: sha512-EtrJBbOXHhVz8Y1gMYolKgPqh2u96UPqkZMHR0lcjn3y4TC4R7GuN3E4kEhDIpyK3q1+y7HHPHHkt5fGvW1crQ==}
+    engines: {node: '>=12.4.0'}
+
   '@nolyfill/es-iterator-helpers@1.0.21':
     resolution: {integrity: sha512-i326KeE0nhW4STobcUhkxpXzZUddedCmfh7b/IyXR9kW0CFHiNNT80C3JSEy33mUlhZtk/ezX47nymcFxyBigg==}
     engines: {node: '>=12.4.0'}
@@ -936,6 +942,10 @@ packages:
     resolution: {integrity: sha512-W6CdQv4Y/19aA5tenUhRELqlBoD92D4Uh1TDp5uHXD7s9zEHgcDCPCdA8ak6y4I66fR//Fir6C1mAQWv1QLnXw==}
     engines: {node: '>=12.4.0'}
 
+  '@nolyfill/safe-regex-test@1.0.29':
+    resolution: {integrity: sha512-aar+tW/KIy5tzhV/DDty2IM3tEvXqj6dhP8iXIVZOa9gFwPqLZzy54D7gYkn7EwxLPNhHordzsqmnrFEHDYTSg==}
+    engines: {node: '>=12.4.0'}
+
   '@nolyfill/shared@1.0.21':
     resolution: {integrity: sha512-qDc/NoaFU23E0hhiDPeUrvWzTXIPE+RbvRQtRWSeHHNmCIgYI9HS1jKzNYNJxv4jvZ/1VmM3L6rNVxbj+LBMNA==}
 
@@ -944,6 +954,10 @@ packages:
 
   '@nolyfill/shared@1.0.28':
     resolution: {integrity: sha512-UJTshFMDgugBcYXGLopbL1enYpGREOEfjUMQKLPLeJqWfbfElGtYbGbUcucCENa7cicGo3M5u/DnPiZe/PYQyw==}
+
+  '@nolyfill/string.prototype.includes@1.0.28':
+    resolution: {integrity: sha512-RfwmNcAKnstWgNxfVlYpz/hK6V2pnl0r1uinLmGrf4pYN+QviciawKGcBUjkyeB8WUFCuIDE9JhCnTydqJ5O2w==}
+    engines: {node: '>=12.4.0'}
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -1397,8 +1411,8 @@ packages:
   argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
 
-  aria-query@5.3.0:
-    resolution: {integrity: sha512-b0P0sZPKtyu8HkeRAfCq0IfURZK+SuwMjY1UXGBU27wpAiTwQAIlq56IbIO+ytk/JjS1fMR14ee5WBBfKi5J6A==}
+  aria-query@5.1.3:
+    resolution: {integrity: sha512-R5iJ5lkuHybztUfuOAznmboyjWq8O6sqNqtK7CLOqdydi54VNbORp49mb14KbWgG1QD3JFO9hJdZ+y4KutfdOQ==}
 
   array-union@2.1.0:
     resolution: {integrity: sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==}
@@ -1414,8 +1428,8 @@ packages:
     resolution: {integrity: sha512-QbUdXJVTpvUTHU7871ppZkdOLBeGUKBQWHkHrvN2V9IQWGMt61zf3B45BtzjxEJzYuj0JBjBZP/hmYS/R9pmAw==}
     engines: {node: '>=4'}
 
-  axobject-query@3.2.1:
-    resolution: {integrity: sha512-jsyHu61e6N4Vbz/v18DHwWYKK0bSWLqn47eeDSKPB7m8tqMHF9YJ+mhIk2lVteyZrY8tnSj/jHOv4YiTCuCJgg==}
+  axobject-query@3.1.1:
+    resolution: {integrity: sha512-goKlv8DZrK9hUh975fnHzhNIO4jUnFCfv/dszV5VwUGDFjI6vQ2VwoyjYjYNEbBE8AH87TduWP5uyDR1D+Iteg==}
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -1727,8 +1741,8 @@ packages:
     peerDependencies:
       eslint: '>=6.0.0'
 
-  eslint-plugin-jsx-a11y@6.8.0:
-    resolution: {integrity: sha512-Hdh937BS3KdwwbBaKd5+PLCOmYY6U4f2h9Z2ktwtNKvIdIEu137rjYbcb9ApSbVJfWxANNuiKTD/9tOKjK9qOA==}
+  eslint-plugin-jsx-a11y@6.9.0:
+    resolution: {integrity: sha512-nOFOCaJG2pYqORjK19lqPqxMO/JpvdCZdPtNdxY3kvom3jTvkAbOvQvD8wuD0G8BYR0IGAGYDlzqWJOh/ybn2g==}
     engines: {node: '>=4.0'}
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
@@ -2467,9 +2481,6 @@ packages:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
 
-  regenerator-runtime@0.14.1:
-    resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
-
   regexp-tree@0.1.27:
     resolution: {integrity: sha512-iETxpjK6YoRWJG5o6hXLwvjYAoW+FEZn9os0PD/b6AP6xQwsa/Y7lCVgIixBbUPMfhu+i2LtdeAqVTgGlQarfA==}
     hasBin: true
@@ -3081,10 +3092,6 @@ snapshots:
       '@babel/helper-create-class-features-plugin': 7.24.6(@babel/core@7.24.6)
       '@babel/helper-plugin-utils': 7.24.6
 
-  '@babel/runtime@7.24.6':
-    dependencies:
-      regenerator-runtime: 0.14.1
-
   '@babel/template@7.24.6':
     dependencies:
       '@babel/code-frame': 7.24.6
@@ -3461,6 +3468,10 @@ snapshots:
     dependencies:
       '@nolyfill/shared': 1.0.24
 
+  '@nolyfill/deep-equal@1.0.29':
+    dependencies:
+      dequal: 2.0.3
+
   '@nolyfill/es-iterator-helpers@1.0.21':
     dependencies:
       '@nolyfill/shared': 1.0.21
@@ -3491,11 +3502,17 @@ snapshots:
     dependencies:
       '@nolyfill/shared': 1.0.28
 
+  '@nolyfill/safe-regex-test@1.0.29': {}
+
   '@nolyfill/shared@1.0.21': {}
 
   '@nolyfill/shared@1.0.24': {}
 
   '@nolyfill/shared@1.0.28': {}
+
+  '@nolyfill/string.prototype.includes@1.0.28':
+    dependencies:
+      '@nolyfill/shared': 1.0.28
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -3952,9 +3969,9 @@ snapshots:
 
   argparse@2.0.1: {}
 
-  aria-query@5.3.0:
+  aria-query@5.1.3:
     dependencies:
-      dequal: 2.0.3
+      deep-equal: '@nolyfill/deep-equal@1.0.29'
 
   array-union@2.1.0: {}
 
@@ -3964,9 +3981,9 @@ snapshots:
 
   axe-core@4.9.1(patch_hash=gv2ymovol6ttfk43qh3spmyllu): {}
 
-  axobject-query@3.2.1:
+  axobject-query@3.1.1:
     dependencies:
-      dequal: 2.0.3
+      deep-equal: '@nolyfill/deep-equal@1.0.29'
 
   balanced-match@1.0.2: {}
 
@@ -4324,15 +4341,14 @@ snapshots:
       natural-compare: 1.4.0
       synckit: 0.6.2
 
-  eslint-plugin-jsx-a11y@6.8.0(eslint@9.5.0):
+  eslint-plugin-jsx-a11y@6.9.0(eslint@9.5.0):
     dependencies:
-      '@babel/runtime': 7.24.6
-      aria-query: 5.3.0
+      aria-query: 5.1.3
       array-includes: '@nolyfill/array-includes@1.0.28'
       array.prototype.flatmap: '@nolyfill/array.prototype.flatmap@1.0.28'
       ast-types-flow: 0.0.8
       axe-core: 4.9.1(patch_hash=gv2ymovol6ttfk43qh3spmyllu)
-      axobject-query: 3.2.1
+      axobject-query: 3.1.1
       damerau-levenshtein: 1.0.8
       emoji-regex: 9.2.2
       es-iterator-helpers: '@nolyfill/es-iterator-helpers@1.0.21'
@@ -4341,8 +4357,9 @@ snapshots:
       jsx-ast-utils: 3.3.5
       language-tags: 1.0.9
       minimatch: 3.1.2
-      object.entries: '@nolyfill/object.entries@1.0.28'
       object.fromentries: '@nolyfill/object.fromentries@1.0.28'
+      safe-regex-test: '@nolyfill/safe-regex-test@1.0.29'
+      string.prototype.includes: '@nolyfill/string.prototype.includes@1.0.28'
 
   eslint-plugin-n@17.9.0(eslint@9.5.0):
     dependencies:
@@ -5120,8 +5137,6 @@ snapshots:
   readdirp@3.6.0:
     dependencies:
       picomatch: 2.3.1
-
-  regenerator-runtime@0.14.1: {}
 
   regexp-tree@0.1.27: {}
 

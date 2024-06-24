@@ -357,9 +357,13 @@ export const react = ({ reactCompiler = 'error', additionalHooks = '(useIsomorph
       ],
       'jsx-a11y-minimal/aria-props': 'warn',
       'jsx-a11y-minimal/aria-proptypes': 'warn',
+      'jsx-a11y-minimal/aria-role': 'warn',
       'jsx-a11y-minimal/aria-unsupported-elements': 'warn',
+      'jsx-a11y-minimal/iframe-has-title': 'warn',
+      'jsx-a11y-minimal/no-access-key': 'warn',
       'jsx-a11y-minimal/role-has-required-aria-props': 'warn',
-      'jsx-a11y-minimal/role-supports-aria-props': 'warn'
+      'jsx-a11y-minimal/role-supports-aria-props': 'warn',
+      'jsx-a11y-minimal/tabindex-no-positive': 'warn'
     }
   }];
 };
