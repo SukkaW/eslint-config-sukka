@@ -276,6 +276,9 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         // prefer string.startsWith() and string.endsWith() over more complex alternatives
         // but also allow a[0] === 'a'
         '@typescript-eslint/prefer-string-starts-ends-with': 'off',
+
+        '@typescript-eslint/switch-exhaustiveness-check': 'error',
+
         'sukka-ts/string/prefer-string-starts-ends-with': 'error',
 
         'sukka-ts/string/no-unneeded-to-string': 'error',
