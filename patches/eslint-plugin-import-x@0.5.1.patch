@@ -1,0 +1,12 @@
+diff --git a/lib/utils/parse.js b/lib/utils/parse.js
+index 36f8cb13b19c937f9e8893bb7ed42a8caef3715e..8cad7cffa81352e6e2f4f5fe50a6cb16cbce368e 100644
+--- a/lib/utils/parse.js
++++ b/lib/utils/parse.js
+@@ -47,6 +47,7 @@ function parse(path, content, context) {
+     parserOptions.range = true;
+     parserOptions.filePath = path;
+     delete parserOptions.EXPERIMENTAL_useProjectService;
++    delete parserOptions.projectService;
+     delete parserOptions.project;
+     delete parserOptions.projects;
+     const parser = typeof parserOrPath === 'string'

@@ -58,7 +58,9 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
           ecmaVersion: 'latest',
           ...(tsconfigPath === true
             ? {
-              projectService: true
+              projectService: true,
+              // If a file is JS, we don't run typescript-eslint on them
+              allowDefaultProject: []
             }
             : {
               project: tsconfigPath
@@ -210,6 +212,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
 
         // the maintainers of @typescript-eslint DOESN'T KNOW ANYTHING about TypeScript AT ALL
         // and basically @typescript-eslint is a joke anyway
+        '@typescript-eslint/no-empty-object-type': 'off', // {} is widely used with "& {}" approach
         '@typescript-eslint/ban-types': [
           'error',
           {
@@ -303,7 +306,29 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
           'error',
           { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_', ignoreRestSiblings: true }
         ],
-        'unused-imports/no-unused-imports': 'error'
+        'unused-imports/no-unused-imports': 'error',
+
+        // Disable a few eslint-plugin-import-x rules
+        // https://typescript-eslint.io/troubleshooting/performance-troubleshooting/#eslint-plugin-import
+
+        // https://github.com/un-ts/eslint-plugin-import-x/blob/3abe5e49683e0f973232bb631814b935e1ca7091/src/config/typescript.ts#L32C1-L33C1
+        'import-x/named': 'off', // TypeScript compilation already ensures that named imports exist in the referenced module
+
+        'import-x/no-duplicates': 'off',
+        'import-x/namespace': 'off',
+        'import-x/default': 'off',
+
+        // file:foo.js
+        // export default 'foo'
+        // export const bar = 'baz'
+        //
+        // correct:
+        // import foo, { bar } from './foo.js'
+        //
+        // incorrect:
+        // import foo from './foo.js'
+        // const bar = foo.bar
+        'import-x/no-named-as-default-member': 'off' // import foo from 'foo';
       }
     },
     {

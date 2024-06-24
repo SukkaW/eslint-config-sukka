@@ -26,6 +26,9 @@ patchedDependencies:
   axe-core@4.9.1:
     hash: gv2ymovol6ttfk43qh3spmyllu
     path: patches/axe-core@4.9.1.patch
+  eslint-plugin-import-x@0.5.1:
+    hash: gyurvudpaxmneuocmh2547yw3e
+    path: patches/eslint-plugin-import-x@0.5.1.patch
   text-table@0.2.0:
     hash: lefbezyqsfd4xxzalfkwfjnhgi
     path: patches/text-table@0.2.0.patch
@@ -139,7 +142,7 @@ importers:
         version: 3.2.0(eslint@9.5.0)
       eslint-plugin-import-x:
         specifier: ^0.5.1
-        version: 0.5.1(eslint@9.5.0)(typescript@5.5.2)
+        version: 0.5.1(patch_hash=gyurvudpaxmneuocmh2547yw3e)(eslint@9.5.0)(typescript@5.5.2)
       eslint-plugin-jsonc:
         specifier: ^2.16.0
         version: 2.16.0(eslint@9.5.0)
@@ -333,9 +336,6 @@ importers:
       '@stylistic/eslint-plugin-jsx':
         specifier: ^2.2.2
         version: 2.2.2(eslint@9.5.0)
-      eslint-plugin-import-x:
-        specifier: ^0.5.1
-        version: 0.5.1(eslint@9.5.0)(typescript@5.5.2)
       eslint-plugin-react-compiler:
         specifier: 0.0.0-experimental-53bb89e-20240515
         version: 0.0.0-experimental-53bb89e-20240515(eslint@9.5.0)
@@ -4275,7 +4275,7 @@ snapshots:
       eslint: 9.5.0
       ignore: 5.3.1
 
-  eslint-plugin-import-x@0.5.1(eslint@9.5.0)(typescript@5.5.2):
+  eslint-plugin-import-x@0.5.1(patch_hash=gyurvudpaxmneuocmh2547yw3e)(eslint@9.5.0)(typescript@5.5.2):
     dependencies:
       '@typescript-eslint/utils': 7.13.1(eslint@9.5.0)(typescript@5.5.2)
       debug: 4.3.5
