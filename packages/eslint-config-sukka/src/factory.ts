@@ -19,6 +19,8 @@ import picocolors from 'picocolors';
 import type { OptionsReact } from '../../react';
 import type { OptionsNode } from '../../node';
 import type { OptionsLegacy } from '../../legacy';
+import { comment } from './modules/eslint-comment';
+import { promise } from './modules/promise';
 
 type SharedOptions<T = {}> = Omit<T, 'isInEditor'> & {
   enable?: boolean
@@ -72,8 +74,14 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
   deprecate('@eslint-sukka/json');
   deprecate('@eslint-sukka/ts');
 
-  // ignores
-  flatConfigs.push(ignores(options?.ignores));
+  flatConfigs.push(
+    // ignores
+    ignores(options?.ignores),
+    // comments
+    comment(),
+    // promise,
+    promise()
+  );
   // javascript
   if (enabled(options?.js, true)) {
     flatConfigs.push(javascript(config(options?.js)));
