@@ -9,7 +9,12 @@ export const promise = (): FlatESLintConfigItem[] => {
       promise: eslint_plugin_promise
     },
     rules: {
-      'promise/always-return': 'error',
+      'promise/always-return': [
+        'error',
+        {
+          ignoreLastCallback: true
+        }
+      ],
       'promise/no-return-wrap': 'error',
       'promise/param-names': 'error',
       'promise/catch-or-return': [
