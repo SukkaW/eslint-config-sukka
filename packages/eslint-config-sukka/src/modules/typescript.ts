@@ -56,7 +56,14 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         parserOptions: {
           sourceType: 'module',
           ecmaVersion: 'latest',
-          project: tsconfigPath,
+          ...(tsconfigPath === true
+            ? {
+              projectService: true
+            }
+            : {
+              project: tsconfigPath
+            }
+          ),
           tsconfigRootDir,
           ecmaFeatures: {
             jsx: true
