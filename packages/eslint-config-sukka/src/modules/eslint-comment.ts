@@ -5,7 +5,7 @@ import eslint_plugin_sukka from 'eslint-plugin-sukka';
 
 export const comment = (): FlatESLintConfigItem[] => {
   return [{
-    name: 'antfu/eslint-comments/rules',
+    name: 'sukka/eslint-comments',
     plugins: {
       'eslint-comments': eslint_plugin_comments,
       sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka')

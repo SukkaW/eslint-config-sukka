@@ -20,6 +20,7 @@ import type { OptionsReact } from '../../react';
 import type { OptionsNode } from '../../node';
 import type { OptionsLegacy } from '../../legacy';
 import { comment } from './modules/eslint-comment';
+import { promise } from './modules/promise';
 
 type SharedOptions<T = {}> = Omit<T, 'isInEditor'> & {
   enable?: boolean
@@ -77,7 +78,9 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
     // ignores
     ignores(options?.ignores),
     // comments
-    comment()
+    comment(),
+    // promise,
+    promise()
   );
   // javascript
   if (enabled(options?.js, true)) {
