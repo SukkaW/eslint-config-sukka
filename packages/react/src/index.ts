@@ -1,7 +1,6 @@
 import { constants, memo } from '@eslint-sukka/shared';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
-import eslint_plugin_import_x from 'eslint-plugin-import-x';
 import { eslint_plugin_jsx_a11y_minimal } from '@eslint-sukka/eslint-plugin-react-jsx-a11y';
 
 // @ts-expect-error -- no types
@@ -45,7 +44,6 @@ export const react = ({ reactCompiler = 'error', additionalHooks = '(useIsomorph
       constants.GLOB_JSX
     ],
     plugins: {
-      'import-x': memo(eslint_plugin_import_x, 'eslint-plugin-import-x'),
       'jsx-a11y-minimal': memo(eslint_plugin_jsx_a11y_minimal, '@eslint-sukka/eslint-plugin-react-jsx-a11y#eslint_plugin_jsx_a11y_minimal'),
       'react-hooks': memo(eslint_plugin_react_hooks, 'eslint-plugin-react-hooks'),
       '@stylistic/jsx': memo(stylisticJsx, '@stylistic/eslint-plugin-jsx'),

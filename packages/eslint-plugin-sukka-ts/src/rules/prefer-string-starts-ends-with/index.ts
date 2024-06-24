@@ -1,4 +1,3 @@
-import type { AST as RegExpAST } from '@eslint-community/regexpp';
 import { RegExpParser } from '@eslint-community/regexpp';
 import type { TSESLint, TSESTree } from '@typescript-eslint/utils';
 import { AST_NODE_TYPES, ASTUtils, ESLintUtils } from '@typescript-eslint/utils';
@@ -682,7 +681,7 @@ function parseRegExpText(pattern: string, unicode: boolean): string | null {
 
   // To string.
   return String.fromCodePoint(
-    ...chars.map(c => (c as RegExpAST.Character).value)
+    ...chars.map(c => c.value)
   );
 }
 
