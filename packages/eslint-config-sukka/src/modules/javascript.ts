@@ -552,7 +552,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
 
         // suggest using template literals instead of string concatenation
         // https://eslint.org/docs/rules/prefer-template
-        'prefer-template': 'warn',
+        'prefer-template': 'off',
 
         // require a Symbol description
         // https://eslint.org/docs/rules/symbol-description
