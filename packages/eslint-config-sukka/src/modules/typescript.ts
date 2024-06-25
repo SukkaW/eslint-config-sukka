@@ -1,6 +1,6 @@
 import { constants, memo, importMetaResolve, RESTRICTED_IMPORT_TS } from '@eslint-sukka/shared';
 
-import { generated_overrides } from './_generated_typescript_overrides';
+import { generated_typescript_overrides } from './_generated_typescript_overrides';
 import eslint_plugin_sukka_ts from 'eslint-plugin-sukka-ts';
 import stylisticPlus from '@stylistic/eslint-plugin-plus';
 
@@ -113,7 +113,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         // plugin:i/typescript
         ...eslint_plugin_import_x.configs.typescript.rules,
 
-        ...generated_overrides.rules,
+        ...generated_typescript_overrides.rules,
 
         '@typescript-eslint/ban-ts-comment': [
           'error',
