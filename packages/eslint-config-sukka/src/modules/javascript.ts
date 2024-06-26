@@ -1033,6 +1033,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
             ]
           }
         ],
+        'sukka/unicorn/no-negation-in-equality-check': 'error',
 
         ...eslint_plugin_import_x.configs.recommended.rules,
         'no-restricted-imports': [

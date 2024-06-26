@@ -154,11 +154,15 @@ export const generated_typescript_overrides: SukkaESLintRuleConfig = {
     ],
     "no-array-constructor": "off",
     "@typescript-eslint/no-array-constructor": "error",
+    "@stylistic/js/object-curly-newline": "off",
+    "@stylistic/ts/object-curly-newline": "off",
     "@stylistic/js/object-curly-spacing": "off",
     "@stylistic/ts/object-curly-spacing": [
       "error",
       "always"
     ],
+    "@stylistic/js/object-property-newline": "off",
+    "@stylistic/ts/object-property-newline": "off",
     "@stylistic/js/padding-line-between-statements": "off",
     "@stylistic/ts/padding-line-between-statements": [
       "error",

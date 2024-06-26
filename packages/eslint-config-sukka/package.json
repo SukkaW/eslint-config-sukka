@@ -34,9 +34,9 @@
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",
     "@eslint/js": "^9.5.0",
-    "@stylistic/eslint-plugin-js": "2.1.0",
-    "@stylistic/eslint-plugin-plus": "2.1.0",
-    "@stylistic/eslint-plugin-ts": "2.1.0",
+    "@stylistic/eslint-plugin-js": "2.3.0",
+    "@stylistic/eslint-plugin-plus": "2.3.0",
+    "@stylistic/eslint-plugin-ts": "2.3.0",
     "@typescript-eslint/parser": "8.0.0-alpha.30",
     "ci-info": "^4.0.0",
     "eslint-import-resolver-ts-bundled": "workspace:*",
