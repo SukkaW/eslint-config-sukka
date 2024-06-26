@@ -20,7 +20,8 @@ export interface OptionsTypeScript {
 }
 
 const javaScriptExtensions = ['.js', '.jsx', '.mjs', '.cjs'];
-const allExtensions = ['.ts', '.cts', '.mts', '.tsx', '.d.ts', ...javaScriptExtensions];
+const typescriptExtensions = ['.ts', '.cts', '.mts', '.tsx', '.d.ts'];
+const allExtensions = [...typescriptExtensions, ...javaScriptExtensions];
 // Omit `.d.ts` because 1) TypeScript compilation already confirms that
 // types are resolved, and 2) it would mask an unresolved
 // `.ts`/`.tsx`/`.js`/`.jsx` implementation.
@@ -92,7 +93,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         'import-x/parsers': {
           // TODO: remove this line once eslint-plugin-import #2556 is fixed
           espree: javaScriptExtensions,
-          [typescriptEslintParserPath]: ['.ts', '.cts', '.mts', '.tsx', '.d.ts']
+          [typescriptEslintParserPath]: typescriptExtensions
         }
       },
       rules: {
