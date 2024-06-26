@@ -78,13 +78,15 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
   deprecate('@eslint-sukka/ts');
   deprecate('@eslint-sukka/legacy');
 
+  const typescriptEnabled = enabled(options?.ts, isPackageExists('typescript'));
+
   flatConfigs.push(
     // ignores
     ignores(options?.ignores),
     // comments
     comment(),
     // promise,
-    promise()
+    promise({ typescript: typescriptEnabled })
   );
   // javascript
   if (enabled(options?.js, true)) {
@@ -95,13 +97,11 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
     flatConfigs.push(json());
   }
   // typescript
-  const typescriptEnabled = enabled(options?.ts, isPackageExists('typescript'));
   if (typescriptEnabled) {
     flatConfigs.push(typescript(config(options?.ts)));
   }
   // react
-  const reactEnabled = enabled(options?.react, isPackageExists('react') || isPackageExists('next'));
-  if (reactEnabled) {
+  if (enabled(options?.react, isPackageExists('react') || isPackageExists('next'))) {
     if (!typescriptEnabled) {
       console.warn('[eslint-config-sukka] React module will not be enabled when TypeScript is not set up.');
     } else {
