@@ -4,7 +4,7 @@ export const BETTER_ALTERNATIVES = Object.entries({
   'deep-equal': 'https://www.npmjs.com/package/dequal',
   'fast-deep-equal': 'https://www.npmjs.com/package/dequal',
   // ansi color / cursor
-  chalk: 'https://www.npmjs.com/package/picocolors',
+  chalk: 'simple color https://www.npmjs.com/package/picocolors, hex color https://github.com/webdiscus/ansis',
   kleur: 'https://www.npmjs.com/package/picocolors',
   'ansi-escapes': 'https://www.npmjs.com/package/sisteransi',
   // mime
