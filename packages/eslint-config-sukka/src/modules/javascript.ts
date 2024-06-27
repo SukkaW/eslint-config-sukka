@@ -11,7 +11,7 @@ import eslint_plugin_sukka from 'eslint-plugin-sukka';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import {
-  es2021 as globalsEs2021,
+  es2024 as globalsEs2024,
   browser as globalsBrowser,
   webextensions as globalsWebextensions,
   greasemonkey as globalsGreasemonkey
@@ -94,7 +94,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
           }
         },
         globals: {
-          ...globalsEs2021,
+          ...globalsEs2024,
           ...(browser && globalsBrowser),
           ...(webextensions && globalsWebextensions),
           ...(greasemonkey && globalsGreasemonkey),
@@ -1021,7 +1021,13 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
             functions: [
               'dedent',
               'stripIndent',
-              'strip_indent'
+              'strip_indent',
+              'stripTags',
+              'striptags',
+              'strip_tags',
+              'stripHtml',
+              'stripHTML',
+              'strip_html'
             ],
             selectors: [],
             comments: [
