@@ -43,6 +43,7 @@ export const generated_typescript_overrides: SukkaESLintRuleConfig = {
     "@typescript-eslint/no-loop-func": "error",
     "no-return-await": "off",
     "@typescript-eslint/return-await": "error",
+    "sukka/no-return-await": "off",
     "no-unused-expressions": "off",
     "@typescript-eslint/no-unused-expressions": [
       "error",

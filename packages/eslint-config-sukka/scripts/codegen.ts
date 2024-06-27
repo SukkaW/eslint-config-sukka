@@ -46,30 +46,48 @@ import path from 'path';
       //   return true;
       // })
       .reduce((acc, [baseRuleName, value]) => {
-        if (baseRuleName === 'camelcase' || baseRuleName === 'no-restricted-imports') {
+        switch (baseRuleName) {
+          case 'camelcase':
+          case 'no-restricted-imports': {
           // disable camelcase directly, use custom @typescript-eslint/naming-convention instead
           // disable no-restricted-imports directly, use @typescript-eslint/no-restricted-imports instead
 
-          // @ts-expect-error -- no type overlap between eslint and typescript-eslint
-          acc.push([baseRuleName, 'off']);
-        } else if (baseRuleName === 'no-loss-of-precision') {
+            // @ts-expect-error -- no type overlap between eslint and typescript-eslint
+            acc.push([baseRuleName, 'off']);
+
+            break;
+          }
+          case 'sukka/no-return-await': {
+            acc.push(
+            // @ts-expect-error -- no type overlap between eslint and typescript-eslint
+              [baseRuleName, 'off'],
+              ['@typescript-eslint/return-await', 'error']
+            );
+
+            break;
+          }
+          case 'no-loss-of-precision': {
           // do nothing
 
-          // @typescript-eslint/no-loss-of-precision is deprecated
-          // The original rule is recommended instead
-        } else if (TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.has(baseRuleName)) {
-          const replacementRulename = TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.get(baseRuleName)!;
-          acc.push(
+            // @typescript-eslint/no-loss-of-precision is deprecated
+            // The original rule is recommended instead
+
+            break;
+          }
+          default: if (TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.has(baseRuleName)) {
+            const replacementRulename = TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.get(baseRuleName)!;
+            acc.push(
             // @ts-expect-error -- no type overlap between eslint and typescript-eslint
-            [baseRuleName, 'off'],
-            [`@typescript-eslint/${replacementRulename}`, value]
-          );
-        } else if (STYLISTIC_JS_RULES_TO_BE_OVERRIDEN.has(baseRuleName)) {
-          acc.push(
+              [baseRuleName, 'off'],
+              [`@typescript-eslint/${replacementRulename}`, value]
+            );
+          } else if (STYLISTIC_JS_RULES_TO_BE_OVERRIDEN.has(baseRuleName)) {
+            acc.push(
             // @ts-expect-error -- no type overlap between eslint and typescript-eslint
-            [baseRuleName, 'off'],
-            [baseRuleName.replace('@stylistic/js/', '@stylistic/ts/'), value]
-          );
+              [baseRuleName, 'off'],
+              [baseRuleName.replace('@stylistic/js/', '@stylistic/ts/'), value]
+            );
+          }
         }
         return acc;
       }, [])

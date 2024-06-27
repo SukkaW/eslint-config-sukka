@@ -36,10 +36,6 @@ interface Line {
   column: string
 }
 
-const NON_DEPRECATED_RULES = new Set([
-  'no-return-await'
-]);
-
 const pretty: ESLint.Formatter['format'] = (results, data): string => {
   const lines: Array<Line | Separator | Header> = [];
   let errorCount = 0;
@@ -73,7 +69,6 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
       fixableErrorCount += result.fixableErrorCount;
 
       usedDeprecatedRules.forEach(d => {
-        if (NON_DEPRECATED_RULES.has(d.ruleId)) return;
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- strictNullChecks
         deprecatedReplacedBy[d.ruleId] ||= d.replacedBy;
       });

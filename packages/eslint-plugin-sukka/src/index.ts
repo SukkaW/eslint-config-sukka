@@ -94,6 +94,7 @@ import no_negation_in_equality_check from 'eslint-plugin-unicorn/rules/no-negati
 // eslint-plugin-sukka
 import ban_eslint_disable from './rules/ban-eslint-disable';
 import import_dedupe from './rules/import-dedupe';
+import no_return_await from './rules/no-return-await';
 
 export default {
   rules: {
@@ -113,6 +114,7 @@ export default {
     'prefer-fetch': prefer_fetch,
     'prefer-timer-id': prefer_timer_id,
     'import-dedupe': import_dedupe,
+    'no-return-await': no_return_await,
 
     // eslint-plugin-unicorn
     ...Object.fromEntries(

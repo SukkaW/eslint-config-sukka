@@ -44,6 +44,8 @@
   "packageManager": "pnpm@9.4.0",
   "pnpm": {
     "overrides": {
+      "@typescript-eslint/types": "npm:@typescript-eslint/types@8.0.0-alpha.30",
+
       "array-includes": "npm:@nolyfill/array-includes@latest",
       "array.prototype.findlastindex": "npm:@nolyfill/array.prototype.findlastindex@latest",
       "array.prototype.flat": "npm:@nolyfill/array.prototype.flat@latest",

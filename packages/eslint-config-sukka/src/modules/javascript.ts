@@ -318,7 +318,8 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'no-return-assign': ['error', 'always'],
 
         // disallow redundant `return await`
-        'no-return-await': 'error',
+        'no-return-await': 'off',
+        'sukka/no-return-await': 'error',
 
         // disallow comparisons where both sides are exactly the same
         'no-self-compare': 'error',

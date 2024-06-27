@@ -5,6 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
+  '@typescript-eslint/types': npm:@typescript-eslint/types@8.0.0-alpha.30
   array-includes: npm:@nolyfill/array-includes@latest
   array.prototype.findlastindex: npm:@nolyfill/array.prototype.findlastindex@latest
   array.prototype.flat: npm:@nolyfill/array.prototype.flat@latest
@@ -308,6 +309,9 @@ importers:
       '@masknet/eslint-plugin':
         specifier: ^0.3.0
         version: 0.3.0(eslint@9.5.0)
+      '@typescript-eslint/types':
+        specifier: npm:@typescript-eslint/types@8.0.0-alpha.30
+        version: 8.0.0-alpha.30
 
   packages/node:
     dependencies:
@@ -1320,14 +1324,6 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
-
-  '@typescript-eslint/types@7.13.1':
-    resolution: {integrity: sha512-7K7HMcSQIAND6RBL4kDl24sG/xKM13cA85dc7JnmQXw2cBDngg7c19B++JzvJHRG3zG36n9j1i451GBzRuHchw==}
-    engines: {node: ^18.18.0 || >=20.0.0}
-
-  '@typescript-eslint/types@7.14.1':
-    resolution: {integrity: sha512-mL7zNEOQybo5R3AavY+Am7KLv8BorIv7HCYS5rKoNZKQD9tsfGUpO4KdAn3sSUvTiS4PQkr2+K0KJbxj8H9NDg==}
-    engines: {node: ^18.18.0 || >=20.0.0}
 
   '@typescript-eslint/types@8.0.0-alpha.30':
     resolution: {integrity: sha512-4WzLlw27SO9pK9UFj/Hu7WGo8WveT0SEiIpFVsV2WwtQmLps6kouwtVCB8GJPZKJyurhZhcqCoQVQFmpv441Vg==}
@@ -3302,7 +3298,7 @@ snapshots:
       '@eslint-react/tools': 1.5.17
       '@eslint-react/types': 1.5.17(eslint@9.5.0)(typescript@5.5.2)
       '@typescript-eslint/scope-manager': 7.14.1
-      '@typescript-eslint/types': 7.14.1
+      '@typescript-eslint/types': 8.0.0-alpha.30
       '@typescript-eslint/utils': 7.14.1(eslint@9.5.0)(typescript@5.5.2)
       effect: 3.4.4
       string-ts: 2.2.0
@@ -3322,7 +3318,7 @@ snapshots:
       '@eslint-react/var': 1.5.17(eslint@9.5.0)(typescript@5.5.2)
       '@typescript-eslint/scope-manager': 7.14.1
       '@typescript-eslint/type-utils': 7.14.1(eslint@9.5.0)(typescript@5.5.2)
-      '@typescript-eslint/types': 7.14.1
+      '@typescript-eslint/types': 8.0.0-alpha.30
       '@typescript-eslint/utils': 7.14.1(eslint@9.5.0)(typescript@5.5.2)
       effect: 3.4.4
       short-unique-id: 5.2.0
@@ -3340,7 +3336,7 @@ snapshots:
       '@eslint-react/types': 1.5.17(eslint@9.5.0)(typescript@5.5.2)
       '@typescript-eslint/scope-manager': 7.14.1
       '@typescript-eslint/type-utils': 7.14.1(eslint@9.5.0)(typescript@5.5.2)
-      '@typescript-eslint/types': 7.14.1
+      '@typescript-eslint/types': 8.0.0-alpha.30
       '@typescript-eslint/utils': 7.14.1(eslint@9.5.0)(typescript@5.5.2)
       effect: 3.4.4
       eslint: 9.5.0
@@ -3361,7 +3357,7 @@ snapshots:
       '@eslint-react/types': 1.5.17(eslint@9.5.0)(typescript@5.5.2)
       '@eslint-react/var': 1.5.17(eslint@9.5.0)(typescript@5.5.2)
       '@typescript-eslint/scope-manager': 7.14.1
-      '@typescript-eslint/types': 7.14.1
+      '@typescript-eslint/types': 8.0.0-alpha.30
       '@typescript-eslint/utils': 7.14.1(eslint@9.5.0)(typescript@5.5.2)
       effect: 3.4.4
       micro-memoize: 4.1.2
@@ -3386,7 +3382,7 @@ snapshots:
   '@eslint-react/types@1.5.17(eslint@9.5.0)(typescript@5.5.2)':
     dependencies:
       '@eslint-react/tools': 1.5.17
-      '@typescript-eslint/types': 7.14.1
+      '@typescript-eslint/types': 8.0.0-alpha.30
       '@typescript-eslint/utils': 7.14.1(eslint@9.5.0)(typescript@5.5.2)
     transitivePeerDependencies:
       - eslint
@@ -3399,7 +3395,7 @@ snapshots:
       '@eslint-react/tools': 1.5.17
       '@eslint-react/types': 1.5.17(eslint@9.5.0)(typescript@5.5.2)
       '@typescript-eslint/scope-manager': 7.14.1
-      '@typescript-eslint/types': 7.14.1
+      '@typescript-eslint/types': 8.0.0-alpha.30
       '@typescript-eslint/utils': 7.14.1(eslint@9.5.0)(typescript@5.5.2)
       effect: 3.4.4
       string-ts: 2.2.0
@@ -3903,12 +3899,12 @@ snapshots:
 
   '@typescript-eslint/scope-manager@7.13.1':
     dependencies:
-      '@typescript-eslint/types': 7.13.1
+      '@typescript-eslint/types': 8.0.0-alpha.30
       '@typescript-eslint/visitor-keys': 7.13.1
 
   '@typescript-eslint/scope-manager@7.14.1':
     dependencies:
-      '@typescript-eslint/types': 7.14.1
+      '@typescript-eslint/types': 8.0.0-alpha.30
       '@typescript-eslint/visitor-keys': 7.14.1
 
   '@typescript-eslint/scope-manager@8.0.0-alpha.30':
@@ -3940,15 +3936,11 @@ snapshots:
       - eslint
       - supports-color
 
-  '@typescript-eslint/types@7.13.1': {}
-
-  '@typescript-eslint/types@7.14.1': {}
-
   '@typescript-eslint/types@8.0.0-alpha.30': {}
 
   '@typescript-eslint/typescript-estree@7.13.1(typescript@5.5.2)':
     dependencies:
-      '@typescript-eslint/types': 7.13.1
+      '@typescript-eslint/types': 8.0.0-alpha.30
       '@typescript-eslint/visitor-keys': 7.13.1
       debug: 4.3.5
       globby: 11.1.0
@@ -3963,7 +3955,7 @@ snapshots:
 
   '@typescript-eslint/typescript-estree@7.14.1(typescript@5.5.2)':
     dependencies:
-      '@typescript-eslint/types': 7.14.1
+      '@typescript-eslint/types': 8.0.0-alpha.30
       '@typescript-eslint/visitor-keys': 7.14.1
       debug: 4.3.5
       globby: 11.1.0
@@ -3995,7 +3987,7 @@ snapshots:
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@9.5.0)
       '@typescript-eslint/scope-manager': 7.13.1
-      '@typescript-eslint/types': 7.13.1
+      '@typescript-eslint/types': 8.0.0-alpha.30
       '@typescript-eslint/typescript-estree': 7.13.1(typescript@5.5.2)
       eslint: 9.5.0
     transitivePeerDependencies:
@@ -4006,7 +3998,7 @@ snapshots:
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@9.5.0)
       '@typescript-eslint/scope-manager': 7.14.1
-      '@typescript-eslint/types': 7.14.1
+      '@typescript-eslint/types': 8.0.0-alpha.30
       '@typescript-eslint/typescript-estree': 7.14.1(typescript@5.5.2)
       eslint: 9.5.0
     transitivePeerDependencies:
@@ -4026,12 +4018,12 @@ snapshots:
 
   '@typescript-eslint/visitor-keys@7.13.1':
     dependencies:
-      '@typescript-eslint/types': 7.13.1
+      '@typescript-eslint/types': 8.0.0-alpha.30
       eslint-visitor-keys: 3.4.3
 
   '@typescript-eslint/visitor-keys@7.14.1':
     dependencies:
-      '@typescript-eslint/types': 7.14.1
+      '@typescript-eslint/types': 8.0.0-alpha.30
       eslint-visitor-keys: 3.4.3
 
   '@typescript-eslint/visitor-keys@8.0.0-alpha.30':
@@ -4557,7 +4549,7 @@ snapshots:
       '@eslint-react/types': 1.5.17(eslint@9.5.0)(typescript@5.5.2)
       '@eslint-react/var': 1.5.17(eslint@9.5.0)(typescript@5.5.2)
       '@typescript-eslint/scope-manager': 7.14.1
-      '@typescript-eslint/types': 7.14.1
+      '@typescript-eslint/types': 8.0.0-alpha.30
       '@typescript-eslint/utils': 7.14.1(eslint@9.5.0)(typescript@5.5.2)
       effect: 3.4.4
       eslint: 9.5.0
@@ -4579,7 +4571,7 @@ snapshots:
       '@eslint-react/var': 1.5.17(eslint@9.5.0)(typescript@5.5.2)
       '@typescript-eslint/scope-manager': 7.14.1
       '@typescript-eslint/type-utils': 7.14.1(eslint@9.5.0)(typescript@5.5.2)
-      '@typescript-eslint/types': 7.14.1
+      '@typescript-eslint/types': 8.0.0-alpha.30
       '@typescript-eslint/utils': 7.14.1(eslint@9.5.0)(typescript@5.5.2)
       effect: 3.4.4
       eslint: 9.5.0
@@ -4604,7 +4596,7 @@ snapshots:
       '@eslint-react/types': 1.5.17(eslint@9.5.0)(typescript@5.5.2)
       '@typescript-eslint/scope-manager': 7.14.1
       '@typescript-eslint/type-utils': 7.14.1(eslint@9.5.0)(typescript@5.5.2)
-      '@typescript-eslint/types': 7.14.1
+      '@typescript-eslint/types': 8.0.0-alpha.30
       '@typescript-eslint/utils': 7.14.1(eslint@9.5.0)(typescript@5.5.2)
       effect: 3.4.4
       eslint: 9.5.0
@@ -4628,7 +4620,7 @@ snapshots:
       '@eslint-react/var': 1.5.17(eslint@9.5.0)(typescript@5.5.2)
       '@typescript-eslint/scope-manager': 7.14.1
       '@typescript-eslint/type-utils': 7.14.1(eslint@9.5.0)(typescript@5.5.2)
-      '@typescript-eslint/types': 7.14.1
+      '@typescript-eslint/types': 8.0.0-alpha.30
       '@typescript-eslint/utils': 7.14.1(eslint@9.5.0)(typescript@5.5.2)
       effect: 3.4.4
       eslint: 9.5.0

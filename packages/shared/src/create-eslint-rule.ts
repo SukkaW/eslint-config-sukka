@@ -3,7 +3,7 @@ import type { RuleContext, RuleListener, RuleMetaData } from '@typescript-eslint
 
 const BASE_URL = 'https://eslint-plugin.skk.moe/src/rules/';
 
-interface Metadata<MessageIDs extends string, Options extends readonly unknown[]> extends RuleMetaData<MessageIDs, Options> {
+interface Metadata<MessageIDs extends string> extends RuleMetaData<MessageIDs> {
   hidden?: boolean
 }
 
@@ -14,7 +14,7 @@ export interface RuleModule<
   TRuleListener extends RuleListener
 > {
   readonly name: string,
-  readonly meta: Metadata<TMessageIDs, TOptions>,
+  readonly meta: Metadata<TMessageIDs>,
   resolveOptions?(...options: TOptions): TResolvedOptions,
   create(context: Readonly<RuleContext<TMessageIDs, TOptions>>, options: TResolvedOptions): TRuleListener
 }
@@ -25,7 +25,7 @@ export interface ExportedRuleModule<
   TRuleListener extends RuleListener = RuleListener
 > {
   readonly name: string,
-  readonly meta: Metadata<TMessageIDs, TOptions>,
+  readonly meta: Metadata<TMessageIDs>,
   create(context: Readonly<RuleContext<TMessageIDs, TOptions>>): TRuleListener
 }
 export type { RuleContext } from '@typescript-eslint/utils/ts-eslint';
