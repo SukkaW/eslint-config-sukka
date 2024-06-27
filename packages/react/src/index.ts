@@ -20,6 +20,8 @@ import { browser as globalsBrowser } from 'globals';
 
 import { fixupPluginRules } from '@eslint/compat';
 
+export { next } from './next';
+
 export interface OptionsReact {
   /**
    * @default '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)'

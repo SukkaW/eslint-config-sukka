@@ -36,6 +36,7 @@ interface ESLintSukkaOptions {
   json?: boolean,
   ts?: SharedOptions<OptionsTypeScript> | boolean,
   react?: SharedOptions<OptionsReact> | boolean,
+  next?: boolean,
   node?: SharedOptions<OptionsNode> | boolean,
   legacy?: SharedOptions<OptionsLegacy> | boolean
 }
@@ -43,9 +44,9 @@ interface ESLintSukkaOptions {
 // function enabled<T extends boolean>(options: T): options is T;
 // function enabled<T extends SharedOptions>(options: T | undefined): options is T;
 // function enabled<T extends SharedOptions>(options: T | boolean | undefined, defaults: boolean): boolean;
-function enabled<T extends SharedOptions>(options: T | boolean | undefined, defaults?: boolean | undefined): boolean {
+function enabled<T extends SharedOptions>(options: T | boolean | undefined, defaults = false): boolean {
   if (typeof options === 'boolean') return options;
-  return options?.enable ?? defaults ?? false;
+  return options?.enable ?? defaults;
 }
 
 function config<T>(options: SharedOptions<T> | undefined | boolean): T | undefined {
@@ -101,11 +102,16 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
     flatConfigs.push(typescript(config(options?.ts)));
   }
   // react
-  if (enabled(options?.react, isPackageExists('react') || isPackageExists('next'))) {
+  const nextjsInstalled = isPackageExists('next');
+  if (enabled(options?.react, isPackageExists('react') || nextjsInstalled)) {
     if (!typescriptEnabled) {
       console.warn('[eslint-config-sukka] React module will not be enabled when TypeScript is not set up.');
     } else {
-      flatConfigs.push((await foxquire<typeof import('@eslint-sukka/react')>('@eslint-sukka/react')).react(config(options?.react)));
+      const eslint_sukka_react = (await foxquire<typeof import('@eslint-sukka/react')>('@eslint-sukka/react'));
+      flatConfigs.push(eslint_sukka_react.react(config(options?.react)));
+      if (enabled(options?.next, nextjsInstalled)) {
+        flatConfigs.push(eslint_sukka_react.next());
+      }
     }
   }
   // node

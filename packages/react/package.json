@@ -35,6 +35,7 @@
     "@eslint-sukka/eslint-plugin-react-jsx-a11y": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
     "@eslint/compat": "^1.1.0",
+    "@next/eslint-plugin-next": "^14.2.4",
     "@stylistic/eslint-plugin-jsx": "^2.3.0",
     "eslint-plugin-react-compiler": "0.0.0-experimental-53bb89e-20240515",
     "eslint-plugin-react-hooks": "5.1.0-beta-4508873393-20240430",
