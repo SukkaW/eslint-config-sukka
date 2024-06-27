@@ -309,9 +309,6 @@ importers:
       '@masknet/eslint-plugin':
         specifier: ^0.3.0
         version: 0.3.0(eslint@9.5.0)
-      '@typescript-eslint/types':
-        specifier: npm:@typescript-eslint/types@8.0.0-alpha.30
-        version: 8.0.0-alpha.30
 
   packages/node:
     dependencies:
