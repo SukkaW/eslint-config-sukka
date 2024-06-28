@@ -48,7 +48,9 @@ class Cache<T> {
   }
 }
 
-const cache = new Cache<Record<string, any> | null>();
+type PackageJson = Record<string, any> | null;
+
+const cache = new Cache<PackageJson | null>();
 
 /**
  * Reads the `package.json` data in a given path.
@@ -58,11 +60,11 @@ const cache = new Cache<Record<string, any> | null>();
  * @param dir - The path to a directory to read.
  * @returns The read `package.json` data, or null.
  */
-function readPackageJson(dir: string): Record<string, any> | null {
+function readPackageJson(dir: string): PackageJson | null {
   const filePath = path.join(dir, 'package.json');
   try {
     const text = fs.readFileSync(filePath, 'utf8');
-    const data: Record<string, any> | null | undefined = JSON.parse(text);
+    const data: PackageJson | null | undefined = JSON.parse(text);
 
     if (data && typeof data === 'object') {
       data.filePath = filePath;
@@ -83,11 +85,11 @@ function readPackageJson(dir: string): Record<string, any> | null {
 * @returns A found `package.json` data or `null`.
 *      This object have additional property `filePath`.
 */
-export function getPackageJson(startPath = 'a.js'): Record<string, any> | null {
+export function getPackageJson(startPath = 'a.js'): PackageJson | null {
   const startDir = path.dirname(path.resolve(startPath));
   let dir: string = startDir;
   let prevDir = '';
-  let data: Record<string, any> | null = null;
+  let data: PackageJson | null = null;
 
   do {
     data = cache.get(dir);

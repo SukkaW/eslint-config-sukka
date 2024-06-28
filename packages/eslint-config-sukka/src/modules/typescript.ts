@@ -42,10 +42,10 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
       ],
       plugins: {
         ...ts_eslint_configs.base.plugins,
-        '@stylistic/ts': memo<any>(stylisticTs, '@stylistic/eslint-plugin-ts'),
+        '@stylistic/ts': memo(stylisticTs, '@stylistic/eslint-plugin-ts'),
         'sukka-ts': memo(eslint_plugin_sukka_ts, 'eslint-plugin-sukka-ts'),
-        '@stylistic/plus': memo(stylisticPlus, '@stylistic/eslint-plugin-plus') as any,
-        'import-x': memo(eslint_plugin_import_x, 'eslint-plugin-import-x') as any
+        '@stylistic/plus': memo(stylisticPlus, '@stylistic/eslint-plugin-plus'),
+        'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x')
       },
       // extends: [
       //   'plugin:i/recommended',
@@ -336,7 +336,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
       name: '@eslint-sukka/ts dts',
       files: ['**/*.d.ts'],
       plugins: {
-        'import-x': memo(eslint_plugin_import_x, 'eslint-plugin-import-x') as any
+        'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x')
       },
       rules: {
         'import-x/no-duplicates': 'off',
