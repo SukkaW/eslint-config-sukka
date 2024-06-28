@@ -347,8 +347,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0
       '@next/eslint-plugin-next':
-        specifier: ^14.2.4
-        version: 14.2.4
+        specifier: 15.0.0-canary.47
+        version: 15.0.0-canary.47
       '@stylistic/eslint-plugin-jsx':
         specifier: ^2.3.0
         version: 2.3.0(eslint@9.5.0)
@@ -899,8 +899,8 @@ packages:
     resolution: {integrity: sha512-DEWl/B99RQsyMT3F9bvrXuhL01/eIQp/dtNSE3G1jQ4mTGRcP4iHWxoPZ577WrbjUinrNgvRA5+08g8fkPgimQ==}
     engines: {node: '>= 10'}
 
-  '@next/eslint-plugin-next@14.2.4':
-    resolution: {integrity: sha512-svSFxW9f3xDaZA3idQmlFw7SusOuWTpDTAeBlO3AEPDltrraV+lqs7mAc6A27YdnpQVVIA3sODqUAAHdWhVWsA==}
+  '@next/eslint-plugin-next@15.0.0-canary.47':
+    resolution: {integrity: sha512-YS9dVESY7ThxKV9ZQR8ddnpWXR2e5xqsdD4u2DPpreww0Mfz6Ks5vaLbsGRLqRUxQUL9FB2fCj16Gk8LeadV/A==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -3547,7 +3547,7 @@ snapshots:
       '@napi-rs/magic-string-win32-ia32-msvc': 0.3.4
       '@napi-rs/magic-string-win32-x64-msvc': 0.3.4
 
-  '@next/eslint-plugin-next@14.2.4':
+  '@next/eslint-plugin-next@15.0.0-canary.47':
     dependencies:
       glob: 10.3.10
 
