@@ -81,6 +81,17 @@ import path from 'path';
               [baseRuleName, 'off'],
               [`@typescript-eslint/${replacementRulename}`, value]
             );
+          } else if (
+            baseRuleName.startsWith('autofix/')
+            && TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.has(baseRuleName.slice(8))) {
+            const replacementRulename = TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.get(baseRuleName.slice(8))!;
+
+            acc.push(
+              // @ts-expect-error -- no type overlap between eslint and typescript-eslint
+              [baseRuleName, 'off'],
+              [`autofix/${baseRuleName}`, 'off'],
+              [`@typescript-eslint/${replacementRulename}`, value]
+            );
           } else if (STYLISTIC_JS_RULES_TO_BE_OVERRIDEN.has(baseRuleName)) {
             acc.push(
             // @ts-expect-error -- no type overlap between eslint and typescript-eslint

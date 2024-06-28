@@ -11,7 +11,7 @@ export const SHARED_OPTIONS = {
     jsonc: memo<any>(eslint_plugin_jsonc, 'eslint-plugin-jsonc')
   },
   languageOptions: {
-    parser: jsonc_eslint_parser as any
+    parser: jsonc_eslint_parser
   }
 };
 

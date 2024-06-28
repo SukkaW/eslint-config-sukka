@@ -51,7 +51,7 @@ export const react = ({ reactCompiler = 'error', additionalHooks = '(useIsomorph
       '@stylistic/jsx': memo(stylisticJsx, '@stylistic/eslint-plugin-jsx'),
       'react-prefer-function-component': memo(eslint_plugin_react_prefer_function_component, 'eslint-plugin-react-prefer-function-component'),
 
-      '@eslint-react': memoized_eslint_react as any,
+      '@eslint-react': memoized_eslint_react,
       'react-compiler': memo(eslint_plugin_react_compiler, 'eslint-plugin-react-compiler'),
       ...memoized_eslint_react.configs['recommended-type-checked'].plugins as any,
       'ssr-friendly': memoized_eslint_plugin_ssr_friendly

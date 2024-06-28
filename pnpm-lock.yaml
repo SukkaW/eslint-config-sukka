@@ -138,6 +138,9 @@ importers:
       eslint-import-resolver-ts-bundled:
         specifier: workspace:*
         version: link:../eslint-import-resolver-ts-bundled
+      eslint-plugin-autofix:
+        specifier: ^2.0.0
+        version: 2.0.0(eslint@9.5.0)
       eslint-plugin-eslint-comments:
         specifier: ^3.2.0
         version: 3.2.0(eslint@9.5.0)
@@ -1764,6 +1767,12 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
 
+  eslint-plugin-autofix@2.0.0:
+    resolution: {integrity: sha512-o2zxphjl7FdRb8WLSj4r5uyPgA/B20dqIe1Kq+PMZejur5bsJ3OfF3i28ZH2iACs0TtRUyT0XfbD1XNTQ0HUjg==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      eslint: '>=8'
+
   eslint-plugin-es-x@7.6.0:
     resolution: {integrity: sha512-I0AmeNgevgaTR7y2lrVCJmGYF0rjoznpDvqV/kIkZSZbZ8Rw3eu4cGlvBBULScfkSOCzqKbff5LR4CNrV7mZHA==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -2707,6 +2716,10 @@ packages:
   string-argv@0.3.2:
     resolution: {integrity: sha512-aqD2Q0144Z+/RqG52NeHEkZauTAUWJO8c6yTftGJKO3Tja5tUgIfmIl6kExvhtxSDP7fXB6DvzkfMpCd/F3G+Q==}
     engines: {node: '>=0.6.19'}
+
+  string-similarity@4.0.4:
+    resolution: {integrity: sha512-/q/8Q4Bl4ZKAPjj8WerIBJWALKkaPRfrvhfF8k/B23i4nzrlRj2/go1m90In7nG/3XDSbOo0+pu6RvCTM9RGMQ==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   string-ts@2.2.0:
     resolution: {integrity: sha512-VTP0LLZo4Jp9Gz5IiDVMS9WyLx/3IeYh0PXUn0NdPqusUFNgkHPWiEdbB9TU2Iv3myUskraD5WtYEdHUrQEIlQ==}
@@ -4423,6 +4436,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  eslint-plugin-autofix@2.0.0(eslint@9.5.0):
+    dependencies:
+      eslint: 9.5.0
+      eslint-rule-composer: 0.3.0
+      espree: 9.6.1
+      esutils: 2.0.3
+      lodash: 4.17.21
+      string-similarity: 4.0.4
+
   eslint-plugin-es-x@7.6.0(eslint@9.5.0):
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@9.5.0)
@@ -5452,6 +5474,8 @@ snapshots:
   std-env@3.7.0: {}
 
   string-argv@0.3.2: {}
+
+  string-similarity@4.0.4: {}
 
   string-ts@2.2.0: {}
 

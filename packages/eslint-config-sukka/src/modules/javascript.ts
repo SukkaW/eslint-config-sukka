@@ -7,6 +7,8 @@ import stylisticJs from '@stylistic/eslint-plugin-js';
 import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
 import eslint_plugin_import_x from 'eslint-plugin-import-x';
 import eslint_plugin_sukka from 'eslint-plugin-sukka';
+// @ts-expect-error -- no types
+import eslint_plugin_autofix from 'eslint-plugin-autofix';
 
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
@@ -112,9 +114,12 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'unused-imports': memo(eslint_plugin_unused_imports, 'eslint-plugin-unused-imports'),
         '@stylistic/js': memo(stylisticJs, '@stylistic/eslint-plugin-js'),
         sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka'),
-        'import-x': memo(eslint_plugin_import_x, 'eslint-plugin-import-x') as any
+        'import-x': memo(eslint_plugin_import_x, 'eslint-plugin-import-x'),
+        autofix: eslint_plugin_autofix
       },
       rules: {
+        ...eslint_plugin_import_x.configs.recommended.rules,
+
         // enforces getter/setter pairs in objects
         // https://eslint.org/docs/rules/accessor-pairs
         'accessor-pairs': 'off',
@@ -172,7 +177,8 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'no-alert': 'warn',
 
         // disallow use of arguments.caller or arguments.callee
-        'no-caller': 'error',
+        'no-caller': 'off',
+        'autofix/no-caller': 'error',
 
         // Disallow returning value in constructor
         // https://eslint.org/docs/rules/no-constructor-return
@@ -258,7 +264,8 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'no-octal-escape': 'error',
 
         // disallow usage of __proto__ property
-        'no-proto': 'error',
+        'no-proto': 'off',
+        'autofix/no-proto': 'error',
 
         // disallow certain object properties
         // https://eslint.org/docs/rules/no-restricted-properties
@@ -342,11 +349,13 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
 
         // Disallow unnecessary catch clauses
         // https://eslint.org/docs/rules/no-useless-catch
-        'no-useless-catch': 'error',
+        'no-useless-catch': 'off',
+        'autofix/no-useless-catch': 'error',
 
         // disallow useless string concatenation
         // https://eslint.org/docs/rules/no-useless-concat
-        'no-useless-concat': 'error',
+        'no-useless-concat': 'off',
+        'autofix/no-useless-concat': 'error',
 
         // disallow unnecessary string escaping
         // https://eslint.org/docs/rules/no-useless-escape
@@ -379,7 +388,8 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         }],
 
         // require use of the second argument for parseInt()
-        radix: 'error',
+        radix: 'off',
+        'autofix/radix': 'error',
 
         // require `await` in `async function` (note: this is a horrible rule that should never be used)
         // https://eslint.org/docs/rules/require-await
@@ -470,13 +480,10 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         // disallow comparisons with the value NaN
         'use-isnan': 'warn',
 
-        // ensure JSDoc comments are valid
-        // https://eslint.org/docs/rules/valid-jsdoc
-        'valid-jsdoc': 'off',
-
         // ensure that the results of typeof are compared against a valid string
         // https://eslint.org/docs/rules/valid-typeof
-        'valid-typeof': ['error', { requireStringLiterals: true }],
+        'valid-typeof': 'off',
+        'autofix/valid-typeof': ['error', { requireStringLiterals: true }],
 
         // Disallow new operators with global non-constructor functions
         // https://eslint.org/docs/latest/rules/no-new-native-nonconstructor
@@ -1042,11 +1049,12 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         ],
         'sukka/unicorn/no-negation-in-equality-check': 'error',
 
-        ...eslint_plugin_import_x.configs.recommended.rules,
         'no-restricted-imports': [
           'error',
           { paths: RESTRICTED_IMPORT_JS }
-        ]
+        ],
+        'no-prototype-builtins': 'off',
+        'autofix/no-prototype-builtins': 'error'
       }
     }
   ];
