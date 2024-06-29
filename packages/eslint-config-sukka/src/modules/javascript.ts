@@ -419,6 +419,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         // disallow use of constant expressions in conditions
         'no-constant-condition': 'warn',
 
+        'no-empty-function': 'error',
         'no-empty': ['error', { allowEmptyCatch: true }],
 
         // Disallows expressions where the operation doesn't affect the value
@@ -709,8 +710,6 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         // https://eslint.org/docs/rules/new-parens
         '@stylistic/js/new-parens': 'error',
 
-        'no-array-constructor': 'error',
-
         // disallow use of bitwise operators
         // https://eslint.org/docs/rules/no-bitwise
         'no-bitwise': 'off',
@@ -764,6 +763,8 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'no-new-object': 'off',
         // https://eslint.org/docs/latest/rules/no-object-constructor
         'no-object-constructor': 'error',
+
+        'no-array-constructor': 'error',
 
         // https://eslint.style/rules/js/no-spaced-func
         // replaced by func-call-spacing

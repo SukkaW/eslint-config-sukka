@@ -62,6 +62,8 @@ export const generated_typescript_overrides: SukkaESLintRuleConfig = {
     ],
     "require-await": "off",
     "@typescript-eslint/require-await": "off",
+    "no-empty-function": "off",
+    "@typescript-eslint/no-empty-function": "error",
     "@stylistic/js/no-extra-parens": "off",
     "@stylistic/ts/no-extra-parens": [
       "off",
