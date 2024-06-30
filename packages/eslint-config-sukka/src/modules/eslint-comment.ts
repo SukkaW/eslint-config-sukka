@@ -1,24 +1,24 @@
 import { memo, type FlatESLintConfigItem } from '@eslint-sukka/shared';
-// @ts-expect-error -- no types available
-import eslint_plugin_comments from 'eslint-plugin-eslint-comments';
+// @ts-expect-error -- no types
+import eslint_plugin_eslint_comments from '@eslint-community/eslint-plugin-eslint-comments';
 import eslint_plugin_sukka from 'eslint-plugin-sukka';
 
 export const comment = (): FlatESLintConfigItem[] => {
   return [{
     name: 'sukka/eslint-comments',
     plugins: {
-      'eslint-comments': eslint_plugin_comments,
+      '@eslint-community/eslint-comments': eslint_plugin_eslint_comments,
       sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka')
     },
     rules: {
       'sukka/ban-eslint-disable': ['error', 'allow-with-description'],
 
-      'eslint-comments/no-aggregating-enable': 'error',
-      'eslint-comments/no-duplicate-disable': 'error',
-      'eslint-comments/no-unlimited-disable': 'error',
-      // ESLint officially supports no unused disable comments via reportUnusedDisableDirectives
-      'eslint-comments/no-unused-disable': 'off',
-      'eslint-comments/no-unused-enable': 'error'
+      '@eslint-community/eslint-comments/disable-enable-pair': 'error',
+      '@eslint-community/eslint-comments/no-aggregating-enable': 'error',
+      '@eslint-community/eslint-comments/no-duplicate-disable': 'error',
+      '@eslint-community/eslint-comments/no-unlimited-disable': 'error',
+      '@eslint-community/eslint-comments/no-unused-disable': 'error',
+      '@eslint-community/eslint-comments/no-unused-enable': 'error'
     }
   }];
 };
