@@ -213,31 +213,37 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
 
         // the maintainers of @typescript-eslint DOESN'T KNOW ANYTHING about TypeScript AT ALL
         // and basically @typescript-eslint is a joke anyway
-        '@typescript-eslint/no-empty-object-type': 'off', // {} is widely used with "& {}" approach
-        '@typescript-eslint/ban-types': [
+        '@typescript-eslint/no-empty-object-type': [
+          'error',
+          {
+            allowInterfaces: 'with-single-extends', // interface Derived extends Base {}
+            allowObjectTypes: 'never',
+            allowWithName: 'Props$'
+          }
+        ], // {} is widely used with "& {}" approach
+        '@typescript-eslint/no-unsafe-function-type': 'warn', // allows any Function
+
+        '@typescript-eslint/no-restricted-types': [
           'error',
           {
             types: {
-              // {} is widely used with "& {}" approach
-              '{}': false,
               FC: {
                 message: 'To declare a component, you don\'t have to use FC to annotate it. To type something that accepts/is a React Component, use ComponentType<T>.',
                 fixWith: 'ComponentType'
-              },
-              ReactElement: {
-                message: 'In most cases, you want ReactNode. Only ignore this rule when you want to use cloneElement.',
-                fixWith: 'ReactNode'
               },
               'React.FC': {
                 message: 'To declare a component, you don\'t have to use React.FC to annotate it. To type something that accepts/is a React Component, use React.ComponentType<T>.',
                 fixWith: 'React.ComponentType'
               },
+              ReactElement: {
+                message: 'In most cases, you want ReactNode. Only ignore this rule when you want to use cloneElement.',
+                fixWith: 'ReactNode'
+              },
               'React.ReactElement': {
                 message: 'In most cases, you want React.ReactNode. Only ignore this rule when you want to use cloneElement.',
                 fixWith: 'React.ReactNode'
-              }
+              },
             },
-            extendDefaults: true
           }
         ],
         '@typescript-eslint/no-unsafe-assignment': 'off', // bans a = any
@@ -287,10 +293,9 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         // prefer string.startsWith() and string.endsWith() over more complex alternatives
         // but also allow a[0] === 'a'
         '@typescript-eslint/prefer-string-starts-ends-with': 'off',
+        'sukka-ts/string/prefer-string-starts-ends-with': 'error',
 
         '@typescript-eslint/switch-exhaustiveness-check': 'error',
-
-        'sukka-ts/string/prefer-string-starts-ends-with': 'error',
 
         'sukka-ts/string/no-unneeded-to-string': 'error',
         // If you have a good reason to do this, please ignore this error and provide a comment about why this is type safe.

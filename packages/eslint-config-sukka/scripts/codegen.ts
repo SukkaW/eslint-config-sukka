@@ -67,7 +67,7 @@ import path from 'path';
             break;
           }
           case 'no-loss-of-precision': {
-          // do nothing
+            // do nothing
 
             // @typescript-eslint/no-loss-of-precision is deprecated
             // The original rule is recommended instead
