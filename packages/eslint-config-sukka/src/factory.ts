@@ -25,7 +25,7 @@ import picocolors from 'picocolors';
 import type { OptionsReact } from '../../react';
 import type { OptionsNode } from '../../node';
 
-type SharedOptions<T = {}> = Omit<T, 'isInEditor'> & {
+type SharedOptions<T = object> = Omit<T, 'isInEditor'> & {
   enable?: boolean
 };
 

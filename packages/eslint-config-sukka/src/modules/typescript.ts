@@ -242,8 +242,8 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
               'React.ReactElement': {
                 message: 'In most cases, you want React.ReactNode. Only ignore this rule when you want to use cloneElement.',
                 fixWith: 'React.ReactNode'
-              },
-            },
+              }
+            }
           }
         ],
         '@typescript-eslint/no-unsafe-assignment': 'off', // bans a = any

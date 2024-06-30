@@ -13,10 +13,10 @@ import path from 'path';
   const TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN = new Map(
     Object.entries(ts_eslint_plugin.rules)
       // https://github.com/sweepline/eslint-plugin-unused-imports/blob/2563edf7d7894e0cc05163d9e9180bc3c56471cc/lib/rules/no-unused-imports.js#L15
-      .filter(([, rule]) => rule.meta.docs?.extendsBaseRule != null)
+      .filter(([, rule]) => rule.meta.docs.extendsBaseRule != null)
       .map(
         ([ruleName, rule]) => [
-          typeof rule.meta.docs?.extendsBaseRule === 'string'
+          typeof rule.meta.docs.extendsBaseRule === 'string'
             ? rule.meta.docs.extendsBaseRule
             : ruleName,
           ruleName
