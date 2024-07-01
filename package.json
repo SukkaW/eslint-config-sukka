@@ -32,7 +32,7 @@
     "eslint-config-sukka": "workspace:*",
     "eslint-formatter-sukka": "workspace:*",
     "eslint-plugin-sukka": "workspace:*",
-    "globals": "^15.6.0",
+    "globals": "^15.7.0",
     "lodash-unified": "^1.0.3",
     "rimraf": "^5.0.7",
     "rollup": "^4.18.0",
@@ -44,12 +44,12 @@
   "packageManager": "pnpm@9.4.0",
   "pnpm": {
     "overrides": {
-      "@typescript-eslint/types": "npm:@typescript-eslint/types@8.0.0-alpha.36",
       "array-includes": "npm:@nolyfill/array-includes@latest",
       "array.prototype.findlastindex": "npm:@nolyfill/array.prototype.findlastindex@latest",
       "array.prototype.flat": "npm:@nolyfill/array.prototype.flat@latest",
       "array.prototype.flatmap": "npm:@nolyfill/array.prototype.flatmap@latest",
       "array.prototype.tosorted": "npm:@nolyfill/array.prototype.tosorted@latest",
+      "deep-equal": "npm:@nolyfill/deep-equal@latest",
       "es-iterator-helpers": "npm:@nolyfill/es-iterator-helpers@latest",
       "has": "npm:@nolyfill/has@latest",
       "hasown": "npm:@nolyfill/hasown@latest",
@@ -59,11 +59,11 @@
       "object.groupby": "npm:@nolyfill/object.groupby@latest",
       "object.hasown": "npm:@nolyfill/object.hasown@latest",
       "object.values": "npm:@nolyfill/object.values@latest",
-      "string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@latest",
-      "axe-core": "$axe-core",
-      "deep-equal": "npm:@nolyfill/deep-equal@latest",
       "safe-regex-test": "npm:@nolyfill/safe-regex-test@latest",
-      "string.prototype.includes": "npm:@nolyfill/string.prototype.includes@latest"
+      "string.prototype.includes": "npm:@nolyfill/string.prototype.includes@latest",
+      "string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@latest",
+      "@typescript-eslint/types": "npm:@typescript-eslint/types@8.0.0-alpha.36",
+      "axe-core": "$axe-core"
     },
     "patchedDependencies": {
       "text-table@0.2.0": "patches/text-table@0.2.0.patch",

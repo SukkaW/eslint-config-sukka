@@ -88,8 +88,8 @@ importers:
         specifier: workspace:*
         version: link:packages/eslint-plugin-sukka
       globals:
-        specifier: ^15.6.0
-        version: 15.6.0
+        specifier: ^15.7.0
+        version: 15.7.0
       lodash-unified:
         specifier: ^1.0.3
         version: 1.0.3(@types/lodash-es@4.17.12)(lodash-es@4.17.21)(lodash@4.17.21)
@@ -142,8 +142,8 @@ importers:
         specifier: workspace:*
         version: link:../eslint-import-resolver-ts-bundled
       eslint-plugin-autofix:
-        specifier: ^2.0.0
-        version: 2.0.0(eslint@9.6.0)
+        specifier: ^2.1.0
+        version: 2.1.0(eslint@9.6.0)
       eslint-plugin-import-x:
         specifier: ^0.5.2
         version: 0.5.2(eslint@9.6.0)(typescript@5.5.2)
@@ -151,8 +151,8 @@ importers:
         specifier: ^2.16.0
         version: 2.16.0(eslint@9.6.0)
       eslint-plugin-promise:
-        specifier: ^6.2.0
-        version: 6.2.0(eslint@9.6.0)
+        specifier: ^6.4.0
+        version: 6.4.0(eslint@9.6.0)
       eslint-plugin-sukka:
         specifier: workspace:*
         version: link:../eslint-plugin-sukka
@@ -191,8 +191,8 @@ importers:
         specifier: ^0.1.5
         version: 0.1.5
       globals:
-        specifier: ^15.6.0
-        version: 15.6.0
+        specifier: ^15.7.0
+        version: 15.7.0
 
   packages/eslint-formatter-sukka:
     dependencies:
@@ -329,8 +329,8 @@ importers:
         specifier: workspace:*
         version: link:../rollup-config
       globals:
-        specifier: ^15.6.0
-        version: 15.6.0
+        specifier: ^15.7.0
+        version: 15.7.0
 
   packages/react:
     dependencies:
@@ -369,8 +369,8 @@ importers:
         specifier: ^3.3.0
         version: 3.3.0
       globals:
-        specifier: ^15.6.0
-        version: 15.6.0
+        specifier: ^15.7.0
+        version: 15.7.0
 
   packages/rollup-config:
     dependencies:
@@ -1751,8 +1751,8 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
 
-  eslint-plugin-autofix@2.0.0:
-    resolution: {integrity: sha512-o2zxphjl7FdRb8WLSj4r5uyPgA/B20dqIe1Kq+PMZejur5bsJ3OfF3i28ZH2iACs0TtRUyT0XfbD1XNTQ0HUjg==}
+  eslint-plugin-autofix@2.1.0:
+    resolution: {integrity: sha512-4ya5flaJ7P+s4WeCe7mVd5Mmv0ayghl9Xz1MDewQqDNXn3SFkvTMqbCuJT5fsTl+BdtJ/CFNV48YrABohQu1VQ==}
     engines: {node: '>=18'}
     peerDependencies:
       eslint: '>=8'
@@ -1797,8 +1797,8 @@ packages:
     peerDependencies:
       eslint: '>=8.23.0'
 
-  eslint-plugin-promise@6.2.0:
-    resolution: {integrity: sha512-QmAqwizauvnKOlifxyDj2ObfULpHQawlg/zQdgEixur9vl0CvZGv/LCJV2rtj3210QCoeGBzVMfMXqGAOr/4fA==}
+  eslint-plugin-promise@6.4.0:
+    resolution: {integrity: sha512-/KWWRaD3fGkVCZsdR0RU53PSthFmoHVhZl+y9+6DqeDLSikLdlUVpVEAmI6iCRR5QyOjBYBqHZV/bdv4DJ4Gtw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0 || ^9.0.0
@@ -2050,8 +2050,8 @@ packages:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
     engines: {node: '>=18'}
 
-  globals@15.6.0:
-    resolution: {integrity: sha512-UzcJi88Hw//CurUIRa9Jxb0vgOCcuD/MNjwmXp633cyaRKkCWACkoqHCtfZv43b1kqXGg/fpOa8bwgacCeXsVg==}
+  globals@15.7.0:
+    resolution: {integrity: sha512-ivatRXWwKC6ImcdKO7dOwXuXR5XFrdwo45qFwD7D0qOkEPzzJdLXC3BHceBdyrPOD3p1suPaWi4Y4NMm2D++AQ==}
     engines: {node: '>=18'}
 
   globby@11.1.0:
@@ -4357,7 +4357,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-autofix@2.0.0(eslint@9.6.0):
+  eslint-plugin-autofix@2.1.0(eslint@9.6.0):
     dependencies:
       eslint: 9.6.0
       eslint-rule-composer: 0.3.0
@@ -4452,12 +4452,12 @@ snapshots:
       eslint: 9.6.0
       eslint-plugin-es-x: 7.6.0(eslint@9.6.0)
       get-tsconfig: 4.7.5
-      globals: 15.6.0
+      globals: 15.7.0
       ignore: 5.3.1
       minimatch: 9.0.4
       semver: 7.6.2
 
-  eslint-plugin-promise@6.2.0(eslint@9.6.0):
+  eslint-plugin-promise@6.4.0(eslint@9.6.0):
     dependencies:
       eslint: 9.6.0
 
@@ -4803,7 +4803,7 @@ snapshots:
 
   globals@14.0.0: {}
 
-  globals@15.6.0: {}
+  globals@15.7.0: {}
 
   globby@11.1.0:
     dependencies:

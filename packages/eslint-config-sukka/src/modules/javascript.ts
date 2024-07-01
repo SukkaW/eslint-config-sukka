@@ -488,7 +488,8 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
 
         // Disallow new operators with global non-constructor functions
         // https://eslint.org/docs/latest/rules/no-new-native-nonconstructor
-        'no-new-native-nonconstructor': 'error',
+        'no-new-native-nonconstructor': 'off',
+        'autofix/no-new-native-nonconstructor': 'error',
 
         // require parens in arrow function arguments
         // https://eslint.org/docs/rules/arrow-parens
