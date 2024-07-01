@@ -163,9 +163,12 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
           { allowNumber: true, allowAny: true, allowBoolean: true, allowNever: true }
         ],
         '@typescript-eslint/unbound-method': 'error',
-        '@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports', disallowTypeAnnotations: false, fixStyle: 'separate-type-imports' }],
+        '@typescript-eslint/consistent-type-imports': [
+          'warn',
+          { prefer: 'type-imports', disallowTypeAnnotations: false, fixStyle: 'separate-type-imports' }
+        ],
         '@typescript-eslint/no-import-type-side-effects': 'warn',
-        '@typescript-eslint/consistent-type-exports': ['warn', { fixMixedExportsWithInlineTypeSpecifier: true }],
+        '@typescript-eslint/consistent-type-exports': ['warn', { fixMixedExportsWithInlineTypeSpecifier: false }],
         '@typescript-eslint/consistent-type-definitions': 'warn',
         '@typescript-eslint/consistent-generic-constructors': ['error', 'constructor'],
         '@typescript-eslint/no-base-to-string': ['error', { ignoredTypeNames: ['Error', 'RegExp', 'URL', 'URLSearchParams'] }],
