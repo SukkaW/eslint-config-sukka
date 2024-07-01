@@ -271,40 +271,23 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         // https://eslint.org/docs/rules/no-restricted-properties
         'no-restricted-properties': [
           'error',
+          ...(([
+            ['isFinite', 'Number.isFinite'],
+            ['isNaN', 'Number.isNaN']
+          ] as const).flatMap(([methodName, replacement]) => ([
+            'global',
+            'globalThis',
+            'window',
+            'self'
+          ] as const).map(globalName => ({
+            object: globalName,
+            property: methodName,
+            message: `Please use ${replacement} instead`
+          })))),
           {
             object: 'arguments',
             property: 'callee',
             message: 'arguments.callee is deprecated'
-          },
-          {
-            object: 'global',
-            property: 'isFinite',
-            message: 'Please use Number.isFinite instead'
-          },
-          {
-            object: 'self',
-            property: 'isFinite',
-            message: 'Please use Number.isFinite instead'
-          },
-          {
-            object: 'window',
-            property: 'isFinite',
-            message: 'Please use Number.isFinite instead'
-          },
-          {
-            object: 'global',
-            property: 'isNaN',
-            message: 'Please use Number.isNaN instead'
-          },
-          {
-            object: 'self',
-            property: 'isNaN',
-            message: 'Please use Number.isNaN instead'
-          },
-          {
-            object: 'window',
-            property: 'isNaN',
-            message: 'Please use Number.isNaN instead'
           },
           {
             property: '__defineGetter__',
@@ -391,9 +374,11 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         radix: 'off',
         'autofix/radix': 'error',
 
-        // require `await` in `async function` (note: this is a horrible rule that should never be used)
+        // require `await` in `async function`
         // https://eslint.org/docs/rules/require-await
-        'require-await': 'off',
+        'require-await': 'error',
+
+        'require-yield': 'error',
 
         // Enforce the use of u flag on RegExp
         // https://eslint.org/docs/rules/require-unicode-regexp
@@ -479,7 +464,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'require-atomic-updates': 'off',
 
         // disallow comparisons with the value NaN
-        'use-isnan': 'warn',
+        'use-isnan': ['error', { enforceForIndexOf: true }],
 
         // ensure that the results of typeof are compared against a valid string
         // https://eslint.org/docs/rules/valid-typeof
