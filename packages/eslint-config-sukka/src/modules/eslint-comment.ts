@@ -13,7 +13,7 @@ export const comment = (): FlatESLintConfigItem[] => {
     rules: {
       'sukka/ban-eslint-disable': ['error', 'allow-with-description'],
 
-      '@eslint-community/eslint-comments/disable-enable-pair': 'error',
+      '@eslint-community/eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
       '@eslint-community/eslint-comments/no-aggregating-enable': 'error',
       '@eslint-community/eslint-comments/no-duplicate-disable': 'error',
       '@eslint-community/eslint-comments/no-unlimited-disable': 'error',
