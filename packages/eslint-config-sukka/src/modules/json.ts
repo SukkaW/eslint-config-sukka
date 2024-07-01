@@ -6,7 +6,7 @@ import { constants, memo } from '@eslint-sukka/shared';
 
 import type { Linter } from 'eslint';
 
-export const SHARED_OPTIONS = {
+export const SHARED_OPTIONS: Pick<FlatESLintConfigItem, 'plugins' | 'languageOptions'> = {
   plugins: {
     jsonc: memo<any>(eslint_plugin_jsonc, 'eslint-plugin-jsonc')
   },
