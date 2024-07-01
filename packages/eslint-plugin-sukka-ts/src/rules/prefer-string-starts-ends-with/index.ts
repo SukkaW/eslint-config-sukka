@@ -567,8 +567,10 @@ export default createRule({
             // Don't fix if it can change the behavior.
             if (
               eqNode.operator.length === 2
-              && (eqNode.right.type !== AST_NODE_TYPES.Literal
-                || typeof eqNode.right.value !== 'string')
+              && (
+                eqNode.right.type !== AST_NODE_TYPES.Literal
+                || typeof eqNode.right.value !== 'string'
+              )
             ) {
               return null;
             }
@@ -582,14 +584,18 @@ export default createRule({
             } else {
               const posNode = callNode.arguments[0];
               const posNodeIsAbsolutelyValid
-                = (posNode.type === AST_NODE_TYPES.BinaryExpression
+                = (
+                  posNode.type === AST_NODE_TYPES.BinaryExpression
                   && posNode.operator === '-'
                   && isLengthExpression(posNode.left, node.object)
-                  && isLengthExpression(posNode.right, eqNode.right))
-                || (negativeIndexSupported
+                  && isLengthExpression(posNode.right, eqNode.right)
+                )
+                || (
+                  negativeIndexSupported
                   && posNode.type === AST_NODE_TYPES.UnaryExpression
                   && posNode.operator === '-'
-                  && isLengthExpression(posNode.argument, eqNode.right));
+                  && isLengthExpression(posNode.argument, eqNode.right)
+                );
               if (!posNodeIsAbsolutelyValid) {
                 return null;
               }

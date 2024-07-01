@@ -3,6 +3,7 @@ import eslint_js from '@eslint/js';
 import { memo, RESTRICTED_IMPORT_JS, constants } from '@eslint-sukka/shared';
 
 import stylisticJs from '@stylistic/eslint-plugin-js';
+import stylisticPlus from '@stylistic/eslint-plugin-plus';
 // @ts-expect-error -- no types
 import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
 import eslint_plugin_import_x from 'eslint-plugin-import-x';
@@ -113,6 +114,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
       plugins: {
         'unused-imports': memo(eslint_plugin_unused_imports, 'eslint-plugin-unused-imports'),
         '@stylistic/js': memo(stylisticJs, '@stylistic/eslint-plugin-js'),
+        '@stylistic/plus': memo(stylisticPlus, '@stylistic/eslint-plugin-plus'),
         sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka'),
         'import-x': memo(eslint_plugin_import_x, 'eslint-plugin-import-x'),
         autofix: eslint_plugin_autofix
@@ -642,6 +644,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
 
         // https://eslint.style/rules/js/indent
         '@stylistic/js/indent': ['error', 2, { SwitchCase: 1 }],
+        '@stylistic/plus/indent-binary-ops': ['error', 2],
 
         // enforces spacing between keys and values in object literal properties
         // https://eslint.style/rules/js/key-spacing
