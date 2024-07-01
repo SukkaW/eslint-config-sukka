@@ -8,6 +8,8 @@ import { link, iTermSetCwd } from './ansi-escape';
 import { isCI } from 'ci-info';
 
 import type { ESLint } from 'eslint';
+import { pathToFileURL } from 'url';
+import { hostname } from 'os';
 
 const separatorLine = {
   type: 'separator'
@@ -129,11 +131,9 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
             type: 'message',
             severity: x.fatal
               ? 'fatal'
-              : (
-                (x.severity === 2 || (x.severity as any) === 'error')
-                  ? 'error'
-                  : 'warning'
-              ),
+              : ((x.severity === 2 || (x.severity as any) === 'error')
+                ? 'error'
+                : 'warning'),
             line,
             lineWidth,
             column,
@@ -152,13 +152,24 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
     output += iTermSetCwd();
   }
 
+  const hasHyperlink = !isCI && supportsHyperlink(process.stdout);
+  const osHostname = hostname();
+  const isGnomeTerminal = process.env.GNOME_TERMINAL_SCREEN;
+
   output += `${lines.map(x => {
     if (x.type === 'header') {
       // Add the line number so it's Command-click'able in some terminals
       // Use dim & gray for terminals like iTerm that doesn't support `hidden`
       const position = showLineNumbers ? picocolors.hidden(picocolors.dim(picocolors.gray(`:${x.firstLineCol}`))) : '';
 
-      return `${picocolors.underline(x.relativeFilePath)}${position}`;
+      if (isGnomeTerminal) {
+        const fileUrl = pathToFileURL(x.filePath, {});
+        fileUrl.hostname = osHostname;
+
+        return link(x.relativeFilePath, fileUrl.href) + position;
+      }
+
+      return picocolors.underline(x.relativeFilePath) + position;
     }
 
     if (x.type === 'message') {
@@ -175,7 +186,7 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
         ' '.repeat(maxColumnWidth - x.columnWidth) + x.message,
         ' '.repeat(maxMessageWidth - x.messageWidth)
         + (
-          (ruleUrl && supportsHyperlink(process.stdout))
+          (ruleUrl && hasHyperlink)
             ? link(picocolors.dim(x.ruleId), ruleUrl)
             : picocolors.dim(x.ruleId)
         )
