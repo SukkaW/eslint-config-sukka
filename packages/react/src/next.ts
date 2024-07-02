@@ -16,7 +16,8 @@ export const next = (): FlatESLintConfigItem[] => {
     ],
     rules: {
       ...eslint_plugin_next.configs.recommended.rules,
-      ...eslint_plugin_next.configs['core-web-vitals'].rules
+      ...eslint_plugin_next.configs['core-web-vitals'].rules,
+      '@next/next/no-img-element': 'off'
     }
   }];
 };
