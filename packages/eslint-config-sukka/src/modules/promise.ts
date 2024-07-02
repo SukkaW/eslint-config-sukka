@@ -15,12 +15,7 @@ export const promise = ({ typescript }: OptionsPromise): FlatESLintConfigItem[] 
     rules: {
       'promise/always-return': typescript
         ? 'off'
-        : [
-          'error',
-          {
-            ignoreLastCallback: true
-          }
-        ],
+        : ['error', { ignoreLastCallback: true }],
       'promise/no-return-wrap': 'error',
       'promise/param-names': 'error',
       'promise/catch-or-return': [

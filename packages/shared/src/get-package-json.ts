@@ -1,6 +1,8 @@
 import path from 'path';
 import fs from 'fs';
 
+import type { PackageJson } from 'type-fest';
+
 const SKIP_TIME = 20000;
 
 /**
@@ -47,8 +49,6 @@ class Cache<T> {
     }
   }
 }
-
-type PackageJson = Record<string, any> | null;
 
 const cache = new Cache<PackageJson | null>();
 
