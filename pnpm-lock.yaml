@@ -349,6 +349,9 @@ importers:
       '@next/eslint-plugin-next':
         specifier: 15.0.0-canary.47
         version: 15.0.0-canary.47
+      '@stylexjs/eslint-plugin':
+        specifier: ^0.7.5
+        version: 0.7.5
       '@stylistic/eslint-plugin-jsx':
         specifier: ^2.3.0
         version: 2.3.0(eslint@9.6.0)
@@ -1137,6 +1140,9 @@ packages:
 
   '@sinclair/typebox@0.27.8':
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
+
+  '@stylexjs/eslint-plugin@0.7.5':
+    resolution: {integrity: sha512-FLKsjfmPbnXXFHcBuB0HwzwQRftlNejA+yzfBOE5fBjXZnzQZyKTJzMrI29c89FpyPr+jd4F0X1RUJrGNj2Jfg==}
 
   '@stylistic/eslint-plugin-js@2.3.0':
     resolution: {integrity: sha512-lQwoiYb0Fs6Yc5QS3uT8+T9CPKK2Eoxc3H8EnYJgM26v/DgtW+1lvy2WNgyBflU+ThShZaHm3a6CdD9QeKx23w==}
@@ -3689,6 +3695,10 @@ snapshots:
     optional: true
 
   '@sinclair/typebox@0.27.8': {}
+
+  '@stylexjs/eslint-plugin@0.7.5':
+    dependencies:
+      micromatch: 4.0.7
 
   '@stylistic/eslint-plugin-js@2.3.0(eslint@9.6.0)':
     dependencies:

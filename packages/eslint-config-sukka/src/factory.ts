@@ -22,10 +22,10 @@ import picocolors from 'picocolors';
 // import { isCI } from 'ci-info';
 
 // This is a small hack to make rollup-plugin-dts bundle all these types
-import type { OptionsReact } from '../../react';
+import type { OptionsReact, OptionsStyleX } from '../../react';
 import type { OptionsNode } from '../../node';
 
-type SharedOptions<T = object> = Omit<T, 'isInEditor'> & {
+type SharedOptions<T = object> = Omit<T, 'isInEditor' | 'enable'> & {
   enable?: boolean
 };
 
@@ -36,6 +36,7 @@ interface ESLintSukkaOptions {
   json?: boolean,
   ts?: SharedOptions<OptionsTypeScript> | boolean,
   react?: SharedOptions<OptionsReact> | boolean,
+  stylex?: SharedOptions<OptionsStyleX> | boolean,
   next?: boolean,
   node?: SharedOptions<OptionsNode> | boolean,
   legacy?: SharedOptions<OptionsLegacy> | boolean
@@ -111,6 +112,9 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
       flatConfigs.push(eslint_sukka_react.react(config(options?.react)));
       if (enabled(options?.next, nextjsInstalled)) {
         flatConfigs.push(eslint_sukka_react.next());
+      }
+      if (enabled(options?.stylex, isPackageExists('@stylexjs/stylex'))) {
+        flatConfigs.push(eslint_sukka_react.stylex(config(options?.stylex)));
       }
     }
   }
