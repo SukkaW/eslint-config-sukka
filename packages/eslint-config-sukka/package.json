@@ -58,7 +58,7 @@
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
     "@typescript-eslint/eslint-plugin": "8.0.0-alpha.36",
-    "eslint-config-flat-gitignore": "^0.1.5",
-    "globals": "^15.7.0"
+    "eslint-config-flat-gitignore": "^0.1.6",
+    "globals": "^15.8.0"
   }
 }

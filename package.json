@@ -15,17 +15,17 @@
   "license": "MIT",
   "dependencies": {
     "eslint-import-resolver-ts-bundled": "workspace:*",
-    "type-fest": "^4.20.1"
+    "type-fest": "^4.21.0"
   },
   "devDependencies": {
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
     "@stylistic/eslint-plugin-migrate": "^2.3.0",
-    "@swc-node/register": "^1.10.0",
-    "@swc/core": "^1.6.6",
+    "@swc-node/register": "^1.10.2",
+    "@swc/core": "^1.6.13",
     "@types/eslint": "^8.56.10",
-    "@types/node": "^20.14.9",
+    "@types/node": "^20.14.10",
     "@typescript-eslint/utils": "8.0.0-alpha.36",
     "axe-core": "^4.9.1",
     "bumpp": "^9.4.1",
@@ -33,9 +33,9 @@
     "eslint-config-sukka": "workspace:*",
     "eslint-formatter-sukka": "workspace:*",
     "eslint-plugin-sukka": "workspace:*",
-    "globals": "^15.7.0",
+    "globals": "^15.8.0",
     "lodash-unified": "^1.0.3",
-    "rimraf": "^5.0.7",
+    "rimraf": "^5.0.8",
     "rollup": "^4.18.0",
     "rollup-plugin-visualizer": "^5.12.0",
     "turbo": "^2.0.6",
