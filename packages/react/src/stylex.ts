@@ -1,4 +1,4 @@
-import { constants, type FlatESLintConfigItem } from '@eslint-sukka/shared';
+import { constants, ruleopt, type FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import stylex_eslint_plugin from '@stylexjs/eslint-plugin';
 
@@ -69,8 +69,8 @@ export const stylex = ({ opt }: OptionsStyleX = {}): FlatESLintConfigItem[] => {
       constants.GLOB_JSX
     ],
     rules: {
-      '@stylexjs/valid-styles': ['error', opt],
-      '@stylexjs/valid-shorthands': ['error', opt]
+      '@stylexjs/valid-styles': ruleopt('error', opt),
+      '@stylexjs/valid-shorthands': ruleopt('error', opt)
     }
   }];
 };
