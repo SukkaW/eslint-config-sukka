@@ -1,4 +1,4 @@
-import { constants, ruleopt, type FlatESLintConfigItem } from '@eslint-sukka/shared';
+import { constants, type FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import stylex_eslint_plugin from '@stylexjs/eslint-plugin';
 
@@ -10,7 +10,7 @@ interface StyleXESLintOptions {
   // Possible strings where you can import stylex from
   //
   // Default: ['@stylexjs/stylex']
-  validImports: string[],
+  validImports?: string[],
 
   // Custom limits for values of various properties
   propLimits?: PropLimits,
@@ -20,15 +20,14 @@ interface StyleXESLintOptions {
   // style values.
   //
   // Default: false
-  allowOuterPseudoAndMedia: boolean,
+  allowOuterPseudoAndMedia?: boolean,
 
   // @deprecated
   // Disallow properties that are known to break
   // in 'legacy-expand-shorthands' style resolution mode.
   //
   // Default: false
-  banPropsForLegacy: boolean
-
+  banPropsForLegacy?: boolean
 }
 
 interface PropLimits {
@@ -57,7 +56,7 @@ interface PropLimits {
   }
 }
 
-export const stylex = ({ opt }: OptionsStyleX = {}): FlatESLintConfigItem[] => {
+export const stylex = ({ opt = {} }: OptionsStyleX = {}): FlatESLintConfigItem[] => {
   return [{
     plugins: {
       '@stylex': stylex_eslint_plugin as any
@@ -69,8 +68,8 @@ export const stylex = ({ opt }: OptionsStyleX = {}): FlatESLintConfigItem[] => {
       constants.GLOB_JSX
     ],
     rules: {
-      '@stylexjs/valid-styles': ruleopt('error', opt),
-      '@stylexjs/valid-shorthands': ruleopt('error', opt)
+      '@stylexjs/valid-styles': ['error', opt],
+      '@stylexjs/valid-shorthands': ['error', opt]
     }
   }];
 };
