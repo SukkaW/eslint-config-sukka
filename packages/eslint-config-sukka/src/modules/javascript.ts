@@ -214,9 +214,6 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         // https://eslint.org/docs/rules/no-extra-label
         'no-extra-label': 'error',
 
-        // deprecated in favor of no-global-assign
-        'no-native-reassign': 'off',
-
         // disallow implicit type conversions
         // https://eslint.org/docs/rules/no-implicit-coercion
         'no-implicit-coercion': ['off', {
@@ -313,8 +310,9 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'no-return-await': 'off',
         'sukka/no-return-await': 'error',
 
-        // disallow comparisons where both sides are exactly the same
-        'no-self-compare': 'error',
+        // comparisons where both sides are exactly the same
+        // This is way faster than Number.isNaN
+        'no-self-compare': 'off',
 
         'no-sequences': 'error',
 
@@ -364,7 +362,6 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
 
         // Prefer Object.hasOwn() over Object.prototype.hasOwnProperty.call()
         // https://eslint.org/docs/rules/prefer-object-has-own
-        // eslint v8.5.0 is required
         'prefer-object-has-own': 'error',
 
         // https://eslint.org/docs/rules/prefer-regex-literals
@@ -496,7 +493,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
 
         // disallow importing from the same path more than once
         // https://eslint.org/docs/rules/no-duplicate-imports
-        // replaced by https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-duplicates.md
+        // replaced by eslint-plugin-import-x
         'no-duplicate-imports': 'off',
 
         // Disallow specified names in exports
@@ -538,10 +535,6 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         // disallow parseInt() in favor of binary, octal, and hexadecimal literals
         // https://eslint.org/docs/rules/prefer-numeric-literals
         'prefer-numeric-literals': 'error',
-
-        // suggest using Reflect methods where applicable
-        // https://eslint.org/docs/rules/prefer-reflect
-        'prefer-reflect': 'off',
 
         // use rest parameters instead of arguments
         // https://eslint.org/docs/rules/prefer-rest-params
@@ -686,12 +679,6 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
           capIsNewExceptions: ['Immutable.Map', 'Immutable.Set', 'Immutable.List']
         }],
 
-        // https://eslint.style/rules/js/newline-after-var
-        '@stylistic/js/newline-after-var': 'off',
-
-        // https://eslint.style/rules/js/newline-before-return
-        '@stylistic/js/newline-before-return': 'off',
-
         // https://eslint.style/rules/js/newline-per-chained-call
         '@stylistic/js/newline-per-chained-call': ['error', { ignoreChainWithDepth: 6 }],
 
@@ -732,7 +719,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
 
         // disallow use of chained assignment expressions
         // https://eslint.org/docs/rules/no-multi-assign
-        'no-multi-assign': ['error'],
+        'no-multi-assign': 'error',
 
         // disallow multiple empty lines, only one newline at the end, and no new lines at the beginning
         // https://eslint.org/docs/rules/no-multiple-empty-lines
