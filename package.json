@@ -22,7 +22,7 @@
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
     "@stylistic/eslint-plugin-migrate": "^2.3.0",
-    "@swc-node/register": "^1.10.2",
+    "@swc-node/register": "^1.10.3",
     "@swc/core": "^1.6.13",
     "@types/eslint": "^8.56.10",
     "@types/node": "^20.14.10",
@@ -35,12 +35,12 @@
     "eslint-plugin-sukka": "workspace:*",
     "globals": "^15.8.0",
     "lodash-unified": "^1.0.3",
-    "rimraf": "^5.0.8",
-    "rollup": "^4.18.0",
+    "rimraf": "^6.0.0",
+    "rollup": "^4.18.1",
     "rollup-plugin-visualizer": "^5.12.0",
     "turbo": "^2.0.6",
     "typescript": "^5.5.3",
-    "vitest": "^1.6.0"
+    "vitest": "^2.0.1"
   },
   "packageManager": "pnpm@9.5.0",
   "pnpm": {
