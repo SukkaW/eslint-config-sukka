@@ -33,7 +33,9 @@ const importResolverExtensions = ['.ts', '.cts', '.mts', '.tsx', ...javaScriptEx
 export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigItem[] => {
   const { tsconfigPath = true, tsconfigRootDir = process.cwd(), componentExtentions = [] } = options;
 
-  const typescriptEslintParserPath = fileURLToPath(importMetaResolve('@typescript-eslint/parser', typeof __dirname === 'string' ? pathToFileURL(__dirname).href : import.meta.url));
+  const baseUrl = typeof __dirname === 'string' ? pathToFileURL(__dirname).href : import.meta.url;
+  const typescriptEslintParserPath = fileURLToPath(importMetaResolve('@typescript-eslint/parser', baseUrl));
+  const eslintImportResolverTsBundlesPath = fileURLToPath(importMetaResolve('eslint-import-resolver-ts-bundled', baseUrl));
 
   return [
     {
@@ -88,7 +90,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
           node: {
             extensions: importResolverExtensions
           },
-          'ts-bundled': {
+          [eslintImportResolverTsBundlesPath]: {
             alwaysTryTypes: true,
             ...(tsconfigPath === true ? {} : {
               project: tsconfigPath
