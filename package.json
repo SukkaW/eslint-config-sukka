@@ -35,12 +35,11 @@
     "eslint-plugin-sukka": "workspace:*",
     "globals": "^15.8.0",
     "lodash-unified": "^1.0.3",
-    "rimraf": "^6.0.0",
     "rollup": "^4.18.1",
     "rollup-plugin-visualizer": "^5.12.0",
     "turbo": "^2.0.6",
     "typescript": "^5.5.3",
-    "vitest": "^2.0.1"
+    "vitest": "^2.0.2"
   },
   "packageManager": "pnpm@9.5.0",
   "pnpm": {

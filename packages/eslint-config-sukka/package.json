@@ -34,7 +34,7 @@
   "dependencies": {
     "@eslint-community/eslint-plugin-eslint-comments": "^4.3.0",
     "@eslint-sukka/shared": "workspace:*",
-    "@eslint/compat": "^1.1.0",
+    "@eslint/compat": "^1.1.1",
     "@eslint/js": "^9.6.0",
     "@stylistic/eslint-plugin-js": "2.3.0",
     "@stylistic/eslint-plugin-plus": "2.3.0",
@@ -44,7 +44,7 @@
     "eslint-import-resolver-ts-bundled": "workspace:*",
     "eslint-plugin-autofix": "^2.1.0",
     "eslint-plugin-deprecation": "^3.0.0",
-    "eslint-plugin-import-x": "^0.5.3",
+    "eslint-plugin-import-x": "^3.0.0",
     "eslint-plugin-jsonc": "^2.16.0",
     "eslint-plugin-promise": "^6.4.0",
     "eslint-plugin-sukka": "workspace:*",
@@ -60,7 +60,7 @@
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
     "@typescript-eslint/eslint-plugin": "8.0.0-alpha.39",
-    "eslint-config-flat-gitignore": "^0.1.6",
+    "eslint-config-flat-gitignore": "^0.1.7",
     "globals": "^15.8.0"
   }
 }
