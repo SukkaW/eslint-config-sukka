@@ -5,8 +5,8 @@ export const foxquire = async <T>(pkg: string): Promise<T> => {
   if (!isCI && process.stdout.isTTY) {
     if (
       !isPackageExists(pkg)) {
-      const p = await import('@clack/prompts');
-      const result = await p.confirm({
+      const { confirm } = await import('@clack/prompts');
+      const result = await confirm({
         message: `Package is required for this config: ${pkg}. Do you want to install it?`
       });
       if (result) {

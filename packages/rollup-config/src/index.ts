@@ -12,7 +12,7 @@ import replace from '@rollup/plugin-replace';
 
 import { rollupFoximport } from './rollup-foxquire';
 
-import type { RollupOptions, OutputOptions as RollupOutputOptions, InputOption as RollupInputOption } from 'rollup';
+import type { RollupOptions, OutputOptions as RollupOutputOptions, InputOption as RollupInputOption, GetManualChunk } from 'rollup';
 
 import fs from 'fs';
 import type { PathLike } from 'fs';
@@ -34,6 +34,12 @@ interface RollupConfigPlugin {
 
 const nonNullable = <T>(value: T): value is NonNullable<T> => value !== null && value !== undefined;
 
+const manualChunks: GetManualChunk = (id: string) => {
+  if (id.includes('node_modules')) {
+    return 'vendor';
+  }
+};
+
 export const createRollupConfig = (
   packageJsonPath: PathLike,
   externalDependencies: string[] = [],
@@ -54,8 +60,22 @@ export const createRollupConfig = (
   return [{
     input,
     output: ([
-      { file: 'dist/index.cjs', format: 'cjs', hoistTransitiveImports: false },
-      buildCjsOnly ? null : { file: 'dist/index.mjs', format: 'esm', hoistTransitiveImports: false }
+      {
+        dir: 'dist',
+        format: 'cjs',
+        chunkFileNames: '[name]-[hash].cjs', entryFileNames: 'index.cjs',
+        minifyInternalExports: true, hoistTransitiveImports: false, compact: true,
+        manualChunks
+      },
+      buildCjsOnly
+        ? null
+        : {
+          dir: 'dist',
+          format: 'esm',
+          chunkFileNames: '[name]-[hash].mjs', entryFileNames: 'index.mjs',
+          minifyInternalExports: true, hoistTransitiveImports: false, compact: true,
+          manualChunks
+        }
     ] satisfies Array<RollupOutputOptions | null>).filter(nonNullable),
     plugins: [
       foxquire && rollupFoximport(),
@@ -110,7 +130,9 @@ export const createRollupConfig = (
       file: 'dist/index.d.ts'
     },
     plugins: [
-      dts()
+      dts({
+        respectExternal: true
+      })
     ],
     external
   }];
