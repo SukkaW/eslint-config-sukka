@@ -33,10 +33,10 @@
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",
     "eslint-plugin-n": "^17.9.0",
-    "eslint-plugin-sukka": "workspace:*"
+    "eslint-plugin-sukka": "workspace:*",
+    "globals": "^15.8.0"
   },
   "devDependencies": {
-    "@eslint-sukka/rollup-config": "workspace:*",
-    "globals": "^15.8.0"
+    "@eslint-sukka/rollup-config": "workspace:*"
   }
 }
