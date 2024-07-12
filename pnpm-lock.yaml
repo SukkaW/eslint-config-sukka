@@ -141,6 +141,9 @@ importers:
       ci-info:
         specifier: ^4.0.0
         version: 4.0.0
+      defu:
+        specifier: ^6.1.4
+        version: 6.1.4
       eslint-import-resolver-ts-bundled:
         specifier: workspace:*
         version: link:../eslint-import-resolver-ts-bundled
@@ -370,6 +373,9 @@ importers:
       eslint-plugin-react-hooks:
         specifier: 5.1.0-beta-4508873393-20240430
         version: 5.1.0-beta-4508873393-20240430(eslint@9.6.0)
+      eslint-plugin-react-refresh:
+        specifier: ^0.4.8
+        version: 0.4.8(eslint@9.6.0)
       eslint-plugin-ssr-friendly:
         specifier: ^1.3.0
         version: 1.3.0(eslint@9.6.0)
@@ -1954,6 +1960,11 @@ packages:
 
   eslint-plugin-react-prefer-function-component@3.3.0:
     resolution: {integrity: sha512-BJXHT8gn3tLd9pTrX7v9hozZA79p1s29mEPomg/laOK/1yt6KPFgIYWuxpq4I4C+x88APRVVBVtvW1rdCjeFxQ==}
+
+  eslint-plugin-react-refresh@0.4.8:
+    resolution: {integrity: sha512-MIKAclwaDFIiYtVBLzDdm16E+Ty4GwhB6wZlCAG1R3Ur+F9Qbo6PRxpA5DK7XtDgm+WlCoAY2WxAwqhmIDHg6Q==}
+    peerDependencies:
+      eslint: '>=7'
 
   eslint-plugin-react-x@1.5.24:
     resolution: {integrity: sha512-MSWSshrd7VvC2NH8KMfBNJp7eVcu8ooWhomTQYFH5JXmP6/8xzGrwq+kQju60DsrCPkcE2cbtUvQUxt7KCdFOQ==}
@@ -4774,6 +4785,10 @@ snapshots:
       - supports-color
 
   eslint-plugin-react-prefer-function-component@3.3.0: {}
+
+  eslint-plugin-react-refresh@0.4.8(eslint@9.6.0):
+    dependencies:
+      eslint: 9.6.0
 
   eslint-plugin-react-x@1.5.24(eslint@9.6.0)(typescript@5.5.3):
     dependencies:

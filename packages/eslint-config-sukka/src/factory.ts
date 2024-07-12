@@ -19,6 +19,7 @@ import type { OptionsLegacy } from './modules/legacy';
 
 import { isPackageExists } from 'local-pkg';
 import picocolors from 'picocolors';
+import { defu } from 'defu';
 // import { isCI } from 'ci-info';
 
 // This is a small hack to make rollup-plugin-dts bundle all these types
@@ -50,9 +51,14 @@ function enabled<T extends SharedOptions>(options: T | boolean | undefined, defa
   return options?.enable ?? defaults;
 }
 
-function config<T>(options: SharedOptions<T> | undefined | boolean): T | undefined {
+function config<T>(options: SharedOptions<T> | undefined | boolean, ...defaults: Array<Omit<T, 'isInEditor' | 'enable'>>): T | undefined {
   if (typeof options === 'boolean' || typeof options === 'undefined') return;
+
   const { enable, ...rest } = options;
+
+  if (defaults.length) {
+    return defu(rest, ...defaults) as T;
+  }
   return rest as T;
 }
 
@@ -109,7 +115,20 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
       console.warn('[eslint-config-sukka] React module will not be enabled when TypeScript is not set up.');
     } else {
       const eslint_sukka_react = (await foxquire<typeof import('@eslint-sukka/react')>('@eslint-sukka/react'));
-      flatConfigs.push(eslint_sukka_react.react(config(options?.react)));
+
+      const remixInstalled = isPackageExists('@remix-run/node')
+        || isPackageExists('@remix-run/react')
+        || isPackageExists('@remix-run/serve')
+        || isPackageExists('@remix-run/dev');
+
+      flatConfigs.push(eslint_sukka_react.react(config(options?.react, {
+        nextjs: nextjsInstalled,
+        remix: remixInstalled,
+        reactRefresh: {
+          allowConstantExport: isPackageExists('vite')
+        },
+        reactCompiler: (isPackageExists('babel-plugin-react-compiler') || isPackageExists('react-compiler-webpack')) ? 'error' : 'off'
+      })));
       if (enabled(options?.next, nextjsInstalled)) {
         flatConfigs.push(eslint_sukka_react.next());
       }
