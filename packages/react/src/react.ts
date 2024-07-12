@@ -408,7 +408,13 @@ export const react = ({
               : [])
           ]
         }
-      ]
+      ],
+      // memo(function Named() {});
+      // TODO: https://github.com/ArnaudBarre/eslint-plugin-react-refresh/issues/44
+      'prefer-arrow-callback': ['error', {
+        allowNamedFunctions: true,
+        allowUnboundThis: true
+      }]
     }
   }];
 };
