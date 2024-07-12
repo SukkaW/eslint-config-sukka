@@ -151,8 +151,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0(eslint@9.6.0)(typescript@5.5.3)
       eslint-plugin-import-x:
-        specifier: ^3.0.0
-        version: 3.0.0(eslint@9.6.0)(typescript@5.5.3)
+        specifier: ^3.0.1
+        version: 3.0.1(eslint@9.6.0)(typescript@5.5.3)
       eslint-plugin-jsonc:
         specifier: ^2.16.0
         version: 2.16.0(eslint@9.6.0)
@@ -1205,6 +1205,9 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@rtsao/scc@1.1.0':
+    resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
+
   '@stylexjs/eslint-plugin@0.7.5':
     resolution: {integrity: sha512-FLKsjfmPbnXXFHcBuB0HwzwQRftlNejA+yzfBOE5fBjXZnzQZyKTJzMrI29c89FpyPr+jd4F0X1RUJrGNj2Jfg==}
 
@@ -1857,8 +1860,8 @@ packages:
     peerDependencies:
       eslint: '>=8'
 
-  eslint-plugin-import-x@3.0.0:
-    resolution: {integrity: sha512-zk3QklFELk7mrSlhP9C27NpKx86G5YtIEvDV1dIJRS3VOIm5tCHQCln2JkwbO5lpYOvyYSoro35PCAAVG9lY8w==}
+  eslint-plugin-import-x@3.0.1:
+    resolution: {integrity: sha512-jzQgJuE4ssxwNi0aMBkOL8whd4eHb0Z/uFWsk8uEoYB7xwTkAptSKojLzRswxgf/1bhH6QgcLjgabUBQqluBIg==}
     engines: {node: '>=16'}
     peerDependencies:
       eslint: ^8.56.0 || ^9.0.0-0
@@ -3855,6 +3858,8 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.18.1':
     optional: true
 
+  '@rtsao/scc@1.1.0': {}
+
   '@stylexjs/eslint-plugin@0.7.5':
     dependencies:
       micromatch: 4.0.7
@@ -4588,9 +4593,10 @@ snapshots:
       eslint: 9.6.0
       eslint-compat-utils: 0.5.1(eslint@9.6.0)
 
-  eslint-plugin-import-x@3.0.0(eslint@9.6.0)(typescript@5.5.3):
+  eslint-plugin-import-x@3.0.1(eslint@9.6.0)(typescript@5.5.3):
     dependencies:
-      '@typescript-eslint/utils': 7.15.0(eslint@9.6.0)(typescript@5.5.3)
+      '@rtsao/scc': 1.1.0
+      '@typescript-eslint/utils': 7.16.0(eslint@9.6.0)(typescript@5.5.3)
       debug: 4.3.5
       doctrine: 3.0.0
       eslint: 9.6.0
