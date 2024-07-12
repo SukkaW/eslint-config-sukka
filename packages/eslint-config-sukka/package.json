@@ -41,6 +41,7 @@
     "@stylistic/eslint-plugin-ts": "2.3.0",
     "@typescript-eslint/parser": "8.0.0-alpha.39",
     "ci-info": "^4.0.0",
+    "defu": "^6.1.4",
     "eslint-import-resolver-ts-bundled": "workspace:*",
     "eslint-plugin-autofix": "^2.1.0",
     "eslint-plugin-deprecation": "^3.0.0",

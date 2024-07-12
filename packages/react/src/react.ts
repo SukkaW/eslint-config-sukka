@@ -7,6 +7,8 @@ import { eslint_plugin_jsx_a11y_minimal } from '@eslint-sukka/eslint-plugin-reac
 import eslint_plugin_react_hooks from 'eslint-plugin-react-hooks';
 // @ts-expect-error -- no types
 import eslint_plugin_react_compiler from 'eslint-plugin-react-compiler';
+// @ts-expect-error -- no types
+import eslint_plugin_react_refresh from 'eslint-plugin-react-refresh';
 
 import eslint_plugin_react_prefer_function_component from 'eslint-plugin-react-prefer-function-component';
 
@@ -28,13 +30,29 @@ export interface OptionsReact {
   /**
    * @default 'error'
    */
-  reactCompiler?: 'off' | 'warn' | 'error'
+  reactCompiler?: 'off' | 'warn' | 'error',
+
+  nextjs?: boolean,
+  remix?: boolean,
+  reactRefresh?: {
+    allowConstantExport?: boolean
+  }
 }
 
 const memoized_eslint_react = memo(eslint_react, '@eslint-react/eslint-plugin');
 const memoized_eslint_plugin_ssr_friendly = memo(fixupPluginRules(eslint_plugin_ssr_friendly), 'eslint-plugin-ssr-friendly');
 
-export const react = ({ reactCompiler = 'error', additionalHooks = '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)' }: OptionsReact = {}): FlatESLintConfigItem[] => {
+export const react = ({
+  reactCompiler = 'error',
+  additionalHooks = '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)',
+  nextjs = false,
+  remix = false,
+  reactRefresh = {}
+}: OptionsReact = {}): FlatESLintConfigItem[] => {
+  const {
+    allowConstantExport = false
+  } = reactRefresh;
+
   return [{
     name: '@eslint-sukka/react base',
     files: [
@@ -50,7 +68,8 @@ export const react = ({ reactCompiler = 'error', additionalHooks = '(useIsomorph
       'react-prefer-function-component': memo(eslint_plugin_react_prefer_function_component, 'eslint-plugin-react-prefer-function-component'),
       'react-compiler': memo(eslint_plugin_react_compiler, 'eslint-plugin-react-compiler'),
       ...memoized_eslint_react.configs['recommended-type-checked'].plugins as any,
-      'ssr-friendly': memoized_eslint_plugin_ssr_friendly
+      'ssr-friendly': memoized_eslint_plugin_ssr_friendly,
+      'react-refresh': eslint_plugin_react_refresh
     },
     settings: {
       react: {
@@ -362,7 +381,36 @@ export const react = ({ reactCompiler = 'error', additionalHooks = '(useIsomorph
       'jsx-a11y-minimal/no-access-key': 'warn',
       'jsx-a11y-minimal/role-has-required-aria-props': 'warn',
       'jsx-a11y-minimal/role-supports-aria-props': 'warn',
-      'jsx-a11y-minimal/tabindex-no-positive': 'warn'
+      'jsx-a11y-minimal/tabindex-no-positive': 'warn',
+
+      // react refresh
+      'react-refresh/only-export-components': [
+        'warn',
+        {
+          allowConstantExport,
+          allowExportNames: [
+            ...(nextjs
+              ? [
+                'config',
+                'generateStaticParams',
+                'metadata',
+                'generateMetadata',
+                'viewport',
+                'generateViewport'
+              ]
+              : []),
+            ...(remix
+              ? [
+                'meta',
+                'links',
+                'headers',
+                'loader',
+                'action'
+              ]
+              : [])
+          ]
+        }
+      ]
     }
   }];
 };
