@@ -11,6 +11,8 @@ export type { RuleModule, ExportedRuleModule, RuleContext } from './create-eslin
 
 export { resolve as importMetaResolve } from '@dual-bundle/import-meta-resolve';
 
+export * as globals from './globals';
+
 export const ruleopt = <S extends Linter.RuleLevel, Options extends any[] = any[]>(
   severity: S,
   ...opt: Options

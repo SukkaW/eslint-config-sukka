@@ -1,11 +1,9 @@
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
-import { RESTRICTED_IMPORT_NODE_REQUIRE, getPackageJson, memo } from '@eslint-sukka/shared';
+import { RESTRICTED_IMPORT_NODE_REQUIRE, getPackageJson, globals, memo } from '@eslint-sukka/shared';
 
 import eslint_plugin_sukka from 'eslint-plugin-sukka';
 import eslint_plugin_n from 'eslint-plugin-n';
-
-import { node as globalsNode } from 'globals';
 
 export interface OptionsNode {
   strict?: boolean,
@@ -76,7 +74,7 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
         'n/no-restricted-require': ['error', RESTRICTED_IMPORT_NODE_REQUIRE]
       },
       languageOptions: {
-        globals: globalsNode
+        globals: globals.node
       }
     }
   ];

@@ -34,9 +34,13 @@ interface RollupConfigPlugin {
 
 const nonNullable = <T>(value: T): value is NonNullable<T> => value !== null && value !== undefined;
 
-const manualChunks: GetManualChunk = (id: string) => {
+const manualChunks: GetManualChunk = (id: string, { getModuleInfo }) => {
   if (id.includes('node_modules')) {
-    return 'vendor';
+    const info = getModuleInfo(id);
+
+    if (info && info.dynamicImporters.length > 0) {
+      return 'vendor';
+    }
   }
 };
 
@@ -64,8 +68,10 @@ export const createRollupConfig = (
         dir: 'dist',
         format: 'cjs',
         chunkFileNames: '[name]-[hash].cjs', entryFileNames: 'index.cjs',
-        minifyInternalExports: true, hoistTransitiveImports: false, compact: true,
-        manualChunks
+        minifyInternalExports: true, hoistTransitiveImports: false,
+        manualChunks,
+        // This could breaks rollup runtime
+        compact: false
       },
       buildCjsOnly
         ? null
@@ -73,8 +79,10 @@ export const createRollupConfig = (
           dir: 'dist',
           format: 'esm',
           chunkFileNames: '[name]-[hash].mjs', entryFileNames: 'index.mjs',
-          minifyInternalExports: true, hoistTransitiveImports: false, compact: true,
-          manualChunks
+          minifyInternalExports: true, hoistTransitiveImports: false,
+          manualChunks,
+          // This could breaks rollup runtime
+          compact: false
         }
     ] satisfies Array<RollupOutputOptions | null>).filter(nonNullable),
     plugins: [

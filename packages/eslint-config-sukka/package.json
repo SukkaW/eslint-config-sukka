@@ -51,7 +51,6 @@
     "eslint-plugin-sukka": "workspace:*",
     "eslint-plugin-sukka-ts": "workspace:*",
     "eslint-plugin-unused-imports": "4.0.0",
-    "globals": "^15.8.0",
     "jsonc-eslint-parser": "^2.4.0",
     "local-pkg": "^0.5.0",
     "picocolors": "^1.0.1",

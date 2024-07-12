@@ -1,4 +1,4 @@
-import { constants, memo } from '@eslint-sukka/shared';
+import { constants, memo, globals } from '@eslint-sukka/shared';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import { eslint_plugin_jsx_a11y_minimal } from '@eslint-sukka/eslint-plugin-react-jsx-a11y';
@@ -17,8 +17,6 @@ import eslint_react from '@eslint-react/eslint-plugin';
 import stylisticJsx from '@stylistic/eslint-plugin-jsx';
 // @ts-expect-error -- no types
 import eslint_plugin_ssr_friendly from 'eslint-plugin-ssr-friendly';
-
-import { browser as globalsBrowser } from 'globals';
 
 import { fixupPluginRules } from '@eslint/compat';
 
@@ -77,7 +75,7 @@ export const react = ({
       }
     },
     languageOptions: {
-      globals: globalsBrowser
+      globals: globals.browser
     },
     rules: {
       // plugin:react-hooks/recommended

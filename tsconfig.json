@@ -3,6 +3,7 @@
     "target": "es2020",
     "module": "es2020",
     "moduleResolution": "bundler",
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "strict": true,
     "strictNullChecks": true,

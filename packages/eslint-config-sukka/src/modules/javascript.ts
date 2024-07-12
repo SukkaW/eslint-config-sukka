@@ -1,6 +1,6 @@
 // @ts-expect-error -- no types
 import eslint_js from '@eslint/js';
-import { memo, RESTRICTED_IMPORT_JS, constants } from '@eslint-sukka/shared';
+import { memo, RESTRICTED_IMPORT_JS, constants, globals } from '@eslint-sukka/shared';
 
 import stylisticJs from '@stylistic/eslint-plugin-js';
 import stylisticPlus from '@stylistic/eslint-plugin-plus';
@@ -12,13 +12,6 @@ import eslint_plugin_sukka from 'eslint-plugin-sukka';
 import eslint_plugin_autofix from 'eslint-plugin-autofix';
 
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
-
-import {
-  es2024 as globalsEs2024,
-  browser as globalsBrowser,
-  webextensions as globalsWebextensions,
-  greasemonkey as globalsGreasemonkey
-} from 'globals';
 
 export interface OptionsJavaScript {
   /**
@@ -97,10 +90,10 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
           }
         },
         globals: {
-          ...globalsEs2024,
-          ...(browser && globalsBrowser),
-          ...(webextensions && globalsWebextensions),
-          ...(greasemonkey && globalsGreasemonkey),
+          ...globals.es2025,
+          ...(browser && globals.browser),
+          ...(webextensions && globals.webextensions),
+          ...(greasemonkey && globals.greasemonkey),
           ...customGlobals
         }
       },
