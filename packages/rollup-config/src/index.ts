@@ -10,7 +10,7 @@ import type { RollupAliasOptions } from '@rollup/plugin-alias';
 import { visualizer } from 'rollup-plugin-visualizer';
 import replace from '@rollup/plugin-replace';
 
-import { rollupFoxquire } from './rollup-foxquire';
+import { rollupFoximport } from './rollup-foxquire';
 
 import type { RollupOptions, OutputOptions as RollupOutputOptions, InputOption as RollupInputOption } from 'rollup';
 
@@ -58,7 +58,7 @@ export const createRollupConfig = (
       buildCjsOnly ? null : { file: 'dist/index.mjs', format: 'esm', hoistTransitiveImports: false }
     ] satisfies Array<RollupOutputOptions | null>).filter(nonNullable),
     plugins: [
-      foxquire && rollupFoxquire(),
+      foxquire && rollupFoximport(),
       replace({
         values: {
           'typeof window': JSON.stringify('undefined'),

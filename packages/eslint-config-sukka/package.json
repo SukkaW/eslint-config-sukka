@@ -32,6 +32,8 @@
   "author": "Sukka <https://skk.moe>",
   "license": "MIT",
   "dependencies": {
+    "@antfu/install-pkg": "^0.3.3",
+    "@clack/prompts": "^0.7.0",
     "@eslint-community/eslint-plugin-eslint-comments": "^4.3.0",
     "@eslint-sukka/shared": "workspace:*",
     "@eslint/compat": "^1.1.1",
