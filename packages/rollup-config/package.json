@@ -1,6 +1,6 @@
 {
   "name": "@eslint-sukka/rollup-config",
-  "version": "6.1.3",
+  "version": "6.1.4",
   "private": true,
   "description": "Sukka's ESLint config",
   "homepage": "https://github.com/SukkaW/eslint-config-sukka",
