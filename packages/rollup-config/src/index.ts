@@ -10,6 +10,7 @@ import type { RollupAliasOptions } from '@rollup/plugin-alias';
 import { visualizer } from 'rollup-plugin-visualizer';
 import replace from '@rollup/plugin-replace';
 
+import { cleandir } from './rollup-cleandir';
 import { rollupFoximport } from './rollup-foxquire';
 
 import type { RollupOptions, OutputOptions as RollupOutputOptions, InputOption as RollupInputOption, GetManualChunk } from 'rollup';
@@ -86,6 +87,7 @@ export const createRollupConfig = (
         }
     ] satisfies Array<RollupOutputOptions | null>).filter(nonNullable),
     plugins: [
+      cleandir(),
       foxquire && rollupFoximport(),
       replace({
         values: {

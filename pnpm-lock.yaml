@@ -171,9 +171,6 @@ importers:
       jsonc-eslint-parser:
         specifier: ^2.4.0
         version: 2.4.0
-      local-pkg:
-        specifier: ^0.5.0
-        version: 0.5.0
       picocolors:
         specifier: ^1.0.1
         version: 1.0.1
@@ -202,6 +199,9 @@ importers:
       eslint-config-flat-gitignore:
         specifier: ^0.1.7
         version: 0.1.7
+      local-pkg:
+        specifier: ^0.5.0
+        version: 0.5.0
 
   packages/eslint-formatter-sukka:
     dependencies:
