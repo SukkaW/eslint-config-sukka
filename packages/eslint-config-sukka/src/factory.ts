@@ -92,13 +92,15 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
     // ignores
     ignores(options?.ignores),
     // comments
-    comment(),
-    // promise,
-    promise({ typescript: typescriptEnabled })
+    comment()
   );
-  // javascript
   if (enabled(options?.js, true)) {
-    flatConfigs.push(javascript(config(options?.js)));
+    flatConfigs.push(
+      // javascript
+      javascript(config(options?.js)),
+      // promise,
+      promise({ typescript: typescriptEnabled })
+    );
   }
   // json
   if (enabled(options?.json, true)) {
@@ -111,9 +113,7 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
   // react
   const nextjsInstalled = isPackageExists('next');
   if (enabled(options?.react, isPackageExists('react') || nextjsInstalled)) {
-    if (!typescriptEnabled) {
-      console.warn('[eslint-config-sukka] React module will not be enabled when TypeScript is not set up.');
-    } else {
+    if (typescriptEnabled) {
       const eslint_sukka_react = (await foxquire<typeof import('@eslint-sukka/react')>('@eslint-sukka/react'));
 
       const remixInstalled = isPackageExists('@remix-run/node')
@@ -132,9 +132,11 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
       if (enabled(options?.next, nextjsInstalled)) {
         flatConfigs.push(eslint_sukka_react.next());
       }
-      if (enabled(options?.stylex, isPackageExists('@stylexjs/stylex'))) {
+      if (enabled(options?.stylex, isPackageExists('@stylexjs/stylex') || isPackageExists('stylex-webpack'))) {
         flatConfigs.push(eslint_sukka_react.stylex(config(options?.stylex)));
       }
+    } else {
+      console.warn('[eslint-config-sukka] React preset will not be enabled when TypeScript is missing.');
     }
   }
   // node
