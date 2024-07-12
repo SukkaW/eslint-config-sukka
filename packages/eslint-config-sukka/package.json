@@ -52,16 +52,17 @@
     "eslint-plugin-sukka-ts": "workspace:*",
     "eslint-plugin-unused-imports": "4.0.0",
     "jsonc-eslint-parser": "^2.4.0",
-    "local-pkg": "^0.5.0",
     "picocolors": "^1.0.1",
     "typescript-eslint": "8.0.0-alpha.39"
   },
   "devDependencies": {
+    "@antfu/install-pkg": "^0.3.3",
+    "@clack/prompts": "^0.7.0",
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
     "@typescript-eslint/eslint-plugin": "8.0.0-alpha.39",
     "eslint-config-flat-gitignore": "^0.1.7",
-    "globals": "^15.8.0"
+    "local-pkg": "^0.5.0"
   }
 }

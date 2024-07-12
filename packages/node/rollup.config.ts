@@ -4,6 +4,5 @@ export default createRollupConfig(new URL('./package.json', import.meta.url), []
   nodeResolve: true,
   commonjs: {
     ignoreDynamicRequires: true
-  },
-  json: true
+  }
 });

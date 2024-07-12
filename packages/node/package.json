@@ -36,7 +36,6 @@
     "eslint-plugin-sukka": "workspace:*"
   },
   "devDependencies": {
-    "@eslint-sukka/rollup-config": "workspace:*",
-    "globals": "^15.8.0"
+    "@eslint-sukka/rollup-config": "workspace:*"
   }
 }

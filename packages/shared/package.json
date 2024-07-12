@@ -36,6 +36,7 @@
     "@typescript-eslint/utils": "8.0.0-alpha.39"
   },
   "devDependencies": {
-    "@eslint-sukka/rollup-config": "workspace:*"
+    "@eslint-sukka/rollup-config": "workspace:*",
+    "globals": "^15.8.0"
   }
 }

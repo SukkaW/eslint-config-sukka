@@ -4,18 +4,18 @@ import { MagicString } from '@napi-rs/magic-string';
 
 const CJSShim = `
 // -- CommonJS Shims --
-const foxquire = (id) => Promise.resolve(require(id));
+const foximport = (id) => Promise.resolve(require(id));
 `;
 const ESMShim = `
 // -- ESM Shims --
-const foxquire = (id) => import(id);
+const foximport = (id) => import(id);
 `;
 
-export const rollupFoxquire = (): Plugin => {
+export const rollupFoximport = (): Plugin => {
   return {
     name: 'esm-cjs-bridge',
     renderChunk(code, _chunk, opts) {
-      if (code.includes('foxquire')) {
+      if (code.includes('foximport')) {
         const ms = new MagicString(code);
         if (opts.format === 'es') {
           if (!code.includes(ESMShim)) {

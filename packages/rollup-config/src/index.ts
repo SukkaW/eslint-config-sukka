@@ -10,9 +10,10 @@ import type { RollupAliasOptions } from '@rollup/plugin-alias';
 import { visualizer } from 'rollup-plugin-visualizer';
 import replace from '@rollup/plugin-replace';
 
-import { rollupFoxquire } from './rollup-foxquire';
+import { cleandir } from './rollup-cleandir';
+import { rollupFoximport } from './rollup-foxquire';
 
-import type { RollupOptions, OutputOptions as RollupOutputOptions, InputOption as RollupInputOption } from 'rollup';
+import type { RollupOptions, OutputOptions as RollupOutputOptions, InputOption as RollupInputOption, GetManualChunk } from 'rollup';
 
 import fs from 'fs';
 import type { PathLike } from 'fs';
@@ -34,6 +35,16 @@ interface RollupConfigPlugin {
 
 const nonNullable = <T>(value: T): value is NonNullable<T> => value !== null && value !== undefined;
 
+const manualChunks: GetManualChunk = (id: string, { getModuleInfo }) => {
+  if (id.includes('node_modules')) {
+    const info = getModuleInfo(id);
+
+    if (info && info.dynamicImporters.length > 0) {
+      return 'vendor';
+    }
+  }
+};
+
 export const createRollupConfig = (
   packageJsonPath: PathLike,
   externalDependencies: string[] = [],
@@ -54,11 +65,30 @@ export const createRollupConfig = (
   return [{
     input,
     output: ([
-      { file: 'dist/index.cjs', format: 'cjs', hoistTransitiveImports: false },
-      buildCjsOnly ? null : { file: 'dist/index.mjs', format: 'esm', hoistTransitiveImports: false }
+      {
+        dir: 'dist',
+        format: 'cjs',
+        chunkFileNames: '[name]-[hash].cjs', entryFileNames: 'index.cjs',
+        minifyInternalExports: true, hoistTransitiveImports: false,
+        manualChunks,
+        // This could breaks rollup runtime
+        compact: false
+      },
+      buildCjsOnly
+        ? null
+        : {
+          dir: 'dist',
+          format: 'esm',
+          chunkFileNames: '[name]-[hash].mjs', entryFileNames: 'index.mjs',
+          minifyInternalExports: true, hoistTransitiveImports: false,
+          manualChunks,
+          // This could breaks rollup runtime
+          compact: false
+        }
     ] satisfies Array<RollupOutputOptions | null>).filter(nonNullable),
     plugins: [
-      foxquire && rollupFoxquire(),
+      cleandir(),
+      foxquire && rollupFoximport(),
       replace({
         values: {
           'typeof window': JSON.stringify('undefined'),
@@ -110,7 +140,9 @@ export const createRollupConfig = (
       file: 'dist/index.d.ts'
     },
     plugins: [
-      dts()
+      dts({
+        respectExternal: true
+      })
     ],
     external
   }];

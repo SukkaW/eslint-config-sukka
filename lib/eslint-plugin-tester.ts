@@ -5,7 +5,7 @@ import { it } from 'vitest';
 import type { ExportedRuleModule } from '@eslint-sukka/shared';
 
 import tsEsLintParser from '@typescript-eslint/parser';
-import globals from 'globals';
+import { globals } from '@eslint-sukka/shared';
 
 const tester = new RuleTester({
   languageOptions: {

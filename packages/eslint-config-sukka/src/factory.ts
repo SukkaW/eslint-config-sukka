@@ -25,6 +25,7 @@ import { defu } from 'defu';
 // This is a small hack to make rollup-plugin-dts bundle all these types
 import type { OptionsReact, OptionsStyleX } from '../../react';
 import type { OptionsNode } from '../../node';
+import { foxquire } from './foxquire';
 
 type SharedOptions<T = object> = Omit<T, 'isInEditor' | 'enable'> & {
   enable?: boolean
