@@ -37,13 +37,6 @@ patchedDependencies:
 importers:
 
   .:
-    dependencies:
-      eslint-import-resolver-ts-bundled:
-        specifier: workspace:*
-        version: link:packages/eslint-import-resolver-ts-bundled
-      type-fest:
-        specifier: ^4.22.0
-        version: 4.22.0
     devDependencies:
       '@eslint-sukka/node':
         specifier: workspace:*
@@ -431,6 +424,9 @@ importers:
       '@typescript-eslint/utils':
         specifier: 8.0.0-alpha.39
         version: 8.0.0-alpha.39(eslint@9.7.0)(typescript@5.5.3)
+      type-fest:
+        specifier: ^4.22.0
+        version: 4.22.0
     devDependencies:
       '@eslint-sukka/rollup-config':
         specifier: workspace:*

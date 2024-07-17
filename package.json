@@ -13,10 +13,7 @@
   "keywords": [],
   "author": "Sukka <https://skk.moe>",
   "license": "MIT",
-  "dependencies": {
-    "eslint-import-resolver-ts-bundled": "workspace:*",
-    "type-fest": "^4.22.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/react": "workspace:*",
