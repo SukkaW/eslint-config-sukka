@@ -39,7 +39,7 @@
     "@stylistic/eslint-plugin-js": "2.3.0",
     "@stylistic/eslint-plugin-plus": "2.3.0",
     "@stylistic/eslint-plugin-ts": "2.3.0",
-    "@typescript-eslint/parser": "8.0.0-alpha.39",
+    "@typescript-eslint/parser": "8.0.0-alpha.45",
     "ci-info": "^4.0.0",
     "defu": "^6.1.4",
     "eslint-import-resolver-ts-bundled": "workspace:*",
@@ -53,7 +53,7 @@
     "eslint-plugin-unused-imports": "4.0.0",
     "jsonc-eslint-parser": "^2.4.0",
     "picocolors": "^1.0.1",
-    "typescript-eslint": "8.0.0-alpha.39"
+    "typescript-eslint": "8.0.0-alpha.45"
   },
   "devDependencies": {
     "@antfu/install-pkg": "^0.3.3",
@@ -61,7 +61,7 @@
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
-    "@typescript-eslint/eslint-plugin": "8.0.0-alpha.39",
+    "@typescript-eslint/eslint-plugin": "8.0.0-alpha.45",
     "eslint-config-flat-gitignore": "^0.1.8",
     "local-pkg": "^0.5.0"
   }

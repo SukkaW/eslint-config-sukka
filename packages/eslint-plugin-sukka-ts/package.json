@@ -28,8 +28,8 @@
   "license": "MIT",
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",
-    "@typescript-eslint/type-utils": "8.0.0-alpha.39",
-    "@typescript-eslint/utils": "8.0.0-alpha.39"
+    "@typescript-eslint/type-utils": "8.0.0-alpha.45",
+    "@typescript-eslint/utils": "8.0.0-alpha.45"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
