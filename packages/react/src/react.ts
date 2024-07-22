@@ -20,11 +20,25 @@ import eslint_plugin_ssr_friendly from 'eslint-plugin-ssr-friendly';
 
 import { fixupPluginRules } from '@eslint/compat';
 
+interface EslintReactAdditionalComponents {
+  name: string,
+  as: string,
+  attributes: Array<{
+    name: string,
+    as: string,
+    defaultValue?: string
+  }>
+}
+
 export interface OptionsReact {
   /**
    * @default '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)'
    */
   additionalHooks?: string,
+  additionalHooksWithType?: Record<string, string[]>,
+
+  additionalComponents?: EslintReactAdditionalComponents[],
+
   /**
    * @default 'error'
    */
@@ -45,7 +59,21 @@ export const react = ({
   additionalHooks = '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)',
   nextjs = false,
   remix = false,
-  reactRefresh = {}
+  reactRefresh = {},
+  additionalHooksWithType = {
+    useLayoutEffect: ['useIsomorphicLayoutEffect'],
+    useEffect: ['useAbortableEffect']
+  },
+  additionalComponents = [
+    {
+      name: 'Link',
+      as: 'a',
+      attributes: [
+        { name: 'to', as: 'href' },
+        { name: 'rel', as: 'rel' /* defaultValue: 'noopener noreferrer' */ }
+      ]
+    }
+  ]
 }: OptionsReact = {}): FlatESLintConfigItem[] => {
   const {
     allowConstantExport = false
@@ -70,8 +98,10 @@ export const react = ({
       'react-refresh': eslint_plugin_react_refresh
     },
     settings: {
-      react: {
-        version: 'detect'
+      'react-x': {
+        version: 'detect',
+        additionalHooks: additionalHooksWithType,
+        additionalComponents
       }
     },
     languageOptions: {
