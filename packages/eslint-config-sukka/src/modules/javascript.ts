@@ -12,6 +12,8 @@ import eslint_plugin_sukka from 'eslint-plugin-sukka';
 import eslint_plugin_autofix from 'eslint-plugin-autofix';
 
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
+// @ts-expect-error -- no types
+import hermesEslintParser from 'hermes-eslint';
 
 export interface OptionsJavaScript {
   /**
@@ -80,6 +82,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
       name: '@eslint-sukka/js base',
       ...(files ? { files } : {}),
       languageOptions: {
+        parser: hermesEslintParser,
         ecmaVersion: 'latest',
         sourceType: 'module',
         parserOptions: {
@@ -100,7 +103,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
       settings: {
         'import-x/parsers': {
           // TODO: remove this line once  #2556 is fixed
-          espree: allExtensions
+          'hermes-eslint': allExtensions
         },
         'import-x/extensions': allExtensions
       },

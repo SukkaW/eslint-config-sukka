@@ -99,7 +99,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         },
         'import-x/parsers': {
           // TODO: remove this line once eslint-plugin-import #2556 is fixed
-          espree: javaScriptExtensions,
+          'hermes-eslint': javaScriptExtensions,
           [typescriptEslintParserPath]: typescriptExtensions
         }
       },

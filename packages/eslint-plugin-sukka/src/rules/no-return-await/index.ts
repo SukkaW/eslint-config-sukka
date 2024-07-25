@@ -16,7 +16,7 @@ export default createRule({
 
     fixable: undefined,
 
-    deprecated: true,
+    deprecated: false,
 
     schema: [],
 

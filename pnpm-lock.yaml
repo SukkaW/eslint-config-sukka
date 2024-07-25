@@ -161,6 +161,9 @@ importers:
       eslint-plugin-unused-imports:
         specifier: 4.0.0
         version: 4.0.0(@typescript-eslint/eslint-plugin@8.0.0-alpha.45(@typescript-eslint/parser@8.0.0-alpha.45(eslint@9.7.0)(typescript@5.5.3))(eslint@9.7.0)(typescript@5.5.3))(eslint@9.7.0)
+      hermes-eslint:
+        specifier: ^0.23.0
+        version: 0.23.0
       jsonc-eslint-parser:
         specifier: ^2.4.0
         version: 2.4.0
@@ -2179,11 +2182,20 @@ packages:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
     engines: {node: '>=8'}
 
+  hermes-eslint@0.23.0:
+    resolution: {integrity: sha512-fbeKXUxdSo15g4dwnUIDh97Z9O6xdfax3rUfslH0rgZKivJ3pByvSYbPclkh6BZERlBfhIDYHMoiWexGla8lxw==}
+
   hermes-estree@0.20.1:
     resolution: {integrity: sha512-SQpZK4BzR48kuOg0v4pb3EAGNclzIlqMj3Opu/mu7bbAoFw6oig6cEt/RAi0zTFW/iW6Iz9X9ggGuZTAZ/yZHg==}
 
+  hermes-estree@0.23.0:
+    resolution: {integrity: sha512-Rkp0PNLGpORw4ktsttkVbpYJbrYKS3hAnkxu8D9nvQi6LvSbuPa+tYw/t2u3Gjc35lYd/k95YkjqyTcN4zspag==}
+
   hermes-parser@0.20.1:
     resolution: {integrity: sha512-BL5P83cwCogI8D7rrDCgsFY0tdYUtmFP9XaXtl2IQjC+2Xo+4okjfXintlTxcIwl4qeGddEl28Z11kbVIw0aNA==}
+
+  hermes-parser@0.23.0:
+    resolution: {integrity: sha512-xLwM4ylfHGwrm+2qXfO1JT/fnqEDGSnpS/9hQ4VLtqTexSviu2ZpBgz07U8jVtndq67qdb/ps0qvaWDZ3fkTyg==}
 
   hosted-git-info@2.8.9:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}
@@ -5022,11 +5034,23 @@ snapshots:
 
   has-flag@4.0.0: {}
 
+  hermes-eslint@0.23.0:
+    dependencies:
+      esrecurse: 4.3.0
+      hermes-estree: 0.23.0
+      hermes-parser: 0.23.0
+
   hermes-estree@0.20.1: {}
+
+  hermes-estree@0.23.0: {}
 
   hermes-parser@0.20.1:
     dependencies:
       hermes-estree: 0.20.1
+
+  hermes-parser@0.23.0:
+    dependencies:
+      hermes-estree: 0.23.0
 
   hosted-git-info@2.8.9: {}
 
