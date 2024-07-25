@@ -19,9 +19,9 @@
     "@eslint-sukka/shared": "workspace:*",
     "@stylistic/eslint-plugin-migrate": "^2.3.0",
     "@swc-node/register": "^1.10.9",
-    "@swc/core": "^1.7.0",
+    "@swc/core": "^1.7.1",
     "@types/eslint": "^8.56.10",
-    "@types/node": "^20.14.11",
+    "@types/node": "^20.14.12",
     "@typescript-eslint/utils": "8.0.0-alpha.45",
     "axe-core": "^4.9.1",
     "bumpp": "^9.4.1",
@@ -33,8 +33,8 @@
     "rollup": "^4.19.0",
     "rollup-plugin-visualizer": "^5.12.0",
     "turbo": "^2.0.9",
-    "typescript": "^5.5.3",
-    "vitest": "^2.0.3"
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.4"
   },
   "packageManager": "pnpm@9.5.0",
   "pnpm": {

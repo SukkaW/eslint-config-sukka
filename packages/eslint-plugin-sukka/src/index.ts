@@ -90,6 +90,7 @@ import require_number_to_fixed_digits_argument from 'eslint-plugin-unicorn/rules
 import template_indent from 'eslint-plugin-unicorn/rules/template-indent.js';
 import no_await_in_promise_methods from 'eslint-plugin-unicorn/rules/no-await-in-promise-methods.js';
 import no_negation_in_equality_check from 'eslint-plugin-unicorn/rules/no-negation-in-equality-check.js';
+import no_length_as_slice_end from 'eslint-plugin-unicorn/rules/no-length-as-slice-end.js';
 
 // eslint-plugin-sukka
 import ban_eslint_disable from './rules/ban-eslint-disable';
@@ -188,7 +189,8 @@ export default {
         'unicorn/template-indent': template_indent,
         'unicorn/no-single-promise-in-promise-methods': no_single_promise_in_promise_methods,
         'unicorn/no-await-in-promise-methods': no_await_in_promise_methods,
-        'unicorn/no-negation-in-equality-check': no_negation_in_equality_check
+        'unicorn/no-negation-in-equality-check': no_negation_in_equality_check,
+        'unicorn/no-length-as-slice-end': no_length_as_slice_end
       }).map(([ruleId, rule]) => [ruleId, loadUnicorn(rule, ruleId)])
     )
   }
