@@ -1,9 +1,9 @@
 import type { ParserServices, ParserServicesWithTypeInformation } from '@typescript-eslint/utils';
-import type { RuleContext, RuleListener, RuleMetaData } from '@typescript-eslint/utils/ts-eslint';
+import type { RuleContext, RuleListener, RuleMetaData, RuleRecommendation } from '@typescript-eslint/utils/ts-eslint';
 
 const BASE_URL = 'https://eslint-plugin.skk.moe/src/rules/';
 
-interface Metadata<MessageIDs extends string> extends RuleMetaData<MessageIDs> {
+interface Metadata<MessageIDs extends string, PluginDocs = unknown> extends RuleMetaData<MessageIDs, PluginDocs> {
   hidden?: boolean
 }
 
@@ -11,10 +11,11 @@ export interface RuleModule<
   TResolvedOptions,
   TOptions extends readonly unknown[],
   TMessageIDs extends string,
-  TRuleListener extends RuleListener
+  TRuleListener extends RuleListener,
+  TMetaDocs = unknown
 > {
   readonly name: string,
-  readonly meta: Metadata<TMessageIDs>,
+  readonly meta: Metadata<TMessageIDs, TMetaDocs>,
   resolveOptions?(...options: TOptions): TResolvedOptions,
   create(context: Readonly<RuleContext<TMessageIDs, TOptions>>, options: TResolvedOptions): TRuleListener
 }
@@ -34,8 +35,9 @@ export function createRule<
   TResolvedOptions,
   TOptions extends unknown[],
   TMessageIDs extends string,
-  TRuleListener extends RuleListener = RuleListener
->({ name, meta, create, resolveOptions }: RuleModule<TResolvedOptions, TOptions, TMessageIDs, TRuleListener>): any {
+  TRuleListener extends RuleListener = RuleListener,
+  PluginDocs = { recommended: RuleRecommendation }
+>({ name, meta, create, resolveOptions }: RuleModule<TResolvedOptions, TOptions, TMessageIDs, TRuleListener, PluginDocs>): any {
   if (meta.docs) {
     meta.docs.url ??= new URL(name, BASE_URL).toString();
   }
