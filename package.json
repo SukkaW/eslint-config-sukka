@@ -8,6 +8,7 @@
     "codegen": "turbo codegen",
     "test": "turbo test",
     "lint": "eslint --format=sukka .",
+    "prerelease": "pnpm run build && pnpm run lint",
     "release": "bumpp -r --all --commit \"release: %s\" --tag \"%s\""
   },
   "keywords": [],
