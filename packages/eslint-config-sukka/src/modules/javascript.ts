@@ -1,6 +1,6 @@
 // @ts-expect-error -- no types
 import eslint_js from '@eslint/js';
-import { memo, RESTRICTED_IMPORT_JS, constants, globals } from '@eslint-sukka/shared';
+import { memo, RESTRICTED_IMPORT_JS, constants, globals, getPackageJson } from '@eslint-sukka/shared';
 
 import stylisticJs from '@stylistic/eslint-plugin-js';
 import stylisticPlus from '@stylistic/eslint-plugin-plus';
@@ -12,10 +12,9 @@ import eslint_plugin_sukka from 'eslint-plugin-sukka';
 import eslint_plugin_autofix from 'eslint-plugin-autofix';
 
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
-// @ts-expect-error -- no types
-import hermesEslintParser from 'hermes-eslint';
 
 export interface OptionsJavaScript {
+  module?: boolean,
   /**
    * Apply the config to specific files. Default to eslint default.
    *
@@ -71,6 +70,8 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
   } = options;
   const { browser = true, webextensions = false, greasemonkey = false, customGlobals = {} } = env;
 
+  const isModule = options.module ?? (getPackageJson()?.type === 'module');
+
   const configs: FlatESLintConfigItem[] = [
     eslint_js.configs.recommended,
     {
@@ -82,12 +83,11 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
       name: '@eslint-sukka/js base',
       ...(files ? { files } : {}),
       languageOptions: {
-        parser: hermesEslintParser,
         ecmaVersion: 'latest',
-        sourceType: 'module',
+        sourceType: isModule ? 'module' : 'commonjs',
         parserOptions: {
           ecmaVersion: 'latest',
-          sourceType: 'module',
+          sourceType: isModule ? 'module' : 'commonjs',
           ecmaFeatures: {
             jsx: true
           }
@@ -99,11 +99,11 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
           ...(greasemonkey && globals.greasemonkey),
           ...customGlobals
         }
-      },
+      } satisfies FlatESLintConfigItem['languageOptions'],
       settings: {
         'import-x/parsers': {
           // TODO: remove this line once  #2556 is fixed
-          'hermes-eslint': allExtensions
+          espree: allExtensions
         },
         'import-x/extensions': allExtensions
       },

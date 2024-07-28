@@ -60,6 +60,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
       // ],
       languageOptions: {
         parser: ts_eslint_configs.base.languageOptions!.parser as any,
+        // always treats typescript files as module
         sourceType: 'module',
         parserOptions: {
           sourceType: 'module',
@@ -99,7 +100,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         },
         'import-x/parsers': {
           // TODO: remove this line once eslint-plugin-import #2556 is fixed
-          'hermes-eslint': javaScriptExtensions,
+          espree: javaScriptExtensions,
           [typescriptEslintParserPath]: typescriptExtensions
         }
       },
