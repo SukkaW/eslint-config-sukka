@@ -176,6 +176,7 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
       let ruleUrl;
 
       try {
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- in correct types of @types/eslint
         ruleUrl = data?.rulesMeta[x.ruleId]?.docs?.url;
       } catch { }
 
