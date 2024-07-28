@@ -13,7 +13,7 @@ export { resolve as importMetaResolve } from '@dual-bundle/import-meta-resolve';
 
 export * as globals from './globals';
 
-export const ruleopt = <S extends Linter.RuleLevel, Options extends any[] = any[]>(
+export const ruleopt = <S extends Linter.RuleSeverity, Options extends unknown[] = unknown[]>(
   severity: S,
   ...opt: Options
 ): Linter.RuleEntry<Options> => (opt.length ? [severity, ...opt] as const : severity);
