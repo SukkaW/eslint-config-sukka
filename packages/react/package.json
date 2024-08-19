@@ -1,6 +1,6 @@
 {
   "name": "@eslint-sukka/react",
-  "version": "6.1.10",
+  "version": "6.1.11-beta.1",
   "description": "Sukka's ESLint config",
   "homepage": "https://github.com/SukkaW/eslint-config-sukka",
   "repository": {
