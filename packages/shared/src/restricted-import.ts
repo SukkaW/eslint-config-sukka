@@ -61,13 +61,13 @@ const restrictedImportWithImportNames = [
   { name: 'lodash', message: 'Use https://www.npmjs.com/package/rfdc for Node.js / https://www.npmjs.com/package/klona for Browser instead', importNames: ['cloneDeep'] },
   { name: 'lodash-es', message: 'Use https://www.npmjs.com/package/rfdc for Node.js / https://www.npmjs.com/package/klona for Browser instead', importNames: ['cloneDeep'] },
   { name: 'uuid', importNames: ['v4'], message: 'Use https://www.npmjs.com/package/@lukeed/uuid instead' },
-  { name: 'assert', importNames: ['deepEqual'], message: 'Use https://www.npmjs.com/package/dequal instead' },
-  { name: 'react', importNames: ['default'], message: 'Use named import instead' }
+  { name: 'assert', importNames: ['deepEqual'], message: 'Use https://www.npmjs.com/package/dequal instead' }
 ];
 
 export const RESTRICTED_IMPORT_JS = [
   { name: 'date-fns', message: 'Please use date-fns/{submodule} instead.' },
   { name: 'async-call-rpc', message: 'Please use async-call-rpc/full instead.' },
+  { name: 'react', importNames: ['default'], message: 'Use named import instead' },
   ...restricedImportBase,
   ...BETTER_ALTERNATIVES,
   ...restrictedImportWithImportNames
@@ -76,6 +76,7 @@ export const RESTRICTED_IMPORT_JS = [
 export const RESTRICTED_IMPORT_TS = [
   { name: 'date-fns', message: 'Please use date-fns/{submodule} instead.', allowTypeImports: true },
   { name: 'async-call-rpc', message: 'Please use async-call-rpc/full instead.', allowTypeImports: true },
+  { name: 'react', importNames: ['default'], message: 'Use named import instead', allowTypeImports: true },
   ...restricedImportBase,
   ...BETTER_ALTERNATIVES,
   ...restrictedImportWithImportNames
