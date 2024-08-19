@@ -20,11 +20,11 @@
     "@eslint-sukka/shared": "workspace:*",
     "@stylistic/eslint-plugin-migrate": "^2.6.4",
     "@swc-node/register": "^1.10.9",
-    "@swc/core": "^1.7.12",
+    "@swc/core": "^1.7.14",
     "@types/eslint": "^9.6.0",
     "@types/node": "^20.16.1",
     "@typescript-eslint/utils": "8.0.0-alpha.45",
-    "axe-core": "^4.9.1",
+    "axe-core": "^4.10.0",
     "bumpp": "^9.5.1",
     "eslint": "^9.9.0",
     "eslint-config-sukka": "workspace:*",
@@ -63,7 +63,7 @@
     },
     "patchedDependencies": {
       "text-table@0.2.0": "patches/text-table@0.2.0.patch",
-      "axe-core@4.9.1": "patches/axe-core@4.9.1.patch"
+      "axe-core@4.10.0": "patches/axe-core@4.10.0.patch"
     }
   }
 }
