@@ -225,24 +225,21 @@ export const react = ({
       // 'react/style-prop-object': 'off',
 
       // Other rules
+      '@eslint-react/naming-convention/component-name': ['error', { rule: 'PascalCase' }],
       '@eslint-react/naming-convention/filename': ['error', { rule: 'kebab-case' }],
-
-      /* 'react/jsx-filename-extension': ['warn', {
-          extensions: ['.jsx', '.tsx']
-        }], */
       '@eslint-react/naming-convention/filename-extension': ['error', { allow: 'as-needed' }],
-
-      // Require stateless functions when not using lifecycle methods, setState or ref
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md
-      // Replaced by eslint-plugin-react-prefer-function-component
-      // 'react/prefer-stateless-function': 'off',
-      'react-prefer-function-component/react-prefer-function-component': 'error',
 
       // Ensure destructuring and symmetric naming of useState hook value and setter variables
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/c8833f301314dab3e79ef7ac4cf863e4d5fa0019/docs/rules/hook-use-state.md
       // Disable for now, fxxking way too many false positives, re-implement it in eslint-react
       // 'react/hook-use-state': 'off',
       '@eslint-react/naming-convention/use-state': 'error',
+
+      // Require stateless functions when not using lifecycle methods, setState or ref
+      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md
+      // Replaced by eslint-plugin-react-prefer-function-component
+      // 'react/prefer-stateless-function': 'off',
+      'react-prefer-function-component/react-prefer-function-component': 'error',
 
       // Prevent extra closing tags for components without children
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
