@@ -1,20 +1,27 @@
 import path from 'path';
 import { RuleTester } from '@typescript-eslint/utils/ts-eslint';
-import type { InvalidTestCase, ValidTestCase } from '@typescript-eslint/utils/ts-eslint';
-import { it } from 'vitest';
+import type { InvalidTestCase, ValidTestCase } from '@typescript-eslint/rule-tester';
 import type { ExportedRuleModule } from '@eslint-sukka/shared';
+// import { afterAll, describe, it } from 'vitest';
 
-import tsEsLintParser from '@typescript-eslint/parser';
 import { globals } from '@eslint-sukka/shared';
+import { it } from 'vitest';
+
+// RuleTester.afterAll = afterAll;
+// RuleTester.it = it;
+// RuleTester.itOnly = it.only;
+// RuleTester.itSkip = it.skip;
+// RuleTester.describe = describe;
+// RuleTester.describeSkip = describe.skip;
 
 const tester = new RuleTester({
   languageOptions: {
     sourceType: 'module',
     ecmaVersion: 'latest',
-    parser: tsEsLintParser,
     globals: {
       ...globals.browser
     },
+    parser: require('@typescript-eslint/parser'),
     parserOptions: {
       tsconfigRootDir: path.join(__dirname, '..', 'tests', 'fixtures'),
       project: true,

@@ -1,271 +1,272 @@
 import module from './index';
 import { runTest } from '../../../../../lib/eslint-plugin-tester';
+import dedent from 'ts-dedent';
 
 runTest({
   module,
   *valid() {
-    yield `
+    yield dedent`
       function f(s: string[]) {
         s[0] === "a"
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s[0] + "a"
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s[1] === "a"
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string | string[]) {
         s[0] === "a"
       }
     `;
-    yield `
+    yield dedent`
       function f(s: any) {
         s[0] === "a"
       }
     `;
-    yield `
+    yield dedent`
       function f<T>(s: T) {
         s[0] === "a"
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string[]) {
         s[s.length - 1] === "a"
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s[s.length - 2] === "a"
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string[]) {
         s.charAt(0) === "a"
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.charAt(0) + "a"
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.charAt(1) === "a"
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.charAt() === "a"
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string[]) {
         s.charAt(s.length - 1) === "a"
       }
     `;
-    yield `
+    yield dedent`
       function f(a: string, b: string, c: string) {
         (a + b).charAt((a + c).length - 1) === "a"
       }
     `;
-    yield `
+    yield dedent`
       function f(a: string, b: string, c: string) {
         (a + b).charAt(c.length - 1) === "a"
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string[]) {
         s.indexOf(needle) === 0
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string | string[]) {
         s.indexOf(needle) === 0
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.indexOf(needle) === s.length - needle.length
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string[]) {
         s.lastIndexOf(needle) === s.length - needle.length
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.lastIndexOf(needle) === 0
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.match(/^foo/)
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.match(/foo$/)
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.match(/^foo/) + 1
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.match(/foo$/) + 1
       }
     `;
-    yield `
+    yield dedent`
       function f(s: { match(x: any): boolean }) {
         s.match(/^foo/) !== null
       }
     `;
-    yield `
+    yield dedent`
       function f(s: { match(x: any): boolean }) {
         s.match(/foo$/) !== null
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.match(/foo/) !== null
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.match(/^foo$/) !== null
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.match(/^foo./) !== null
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.match(/^foo|bar/) !== null
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.match(new RegExp("")) !== null
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.match(pattern) !== null // cannot check '^'/'$'
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.match(new RegExp("^/!{[", "u")) !== null // has syntax error
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.match() !== null
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.match(777) !== null
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string[]) {
         s.slice(0, needle.length) === needle
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string[]) {
         s.slice(-needle.length) === needle
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.slice(1, 4) === "bar"
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.slice(-4, -1) === "bar"
       }
     `;
     // https://github.com/typescript-eslint/typescript-eslint/issues/1690
-    yield `
+    yield dedent`
       function f(s: string) {
         s.slice(1) === "bar"
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         pattern.test(s)
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         /^bar/.test()
       }
     `;
-    yield `
+    yield dedent`
       function f(x: { test(): void }, s: string) {
         x.test(s)
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.slice(0, -4) === "car"
       }
     `;
-    yield `
+    yield dedent`
       function f(x: string, s: string) {
         x.endsWith('foo') && x.slice(0, -4) === 'bar'
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s[0] === "a"
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s[0] !== "a"
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s[0] == "a"
       }
     `;
-    yield `
-    function f(s: string) {
-      s[0] != "a"
-    }
+    yield dedent`
+      function f(s: string) {
+        s[0] != "a"
+      }
     `;
-    yield `
-    function f(s: string) {
-      (s)[0] === ("a")
-    }
+    yield dedent`
+      function f(s: string) {
+        (s)[0] === ("a")
+      }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.slice(0, length) === needle // the 'length' can be different to 'needle.length'
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.slice(-length) === needle // 'length' can be different
       }
     `;
-    yield `
+    yield dedent`
       function f(s: string) {
         s.slice(0, 3) === needle
       }
@@ -273,12 +274,12 @@ runTest({
   },
   *invalid() {
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s[0] === "あ"
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.startsWith("あ")
         }
@@ -286,7 +287,7 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s[0] === "👍" // the length is 2.
         }
@@ -295,7 +296,7 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string, t: string) {
           s[0] === t // the length of t is unknown.
         }
@@ -304,12 +305,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s[s.length - 1] === "a"
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.endsWith("a")
         }
@@ -318,12 +319,12 @@ runTest({
     };
     // String#charAt
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.charAt(0) === "a"
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.startsWith("a")
         }
@@ -331,12 +332,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.charAt(0) !== "a"
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           !s.startsWith("a")
         }
@@ -344,12 +345,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.charAt(0) == "a"
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.startsWith("a")
         }
@@ -357,12 +358,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.charAt(0) != "a"
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           !s.startsWith("a")
         }
@@ -370,12 +371,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.charAt(0) === "あ"
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.startsWith("あ")
         }
@@ -383,7 +384,7 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.charAt(0) === "👍" // the length is 2.
         }
@@ -392,7 +393,7 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string, t: string) {
           s.charAt(0) === t // the length of t is unknown.
         }
@@ -401,12 +402,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.charAt(s.length - 1) === "a"
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.endsWith("a")
         }
@@ -414,12 +415,12 @@ runTest({
       errors: [{ messageId: 'preferEndsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           (s).charAt(0) === "a"
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           (s).startsWith("a")
         }
@@ -429,12 +430,12 @@ runTest({
 
     // String#indexOf
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.indexOf(needle) === 0
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.startsWith(needle)
         }
@@ -442,12 +443,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.indexOf(needle) !== 0
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           !s.startsWith(needle)
         }
@@ -455,12 +456,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.indexOf(needle) == 0
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.startsWith(needle)
         }
@@ -468,12 +469,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.indexOf(needle) != 0
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           !s.startsWith(needle)
         }
@@ -483,12 +484,12 @@ runTest({
 
     // String#lastIndexOf
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.lastIndexOf("bar") === s.length - 3
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.endsWith("bar")
         }
@@ -496,12 +497,12 @@ runTest({
       errors: [{ messageId: 'preferEndsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.lastIndexOf("bar") !== s.length - 3
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           !s.endsWith("bar")
         }
@@ -509,12 +510,12 @@ runTest({
       errors: [{ messageId: 'preferEndsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.lastIndexOf("bar") == s.length - 3
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.endsWith("bar")
         }
@@ -522,12 +523,12 @@ runTest({
       errors: [{ messageId: 'preferEndsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.lastIndexOf("bar") != s.length - 3
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           !s.endsWith("bar")
         }
@@ -535,12 +536,12 @@ runTest({
       errors: [{ messageId: 'preferEndsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.lastIndexOf("bar") === s.length - "bar".length
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.endsWith("bar")
         }
@@ -548,12 +549,12 @@ runTest({
       errors: [{ messageId: 'preferEndsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.lastIndexOf(needle) === s.length - needle.length
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.endsWith(needle)
         }
@@ -563,12 +564,12 @@ runTest({
 
     // String#match
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.match(/^bar/) !== null
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.startsWith("bar")
         }
@@ -576,12 +577,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.match(/^bar/) != null
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.startsWith("bar")
         }
@@ -589,12 +590,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.match(/bar$/) !== null
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.endsWith("bar")
         }
@@ -602,12 +603,12 @@ runTest({
       errors: [{ messageId: 'preferEndsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.match(/bar$/) != null
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.endsWith("bar")
         }
@@ -615,12 +616,12 @@ runTest({
       errors: [{ messageId: 'preferEndsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.match(/^bar/) === null
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           !s.startsWith("bar")
         }
@@ -628,12 +629,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.match(/^bar/) == null
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           !s.startsWith("bar")
         }
@@ -641,12 +642,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.match(/bar$/) === null
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           !s.endsWith("bar")
         }
@@ -654,12 +655,12 @@ runTest({
       errors: [{ messageId: 'preferEndsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.match(/bar$/) == null
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           !s.endsWith("bar")
         }
@@ -667,13 +668,13 @@ runTest({
       errors: [{ messageId: 'preferEndsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         const pattern = /^bar/
         function f(s: string) {
           s.match(pattern) != null
         }
       `,
-      output: `
+      output: dedent`
         const pattern = /^bar/
         function f(s: string) {
           s.startsWith("bar")
@@ -682,13 +683,13 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         const pattern = new RegExp("^bar")
         function f(s: string) {
           s.match(pattern) != null
         }
       `,
-      output: `
+      output: dedent`
         const pattern = new RegExp("^bar")
         function f(s: string) {
           s.startsWith("bar")
@@ -697,13 +698,13 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         const pattern = /^"quoted"/
         function f(s: string) {
           s.match(pattern) != null
         }
       `,
-      output: `
+      output: dedent`
         const pattern = /^"quoted"/
         function f(s: string) {
           s.startsWith("\\"quoted\\"")
@@ -714,12 +715,12 @@ runTest({
 
     // String#slice
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.slice(0, 3) === "bar"
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.startsWith("bar")
         }
@@ -727,12 +728,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.slice(0, 3) !== "bar"
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           !s.startsWith("bar")
         }
@@ -740,12 +741,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.slice(0, 3) == "bar"
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.startsWith("bar")
         }
@@ -753,12 +754,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.slice(0, 3) != "bar"
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           !s.startsWith("bar")
         }
@@ -766,12 +767,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.slice(0, needle.length) === needle
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.startsWith(needle)
         }
@@ -779,7 +780,7 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.slice(0, needle.length) == needle // hating implicit type conversion
         }
@@ -788,12 +789,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.slice(-3) === "bar"
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.endsWith("bar")
         }
@@ -801,12 +802,12 @@ runTest({
       errors: [{ messageId: 'preferEndsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.slice(-3) !== "bar"
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           !s.endsWith("bar")
         }
@@ -814,12 +815,12 @@ runTest({
       errors: [{ messageId: 'preferEndsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.slice(-needle.length) === needle
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.endsWith(needle)
         }
@@ -827,12 +828,12 @@ runTest({
       errors: [{ messageId: 'preferEndsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.slice(s.length - needle.length) === needle
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.endsWith(needle)
         }
@@ -840,12 +841,12 @@ runTest({
       errors: [{ messageId: 'preferEndsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.substring(0, 3) === "bar"
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.startsWith("bar")
         }
@@ -853,7 +854,7 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.substring(-3) === "bar" // the code is probably mistake.
         }
@@ -862,12 +863,12 @@ runTest({
       errors: [{ messageId: 'preferEndsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           s.substring(s.length - 3, s.length) === "bar"
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.endsWith("bar")
         }
@@ -877,12 +878,12 @@ runTest({
 
     // RegExp#test
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           /^bar/.test(s)
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.startsWith("bar")
         }
@@ -890,12 +891,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           /bar$/.test(s)
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           s.endsWith("bar")
         }
@@ -903,13 +904,13 @@ runTest({
       errors: [{ messageId: 'preferEndsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         const pattern = /^bar/
         function f(s: string) {
           pattern.test(s)
         }
       `,
-      output: `
+      output: dedent`
         const pattern = /^bar/
         function f(s: string) {
           s.startsWith("bar")
@@ -918,13 +919,13 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         const pattern = new RegExp("^bar")
         function f(s: string) {
           pattern.test(s)
         }
       `,
-      output: `
+      output: dedent`
         const pattern = new RegExp("^bar")
         function f(s: string) {
           s.startsWith("bar")
@@ -933,13 +934,13 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         const pattern = /^"quoted"/
         function f(s: string) {
           pattern.test(s)
         }
       `,
-      output: `
+      output: dedent`
         const pattern = /^"quoted"/
         function f(s: string) {
           s.startsWith("\\"quoted\\"")
@@ -948,12 +949,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f(s: string) {
           /^bar/.test(a + b)
         }
       `,
-      output: `
+      output: dedent`
         function f(s: string) {
           (a + b).startsWith("bar")
         }
@@ -963,12 +964,12 @@ runTest({
 
     // Test for variation of string types.
     yield {
-      code: `
+      code: dedent`
         function f(s: "a" | "b") {
           s.indexOf(needle) === 0
         }
       `,
-      output: `
+      output: dedent`
         function f(s: "a" | "b") {
           s.startsWith(needle)
         }
@@ -976,12 +977,12 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         function f<T extends "a" | "b">(s: T) {
           s.indexOf(needle) === 0
         }
       `,
-      output: `
+      output: dedent`
         function f<T extends "a" | "b">(s: T) {
           s.startsWith(needle)
         }
@@ -989,13 +990,13 @@ runTest({
       errors: [{ messageId: 'preferStartsWith' }]
     };
     yield {
-      code: `
+      code: dedent`
         type SafeString = string & {__HTML_ESCAPED__: void}
         function f(s: SafeString) {
           s.indexOf(needle) === 0
         }
       `,
-      output: `
+      output: dedent`
         type SafeString = string & {__HTML_ESCAPED__: void}
         function f(s: SafeString) {
           s.startsWith(needle)

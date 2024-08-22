@@ -62,8 +62,11 @@ importers:
       '@types/node':
         specifier: ^22.5.0
         version: 22.5.0
+      '@typescript-eslint/rule-tester':
+        specifier: ^8.2.0
+        version: 8.2.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)
       '@typescript-eslint/utils':
-        specifier: 8.2.0
+        specifier: ^8.2.0
         version: 8.2.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)
       axe-core:
         specifier: ^4.10.0
@@ -92,6 +95,9 @@ importers:
       rollup-plugin-visualizer:
         specifier: ^5.12.0
         version: 5.12.0(rollup@4.21.0)
+      ts-dedent:
+        specifier: ^2.2.0
+        version: 2.2.0
       turbo:
         specifier: ^2.0.14
         version: 2.0.14
@@ -168,7 +174,7 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1
       typescript-eslint:
-        specifier: 8.2.0
+        specifier: ^8.2.0
         version: 8.2.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)
     devDependencies:
       '@antfu/install-pkg':
@@ -285,6 +291,9 @@ importers:
       '@eslint-sukka/shared':
         specifier: workspace:*
         version: link:../shared
+      '@typescript-eslint/utils':
+        specifier: ^8.2.0
+        version: 8.2.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)
     devDependencies:
       '@eslint-sukka/rollup-config':
         specifier: workspace:*
@@ -302,10 +311,10 @@ importers:
         specifier: workspace:*
         version: link:../shared
       '@typescript-eslint/type-utils':
-        specifier: 8.2.0
+        specifier: ^8.2.0
         version: 8.2.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)
       '@typescript-eslint/utils':
-        specifier: 8.2.0
+        specifier: ^8.2.0
         version: 8.2.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)
     devDependencies:
       '@eslint-sukka/rollup-config':
@@ -422,7 +431,7 @@ importers:
         specifier: ^9.6.0
         version: 9.6.0
       '@typescript-eslint/utils':
-        specifier: 8.2.0
+        specifier: ^8.2.0
         version: 8.2.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)
       type-fest:
         specifier: ^4.25.0
@@ -1377,6 +1386,12 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+
+  '@typescript-eslint/rule-tester@8.2.0':
+    resolution: {integrity: sha512-+nolUggnH/VhAzzQEI2DKkDk5dopcrrwE/9MKTgV+bYojqTMrI9poYF0zjXtQdWmIhI4o5qJC5AO0ozmDR9OTA==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      eslint: ^8.57.0 || ^9.0.0
 
   '@typescript-eslint/scope-manager@7.18.0':
     resolution: {integrity: sha512-jjhdIE/FPF2B7Z1uzc6i3oWKbGcHb87Qw7AWj6jmEqNOfDFbJWtjt/XfwCpvNkpGWlcJaog5vTR+VV8+w9JflA==}
@@ -2915,6 +2930,10 @@ packages:
     peerDependencies:
       typescript: '>=4.0.0'
 
+  ts-dedent@2.2.0:
+    resolution: {integrity: sha512-q5W7tVM71e2xjHZTlgfTDoPF/SmqKG5hddq9SzR49CH2hayqRKJtQ4mtRlSxKaJlR/+9rEM+mnBHf7I2/BQcpQ==}
+    engines: {node: '>=6.10'}
+
   ts-pattern@5.3.1:
     resolution: {integrity: sha512-1RUMKa8jYQdNfmnK4jyzBK3/PS/tnjcZ1CW0v1vWDeYe5RBklc/nquw03MEoB66hVBm4BnlCfmOqDVxHyT1DpA==}
 
@@ -4080,6 +4099,19 @@ snapshots:
       typescript: 5.5.4
     transitivePeerDependencies:
       - supports-color
+
+  '@typescript-eslint/rule-tester@8.2.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)':
+    dependencies:
+      '@typescript-eslint/typescript-estree': 8.2.0(typescript@5.5.4)
+      '@typescript-eslint/utils': 8.2.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)
+      ajv: 6.12.6
+      eslint: 9.9.0(jiti@1.21.6)
+      json-stable-stringify-without-jsonify: 1.0.1
+      lodash.merge: 4.6.2
+      semver: 7.6.3
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
 
   '@typescript-eslint/scope-manager@7.18.0':
     dependencies:
@@ -5746,6 +5778,8 @@ snapshots:
     dependencies:
       minimatch: 10.0.1
       typescript: 5.5.4
+
+  ts-dedent@2.2.0: {}
 
   ts-pattern@5.3.1: {}
 
