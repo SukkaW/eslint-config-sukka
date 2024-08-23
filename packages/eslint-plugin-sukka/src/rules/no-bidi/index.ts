@@ -7,7 +7,7 @@ import type { RuleListener } from '@typescript-eslint/utils/ts-eslint';
 const BIDI_PATTERN = /[\u061C\u202A-\u202E\u2066-\u2069]/;
 
 export default createRule({
-  name: 'unicode/no-bidi',
+  name: 'no-bidi',
   meta: {
     type: 'problem',
     fixable: 'code',

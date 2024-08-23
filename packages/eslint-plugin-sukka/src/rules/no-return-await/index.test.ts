@@ -1,5 +1,6 @@
 import { runTest } from '../../../../../lib/eslint-plugin-tester';
 import module from './index';
+import dedent from 'ts-dedent';
 
 function createErrorList({ suggestionOutput: output }: { suggestionOutput?: string } = {}): any {
   // pending https://github.com/eslint/espree/issues/304, the type should be "Keyword"
@@ -45,84 +46,84 @@ runTest({
     yield '\nasync () => (baz() ? (await bar() && a) : b)\n';
     yield '\nasync () => (baz() ? a : (await bar(), b))\n';
     yield '\nasync () => (baz() ? a : (await bar() && b))\n';
-    yield `
-       async function foo() {
-         try {
-           return await bar();
-         } catch (e) {
-           baz();
-         }
-       }
+    yield dedent`
+      async function foo() {
+        try {
+          return await bar();
+        } catch (e) {
+          baz();
+        }
+      }
     `;
-    yield `
-       async function foo() {
-         try {
-           return await bar();
-         } finally {
-           baz();
-         }
-       }
+    yield dedent`
+      async function foo() {
+        try {
+          return await bar();
+        } finally {
+          baz();
+        }
+      }
     `;
-    yield `
-       async function foo() {
-         try {}
-         catch (e) {
-           return await bar();
-         } finally {
-           baz();
-         }
-       }
+    yield dedent`
+      async function foo() {
+        try {}
+        catch (e) {
+          return await bar();
+        } finally {
+          baz();
+        }
+      }
     `;
-    yield `
-       async function foo() {
-         try {
-           try {}
-           finally {
-             return await bar();
-           }
-         } finally {
-           baz();
-         }
-       }
+    yield dedent`
+      async function foo() {
+        try {
+          try {}
+          finally {
+            return await bar();
+          }
+        } finally {
+          baz();
+        }
+      }
     `;
-    yield `
-       async function foo() {
-         try {
-           try {}
-           catch (e) {
-             return await bar();
-           }
-         } finally {
-           baz();
-         }
-       }
+    yield dedent`
+      async function foo() {
+        try {
+          try {}
+          catch (e) {
+            return await bar();
+          }
+        } finally {
+          baz();
+        }
+      }
     `;
-    yield `
-       async function foo() {
-         try {
-           return (a, await bar());
-         } catch (e) {
-           baz();
-         }
-       }
+    yield dedent`
+      async function foo() {
+        try {
+          return (a, await bar());
+        } catch (e) {
+          baz();
+        }
+      }
     `;
-    yield `
-       async function foo() {
-         try {
-           return (qux() ? await bar() : b);
-         } catch (e) {
-           baz();
-         }
-       }
+    yield dedent`
+      async function foo() {
+        try {
+          return (qux() ? await bar() : b);
+        } catch (e) {
+          baz();
+        }
+      }
     `;
-    yield `
-       async function foo() {
-         try {
-           return (a && await bar());
-         } catch (e) {
-           baz();
-         }
-       }
+    yield dedent`
+      async function foo() {
+        try {
+          return (a && await bar());
+        } catch (e) {
+          baz();
+        }
+      }
     `;
   },
   *invalid() {
@@ -227,7 +228,7 @@ runTest({
       errors: createErrorList({ suggestionOutput: '\nasync () => {\nif (a) {\n\t\tif (b) {\n\t\t\treturn bar();\n\t\t}\n\t}\n}\n' })
     };
     yield {
-      code: `
+      code: dedent`
         async function foo() {
           try {}
           finally {
@@ -236,18 +237,18 @@ runTest({
         }
       `,
       errors: createErrorList({
-        suggestionOutput: `
-        async function foo() {
-          try {}
-          finally {
-            return bar();
+        suggestionOutput: dedent`
+          async function foo() {
+            try {}
+            finally {
+              return bar();
+            }
           }
-        }
-      `
+        `
       })
     };
     yield {
-      code: `
+      code: dedent`
         async function foo() {
           try {}
           catch (e) {
@@ -256,18 +257,18 @@ runTest({
         }
       `,
       errors: createErrorList({
-        suggestionOutput: `
-        async function foo() {
-          try {}
-          catch (e) {
-            return bar();
+        suggestionOutput: dedent`
+          async function foo() {
+            try {}
+            catch (e) {
+              return bar();
+            }
           }
-        }
-      `
+        `
       })
     };
     yield {
-      code: `
+      code: dedent`
         try {
           async function foo() {
             return await bar();
@@ -275,31 +276,31 @@ runTest({
         } catch (e) {}
       `,
       errors: createErrorList({
-        suggestionOutput: `
-        try {
-          async function foo() {
-            return bar();
-          }
-        } catch (e) {}
-      `
+        suggestionOutput: dedent`
+          try {
+            async function foo() {
+              return bar();
+            }
+          } catch (e) {}
+        `
       })
     };
     yield {
-      code: `
+      code: dedent`
         try {
           async () => await bar();
         } catch (e) {}
       `,
       errors: createErrorList({
-        suggestionOutput: `
-        try {
-          async () => bar();
-        } catch (e) {}
-      `
+        suggestionOutput: dedent`
+          try {
+            async () => bar();
+          } catch (e) {}
+        `
       })
     };
     yield {
-      code: `
+      code: dedent`
         async function foo() {
           try {}
           catch (e) {
@@ -311,21 +312,21 @@ runTest({
         }
       `,
       errors: createErrorList({
-        suggestionOutput: `
-        async function foo() {
-          try {}
-          catch (e) {
+        suggestionOutput: dedent`
+          async function foo() {
             try {}
             catch (e) {
-              return bar();
+              try {}
+              catch (e) {
+                return bar();
+              }
             }
           }
-        }
-      `
+        `
       })
     };
     yield {
-      code: `
+      code: dedent`
         async function foo() {
           return await new Promise(resolve => {
             resolve(5);
@@ -333,17 +334,17 @@ runTest({
         }
       `,
       errors: createErrorList({
-        suggestionOutput: `
-        async function foo() {
-          return new Promise(resolve => {
-            resolve(5);
-          });
-        }
-      `
+        suggestionOutput: dedent`
+          async function foo() {
+            return new Promise(resolve => {
+              resolve(5);
+            });
+          }
+        `
       })
     };
     yield {
-      code: `
+      code: dedent`
         async () => {
           return await (
             foo()
@@ -351,17 +352,17 @@ runTest({
         };
       `,
       errors: createErrorList({
-        suggestionOutput: `
-        async () => {
-          return (
-            foo()
-          )
-        };
-      `
+        suggestionOutput: dedent`
+          async () => {
+            return (
+              foo()
+            )
+          };
+        `
       })
     };
     yield {
-      code: `
+      code: dedent`
         async function foo() {
           return await // Test
             5;
