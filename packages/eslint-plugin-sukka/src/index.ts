@@ -278,7 +278,7 @@ function loadUnicorn<TMessageIDs extends string, TOptions extends unknown[]>(rul
         url: getDocumentationUrl(ruleId)
       }
     },
-    // eslint-disable-next-line @typescript-eslint/unbound-method -- false positive
+
     create: reportProblems<TMessageIDs, TOptions>(rule.create)
   };
 }

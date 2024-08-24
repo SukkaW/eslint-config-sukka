@@ -16,8 +16,8 @@ export interface RuleModule<
 > {
   readonly name: string,
   readonly meta: Metadata<TMessageIDs, TMetaDocs>,
-  resolveOptions?(...options: TOptions): TResolvedOptions,
-  create(context: Readonly<RuleContext<TMessageIDs, TOptions>>, options: TResolvedOptions): TRuleListener
+  resolveOptions?(this: void, ...options: TOptions): TResolvedOptions,
+  create(this: void, context: Readonly<RuleContext<TMessageIDs, TOptions>>, options: TResolvedOptions): TRuleListener
 }
 
 export interface ExportedRuleModule<

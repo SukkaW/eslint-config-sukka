@@ -1,6 +1,6 @@
 import module from './index';
 import { runTest } from '../../../../../lib/eslint-plugin-tester';
-import dedent from 'ts-dedent';
+import { dedent } from 'ts-dedent';
 
 runTest({
   module,

@@ -35,7 +35,7 @@
     "@eslint-community/eslint-plugin-eslint-comments": "^4.4.0",
     "@eslint-sukka/shared": "workspace:*",
     "@eslint/compat": "^1.1.1",
-    "@eslint/js": "^9.9.0",
+    "@eslint/js": "^9.9.1",
     "@stylistic/eslint-plugin-js": "2.6.4",
     "@stylistic/eslint-plugin-plus": "2.6.4",
     "@stylistic/eslint-plugin-ts": "2.6.4",

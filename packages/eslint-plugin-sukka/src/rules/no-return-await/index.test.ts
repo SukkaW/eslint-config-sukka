@@ -1,6 +1,6 @@
 import { runTest } from '../../../../../lib/eslint-plugin-tester';
 import module from './index';
-import dedent from 'ts-dedent';
+import { dedent } from 'ts-dedent';
 
 function createErrorList({ suggestionOutput: output }: { suggestionOutput?: string } = {}): any {
   // pending https://github.com/eslint/espree/issues/304, the type should be "Keyword"
