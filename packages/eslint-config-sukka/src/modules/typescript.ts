@@ -314,7 +314,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         'sukka-ts/type/no-force-cast-via-top-type': 'error',
         'sukka-ts/type/no-wrapper-type-reference': 'error',
         'sukka-ts/no-default-error': 'off', // disable since this is way too slow
-        'sukka-ts/no-const-enum': 'error', // not tree-shakable by swc/babel/esbuild
+        'sukka-ts/no-export-const-enum': 'error', // not tree-shakable by swc/babel/esbuild
 
         '@stylistic/plus/type-generic-spacing': 'error',
         '@stylistic/plus/type-named-tuple-spacing': 'error',
