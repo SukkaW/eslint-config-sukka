@@ -72,7 +72,19 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
         'n/no-extraneous-require': 'off',
 
         'n/no-restricted-require': ['error', RESTRICTED_IMPORT_NODE_REQUIRE],
-        'n/prefer-node-protocol': 'error'
+        'n/prefer-node-protocol': 'error',
+
+        // prefer-global
+        'n/prefer-global/buffer': ['error', 'never'], // bundler can easily catch this to prevent runtime error
+        'n/prefer-global/console': ['error', 'always'], // console is generally available
+        'n/prefer-global/process': ['error', 'never'], // bundler can easily catch this to prevent runtime error
+        'n/prefer-global/text-decoder': ['error', 'always'], // text-decoder is generally available
+        'n/prefer-global/text-encoder': ['error', 'always'], // text-encoder is generally available
+        'n/prefer-global/url': ['error', 'always'], // url is generally available
+        'n/prefer-global/url-search-params': ['error', 'always'], // url-search-params is generally available
+
+        // prefer-promise
+        'n/prefer-promises/dns': 'error'
       },
       languageOptions: {
         globals: globals.node

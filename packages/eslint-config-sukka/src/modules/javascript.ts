@@ -688,6 +688,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         // disallow if as the only statement in an else block
         // https://eslint.org/docs/rules/no-lonely-if
         'no-lonely-if': 'error',
+        'sukka/unicorn/no-lonely-if': 'error',
 
         // disallow un-paren'd mixes of different operators
         // https://eslint.org/docs/rules/no-mixed-operators
@@ -723,6 +724,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         // disallow negated conditions
         // https://eslint.org/docs/rules/no-negated-condition
         'no-negated-condition': 'off',
+        'sukka/unicorn/no-negated-condition': 'warn',
 
         // disallow nested ternary expressions
         'no-nested-ternary': 'off', // replaced by sukka/unicorn/no-nested-ternary
@@ -910,6 +912,8 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/prefer-fetch': 'error',
         'sukka/prefer-timer-id': 'warn',
 
+        'sukka/unicorn/catch-error-name': ['error', { ignore: [/^(?:e|err|error|\w+Err|\w+Error)[\d_]?$/] }],
+        'sukka/unicorn/custom-error-definition': 'error',
         'sukka/unicorn/require-array-join-separator': 'warn',
         'sukka/unicorn/no-thenable': 'error', // export function then()'
         'sukka/unicorn/no-invalid-remove-event-listener': 'error', // removeEventListener('click', f.bind(...))
@@ -925,6 +929,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/unicorn/no-zero-fractions': 'warn', // 1.0
         'sukka/unicorn/prefer-export-from': ['warn', { ignoreUsedVariables: true }], // prefer export { } from than import-and-export
         'sukka/unicorn/prefer-native-coercion-functions': 'warn', // no coercion wrapper v => Boolean(v)
+        'sukka/unicorn/prefer-negative-index': 'warn', // arr.slice(arr.length - 1) -> arr.slice(-1)
         'sukka/unicorn/no-document-cookie': 'error', // even if you have to do so, use CookieJar
         'sukka/unicorn/prefer-add-event-listener': 'warn',
         'sukka/unicorn/prefer-array-index-of': 'warn',
@@ -955,7 +960,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/unicorn/no-array-push-push': 'warn', // array.push(...); array.push(...);
         'sukka/unicorn/no-static-only-class': 'warn', // class Foo { static bar() {} }
         'sukka/unicorn/no-unreadable-array-destructuring': 'error', // [,,,,, bar] = arr;
-        'sukka/unicorn/no-useless-spread': 'warn', // const foo = undefined;
+        'sukka/unicorn/no-useless-spread': 'error', // const foo = undefined;
         'sukka/unicorn/no-useless-switch-case': 'warn', // switch (foo) { case 1: default: return 2; }
         'sukka/unicorn/no-useless-undefined': ['error', { checkArguments: false }], // let foo = undefined;
         'sukka/unicorn/numeric-separators-style': [
@@ -978,12 +983,14 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/unicorn/prefer-optional-catch-binding': 'error', // try {} catch {}
         'sukka/unicorn/prefer-regexp-test': 'warn', // /foo/.test(bar)
         'sukka/unicorn/prefer-set-has': 'error', // Set#has is way faster
-        'sukka/unicorn/prefer-switch': 'warn', // Array.from(foo)
+        'sukka/unicorn/prefer-switch': 'warn',
         'sukka/unicorn/require-number-to-fixed-digits-argument': 'warn', // 1.toFixed(2)
         'sukka/import-dedupe': 'error', // ban import { a, b, a, a, c, a } from 'sukka'
         'sukka/unicorn/prefer-string-raw': 'warn', // String.raw`foo\nbar`
         'sukka/unicorn/no-single-promise-in-promise-methods': 'error',
         'sukka/unicorn/no-await-in-promise-methods': 'error',
+        'sukka/unicorn/no-magic-array-flat-depth': 'error',
+        'sukka/unicorn/no-object-as-default-parameter': 'error',
         'sukka/unicorn/template-indent': [
           'warn',
           {
@@ -1031,7 +1038,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
   ];
 
   if (disableNoConsoleInCLI !== false) {
-    const customGlobs = typeof disableNoConsoleInCLI !== 'boolean' ? (Array.isArray(disableNoConsoleInCLI) ? disableNoConsoleInCLI : [disableNoConsoleInCLI]) : null;
+    const customGlobs = typeof disableNoConsoleInCLI === 'boolean' ? null : (Array.isArray(disableNoConsoleInCLI) ? disableNoConsoleInCLI : [disableNoConsoleInCLI]);
     configs.push({
       name: '@eslint-sukka/js cli specific',
       files: customGlobs ?? [`**/scripts/${constants.GLOB_SRC}`, `**/cli/${constants.GLOB_SRC}`, `**/cli.${constants.GLOB_SRC_EXT}`],

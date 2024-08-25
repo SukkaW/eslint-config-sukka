@@ -104,6 +104,7 @@ import prefer_type_error from 'eslint-plugin-unicorn/rules/prefer-type-error.js'
 import consistent_destructuring from 'eslint-plugin-unicorn/rules/consistent-destructuring.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import new_for_builtins from 'eslint-plugin-unicorn/rules/new-for-builtins.js';
+// too many false positives
 // import no_array_method_this_argument from 'eslint-plugin-unicorn/rules/no-array-method-this-argument.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import no_array_push_push from 'eslint-plugin-unicorn/rules/no-array-push-push.js';
@@ -157,6 +158,21 @@ import no_await_in_promise_methods from 'eslint-plugin-unicorn/rules/no-await-in
 import no_negation_in_equality_check from 'eslint-plugin-unicorn/rules/no-negation-in-equality-check.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import no_length_as_slice_end from 'eslint-plugin-unicorn/rules/no-length-as-slice-end.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import catch_error_name from 'eslint-plugin-unicorn/rules/catch-error-name.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import custom_error_definition from 'eslint-plugin-unicorn/rules/custom-error-definition.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_lonely_if from 'eslint-plugin-unicorn/rules/no-lonely-if.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_magic_array_flat_depth from 'eslint-plugin-unicorn/rules/no-magic-array-flat-depth.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_negated_condition from 'eslint-plugin-unicorn/rules/no-negated-condition.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_object_as_default_parameter from 'eslint-plugin-unicorn/rules/no-object-as-default-parameter.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_negative_index from 'eslint-plugin-unicorn/rules/prefer-negative-index.js';
+// import prefer_ternary from 'eslint-plugin-unicorn/rules/prefer-ternary.js';
 
 // eslint-plugin-sukka
 import ban_eslint_disable from './rules/ban-eslint-disable';
@@ -189,6 +205,8 @@ export default {
     ...Object.fromEntries(
       Object.entries({
         'unicorn/better-regex': better_regex,
+        'unicorn/catch-error-name': catch_error_name,
+        'unicorn/custom-error-definition': custom_error_definition,
         'unicorn/no-nested-ternary': no_nested_ternary,
         'unicorn/prefer-event-target': prefer_event_target,
         'unicorn/prefer-keyboard-event-key': prefer_keyboard_event_key,
@@ -257,7 +275,12 @@ export default {
         'unicorn/no-single-promise-in-promise-methods': no_single_promise_in_promise_methods,
         'unicorn/no-await-in-promise-methods': no_await_in_promise_methods,
         'unicorn/no-negation-in-equality-check': no_negation_in_equality_check,
-        'unicorn/no-length-as-slice-end': no_length_as_slice_end
+        'unicorn/no-length-as-slice-end': no_length_as_slice_end,
+        'unicorn/no-lonely-if': no_lonely_if,
+        'unicorn/no-magic-array-flat-depth': no_magic_array_flat_depth,
+        'unicorn/no-negated-condition': no_negated_condition,
+        'unicorn/no-object-as-default-parameter': no_object_as_default_parameter,
+        'unicorn/prefer-negative-index': prefer_negative_index
       }).map(([ruleId, rule]) => [ruleId, loadUnicorn(rule, ruleId)])
     )
   }

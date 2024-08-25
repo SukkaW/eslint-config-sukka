@@ -267,7 +267,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         '@typescript-eslint/no-unsafe-member-access': 'off', // bans a = any.prop
         '@typescript-eslint/no-unsafe-return': 'off', // bans return any
         '@typescript-eslint/no-unsafe-enum-comparison': 'warn',
-        '@typescript-eslint/prefer-regexp-exec': 'off',
+        '@typescript-eslint/prefer-regexp-exec': 'warn', // more performant than String#match
 
         // https://eslint.style/rules/ts/member-delimiter-style
         '@stylistic/ts/member-delimiter-style': ['error', {
