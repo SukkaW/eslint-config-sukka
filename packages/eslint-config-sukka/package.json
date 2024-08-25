@@ -48,6 +48,7 @@
     "eslint-plugin-import-x": "^3.1.0",
     "eslint-plugin-jsonc": "^2.16.0",
     "eslint-plugin-promise": "^7.1.0",
+    "eslint-plugin-regexp": "^2.6.0",
     "eslint-plugin-sukka": "workspace:*",
     "eslint-plugin-sukka-ts": "workspace:*",
     "eslint-plugin-unused-imports": "4.1.3",

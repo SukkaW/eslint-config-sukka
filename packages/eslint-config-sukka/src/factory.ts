@@ -5,6 +5,7 @@ import type { OptionsIgnores } from './modules/ignores';
 
 import { comment } from './modules/eslint-comment';
 import { promise } from './modules/promise';
+import { regexp } from './modules/regexp';
 
 import { javascript } from './modules/javascript';
 import type { OptionsJavaScript } from './modules/javascript';
@@ -100,7 +101,8 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
       // javascript
       javascript(config(options?.js)),
       // promise,
-      promise({ typescript: typescriptEnabled })
+      promise({ typescript: typescriptEnabled }),
+      regexp()
     );
   }
   // json

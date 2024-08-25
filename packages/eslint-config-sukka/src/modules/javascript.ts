@@ -949,7 +949,6 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/unicorn/prefer-string-trim-start-end': 'warn', // str.trimStart(...)
         'sukka/unicorn/no-unreadable-iife': 'warn', // (bar => (bar ? bar.baz : baz))(getBar())
         'sukka/unicorn/throw-new-error': 'warn',
-        'sukka/unicorn/better-regex': 'error', // RegEx
         'sukka/unicorn/escape-case': 'warn', // correct casing of escape '\xA9'
         'sukka/unicorn/no-hex-escape': 'warn', // correct casing of escape '\u001B'
         'sukka/unicorn/prefer-prototype-methods': 'warn', // prefer Array.prototype.slice than [].slice

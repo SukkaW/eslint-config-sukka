@@ -10,7 +10,6 @@ import type { RollupAliasOptions } from '@rollup/plugin-alias';
 import { visualizer } from 'rollup-plugin-visualizer';
 import replace from '@rollup/plugin-replace';
 
-import { cleandir } from './rollup-cleandir';
 import { rollupFoximport } from './rollup-foxquire';
 
 import type { RollupOptions, OutputOptions as RollupOutputOptions, InputOption as RollupInputOption, GetManualChunk } from 'rollup';
@@ -60,7 +59,16 @@ export const createRollupConfig = (
   }: RollupConfigPlugin = {}
 ): RollupOptions[] => {
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
-  const external = Object.keys(packageJson.dependencies || {}).concat(builtinModules, externalDependencies, ['eslint']);
+  const $external = Object.keys(packageJson.dependencies || {}).concat(builtinModules, externalDependencies, ['eslint']);
+
+  const external = (source: string) => (
+    source.startsWith('node:')
+    || source.startsWith('bun:')
+    || $external.some((name) => source === name || source.startsWith(`${name}/`))
+  );
+
+  fs.rmSync('dist', { recursive: true, force: true });
+  fs.mkdirSync('dist', { recursive: true });
 
   return [{
     input,
@@ -87,7 +95,6 @@ export const createRollupConfig = (
         }
     ] satisfies Array<RollupOutputOptions | null>).filter(nonNullable),
     plugins: [
-      cleandir(),
       foxquire && rollupFoximport(),
       replace({
         values: {
@@ -131,10 +138,9 @@ export const createRollupConfig = (
       }),
       analyze && visualizer({})
     ],
-    external(source) {
-      return external.some((name) => source === name || source.startsWith(`${name}/`));
-    }
-  }, {
+    external
+  },
+  {
     input,
     output: {
       file: 'dist/index.d.ts'
