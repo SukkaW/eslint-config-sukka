@@ -1,5 +1,5 @@
 import type { Plugin as RollupPlugin } from 'rollup';
-import fsp from 'fs/promises';
+import fsp from 'node:fs/promises';
 
 export function cleandir(): RollupPlugin {
   return {

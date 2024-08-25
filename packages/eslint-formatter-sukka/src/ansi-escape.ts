@@ -1,3 +1,5 @@
+import process from 'node:process';
+
 // const ESC = '\u001B[';
 const OSC = '\u001B]';
 const BEL = '\u0007';

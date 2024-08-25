@@ -15,10 +15,10 @@ import { rollupFoximport } from './rollup-foxquire';
 
 import type { RollupOptions, OutputOptions as RollupOutputOptions, InputOption as RollupInputOption, GetManualChunk } from 'rollup';
 
-import fs from 'fs';
-import type { PathLike } from 'fs';
+import fs from 'node:fs';
+import type { PathLike } from 'node:fs';
 
-import { builtinModules } from 'module';
+import { builtinModules } from 'node:module';
 
 interface RollupConfigPlugin {
   input?: RollupInputOption,

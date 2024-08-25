@@ -4,8 +4,8 @@ import ts_eslint_plugin from '@typescript-eslint/eslint-plugin';
 import stylistic_eslint_plugin_js from '@stylistic/eslint-plugin-js';
 import stylistic_eslint_plugin_ts from '@stylistic/eslint-plugin-ts';
 
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 
 (() => {
   const stylistic_eslint_plugin_ts_rulenames = new Set(Object.keys(stylistic_eslint_plugin_ts.rules));

@@ -1,5 +1,6 @@
 import { isCI } from 'ci-info';
 import { isPackageExists } from 'local-pkg';
+import process from 'node:process';
 
 export const foxquire = async <T>(pkg: string): Promise<T> => {
   if (

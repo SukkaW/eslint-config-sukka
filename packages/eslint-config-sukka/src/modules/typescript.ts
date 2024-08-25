@@ -14,7 +14,8 @@ import eslint_plugin_deprecation from 'eslint-plugin-deprecation';
 
 import { fixupPluginRules } from '@eslint/compat';
 
-import { fileURLToPath, pathToFileURL } from 'url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import process from 'node:process';
 
 export interface OptionsTypeScript {
   tsconfigPath?: string | string[] | true,

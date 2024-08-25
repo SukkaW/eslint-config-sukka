@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'node:path';
 import { RuleTester } from '@typescript-eslint/rule-tester';
 import type { InvalidTestCase, ValidTestCase } from '@typescript-eslint/rule-tester';
 

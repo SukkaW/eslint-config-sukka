@@ -1,4 +1,5 @@
-import path from 'path';
+import path from 'node:path';
+import process from 'node:process';
 
 import picocolors from 'picocolors';
 import stringWidth from 'string-width';
@@ -8,8 +9,8 @@ import { link, iTermSetCwd } from './ansi-escape';
 import { isCI } from 'ci-info';
 
 import type { ESLint } from 'eslint';
-import { pathToFileURL } from 'url';
-import { hostname } from 'os';
+import { pathToFileURL } from 'node:url';
+import { hostname } from 'node:os';
 
 const separatorLine = {
   type: 'separator'
