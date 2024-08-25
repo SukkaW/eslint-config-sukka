@@ -308,7 +308,12 @@ function loadUnicorn<TMessageIDs extends string, TOptions extends unknown[]>(rul
 
 const isIterable = (object: object | null | undefined): object is Iterable<any> => !!object && Symbol.iterator in object;
 
-class FixAbortError extends Error { }
+class FixAbortError extends Error {
+  constructor(message?: string, options?: ErrorOptions) {
+    super(message, options);
+    this.name = 'FixAbortError';
+  }
+}
 
 const fixOptions = {
   abort() {

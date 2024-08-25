@@ -42,17 +42,13 @@ export default createRule({
 
         for (const comment of program.comments) {
           const directive = getDirective(comment.value);
-          if (directive) {
-            if (!(options === 'allow-with-description' && comment.value.includes('--'))) {
-              const messageId = options === 'allow-with-description' ? 'require-description' : 'do-not-use';
-              context.report({ node: comment, data: { directive }, messageId });
-            }
+          if (directive && !(options === 'allow-with-description' && comment.value.includes('--'))) {
+            const messageId = options === 'allow-with-description' ? 'require-description' : 'do-not-use';
+            context.report({ node: comment, data: { directive }, messageId });
           }
           const ruleId = getRuleId(comment.value);
-          if (ruleId !== matchNotFound) {
-            if (!ruleId) {
-              context.report({ node: comment, messageId: 'require-specific-rule' });
-            }
+          if (ruleId !== matchNotFound && !ruleId) {
+            context.report({ node: comment, messageId: 'require-specific-rule' });
           }
         }
       }
