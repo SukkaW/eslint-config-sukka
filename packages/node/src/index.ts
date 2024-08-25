@@ -15,15 +15,15 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
   const isModule = options.module ?? (getPackageJson()?.type === 'module');
 
   const configs: FlatESLintConfigItem[] = [
-    ...eslint_plugin_n.configs['flat/mixed-esm-and-cjs'],
     {
       name: '@eslint-sukka/node base',
-      files: options.files ?? (isModule ? ['*.mjs', '.*.mjs', '*.js', '.*.js'] : ['*.cjs', '.*.cjs', '*.js', '.*.js']),
       plugins: {
         sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka'),
         n: memo(eslint_plugin_n, 'eslint-plugin-n')
       },
       rules: {
+        'n/no-unsupported-features/es-syntax': 'off',
+
         // enforces error handling in callbacks (node environment)
         'handle-callback-err': 'off',
 
@@ -73,6 +73,8 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
 
         'n/no-restricted-require': ['error', RESTRICTED_IMPORT_NODE_REQUIRE],
         'n/prefer-node-protocol': 'error',
+
+        'n/process-exit-as-throw': 'error',
 
         // prefer-global
         'n/prefer-global/buffer': ['error', 'never'], // bundler can easily catch this to prevent runtime error
