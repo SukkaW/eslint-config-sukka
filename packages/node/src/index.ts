@@ -71,7 +71,8 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
         'n/no-extraneous-import': 'off',
         'n/no-extraneous-require': 'off',
 
-        'n/no-restricted-require': ['error', RESTRICTED_IMPORT_NODE_REQUIRE]
+        'n/no-restricted-require': ['error', RESTRICTED_IMPORT_NODE_REQUIRE],
+        'n/prefer-node-protocol': 'error'
       },
       languageOptions: {
         globals: globals.node
