@@ -28,6 +28,6 @@
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
-    "eslint-import-resolver-typescript": "^3.6.1"
+    "eslint-import-resolver-typescript": "^3.6.3"
   }
 }
