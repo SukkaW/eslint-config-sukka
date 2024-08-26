@@ -412,9 +412,6 @@ importers:
       '@rollup/plugin-replace':
         specifier: ^5.0.7
         version: 5.0.7(rollup@4.21.0)
-      graceful-fs:
-        specifier: ^4.2.11
-        version: 4.2.11
       rollup:
         specifier: ^4.21.0
         version: 4.21.0
@@ -424,10 +421,6 @@ importers:
       rollup-plugin-swc3:
         specifier: ^0.11.2
         version: 0.11.2(@swc/core@1.7.18)(rollup@4.21.0)
-    devDependencies:
-      '@types/graceful-fs':
-        specifier: ^4.1.9
-        version: 4.1.9
 
   packages/shared:
     dependencies:
@@ -1351,9 +1344,6 @@ packages:
 
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
-
-  '@types/graceful-fs@4.1.9':
-    resolution: {integrity: sha512-olP3sd1qOEe5dXTSaFvQG+02VdRXcdytWLAZsAq1PecU8uqQAhkrnbli7DagjtXKW/Bl7YJbUsa8MPcuc8LHEQ==}
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
@@ -4083,10 +4073,6 @@ snapshots:
       '@types/json-schema': 7.0.15
 
   '@types/estree@1.0.5': {}
-
-  '@types/graceful-fs@4.1.9':
-    dependencies:
-      '@types/node': 22.5.0
 
   '@types/json-schema@7.0.15': {}
 
