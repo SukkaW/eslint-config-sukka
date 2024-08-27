@@ -173,6 +173,8 @@ import no_object_as_default_parameter from 'eslint-plugin-unicorn/rules/no-objec
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_negative_index from 'eslint-plugin-unicorn/rules/prefer-negative-index.js';
 // import prefer_ternary from 'eslint-plugin-unicorn/rules/prefer-ternary.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_node_protocol from 'eslint-plugin-unicorn/rules/prefer-node-protocol.js';
 
 // eslint-plugin-sukka
 import ban_eslint_disable from './rules/ban-eslint-disable';
@@ -280,7 +282,8 @@ export default {
         'unicorn/no-magic-array-flat-depth': no_magic_array_flat_depth,
         'unicorn/no-negated-condition': no_negated_condition,
         'unicorn/no-object-as-default-parameter': no_object_as_default_parameter,
-        'unicorn/prefer-negative-index': prefer_negative_index
+        'unicorn/prefer-negative-index': prefer_negative_index,
+        'unicorn/prefer-node-protocol': prefer_node_protocol
       }).map(([ruleId, rule]) => [ruleId, loadUnicorn(rule, ruleId)])
     )
   }

@@ -144,7 +144,10 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
   }
   // node
   if (enabled(options?.node, isPackageExists('@types/node') || isPackageExists('@types/bun'))) {
-    flatConfigs.push((await foxquire<typeof import('@eslint-sukka/node')>('@eslint-sukka/node')).node(config(options?.node)));
+    flatConfigs.push((await foxquire<typeof import('@eslint-sukka/node')>('@eslint-sukka/node')).node({
+      ...config(options?.node),
+      hasTypeScript: typescriptEnabled
+    }));
   }
   // legacy
   if (enabled(options?.legacy)) {

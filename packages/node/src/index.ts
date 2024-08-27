@@ -8,7 +8,8 @@ import eslint_plugin_n from 'eslint-plugin-n';
 export interface OptionsNode {
   strict?: boolean,
   module?: boolean,
-  files?: FlatESLintConfigItem['files']
+  files?: FlatESLintConfigItem['files'],
+  hasTypeScript?: boolean
 }
 
 export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
@@ -54,7 +55,7 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
         'sukka/unicorn/no-process-exit': 'warn',
 
         // restrict usage of specified node modules
-        'no-restricted-modules': 'off',
+        'no-restricted-modules': 'off', // covered by ts presets
 
         // disallow use of synchronous methods (off by default)
         'no-sync': 'off',
@@ -71,8 +72,9 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
         'n/no-extraneous-import': 'off',
         'n/no-extraneous-require': 'off',
 
-        'n/no-restricted-require': ['error', RESTRICTED_IMPORT_NODE_REQUIRE],
-        'n/prefer-node-protocol': 'error',
+        'n/no-restricted-require': options.hasTypeScript ? 'off' /** covered by ts presets */ : ['error', RESTRICTED_IMPORT_NODE_REQUIRE],
+        'n/prefer-node-protocol': 'off', // slower
+        'sukka/unicorn/prefer-node-protocol': 'error',
 
         'n/process-exit-as-throw': 'error',
 
