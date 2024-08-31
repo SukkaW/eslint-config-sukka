@@ -115,7 +115,8 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
   }
   // react
   const nextjsInstalled = isPackageExists('next');
-  if (enabled(options?.react, isPackageExists('react') || nextjsInstalled)) {
+  const reactEnabled = enabled(options?.react, isPackageExists('react') || nextjsInstalled);
+  if (reactEnabled) {
     if (typescriptEnabled) {
       const eslint_sukka_react = (await foxquire<typeof import('@eslint-sukka/react')>('@eslint-sukka/react'));
 
@@ -146,7 +147,8 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
   if (enabled(options?.node, isPackageExists('@types/node') || isPackageExists('@types/bun'))) {
     flatConfigs.push((await foxquire<typeof import('@eslint-sukka/node')>('@eslint-sukka/node')).node({
       ...config(options?.node),
-      hasTypeScript: typescriptEnabled
+      hasTypeScript: typescriptEnabled,
+      hasReact: reactEnabled
     }));
   }
   // legacy

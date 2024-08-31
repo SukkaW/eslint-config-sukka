@@ -9,7 +9,8 @@ export interface OptionsNode {
   strict?: boolean,
   module?: boolean,
   files?: FlatESLintConfigItem['files'],
-  hasTypeScript?: boolean
+  hasTypeScript?: boolean,
+  hasReact?: boolean
 }
 
 export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
@@ -81,7 +82,7 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
         // prefer-global
         'n/prefer-global/buffer': ['error', 'never'], // bundler can easily catch this to prevent runtime error
         'n/prefer-global/console': ['error', 'always'], // console is generally available
-        'n/prefer-global/process': ['error', 'never'], // bundler can easily catch this to prevent runtime error
+        'n/prefer-global/process': options.hasReact ? 'off' : ['error', 'never'], // bundler can easily catch this to prevent runtime error
         'n/prefer-global/text-decoder': ['error', 'always'], // text-decoder is generally available
         'n/prefer-global/text-encoder': ['error', 'always'], // text-encoder is generally available
         'n/prefer-global/url': ['error', 'always'], // url is generally available
