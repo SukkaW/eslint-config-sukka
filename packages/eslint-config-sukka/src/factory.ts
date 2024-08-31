@@ -50,7 +50,9 @@ interface ESLintSukkaOptions {
 // function enabled<T extends SharedOptions>(options: T | boolean | undefined, defaults: boolean): boolean;
 function enabled<T extends SharedOptions>(options: T | boolean | undefined, defaults = false): boolean {
   if (typeof options === 'boolean') return options;
-  return options?.enable ?? defaults;
+  if (typeof options === 'undefined') return defaults;
+  if (options.enable) return true;
+  return defaults;
 }
 
 function config<T>(options: SharedOptions<T> | undefined | boolean, ...defaults: Array<Omit<T, 'isInEditor' | 'enable'>>): T | undefined {
