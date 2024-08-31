@@ -115,7 +115,7 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
   }
   // react
   const nextjsInstalled = isPackageExists('next');
-  const reactEnabled = enabled(options?.react, isPackageExists('react') || nextjsInstalled);
+  const reactEnabled = enabled(options?.react, nextjsInstalled || isPackageExists('react') || isPackageExists('@types/react'));
   if (reactEnabled) {
     if (typescriptEnabled) {
       const eslint_sukka_react = (await foxquire<typeof import('@eslint-sukka/react')>('@eslint-sukka/react'));
