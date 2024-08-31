@@ -5,9 +5,9 @@ import type { SukkaESLintRuleConfig } from '@eslint-sukka/shared';
 export const generated_typescript_overrides: SukkaESLintRuleConfig = {
   rules: {
     "no-dupe-class-members": "off",
-    "@typescript-eslint/no-dupe-class-members": "error",
+    "@typescript-eslint/no-dupe-class-members": "off",
     "no-redeclare": "off",
-    "@typescript-eslint/no-redeclare": "error",
+    "@typescript-eslint/no-redeclare": "off",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",

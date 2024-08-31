@@ -7,6 +7,11 @@ import stylistic_eslint_plugin_ts from '@stylistic/eslint-plugin-ts';
 import fs from 'node:fs';
 import path from 'node:path';
 
+const DISABLED_RULES = new Set([
+  'no-redeclare',
+  'no-dupe-class-members'
+]);
+
 (() => {
   const stylistic_eslint_plugin_ts_rulenames = new Set(Object.keys(stylistic_eslint_plugin_ts.rules));
 
@@ -49,8 +54,8 @@ import path from 'node:path';
         switch (baseRuleName) {
           case 'camelcase':
           case 'no-restricted-imports': {
-          // disable camelcase directly, use custom @typescript-eslint/naming-convention instead
-          // disable no-restricted-imports directly, use @typescript-eslint/no-restricted-imports instead
+            // disable camelcase directly, use custom @typescript-eslint/naming-convention instead
+            // disable no-restricted-imports directly, use @typescript-eslint/no-restricted-imports instead
 
             // @ts-expect-error -- no type overlap between eslint and typescript-eslint
             acc.push([baseRuleName, 'off']);
@@ -79,7 +84,7 @@ import path from 'node:path';
             acc.push(
             // @ts-expect-error -- no type overlap between eslint and typescript-eslint
               [baseRuleName, 'off'],
-              [`@typescript-eslint/${replacementRulename}`, value]
+              [`@typescript-eslint/${replacementRulename}`, DISABLED_RULES.has(baseRuleName) ? 'off' : value]
             );
           } else if (
             baseRuleName.startsWith('autofix/')
