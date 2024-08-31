@@ -45,7 +45,7 @@
     "eslint-import-resolver-ts-bundled": "workspace:*",
     "eslint-plugin-autofix": "^2.1.0",
     "eslint-plugin-deprecation": "^3.0.0",
-    "eslint-plugin-import-x": "^3.1.0",
+    "eslint-plugin-import-x": "^4.1.0",
     "eslint-plugin-jsonc": "^2.16.0",
     "eslint-plugin-promise": "^7.1.0",
     "eslint-plugin-regexp": "^2.6.0",
