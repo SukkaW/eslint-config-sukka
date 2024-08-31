@@ -34,7 +34,6 @@
   "dependencies": {
     "@eslint-community/eslint-plugin-eslint-comments": "^4.4.0",
     "@eslint-sukka/shared": "workspace:*",
-    "@eslint/compat": "^1.1.1",
     "@eslint/js": "^9.9.1",
     "@stylistic/eslint-plugin-js": "2.6.4",
     "@stylistic/eslint-plugin-plus": "2.6.4",
@@ -44,7 +43,6 @@
     "defu": "^6.1.4",
     "eslint-import-resolver-ts-bundled": "workspace:*",
     "eslint-plugin-autofix": "^2.1.0",
-    "eslint-plugin-deprecation": "^3.0.0",
     "eslint-plugin-import-x": "^4.1.1",
     "eslint-plugin-jsonc": "^2.16.0",
     "eslint-plugin-promise": "^7.1.0",

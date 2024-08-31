@@ -10,9 +10,6 @@ import { configs as ts_eslint_configs } from 'typescript-eslint';
 import stylisticTs from '@stylistic/eslint-plugin-ts';
 
 import eslint_plugin_import_x from 'eslint-plugin-import-x';
-import eslint_plugin_deprecation from 'eslint-plugin-deprecation';
-
-import { fixupPluginRules } from '@eslint/compat';
 
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import process from 'node:process';
@@ -51,9 +48,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         '@stylistic/ts': memo(stylisticTs, '@stylistic/eslint-plugin-ts'),
         'sukka-ts': memo(eslint_plugin_sukka_ts, 'eslint-plugin-sukka-ts'),
         '@stylistic/plus': memo(stylisticPlus, '@stylistic/eslint-plugin-plus'),
-        'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x'),
-        // TODO: remove fixupPluginRules once https://github.com/gund/eslint-plugin-deprecation/pull/79
-        deprecation: fixupPluginRules(eslint_plugin_deprecation as any)
+        'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x')
       },
       // extends: [
       //   'plugin:i/recommended',
@@ -269,6 +264,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         '@typescript-eslint/no-unsafe-return': 'off', // bans return any
         '@typescript-eslint/no-unsafe-enum-comparison': 'warn',
         '@typescript-eslint/prefer-regexp-exec': 'warn', // more performant than String#match
+        '@typescript-eslint/no-deprecated': 'warn',
 
         // https://eslint.style/rules/ts/member-delimiter-style
         '@stylistic/ts/member-delimiter-style': ['error', {
@@ -320,8 +316,6 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         '@stylistic/plus/type-generic-spacing': 'error',
         '@stylistic/plus/type-named-tuple-spacing': 'error',
 
-        // only enable eslint-plugin-deprecation for TypeScript files
-        'deprecation/deprecation': 'error',
         // replaced by unused-imports/no-unused-imports
         '@typescript-eslint/no-unused-vars': 'off',
         'unused-imports/no-unused-vars': [
