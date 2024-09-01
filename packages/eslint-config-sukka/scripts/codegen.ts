@@ -7,6 +7,8 @@ import stylistic_eslint_plugin_ts from '@stylistic/eslint-plugin-ts';
 import fs from 'node:fs';
 import path from 'node:path';
 
+import stringifyObject from 'stringify-object';
+
 const DISABLED_RULES = new Set([
   'no-redeclare',
   'no-dupe-class-members'
@@ -117,7 +119,7 @@ const DISABLED_RULES = new Set([
       'import type { SukkaESLintRuleConfig } from \'@eslint-sukka/shared\';',
       '',
       'export const generated_typescript_overrides: SukkaESLintRuleConfig = {',
-      `  rules: ${JSON.stringify(rules, null, 2).split('\n').map((line) => `  ${line}`).join('\n').trimStart()}`,
+      `  rules: ${stringifyObject(rules, { indent: '  ', singleQuotes: true }).split('\n').map((line) => `  ${line}`).join('\n').trimStart()}`,
       '};',
       ''
     ].join('\n')
