@@ -35,10 +35,10 @@
     "@eslint-community/eslint-plugin-eslint-comments": "^4.4.0",
     "@eslint-sukka/shared": "workspace:*",
     "@eslint/js": "^9.9.1",
-    "@stylistic/eslint-plugin-js": "2.6.4",
-    "@stylistic/eslint-plugin-plus": "2.6.4",
-    "@stylistic/eslint-plugin-ts": "2.6.4",
-    "@typescript-eslint/parser": "8.2.0",
+    "@stylistic/eslint-plugin-js": "2.7.2",
+    "@stylistic/eslint-plugin-plus": "2.7.2",
+    "@stylistic/eslint-plugin-ts": "2.7.2",
+    "@typescript-eslint/parser": "8.3.0",
     "ci-info": "^4.0.0",
     "defu": "^6.1.4",
     "eslint-import-resolver-ts-bundled": "workspace:*",
@@ -60,7 +60,7 @@
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
-    "@typescript-eslint/eslint-plugin": "8.2.0",
+    "@typescript-eslint/eslint-plugin": "8.3.0",
     "eslint-config-flat-gitignore": "^0.3.0",
     "local-pkg": "^0.5.0"
   }
