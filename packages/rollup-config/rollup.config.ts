@@ -11,6 +11,6 @@ export default createRollupConfig(
     '@rollup/plugin-commonjs',
     'fs',
     '@rollup/plugin-alias',
-    'rollup-plugin-visualizer'
+    'vite-bundle-analyzer'
   ]
 );
