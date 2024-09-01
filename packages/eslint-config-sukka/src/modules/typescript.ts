@@ -294,6 +294,11 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
             arrow: {
               before: true,
               after: true
+            },
+            // https://github.com/eslint-stylistic/eslint-stylistic/issues/525
+            operator: {
+              before: true,
+              after: true
             }
           }
         }],
