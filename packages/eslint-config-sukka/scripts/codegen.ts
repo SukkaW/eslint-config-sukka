@@ -66,7 +66,7 @@ const DISABLED_RULES = new Set([
           }
           case 'sukka/no-return-await': {
             acc.push(
-            // @ts-expect-error -- no type overlap between eslint and typescript-eslint
+              // @ts-expect-error -- no type overlap between eslint and typescript-eslint
               [baseRuleName, 'off'],
               ['@typescript-eslint/return-await', 'error']
             );
@@ -84,7 +84,7 @@ const DISABLED_RULES = new Set([
           default: if (TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.has(baseRuleName)) {
             const replacementRulename = TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.get(baseRuleName)!;
             acc.push(
-            // @ts-expect-error -- no type overlap between eslint and typescript-eslint
+              // @ts-expect-error -- no type overlap between eslint and typescript-eslint
               [baseRuleName, 'off'],
               [`@typescript-eslint/${replacementRulename}`, DISABLED_RULES.has(baseRuleName) ? 'off' : value]
             );
@@ -101,7 +101,7 @@ const DISABLED_RULES = new Set([
             );
           } else if (STYLISTIC_JS_RULES_TO_BE_OVERRIDEN.has(baseRuleName)) {
             acc.push(
-            // @ts-expect-error -- no type overlap between eslint and typescript-eslint
+              // @ts-expect-error -- no type overlap between eslint and typescript-eslint
               [baseRuleName, 'off'],
               [baseRuleName.replace('@stylistic/js/', '@stylistic/ts/'), value]
             );
