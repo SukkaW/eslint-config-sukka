@@ -888,16 +888,18 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
           {
             name: 'isFinite',
             message:
-        'Use Number.isFinite instead https://github.com/airbnb/javascript#standard-library--isfinite'
+              'Use Number.isFinite instead https://github.com/airbnb/javascript#standard-library--isfinite'
           },
           {
             name: 'isNaN',
             message:
-        'Use Number.isNaN instead https://github.com/airbnb/javascript#standard-library--isnan'
+              'Use Number.isNaN instead https://github.com/airbnb/javascript#standard-library--isnan'
           }
         ],
         // disallow use of undefined when initializing variables
         'no-undef-init': 'error',
+
+        'sukka/no-expression-empty-lines': 'error',
 
         'sukka/array/no-unneeded-flat-map': 'error',
         'sukka/browser/prefer-location-assign': 'warn',

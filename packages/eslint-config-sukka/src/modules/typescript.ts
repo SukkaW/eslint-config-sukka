@@ -266,6 +266,26 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         '@typescript-eslint/prefer-regexp-exec': 'warn', // more performant than String#match
         '@typescript-eslint/no-deprecated': 'warn',
 
+        'no-restricted-syntax': [
+          'error',
+          {
+            // https://github.com/iliubinskii/eslint-plugin-misc/blob/cebe0eb0bbc171e08684c4e9f1a0249c6bd6c9f7/src/core/no-unnecessary-as-const.ts
+            message: 'Unnecessary "as const"',
+            selector: 'VariableDeclarator > TSAsExpression[expression.properties.length=0] > TSTypeReference > Identifier[name=const]'
+          },
+          {
+            // https://github.com/iliubinskii/eslint-plugin-misc/blob/cebe0eb0bbc171e08684c4e9f1a0249c6bd6c9f7/src/core/no-unnecessary-as-const.ts
+            message: 'Unnecessary "as const"',
+            selector: 'VariableDeclarator[id.typeAnnotation] > TSAsExpression > TSTypeReference > Identifier[name=const]'
+          },
+          {
+            // https://github.com/iliubinskii/eslint-plugin-misc/blob/cebe0eb0bbc171e08684c4e9f1a0249c6bd6c9f7/src/typescript/require-this-void.ts
+            message: 'Static class methods requires "this: void"',
+            selector:
+              'MethodDefinition[static=true] > FunctionExpression:not([params.0.name=this][params.0.typeAnnotation.typeAnnotation.type=TSVoidKeyword])'
+          }
+        ],
+
         // https://eslint.style/rules/ts/member-delimiter-style
         '@stylistic/ts/member-delimiter-style': ['error', {
           multiline: { delimiter: 'comma', requireLast: false/** true */ },
