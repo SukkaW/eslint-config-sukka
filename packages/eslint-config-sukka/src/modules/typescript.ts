@@ -265,6 +265,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         '@typescript-eslint/no-unsafe-enum-comparison': 'warn',
         '@typescript-eslint/prefer-regexp-exec': 'warn', // more performant than String#match
         '@typescript-eslint/no-deprecated': 'warn',
+        '@typescript-eslint/no-unnecessary-template-expression': 'warn',
 
         'no-restricted-syntax': [
           'error',
