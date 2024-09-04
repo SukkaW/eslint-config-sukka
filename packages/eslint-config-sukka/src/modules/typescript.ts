@@ -1,7 +1,6 @@
 import { constants, memo, importMetaResolve, RESTRICTED_IMPORT_TS } from '@eslint-sukka/shared';
 
 import { generated_typescript_overrides } from './_generated_typescript_overrides';
-import eslint_plugin_sukka_ts from 'eslint-plugin-sukka-ts';
 import stylisticPlus from '@stylistic/eslint-plugin-plus';
 
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
@@ -46,7 +45,6 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
       plugins: {
         ...ts_eslint_configs.base.plugins,
         '@stylistic/ts': memo(stylisticTs, '@stylistic/eslint-plugin-ts'),
-        'sukka-ts': memo(eslint_plugin_sukka_ts, 'eslint-plugin-sukka-ts'),
         '@stylistic/plus': memo(stylisticPlus, '@stylistic/eslint-plugin-plus'),
         'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x')
       },
@@ -328,16 +326,16 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         // prefer string.startsWith() and string.endsWith() over more complex alternatives
         // but also allow a[0] === 'a'
         '@typescript-eslint/prefer-string-starts-ends-with': 'off',
-        'sukka-ts/string/prefer-string-starts-ends-with': 'error',
+        'sukka/string/prefer-string-starts-ends-with': 'error',
 
         '@typescript-eslint/switch-exhaustiveness-check': 'error',
 
-        'sukka-ts/string/no-unneeded-to-string': 'error',
+        'sukka/string/no-unneeded-to-string': 'error',
         // If you have a good reason to do this, please ignore this error and provide a comment about why this is type safe.
-        'sukka-ts/type/no-force-cast-via-top-type': 'error',
-        'sukka-ts/type/no-wrapper-type-reference': 'error',
-        'sukka-ts/no-default-error': 'off', // disable since this is way too slow
-        'sukka-ts/no-export-const-enum': 'error', // not tree-shakable by swc/babel/esbuild
+        'sukka/type/no-force-cast-via-top-type': 'error',
+        'sukka/type/no-wrapper-type-reference': 'error',
+        'sukka/no-default-error': 'off', // disable since this is way too slow
+        'sukka/no-export-const-enum': 'error', // not tree-shakable by swc/babel/esbuild
 
         '@stylistic/plus/type-generic-spacing': 'error',
         '@stylistic/plus/type-named-tuple-spacing': 'error',

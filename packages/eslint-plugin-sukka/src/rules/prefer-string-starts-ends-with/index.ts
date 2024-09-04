@@ -77,7 +77,7 @@ export default createRule({
         evaluated != null
         && typeof evaluated.value === 'string'
         // checks if the string is a character long
-        // eslint-disable-next-line sukka-ts/string/prefer-string-starts-ends-with -- this is a special check for a single character
+        // eslint-disable-next-line sukka/string/prefer-string-starts-ends-with -- this is a special check for a single character
         && evaluated.value[0] === evaluated.value
       );
     }
@@ -96,7 +96,7 @@ export default createRule({
         evaluated != null
         && typeof evaluated.value === 'string'
         // checks if the string is a character long
-        // eslint-disable-next-line sukka-ts/string/prefer-string-starts-ends-with -- this is a special check for a single character
+        // eslint-disable-next-line sukka/string/prefer-string-starts-ends-with -- this is a special check for a single character
         && evaluated.value[0] === evaluated.value
         // checks if the character is ASCII
         && isASCII(evaluated.value)

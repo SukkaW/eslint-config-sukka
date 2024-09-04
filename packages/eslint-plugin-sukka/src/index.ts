@@ -14,6 +14,12 @@ import prefer_early_return from '@masknet/eslint-plugin/rules/prefer-early-retur
 import prefer_fetch from '@masknet/eslint-plugin/rules/prefer-fetch.js';
 import prefer_timer_id from '@masknet/eslint-plugin/rules/prefer-timer-id.js';
 
+// @masknet/eslint-plugin + type checked
+import string$no_unneeded_to_string from '@masknet/eslint-plugin/rules/string/no-unneeded-to-string.js';
+import type$no_force_cast_via_top_type from '@masknet/eslint-plugin/rules/type/no-force-cast-via-top-type.js';
+import type$no_wrapper_type_reference from '@masknet/eslint-plugin/rules/type/no-wrapper-type-reference.js';
+import no_default_error from '@masknet/eslint-plugin/rules/no-default-error.js';
+
 // eslint-plugin-unicorn
 // eslint-plugin-unicorn introduces way too many dependencies, let's bundle & tree shake them
 
@@ -182,6 +188,8 @@ import import_dedupe from './rules/import-dedupe';
 import no_return_await from './rules/no-return-await';
 import no_expression_empty_lines from './rules/no-expression-empty-lines';
 import object_format from './rules/object-format';
+import prefer_string_starts_ends_with from './rules/prefer-string-starts-ends-with';
+import no_export_const_enum from './rules/no-export-const-enum';
 
 import type { RuleContext, RuleModule } from '@eslint-sukka/shared';
 import type { TSESLint } from '@typescript-eslint/utils';
@@ -207,6 +215,14 @@ export default {
     'no-return-await': no_return_await,
     'no-expression-empty-lines': no_expression_empty_lines,
     'object-format': object_format,
+    // require type-check
+    'string/prefer-string-starts-ends-with': prefer_string_starts_ends_with,
+    'string/no-unneeded-to-string': string$no_unneeded_to_string,
+    // If you have a good reason to do this, please ignore this error and provide a comment about why this is type safe.
+    'type/no-force-cast-via-top-type': type$no_force_cast_via_top_type,
+    'type/no-wrapper-type-reference': type$no_wrapper_type_reference,
+    'no-default-error': no_default_error,
+    'no-export-const-enum': no_export_const_enum,
 
     // eslint-plugin-unicorn
     ...Object.fromEntries(
