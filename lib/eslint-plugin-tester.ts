@@ -26,7 +26,7 @@ const tester = new RuleTester({
   }
 });
 
-type TestCaseGenerator<T, R = T> = (cast: (input: T) => T) => Generator<R>;
+type TestCaseGenerator<T, R = T> = ((cast: (input: T) => T) => Generator<R>) | (readonly R[]);
 
 interface RunOptions<TOptions extends readonly unknown[], TMessageIds extends string> {
   module: ExportedRuleModule<TOptions, TMessageIds>,
@@ -37,9 +37,16 @@ interface RunOptions<TOptions extends readonly unknown[], TMessageIds extends st
 export function runTest<TOptions extends readonly unknown[], TMessageIds extends string>(
   { module: mod, valid, invalid }: RunOptions<TOptions, TMessageIds>
 ) {
+  const $valid = typeof valid === 'function'
+    ? Array.from(valid(identity))
+    : (valid ?? []);
+  const $invalid = typeof invalid === 'function'
+    ? Array.from(invalid(identity))
+    : (invalid ?? []);
+
   tester.run(mod.name, mod as any, {
-    valid: Array.from(valid?.(identity) ?? []).flat(),
-    invalid: Array.from(invalid?.(identity) ?? []).flat()
+    valid: $valid.flat(),
+    invalid: $invalid.flat()
   });
 }
 

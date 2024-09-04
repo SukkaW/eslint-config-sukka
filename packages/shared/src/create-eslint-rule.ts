@@ -1,5 +1,7 @@
 import type { ParserServices, ParserServicesWithTypeInformation } from '@typescript-eslint/utils';
-import type { RuleContext, RuleListener, RuleMetaData, RuleRecommendation } from '@typescript-eslint/utils/ts-eslint';
+import type { TSESLint } from '@typescript-eslint/utils';
+import type { RuleMetaData } from '@typescript-eslint/utils/ts-eslint';
+export type { RuleContext } from '@typescript-eslint/utils/ts-eslint';
 
 const BASE_URL = 'https://eslint-plugin.skk.moe/src/rules/';
 
@@ -11,32 +13,32 @@ export interface RuleModule<
   TResolvedOptions,
   TOptions extends readonly unknown[],
   TMessageIDs extends string,
-  TRuleListener extends RuleListener,
+  TRuleListener extends TSESLint.RuleListener,
   TMetaDocs = unknown
 > {
   readonly name: string,
   readonly meta: Metadata<TMessageIDs, TMetaDocs>,
   resolveOptions?(this: void, ...options: TOptions): TResolvedOptions,
-  create(this: void, context: Readonly<RuleContext<TMessageIDs, TOptions>>, options: TResolvedOptions): TRuleListener
+  create(this: void, context: Readonly<TSESLint.RuleContext<TMessageIDs, TOptions>>, options: TResolvedOptions): TRuleListener
 }
 
 export interface ExportedRuleModule<
   TOptions extends readonly unknown[] = unknown[],
   TMessageIDs extends string = string,
-  TRuleListener extends RuleListener = RuleListener
+  TRuleListener extends TSESLint.RuleListener = TSESLint.RuleListener
 > {
   readonly name: string,
   readonly meta: Metadata<TMessageIDs>,
-  create(context: Readonly<RuleContext<TMessageIDs, TOptions>>): TRuleListener
+  create(context: Readonly<TSESLint.RuleContext<TMessageIDs, TOptions>>): TRuleListener
 }
-export type { RuleContext } from '@typescript-eslint/utils/ts-eslint';
+export type { TSESLint } from '@typescript-eslint/utils';
 
 export function createRule<
   TResolvedOptions,
   TOptions extends unknown[],
   TMessageIDs extends string,
-  TRuleListener extends RuleListener = RuleListener,
-  PluginDocs = { recommended: RuleRecommendation }
+  TRuleListener extends TSESLint.RuleListener = TSESLint.RuleListener,
+  PluginDocs = { recommended: TSESLint.RuleRecommendation }
 >({ name, meta, create, resolveOptions }: RuleModule<TResolvedOptions, TOptions, TMessageIDs, TRuleListener, PluginDocs>): any {
   if (meta.docs) {
     meta.docs.url ??= new URL(name, BASE_URL).toString();

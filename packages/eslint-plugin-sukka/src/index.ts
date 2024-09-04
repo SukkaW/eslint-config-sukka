@@ -181,9 +181,10 @@ import ban_eslint_disable from './rules/ban-eslint-disable';
 import import_dedupe from './rules/import-dedupe';
 import no_return_await from './rules/no-return-await';
 import no_expression_empty_lines from './rules/no-expression-empty-lines';
+import object_format from './rules/object-format';
 
 import type { RuleContext, RuleModule } from '@eslint-sukka/shared';
-import type { ReportFixFunction } from '@typescript-eslint/utils/ts-eslint';
+import type { TSESLint } from '@typescript-eslint/utils';
 
 export default {
   rules: {
@@ -205,6 +206,7 @@ export default {
     'import-dedupe': import_dedupe,
     'no-return-await': no_return_await,
     'no-expression-empty-lines': no_expression_empty_lines,
+    'object-format': object_format,
 
     // eslint-plugin-unicorn
     ...Object.fromEntries(
@@ -327,7 +329,7 @@ const fixOptions = {
   }
 };
 
-function wrapFixFunction(fix: Function): ReportFixFunction {
+function wrapFixFunction(fix: Function): TSESLint.ReportFixFunction {
   return (fixer) => {
     const result = fix(fixer, fixOptions);
 
@@ -372,10 +374,7 @@ function reportListenerProblems<TMessageIDs extends string, TOptions extends unk
           suggest.fix = wrapFixFunction(suggest.fix);
         }
 
-        suggest.data = {
-          ...problem.data,
-          ...suggest.data
-        };
+        suggest.data = { ...problem.data, ...suggest.data };
       }
     }
 
