@@ -61,7 +61,8 @@ const restrictedImportWithImportNames = [
   { name: 'lodash', message: 'Use https://www.npmjs.com/package/rfdc for Node.js / https://www.npmjs.com/package/klona for Browser instead', importNames: ['cloneDeep'] },
   { name: 'lodash-es', message: 'Use https://www.npmjs.com/package/rfdc for Node.js / https://www.npmjs.com/package/klona for Browser instead', importNames: ['cloneDeep'] },
   { name: 'uuid', importNames: ['v4'], message: 'Use https://www.npmjs.com/package/@lukeed/uuid instead' },
-  { name: 'assert', importNames: ['deepEqual'], message: 'Use https://www.npmjs.com/package/dequal instead' }
+  { name: 'assert', importNames: ['deepEqual'], message: 'Use https://www.npmjs.com/package/dequal instead' },
+  { name: 'react', importNames: ['useLayoutEffect'], message: 'Use https://foxact.skk.moe/use-isomorphic-layout-effect instead' }
 ];
 
 export const RESTRICTED_IMPORT_JS = [
