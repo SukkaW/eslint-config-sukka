@@ -52,7 +52,7 @@
     "jsonc-eslint-parser": "^2.4.0",
     "local-pkg": "^0.5.0",
     "picocolors": "^1.1.0",
-    "typescript-eslint": "^8.4.0"
+    "typescript-eslint": "^8.5.0"
   },
   "devDependencies": {
     "@antfu/install-pkg": "^0.4.1",
