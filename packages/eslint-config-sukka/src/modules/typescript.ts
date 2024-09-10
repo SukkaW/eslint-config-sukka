@@ -281,7 +281,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
             // https://github.com/iliubinskii/eslint-plugin-misc/blob/cebe0eb0bbc171e08684c4e9f1a0249c6bd6c9f7/src/typescript/require-this-void.ts
             message: 'Static class methods requires "this: void"',
             selector:
-              'MethodDefinition[static=true] > FunctionExpression:not([params.0.name=this][params.0.typeAnnotation.typeAnnotation.type=TSVoidKeyword])'
+              'MethodDefinition[static=true][kind!="get"][kind!="set"] > FunctionExpression:not([params.0.name=this][params.0.typeAnnotation.typeAnnotation.type=TSVoidKeyword])'
           }
         ],
 
