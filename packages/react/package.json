@@ -41,7 +41,7 @@
     "@stylistic/eslint-plugin-jsx": "^2.8.0",
     "eslint-plugin-react-compiler": "0.0.0-experimental-b8a7b48-20240903",
     "eslint-plugin-react-hooks": "5.1.0-beta-4508873393-20240430",
-    "eslint-plugin-react-refresh": "^0.4.11",
+    "eslint-plugin-react-refresh": "^0.4.12",
     "eslint-plugin-ssr-friendly": "^1.3.0",
     "globals": "^15.9.0"
   },

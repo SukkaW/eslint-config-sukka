@@ -22,7 +22,7 @@
     "@swc-node/register": "^1.10.9",
     "@swc/core": "^1.7.26",
     "@types/eslint": "^9.6.1",
-    "@types/node": "^22.5.4",
+    "@types/node": "^22.5.5",
     "@types/stringify-object": "^4.0.5",
     "@typescript-eslint/rule-tester": "^8.5.0",
     "@typescript-eslint/utils": "^8.5.0",
@@ -38,7 +38,7 @@
     "ts-dedent": "^2.2.0",
     "turbo": "^2.1.2",
     "typescript": "^5.6.2",
-    "vitest": "^2.1.0"
+    "vitest": "^2.1.1"
   },
   "packageManager": "pnpm@9.10.0",
   "pnpm": {
