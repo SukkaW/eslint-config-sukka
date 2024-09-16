@@ -1,7 +1,7 @@
 import path from 'node:path';
 import fs from 'node:fs';
 
-import type { PackageJson } from 'type-fest';
+import type { PackageJson } from '@package-json/types';
 
 const SKIP_TIME = 20000;
 
