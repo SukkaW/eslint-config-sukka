@@ -44,7 +44,8 @@ export const BETTER_ALTERNATIVES = Object.entries({
   ora: 'https://www.npmjs.com/package/nanospinner',
   'ts-results': 'https://www.npmjs.com/package/ts-results-es',
   dayjs: 'https://www.npmjs.com/package/date-fns',
-  tldjs: 'https://www.npmjs.com/package/tldts'
+  tldjs: 'https://www.npmjs.com/package/tldts',
+  'types-package-json': 'https://www.npmjs.com/package/@package-json/types'
 }).map(([key, value]) => ({ name: key, message: `Use ${value} instead.` }));
 
 const restricedImportBase = [
