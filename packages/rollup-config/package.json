@@ -41,6 +41,6 @@
     "rollup": "^4.21.3",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-swc3": "^0.11.2",
-    "vite-bundle-analyzer": "^0.10.6"
+    "vite-bundle-analyzer": "^0.11.0"
   }
 }
