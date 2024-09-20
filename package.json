@@ -33,7 +33,7 @@
     "eslint-formatter-sukka": "workspace:*",
     "eslint-plugin-sukka": "workspace:*",
     "lodash-unified": "^1.0.3",
-    "rollup": "^4.21.3",
+    "rollup": "^4.22.0",
     "stringify-object": "3.3.0",
     "ts-dedent": "^2.2.0",
     "turbo": "^2.1.2",

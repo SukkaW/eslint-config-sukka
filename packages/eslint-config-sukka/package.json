@@ -38,7 +38,7 @@
     "@stylistic/eslint-plugin-js": "2.8.0",
     "@stylistic/eslint-plugin-plus": "2.8.0",
     "@stylistic/eslint-plugin-ts": "2.8.0",
-    "@typescript-eslint/parser": "8.5.0",
+    "@typescript-eslint/parser": "8.6.0",
     "ci-info": "^4.0.0",
     "defu": "^6.1.4",
     "eslint-import-resolver-ts-bundled": "workspace:*",
@@ -60,7 +60,7 @@
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
-    "@typescript-eslint/eslint-plugin": "8.5.0",
+    "@typescript-eslint/eslint-plugin": "8.6.0",
     "eslint-config-flat-gitignore": "^0.3.0"
   }
 }
