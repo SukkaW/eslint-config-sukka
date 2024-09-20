@@ -1,4 +1,5 @@
-import { memo, type FlatESLintConfigItem } from '@eslint-sukka/shared';
+import { memo } from '@eslint-sukka/shared';
+import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 // @ts-expect-error -- no types
 import eslint_plugin_eslint_comments from '@eslint-community/eslint-plugin-eslint-comments';
 import eslint_plugin_sukka from 'eslint-plugin-sukka';

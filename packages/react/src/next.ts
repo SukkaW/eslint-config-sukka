@@ -1,4 +1,5 @@
-import { constants, type FlatESLintConfigItem } from '@eslint-sukka/shared';
+import { constants } from '@eslint-sukka/shared';
+import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 // @ts-expect-error -- missing -types
 import eslint_plugin_next from '@next/eslint-plugin-next';

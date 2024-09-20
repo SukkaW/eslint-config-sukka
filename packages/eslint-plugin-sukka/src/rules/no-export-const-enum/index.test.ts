@@ -1,4 +1,4 @@
-import module from './';
+import module from '.';
 import { runTest } from '../../../../../lib/eslint-plugin-tester';
 import { dedent } from 'ts-dedent';
 

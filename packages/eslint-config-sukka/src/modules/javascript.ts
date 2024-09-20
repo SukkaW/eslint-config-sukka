@@ -7,8 +7,10 @@ import stylisticPlus from '@stylistic/eslint-plugin-plus';
 import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
 import eslint_plugin_import_x from 'eslint-plugin-import-x';
 import eslint_plugin_sukka from 'eslint-plugin-sukka';
+
 // @ts-expect-error -- no types
 import eslint_plugin_autofix from 'eslint-plugin-autofix';
+// import eslint_plugin_no_secrets from 'eslint-plugin-no-secrets';
 
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
@@ -73,13 +75,13 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
 
   const configs: FlatESLintConfigItem[] = [
     {
-      name: '@eslint/js recommended',
-      ...eslint_js.configs.recommended
-    },
-    {
       linterOptions: {
         reportUnusedDisableDirectives: true
       }
+    },
+    {
+      name: '@eslint/js recommended',
+      ...eslint_js.configs.recommended
     },
     {
       name: '@eslint-sukka/js base',
@@ -119,6 +121,15 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
       },
       rules: {
         ...eslint_plugin_import_x.configs.recommended.rules,
+
+        'import-x/newline-after-import': ['error', { considerComments: false }],
+        'import-x/no-absolute-path': 'error',
+        'import-x/no-empty-named-blocks': 'error',
+        'import-x/no-mutable-exports': 'error',
+        'import-x/no-useless-path-segments': 'warn',
+        'import-x/no-webpack-loader-syntax': 'error',
+
+        // 'no-secrets/no-secrets': 'error',
 
         // enforces getter/setter pairs in objects
         // https://eslint.org/docs/rules/accessor-pairs

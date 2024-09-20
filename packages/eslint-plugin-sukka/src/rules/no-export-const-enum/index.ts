@@ -1,5 +1,6 @@
 import { createRule } from '@eslint-sukka/shared';
-import { AST_NODE_TYPES, ASTUtils, type TSESTree } from '@typescript-eslint/utils';
+import { AST_NODE_TYPES, ASTUtils } from '@typescript-eslint/utils';
+import type { TSESTree } from '@typescript-eslint/utils';
 
 export default createRule({
   name: 'no-export-const-enum',

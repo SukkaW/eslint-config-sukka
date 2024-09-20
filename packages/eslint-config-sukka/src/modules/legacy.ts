@@ -1,4 +1,5 @@
-import { memo, globals, type FlatESLintConfigItem } from '@eslint-sukka/shared';
+import { memo, globals } from '@eslint-sukka/shared';
+import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import eslint_plugin_sukka from 'eslint-plugin-sukka';
 

@@ -343,8 +343,10 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         ],
         'unused-imports/no-unused-imports': 'error',
 
-        // Disable a few eslint-plugin-import-x rules
+        // Change a few eslint-plugin-import-x rules
         // https://typescript-eslint.io/troubleshooting/performance-troubleshooting/#eslint-plugin-import
+
+        'import-x/consistent-type-specifier-style': ['error', 'prefer-top-level'],
 
         // https://github.com/un-ts/eslint-plugin-import-x/blob/3abe5e49683e0f973232bb631814b935e1ca7091/src/config/typescript.ts#L32C1-L33C1
         'import-x/named': 'off', // TypeScript compilation already ensures that named imports exist in the referenced module
@@ -363,7 +365,9 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         // incorrect:
         // import foo from './foo.js'
         // const bar = foo.bar
-        'import-x/no-named-as-default-member': 'off' // import foo from 'foo';
+        'import-x/no-named-as-default-member': 'off', // import foo from 'foo';
+        // typescript-eslint already supports this
+        'import/no-deprecated': 'off'
       }
     },
     {

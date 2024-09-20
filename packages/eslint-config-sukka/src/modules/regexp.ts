@@ -1,6 +1,7 @@
 import eslint_plugin_sukka from 'eslint-plugin-sukka';
 
-import { memo, type FlatESLintConfigItem } from '@eslint-sukka/shared';
+import { memo } from '@eslint-sukka/shared';
+import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 import * as eslint_plugin_regexp from 'eslint-plugin-regexp';
 import { configs as eslint_pluin_regexp_configs } from 'eslint-plugin-regexp';
 

@@ -1,4 +1,5 @@
-import { constants, type FlatESLintConfigItem } from '@eslint-sukka/shared';
+import { constants } from '@eslint-sukka/shared';
+import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import stylex_eslint_plugin from '@stylexjs/eslint-plugin';
 

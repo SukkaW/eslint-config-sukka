@@ -1,5 +1,6 @@
 import { runTest } from '../../../../../lib/eslint-plugin-tester';
-import module, { type MessageIds, type Options } from '.';
+import module from '.';
+import type { MessageIds, Options } from '.';
 import { dedent } from 'ts-dedent';
 
 runTest<[Options], MessageIds>({
