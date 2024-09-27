@@ -27,6 +27,7 @@ import { defu } from 'defu';
 import type { OptionsReact, OptionsStyleX } from '../../react';
 import type { OptionsNode } from '../../node';
 import { foxquire } from './foxquire';
+import { isInEditorEnv } from './is-in-editor';
 
 type SharedOptions<T = object> = Omit<T, 'isInEditor' | 'enable'> & {
   enable?: boolean
@@ -73,16 +74,6 @@ function deprecate(pkg: string): void {
 }
 
 export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESLintConfigItem[]): Promise<FlatESLintConfigItem[]> => {
-  // const isInEditor = options?.isInEditor ?? !!(
-  //   (
-  //     process.env.VSCODE_PID
-  //     || process.env.VSCODE_CWD
-  //     || process.env.JETBRAINS_IDE
-  //     || process.env.VIM
-  //   )
-  //   && !isCI
-  // );
-
   const flatConfigs: FlatESLintConfigItem[][] = [];
 
   deprecate('@eslint-sukka/js');
@@ -113,7 +104,12 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
   }
   // typescript
   if (typescriptEnabled) {
-    flatConfigs.push(typescript(config(options?.ts)));
+    const isInEditor = options?.isInEditor ?? isInEditorEnv();
+
+    flatConfigs.push(typescript({
+      isInEditor,
+      ...config(options?.ts)
+    }));
   }
   // react
   const nextjsInstalled = isPackageExists('next');

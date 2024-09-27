@@ -14,6 +14,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import process from 'node:process';
 
 export interface OptionsTypeScript {
+  isInEditor?: boolean,
   tsconfigPath?: string | string[] | true,
   tsconfigRootDir?: string,
   componentExtentions?: string[]
@@ -28,7 +29,7 @@ const allExtensions = [...typescriptExtensions, ...javaScriptExtensions];
 const importResolverExtensions = ['.ts', '.cts', '.mts', '.tsx', ...javaScriptExtensions];
 
 export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigItem[] => {
-  const { tsconfigPath = true, tsconfigRootDir = process.cwd(), componentExtentions = [] } = options;
+  const { tsconfigPath = true, tsconfigRootDir = process.cwd(), componentExtentions = [], isInEditor = false } = options;
 
   const baseUrl = typeof __dirname === 'string' ? pathToFileURL(__dirname).href : import.meta.url;
   const typescriptEslintParserPath = fileURLToPath(importMetaResolve('@typescript-eslint/parser', baseUrl));
@@ -342,7 +343,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
           'error',
           { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_', ignoreRestSiblings: true }
         ],
-        'unused-imports/no-unused-imports': 'error',
+        'unused-imports/no-unused-imports': isInEditor ? 'error' : 'off',
 
         // Change a few eslint-plugin-import-x rules
         // https://typescript-eslint.io/troubleshooting/performance-troubleshooting/#eslint-plugin-import
