@@ -139,6 +139,8 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         // https://eslint.org/docs/rules/array-callback-return
         'array-callback-return': ['error', { allowImplicit: true }],
 
+        'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: false }],
+
         // treat var statements as if they were block scoped
         // https://eslint.org/docs/rules/block-scoped-var
         'block-scoped-var': 'error',

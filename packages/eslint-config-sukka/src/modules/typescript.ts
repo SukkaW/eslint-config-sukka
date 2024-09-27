@@ -44,8 +44,8 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
       ],
       plugins: {
         ...ts_eslint_configs.base.plugins,
-        '@stylistic/ts': memo(stylisticTs, '@stylistic/eslint-plugin-ts'),
-        '@stylistic/plus': memo(stylisticPlus, '@stylistic/eslint-plugin-plus'),
+        '@stylistic/ts': memo<any>(stylisticTs, '@stylistic/eslint-plugin-ts'),
+        '@stylistic/plus': memo<any>(stylisticPlus, '@stylistic/eslint-plugin-plus'),
         'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x')
       },
       // extends: [
@@ -324,6 +324,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         'sukka/string/prefer-string-starts-ends-with': 'error',
 
         '@typescript-eslint/switch-exhaustiveness-check': 'error',
+        '@typescript-eslint/parameter-properties': ['warn', { prefer: 'parameter-property' }],
 
         'sukka/string/no-unneeded-to-string': 'error',
         // If you have a good reason to do this, please ignore this error and provide a comment about why this is type safe.
