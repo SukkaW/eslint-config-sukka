@@ -355,9 +355,6 @@ importers:
       eslint-plugin-ssr-friendly:
         specifier: ^1.3.0
         version: 1.3.0(eslint@9.11.1(jiti@2.0.0))
-      globals:
-        specifier: ^15.9.0
-        version: 15.9.0
     devDependencies:
       '@eslint-sukka/rollup-config':
         specifier: workspace:*
