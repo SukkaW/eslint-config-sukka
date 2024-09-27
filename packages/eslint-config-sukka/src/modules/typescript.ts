@@ -45,8 +45,8 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
       ],
       plugins: {
         ...ts_eslint_configs.base.plugins,
-        '@stylistic/ts': memo<any>(stylisticTs, '@stylistic/eslint-plugin-ts'),
-        '@stylistic/plus': memo<any>(stylisticPlus, '@stylistic/eslint-plugin-plus'),
+        '@stylistic/ts': memo(stylisticTs, '@stylistic/eslint-plugin-ts'),
+        '@stylistic/plus': memo(stylisticPlus, '@stylistic/eslint-plugin-plus'),
         'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x')
       },
       // extends: [

@@ -59,7 +59,7 @@ interface PropLimits {
 
 export const stylex = ({ opt = {} }: OptionsStyleX = {}): FlatESLintConfigItem[] => [{
   plugins: {
-    '@stylex': stylex_eslint_plugin as any
+    '@stylexjs': stylex_eslint_plugin as any
   },
   files: [
     constants.GLOB_TS,

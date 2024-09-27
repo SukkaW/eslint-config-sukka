@@ -4,6 +4,7 @@ import type { InvalidTestCase, ValidTestCase } from '@typescript-eslint/rule-tes
 
 import type { ExportedRuleModule } from '@eslint-sukka/shared';
 import { afterAll, describe, it } from 'vitest';
+import type { TSESLint } from '@typescript-eslint/utils';
 
 // import { globals } from '@eslint-sukka/shared';
 
@@ -44,7 +45,8 @@ export function runTest<TOptions extends readonly unknown[], TMessageIds extends
     ? Array.from(invalid(identity))
     : (invalid ?? []);
 
-  tester.run(mod.name, mod as any, {
+  // eslint-disable-next-line sukka/type/no-force-cast-via-top-type -- mismatched type between @typescript-eslint/rule-tester and @eslint-sukka/shared
+  tester.run(mod.name, mod as unknown as TSESLint.RuleModule<TMessageIds, TOptions>, {
     valid: $valid.flat(),
     invalid: $invalid.flat()
   });

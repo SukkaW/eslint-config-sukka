@@ -132,7 +132,7 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
             type: 'message',
             severity: x.fatal
               ? 'fatal'
-              : ((x.severity === 2 || (x.severity as any) === 'error')
+              : ((x.severity === 2 || (x.severity as unknown) === 'error')
                 ? 'error'
                 : 'warning'),
             line,
@@ -177,7 +177,7 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
       let ruleUrl;
 
       try {
-        if (data && 'rulesMeta' in data) {
+        if (data != null && 'rulesMeta' in data) {
           ruleUrl = data.rulesMeta[x.ruleId].docs?.url;
         }
       } catch { }

@@ -7,7 +7,9 @@
     "module": "es2020",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
+    "isolatedModules": true,
     "esModuleInterop": true,
+    "preserveSymlinks": true,
     "strict": true,
     "strictNullChecks": true,
     "skipLibCheck": true

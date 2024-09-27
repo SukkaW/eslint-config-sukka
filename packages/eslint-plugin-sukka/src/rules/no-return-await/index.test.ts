@@ -1,15 +1,20 @@
 import { runTest } from '../../../../../lib/eslint-plugin-tester';
+import type { TestCaseError } from '@typescript-eslint/rule-tester';
+
 import module from './index';
 import { dedent } from 'ts-dedent';
+import { AST_NODE_TYPES } from '@typescript-eslint/utils';
 
-function createErrorList({ suggestionOutput: output }: { suggestionOutput?: string } = {}): any {
+function createErrorList({ suggestionOutput: output }: { suggestionOutput?: string } = {}): Array<TestCaseError<'removeAwait' | 'redundantUseOfAwait'>> {
   // pending https://github.com/eslint/espree/issues/304, the type should be "Keyword"
   return [{
     messageId: 'redundantUseOfAwait',
-    type: 'Identifier',
-    suggestions: output ? [{
-      messageId: 'removeAwait', output
-    } as const] : []
+    type: AST_NODE_TYPES.Identifier,
+    suggestions: output
+      ? [{
+        messageId: 'removeAwait', output
+      }]
+      : []
   } as const];
 }
 

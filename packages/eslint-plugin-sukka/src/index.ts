@@ -193,7 +193,9 @@ import no_export_const_enum from './rules/no-export-const-enum';
 
 import type { RuleContext, RuleModule } from '@eslint-sukka/shared';
 import type { TSESLint } from '@typescript-eslint/utils';
+import type { ESLint } from 'eslint';
 
+// eslint-disable-next-line sukka/type/no-force-cast-via-top-type -- fuck @types/eslint
 export default {
   rules: {
     'array/no-unneeded-flat-map': array$no_unneeded_flat_map,
@@ -308,9 +310,9 @@ export default {
       }).map(([ruleId, rule]) => [ruleId, loadUnicorn(rule, ruleId)])
     )
   }
-};
+} as unknown as ESLint.Plugin;
 
-function loadUnicorn<TMessageIDs extends string, TOptions extends unknown[]>(rule: RuleModule<any, TOptions, TMessageIDs, any>, ruleId: string): RuleModule<any, TOptions, TMessageIDs, any> {
+function loadUnicorn<TMessageIDs extends string, TOptions extends unknown[]>(rule: RuleModule<TOptions, TOptions, TMessageIDs>, ruleId: string): RuleModule<TOptions, TOptions, TMessageIDs> {
   return {
     ...rule,
     meta: {
@@ -330,7 +332,7 @@ function loadUnicorn<TMessageIDs extends string, TOptions extends unknown[]>(rul
   };
 }
 
-const isIterable = (object: object | null | undefined): object is Iterable<any> => !!object && Symbol.iterator in object;
+const isIterable = (object: object | null | undefined): object is Iterable<unknown> => !!object && Symbol.iterator in object;
 
 class FixAbortError extends Error {
   constructor(message?: string, options?: ErrorOptions) {
@@ -345,8 +347,9 @@ const fixOptions = {
   }
 };
 
-function wrapFixFunction(fix: Function): TSESLint.ReportFixFunction {
+function wrapFixFunction(fix: TSESLint.ReportFixFunction): TSESLint.ReportFixFunction {
   return (fixer) => {
+    // @ts-expect-error -- fixOptions is unicorn specific
     const result = fix(fixer, fixOptions);
 
     if (isIterable(result)) {
@@ -354,7 +357,7 @@ function wrapFixFunction(fix: Function): TSESLint.ReportFixFunction {
         return [...result];
       } catch (error) {
         if (error instanceof FixAbortError) {
-          return;
+          return null;
         }
 
         /* c8 ignore next */
@@ -366,7 +369,15 @@ function wrapFixFunction(fix: Function): TSESLint.ReportFixFunction {
   };
 }
 
-function reportListenerProblems<TMessageIDs extends string, TOptions extends unknown[]>(problems: any, context: Readonly<RuleContext<TMessageIDs, TOptions>>) {
+type DeepWritable<T> = { -readonly [K in keyof T]: DeepWritable<T[K]> };
+
+function reportListenerProblems<TMessageIDs extends string, TOptions extends unknown[]>(
+  problems:
+    | DeepWritable<TSESLint.ReportDescriptor<TMessageIDs>>
+    | Iterable<DeepWritable<TSESLint.ReportDescriptor<TMessageIDs>> | null | undefined>
+    | null | undefined | void,
+  context: Readonly<RuleContext<TMessageIDs, TOptions>>
+) {
   if (!problems) {
     return;
   }
@@ -381,26 +392,27 @@ function reportListenerProblems<TMessageIDs extends string, TOptions extends unk
     }
 
     if (problem.fix) {
-      problem.fix = wrapFixFunction(problem.fix);
+      problem.fix = wrapFixFunction(problem.fix as TSESLint.ReportFixFunction);
     }
 
     if (isIterable(problem.suggest)) {
       for (const suggest of problem.suggest) {
-        if (suggest.fix) {
-          suggest.fix = wrapFixFunction(suggest.fix);
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- bad types
+        if ('fix' in suggest && suggest.fix) {
+          suggest.fix = wrapFixFunction(suggest.fix as TSESLint.ReportFixFunction);
         }
 
         suggest.data = { ...problem.data, ...suggest.data };
       }
     }
 
-    context.report(problem);
+    context.report(problem as TSESLint.ReportDescriptor<TMessageIDs>);
   }
 }
 
 // `checkVueTemplate` function will wrap `create` function, there is no need to wrap twice
 // const wrappedFunctions = new WeakSet();
-function reportProblems<TMessageIDs extends string, TOptions extends unknown[]>(create: RuleModule<any, TOptions, TMessageIDs, any>['create'], options?: TOptions) {
+function reportProblems<TMessageIDs extends string, TOptions extends unknown[]>(create: RuleModule<TOptions | undefined, TOptions, TMessageIDs>['create'], options?: TOptions) {
   // if (wrappedFunctions.has(create)) {
   //   return create;
   // }
@@ -408,8 +420,10 @@ function reportProblems<TMessageIDs extends string, TOptions extends unknown[]>(
   // wrappedFunctions.add(wrapped);
 
   return (context: Readonly<RuleContext<TMessageIDs, TOptions>>) => {
-    const listeners: Record<string, Function[]> = {};
-    const addListener = (selector: string, listener: Function) => {
+    const listeners: {
+      [K in keyof TSESLint.RuleListener]: Array<TSESLint.RuleListener[K]>;
+    } = {};
+    const addListener = (selector: string, listener: TSESLint.RuleFunction) => {
       listeners[selector] ??= [];
       listeners[selector].push(listener);
     };
@@ -417,7 +431,7 @@ function reportProblems<TMessageIDs extends string, TOptions extends unknown[]>(
     const contextProxy = new Proxy(context, {
       get(target, property, receiver) {
         if (property === 'on') {
-          return (selectorOrSelectors: string | string[], listener: Function) => {
+          return (selectorOrSelectors: string | string[], listener: TSESLint.RuleFunction) => {
             const selectors = Array.isArray(selectorOrSelectors) ? selectorOrSelectors : [selectorOrSelectors];
             for (const selector of selectors) {
               addListener(selector, listener);
@@ -426,7 +440,7 @@ function reportProblems<TMessageIDs extends string, TOptions extends unknown[]>(
         }
 
         if (property === 'onExit') {
-          return (selectorOrSelectors: string | string[], listener: Function) => {
+          return (selectorOrSelectors: string | string[], listener: TSESLint.RuleFunction) => {
             const selectors = Array.isArray(selectorOrSelectors) ? selectorOrSelectors : [selectorOrSelectors];
             for (const selector of selectors) {
               addListener(`${selector}:exit`, listener);
@@ -438,8 +452,10 @@ function reportProblems<TMessageIDs extends string, TOptions extends unknown[]>(
       }
     });
 
-    for (const [selector, listener] of Object.entries(create(contextProxy, options) ?? {})) {
-      addListener(selector, listener as Function);
+    for (const [selector, listener] of Object.entries(create(contextProxy, options) || {})) {
+      if (listener) {
+        addListener(selector, listener);
+      }
     }
 
     return Object.fromEntries(
@@ -449,7 +465,10 @@ function reportProblems<TMessageIDs extends string, TOptions extends unknown[]>(
           // Listener arguments can be `codePath, node` or `node`
           (...listenerArguments: unknown[]) => {
             for (const listener of listeners) {
-              reportListenerProblems<TMessageIDs, TOptions>(listener(...listenerArguments), context);
+              if (listener) {
+                // @ts-expect-error -- bad types
+                reportListenerProblems<TMessageIDs, TOptions>(listener(...listenerArguments), context);
+              }
             }
           }
         ])
