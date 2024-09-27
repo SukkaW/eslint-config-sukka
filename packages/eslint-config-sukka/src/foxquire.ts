@@ -1,5 +1,5 @@
 import { isCI } from 'ci-info';
-import { isPackageExists } from 'local-pkg';
+import { isPackageExists } from '@eslint-sukka/shared';
 import process from 'node:process';
 
 export const foxquire = async <T>(pkg: string): Promise<T> => {

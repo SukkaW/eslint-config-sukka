@@ -18,7 +18,7 @@ import type { OptionsTypeScript } from './modules/typescript';
 import { legacy } from './modules/legacy';
 import type { OptionsLegacy } from './modules/legacy';
 
-import { isPackageExists } from 'local-pkg';
+import { isPackageExists } from '@eslint-sukka/shared';
 import picocolors from 'picocolors';
 import { defu } from 'defu';
 // import { isCI } from 'ci-info';

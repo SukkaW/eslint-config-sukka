@@ -9,7 +9,24 @@ export type * from './types';
 export { createRule, ensureParserWithTypeInformation } from './create-eslint-rule';
 export type { RuleModule, ExportedRuleModule, RuleContext } from './create-eslint-rule';
 
-export { resolve as importMetaResolve } from '@dual-bundle/import-meta-resolve';
+import { resolve as importMetaResolve } from '@dual-bundle/import-meta-resolve';
+import type { ErrnoException } from '@dual-bundle/import-meta-resolve';
+
+export const isPackageExists = (pkg: string) => {
+  try {
+    importMetaResolve(pkg, import.meta.url);
+    return true;
+  } catch (error) {
+    const e = error as ErrnoException;
+    if (e.code !== 'MODULE_NOT_FOUND') {
+      console.error('[@eslint-sukka/shared: isPackageExists]', e);
+    }
+
+    throw error;
+  }
+};
+
+export { importMetaResolve };
 
 export * as globals from './globals';
 

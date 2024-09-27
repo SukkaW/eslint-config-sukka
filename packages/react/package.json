@@ -35,7 +35,7 @@
     "@eslint-sukka/eslint-plugin-react-jsx-a11y": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
     "@eslint/compat": "^1.1.1",
-    "@next/eslint-plugin-next": "15.0.0-canary.47",
+    "@next/eslint-plugin-next": "15.0.0-canary.171",
     "@stylexjs/eslint-plugin": "^0.7.5",
     "@stylexjs/shared": "^0.7.5",
     "@stylistic/eslint-plugin-jsx": "^2.8.0",
