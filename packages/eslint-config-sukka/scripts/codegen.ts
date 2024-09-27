@@ -7,14 +7,14 @@ import stylistic_eslint_plugin_ts from '@stylistic/eslint-plugin-ts';
 import fs from 'node:fs';
 import path from 'node:path';
 
-import stringifyObject from 'stringify-object';
-
 const DISABLED_RULES = new Set([
   'no-redeclare',
   'no-dupe-class-members'
 ]);
 
-(() => {
+(async () => {
+  const { default: stringifyObject } = await import('stringify-object');
+
   const stylistic_eslint_plugin_ts_rulenames = new Set(Object.keys(stylistic_eslint_plugin_ts.rules));
 
   const TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN = new Map(
