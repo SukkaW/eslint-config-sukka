@@ -112,9 +112,7 @@ export default createRule<Options, [Options], MessageIds>({
 
         function predictedLength(): number {
           const head = context.sourceCode.getLocFromIndex(node.range[0]).column;
-          const contents = texts.reduce<number>((acc, cur) => {
-            return acc + cur.length;
-          }, 0);
+          const contents = texts.reduce<number>((acc, cur) => acc + cur.length, 0);
 
           const commas = 2 * (texts.length - 1);
 

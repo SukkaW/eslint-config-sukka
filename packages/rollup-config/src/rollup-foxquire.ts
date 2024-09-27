@@ -11,25 +11,23 @@ const ESMShim = `
 const foximport = (id) => import(id);
 `;
 
-export const rollupFoximport = (): Plugin => {
-  return {
-    name: 'esm-cjs-bridge',
-    renderChunk(code, _chunk, opts) {
-      if (code.includes('foximport')) {
-        const ms = new MagicString(code);
-        if (opts.format === 'es') {
-          if (!code.includes(ESMShim)) {
-            ms.prepend(ESMShim);
-          }
-        } else if (!code.includes(CJSShim)) {
-          ms.prepend(CJSShim);
+export const rollupFoximport = (): Plugin => ({
+  name: 'esm-cjs-bridge',
+  renderChunk(code, _chunk, opts) {
+    if (code.includes('foximport')) {
+      const ms = new MagicString(code);
+      if (opts.format === 'es') {
+        if (!code.includes(ESMShim)) {
+          ms.prepend(ESMShim);
         }
-        return {
-          code: ms.toString(),
-          map: ms.generateMap({ hires: true }).toMap()
-        };
+      } else if (!code.includes(CJSShim)) {
+        ms.prepend(CJSShim);
       }
-      return null;
+      return {
+        code: ms.toString(),
+        map: ms.generateMap({ hires: true }).toMap()
+      };
     }
-  };
-};
+    return null;
+  }
+});

@@ -18,11 +18,12 @@ export const isPackageExists = (pkg: string) => {
     return true;
   } catch (error) {
     const e = error as ErrnoException;
-    if (e.code !== 'MODULE_NOT_FOUND') {
+    if ('code' in e && (e.code !== 'MODULE_NOT_FOUND' && e.code !== 'ERR_MODULE_NOT_FOUND')) {
+      console.log(e.code);
       console.error('[@eslint-sukka/shared: isPackageExists]', e);
     }
 
-    throw error;
+    return false;
   }
 };
 

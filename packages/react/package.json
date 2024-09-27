@@ -37,7 +37,6 @@
     "@eslint/compat": "^1.1.1",
     "@next/eslint-plugin-next": "15.0.0-canary.171",
     "@stylexjs/eslint-plugin": "^0.7.5",
-    "@stylexjs/shared": "^0.7.5",
     "@stylistic/eslint-plugin-jsx": "^2.8.0",
     "eslint-plugin-react-compiler": "0.0.0-experimental-f444e11-20240926",
     "eslint-plugin-react-hooks": "5.1.0-beta-4508873393-20240430",
