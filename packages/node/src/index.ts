@@ -103,7 +103,7 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
       files: options.files ?? (isModule ? ['*.cjs', '.*.cjs'] : ['*.cjs', '.*.cjs', '*.js', '.*.js']),
       rules: {
         // enable strict mode for cjs
-        strict: 'warn'
+        strict: ['warn', 'global']
       }
     });
   }
