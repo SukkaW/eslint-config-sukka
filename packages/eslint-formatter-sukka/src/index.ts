@@ -39,7 +39,7 @@ interface Line {
   column: string
 }
 
-const pretty: ESLint.Formatter['format'] = (results, data): string => {
+const pretty: ESLint.FormatterFunction = (results, data): string => {
   const lines: Array<Line | Separator | Header> = [];
   let errorCount = 0;
   let warningCount = 0;
@@ -177,7 +177,9 @@ const pretty: ESLint.Formatter['format'] = (results, data): string => {
       let ruleUrl;
 
       try {
-        ruleUrl = data?.rulesMeta[x.ruleId]?.docs?.url;
+        if (data && 'rulesMeta' in data) {
+          ruleUrl = data.rulesMeta[x.ruleId].docs?.url;
+        }
       } catch { }
 
       const line = [
