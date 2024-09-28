@@ -40,7 +40,7 @@ interface RunOptions<TOptions extends readonly unknown[], TMessageIds extends st
 
 export function runTest<TOptions extends readonly unknown[], TMessageIds extends string>(
   { module: mod, valid, invalid }: RunOptions<TOptions, TMessageIds>,
-  extraRules?: Record<string, any>
+  extraRules?: Record<string, TSESLint.AnyRuleModule>
 ) {
   const $valid = typeof valid === 'function'
     ? Array.from(valid(identity))

@@ -189,6 +189,7 @@ import no_return_await from './rules/no-return-await';
 import no_expression_empty_lines from './rules/no-expression-empty-lines';
 import object_format from './rules/object-format';
 import prefer_single_boolean_return from './rules/prefer-single-boolean-return';
+import noAllDuplicatedBranches from './rules/no-all-duplicated-branches';
 import prefer_string_starts_ends_with from './rules/prefer-string-starts-ends-with';
 import no_export_const_enum from './rules/no-export-const-enum';
 
@@ -219,6 +220,7 @@ export default {
     'no-expression-empty-lines': no_expression_empty_lines,
     'object-format': object_format,
     'prefer-single-boolean-return': prefer_single_boolean_return,
+    'no-all-duplicated-branches': noAllDuplicatedBranches,
     // require type-check
     'string/prefer-string-starts-ends-with': prefer_string_starts_ends_with,
     'string/no-unneeded-to-string': string$no_unneeded_to_string,
