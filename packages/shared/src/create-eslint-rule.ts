@@ -51,6 +51,12 @@ export function createRule<
   } satisfies ExportedRuleModule<TOptions, TMessageIDs>;
 }
 
+export function isParserWithTypeInformation(
+  parserServices: Partial<ParserServices> | undefined
+): parserServices is ParserServicesWithTypeInformation {
+  return !!parserServices?.program;
+}
+
 export function ensureParserWithTypeInformation(
   parserServices: Partial<ParserServices> | undefined
 ): asserts parserServices is ParserServicesWithTypeInformation {

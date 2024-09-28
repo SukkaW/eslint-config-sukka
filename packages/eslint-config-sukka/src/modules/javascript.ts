@@ -917,6 +917,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/no-all-duplicated-branches': 'error',
         'sukka/bool-param-default': 'error',
         'sukka/call-argument-line': 'error',
+        'sukka/class-prototype': 'warn',
 
         'sukka/array/no-unneeded-flat-map': 'error',
         'sukka/browser/prefer-location-assign': 'warn',

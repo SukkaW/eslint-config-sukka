@@ -6,7 +6,7 @@ export * from './restricted-import';
 export { memo } from './memoize-eslint-plugin';
 export type * from './types';
 
-export { createRule, ensureParserWithTypeInformation } from './create-eslint-rule';
+export { createRule, ensureParserWithTypeInformation, isParserWithTypeInformation } from './create-eslint-rule';
 export type { RuleModule, ExportedRuleModule, RuleContext } from './create-eslint-rule';
 
 import { resolve as importMetaResolve } from '@dual-bundle/import-meta-resolve';
