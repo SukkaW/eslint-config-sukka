@@ -199,6 +199,7 @@ import noEmptyCollection from './rules/no-empty-collection';
 import noEqualsInForTermination from './rules/no-equals-in-for-termination';
 import noTopLevelThis from './rules/no-top-level-this';
 import noInvariantReturns from './rules/no-invariant-returns';
+import noRedundantAssignments from './rules/no-redundant-assignments';
 
 import prefer_string_starts_ends_with from './rules/prefer-string-starts-ends-with';
 import no_export_const_enum from './rules/no-export-const-enum';
@@ -243,6 +244,7 @@ export default {
     'no-equals-in-for-termination': noEqualsInForTermination,
     'no-top-level-this': noTopLevelThis,
     'no-invariant-returns': noInvariantReturns,
+    'no-redundant-assignments': noRedundantAssignments,
     // require type-check
     'string/prefer-string-starts-ends-with': prefer_string_starts_ends_with,
     'string/no-unneeded-to-string': string$no_unneeded_to_string,

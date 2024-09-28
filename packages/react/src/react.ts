@@ -370,7 +370,7 @@ export const react = ({
       // 'react/no-namespace': 'off',
       '@eslint-react/dom/no-namespace': 'error',
 
-      'class-methods-use-this': ['error', {
+      '@typescript-eslint/class-methods-use-this': ['error', {
         exceptMethods: [
           'render',
           'getInitialState',
