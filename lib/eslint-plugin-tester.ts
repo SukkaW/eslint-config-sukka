@@ -15,7 +15,7 @@ RuleTester.itSkip = it.skip;
 RuleTester.describe = describe;
 RuleTester.describeSkip = describe.skip;
 
-const tester = new RuleTester({
+const $tester = new RuleTester({
   languageOptions: {
     parserOptions: {
       ecmaFeatures: { jsx: true },
@@ -24,6 +24,9 @@ const tester = new RuleTester({
       tsconfigRootDir: path.join(__dirname, '..', 'tests', 'fixtures'),
       warnOnUnsupportedTypeScriptVersion: false
     }
+  },
+  linterOptions: {
+    reportUnusedDisableDirectives: false
   }
 });
 
@@ -36,7 +39,8 @@ interface RunOptions<TOptions extends readonly unknown[], TMessageIds extends st
 }
 
 export function runTest<TOptions extends readonly unknown[], TMessageIds extends string>(
-  { module: mod, valid, invalid }: RunOptions<TOptions, TMessageIds>
+  { module: mod, valid, invalid }: RunOptions<TOptions, TMessageIds>,
+  extraRules?: Record<string, any>
 ) {
   const $valid = typeof valid === 'function'
     ? Array.from(valid(identity))
@@ -45,12 +49,55 @@ export function runTest<TOptions extends readonly unknown[], TMessageIds extends
     ? Array.from(invalid(identity))
     : (invalid ?? []);
 
+  const tester = extraRules
+    ? (() => {
+      const tester = new RuleTester({
+        languageOptions: {
+          parserOptions: {
+            ecmaFeatures: { jsx: true },
+            project: 'tsconfig.json',
+            projectService: true,
+            tsconfigRootDir: path.join(__dirname, '..', 'tests', 'fixtures'),
+            warnOnUnsupportedTypeScriptVersion: false
+          }
+        },
+        linterOptions: {
+          reportUnusedDisableDirectives: false
+        }
+      });
+
+      Object.entries(extraRules).forEach(([name, rule]) => {
+        tester.defineRule(name, rule);
+      });
+
+      return tester;
+    })()
+    : $tester;
+
   // eslint-disable-next-line sukka/type/no-force-cast-via-top-type -- mismatched type between @typescript-eslint/rule-tester and @eslint-sukka/shared
   tester.run(mod.name, mod as unknown as TSESLint.RuleModule<TMessageIds, TOptions>, {
-    valid: $valid.flat(),
-    invalid: $invalid.flat()
+    valid: $valid.flat().map((item, index) => {
+      if (typeof item === 'string') {
+        return item;
+      }
+
+      return {
+        ...item,
+        name: `${item.name || 'valid'} #${index}`
+      };
+    }),
+    invalid: $invalid.flat().map((item, index) => ({
+      ...item,
+      name: `${item.name || 'invalid'} #${index}`
+    }))
   });
 }
+
+runTest.skip = <TOptions extends readonly unknown[], TMessageIds extends string>(
+  _args: RunOptions<TOptions, TMessageIds>
+) => {
+  // noop
+};
 
 function identity<T>(input: T): T {
   return input;

@@ -4,7 +4,7 @@ import module from './index';
 runTest({
   module,
   *valid() {
-    yield '// eslint-disable-next-line no-console -- Log a error\nconsole.log()';
+    yield '// eslint-disable-next-line no-console -- Log an error\nconsole.log(``)';
   },
   *invalid() {
     yield {

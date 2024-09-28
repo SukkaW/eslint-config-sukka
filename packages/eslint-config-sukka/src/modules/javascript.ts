@@ -913,6 +913,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'no-undef-init': 'error',
 
         'sukka/no-expression-empty-lines': 'error',
+        'sukka/prefer-single-boolean-return': 'error',
 
         'sukka/array/no-unneeded-flat-map': 'error',
         'sukka/browser/prefer-location-assign': 'warn',
