@@ -106,7 +106,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
       } satisfies FlatESLintConfigItem['languageOptions'],
       settings: {
         'import-x/parsers': {
-          // TODO: remove this line once  #2556 is fixed
+          // TODO: remove this line once #2556 is fixed
           espree: allExtensions
         },
         'import-x/extensions': allExtensions
@@ -922,6 +922,8 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/comma-or-logical-or-case': 'error',
         'sukka/track-todo-fixme-comment': 'warn',
         'sukka/no-element-overwrite': 'warn',
+        'sukka/no-empty-collection': 'warn',
+        'sukka/no-equals-in-for-termination': 'error',
 
         'sukka/array/no-unneeded-flat-map': 'error',
         'sukka/browser/prefer-location-assign': 'warn',
