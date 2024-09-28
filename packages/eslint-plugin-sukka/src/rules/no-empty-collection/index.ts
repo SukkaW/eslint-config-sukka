@@ -150,7 +150,7 @@ export default createRule({
   }
 });
 
-function findFirstMatchingAncestor(
+export function findFirstMatchingAncestor(
   node: TSESTree.Node,
   predicate: (node: TSESTree.Node) => boolean
 ) {
@@ -193,7 +193,7 @@ function isReferenceAssigningEmptyCollection(ref: TSESLint.Scope.Reference) {
   return false;
 }
 
-function isReferenceTo(ref: TSESLint.Scope.Reference, node: TSESTree.Node) {
+export function isReferenceTo(ref: TSESLint.Scope.Reference, node: TSESTree.Node) {
   return node.type === AST_NODE_TYPES.Identifier && node === ref.identifier;
 }
 
@@ -251,7 +251,7 @@ function isElementRead(ref: TSESLint.Scope.Reference) {
   );
 }
 
-function isElementWrite(memberExpression: TSESTree.MemberExpression) {
+export function isElementWrite(memberExpression: TSESTree.MemberExpression) {
   const ancestors = ancestorsChain(memberExpression, new Set());
   const assignment = ancestors.find(
     n => n.type === AST_NODE_TYPES.AssignmentExpression
