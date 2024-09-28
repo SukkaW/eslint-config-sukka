@@ -24,8 +24,6 @@ import no_default_error from '@masknet/eslint-plugin/rules/no-default-error.js';
 // eslint-plugin-unicorn introduces way too many dependencies, let's bundle & tree shake them
 
 // @ts-expect-error - eslint-plugin-unicorn does not have types
-import getDocumentationUrl from 'eslint-plugin-unicorn/rules/utils/get-documentation-url.js';
-// @ts-expect-error - eslint-plugin-unicorn does not have types
 import no_nested_ternary from 'eslint-plugin-unicorn/rules/no-nested-ternary.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_event_target from 'eslint-plugin-unicorn/rules/prefer-event-target.js';
@@ -190,15 +188,15 @@ import no_expression_empty_lines from './rules/no-expression-empty-lines';
 import object_format from './rules/object-format';
 import prefer_single_boolean_return from './rules/prefer-single-boolean-return';
 import noAllDuplicatedBranches from './rules/no-all-duplicated-branches';
+import commaOrLogicalOrCase from './rules/comma-or-logical-or-case';
 import classPrototype from './rules/class-prototype';
 import boolParamDefault from './rules/bool-param-default';
 import callArgumentLine from './rules/call-argument-line';
 import prefer_string_starts_ends_with from './rules/prefer-string-starts-ends-with';
 import no_export_const_enum from './rules/no-export-const-enum';
 
-import type { RuleContext, RuleModule } from '@eslint-sukka/shared';
-import type { TSESLint } from '@typescript-eslint/utils';
 import type { ESLint } from 'eslint';
+import { loadUnicorn } from './utils/unicorn';
 
 // eslint-disable-next-line sukka/type/no-force-cast-via-top-type -- fuck @types/eslint
 export default {
@@ -227,6 +225,7 @@ export default {
     'bool-param-default': boolParamDefault,
     'call-argument-line': callArgumentLine,
     'class-prototype': classPrototype,
+    'comma-or-logical-or-case': commaOrLogicalOrCase,
     // require type-check
     'string/prefer-string-starts-ends-with': prefer_string_starts_ends_with,
     'string/no-unneeded-to-string': string$no_unneeded_to_string,
@@ -320,167 +319,3 @@ export default {
     )
   }
 } as unknown as ESLint.Plugin;
-
-function loadUnicorn<TMessageIDs extends string, TOptions extends unknown[]>(rule: RuleModule<TOptions, TOptions, TMessageIDs>, ruleId: string): RuleModule<TOptions, TOptions, TMessageIDs> {
-  return {
-    ...rule,
-    meta: {
-      // If there is are, options add `[]` so ESLint can validate that no data is passed to the rule.
-      // https://github.com/not-an-aardvark/eslint-plugin-eslint-plugin/blob/master/docs/rules/require-meta-schema.md
-      // @ts-expect-error -- unicorn might not provide schema
-      schema: [],
-      ...rule.meta,
-      docs: {
-        description: '',
-        ...rule.meta.docs,
-        url: getDocumentationUrl(ruleId)
-      }
-    },
-
-    create: reportProblems<TMessageIDs, TOptions>(rule.create)
-  };
-}
-
-const isIterable = (object: object | null | undefined): object is Iterable<unknown> => !!object && Symbol.iterator in object;
-
-class FixAbortError extends Error {
-  constructor(message?: string, options?: ErrorOptions) {
-    super(message, options);
-    this.name = 'FixAbortError';
-  }
-}
-
-const fixOptions = {
-  abort() {
-    throw new FixAbortError('Fix aborted.');
-  }
-};
-
-function wrapFixFunction(fix: TSESLint.ReportFixFunction): TSESLint.ReportFixFunction {
-  return (fixer) => {
-    // @ts-expect-error -- fixOptions is unicorn specific
-    const result = fix(fixer, fixOptions);
-
-    if (isIterable(result)) {
-      try {
-        return [...result];
-      } catch (error) {
-        if (error instanceof FixAbortError) {
-          return null;
-        }
-
-        /* c8 ignore next */
-        throw error;
-      }
-    }
-
-    return result;
-  };
-}
-
-type DeepWritable<T> = { -readonly [K in keyof T]: DeepWritable<T[K]> };
-
-function reportListenerProblems<TMessageIDs extends string, TOptions extends unknown[]>(
-  problems:
-    | DeepWritable<TSESLint.ReportDescriptor<TMessageIDs>>
-    | Iterable<DeepWritable<TSESLint.ReportDescriptor<TMessageIDs>> | null | undefined>
-    | null | undefined | void,
-  context: Readonly<RuleContext<TMessageIDs, TOptions>>
-) {
-  if (!problems) {
-    return;
-  }
-
-  if (!isIterable(problems)) {
-    problems = [problems];
-  }
-
-  for (const problem of problems) {
-    if (!problem) {
-      continue;
-    }
-
-    if (problem.fix) {
-      problem.fix = wrapFixFunction(problem.fix as TSESLint.ReportFixFunction);
-    }
-
-    if (isIterable(problem.suggest)) {
-      for (const suggest of problem.suggest) {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- bad types
-        if ('fix' in suggest && suggest.fix) {
-          suggest.fix = wrapFixFunction(suggest.fix as TSESLint.ReportFixFunction);
-        }
-
-        suggest.data = { ...problem.data, ...suggest.data };
-      }
-    }
-
-    context.report(problem as TSESLint.ReportDescriptor<TMessageIDs>);
-  }
-}
-
-// `checkVueTemplate` function will wrap `create` function, there is no need to wrap twice
-// const wrappedFunctions = new WeakSet();
-function reportProblems<TMessageIDs extends string, TOptions extends unknown[]>(create: RuleModule<TOptions | undefined, TOptions, TMessageIDs>['create'], options?: TOptions) {
-  // if (wrappedFunctions.has(create)) {
-  //   return create;
-  // }
-
-  // wrappedFunctions.add(wrapped);
-
-  return (context: Readonly<RuleContext<TMessageIDs, TOptions>>) => {
-    const listeners: {
-      [K in keyof TSESLint.RuleListener]: Array<TSESLint.RuleListener[K]>;
-    } = {};
-    const addListener = (selector: string, listener: TSESLint.RuleFunction) => {
-      listeners[selector] ??= [];
-      listeners[selector].push(listener);
-    };
-
-    const contextProxy = new Proxy(context, {
-      get(target, property, receiver) {
-        if (property === 'on') {
-          return (selectorOrSelectors: string | string[], listener: TSESLint.RuleFunction) => {
-            const selectors = Array.isArray(selectorOrSelectors) ? selectorOrSelectors : [selectorOrSelectors];
-            for (const selector of selectors) {
-              addListener(selector, listener);
-            }
-          };
-        }
-
-        if (property === 'onExit') {
-          return (selectorOrSelectors: string | string[], listener: TSESLint.RuleFunction) => {
-            const selectors = Array.isArray(selectorOrSelectors) ? selectorOrSelectors : [selectorOrSelectors];
-            for (const selector of selectors) {
-              addListener(`${selector}:exit`, listener);
-            }
-          };
-        }
-
-        return Reflect.get(target, property, receiver);
-      }
-    });
-
-    for (const [selector, listener] of Object.entries(create(contextProxy, options) || {})) {
-      if (listener) {
-        addListener(selector, listener);
-      }
-    }
-
-    return Object.fromEntries(
-      Object.entries(listeners)
-        .map(([selector, listeners]) => [
-          selector,
-          // Listener arguments can be `codePath, node` or `node`
-          (...listenerArguments: unknown[]) => {
-            for (const listener of listeners) {
-              if (listener) {
-                // @ts-expect-error -- bad types
-                reportListenerProblems<TMessageIDs, TOptions>(listener(...listenerArguments), context);
-              }
-            }
-          }
-        ])
-    );
-  };
-}

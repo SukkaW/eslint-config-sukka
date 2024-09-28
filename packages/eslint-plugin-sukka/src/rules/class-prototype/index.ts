@@ -21,7 +21,8 @@
 
 import { createRule, isParserWithTypeInformation } from '@eslint-sukka/shared';
 import { AST_NODE_TYPES } from '@typescript-eslint/utils';
-import type { ParserServices, ParserServicesWithTypeInformation, TSESTree } from '@typescript-eslint/utils';
+import type { ParserServices, TSESTree } from '@typescript-eslint/utils';
+import { ensureParserWithTypeInformation } from '../../../../shared/src';
 
 export default createRule({
   name: 'class-prototype',
@@ -42,7 +43,7 @@ export default createRule({
     const isFunction = isParserWithTypeInformation(services) ? isFunctionType : isFunctionLike;
     return {
       AssignmentExpression({ left, right }) {
-        if (left.type === AST_NODE_TYPES.MemberExpression && isFunction(right, services as any)) {
+        if (left.type === AST_NODE_TYPES.MemberExpression && isFunction(right, services)) {
           const [member, prototype] = [left.object, left.property];
           if (member.type === AST_NODE_TYPES.MemberExpression && prototype.type === AST_NODE_TYPES.Identifier) {
             const [klass, property] = [member.object, member.property];
@@ -67,12 +68,14 @@ export default createRule({
   }
 });
 
-function isFunctionType(node: TSESTree.Node, services: ParserServicesWithTypeInformation) {
+function isFunctionType(node: TSESTree.Node, services: Partial<ParserServices> | undefined) {
+  ensureParserWithTypeInformation(services);
   const type = services.program.getTypeChecker().getTypeAtLocation(services.esTreeNodeToTSNodeMap.get(node));
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- it is still possible undefined
   return !!type.symbol && (type.symbol.flags & 16 /** ts.SymbolFlags.Function */) !== 0;
 }
 
-function isFunctionLike(node: TSESTree.Node, _services: Partial<ParserServices>) {
+function isFunctionLike(node: TSESTree.Node, _services: Partial<ParserServices> | undefined) {
   return ['FunctionDeclaration', 'FunctionExpression', 'ArrowFunctionExpression'].includes(
     node.type
   );
