@@ -290,6 +290,9 @@ importers:
       '@typescript-eslint/utils':
         specifier: ^8.7.0
         version: 8.7.0(eslint@9.11.1(jiti@2.0.0))(typescript@5.6.2)
+      typescript:
+        specifier: '*'
+        version: 5.6.2
     devDependencies:
       '@eslint-sukka/rollup-config':
         specifier: workspace:*
@@ -368,6 +371,9 @@ importers:
       '@napi-rs/magic-string':
         specifier: ^0.3.4
         version: 0.3.4
+      '@package-json/types':
+        specifier: ^0.0.11
+        version: 0.0.11
       '@rollup/plugin-alias':
         specifier: ^5.1.1
         version: 5.1.1(rollup@4.22.5)

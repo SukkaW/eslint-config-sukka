@@ -13,6 +13,7 @@ import replace from '@rollup/plugin-replace';
 import { rollupFoximport } from './rollup-foxquire';
 
 import type { RollupOptions, OutputOptions as RollupOutputOptions, InputOption as RollupInputOption, GetManualChunk } from 'rollup';
+import type { PackageJson } from '@package-json/types';
 
 import fs from 'node:fs';
 import type { PathLike } from 'node:fs';
@@ -58,8 +59,8 @@ export const createRollupConfig = (
     analyze = false
   }: RollupConfigPlugin = {}
 ): RollupOptions[] => {
-  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
-  const $external = Object.keys(packageJson.dependencies || {}).concat(builtinModules, externalDependencies, ['eslint']);
+  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8')) as PackageJson;
+  const $external = Object.keys(packageJson.dependencies || {}).concat(Object.keys(packageJson.peerDependencies || {})).concat(builtinModules, externalDependencies, ['eslint']);
 
   const external = (source: string) => (
     source.startsWith('node:')
