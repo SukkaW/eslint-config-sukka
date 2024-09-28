@@ -200,6 +200,7 @@ import noEqualsInForTermination from './rules/no-equals-in-for-termination';
 
 import prefer_string_starts_ends_with from './rules/prefer-string-starts-ends-with';
 import no_export_const_enum from './rules/no-export-const-enum';
+import noForInIterable from './rules/no-for-in-iterable';
 
 import { loadUnicorn } from './utils/unicorn';
 import type { ESLint } from 'eslint';
@@ -244,6 +245,7 @@ export default {
     'type/no-wrapper-type-reference': type$no_wrapper_type_reference,
     'no-default-error': no_default_error,
     'no-export-const-enum': no_export_const_enum,
+    'no-for-in-iterable': noForInIterable,
 
     // eslint-plugin-unicorn
     ...Object.entries({
