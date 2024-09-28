@@ -919,6 +919,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/call-argument-line': 'error',
         'sukka/class-prototype': 'warn',
         'sukka/comma-or-logical-or-case': 'error',
+        'sukka/track-todo-fixme-comment': 'warn',
 
         'sukka/array/no-unneeded-flat-map': 'error',
         'sukka/browser/prefer-location-assign': 'warn',

@@ -192,6 +192,7 @@ import commaOrLogicalOrCase from './rules/comma-or-logical-or-case';
 import classPrototype from './rules/class-prototype';
 import boolParamDefault from './rules/bool-param-default';
 import callArgumentLine from './rules/call-argument-line';
+import trackTodoFixmeComment from './rules/track-todo-fixme-comment';
 import prefer_string_starts_ends_with from './rules/prefer-string-starts-ends-with';
 import no_export_const_enum from './rules/no-export-const-enum';
 
@@ -226,6 +227,7 @@ export default {
     'call-argument-line': callArgumentLine,
     'class-prototype': classPrototype,
     'comma-or-logical-or-case': commaOrLogicalOrCase,
+    'track-todo-fixme-comment': trackTodoFixmeComment,
     // require type-check
     'string/prefer-string-starts-ends-with': prefer_string_starts_ends_with,
     'string/no-unneeded-to-string': string$no_unneeded_to_string,
