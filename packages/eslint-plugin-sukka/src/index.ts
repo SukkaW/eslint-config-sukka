@@ -202,6 +202,7 @@ import noTopLevelThis from './rules/no-top-level-this';
 import prefer_string_starts_ends_with from './rules/prefer-string-starts-ends-with';
 import no_export_const_enum from './rules/no-export-const-enum';
 import noForInIterable from './rules/no-for-in-iterable';
+import onlyAwaitThenable from './rules/only-await-thenable';
 
 import { loadUnicorn } from './utils/unicorn';
 import type { ESLint } from 'eslint';
@@ -248,6 +249,7 @@ export default {
     'no-default-error': no_default_error,
     'no-export-const-enum': no_export_const_enum,
     'no-for-in-iterable': noForInIterable,
+    'only-await-thenable': onlyAwaitThenable,
 
     // eslint-plugin-unicorn
     ...Object.entries({

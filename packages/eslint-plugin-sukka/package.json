@@ -35,5 +35,13 @@
     "@eslint-sukka/rollup-config": "workspace:*",
     "@masknet/eslint-plugin": "^0.3.0",
     "eslint-plugin-unicorn": "55.0.0"
+  },
+  "peerDependencies": {
+    "typescript": "*"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
   }
 }

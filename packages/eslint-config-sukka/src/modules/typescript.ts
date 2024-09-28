@@ -334,6 +334,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         'sukka/no-default-error': 'off', // disable since this is way too slow
         'sukka/no-export-const-enum': 'error', // not tree-shakable by swc/babel/esbuild
         'sukka/no-for-in-iterable': 'error',
+        'sukka/only-await-thenable': 'error',
 
         '@stylistic/plus/type-generic-spacing': 'error',
         '@stylistic/plus/type-named-tuple-spacing': 'error',

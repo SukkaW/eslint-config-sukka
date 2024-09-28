@@ -21,6 +21,7 @@
 
 import { createRule, ensureParserWithTypeInformation } from '@eslint-sukka/shared';
 import type ts from 'typescript';
+import { TypeFlags as tsTypeFlags } from 'typescript';
 import type { ParserServicesWithTypeInformation, TSESTree } from '@typescript-eslint/utils';
 
 export default createRule({
@@ -62,7 +63,7 @@ export default createRule({
 });
 
 export function isStringType(type: ts.Type) {
-  return (type.flags & 402_653_316 /* ts.TypeFlags.StringLike */) > 0 || (type.symbol as ts.Symbol | undefined)?.name === 'String';
+  return (type.flags & tsTypeFlags.StringLike) > 0 || (type.symbol as ts.Symbol | undefined)?.name === 'String';
 }
 
 /**
@@ -107,7 +108,7 @@ export function getUnionTypes(type: ts.Type): ts.Type[] {
   return type.isUnion() ? type.types : [type];
 }
 
-function getTypeFromTreeNode(node: TSESTree.Expression, services: ParserServicesWithTypeInformation) {
+export function getTypeFromTreeNode(node: TSESTree.Expression, services: ParserServicesWithTypeInformation) {
   const checker = services.program.getTypeChecker();
   return checker.getTypeAtLocation(services.esTreeNodeToTSNodeMap.get(node));
 }

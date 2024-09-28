@@ -21,6 +21,7 @@
 
 import { createRule, isParserWithTypeInformation } from '@eslint-sukka/shared';
 import { AST_NODE_TYPES } from '@typescript-eslint/utils';
+import { SymbolFlags as tsSymbolFlags } from 'typescript';
 import type { ParserServices, TSESTree } from '@typescript-eslint/utils';
 import { ensureParserWithTypeInformation } from '../../../../shared/src';
 
@@ -72,7 +73,7 @@ function isFunctionType(node: TSESTree.Node, services: Partial<ParserServices> |
   ensureParserWithTypeInformation(services);
   const type = services.program.getTypeChecker().getTypeAtLocation(services.esTreeNodeToTSNodeMap.get(node));
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- it is still possible undefined
-  return !!type.symbol && (type.symbol.flags & 16 /** ts.SymbolFlags.Function */) !== 0;
+  return !!type.symbol && (type.symbol.flags & tsSymbolFlags.Function) !== 0;
 }
 
 function isFunctionLike(node: TSESTree.Node, _services: Partial<ParserServices> | undefined) {
