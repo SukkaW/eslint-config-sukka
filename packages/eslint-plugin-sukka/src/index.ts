@@ -210,6 +210,8 @@ import prefer_string_starts_ends_with from './rules/prefer-string-starts-ends-wi
 import no_export_const_enum from './rules/no-export-const-enum';
 import noForInIterable from './rules/no-for-in-iterable';
 import onlyAwaitThenable from './rules/only-await-thenable';
+import noUndefinedOptionalParameters from './rules/no-undefined-optional-parameters';
+import noTryPromise from './rules/no-try-promise';
 
 // eslint-disable-next-line sukka/type/no-force-cast-via-top-type -- bad @types/eslint type
 export default {
@@ -258,6 +260,8 @@ export default {
     'no-export-const-enum': no_export_const_enum,
     'no-for-in-iterable': noForInIterable,
     'only-await-thenable': onlyAwaitThenable,
+    'no-undefined-optional-parameters': noUndefinedOptionalParameters,
+    'no-try-promise': noTryPromise,
 
     // eslint-plugin-unicorn
     ...Object.entries({
