@@ -1,3 +1,6 @@
+import { loadUnicorn } from './utils/unicorn';
+import type { ESLint } from 'eslint';
+
 // @masknet/eslint-plugin
 import array$no_unneeded_flat_map from '@masknet/eslint-plugin/rules/array/no-unneeded-flat-map.js';
 import browser$prefer_location_assign from '@masknet/eslint-plugin/rules/browser/prefer-location-assign.js';
@@ -200,14 +203,13 @@ import noEqualsInForTermination from './rules/no-equals-in-for-termination';
 import noTopLevelThis from './rules/no-top-level-this';
 import noInvariantReturns from './rules/no-invariant-returns';
 import noRedundantAssignments from './rules/no-redundant-assignments';
+import noSameLineConditional from './rules/no-same-line-conditional';
+import noSmallSwitch from './rules/no-small-switch';
 
 import prefer_string_starts_ends_with from './rules/prefer-string-starts-ends-with';
 import no_export_const_enum from './rules/no-export-const-enum';
 import noForInIterable from './rules/no-for-in-iterable';
 import onlyAwaitThenable from './rules/only-await-thenable';
-
-import { loadUnicorn } from './utils/unicorn';
-import type { ESLint } from 'eslint';
 
 // eslint-disable-next-line sukka/type/no-force-cast-via-top-type -- bad @types/eslint type
 export default {
@@ -245,6 +247,8 @@ export default {
     'no-top-level-this': noTopLevelThis,
     'no-invariant-returns': noInvariantReturns,
     'no-redundant-assignments': noRedundantAssignments,
+    'no-same-line-conditional': noSameLineConditional,
+    'no-small-switch': noSmallSwitch,
     // require type-check
     'string/prefer-string-starts-ends-with': prefer_string_starts_ends_with,
     'string/no-unneeded-to-string': string$no_unneeded_to_string,

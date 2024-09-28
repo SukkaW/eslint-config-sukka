@@ -927,6 +927,8 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/no-top-level-this': 'error',
         'sukka/no-invariant-returns': 'error',
         'sukka/no-redundant-assignments': 'warn',
+        'sukka/no-same-line-conditional': 'error',
+        'sukka/no-small-switch': 'error',
 
         'sukka/array/no-unneeded-flat-map': 'error',
         'sukka/browser/prefer-location-assign': 'warn',
