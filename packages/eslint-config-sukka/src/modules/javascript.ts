@@ -915,11 +915,13 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/no-expression-empty-lines': 'error',
         'sukka/prefer-single-boolean-return': 'error',
         'sukka/no-all-duplicated-branches': 'error',
+        'sukka/no-duplicated-branches': 'error',
         'sukka/bool-param-default': 'error',
         'sukka/call-argument-line': 'error',
         'sukka/class-prototype': 'warn',
         'sukka/comma-or-logical-or-case': 'error',
         'sukka/track-todo-fixme-comment': 'warn',
+        'sukka/no-element-overwrite': 'warn',
 
         'sukka/array/no-unneeded-flat-map': 'error',
         'sukka/browser/prefer-location-assign': 'warn',

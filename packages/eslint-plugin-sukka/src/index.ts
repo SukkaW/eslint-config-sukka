@@ -187,8 +187,10 @@ import no_return_await from './rules/no-return-await';
 import no_expression_empty_lines from './rules/no-expression-empty-lines';
 import object_format from './rules/object-format';
 import prefer_single_boolean_return from './rules/prefer-single-boolean-return';
-import noAllDuplicatedBranches from './rules/no-all-duplicated-branches';
+import noAllDuplicatedBranches from './rules/no-duplicated-branches';
+import noDuplicatedBranches from './rules/no-duplicated-branches';
 import commaOrLogicalOrCase from './rules/comma-or-logical-or-case';
+import noElementOverwrite from './rules/no-element-overwrite';
 import classPrototype from './rules/class-prototype';
 import boolParamDefault from './rules/bool-param-default';
 import callArgumentLine from './rules/call-argument-line';
@@ -223,11 +225,13 @@ export default {
     'object-format': object_format,
     'prefer-single-boolean-return': prefer_single_boolean_return,
     'no-all-duplicated-branches': noAllDuplicatedBranches,
+    'no-duplicated-branches': noDuplicatedBranches,
     'bool-param-default': boolParamDefault,
     'call-argument-line': callArgumentLine,
     'class-prototype': classPrototype,
     'comma-or-logical-or-case': commaOrLogicalOrCase,
     'track-todo-fixme-comment': trackTodoFixmeComment,
+    'no-element-overwrite': noElementOverwrite,
     // require type-check
     'string/prefer-string-starts-ends-with': prefer_string_starts_ends_with,
     'string/no-unneeded-to-string': string$no_unneeded_to_string,
