@@ -924,6 +924,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/no-element-overwrite': 'warn',
         'sukka/no-empty-collection': 'warn',
         'sukka/no-equals-in-for-termination': 'error',
+        'sukka/no-top-level-this': 'error',
 
         'sukka/array/no-unneeded-flat-map': 'error',
         'sukka/browser/prefer-location-assign': 'warn',
