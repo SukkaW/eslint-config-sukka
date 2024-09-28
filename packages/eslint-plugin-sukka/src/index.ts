@@ -191,6 +191,7 @@ import object_format from './rules/object-format';
 import prefer_single_boolean_return from './rules/prefer-single-boolean-return';
 import noAllDuplicatedBranches from './rules/no-all-duplicated-branches';
 import boolParamDefault from './rules/bool-param-default';
+import callArgumentLine from './rules/call-argument-line';
 import prefer_string_starts_ends_with from './rules/prefer-string-starts-ends-with';
 import no_export_const_enum from './rules/no-export-const-enum';
 
@@ -223,11 +224,11 @@ export default {
     'prefer-single-boolean-return': prefer_single_boolean_return,
     'no-all-duplicated-branches': noAllDuplicatedBranches,
     'bool-param-default': boolParamDefault,
+    'call-argument-line': callArgumentLine,
     // require type-check
     'string/prefer-string-starts-ends-with': prefer_string_starts_ends_with,
     'string/no-unneeded-to-string': string$no_unneeded_to_string,
-    // If you have a good reason to do this, please ignore this error and provide a comment about why this is type safe.
-    'type/no-force-cast-via-top-type': type$no_force_cast_via_top_type,
+    'type/no-force-cast-via-top-type': type$no_force_cast_via_top_type, // If you have a good reason to do this, please ignore this error and provide a comment about why this is type safe.
     'type/no-wrapper-type-reference': type$no_wrapper_type_reference,
     'no-default-error': no_default_error,
     'no-export-const-enum': no_export_const_enum,

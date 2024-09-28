@@ -177,7 +177,8 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
       let ruleUrl;
 
       try {
-        if (data != null && 'rulesMeta' in data) {
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- bad @types/eslint types
+        if (data && 'rulesMeta' in data) {
           ruleUrl = data.rulesMeta[x.ruleId].docs?.url;
         }
       } catch { }
