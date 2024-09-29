@@ -57,9 +57,13 @@ function enabled<T extends SharedOptions>(options: T | boolean | undefined, defa
 }
 
 function config<T>(options: SharedOptions<T> | undefined | boolean, ...defaults: Array<Omit<T, 'isInEditor' | 'enable'>>): T | undefined {
-  if (typeof options === 'boolean' || typeof options === 'undefined') return;
-
-  const { enable, ...rest } = options;
+  let rest;
+  if (typeof options === 'boolean' || typeof options === 'undefined') {
+    rest = {} as SharedOptions<T>;
+  } else {
+    const { enable, ...$rest } = options;
+    rest = $rest;
+  }
 
   if (defaults.length) {
     return defu(rest, ...defaults) as T;
