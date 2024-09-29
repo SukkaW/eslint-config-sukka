@@ -32,7 +32,6 @@
     "eslint-config-sukka": "workspace:*",
     "eslint-formatter-sukka": "workspace:*",
     "eslint-plugin-sukka": "workspace:*",
-    "lodash-unified": "^1.0.3",
     "rollup": "^4.22.5",
     "stringify-object": "5.0.0",
     "ts-dedent": "^2.2.0",
