@@ -27,7 +27,7 @@
     "@typescript-eslint/rule-tester": "^8.7.0",
     "@typescript-eslint/utils": "^8.7.0",
     "axe-core": "^4.10.0",
-    "bumpp": "^9.5.2",
+    "bumpp": "^9.6.1",
     "eslint": "^9.11.1",
     "eslint-config-sukka": "workspace:*",
     "eslint-formatter-sukka": "workspace:*",
