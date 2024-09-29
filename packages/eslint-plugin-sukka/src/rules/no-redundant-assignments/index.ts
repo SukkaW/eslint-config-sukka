@@ -24,7 +24,7 @@ import type { TSESTree } from '@typescript-eslint/utils';
 import { TSESLint } from '@typescript-eslint/utils';
 import { createRule } from '@eslint-sukka/shared';
 import { peek, CodePathContext, ReachingDefinitions, isDefaultParameter, isCompoundAssignment, isSelfAssignement, reachingDefinitions, resolveAssignedValues, AssignmentContext } from './utils';
-import type { AssignmentLike, Values } from './utils';
+import type { Values } from './utils';
 
 export default createRule({
   name: 'no-redundant-assignments',
@@ -47,31 +47,32 @@ export default createRule({
     // map from Variable to CodePath ids where variable is used
     const variableUsages = new Map<TSESLint.Scope.Variable, Set<string>>();
     const codePathSegments: TSESLint.CodePathSegment[][] = [];
-    let currentCodePathSegments: TSESLint.CodePathSegment[] = [];
+    const currentCodePathSegments: TSESLint.CodePathSegment[] = [];
 
     return {
-      ':matches(AssignmentExpression, VariableDeclarator[init])': (node: TSESTree.Node) => {
-        pushAssignmentContext(node as AssignmentLike);
-      },
-      ':matches(AssignmentExpression, VariableDeclarator[init]):exit': () => {
-        popAssignmentContext();
-      },
-      Identifier(node: TSESTree.Node) {
+      AssignmentExpression: pushAssignmentContext,
+      'VariableDeclarator[init]': pushAssignmentContext,
+      'AssignmentExpression:exit': popAssignmentContext,
+      'VariableDeclarator[init]:exit': popAssignmentContext,
+      Identifier(node) {
+        if (
+          node.parent.type === AST_NODE_TYPES.TSEnumBody
+          || node.parent.type === AST_NODE_TYPES.TSEnumDeclaration
+          || node.parent.type === AST_NODE_TYPES.TSEnumMember
+        ) {
+          return;
+        }
         if (isEnumConstant(node)) {
           return;
         }
-        checkIdentifierUsage(node as TSESTree.Identifier);
+        checkIdentifierUsage(node);
       },
       'Program:exit': () => {
         reachingDefinitions(reachingDefsMap);
-        reachingDefsMap.forEach(defs => {
-          checkSegment(defs);
-        });
+        reachingDefsMap.forEach(checkSegment);
         reachingDefsMap.clear();
         variableUsages.clear();
-        while (codePathStack.length > 0) {
-          codePathStack.pop();
-        }
+        codePathStack.length = 0;
       },
 
       // CodePath events
@@ -82,11 +83,14 @@ export default createRule({
       onCodePathStart(codePath) {
         pushContext(new CodePathContext(codePath));
         codePathSegments.push(currentCodePathSegments);
-        currentCodePathSegments = [];
+        currentCodePathSegments.length = 0;
       },
       onCodePathEnd() {
         popContext();
-        currentCodePathSegments = codePathSegments.pop() || [];
+        const segmentPop = codePathSegments.pop();
+        if (!segmentPop) {
+          currentCodePathSegments.length = 0;
+        }
       },
       onCodePathSegmentEnd() {
         currentCodePathSegments.pop();
@@ -95,11 +99,11 @@ export default createRule({
 
     function popAssignmentContext() {
       const assignment = peek(codePathStack).assignmentStack.pop()!;
-      assignment.rhs.forEach(r => processReference(r));
-      assignment.lhs.forEach(r => processReference(r));
+      assignment.rhs.forEach(processReference);
+      assignment.lhs.forEach(processReference);
     }
 
-    function pushAssignmentContext(node: AssignmentLike) {
+    function pushAssignmentContext(node: TSESTree.AssignmentExpression | TSESTree.VariableDeclarator) {
       peek(codePathStack).assignmentStack.push(new AssignmentContext(node));
     }
 
@@ -155,12 +159,6 @@ export default createRule({
 
     function shouldReport(ref: TSESLint.Scope.Reference) {
       const variable = ref.resolved;
-      return variable && shouldReportReference(ref) && !variableUsedOutsideOfCodePath(variable);
-    }
-
-    function shouldReportReference(ref: TSESLint.Scope.Reference) {
-      const variable = ref.resolved;
-
       return (
         variable
         && !isDefaultParameter(ref)
@@ -170,11 +168,12 @@ export default createRule({
         && !variable.defs.some(
           def => def.type === TSESLint.Scope.DefinitionType.Parameter || (def.type === TSESLint.Scope.DefinitionType.Variable && !def.node.init)
         )
+        && !variableUsedOutsideOfCodePath(variable)
       );
     }
 
     function isEnumConstant(node: TSESTree.Node) {
-      return (context.sourceCode.getAncestors(node)).some(
+      return context.sourceCode.getAncestors(node).some(
         n => n.type === AST_NODE_TYPES.TSEnumDeclaration
       );
     }
@@ -189,20 +188,23 @@ export default createRule({
         processReference(ref);
       }
       if (variable) {
-        updateVariableUsages(variable);
+        const codePathId = peek(codePathStack).codePath.id;
+        if (variableUsages.has(variable)) {
+          variableUsages.get(variable)!.add(codePathId);
+        } else {
+          variableUsages.set(variable, new Set<string>([codePathId]));
+        }
       }
     }
 
     function processReference(ref: TSESLint.Scope.Reference) {
-      const assignmentStack = peek(codePathStack).assignmentStack;
+      const { assignmentStack } = peek(codePathStack);
       if (assignmentStack.length > 0) {
-        const assignment = peek(assignmentStack);
-        assignment.add(ref);
+        peek(assignmentStack).add(ref);
       } else {
-        currentCodePathSegments.forEach(segment => {
-          const reachingDefs = reachingDefsForSegment(segment);
-          reachingDefs.add(ref);
-        });
+        for (let i = 0, l = currentCodePathSegments.length; i < l; i++) {
+          reachingDefsForSegment(currentCodePathSegments[i]).add(ref);
+        }
       }
     }
 
@@ -217,19 +219,9 @@ export default createRule({
       return defs;
     }
 
-    function updateVariableUsages(variable: TSESLint.Scope.Variable) {
-      const codePathId = peek(codePathStack).codePath.id;
-      if (variableUsages.has(variable)) {
-        variableUsages.get(variable)!.add(codePathId);
-      } else {
-        variableUsages.set(variable, new Set<string>([codePathId]));
-      }
-    }
-
     function pushContext(codePathContext: CodePathContext) {
       codePathStack.push(codePathContext);
     }
-
     function popContext() {
       codePathStack.pop();
     }

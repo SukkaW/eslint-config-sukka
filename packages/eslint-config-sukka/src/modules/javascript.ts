@@ -105,10 +105,6 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         }
       } satisfies FlatESLintConfigItem['languageOptions'],
       settings: {
-        'import-x/parsers': {
-          // TODO: remove this line once #2556 is fixed
-          espree: allExtensions
-        },
         'import-x/extensions': allExtensions
       },
       plugins: {

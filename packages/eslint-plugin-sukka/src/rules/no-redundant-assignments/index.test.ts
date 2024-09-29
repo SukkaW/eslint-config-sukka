@@ -174,12 +174,22 @@ runTest({
         }
       }`
     },
-    {
-      code: `const enum A {
-        Monday = 1,
-        Tuesday = 2
-      }`
-    },
+    `const enum A {
+      Monday = 1,
+      Tuesday = 2
+    }`,
+    `const enum A {
+      Monday,
+      Tuesday
+    }`,
+    `enum A {
+      Monday = 1,
+      Tuesday = 2
+    }`,
+    `enum A {
+      Monday,
+      Tuesday
+    }`,
     {
       code: `function using_destructuring() {
         let {a, ...rest} = {a: 42, b: 5};

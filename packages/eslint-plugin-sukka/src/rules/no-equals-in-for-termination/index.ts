@@ -163,7 +163,8 @@ function isEquality(expression: TSESTree.Expression): expression is TSESTree.Bin
 function isUpdateIncDec(expression: TSESTree.Expression): boolean {
   if (isIncDec(expression) || expression.type === AST_NODE_TYPES.UpdateExpression) {
     return true;
-  } if (expression.type === AST_NODE_TYPES.SequenceExpression) {
+  }
+  if (expression.type === AST_NODE_TYPES.SequenceExpression) {
     return expression.expressions.every(isUpdateIncDec);
   }
   return false;
@@ -210,10 +211,12 @@ function isInBody(id: TSESTree.Identifier | TSESTree.JSXIdentifier, bodyRange: [
 function getValue(node: TSESTree.Node) {
   if (isNotEqual(node)) {
     return getInteger(node.right);
-  } if (isOneVarDeclaration(node)) {
+  }
+  if (isOneVarDeclaration(node)) {
     const variable = node.declarations[0];
     return getInteger(variable.init);
-  } if (node.type === AST_NODE_TYPES.AssignmentExpression) {
+  }
+  if (node.type === AST_NODE_TYPES.AssignmentExpression) {
     return getInteger(node.right);
   }
 }

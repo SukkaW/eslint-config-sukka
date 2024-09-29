@@ -95,7 +95,8 @@ export function areEquivalent(
       first.length === second.length
       && first.every((firstNode, index) => areEquivalent(firstNode, second[index], sourceCode))
     );
-  } if (!Array.isArray(first) && !Array.isArray(second)) {
+  }
+  if (!Array.isArray(first) && !Array.isArray(second)) {
     return (
       first.type === second.type
       && compareTokens(sourceCode.getTokens(first), sourceCode.getTokens(second))

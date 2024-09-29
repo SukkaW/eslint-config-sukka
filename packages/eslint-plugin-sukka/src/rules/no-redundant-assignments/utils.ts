@@ -12,7 +12,7 @@ export function getVariableFromIdentifier(identifier: TSESTree.Identifier, scope
 export function reachingDefinitions(reachingDefinitionsMap: Map<string, ReachingDefinitions>) {
   const worklist = Array.from(reachingDefinitionsMap.values(), defs => defs.segment);
 
-  while (worklist.length > 0) {
+  while (worklist.length) {
     const current = worklist.pop()!;
     const reachingDefs = reachingDefinitionsMap.get(current.id)!;
     const outHasChanged = reachingDefs.propagate(reachingDefinitionsMap);
@@ -61,7 +61,7 @@ export class ReachingDefinitions {
     this.segment.prevSegments.forEach(prev => {
       this.join(reachingDefinitionsMap.get(prev.id)!.out);
     });
-    const newOut = new Map<TSESLint.Scope.Variable, Values>(this.in);
+    const newOut = new Map<TSESLint.Scope.Variable, Values>();
     this.references.forEach(ref => this.updateProgramState(ref, newOut));
     if (!equals(this.out, newOut)) {
       this.out = newOut;
@@ -102,8 +102,7 @@ function equals(ps1: Map<TSESLint.Scope.Variable, Values>, ps2: Map<TSESLint.Sco
     return false;
   }
   for (const [variable, values1] of ps1) {
-    const values2 = ps2.get(variable);
-    if (!values2 || !valuesEquals(values2, values1)) {
+    if (!ps2.has(variable) || !valuesEquals(ps2.get(variable)!, values1)) {
       return false;
     }
   }
@@ -136,8 +135,7 @@ export function resolveAssignedValues(
     case AST_NODE_TYPES.Identifier: {
       const resolvedVar = getVariableFromIdentifier(writeExpr, scope);
       if (resolvedVar && resolvedVar !== lhsVariable) {
-        const resolvedAssignedValues = assignedValuesMap.get(resolvedVar);
-        return resolvedAssignedValues ?? unknownValue;
+        return assignedValuesMap.get(resolvedVar) ?? unknownValue;
       }
       return unknownValue;
     }
@@ -155,13 +153,11 @@ export class CodePathContext {
   constructor(public codePath: TSESLint.CodePath) {}
 }
 
-export type AssignmentLike = TSESTree.AssignmentExpression | TSESTree.VariableDeclarator;
-
 export class AssignmentContext {
-  constructor(public node: AssignmentLike) {}
+  constructor(public node: TSESTree.AssignmentExpression | TSESTree.VariableDeclarator) {}
 
-  lhs = new Set<TSESLint.Scope.Reference>();
-  rhs = new Set<TSESLint.Scope.Reference>();
+  public lhs = new Set<TSESLint.Scope.Reference>();
+  public rhs = new Set<TSESLint.Scope.Reference>();
 
   isRhs(node: TSESTree.Node) {
     return this.node.type === AST_NODE_TYPES.AssignmentExpression
@@ -188,9 +184,9 @@ export class AssignmentContext {
       }
       parent = parent.parent;
     }
-    if (parent == null) {
-      throw new Error('failed to find assignment lhs/rhs');
-    }
+    // if (parent == null) {
+    //   throw new Error('failed to find assignment lhs/rhs');
+    // }
   }
 }
 
@@ -199,17 +195,15 @@ export function peek<T>(arr: T[]) {
 }
 
 export function isSelfAssignement(ref: TSESLint.Scope.Reference) {
-  const lhs = ref.resolved;
   if (ref.writeExpr?.type === AST_NODE_TYPES.Identifier) {
-    const rhs = getVariableFromIdentifier(ref.writeExpr, ref.from);
-    return lhs === rhs;
+    return /* lhs */ ref.resolved === /* rhs */ getVariableFromIdentifier(ref.writeExpr, ref.from);
   }
   return false;
 }
 
 export function isCompoundAssignment(writeExpr: TSESTree.Node | null | undefined) {
-  if (writeExpr && Object.hasOwn(writeExpr, 'parent')) {
-    const node = (writeExpr).parent;
+  if (writeExpr?.parent) {
+    const node = writeExpr.parent as TSESTree.Node | null;
     return node && node.type === AST_NODE_TYPES.AssignmentExpression && node.operator !== '=';
   }
   return false;
@@ -219,6 +213,5 @@ export function isDefaultParameter(ref: TSESLint.Scope.Reference) {
   if (ref.identifier.type !== AST_NODE_TYPES.Identifier) {
     return false;
   }
-  const parent = ref.identifier.parent as TSESTree.Node | null;
-  return parent?.type === AST_NODE_TYPES.AssignmentPattern;
+  return (ref.identifier.parent as TSESTree.Node | null)?.type === AST_NODE_TYPES.AssignmentPattern;
 }

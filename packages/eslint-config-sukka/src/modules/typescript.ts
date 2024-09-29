@@ -94,8 +94,6 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
           }
         },
         'import-x/parsers': {
-          // TODO: remove this line once eslint-plugin-import #2556 is fixed
-          espree: javaScriptExtensions,
           [typescriptEslintParserPath]: typescriptExtensions
         }
       },
@@ -171,7 +169,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
           { prefer: 'type-imports', disallowTypeAnnotations: false, fixStyle: 'separate-type-imports' }
         ],
         '@typescript-eslint/no-import-type-side-effects': 'warn',
-        '@typescript-eslint/consistent-type-exports': ['warn', { fixMixedExportsWithInlineTypeSpecifier: false }],
+        '@typescript-eslint/consistent-type-exports': ['warn', { fixMixedExportsWithInlineTypeSpecifier: true }],
         '@typescript-eslint/consistent-type-definitions': 'warn',
         '@typescript-eslint/consistent-generic-constructors': ['error', 'constructor'],
         '@typescript-eslint/no-base-to-string': ['error', { ignoredTypeNames: ['Error', 'RegExp', 'URL', 'URLSearchParams'] }],
@@ -363,10 +361,10 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
 
         // https://github.com/un-ts/eslint-plugin-import-x/blob/3abe5e49683e0f973232bb631814b935e1ca7091/src/config/typescript.ts#L32C1-L33C1
         'import-x/named': 'off', // TypeScript compilation already ensures that named imports exist in the referenced module
-
-        'import-x/no-duplicates': 'off',
         'import-x/namespace': 'off',
         'import-x/default': 'off',
+
+        'import-x/no-duplicates': 'off',
 
         // file:foo.js
         // export default 'foo'
@@ -380,7 +378,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         // const bar = foo.bar
         'import-x/no-named-as-default-member': 'off', // import foo from 'foo';
         // typescript-eslint already supports this
-        'import/no-deprecated': 'off'
+        'import-x/no-deprecated': 'off'
       }
     },
     {

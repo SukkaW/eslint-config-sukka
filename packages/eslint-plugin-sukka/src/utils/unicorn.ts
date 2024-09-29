@@ -89,7 +89,7 @@ function reportListenerProblems<TMessageIDs extends string, TOptions extends unk
 
     if (isIterable(problem.suggest)) {
       for (const suggest of problem.suggest) {
-        if ('fix' in suggest && suggest.fix) {
+        if ('fix' in suggest && typeof suggest.fix === 'function') {
           suggest.fix = wrapFixFunction(suggest.fix as TSESLint.ReportFixFunction);
         }
 
