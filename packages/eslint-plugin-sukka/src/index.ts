@@ -206,6 +206,7 @@ import noRedundantAssignments from './rules/no-redundant-assignments';
 import noSameLineConditional from './rules/no-same-line-conditional';
 import noSmallSwitch from './rules/no-small-switch';
 import noUnusedCollection from './rules/no-unused-collection';
+import noUselessPlusplus from './rules/no-useless-plusplus';
 
 import prefer_string_starts_ends_with from './rules/prefer-string-starts-ends-with';
 import no_export_const_enum from './rules/no-export-const-enum';
@@ -213,6 +214,7 @@ import noForInIterable from './rules/no-for-in-iterable';
 import onlyAwaitThenable from './rules/only-await-thenable';
 import noUndefinedOptionalParameters from './rules/no-undefined-optional-parameters';
 import noTryPromise from './rules/no-try-promise';
+import noUselessStringOperation from './rules/no-useless-string-operation';
 
 // eslint-disable-next-line sukka/type/no-force-cast-via-top-type -- bad @types/eslint type
 export default {
@@ -253,6 +255,7 @@ export default {
     'no-same-line-conditional': noSameLineConditional,
     'no-small-switch': noSmallSwitch,
     'no-unused-collection': noUnusedCollection,
+    'no-useless-plusplus': noUselessPlusplus,
     // require type-check
     'string/prefer-string-starts-ends-with': prefer_string_starts_ends_with,
     'string/no-unneeded-to-string': string$no_unneeded_to_string,
@@ -264,6 +267,7 @@ export default {
     'only-await-thenable': onlyAwaitThenable,
     'no-undefined-optional-parameters': noUndefinedOptionalParameters,
     'no-try-promise': noTryPromise,
+    'no-useless-string-operations': noUselessStringOperation,
 
     // eslint-plugin-unicorn
     ...Object.entries({

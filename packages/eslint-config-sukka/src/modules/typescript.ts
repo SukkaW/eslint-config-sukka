@@ -283,6 +283,18 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
             message: 'Static class methods requires "this: void"',
             selector:
               'MethodDefinition[static=true][kind!="get"][kind!="set"] > FunctionExpression:not([params.0.name=this][params.0.typeAnnotation.typeAnnotation.type=TSVoidKeyword])'
+          },
+          {
+            // https://github.com/SonarSource/SonarJS/blob/master/packages/jsts/src/rules/S1444/rule.ts
+            message: 'Public "static" fields should be read-only',
+            selector:
+              'PropertyDefinition[readonly!=true][static=true][accessibility!="private"][accessibility!="protected"]'
+          },
+          {
+            // https://github.com/SonarSource/SonarJS/blob/master/packages/jsts/src/rules/S1444/rule.ts
+            message: 'Public "static" fields should be read-only',
+            selector:
+              'MethodDefinition[readonly!=true][static=true][accessibility!="private"][accessibility!="protected"]'
           }
         ],
 
@@ -337,6 +349,7 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
         'sukka/only-await-thenable': 'error',
         'sukka/no-undefined-optional-parameters': 'warn',
         'sukka/no-try-promise': 'error',
+        'sukka/no-useless-string-operation': 'error',
 
         '@stylistic/plus/type-generic-spacing': 'error',
         '@stylistic/plus/type-named-tuple-spacing': 'error',

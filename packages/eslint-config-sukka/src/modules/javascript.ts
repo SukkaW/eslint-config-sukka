@@ -945,6 +945,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/prefer-early-return': ['error', { maximumStatements: 16 }],
         'sukka/prefer-fetch': 'error',
         'sukka/prefer-timer-id': 'warn',
+        'sukka/no-useless-plusplus': 'error',
 
         'sukka/unicorn/catch-error-name': ['error', { ignore: [/^(?:e|err|error|\w+Err|\w+Error)[\d_]?$/] }],
         'sukka/unicorn/custom-error-definition': 'error',

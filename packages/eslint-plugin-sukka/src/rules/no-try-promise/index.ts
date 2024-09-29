@@ -91,7 +91,6 @@ export default createRule({
 
           let hasPotentiallyThrowingCalls = false;
           CallLikeExpressionVisitor.getCallExpressions(tryStmt.block, context).forEach(callLikeExpr => {
-            console.log(callLikeExpr);
             if (
               callLikeExpr.type === AST_NODE_TYPES.AwaitExpression
               || !isThenable(callLikeExpr, services)
@@ -107,6 +106,7 @@ export default createRule({
             (isCaught(callLikeExpr) ? capturedPromises : openPromises).push(callLikeExpr);
           });
 
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- fuck TS control flow analyze
           if (!hasPotentiallyThrowingCalls) {
             checkForWrongCatch(tryStmt, openPromises);
             checkForUselessCatch(tryStmt, openPromises, capturedPromises);

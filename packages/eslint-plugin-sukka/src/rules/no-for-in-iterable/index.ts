@@ -108,7 +108,7 @@ export function getUnionTypes(type: ts.Type): ts.Type[] {
   return type.isUnion() ? type.types : [type];
 }
 
-export function getTypeFromTreeNode(node: TSESTree.Expression, services: ParserServicesWithTypeInformation) {
+export function getTypeFromTreeNode(node: TSESTree.Node, services: ParserServicesWithTypeInformation) {
   const checker = services.program.getTypeChecker();
   return checker.getTypeAtLocation(services.esTreeNodeToTSNodeMap.get(node));
 }
