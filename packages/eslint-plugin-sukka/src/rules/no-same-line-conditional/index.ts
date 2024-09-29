@@ -32,18 +32,15 @@ export default createRule({
   name: 'no-same-line-conditional',
   meta: {
     schema: [],
-    type: 'suggestion',
+    type: 'layout',
     docs: {
       description: 'Conditionals should start on new lines',
       recommended: 'recommended',
       url: 'https://sonarsource.github.io/rspec/#/rspec/S3972/javascript'
     },
-    fixable: 'code',
-    hasSuggestions: true,
+    fixable: 'whitespace',
     messages: {
-      sameLineCondition: 'Move this "if" to a new line or add the missing "else".',
-      suggestAddingElse: 'Add "else" keyword',
-      suggestAddingNewline: 'Move this "if" to a new line'
+      sameLineCondition: 'Move this "if" to a new line or add the missing "else".'
     }
   },
   create(context) {
@@ -69,19 +66,10 @@ export default createRule({
           context.report({
             messageId: 'sameLineCondition',
             loc: followingIfToken.loc,
-            suggest: [
-              // {
-              //   messageId: 'suggestAddingElse',
-              //   fix: fixer => fixer.insertTextBefore(followingIfToken, 'else ')
-              // },
-              {
-                messageId: 'suggestAddingNewline',
-                fix: fixer => fixer.replaceTextRange(
-                  [precedingIf.range[1], followingIf.range[0]],
-                  '\n' + ' '.repeat(precedingIf.loc.start.column)
-                )
-              }
-            ]
+            fix: fixer => fixer.replaceTextRange(
+              [precedingIf.range[1], followingIf.range[0]],
+              '\n' + ' '.repeat(precedingIf.loc.start.column)
+            )
           });
         }
       });

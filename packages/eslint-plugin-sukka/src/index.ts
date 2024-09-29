@@ -267,7 +267,7 @@ export default {
     'only-await-thenable': onlyAwaitThenable,
     'no-undefined-optional-parameters': noUndefinedOptionalParameters,
     'no-try-promise': noTryPromise,
-    'no-useless-string-operations': noUselessStringOperation,
+    'no-useless-string-operation': noUselessStringOperation,
 
     // eslint-plugin-unicorn
     ...Object.entries({

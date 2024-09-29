@@ -17,6 +17,7 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
+import { dedent } from 'ts-dedent';
 import mod from '.';
 import { runTest } from '../../../../../lib/eslint-plugin-tester';
 
@@ -99,19 +100,14 @@ runTest({
           line: 3,
           endLine: 3,
           column: 9,
-          endColumn: 11,
-          suggestions: [
-            {
-              messageId: 'suggestAddingNewline',
-              output: `
+          endColumn: 11
+        }
+      ],
+      output: `
       if (cond1) {
       }
       if (cond2) {
       }`
-            }
-          ]
-        }
-      ]
     },
     {
       code: `
@@ -135,18 +131,33 @@ runTest({
           line: 6,
           endLine: 6,
           column: 13,
-          endColumn: 15,
-          suggestions: 1
+          endColumn: 15
         },
         {
           messageId: 'sameLineCondition',
           line: 11,
           endLine: 11,
           column: 13,
-          endColumn: 15,
-          suggestions: 1
+          endColumn: 15
         }
-      ]
+      ],
+      output: `
+      switch(x) {
+        case 1:
+          if (cond1) {
+          } else if (cond2) {
+          }
+          if (cond3) {
+          }
+          break;
+        default:
+          if (cond1) {
+          }
+          if (cond2) {
+          } else if (cond3) {
+          }
+          break;
+      }`
     },
     {
       code: `
@@ -157,68 +168,64 @@ runTest({
 
       errors: [
         {
-          messageId: 'sameLineCondition',
-          suggestions: 1
+          messageId: 'sameLineCondition'
         }
-      ]
-    },
-    {
-      code: `
-      if (cond1)
-        if (cond2) {
-          if (cond3) {
-          } if (cond4) {
-          }
-        }`,
+      ],
 
-      errors: [
-        {
-          messageId: 'sameLineCondition',
-          suggestions: 1
-        }
-      ]
-    },
-    {
-      code: `
-      function myFunc() {
-        if (cond1) {
-        } else if (cond2) {
-        } if (cond3) {
-        }
-      }`,
-
-      errors: [
-        {
-          messageId: 'sameLineCondition',
-          suggestions: 1
-        }
-      ]
-    },
-    {
-      code: `
-      function myFunc() {
-        foo(); if (cond1) {
-        } if (cond2) {
-        }
-      }`,
-
-      errors: [
-        {
-          messageId: 'sameLineCondition',
-          suggestions: [
-            {
-              messageId: 'suggestAddingNewline',
-              output: `
-      function myFunc() {
-        foo(); if (cond1) {
-        }
-               if (cond2) {
-        }
+      output: `
+      if (cond1) {
+      } else if (cond2) {
+      }
+      if (cond3) {
       }`
+    },
+    {
+      code: dedent`
+        if (cond1)
+          if (cond2) {
+            if (cond3) {
+            } if (cond4) {
             }
-          ]
+          }
+      `,
+      errors: [
+        {
+          messageId: 'sameLineCondition'
         }
-      ]
+      ],
+      output: dedent`
+        if (cond1)
+          if (cond2) {
+            if (cond3) {
+            }
+            if (cond4) {
+            }
+          }
+      `
+    },
+    {
+      code: dedent`
+        function myFunc() {
+          if (cond1) {
+          } else if (cond2) {
+          } if (cond3) {
+          }
+        }
+      `,
+      errors: [
+        {
+          messageId: 'sameLineCondition'
+        }
+      ],
+      output: dedent`
+        function myFunc() {
+          if (cond1) {
+          } else if (cond2) {
+          }
+          if (cond3) {
+          }
+        }
+      `
     }
   ]
 });

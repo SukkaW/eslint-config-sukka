@@ -76,7 +76,8 @@ export default createRule({
 
       if (shouldNegate) {
         return [{ messageId: 'suggest', fix: getFix(`!(${testText})`) }] as const;
-      } if (!shouldCast) {
+      }
+      if (!shouldCast) {
         return [{ messageId: 'suggest', fix: getFix(testText) }] as const;
       }
       return [

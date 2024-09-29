@@ -9,11 +9,11 @@ type CallLikeExpression =
 export class CallLikeExpressionVisitor<TRuleContext extends RuleContext<string, unknown[]>> {
   private readonly callLikeExpressions: CallLikeExpression[] = [];
 
-  static getCallExpressions<TRuleContext extends RuleContext<string, unknown[]>>(this: void, node: TSESTree.Node, context: TRuleContext) {
+  static readonly getCallExpressions = <TRuleContext extends RuleContext<string, unknown[]>>(node: TSESTree.Node, context: TRuleContext) => {
     const visitor = new CallLikeExpressionVisitor();
     visitor.visit(node, context);
     return visitor.callLikeExpressions;
-  }
+  };
 
   private visit(root: TSESTree.Node, context: TRuleContext) {
     const visitNode = (node: TSESTree.Node) => {
