@@ -211,7 +211,7 @@ function isReadingCollectionUsage(ref: TSESLint.Scope.Reference) {
   return isStrictlyReadingMethodCall(ref) || isForIterationPattern(ref) || isElementRead(ref);
 }
 
-function isIdentifier(
+export function isIdentifier(
   node: TSESTree.Node | undefined,
   ...values: string[]
 ): node is TSESTree.Identifier {

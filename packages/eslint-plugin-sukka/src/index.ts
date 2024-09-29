@@ -205,6 +205,7 @@ import noInvariantReturns from './rules/no-invariant-returns';
 import noRedundantAssignments from './rules/no-redundant-assignments';
 import noSameLineConditional from './rules/no-same-line-conditional';
 import noSmallSwitch from './rules/no-small-switch';
+import noUnusedCollection from './rules/no-unused-collection';
 
 import prefer_string_starts_ends_with from './rules/prefer-string-starts-ends-with';
 import no_export_const_enum from './rules/no-export-const-enum';
@@ -251,6 +252,7 @@ export default {
     'no-redundant-assignments': noRedundantAssignments,
     'no-same-line-conditional': noSameLineConditional,
     'no-small-switch': noSmallSwitch,
+    'no-unused-collection': noUnusedCollection,
     // require type-check
     'string/prefer-string-starts-ends-with': prefer_string_starts_ends_with,
     'string/no-unneeded-to-string': string$no_unneeded_to_string,
