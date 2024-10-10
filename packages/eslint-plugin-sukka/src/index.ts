@@ -185,7 +185,6 @@ import prefer_node_protocol from 'eslint-plugin-unicorn/rules/prefer-node-protoc
 
 // eslint-plugin-sukka
 import ban_eslint_disable from './rules/ban-eslint-disable';
-import import_dedupe from './rules/import-dedupe';
 import no_return_await from './rules/no-return-await';
 import no_expression_empty_lines from './rules/no-expression-empty-lines';
 import object_format from './rules/object-format';
@@ -234,7 +233,6 @@ export default {
     'prefer-early-return': prefer_early_return,
     'prefer-fetch': prefer_fetch,
     'prefer-timer-id': prefer_timer_id,
-    'import-dedupe': import_dedupe,
     'no-return-await': no_return_await,
     'no-expression-empty-lines': no_expression_empty_lines,
     'object-format': object_format,

@@ -7,6 +7,7 @@ import stylisticPlus from '@stylistic/eslint-plugin-plus';
 import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
 import eslint_plugin_import_x from 'eslint-plugin-import-x';
 import eslint_plugin_sukka from 'eslint-plugin-sukka';
+import eslint_plugin_antfu from 'eslint-plugin-antfu';
 
 // @ts-expect-error -- no types
 import eslint_plugin_autofix from 'eslint-plugin-autofix';
@@ -113,7 +114,8 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         '@stylistic/plus': memo(stylisticPlus, '@stylistic/eslint-plugin-plus'),
         sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka'),
         'import-x': memo(eslint_plugin_import_x, 'eslint-plugin-import-x'),
-        autofix: eslint_plugin_autofix
+        autofix: eslint_plugin_autofix,
+        antfu: memo(eslint_plugin_antfu, 'eslint_plugin_antfu')
       },
       rules: {
         ...eslint_plugin_import_x.configs.recommended.rules,
@@ -1015,7 +1017,6 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/unicorn/prefer-set-has': 'error', // Set#has is way faster
         'sukka/unicorn/prefer-switch': 'warn',
         'sukka/unicorn/require-number-to-fixed-digits-argument': 'warn', // 1.toFixed(2)
-        'sukka/import-dedupe': 'error', // ban import { a, b, a, a, c, a } from 'sukka'
         'sukka/unicorn/prefer-string-raw': 'warn', // String.raw`foo\nbar`
         'sukka/unicorn/no-single-promise-in-promise-methods': 'error',
         'sukka/unicorn/no-await-in-promise-methods': 'error',
@@ -1062,7 +1063,12 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
           { paths: RESTRICTED_IMPORT_JS }
         ],
         'no-prototype-builtins': 'off',
-        'autofix/no-prototype-builtins': 'error'
+        'autofix/no-prototype-builtins': 'error',
+
+        'antfu/import-dedupe': 'error', // ban import { a, b, a, a, c, a } from 'sukka'
+        'antfu/consistent-chaining': 'error',
+        'antfu/no-top-level-await': 'error',
+        'antfu/top-level-function': 'warn'
       }
     }
   ];
