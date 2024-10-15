@@ -52,7 +52,7 @@
     "eslint-plugin-unused-imports": "4.1.4",
     "jsonc-eslint-parser": "^2.4.0",
     "picocolors": "^1.1.0",
-    "typescript-eslint": "^8.8.1"
+    "typescript-eslint": "^8.9.0"
   },
   "devDependencies": {
     "@antfu/install-pkg": "^0.4.1",
