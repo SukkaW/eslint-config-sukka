@@ -54,7 +54,7 @@ export interface OptionsReact {
 const memoized_eslint_react = memo(eslint_react, '@eslint-react/eslint-plugin');
 const memoized_eslint_plugin_ssr_friendly = memo(fixupPluginRules(eslint_plugin_ssr_friendly), 'eslint-plugin-ssr-friendly');
 
-export const react = ({
+export function react({
   reactCompiler = 'error',
   additionalHooks = '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)',
   nextjs = false,
@@ -74,7 +74,7 @@ export const react = ({
       ]
     }
   ]
-}: OptionsReact = {}): FlatESLintConfigItem[] => {
+}: OptionsReact = {}): FlatESLintConfigItem[] {
   const {
     allowConstantExport = false
   } = reactRefresh;
@@ -93,7 +93,7 @@ export const react = ({
       '@stylistic/jsx': memo(stylisticJsx, '@stylistic/eslint-plugin-jsx'),
       'react-prefer-function-component': memo(eslint_plugin_react_prefer_function_component, 'eslint-plugin-react-prefer-function-component'),
       'react-compiler': memo(eslint_plugin_react_compiler, 'eslint-plugin-react-compiler'),
-      ...memoized_eslint_react.configs['recommended-type-checked'].plugins as any,
+      ...memoized_eslint_react.configs.recommended.plugins as any,
       'ssr-friendly': memoized_eslint_plugin_ssr_friendly,
       'react-refresh': eslint_plugin_react_refresh
     },
@@ -175,7 +175,7 @@ export const react = ({
 
       // ====================================================================
 
-      ...memoized_eslint_react.configs['recommended-type-checked'].rules,
+      ...memoized_eslint_react.configs.recommended.rules,
       // eslint-plugin-react recommended rules, migrated
       '@eslint-react/no-string-refs': 'error',
       '@eslint-react/no-comment-textnodes': 'error',
@@ -438,4 +438,4 @@ export const react = ({
       ]
     }
   }];
-};
+}
