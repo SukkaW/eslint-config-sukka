@@ -64,7 +64,7 @@ export interface OptionsJavaScript {
 
 const allExtensions = ['.js', '.jsx', '.mjs', '.cjs'];
 
-export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigItem[] => {
+export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigItem[] {
   const {
     files,
     disableNoConsoleInCLI = true,
@@ -534,7 +534,7 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
 
         // suggest using arrow functions as callbacks
         'prefer-arrow-callback': ['error', {
-          allowNamedFunctions: false,
+          allowNamedFunctions: true, // React.memo() and similar wrapper utilities would like to have named functions
           allowUnboundThis: true
         }],
 
@@ -1085,4 +1085,4 @@ export const javascript = (options: OptionsJavaScript = {}): FlatESLintConfigIte
   }
 
   return configs;
-};
+}
