@@ -32,7 +32,6 @@
     "@nolyfill/es-iterator-helpers": "^1.0.21",
     "@nolyfill/hasown": "^1.0.29",
     "@nolyfill/object.assign": "^1.0.28",
-    "@nolyfill/object.entries": "^1.0.28",
     "@nolyfill/object.fromentries": "^1.0.28",
     "@nolyfill/object.hasown": "^1.0.24",
     "@nolyfill/object.values": "^1.0.28",

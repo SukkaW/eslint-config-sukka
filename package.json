@@ -22,11 +22,10 @@
     "@swc-node/register": "^1.10.9",
     "@swc/core": "^1.7.36",
     "@types/eslint": "^9.6.1",
-    "@types/node": "^22.7.5",
+    "@types/node": "^22.7.6",
     "@types/stringify-object": "^4.0.5",
     "@typescript-eslint/rule-tester": "^8.9.0",
     "@typescript-eslint/utils": "^8.9.0",
-    "axe-core": "^4.10.0",
     "bumpp": "^9.7.1",
     "eslint": "^9.12.0",
     "eslint-config-sukka": "workspace:*",
@@ -39,7 +38,7 @@
     "typescript": "^5.6.3",
     "vitest": "^2.1.3"
   },
-  "packageManager": "pnpm@9.12.1",
+  "packageManager": "pnpm@9.12.2",
   "pnpm": {
     "overrides": {
       "array-includes": "npm:@nolyfill/array-includes@^1.0.28",
@@ -60,11 +59,10 @@
       "safe-regex-test": "npm:@nolyfill/safe-regex-test@^1.0.29",
       "string.prototype.includes": "npm:@nolyfill/string.prototype.includes@^1.0.28",
       "string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@^1.0.28",
-      "axe-core": "$axe-core"
+      "is-core-module": "npm:@nolyfill/is-core-module@^1"
     },
     "patchedDependencies": {
-      "text-table@0.2.0": "patches/text-table@0.2.0.patch",
-      "axe-core@4.10.0": "patches/axe-core@4.10.0.patch"
+      "text-table@0.2.0": "patches/text-table@0.2.0.patch"
     }
   }
 }
