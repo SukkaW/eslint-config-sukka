@@ -24,8 +24,8 @@
     "@types/eslint": "^9.6.1",
     "@types/node": "^22.7.6",
     "@types/stringify-object": "^4.0.5",
-    "@typescript-eslint/rule-tester": "^8.9.0",
-    "@typescript-eslint/utils": "^8.9.0",
+    "@typescript-eslint/rule-tester": "^8.10.0",
+    "@typescript-eslint/utils": "^8.10.0",
     "bumpp": "^9.7.1",
     "eslint": "^9.12.0",
     "eslint-config-sukka": "workspace:*",
@@ -50,6 +50,7 @@
       "es-iterator-helpers": "npm:@nolyfill/es-iterator-helpers@^1.0.21",
       "has": "npm:@nolyfill/has@^1.0.29",
       "hasown": "npm:@nolyfill/hasown@^1.0.29",
+      "is-core-module": "npm:@nolyfill/is-core-module@^1",
       "object.assign": "npm:@nolyfill/object.assign@^1.0.28",
       "object.entries": "npm:@nolyfill/object.entries@^1.0.28",
       "object.fromentries": "npm:@nolyfill/object.fromentries@^1.0.28",
@@ -58,8 +59,7 @@
       "object.values": "npm:@nolyfill/object.values@^1.0.28",
       "safe-regex-test": "npm:@nolyfill/safe-regex-test@^1.0.29",
       "string.prototype.includes": "npm:@nolyfill/string.prototype.includes@^1.0.28",
-      "string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@^1.0.28",
-      "is-core-module": "npm:@nolyfill/is-core-module@^1"
+      "string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@^1.0.28"
     },
     "patchedDependencies": {
       "text-table@0.2.0": "patches/text-table@0.2.0.patch"
