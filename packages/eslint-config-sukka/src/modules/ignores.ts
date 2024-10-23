@@ -15,7 +15,7 @@ export interface OptionsIgnores {
   gitignore?: string | string[] | boolean | null
 }
 
-export const ignores = (options: OptionsIgnores = {}): FlatESLintConfigItem[] => {
+export function ignores(options: OptionsIgnores = {}): FlatESLintConfigItem[] {
   const {
     customGlobs = null,
     gitignore = ['.gitignore']
@@ -47,4 +47,4 @@ export const ignores = (options: OptionsIgnores = {}): FlatESLintConfigItem[] =>
   }
 
   return configs;
-};
+}

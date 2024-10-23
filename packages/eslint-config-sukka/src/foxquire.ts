@@ -2,7 +2,7 @@ import { isCI } from 'ci-info';
 import { isPackageExists } from '@eslint-sukka/shared';
 import process from 'node:process';
 
-export const foxquire = async <T>(pkg: string): Promise<T> => {
+export async function foxquire<T>(pkg: string): Promise<T> {
   if (
     !isCI
     && process.stdout.isTTY
@@ -18,4 +18,4 @@ export const foxquire = async <T>(pkg: string): Promise<T> => {
   }
 
   return foximport<T>(pkg);
-};
+}

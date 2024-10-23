@@ -14,7 +14,7 @@ declare global {
  *
  * So we have to memoize the plugins and configs to make sure they are the same referential identity.
  */
-export const memo = <T>(fn: NonNullable<T>, key?: string): T => {
+export function memo<T>(fn: NonNullable<T>, key?: string): T {
   let $key = key;
   if (!$key) {
     if (typeof fn.toString === 'function') {
@@ -27,4 +27,4 @@ export const memo = <T>(fn: NonNullable<T>, key?: string): T => {
   globalThis.__ESLINT_PLUGIN_MEMO__ ||= {};
   globalThis.__ESLINT_PLUGIN_MEMO__[$key] ||= fn;
   return globalThis.__ESLINT_PLUGIN_MEMO__[$key] as T;
-};
+}

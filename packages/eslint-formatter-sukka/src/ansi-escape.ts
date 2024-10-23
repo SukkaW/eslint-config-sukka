@@ -8,20 +8,26 @@ const SEP = ';';
 const PARAM_SEP = ':';
 const EQ = '=';
 
-export const link = (text: string, url: string, params: Record<string, string> = {}) => [
-  OSC,
-  '8',
-  SEP,
-  Object.keys(params).map(key => key + EQ + params[key]).join(PARAM_SEP),
-  SEP,
-  url,
-  BEL,
-  text,
-  OSC,
-  '8',
-  SEP,
-  SEP,
-  BEL
-].join('');
+export function link(text: string, url: string, params: Record<string, string> = {}) {
+  return OSC
+    + '8'
+    + SEP
+    + Object.keys(params).map(key => key + EQ + params[key]).join(PARAM_SEP)
+    + SEP
+    + url
+    + BEL
+    + text
+    + OSC
+    + '8'
+    + SEP
+    + SEP
+    + BEL;
+}
 
-export const iTermSetCwd = (cwd = process.cwd()) => `${OSC}50;CurrentDir=${cwd}${BEL}`;
+export function iTermSetCwd(cwd = process.cwd()) {
+  return OSC
+    + '50;'
+    + 'CurrentDir='
+    + cwd
+    + BEL;
+}

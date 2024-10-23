@@ -45,8 +45,7 @@ const manualChunks: GetManualChunk = (id: string, { getModuleInfo }) => {
   }
 };
 
-export const createRollupConfig = (
-  packageJsonPath: PathLike,
+export function createRollupConfig(packageJsonPath: PathLike,
   externalDependencies: string[] = [],
   {
     input = 'src/index.ts',
@@ -57,8 +56,7 @@ export const createRollupConfig = (
     foxquire = false,
     buildCjsOnly = false,
     analyze = false
-  }: RollupConfigPlugin = {}
-): RollupOptions[] => {
+  }: RollupConfigPlugin = {}): RollupOptions[] {
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8')) as PackageJson;
   const $external = Object.keys(packageJson.dependencies || {}).concat(Object.keys(packageJson.peerDependencies || {})).concat(builtinModules, externalDependencies, ['eslint']);
 
@@ -153,4 +151,4 @@ export const createRollupConfig = (
     ],
     external
   }];
-};
+}

@@ -28,7 +28,7 @@ const allExtensions = [...typescriptExtensions, ...javaScriptExtensions];
 // `.ts`/`.tsx`/`.js`/`.jsx` implementation.
 const importResolverExtensions = ['.ts', '.cts', '.mts', '.tsx', ...javaScriptExtensions];
 
-export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigItem[] => {
+export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigItem[] {
   const { tsconfigPath = true, tsconfigRootDir = process.cwd(), componentExtentions = [], isInEditor = false } = options;
 
   const baseUrl = typeof __dirname === 'string' ? pathToFileURL(__dirname).href : import.meta.url;
@@ -409,4 +409,4 @@ export const typescript = (options: OptionsTypeScript = {}): FlatESLintConfigIte
       }
     }
   ];
-};
+}

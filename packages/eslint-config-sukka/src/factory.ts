@@ -77,7 +77,7 @@ function deprecate(pkg: string): void {
   }
 }
 
-export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESLintConfigItem[]): Promise<FlatESLintConfigItem[]> => {
+export async function sukka(options?: ESLintSukkaOptions, ...userConfig: FlatESLintConfigItem[]): Promise<FlatESLintConfigItem[]> {
   const flatConfigs: FlatESLintConfigItem[][] = [];
 
   deprecate('@eslint-sukka/js');
@@ -161,4 +161,4 @@ export const sukka = async (options?: ESLintSukkaOptions, ...userConfig: FlatESL
   flatConfigs.push(userConfig);
 
   return flatConfigs.flat();
-};
+}

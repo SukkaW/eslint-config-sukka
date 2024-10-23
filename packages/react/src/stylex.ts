@@ -57,18 +57,20 @@ interface PropLimits {
   }
 }
 
-export const stylex = ({ opt = {} }: OptionsStyleX = {}): FlatESLintConfigItem[] => [{
-  plugins: {
-    '@stylexjs': stylex_eslint_plugin as any
-  },
-  files: [
-    constants.GLOB_TS,
-    constants.GLOB_TSX,
-    // constants.GLOB_JS,
-    constants.GLOB_JSX
-  ],
-  rules: {
-    '@stylexjs/valid-styles': ['error', opt],
-    '@stylexjs/valid-shorthands': ['error', opt]
-  }
-}];
+export function stylex({ opt = {} }: OptionsStyleX = {}): FlatESLintConfigItem[] {
+  return [{
+    plugins: {
+      '@stylexjs': stylex_eslint_plugin as any
+    },
+    files: [
+      constants.GLOB_TS,
+      constants.GLOB_TSX,
+      // constants.GLOB_JS,
+      constants.GLOB_JSX
+    ],
+    rules: {
+      '@stylexjs/valid-styles': ['error', opt],
+      '@stylexjs/valid-shorthands': ['error', opt]
+    }
+  }];
+}

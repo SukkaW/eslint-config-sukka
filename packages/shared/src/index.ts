@@ -11,20 +11,20 @@ export type { RuleModule, ExportedRuleModule, RuleContext } from './create-eslin
 
 import { resolve as importMetaResolve } from '@dual-bundle/import-meta-resolve';
 
-export const isPackageExists = (pkg: string) => {
+export function isPackageExists(pkg: string) {
   try {
     importMetaResolve(pkg, import.meta.url);
     return true;
   } catch {
     return false;
   }
-};
+}
 
 export { importMetaResolve };
 
 export * as globals from './globals';
 
-export const ruleopt = <S extends Linter.RuleSeverity, Options extends unknown[] = unknown[]>(
-  severity: S,
-  ...opt: Options
-): Linter.RuleEntry<Options> => (opt.length ? [severity, ...opt] as const : severity);
+export function ruleopt<S extends Linter.RuleSeverity, Options extends unknown[] = unknown[]>(severity: S,
+  ...opt: Options): Linter.RuleEntry<Options> {
+  return opt.length ? [severity, ...opt] as const : severity;
+}

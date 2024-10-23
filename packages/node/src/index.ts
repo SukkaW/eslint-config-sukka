@@ -13,7 +13,7 @@ export interface OptionsNode {
   hasReact?: boolean
 }
 
-export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
+export function node(options: OptionsNode = {}): FlatESLintConfigItem[] {
   const isModule = options.module ?? (getPackageJson()?.type === 'module');
 
   const configs: FlatESLintConfigItem[] = [
@@ -109,4 +109,4 @@ export const node = (options: OptionsNode = {}): FlatESLintConfigItem[] => {
   }
 
   return configs;
-};
+}
