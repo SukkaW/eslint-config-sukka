@@ -126,6 +126,8 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         'import-x/no-mutable-exports': 'error',
         'import-x/no-useless-path-segments': 'warn',
         'import-x/no-webpack-loader-syntax': 'error',
+        // prevent monorepo sibling imports
+        'import-x/no-relative-packages': 'warn',
 
         // 'no-secrets/no-secrets': 'error',
 
