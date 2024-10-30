@@ -1,5 +1,5 @@
 import module from '.';
-import { runTest } from '../../../../../lib/eslint-plugin-tester';
+import { runTest } from '@eslint-sukka/internal';
 import { dedent } from 'ts-dedent';
 
 runTest({

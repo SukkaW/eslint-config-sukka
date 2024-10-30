@@ -328,7 +328,7 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
         '@typescript-eslint/prefer-string-starts-ends-with': 'off',
         'sukka/string/prefer-string-starts-ends-with': 'error',
 
-        '@typescript-eslint/switch-exhaustiveness-check': 'error',
+        '@typescript-eslint/switch-exhaustiveness-check': ['error', { allowDefaultCaseForExhaustiveSwitch: true, considerDefaultExhaustiveForUnions: true }],
         '@typescript-eslint/parameter-properties': ['warn', { prefer: 'parameter-property' }],
 
         'sukka/string/no-unneeded-to-string': 'error',

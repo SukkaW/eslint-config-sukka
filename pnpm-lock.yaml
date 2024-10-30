@@ -34,6 +34,9 @@ importers:
 
   .:
     devDependencies:
+      '@eslint-sukka/internal':
+        specifier: workspace:*
+        version: link:packages/internal
       '@eslint-sukka/node':
         specifier: workspace:*
         version: link:packages/node
@@ -294,6 +297,8 @@ importers:
       eslint-plugin-unicorn:
         specifier: 56.0.0
         version: 56.0.0(eslint@9.13.0(jiti@2.0.0))
+
+  packages/internal: {}
 
   packages/node:
     dependencies:

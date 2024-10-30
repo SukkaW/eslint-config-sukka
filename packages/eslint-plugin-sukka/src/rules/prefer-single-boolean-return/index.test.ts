@@ -19,7 +19,7 @@
  */
 import mod from '.';
 import { dedent } from 'ts-dedent';
-import { runTest } from '../../../../../lib/eslint-plugin-tester';
+import { runTest } from '@eslint-sukka/internal';
 
 runTest({
   module: mod,

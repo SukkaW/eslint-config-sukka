@@ -1,4 +1,4 @@
-import { runTest } from '../../../../../lib/eslint-plugin-tester';
+import { runTest } from '@eslint-sukka/internal';
 import module from '.';
 import type { MessageIds, Options } from '.';
 import { dedent } from 'ts-dedent';

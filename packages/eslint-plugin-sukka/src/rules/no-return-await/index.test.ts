@@ -1,4 +1,4 @@
-import { runTest } from '../../../../../lib/eslint-plugin-tester';
+import { runTest } from '@eslint-sukka/internal';
 import type { TestCaseError } from '@typescript-eslint/rule-tester';
 
 import module from './index';

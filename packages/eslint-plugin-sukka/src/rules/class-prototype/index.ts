@@ -19,11 +19,10 @@
  */
 // https://sonarsource.github.io/rspec/#/rspec/S3525/javascript
 
-import { createRule, isParserWithTypeInformation } from '@eslint-sukka/shared';
+import { createRule, isParserWithTypeInformation, ensureParserWithTypeInformation } from '@eslint-sukka/shared';
 import { AST_NODE_TYPES } from '@typescript-eslint/utils';
 import { SymbolFlags as tsSymbolFlags } from 'typescript';
 import type { ParserServices, TSESTree } from '@typescript-eslint/utils';
-import { ensureParserWithTypeInformation } from '../../../../shared/src';
 
 export default createRule({
   name: 'class-prototype',

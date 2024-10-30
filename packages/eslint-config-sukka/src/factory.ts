@@ -23,8 +23,9 @@ import picocolors from 'picocolors';
 import { defu } from 'defu';
 // import { isCI } from 'ci-info';
 
-// This is a small hack to make rollup-plugin-dts bundle all these types
+// eslint-disable-next-line import-x/no-relative-packages -- This is a small hack to make rollup-plugin-dts bundle all these types
 import type { OptionsReact, OptionsStyleX } from '../../react';
+// eslint-disable-next-line import-x/no-relative-packages -- This is a small hack to make rollup-plugin-dts bundle all these types
 import type { OptionsNode } from '../../node';
 import { foxquire } from './foxquire';
 import { isInEditorEnv } from './is-in-editor';

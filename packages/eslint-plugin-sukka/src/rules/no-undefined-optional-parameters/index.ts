@@ -23,8 +23,7 @@ import { AST_NODE_TYPES } from '@typescript-eslint/utils';
 import type { ParserServicesWithTypeInformation, TSESTree } from '@typescript-eslint/utils';
 import type ts from 'typescript';
 import { SyntaxKind as tsSyntaxKind } from 'typescript';
-import { createRule } from '@eslint-sukka/shared';
-import { ensureParserWithTypeInformation } from '../../../../shared/src';
+import { createRule, ensureParserWithTypeInformation } from '@eslint-sukka/shared';
 
 export default createRule({
   name: 'no-undefined-optional-parameters',

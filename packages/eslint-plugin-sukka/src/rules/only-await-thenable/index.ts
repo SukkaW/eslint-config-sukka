@@ -21,10 +21,9 @@
 
 import type ts from 'typescript';
 import { SyntaxKind as tsSyntaxKind, TypeFlags as tsTypeFlags } from 'typescript';
-import { createRule } from '@eslint-sukka/shared';
+import { createRule, ensureParserWithTypeInformation } from '@eslint-sukka/shared';
 import { AST_NODE_TYPES } from '@typescript-eslint/utils';
 import type { ParserServicesWithTypeInformation, TSESTree } from '@typescript-eslint/utils';
-import { ensureParserWithTypeInformation } from '../../../../shared/src';
 import { getTypeFromTreeNode } from '../no-for-in-iterable';
 
 export default createRule({

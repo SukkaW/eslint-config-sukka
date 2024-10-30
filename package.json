@@ -15,6 +15,7 @@
   "author": "Sukka <https://skk.moe>",
   "license": "MIT",
   "devDependencies": {
+    "@eslint-sukka/internal": "workspace:*",
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",

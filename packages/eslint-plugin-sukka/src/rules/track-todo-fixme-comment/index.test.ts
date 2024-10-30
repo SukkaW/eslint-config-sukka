@@ -1,5 +1,5 @@
 import mod from '.';
-import { runTest } from '../../../../../lib/eslint-plugin-tester';
+import { runTest } from '@eslint-sukka/internal';
 
 runTest({
   module: mod,
