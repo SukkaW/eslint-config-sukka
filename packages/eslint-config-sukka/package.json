@@ -32,19 +32,19 @@
   "author": "Sukka <https://skk.moe>",
   "license": "MIT",
   "dependencies": {
-    "@eslint-community/eslint-plugin-eslint-comments": "^4.4.0",
+    "@eslint-community/eslint-plugin-eslint-comments": "^4.4.1",
     "@eslint-sukka/shared": "workspace:*",
     "@eslint/js": "^9.13.0",
     "@stylistic/eslint-plugin-js": "2.9.0",
     "@stylistic/eslint-plugin-plus": "2.9.0",
     "@stylistic/eslint-plugin-ts": "2.9.0",
-    "@typescript-eslint/parser": "8.10.0",
+    "@typescript-eslint/parser": "8.12.2",
     "ci-info": "^4.0.0",
     "defu": "^6.1.4",
     "eslint-import-resolver-ts-bundled": "workspace:*",
     "eslint-plugin-antfu": "^2.7.0",
     "eslint-plugin-autofix": "^2.2.0",
-    "eslint-plugin-import-x": "^4.3.1",
+    "eslint-plugin-import-x": "^4.4.0",
     "eslint-plugin-jsonc": "^2.16.0",
     "eslint-plugin-promise": "^7.1.0",
     "eslint-plugin-regexp": "^2.6.0",
@@ -52,7 +52,7 @@
     "eslint-plugin-unused-imports": "4.1.4",
     "jsonc-eslint-parser": "^2.4.0",
     "picocolors": "^1.1.1",
-    "typescript-eslint": "^8.11.0"
+    "typescript-eslint": "^8.12.2"
   },
   "devDependencies": {
     "@antfu/install-pkg": "^0.4.1",
@@ -60,7 +60,7 @@
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
-    "@typescript-eslint/eslint-plugin": "8.10.0",
+    "@typescript-eslint/eslint-plugin": "8.12.2",
     "eslint-config-flat-gitignore": "^0.3.0"
   }
 }
