@@ -34,7 +34,7 @@
   "dependencies": {
     "@eslint-community/eslint-plugin-eslint-comments": "^4.4.1",
     "@eslint-sukka/shared": "workspace:*",
-    "@eslint/js": "^9.13.0",
+    "@eslint/js": "^9.14.0",
     "@stylistic/eslint-plugin-js": "2.9.0",
     "@stylistic/eslint-plugin-plus": "2.9.0",
     "@stylistic/eslint-plugin-ts": "2.9.0",
