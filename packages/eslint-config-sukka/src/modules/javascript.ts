@@ -1,4 +1,3 @@
-// @ts-expect-error -- no types
 import eslint_js from '@eslint/js';
 import { memo, RESTRICTED_IMPORT_JS, constants, globals, getPackageJson } from '@eslint-sukka/shared';
 
@@ -113,7 +112,7 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         '@stylistic/js': memo(stylisticJs, '@stylistic/eslint-plugin-js'),
         '@stylistic/plus': memo(stylisticPlus, '@stylistic/eslint-plugin-plus'),
         sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka'),
-        'import-x': memo(eslint_plugin_import_x, 'eslint-plugin-import-x'),
+        'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x'),
         autofix: eslint_plugin_autofix,
         antfu: memo(eslint_plugin_antfu, 'eslint_plugin_antfu')
       },
