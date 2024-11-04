@@ -281,6 +281,9 @@ export function react({
       // Require that the first prop in a JSX element be on a new line when the element is multiline
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-first-prop-new-line.md
       '@stylistic/jsx/jsx-first-prop-new-line': ['error', 'multiline-multiprop'],
+
+      // https://eslint.style/rules/jsx/jsx-function-call-newline
+      '@stylistic/jsx/jsx-function-call-newline': ['error', 'multiline'],
       // Enforce spacing around jsx equals signs
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-equals-spacing.md
       '@stylistic/jsx/jsx-equals-spacing': ['error', 'never'],
@@ -288,6 +291,12 @@ export function react({
       // https://github.com/eslint-stylistic/eslint-stylistic/pull/413
       // `@stylistic/jsx/jsx-indent` is replaced by `@stylistic/js/indent`
       '@stylistic/jsx/jsx-indent': 'off',
+
+      // https://eslint.style/rules/jsx/jsx-child-element-spacing
+      '@stylistic/jsx/jsx-child-element-spacing': 'error',
+
+      // https://eslint.style/rules/jsx/jsx-closing-bracket-location
+      '@stylistic/jsx/jsx-closing-bracket-location': ['error', 'line-aligned'],
 
       // Validate whitespace in and around the JSX opening and closing brackets
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/jsx-tag-spacing.md

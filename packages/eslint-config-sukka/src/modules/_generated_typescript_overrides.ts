@@ -110,6 +110,11 @@ export const generated_typescript_overrides: SukkaESLintRuleConfig = {
       'error',
       'never'
     ],
+    '@stylistic/js/function-call-spacing': 'off',
+    '@stylistic/ts/function-call-spacing': [
+      'error',
+      'never'
+    ],
     '@stylistic/js/indent': 'off',
     '@stylistic/ts/indent': [
       'error',

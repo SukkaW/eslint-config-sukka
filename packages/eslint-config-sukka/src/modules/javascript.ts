@@ -641,6 +641,9 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         // https://eslint.style/rules/js/function-paren-newline
         '@stylistic/js/function-paren-newline': ['error', 'consistent'],
 
+        // https://eslint.style/rules/default/function-call-spacing
+        '@stylistic/js/function-call-spacing': ['error', 'never'],
+
         // Enforce the location of arrow function bodies with implicit returns
         // https://eslint.style/rules/js/implicit-arrow-linebreak
         '@stylistic/js/implicit-arrow-linebreak': ['error', 'beside'],
