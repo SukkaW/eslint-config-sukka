@@ -45,14 +45,14 @@
     "eslint-plugin-antfu": "^2.7.0",
     "eslint-plugin-autofix": "^2.2.0",
     "eslint-plugin-import-x": "^4.4.0",
-    "eslint-plugin-jsonc": "^2.16.0",
+    "eslint-plugin-jsonc": "^2.17.0",
     "eslint-plugin-promise": "^7.1.0",
     "eslint-plugin-regexp": "^2.6.0",
     "eslint-plugin-sukka": "workspace:*",
     "eslint-plugin-unused-imports": "4.1.4",
     "jsonc-eslint-parser": "^2.4.0",
     "picocolors": "^1.1.1",
-    "typescript-eslint": "^8.12.2"
+    "typescript-eslint": "^8.13.0"
   },
   "devDependencies": {
     "@antfu/install-pkg": "^0.4.1",

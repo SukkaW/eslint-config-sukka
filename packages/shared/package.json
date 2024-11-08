@@ -34,10 +34,10 @@
     "@dual-bundle/import-meta-resolve": "^4.1.0",
     "@package-json/types": "^0.0.11",
     "@types/eslint": "^9.6.1",
-    "@typescript-eslint/utils": "^8.12.2"
+    "@typescript-eslint/utils": "^8.13.0"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
-    "globals": "^15.11.0"
+    "globals": "^15.12.0"
   }
 }
