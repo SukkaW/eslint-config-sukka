@@ -70,7 +70,8 @@ export function stylex({ opt = {} }: OptionsStyleX = {}): FlatESLintConfigItem[]
     ],
     rules: {
       '@stylexjs/valid-styles': ['error', opt],
-      '@stylexjs/valid-shorthands': ['error', opt]
+      '@stylexjs/valid-shorthands': ['error', opt],
+      '@stylexjs/sort-keys': 'off'
     }
   }];
 }

@@ -188,6 +188,7 @@ export function react({
       '@eslint-react/no-unsafe-component-will-mount': 'warn',
       '@eslint-react/no-unsafe-component-will-receive-props': 'warn',
       '@eslint-react/no-unsafe-component-will-update': 'warn',
+      '@eslint-react/prefer-destructuring-assignment': 'warn',
 
       // Prevent unused state values
       // https://github.com/jsx-eslint/eslint-plugin-react/pull/1103/
