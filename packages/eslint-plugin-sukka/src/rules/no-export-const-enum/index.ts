@@ -4,7 +4,6 @@ import type { TSESTree } from '@typescript-eslint/utils';
 
 export default createRule({
   name: 'no-export-const-enum',
-  // defaultOptions: [],
   meta: {
     type: 'suggestion',
     docs: {

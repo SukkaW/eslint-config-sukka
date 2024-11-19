@@ -10,7 +10,6 @@ const regexpp = new RegExpParser();
 
 export default createRule({
   name: 'prefer-string-starts-ends-with',
-  // defaultOptions: [],
   meta: {
     type: 'suggestion',
     docs: {
