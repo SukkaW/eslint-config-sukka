@@ -204,27 +204,6 @@ export function react({
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/21e01b61af7a38fc86d94f27eb66cda8054582ed/docs/rules/no-unused-class-component-methods.md
       '@eslint-react/no-unused-class-component-members': 'error',
 
-      // plugin:react/jsx-runtime
-      // Manually includes rules
-      // ...(eslint_plugin_react.configs!['jsx-runtime'] as Record<string, ESLint.ConfigData>).rules,
-      // 'react/react-in-jsx-scope': 'off',
-      // 'react/jsx-uses-react': 'off',
-
-      // Unused rules, covered by TypeScript
-      // 'react/prop-types': 'off',
-      // 'react/display-name': ['off', { ignoreTranspilerName: false }],
-      // 'react/no-unknown-property': 'off', // ['error', { ignore: ['css', 'jsx'] }], // covered by TypeScript
-      // 'react/jsx-uses-vars': 'off', // covered by TypeScript
-      // 'react/jsx-no-duplicate-props': 'off', // covered by TypeScript
-      // 'react/jsx-no-undef': 'off', // covered by TypeScript
-      // 'react/no-unescaped-entities': 'off',
-      // Require render() methods to return something
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/require-render-return.md
-      // 'react/require-render-return': 'off',
-      // Require style prop value be an object or var
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/style-prop-object.md
-      // 'react/style-prop-object': 'off',
-
       // Other rules
       '@eslint-react/naming-convention/component-name': ['error', { rule: 'PascalCase' }],
       '@eslint-react/naming-convention/filename': ['error', { rule: 'kebab-case' }],

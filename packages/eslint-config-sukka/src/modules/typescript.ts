@@ -17,7 +17,8 @@ export interface OptionsTypeScript {
   isInEditor?: boolean,
   tsconfigPath?: string | string[] | true,
   tsconfigRootDir?: string,
-  componentExtentions?: string[]
+  componentExtentions?: string[],
+  allowDefaultProject?: string[]
 }
 
 const javaScriptExtensions = ['.js', '.jsx', '.mjs', '.cjs'];
@@ -29,7 +30,17 @@ const allExtensions = [...typescriptExtensions, ...javaScriptExtensions];
 const importResolverExtensions = ['.ts', '.cts', '.mts', '.tsx', ...javaScriptExtensions];
 
 export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigItem[] {
-  const { tsconfigPath = true, tsconfigRootDir = process.cwd(), componentExtentions = [], isInEditor = false } = options;
+  const {
+    tsconfigPath = true,
+    tsconfigRootDir = process.cwd(),
+    componentExtentions = [],
+    isInEditor = false,
+    allowDefaultProject = [
+      'next.config.ts',
+      'rollup.config.ts',
+      'webpack.config.ts'
+    ]
+  } = options;
 
   const baseUrl = typeof __dirname === 'string' ? pathToFileURL(__dirname).href : import.meta.url;
   const typescriptEslintParserPath = fileURLToPath(importMetaResolve('@typescript-eslint/parser', baseUrl));
@@ -62,9 +73,11 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
           ecmaVersion: 'latest',
           ...(tsconfigPath === true
             ? {
-              projectService: true,
-              // If a file is JS, we don't run typescript-eslint on them
-              allowDefaultProject: []
+              projectService: {
+                // If a file is JS, we don't run typescript-eslint on them
+                allowDefaultProject,
+                loadTypeScriptPlugins: isInEditor
+              }
             }
             : {
               project: tsconfigPath
