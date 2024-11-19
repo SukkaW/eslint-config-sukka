@@ -17,7 +17,12 @@ export function loadUnicorn<TMessageIDs extends string, TOptions extends unknown
         description: '',
         ...rule.meta.docs,
         url: getDocumentationUrl(ruleId)
-      }
+      },
+      ...(
+        'defaultOptions' in rule
+          ? { defaultOptions: rule.defaultOptions as [] }
+          : {}
+      )
     },
 
     create: reportProblems<TMessageIDs, TOptions>(rule.create)
