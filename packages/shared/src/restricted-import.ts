@@ -39,7 +39,7 @@ export const BETTER_ALTERNATIVES = Object.entries({
   ms: 'https://www.npmjs.com/package/@lukeed/ms',
   classnames: 'https://www.npmjs.com/package/clsx',
   classcat: 'https://www.npmjs.com/package/clsx',
-  'p-limit': 'https://www.npmjs.com/package/async-sema or https://www.npmjs.com/package/@henrygd/queue',
+  'p-limit': 'https://www.npmjs.com/package/superlock / https://www.npmjs.com/package/@henrygd/queue / https://www.npmjs.com/package/async-sema',
   'p-retry': 'https://www.npmjs.com/package/async-retry',
   ora: 'https://www.npmjs.com/package/nanospinner',
   'ts-results': 'https://www.npmjs.com/package/ts-results-es',
