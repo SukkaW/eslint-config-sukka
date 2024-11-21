@@ -46,7 +46,8 @@ export const BETTER_ALTERNATIVES = Object.entries({
   dayjs: 'https://www.npmjs.com/package/date-fns',
   tldjs: 'https://www.npmjs.com/package/tldts',
   'types-package-json': 'https://www.npmjs.com/package/@package-json/types',
-  'xxhash-wasm': 'https://www.npmjs.com/package/hash-wasm, significantly faster'
+  'xxhash-wasm': 'https://www.npmjs.com/package/hash-wasm, significantly faster',
+  'string-width': 'https://www.npmjs.com/package/fast-string-width'
 }).map(([key, value]) => ({ name: key, message: `Use ${value} instead.` }));
 
 const restricedImportBase = [
