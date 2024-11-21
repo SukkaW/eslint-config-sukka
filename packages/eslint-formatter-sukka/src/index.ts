@@ -2,7 +2,7 @@ import path from 'node:path';
 import process from 'node:process';
 
 import picocolors from 'picocolors';
-import stringWidth from 'string-width';
+import fastStringWidth from 'fast-string-width';
 import { supportsHyperlink } from 'supports-hyperlinks';
 
 import { link, iTermSetCwd } from './ansi-escape';
@@ -111,9 +111,9 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
 
           const line = String(x.line || 0);
           const column = String(x.column || 0);
-          const lineWidth = stringWidth(line);
-          const columnWidth = stringWidth(column);
-          const messageWidth = stringWidth(message);
+          const lineWidth = fastStringWidth(line);
+          const columnWidth = fastStringWidth(column);
+          const messageWidth = fastStringWidth(message);
 
           if (lineWidth > maxLineWidth) {
             maxLineWidth = lineWidth;
