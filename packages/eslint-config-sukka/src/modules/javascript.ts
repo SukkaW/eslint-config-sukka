@@ -948,6 +948,7 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/prefer-fetch': 'error',
         'sukka/prefer-timer-id': 'warn',
         'sukka/no-useless-plusplus': 'error',
+        'sukka/no-chain-array-higher-order-functions': 'error',
 
         'sukka/unicorn/catch-error-name': ['error', { ignore: [/^(?:e|err|error|\w+Err|\w+Error)[\d_]?$/] }],
         'sukka/unicorn/custom-error-definition': 'error',

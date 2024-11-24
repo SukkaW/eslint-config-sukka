@@ -21,7 +21,7 @@ const $tester = new RuleTester({
       ecmaFeatures: { jsx: true },
       project: 'tsconfig.json',
       projectService: true,
-      tsconfigRootDir: path.join(__dirname, '..', 'tests', 'fixtures'),
+      tsconfigRootDir: path.join(__dirname, '..', '..', 'tests', 'fixtures'),
       warnOnUnsupportedTypeScriptVersion: false
     }
   },
@@ -56,8 +56,7 @@ export function runTest<TOptions extends readonly unknown[], TMessageIds extends
           parserOptions: {
             ecmaFeatures: { jsx: true },
             project: 'tsconfig.json',
-            projectService: true,
-            tsconfigRootDir: path.join(__dirname, '..', 'tests', 'fixtures'),
+            tsconfigRootDir: path.join(__dirname, '..', '..', 'tests', 'fixtures'),
             warnOnUnsupportedTypeScriptVersion: false
           }
         },
@@ -66,15 +65,13 @@ export function runTest<TOptions extends readonly unknown[], TMessageIds extends
         }
       });
 
-      Object.entries(extraRules).forEach(([name, rule]) => {
-        tester.defineRule(name, rule);
-      });
+      Object.entries(extraRules).forEach(([name, rule]) => tester.defineRule(name, rule));
 
       return tester;
     })()
     : $tester;
 
-  // eslint-disable-next-line sukka/type/no-force-cast-via-top-type -- mismatched type between @typescript-eslint/rule-tester and @eslint-sukka/shared
+  // eslint-disable-next-line sukka/type/no-force-cast-via-top-type -- mismatch between me and typescript-eslint
   tester.run(mod.name, mod as unknown as TSESLint.RuleModule<TMessageIds, TOptions>, {
     valid: $valid.flat().map((item, index) => {
       if (typeof item === 'string') {
