@@ -56,7 +56,7 @@
   },
   "devDependencies": {
     "@antfu/install-pkg": "^0.4.1",
-    "@clack/prompts": "^0.8.1",
+    "@clack/prompts": "^0.8.2",
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
