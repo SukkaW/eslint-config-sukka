@@ -7,7 +7,7 @@ import type { RollupJsonOptions } from '@rollup/plugin-json';
 import jsonPlugin from '@rollup/plugin-json';
 import aliasPlugin from '@rollup/plugin-alias';
 import type { RollupAliasOptions } from '@rollup/plugin-alias';
-import { adapter, analyzer } from 'vite-bundle-analyzer';
+import * as bundleAnalyzer from 'vite-bundle-analyzer';
 import replace from '@rollup/plugin-replace';
 
 import { rollupFoximport } from './rollup-foxquire';
@@ -135,7 +135,7 @@ export function createRollupConfig(packageJsonPath: PathLike,
           }
         }
       }),
-      analyze && adapter(analyzer())
+      analyze && bundleAnalyzer.adapter(bundleAnalyzer.analyzer())
     ],
     external
   },
