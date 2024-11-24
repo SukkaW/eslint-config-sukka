@@ -78,8 +78,10 @@ export default createRule({
 
 function collectUnusedCollections(scope: TSESLint.Scope.Scope, unusedArray: TSESLint.Scope.Variable[]) {
   if (scope.type !== TSESLint.Scope.ScopeType.global) {
-    scope.variables.filter(isUnusedCollection).forEach(v => {
-      unusedArray.push(v);
+    scope.variables.forEach(v => {
+      if (isUnusedCollection(v)) {
+        unusedArray.push(v);
+      }
     });
   }
 

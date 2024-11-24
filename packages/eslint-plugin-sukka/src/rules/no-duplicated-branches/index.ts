@@ -22,6 +22,7 @@
 import { AST_NODE_TYPES } from '@typescript-eslint/utils';
 import type { TSESLint, TSESTree } from '@typescript-eslint/utils';
 import { createRule } from '@eslint-sukka/shared';
+import { collectSwitchBranches } from '../no-all-duplicated-branches';
 
 export default createRule({
   name: 'no-duplicated-branches',
@@ -212,23 +213,6 @@ function collectIfBranches(node: TSESTree.IfStatement) {
   }
 
   return { branches, endsWithElse };
-}
-
-/** Returns a list of `switch` clauses (both `case` and `default`) */
-function collectSwitchBranches(node: TSESTree.SwitchStatement) {
-  let endsWithDefault = false;
-  const branches = node.cases
-    .filter((clause, index) => {
-      if (!clause.test) {
-        endsWithDefault = true;
-      }
-      // if a branch has no implementation, it's fall-through and it should not be considered
-      // the only exception is the last case
-      const isLast = index === node.cases.length - 1;
-      return isLast || clause.consequent.length > 0;
-    })
-    .map(clause => takeWithoutBreak(clause.consequent));
-  return { branches, endsWithDefault };
 }
 
 /** Excludes the break statement from the list */

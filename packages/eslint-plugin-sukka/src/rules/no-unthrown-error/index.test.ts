@@ -17,30 +17,19 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
+import dedent from 'ts-dedent';
 import rule from '.';
 import { runTest } from '@eslint-sukka/internal';
 
 runTest({
   module: rule,
   valid: [
-    {
-      code: 'foo(new Error());'
-    },
-    {
-      code: 'foo(TypeError);'
-    },
-    {
-      code: 'throw new Error();'
-    },
-    {
-      code: 'new LooksLikeAnError().doSomething();'
-    },
-    {
-      code: 'const error = new Error();'
-    },
-    {
-      code: 'const error = new Error(); error.something = 10; throw error;'
-    }
+    'foo(new Error());',
+    'foo(TypeError);',
+    'throw new Error();',
+    'new LooksLikeAnError().doSomething();',
+    'const error = new Error();',
+    'const error = new Error(); error.something = 10; throw error;'
   ],
   invalid: [
     {
@@ -63,21 +52,23 @@ runTest({
     },
     {
       code: 'new TypeError();',
-      errors: 1
+      errors: [{ messageId: 'suggestThrowError' }]
     },
     {
       code: 'new MyError();',
-      errors: 1
+      errors: [{ messageId: 'suggestThrowError' }]
     },
     {
       code: 'new A.MyError();',
-      errors: 1
+      errors: [{ messageId: 'suggestThrowError' }]
     },
     {
-      code: `new A(function () {
-                new SomeError();
-            });`,
-      errors: 1
+      code: dedent`
+        new A(function () {
+          new SomeError();
+        });
+      `,
+      errors: [{ messageId: 'suggestThrowError' }]
     },
     {
       code: '(new MyException());',

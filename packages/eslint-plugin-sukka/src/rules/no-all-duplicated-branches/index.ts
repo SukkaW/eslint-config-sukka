@@ -133,19 +133,23 @@ function collectIfBranches(node: TSESTree.IfStatement) {
 }
 
 /** Returns a list of `switch` clauses (both `case` and `default`) */
-function collectSwitchBranches(node: TSESTree.SwitchStatement) {
+export function collectSwitchBranches(node: TSESTree.SwitchStatement) {
   let endsWithDefault = false;
-  const branches = node.cases
-    .filter((clause, index) => {
-      if (!clause.test) {
-        endsWithDefault = true;
-      }
-      // if a branch has no implementation, it's fall-through and it should not be considered
-      // the only exception is the last case
-      const isLast = index === node.cases.length - 1;
-      return isLast || clause.consequent.length > 0;
-    })
-    .map(clause => takeWithoutBreak(clause.consequent));
+  const branches = node.cases.reduce<TSESTree.Statement[][]>((acc, clause, index) => {
+    if (!clause.test) {
+      endsWithDefault = true;
+    }
+    // if a branch has no implementation, it's fall-through and it should not be considered
+    // the only exception is the last case
+    const isLast = index === node.cases.length - 1;
+
+    if (isLast || clause.consequent.length > 0) {
+      acc.push(takeWithoutBreak(clause.consequent));
+    }
+
+    return acc;
+  }, []);
+
   return { branches, endsWithDefault };
 }
 
