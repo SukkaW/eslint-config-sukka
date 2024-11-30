@@ -32,7 +32,8 @@ export function promise({ typescript }: OptionsPromise): FlatESLintConfigItem[] 
       'promise/avoid-new': 'off',
       'promise/no-new-statics': 'error',
       'promise/no-return-in-finally': 'warn',
-      'promise/valid-params': 'warn'
+      'promise/valid-params': 'warn',
+      'promise/prefer-catch': 'error'
     }
   }];
 }

@@ -39,7 +39,7 @@
     "@stylexjs/eslint-plugin": "^0.9.3",
     "@stylexjs/shared": "^0.9.3",
     "@stylistic/eslint-plugin-jsx": "^2.11.0",
-    "eslint-plugin-react-compiler": "^19.0.0-beta-a7bf2bd-20241110",
+    "eslint-plugin-react-compiler": "^19.0.0-beta-df7b47d-20241124",
     "eslint-plugin-react-hooks": "^5.1.0-rc-91061073-20241121",
     "eslint-plugin-react-refresh": "^0.4.14",
     "eslint-plugin-ssr-friendly": "^1.3.0"
