@@ -13,6 +13,8 @@ import eslint_plugin_import_x from 'eslint-plugin-import-x';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import process from 'node:process';
 
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-ts-bundled';
+
 export interface OptionsTypeScript {
   isInEditor?: boolean,
   tsconfigPath?: string | string[] | true,
@@ -44,7 +46,6 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
 
   const baseUrl = typeof __dirname === 'string' ? pathToFileURL(__dirname).href : import.meta.url;
   const typescriptEslintParserPath = fileURLToPath(importMetaResolve('@typescript-eslint/parser', baseUrl));
-  const eslintImportResolverTsBundlesPath = fileURLToPath(importMetaResolve('eslint-import-resolver-ts-bundled', baseUrl));
 
   return [
     {
@@ -95,17 +96,18 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
       settings: {
         'import-x/extensions': allExtensions,
         'import-x/external-module-folders': ['node_modules', 'node_modules/@types'],
-        'import-x/resolver': {
-          node: {
-            extensions: importResolverExtensions
-          },
-          [eslintImportResolverTsBundlesPath]: {
+        'import-x/resolver-next': [
+          createTypeScriptImportResolver({
             alwaysTryTypes: true,
-            ...(tsconfigPath === true ? {} : {
-              project: tsconfigPath
-            })
-          }
-        },
+            extensions: importResolverExtensions,
+            ...(tsconfigPath === true
+              ? {}
+              : {
+                project: tsconfigPath
+              }
+            )
+          })
+        ],
         'import-x/parsers': {
           [typescriptEslintParserPath]: typescriptExtensions
         }
