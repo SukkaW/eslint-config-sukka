@@ -13,7 +13,7 @@ import eslint_plugin_import_x from 'eslint-plugin-import-x';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import process from 'node:process';
 
-import { createTypeScriptImportResolver } from 'eslint-import-resolver-ts-bundled';
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 
 export interface OptionsTypeScript {
   isInEditor?: boolean,

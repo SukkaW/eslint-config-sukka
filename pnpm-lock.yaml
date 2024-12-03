@@ -129,9 +129,9 @@ importers:
       defu:
         specifier: ^6.1.4
         version: 6.1.4
-      eslint-import-resolver-ts-bundled:
-        specifier: workspace:*
-        version: link:../eslint-import-resolver-ts-bundled
+      eslint-import-resolver-typescript:
+        specifier: ^3.7.0
+        version: 3.7.0(eslint-plugin-import-x@4.5.0(eslint@9.16.0(jiti@2.0.0))(typescript@5.7.2))(eslint@9.16.0(jiti@2.0.0))
       eslint-plugin-antfu:
         specifier: ^2.7.0
         version: 2.7.0(eslint@9.16.0(jiti@2.0.0))
@@ -206,19 +206,6 @@ importers:
       supports-hyperlinks:
         specifier: ^3.1.0
         version: 3.1.0
-
-  packages/eslint-import-resolver-ts-bundled:
-    dependencies:
-      enhanced-resolve:
-        specifier: ^5.17.1
-        version: 5.17.1
-    devDependencies:
-      '@eslint-sukka/rollup-config':
-        specifier: workspace:*
-        version: link:../rollup-config
-      eslint-import-resolver-typescript:
-        specifier: ^3.7.0
-        version: 3.7.0(eslint-plugin-import-x@4.5.0(eslint@9.16.0(jiti@2.0.0))(typescript@5.7.2))(eslint@9.16.0(jiti@2.0.0))
 
   packages/eslint-plugin-react-jsx-a11y:
     dependencies:

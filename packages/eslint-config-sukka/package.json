@@ -41,7 +41,7 @@
     "@typescript-eslint/parser": "^8.17.0",
     "ci-info": "^4.1.0",
     "defu": "^6.1.4",
-    "eslint-import-resolver-ts-bundled": "workspace:*",
+    "eslint-import-resolver-typescript": "^3.7.0",
     "eslint-plugin-antfu": "^2.7.0",
     "eslint-plugin-autofix": "^2.2.0",
     "eslint-plugin-import-x": "^4.5.0",
