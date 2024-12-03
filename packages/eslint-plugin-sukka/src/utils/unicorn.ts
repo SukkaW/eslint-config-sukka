@@ -148,6 +148,7 @@ function reportProblems<TMessageIDs extends string, TOptions extends unknown[]>(
       }
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- eslint-plugin-unicorn sucks
     for (const [selector, listener] of Object.entries(create(contextProxy, options) || {})) {
       if (listener) {
         addListener(selector, listener);

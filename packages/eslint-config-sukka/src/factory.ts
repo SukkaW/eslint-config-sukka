@@ -74,6 +74,7 @@ function config<T>(options: SharedOptions<T> | undefined | boolean, ...defaults:
 
 function deprecate(pkg: string): void {
   if (isPackageExists(pkg)) {
+    // eslint-disable-next-line no-console -- in cli warn
     console.error(picocolors.yellow(`[eslint-config-sukka] "${pkg}" is deprecated and you should uninstall it`));
   }
 }
@@ -143,6 +144,7 @@ export async function sukka(options?: ESLintSukkaOptions, ...userConfig: FlatESL
         flatConfigs.push(eslint_sukka_react.stylex(config(options?.stylex)));
       }
     } else {
+      // eslint-disable-next-line no-console -- in cli
       console.warn('[eslint-config-sukka] React preset will not be enabled when TypeScript is missing.');
     }
   }
