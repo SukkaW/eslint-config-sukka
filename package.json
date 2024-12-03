@@ -26,18 +26,18 @@
     "@types/node": "^22.10.1",
     "@types/stringify-object": "^4.0.5",
     "@typescript-eslint/rule-tester": "^8.17.0",
-    "@typescript-eslint/utils": "^8.16.0",
+    "@typescript-eslint/utils": "^8.17.0",
     "bumpp": "^9.8.1",
     "eslint": "^9.16.0",
     "eslint-config-sukka": "workspace:*",
     "eslint-formatter-sukka": "workspace:*",
     "eslint-plugin-sukka": "workspace:*",
-    "rollup": "^4.27.4",
+    "rollup": "^4.28.0",
     "stringify-object": "5.0.0",
     "ts-dedent": "^2.2.0",
     "turbo": "^2.3.3",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.6"
+    "vitest": "^2.1.8"
   },
   "packageManager": "pnpm@9.14.4",
   "pnpm": {
