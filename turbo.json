@@ -32,6 +32,11 @@
       "dependsOn": [
         "eslint-config-sukka#codegen"
       ]
+    },
+    "//#lint:root": {
+      "dependsOn": [
+        "eslint-config-sukka#build"
+      ]
     }
   }
 }
