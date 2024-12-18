@@ -682,7 +682,7 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         '@stylistic/js/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
 
         // https://eslint.style/rules/js/multiline-ternary
-        '@stylistic/js/multiline-ternary': 'off',
+        '@stylistic/js/multiline-ternary': ['error', 'always-multiline'],
 
         // require a capital letter for constructors
         'new-cap': ['error', {
