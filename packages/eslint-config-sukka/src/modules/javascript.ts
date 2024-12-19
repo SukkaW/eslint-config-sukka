@@ -4,7 +4,7 @@ import { memo, RESTRICTED_IMPORT_JS, constants, globals, getPackageJson } from '
 import stylisticJs from '@stylistic/eslint-plugin-js';
 import stylisticPlus from '@stylistic/eslint-plugin-plus';
 import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
-import eslint_plugin_import_x from 'eslint-plugin-import-x';
+import eslint_plugin_import_x, { createNodeResolver } from 'eslint-plugin-import-x';
 import eslint_plugin_sukka from 'eslint-plugin-sukka';
 import eslint_plugin_antfu from 'eslint-plugin-antfu';
 
@@ -105,7 +105,13 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         }
       } satisfies FlatESLintConfigItem['languageOptions'],
       settings: {
-        'import-x/extensions': allExtensions
+        'import-x/extensions': allExtensions,
+        'import-x/resolver-next': [
+          createNodeResolver({
+            alwaysTryTypes: true,
+            extensions: allExtensions
+          })
+        ]
       },
       plugins: {
         'unused-imports': memo(eslint_plugin_unused_imports, 'eslint-plugin-unused-imports'),
