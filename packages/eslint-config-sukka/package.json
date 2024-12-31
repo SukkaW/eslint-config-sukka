@@ -60,7 +60,6 @@
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
-    "@typescript-eslint/eslint-plugin": "^8.19.0",
     "eslint-config-flat-gitignore": "^0.3.0"
   }
 }
