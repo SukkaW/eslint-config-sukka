@@ -24,7 +24,7 @@
     "@swc-node/register": "^1.10.9",
     "@swc/core": "^1.10.4",
     "@types/eslint": "^9.6.1",
-    "@types/node": "^22.10.2",
+    "@types/node": "^22.10.3",
     "@types/stringify-object": "^4.0.5",
     "@typescript-eslint/rule-tester": "^8.19.0",
     "@typescript-eslint/utils": "^8.19.0",
