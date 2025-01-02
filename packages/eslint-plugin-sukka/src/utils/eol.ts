@@ -1,3 +1,8 @@
-export function detectEol(str: string): '\n' | '\r\n' {
-  return str.includes('\r\n') ? '\r\n' : '\n';
+export function detectEol(str: string) {
+  for (let i = 0, len = str.length; i < len; i++) {
+    const c = str[i];
+    if (c === '\n') return '\n';
+    if (c === '\r' && str[i + 1] === '\n') return '\r\n';
+  }
+  return '\n';
 }
