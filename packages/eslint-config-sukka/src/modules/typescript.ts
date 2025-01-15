@@ -16,6 +16,7 @@ import process from 'node:process';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 
 export interface OptionsTypeScript {
+  allowJs?: boolean,
   isInEditor?: boolean,
   tsconfigPath?: string | string[] | true,
   tsconfigRootDir?: string,
@@ -33,6 +34,7 @@ const importResolverExtensions = ['.ts', '.cts', '.mts', '.tsx', ...javaScriptEx
 
 export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigItem[] {
   const {
+    allowJs = false,
     tsconfigPath = true,
     tsconfigRootDir = process.cwd(),
     componentExtentions = [],
@@ -53,7 +55,11 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
       files: [
         constants.GLOB_TS,
         constants.GLOB_TSX,
-        ...componentExtentions.map(ext => `**/*.${ext}`)
+        ...componentExtentions.map(ext => `**/*.${ext}`),
+        ...(allowJs
+          ? []
+          : [constants.GLOB_JS]
+        )
       ],
       plugins: {
         ...ts_eslint_configs.base.plugins,
