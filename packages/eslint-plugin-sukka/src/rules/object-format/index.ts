@@ -71,8 +71,8 @@ export default createRule<Options, [Options], MessageIds>({
 
           const expectMultiline
             = texts.length > maxObjectSize
-            || texts.some(isMultilineString)
-            || node.properties.some(hasTrailingComment);
+              || texts.some(isMultilineString)
+              || node.properties.some(hasTrailingComment);
 
           const expectSingleLine = !expectMultiline;
 
