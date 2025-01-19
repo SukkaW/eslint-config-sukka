@@ -11,9 +11,8 @@ export const BETTER_ALTERNATIVES = Object.entries({
   'mime-db': 'https://www.npmjs.com/package/mrmime',
   'mime-types': 'https://www.npmjs.com/package/mrmime',
   // lru
-  'tiny-lru': 'https://www.npmjs.com/package/flru',
-  'lru-cache': 'https://www.npmjs.com/package/flru',
-  'tmp-cache': 'https://www.npmjs.com/package/flru',
+  'lru-cache': 'w/o TTL https://www.npmjs.com/package/flru, w/ TTL TTL: https://www.npmjs.com/package/tiny-lru',
+  'tmp-cache': 'w/o TTL https://www.npmjs.com/package/flru, w/ TTL TTL: https://www.npmjs.com/package/tiny-lru',
   // fs operations
   premove: 'Node.js built-in fs.rmdir & fs.rm API',
   mkdirp: 'Node.js built-in fs.mkdir API',
