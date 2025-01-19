@@ -633,10 +633,10 @@ export default createRule({
             const argNode = callNode.arguments[0];
             const needsParen
               = argNode.type !== AST_NODE_TYPES.Literal
-              && argNode.type !== AST_NODE_TYPES.TemplateLiteral
-              && argNode.type !== AST_NODE_TYPES.Identifier
-              && argNode.type !== AST_NODE_TYPES.MemberExpression
-              && argNode.type !== AST_NODE_TYPES.CallExpression;
+                && argNode.type !== AST_NODE_TYPES.TemplateLiteral
+                && argNode.type !== AST_NODE_TYPES.Identifier
+                && argNode.type !== AST_NODE_TYPES.MemberExpression
+                && argNode.type !== AST_NODE_TYPES.CallExpression;
 
             yield fixer.removeRange([callNode.range[0], argNode.range[0]]);
             if (needsParen) {
