@@ -30,7 +30,6 @@ const allExtensions = [...typescriptExtensions, ...javaScriptExtensions];
 // Omit `.d.ts` because 1) TypeScript compilation already confirms that
 // types are resolved, and 2) it would mask an unresolved
 // `.ts`/`.tsx`/`.js`/`.jsx` implementation.
-const importResolverExtensions = ['.ts', '.cts', '.mts', '.tsx', ...javaScriptExtensions];
 
 export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigItem[] {
   const {
@@ -105,7 +104,7 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
         'import-x/resolver-next': [
           createTypeScriptImportResolver({
             alwaysTryTypes: true,
-            extensions: importResolverExtensions,
+            extensions: allExtensions,
             ...(tsconfigPath === true
               ? {}
               : {
@@ -425,8 +424,7 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
       files: ['**/*.js', '**/*.cjs'],
       plugins: ts_eslint_configs.base.plugins as any,
       rules: {
-        '@typescript-eslint/no-require-imports': 'off',
-        '@typescript-eslint/no-var-requires': 'off'
+        '@typescript-eslint/no-require-imports': 'off'
       }
     }
   ];
