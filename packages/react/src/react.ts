@@ -426,5 +426,14 @@ export function react({
         }
       ]
     }
+  }, {
+    // next.js/nextra naming convention
+    files: [
+      '**/app/**/_*.?([cm])[jt]s?(x)',
+      String.raw`**/app/**/\[*.?([cm])[jt]s?(x)`
+    ],
+    rules: {
+      '@eslint-react/naming-convention/filename': 'off'
+    }
   }];
 }
