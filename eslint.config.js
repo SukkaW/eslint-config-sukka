@@ -7,8 +7,7 @@ module.exports = sukka(
     ignores: {
       customGlobs: [
         ...constants.GLOB_EXCLUDE,
-        '**/_generated*',
-        'eslint.config.js'
+        '**/_generated*'
       ]
     },
     node: true,

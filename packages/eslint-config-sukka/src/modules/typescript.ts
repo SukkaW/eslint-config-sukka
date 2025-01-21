@@ -56,8 +56,8 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
         constants.GLOB_TSX,
         ...componentExtentions.map(ext => `**/*.${ext}`),
         ...(allowJs
-          ? []
-          : [constants.GLOB_JS]
+          ? [constants.GLOB_JS]
+          : []
         )
       ],
       plugins: {
