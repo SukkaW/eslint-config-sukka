@@ -284,6 +284,14 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
         '@typescript-eslint/no-deprecated': 'warn',
         '@typescript-eslint/no-unnecessary-template-expression': 'warn',
 
+        '@typescript-eslint/class-methods-use-this': [
+          'error',
+          {
+            exceptMethods: [],
+            ignoreClassesThatImplementAnInterface: 'public-fields'
+          }
+        ],
+
         'no-restricted-syntax': [
           'error',
           {

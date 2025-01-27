@@ -377,7 +377,8 @@ export function react({
           'componentWillUnmount',
           'componentDidCatch',
           'getSnapshotBeforeUpdate'
-        ]
+        ],
+        ignoreClassesThatImplementAnInterface: 'public-fields'
       }],
 
       'jsx-a11y-minimal/alt-text': [
