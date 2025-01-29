@@ -132,9 +132,6 @@ importers:
       eslint-import-resolver-typescript:
         specifier: ^3.7.0
         version: 3.7.0(eslint-plugin-import-x@4.6.1(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.19.0(jiti@2.4.2))
-      eslint-plugin-antfu:
-        specifier: ^2.7.0
-        version: 2.7.0(eslint@9.19.0(jiti@2.4.2))
       eslint-plugin-autofix:
         specifier: ^2.2.0
         version: 2.2.0(eslint@9.19.0(jiti@2.4.2))
@@ -184,6 +181,9 @@ importers:
       eslint-config-flat-gitignore:
         specifier: ^2.0.0
         version: 2.0.0(eslint@9.19.0(jiti@2.4.2))
+      eslint-plugin-antfu:
+        specifier: ^3.0.0
+        version: 3.0.0(eslint@9.19.0(jiti@2.4.2))
 
   packages/eslint-formatter-sukka:
     dependencies:
@@ -408,9 +408,6 @@ packages:
 
   '@antfu/install-pkg@1.0.0':
     resolution: {integrity: sha512-xvX6P/lo1B3ej0OsaErAjqgFYzYVcJpamjLAFLYh9vRJngBrMoUG7aVnrGTeqM7yxbyTD5p3F2+0/QUEh8Vzhw==}
-
-  '@antfu/utils@0.7.10':
-    resolution: {integrity: sha512-+562v9k4aI80m1+VuMHehNJWLOFjBnXn3tdOitzD0il5b7smkSBal4+a3oKiQTbrwMmN/TBUMDvbdoWDehgOww==}
 
   '@babel/code-frame@7.26.2':
     resolution: {integrity: sha512-RJlIHRueQgwWitWgF8OdFYGZX328Ax5BCemNGlqHfplnRT9ESi8JkFlvaVYbS+UubVY6dpv87Fs2u5M29iNFVQ==}
@@ -1723,8 +1720,8 @@ packages:
       '@eslint/json':
         optional: true
 
-  eslint-plugin-antfu@2.7.0:
-    resolution: {integrity: sha512-gZM3jq3ouqaoHmUNszb1Zo2Ux7RckSvkGksjLWz9ipBYGSv1EwwBETN6AdiUXn+RpVHXTbEMPAPlXJazcA6+iA==}
+  eslint-plugin-antfu@3.0.0:
+    resolution: {integrity: sha512-USaQMR17+l7a0XWS9Pk0T+t9PszkdeIncyAOp1vsjHQnDKIlusSg+9bwTYWIzlJXkHDarAI06cdt+d5mbAGEKA==}
     peerDependencies:
       eslint: '*'
 
@@ -2882,8 +2879,6 @@ snapshots:
     dependencies:
       package-manager-detector: 0.2.8
       tinyexec: 0.3.2
-
-  '@antfu/utils@0.7.10': {}
 
   '@babel/code-frame@7.26.2':
     dependencies:
@@ -4191,9 +4186,8 @@ snapshots:
       esquery: 1.6.0
       jsonc-eslint-parser: 2.4.0
 
-  eslint-plugin-antfu@2.7.0(eslint@9.19.0(jiti@2.4.2)):
+  eslint-plugin-antfu@3.0.0(eslint@9.19.0(jiti@2.4.2)):
     dependencies:
-      '@antfu/utils': 0.7.10
       eslint: 9.19.0(jiti@2.4.2)
 
   eslint-plugin-autofix@2.2.0(eslint@9.19.0(jiti@2.4.2)):

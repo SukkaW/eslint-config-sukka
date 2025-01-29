@@ -42,7 +42,6 @@
     "ci-info": "^4.1.0",
     "defu": "^6.1.4",
     "eslint-import-resolver-typescript": "^3.7.0",
-    "eslint-plugin-antfu": "^2.7.0",
     "eslint-plugin-autofix": "^2.2.0",
     "eslint-plugin-import-x": "^4.6.1",
     "eslint-plugin-jsonc": "^2.19.1",
@@ -60,6 +59,7 @@
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
-    "eslint-config-flat-gitignore": "^2.0.0"
+    "eslint-config-flat-gitignore": "^2.0.0",
+    "eslint-plugin-antfu": "^3.0.0"
   }
 }
