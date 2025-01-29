@@ -38,7 +38,7 @@
     "@next/eslint-plugin-next": "^15.1.6",
     "@stylexjs/eslint-plugin": "^0.10.1",
     "@stylexjs/shared": "^0.10.1",
-    "@stylistic/eslint-plugin-jsx": "^2.13.0",
+    "@stylistic/eslint-plugin-jsx": "^3.0.0",
     "eslint-plugin-react-compiler": "^19.0.0-beta-e552027-20250112",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.18",
