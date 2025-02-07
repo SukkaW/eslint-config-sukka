@@ -223,8 +223,8 @@ export function isIdentifier(
 
 function isStrictlyReadingMethodCall(usage: TSESLint.Scope.Reference) {
   const { parent } = usage.identifier;
-  if ((parent as TSESTree.Node | undefined) && parent.type === AST_NODE_TYPES.MemberExpression) {
-    const memberExpressionParent = parent.parent as TSESTree.Node | undefined;
+  if ((parent) && parent.type === AST_NODE_TYPES.MemberExpression) {
+    const memberExpressionParent = parent.parent;
     if (memberExpressionParent && memberExpressionParent.type === AST_NODE_TYPES.CallExpression) {
       return isIdentifier(parent.property, ...strictlyReadingMethods);
     }
@@ -236,7 +236,7 @@ function isForIterationPattern(ref: TSESLint.Scope.Reference) {
   const forInOrOfStatement = findFirstMatchingAncestor(
     ref.identifier,
     n => n.type === AST_NODE_TYPES.ForOfStatement || n.type === AST_NODE_TYPES.ForInStatement
-  ) as TSESTree.ForOfStatement | TSESTree.ForInStatement | undefined;
+  );
 
   return forInOrOfStatement && forInOrOfStatement.right === ref.identifier;
 }
@@ -244,7 +244,7 @@ function isForIterationPattern(ref: TSESLint.Scope.Reference) {
 function isElementRead(ref: TSESLint.Scope.Reference) {
   const { parent } = ref.identifier;
   return (
-    (parent as TSESTree.Node | undefined)
+    (parent)
     && parent.type === AST_NODE_TYPES.MemberExpression
     && parent.computed
     && !isElementWrite(parent)

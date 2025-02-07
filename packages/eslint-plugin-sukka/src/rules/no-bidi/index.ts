@@ -63,7 +63,6 @@ function getValue(token: TSESTree.Token) {
       return token.value;
     }
     case AST_TOKEN_TYPES.RegularExpression: {
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- it is possible for regex to become undefined
       if (token.regex) {
         return token.regex.pattern;
       }

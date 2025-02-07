@@ -126,14 +126,14 @@ function isThenable(node: TSESTree.Node, services: ParserServicesWithTypeInforma
 
 function isAwaitLike(callExpr: CallLikeExpression) {
   return (
-    callExpr.parent as TSESTree.Node | null
+    callExpr.parent
     && (callExpr.parent.type === AST_NODE_TYPES.AwaitExpression || callExpr.parent.type === AST_NODE_TYPES.YieldExpression)
   );
 }
 
 function isThened(callExpr: CallLikeExpression) {
   return (
-    callExpr.parent as TSESTree.Node | null
+    callExpr.parent
     && callExpr.parent.type === AST_NODE_TYPES.MemberExpression
     && callExpr.parent.property.type === AST_NODE_TYPES.Identifier
     && callExpr.parent.property.name === 'then'
@@ -142,7 +142,7 @@ function isThened(callExpr: CallLikeExpression) {
 
 function isCaught(callExpr: CallLikeExpression) {
   return (
-    callExpr.parent as TSESTree.Node | null
+    callExpr.parent
     && callExpr.parent.type === AST_NODE_TYPES.MemberExpression
     && callExpr.parent.property.type === AST_NODE_TYPES.Identifier
     && callExpr.parent.property.name === 'catch'

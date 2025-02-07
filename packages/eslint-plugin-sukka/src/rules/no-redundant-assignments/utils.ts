@@ -172,7 +172,7 @@ export class AssignmentContext {
   }
 
   add(ref: TSESLint.Scope.Reference) {
-    let parent = ref.identifier as TSESTree.Node | undefined;
+    let parent = ref.identifier;
     while (parent) {
       if (this.isLhs(parent)) {
         this.lhs.add(ref);
@@ -203,7 +203,7 @@ export function isSelfAssignement(ref: TSESLint.Scope.Reference) {
 
 export function isCompoundAssignment(writeExpr: TSESTree.Node | null | undefined) {
   if (writeExpr?.parent) {
-    const node = writeExpr.parent as TSESTree.Node | null;
+    const node = writeExpr.parent;
     return node && node.type === AST_NODE_TYPES.AssignmentExpression && node.operator !== '=';
   }
   return false;
@@ -213,5 +213,5 @@ export function isDefaultParameter(ref: TSESLint.Scope.Reference) {
   if (ref.identifier.type !== AST_NODE_TYPES.Identifier) {
     return false;
   }
-  return (ref.identifier.parent as TSESTree.Node | null)?.type === AST_NODE_TYPES.AssignmentPattern;
+  return (ref.identifier.parent)?.type === AST_NODE_TYPES.AssignmentPattern;
 }

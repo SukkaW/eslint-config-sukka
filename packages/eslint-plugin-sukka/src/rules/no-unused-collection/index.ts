@@ -164,7 +164,7 @@ function isRead(ref: TSESLint.Scope.Reference) {
   const expressionStatement = findFirstMatchingAncestor(
     ref.identifier as TSESTree.Node,
     n => n.type === AST_NODE_TYPES.ExpressionStatement
-  ) as TSESTree.ExpressionStatement | undefined;
+  );
 
   if (expressionStatement) {
     return !(

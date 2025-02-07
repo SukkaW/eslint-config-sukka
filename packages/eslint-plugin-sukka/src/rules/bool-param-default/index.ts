@@ -45,8 +45,8 @@ export default createRule({
   },
   create(context) {
     return {
-      'FunctionDeclaration, FunctionExpression, ArrowFunctionExpression': (node: TSESTree.FunctionDeclaration | TSESTree.FunctionExpression | TSESTree.ArrowFunctionExpression) => {
-        const functionLike = node as FunctionLike;
+      'FunctionDeclaration, FunctionExpression, ArrowFunctionExpression': (node: FunctionLike) => {
+        const functionLike = node;
         for (const param of functionLike.params) {
           if (param.type === AST_NODE_TYPES.Identifier && isOptionalBoolean(param)) {
             context.report({
