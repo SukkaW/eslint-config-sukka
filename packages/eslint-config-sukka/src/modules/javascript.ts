@@ -7,6 +7,7 @@ import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
 import eslint_plugin_import_x, { createNodeResolver } from 'eslint-plugin-import-x';
 import eslint_plugin_sukka from 'eslint-plugin-sukka';
 import eslint_plugin_antfu from 'eslint-plugin-antfu';
+import eslint_plugin_demorgan from 'eslint-plugin-de-morgan';
 
 // @ts-expect-error -- no types
 import eslint_plugin_autofix from 'eslint-plugin-autofix';
@@ -1081,7 +1082,8 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         'antfu/no-top-level-await': 'error',
         'antfu/top-level-function': 'warn'
       }
-    }
+    },
+    eslint_plugin_demorgan.configs.recommended
   ];
 
   if (disableNoConsoleInCLI !== false) {
