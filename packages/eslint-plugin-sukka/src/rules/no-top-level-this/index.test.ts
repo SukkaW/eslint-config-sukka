@@ -19,6 +19,7 @@
  */
 import { runTest } from '@eslint-sukka/internal';
 import mod from '.';
+import dedent from 'ts-dedent';
 
 runTest({
   module: mod,
@@ -99,18 +100,62 @@ runTest({
     },
     {
       code: 'this.a = function(){}',
-      errors: 1
+      errors: [{ messageId: 'removeThis', suggestions: [{ messageId: 'suggestRemoveThis', output: 'a = function(){}' }, { messageId: 'suggestUseGlobalThis', output: 'globalThis.a = function(){}' }] }]
     },
     {
       code: 'var x = this.a()',
-      errors: 1
+      errors: [{ messageId: 'removeThis', suggestions: [{ messageId: 'suggestRemoveThis', output: 'var x = a()' }, { messageId: 'suggestUseGlobalThis', output: 'var x = globalThis.a()' }] }]
     },
     {
-      code: `
-      if (!this.JSON) {
-        this.JSON = {}  
-      }`,
-      errors: 2
+      code: dedent`
+        if (!this.JSON) {
+          this.JSON = {}
+        }
+      `,
+      errors: [
+        {
+          messageId: 'removeThis',
+          suggestions: [
+            {
+              messageId: 'suggestRemoveThis',
+              output: dedent`
+                if (!JSON) {
+                  this.JSON = {}
+                }
+              `
+            },
+            {
+              messageId: 'suggestUseGlobalThis',
+              output: dedent`
+                if (!globalThis.JSON) {
+                  this.JSON = {}
+                }
+              `
+            }
+          ]
+        },
+        {
+          messageId: 'removeThis',
+          suggestions: [
+            {
+              messageId: 'suggestRemoveThis',
+              output: dedent`
+                if (!this.JSON) {
+                  JSON = {}
+                }
+              `
+            },
+            {
+              messageId: 'suggestUseGlobalThis',
+              output: dedent`
+                if (!this.JSON) {
+                  globalThis.JSON = {}
+                }
+              `
+            }
+          ]
+        }
+      ]
     },
     {
       code: 'this.foo = bar;',

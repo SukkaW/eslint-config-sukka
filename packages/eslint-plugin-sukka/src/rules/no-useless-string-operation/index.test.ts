@@ -82,7 +82,7 @@ runTest({
     },
     {
       code: '\'hello\'.substr(1, 2).toUpperCase();',
-      errors: 1
+      errors: [{ messageId: 'uselessStringOp' }]
     }
   ]
 });

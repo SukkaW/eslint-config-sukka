@@ -1,5 +1,6 @@
 import mod from '.';
 import { runTest } from '@eslint-sukka/internal';
+import { createFixedArray } from 'foxts/create-fixed-array';
 
 runTest({
   module: mod,
@@ -83,7 +84,7 @@ runTest({
     },
     {
       code: '// FIXME  FIXME',
-      errors: 1
+      errors: [{ messageId: 'fixme' }]
     },
     {
       code: `
@@ -113,7 +114,7 @@ runTest({
 
       // valid end of file FIXME
         `,
-      errors: 11
+      errors: createFixedArray(11).map(() => ({ messageId: 'fixme' } as const))
     },
     {
       code: '// TODO',
@@ -160,7 +161,7 @@ runTest({
     },
     {
       code: '// TODO  TODO',
-      errors: 1
+      errors: [{ messageId: 'todo' }]
     },
     {
       code: `
@@ -190,7 +191,7 @@ runTest({
 
       // valid end of file TODO
         `,
-      errors: 11
+      errors: createFixedArray(11).map(() => ({ messageId: 'todo' }))
     }
   ]
 });

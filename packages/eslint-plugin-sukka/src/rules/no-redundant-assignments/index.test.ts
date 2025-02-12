@@ -250,7 +250,7 @@ runTest({
         y = x; // Noncompliant
       //^^^^^
       }`,
-      errors: 1
+      errors: [{ messageId: 'reviewAssignment' }]
     },
     {
       code: `function literalsNotYetDone() {
@@ -259,7 +259,7 @@ runTest({
         let z = x;
         z = y; // Noncompliant
       }`,
-      errors: 1
+      errors: [{ messageId: 'reviewAssignment' }]
     },
     {
       code: `function rspecExample() {
@@ -268,7 +268,7 @@ runTest({
         var c = a;
         b = c; // Noncompliant
       }`,
-      errors: 1
+      errors: [{ messageId: 'reviewAssignment' }]
     },
     {
       code: `function if_then_else(p) {
@@ -280,7 +280,7 @@ runTest({
         }
         xx = 42;
       }`,
-      errors: 1
+      errors: [{ messageId: 'reviewAssignment' }]
     },
     {
       code: `function outer() {

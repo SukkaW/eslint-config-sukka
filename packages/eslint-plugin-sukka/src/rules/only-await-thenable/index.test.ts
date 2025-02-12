@@ -233,7 +233,7 @@ baz() {
         await x;
       }
       `,
-      errors: 1
+      errors: [{ messageId: 'refactorAwait' }]
     },
     {
       code: `
@@ -241,7 +241,7 @@ baz() {
         await 1;
       }
       `,
-      errors: 1
+      errors: [{ messageId: 'refactorAwait' }]
     },
     {
       code: `
@@ -249,7 +249,7 @@ baz() {
         await {else: 42};
       }
       `,
-      errors: 1
+      errors: [{ messageId: 'refactorAwait' }]
     },
     {
       code: `
@@ -257,7 +257,7 @@ baz() {
         await {then: 42};
       }
       `,
-      errors: 1
+      errors: [{ messageId: 'refactorAwait' }]
     },
     {
       code: `
@@ -267,7 +267,7 @@ async function foo () {
 function bar () {
   return 5;
 }`,
-      errors: 1
+      errors: [{ messageId: 'refactorAwait' }]
     },
     {
       code: `
@@ -280,7 +280,7 @@ async function foo () {
 function bar () {
   return 5;
 }`,
-      errors: 1
+      errors: [{ messageId: 'refactorAwait' }]
     }
   ]
 });

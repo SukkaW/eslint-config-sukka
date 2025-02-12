@@ -20,6 +20,7 @@
 import { dedent } from 'ts-dedent';
 import mod from '.';
 import { runTest } from '@eslint-sukka/internal';
+import { createFixedArray } from 'foxts/create-fixed-array';
 
 runTest({
   module: mod,
@@ -405,7 +406,7 @@ runTest({
         var arrowEquivalent5 = (p) => { if (p) { return "boolean"; } return typeof false; };
         var arrowEquivalent6 = (p) => { if (p) { return ~4; } return -5; };
       `,
-      errors: 8
+      errors: createFixedArray(8).map(() => ({ messageId: 'refactorReturn' }))
     }
   ]
 });

@@ -162,7 +162,7 @@ runTest({
                  }
                  break;
              }`,
-      errors: 1
+      errors: [{ messageId: 'specifyCase' }]
     }
   ]
 });

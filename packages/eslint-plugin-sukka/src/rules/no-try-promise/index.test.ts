@@ -159,7 +159,7 @@ runTest({
         }
       }
       `,
-      errors: 1
+      errors: [{ messageId: 'addAwait' }]
     },
     {
       code: `
@@ -178,7 +178,7 @@ runTest({
         }
       }
       `,
-      errors: 1
+      errors: [{ messageId: 'addAwait' }]
     },
     {
       code: `
@@ -191,7 +191,7 @@ runTest({
         }
       }
       `,
-      errors: 1
+      errors: [{ messageId: 'addAwait' }]
     },
     {
       code: `
@@ -212,7 +212,7 @@ runTest({
         }
       }
       `,
-      errors: 1
+      errors: [{ messageId: 'addAwait' }]
     },
     {
       code: `
@@ -225,7 +225,7 @@ runTest({
         }
       }
       `,
-      errors: 1
+      errors: [{ messageId: 'removeTry' }]
     },
     {
       code: `
@@ -238,7 +238,7 @@ runTest({
         }
       }
       `,
-      errors: 1
+      errors: [{ messageId: 'addAwait' }]
     }
   ]
 });

@@ -55,31 +55,31 @@ runTest({
       code: `
         const array = new Int8Array(5);
         for (let value in array) console.log(value);`,
-      errors: 1
+      errors: [{ messageId: 'useForOf' }]
     },
     {
       code: `
         const set = new Set([1, 2, 3, 4, 5]);
         for (let value in set) console.log(value);`,
-      errors: 1
+      errors: [{ messageId: 'useForOf' }]
     },
     {
       code: `
         const map = new Map(); map.set('zero', 0);
         for (let value in map) console.log(value);`,
-      errors: 1
+      errors: [{ messageId: 'useForOf' }]
     },
     {
       code: `
         const string = 'Hello';
         for (let value in string) console.log(value);`,
-      errors: 1
+      errors: [{ messageId: 'useForOf' }]
     },
     {
       code: `
         const string = new String('Hello');
         for (let value in string) console.log(value);`,
-      errors: 1
+      errors: [{ messageId: 'useForOf' }]
     },
     {
       code: `
@@ -87,7 +87,7 @@ for (const x in [3, 4, 5]) {
   console.log(x);
 }
       `,
-      errors: 1
+      errors: [{ messageId: 'useForOf' }]
     },
     {
       code: `
@@ -96,7 +96,7 @@ for (const x in z) {
   console.log(x);
 }
       `,
-      errors: 1
+      errors: [{ messageId: 'useForOf' }]
     },
     {
       code: `
@@ -106,7 +106,7 @@ const fn = (arr: number[]) => {
   }
 };
       `,
-      errors: 1
+      errors: [{ messageId: 'useForOf' }]
     },
     {
       code: `
@@ -116,7 +116,7 @@ const fn = (arr: number[] | string[]) => {
   }
 };
       `,
-      errors: 1
+      errors: [{ messageId: 'useForOf' }]
     },
     {
       code: `
@@ -126,7 +126,7 @@ const fn = <T extends any[]>(arr: T) => {
   }
 };
       `,
-      errors: 1
+      errors: [{ messageId: 'useForOf' }]
     }
   ]
 });

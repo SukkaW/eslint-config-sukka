@@ -121,7 +121,7 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka'),
         'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x'),
         autofix: eslint_plugin_autofix,
-        antfu: memo(eslint_plugin_antfu, 'eslint_plugin_antfu')
+        antfu: memo<any>(eslint_plugin_antfu, 'eslint_plugin_antfu')
       },
       rules: {
         ...eslint_plugin_import_x.configs.recommended.rules,

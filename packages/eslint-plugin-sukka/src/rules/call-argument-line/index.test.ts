@@ -107,35 +107,35 @@ runTest({
       foo(bar)[baz]
         (qux);
       `,
-      errors: 1
+      errors: [{ messageId: 'moveArguments' }]
     },
     {
       code: `
       var a = b
       (x || y).doSomething()
       `,
-      errors: 1
+      errors: [{ messageId: 'moveArguments' }]
     },
     {
       code: `
       var a = (a || b)
       (x || y).doSomething()
       `,
-      errors: 1
+      errors: [{ messageId: 'moveArguments' }]
     },
     {
       code: `
       var a = (a || b)
       (x).doSomething()
       `,
-      errors: 1
+      errors: [{ messageId: 'moveArguments' }]
     },
     {
       code: `
       var a = b
           (x || y).doSomething()
       `,
-      errors: 1
+      errors: [{ messageId: 'moveArguments' }]
     },
     {
       code: 'let x = function() {}\n `hello`',

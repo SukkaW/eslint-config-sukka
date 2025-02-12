@@ -52,15 +52,15 @@ runTest({
     },
     {
       code: 'new TypeError();',
-      errors: [{ messageId: 'suggestThrowError' }]
+      errors: [{ messageId: 'throwOrRemoveError', suggestions: [{ messageId: 'suggestThrowError', output: 'throw new TypeError();' }] }]
     },
     {
       code: 'new MyError();',
-      errors: [{ messageId: 'suggestThrowError' }]
+      errors: [{ messageId: 'throwOrRemoveError', suggestions: [{ messageId: 'suggestThrowError', output: 'throw new MyError();' }] }]
     },
     {
       code: 'new A.MyError();',
-      errors: [{ messageId: 'suggestThrowError' }]
+      errors: [{ messageId: 'throwOrRemoveError', suggestions: [{ messageId: 'suggestThrowError', output: 'throw new A.MyError();' }] }]
     },
     {
       code: dedent`
@@ -68,7 +68,11 @@ runTest({
           new SomeError();
         });
       `,
-      errors: [{ messageId: 'suggestThrowError' }]
+      errors: [{ messageId: 'throwOrRemoveError', suggestions: [{ messageId: 'suggestThrowError', output: dedent`
+        new A(function () {
+          throw new SomeError();
+        });
+      ` }] }]
     },
     {
       code: '(new MyException());',

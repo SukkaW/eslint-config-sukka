@@ -61,15 +61,15 @@ runTest({
     },
     {
       code: 'function f(b: boolean | undefined) {}',
-      errors: 1
+      errors: [{ messageId: 'provideDefault' }]
     },
     {
       code: 'function f(b: undefined | boolean) {}',
-      errors: 1
+      errors: [{ messageId: 'provideDefault' }]
     },
     {
       code: 'let f = (b?: boolean) => b;',
-      errors: 1
+      errors: [{ messageId: 'provideDefault' }]
     },
     {
       code: `
@@ -77,7 +77,7 @@ runTest({
         m(b?: boolean): void {}
       }
       `,
-      errors: 1
+      errors: [{ messageId: 'provideDefault' }]
     }
   ]
 });

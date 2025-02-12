@@ -283,6 +283,9 @@ importers:
       eslint-plugin-unicorn:
         specifier: 56.0.1
         version: 56.0.1(eslint@9.20.1(jiti@2.4.2))
+      foxts:
+        specifier: ^1.2.0
+        version: 1.2.0
 
   packages/internal: {}
 
@@ -2015,6 +2018,9 @@ packages:
 
   flatted@3.3.1:
     resolution: {integrity: sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==}
+
+  foxts@1.2.0:
+    resolution: {integrity: sha512-GQp91VeREH/fglR4KY5479nATcqnDLBWqEMhPFCD8qd48hA7DB9TD5Q9czC54j9ez9WGHjjTcbjokNWZsSI2Nw==}
 
   fs-minipass@2.1.0:
     resolution: {integrity: sha512-V/JgOLFCS+R6Vcq0slCuaeWEdNC3ouDlJMNIsacH2VtALiu9mV4LPrHc5cDl8k5aw6J8jwgWWpiTo5RYhmIzvg==}
@@ -4648,6 +4654,8 @@ snapshots:
       keyv: 4.5.4
 
   flatted@3.3.1: {}
+
+  foxts@1.2.0: {}
 
   fs-minipass@2.1.0:
     dependencies:

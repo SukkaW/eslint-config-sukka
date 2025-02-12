@@ -35,7 +35,8 @@
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
     "@masknet/eslint-plugin": "^0.3.0",
-    "eslint-plugin-unicorn": "56.0.1"
+    "eslint-plugin-unicorn": "56.0.1",
+    "foxts": "^1.2.0"
   },
   "peerDependencies": {
     "typescript": "*"

@@ -1,5 +1,6 @@
 import { runTest } from '@eslint-sukka/internal';
 import mod from '.';
+import dedent from 'ts-dedent';
 
 /*
  * SonarQube JavaScript Plugin
@@ -66,36 +67,70 @@ runTest({
   ],
   invalid: [
     {
-      code: `
-      function foo(p1: number | undefined, p2?: number, p3 = 42) {}
-      foo(1, 2, undefined);
+      code: dedent`
+        function foo(p1: number | undefined, p2?: number, p3 = 42) {}
+        foo(1, 2, undefined);
       `,
       errors: [
         {
           messageId: 'removeUndefined',
-          line: 3,
-          endLine: 3,
-          column: 17,
-          endColumn: 26,
-          suggestions: 1
+          column: 11,
+          endColumn: 20,
+          suggestions: [{
+            messageId: 'suggestRemoveUndefined',
+            output: dedent`
+              function foo(p1: number | undefined, p2?: number, p3 = 42) {}
+              foo(1, 2);
+            `
+          }]
         }
       ]
     },
     {
-      code: `
-      function foo(p1: number | undefined, p2?: number, p3 = 42) {}
-      foo(1, undefined, undefined);
-      foo(1, undefined);
+      code: dedent`
+        function foo(p1: number | undefined, p2?: number, p3 = 42) {}
+        foo(1, undefined);
+        foo(1, undefined);
       `,
-      errors: 2
+      errors: [{
+        messageId: 'removeUndefined',
+        suggestions: [{
+          messageId: 'suggestRemoveUndefined',
+          output: dedent`
+            function foo(p1: number | undefined, p2?: number, p3 = 42) {}
+            foo(1);
+            foo(1, undefined);
+          `
+        }]
+      }, {
+        messageId: 'removeUndefined',
+        suggestions: [{
+          messageId: 'suggestRemoveUndefined',
+          output: dedent`
+            function foo(p1: number | undefined, p2?: number, p3 = 42) {}
+            foo(1, undefined);
+            foo(1);
+          `
+        }]
+      }]
     },
     {
-      code: `
-      let funcExprWithOneParameter = function(p = 42) {}
-      funcExprWithOneParameter(undefined);
-      funcExprWithOneParameter(1);
+      code: dedent`
+        let funcExprWithOneParameter = function(p = 42) {}
+        funcExprWithOneParameter(undefined);
+        funcExprWithOneParameter(1);
       `,
-      errors: 1
+      errors: [{
+        messageId: 'removeUndefined',
+        suggestions: [{
+          messageId: 'suggestRemoveUndefined',
+          output: dedent`
+            let funcExprWithOneParameter = function(p = 42) {}
+            funcExprWithOneParameter();
+            funcExprWithOneParameter(1);
+          `
+        }]
+      }]
     },
     {
       code: 'function foo(p = 42) {}; foo(undefined);',
