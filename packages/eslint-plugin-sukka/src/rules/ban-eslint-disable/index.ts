@@ -42,7 +42,7 @@ export default createRule({
 
         for (const comment of program.comments) {
           const directive = getDirective(comment.value);
-          if (directive && !(options === 'allow-with-description' && comment.value.includes('--'))) {
+          if (directive && (options !== 'allow-with-description' || !comment.value.includes('--'))) {
             const messageId = options === 'allow-with-description' ? 'require-description' : 'do-not-use';
             context.report({ node: comment, data: { directive }, messageId });
           }

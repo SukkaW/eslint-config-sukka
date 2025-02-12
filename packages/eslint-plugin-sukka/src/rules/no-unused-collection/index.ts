@@ -167,10 +167,7 @@ function isRead(ref: TSESLint.Scope.Reference) {
   );
 
   if (expressionStatement) {
-    return !(
-      isElementWrite(expressionStatement, ref, false)
-      || isWritingMethodCall(expressionStatement, ref)
-    );
+    return !isElementWrite(expressionStatement, ref, false) && !isWritingMethodCall(expressionStatement, ref);
   }
 
   // All the write statement that we search are part of ExpressionStatement, if there is none, it's a read
