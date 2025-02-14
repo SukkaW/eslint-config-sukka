@@ -1,6 +1,4 @@
-import type { ParserServices, ParserServicesWithTypeInformation } from '@typescript-eslint/utils';
-import type TSESLint from '@typescript-eslint/utils/ts-eslint';
-
+import type { TSESLint, ParserServices, ParserServicesWithTypeInformation } from '@typescript-eslint/utils';
 export type { RuleContext } from '@typescript-eslint/utils/ts-eslint';
 
 const BASE_URL = 'https://eslint-plugin.skk.moe/src/rules/';
