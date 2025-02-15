@@ -1,6 +1,6 @@
 import { createRule } from '@eslint-sukka/shared';
 import type { RuleFix } from '@typescript-eslint/utils/ts-eslint';
-import { detectEol } from '../../utils/eol';
+import { detectEol } from 'foxts/detect-eol';
 
 export type MessageId = 'unexpectedEmptyLine';
 

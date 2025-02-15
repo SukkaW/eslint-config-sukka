@@ -1,6 +1,6 @@
 import type { RuleFix } from '@typescript-eslint/utils/ts-eslint';
 import { createRule } from '@eslint-sukka/shared';
-import { detectEol } from '../../utils/eol';
+import { detectEol } from 'foxts/detect-eol';
 import type { TSESTree } from '@typescript-eslint/utils';
 
 export interface Options {
