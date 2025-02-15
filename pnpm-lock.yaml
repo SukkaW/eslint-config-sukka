@@ -156,6 +156,9 @@ importers:
       eslint-plugin-unused-imports:
         specifier: ^4.1.4
         version: 4.1.4(@typescript-eslint/eslint-plugin@8.24.0(@typescript-eslint/parser@8.24.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3))(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3))(eslint@9.20.1(jiti@2.4.2))
+      foxts:
+        specifier: ^1.5.1
+        version: 1.5.1
       jsonc-eslint-parser:
         specifier: ^2.4.0
         version: 2.4.0
@@ -271,8 +274,8 @@ importers:
         specifier: ^8.24.0
         version: 8.24.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
       foxts:
-        specifier: ^1.4.0
-        version: 1.4.0
+        specifier: ^1.5.1
+        version: 1.5.1
       typescript:
         specifier: '*'
         version: 5.7.3
@@ -2001,8 +2004,8 @@ packages:
   flatted@3.3.1:
     resolution: {integrity: sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==}
 
-  foxts@1.4.0:
-    resolution: {integrity: sha512-7cTNJvGVfXMKlwp+7MSddSbtbssx8LZVkx/QWRqmCmIDfuUk3wug4+V7zUauIOtjhsQG+bXXd7VdG03E3WPQDQ==}
+  foxts@1.5.1:
+    resolution: {integrity: sha512-Xf4fspqPxJw8dqSoLa6w3isYIuFULpTlfQa7FSPeKiZksG2Fz+/d3dcE1F9EqBAC2sa1NpDbAbjxY10Sm0zCXw==}
 
   fs-minipass@2.1.0:
     resolution: {integrity: sha512-V/JgOLFCS+R6Vcq0slCuaeWEdNC3ouDlJMNIsacH2VtALiu9mV4LPrHc5cDl8k5aw6J8jwgWWpiTo5RYhmIzvg==}
@@ -4613,7 +4616,7 @@ snapshots:
 
   flatted@3.3.1: {}
 
-  foxts@1.4.0:
+  foxts@1.5.1:
     dependencies:
       uncrypto: 0.1.3
 

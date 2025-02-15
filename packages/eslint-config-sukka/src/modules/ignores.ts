@@ -1,6 +1,7 @@
 import { constants } from '@eslint-sukka/shared';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 import eslint_config_flat_gitignore from 'eslint-config-flat-gitignore';
+import { never } from 'foxts/guard';
 
 export interface OptionsIgnores {
   /**
@@ -32,7 +33,7 @@ export function ignores(options: OptionsIgnores = {}): FlatESLintConfigItem[] {
   } else if (Array.isArray(customGlobs)) {
     ignores.push(...constants.GLOB_EXCLUDE, ...customGlobs);
   } else {
-    const _typeguard: never = customGlobs;
+    never(customGlobs);
   }
   configs.push({ ignores });
 
@@ -43,7 +44,7 @@ export function ignores(options: OptionsIgnores = {}): FlatESLintConfigItem[] {
   } else if (typeof gitignore === 'string' || Array.isArray(gitignore)) {
     configs.push(eslint_config_flat_gitignore({ files: gitignore, strict: false }));
   } else {
-    const _typeguard: never = gitignore;
+    never(gitignore);
   }
 
   return configs;
