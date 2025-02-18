@@ -215,6 +215,14 @@ export const generated_typescript_overrides: SukkaESLintRuleConfig = {
       'error',
       'always'
     ],
+    '@stylistic/js/semi-spacing': 'off',
+    '@stylistic/ts/semi-spacing': [
+      'error',
+      {
+        before: false,
+        after: true
+      }
+    ],
     '@stylistic/js/space-before-blocks': 'off',
     '@stylistic/ts/space-before-blocks': 'error',
     '@stylistic/js/space-before-function-paren': 'off',
