@@ -42,9 +42,6 @@ importers:
       '@eslint-sukka/shared':
         specifier: workspace:*
         version: link:packages/shared
-      '@stylistic/eslint-plugin-migrate':
-        specifier: ^3.1.0
-        version: 3.1.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
       '@swc-node/register':
         specifier: ^1.10.9
         version: 1.10.9(@swc/core@1.10.17)(@swc/types@0.1.17)(typescript@5.7.3)
@@ -160,8 +157,8 @@ importers:
         specifier: ^4.1.4
         version: 4.1.4(@typescript-eslint/eslint-plugin@8.24.1(@typescript-eslint/parser@8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3))(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3))(eslint@9.20.1(jiti@2.4.2))
       eslint-plugin-yml:
-        specifier: ^1.16.0
-        version: 1.16.0(eslint@9.20.1(jiti@2.4.2))
+        specifier: ^1.17.0
+        version: 1.17.0(eslint@9.20.1(jiti@2.4.2))
       foxts:
         specifier: ^1.5.1
         version: 1.5.1
@@ -191,8 +188,8 @@ importers:
         specifier: workspace:*
         version: link:../rollup-config
       eslint-config-flat-gitignore:
-        specifier: ^2.0.0
-        version: 2.0.0(eslint@9.20.1(jiti@2.4.2))
+        specifier: ^2.1.0
+        version: 2.1.0(eslint@9.20.1(jiti@2.4.2))
       eslint-plugin-antfu:
         specifier: ^3.1.0
         version: 3.1.0(eslint@9.20.1(jiti@2.4.2))
@@ -393,8 +390,8 @@ importers:
         specifier: ^0.12.1
         version: 0.12.1(@swc/core@1.10.17)(rollup@4.34.8)
       vite-bundle-analyzer:
-        specifier: ^0.17.0
-        version: 0.17.0
+        specifier: ^0.17.1
+        version: 0.17.1
 
   packages/shared:
     dependencies:
@@ -734,9 +731,6 @@ packages:
   '@eslint-react/var@1.26.2':
     resolution: {integrity: sha512-9abwhGTd4DBxOy5jVF0CnjEYDiRTXg4cbbAulZ+MVqE03KZDWNAVYYEYI5e+YTOcyJbGYY/zPEYmB+c+cUEiyw==}
     engines: {bun: '>=1.0.15', node: '>=18.18.0'}
-
-  '@eslint-stylistic/metadata@3.1.0':
-    resolution: {integrity: sha512-ZYKHooUGGLbK8iVE4ff992ps/W7woCH7WooKBE3IRasAGFeo1FDm8S5Deu8QmyamSmAFsaxHYH6DMCUHvZwHQg==}
 
   '@eslint/compat@1.2.6':
     resolution: {integrity: sha512-k7HNCqApoDHM6XzT30zGoETj+D+uUcZUb+IVAJmar3u6bvHf7hhHJcWx09QHj4/a2qrKZMWU0E16tvkiAdv06Q==}
@@ -1215,10 +1209,6 @@ packages:
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: '>=8.40.0'
-
-  '@stylistic/eslint-plugin-migrate@3.1.0':
-    resolution: {integrity: sha512-JbBmPmDfp2mFktYMmU0gSrHX9ZdEr0nBAKBk8xzcVZVuMjjTbxhkzNkxVw78LteGCPqYGzg04L3jUAdGlW7Trg==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@stylistic/eslint-plugin-plus@3.1.0':
     resolution: {integrity: sha512-WKILlyHJdCETro3bBIDhrl9osCJupk6PL0dK/w66RJDJG2umdIE+tLJ6k0MqY7/HLiju9xeM3vCadnct7+f6Sw==}
@@ -1745,8 +1735,8 @@ packages:
     peerDependencies:
       eslint: '>=6.0.0'
 
-  eslint-config-flat-gitignore@2.0.0:
-    resolution: {integrity: sha512-9iH+DZO94uxsw5iFjzqa9GfahA5oK3nA1GoJK/6u8evAtooYJMwuSWiLcGDfrdLoqdQ5/kqFJKKuMY/+SAasvg==}
+  eslint-config-flat-gitignore@2.1.0:
+    resolution: {integrity: sha512-cJzNJ7L+psWp5mXM7jBX+fjHtBvvh06RBlcweMhKD8jWqQw0G78hOW5tpVALGHGFPsBV+ot2H+pdDGJy6CV8pA==}
     peerDependencies:
       eslint: ^9.5.0
 
@@ -1939,8 +1929,8 @@ packages:
       '@typescript-eslint/eslint-plugin':
         optional: true
 
-  eslint-plugin-yml@1.16.0:
-    resolution: {integrity: sha512-t4MNCetPjTn18/fUDlQ/wKkcYjnuLYKChBrZ0qUaNqRigVqChHWzTP8SrfFi5s4keX3vdlkWRSu8zHJMdKwxWQ==}
+  eslint-plugin-yml@1.17.0:
+    resolution: {integrity: sha512-Q3LXFRnNpGYAK/PM0BY1Xs0IY1xTLfM0kC986nNQkx1l8tOGz+YS50N6wXkAJkrBpeUN9OxEMB7QJ+9MTDAqIQ==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: '>=6.0.0'
@@ -2976,8 +2966,8 @@ packages:
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
 
-  vite-bundle-analyzer@0.17.0:
-    resolution: {integrity: sha512-pSQng2NuhPo13hdSFcjW/Kjq8hmdfzCkJhWvAP5g98WbqZvy1k3Z+cpDxD9oxdNqOHHQFnEAIHR/MY6El1NnHA==}
+  vite-bundle-analyzer@0.17.1:
+    resolution: {integrity: sha512-ubjLhkuRgOSBNck+6xBbQmjmh8SeLTG4alEM5PX2TNzyGhKLwWlyCz1YG0an3RQnscbhVzSb6kYteoHXhP///A==}
     hasBin: true
 
   vite-node@3.0.5:
@@ -3461,8 +3451,6 @@ snapshots:
       - supports-color
       - typescript
 
-  '@eslint-stylistic/metadata@3.1.0': {}
-
   '@eslint/compat@1.2.6(eslint@9.20.1(jiti@2.4.2))':
     optionalDependencies:
       eslint: 9.20.1(jiti@2.4.2)
@@ -3849,15 +3837,6 @@ snapshots:
       espree: 10.3.0
       estraverse: 5.3.0
       picomatch: 4.0.2
-
-  '@stylistic/eslint-plugin-migrate@3.1.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)':
-    dependencies:
-      '@eslint-stylistic/metadata': 3.1.0
-      '@typescript-eslint/utils': 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
-    transitivePeerDependencies:
-      - eslint
-      - supports-color
-      - typescript
 
   '@stylistic/eslint-plugin-plus@3.1.0(eslint@9.20.1(jiti@2.4.2))':
     dependencies:
@@ -4421,7 +4400,7 @@ snapshots:
       eslint: 9.20.1(jiti@2.4.2)
       semver: 7.7.1
 
-  eslint-config-flat-gitignore@2.0.0(eslint@9.20.1(jiti@2.4.2)):
+  eslint-config-flat-gitignore@2.1.0(eslint@9.20.1(jiti@2.4.2)):
     dependencies:
       '@eslint/compat': 1.2.6(eslint@9.20.1(jiti@2.4.2))
       eslint: 9.20.1(jiti@2.4.2)
@@ -4733,12 +4712,12 @@ snapshots:
     optionalDependencies:
       '@typescript-eslint/eslint-plugin': 8.24.1(@typescript-eslint/parser@8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3))(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
 
-  eslint-plugin-yml@1.16.0(eslint@9.20.1(jiti@2.4.2)):
+  eslint-plugin-yml@1.17.0(eslint@9.20.1(jiti@2.4.2)):
     dependencies:
       debug: 4.4.0
+      escape-string-regexp: 4.0.0
       eslint: 9.20.1(jiti@2.4.2)
       eslint-compat-utils: 0.6.0(eslint@9.20.1(jiti@2.4.2))
-      lodash: 4.17.21
       natural-compare: 1.4.0
       yaml-eslint-parser: 1.2.3
     transitivePeerDependencies:
@@ -5917,7 +5896,7 @@ snapshots:
       spdx-correct: 3.2.0
       spdx-expression-parse: 3.0.1
 
-  vite-bundle-analyzer@0.17.0: {}
+  vite-bundle-analyzer@0.17.1: {}
 
   vite-node@3.0.5(@types/node@22.13.4):
     dependencies:
