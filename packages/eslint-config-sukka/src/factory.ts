@@ -116,7 +116,10 @@ export async function sukka(options?: ESLintSukkaOptions, ...userConfig: FlatESL
       isPackageExists('yaml') || isPackageExists('js-yaml')
     )
   ) {
-    flatConfigs.push(markdown());
+    // yaml
+    flatConfigs.push(
+      (await foxquire<typeof import('@eslint-sukka/yaml')>('@eslint-sukka/yaml')).yaml()
+    );
   }
   // json
   if (enabled(options?.json, true)) {

@@ -144,9 +144,6 @@ importers:
       eslint-plugin-unused-imports:
         specifier: ^4.1.4
         version: 4.1.4(@typescript-eslint/eslint-plugin@8.24.1(@typescript-eslint/parser@8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3))(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3))(eslint@9.20.1(jiti@2.4.2))
-      eslint-plugin-yml:
-        specifier: ^1.17.0
-        version: 1.17.0(eslint@9.20.1(jiti@2.4.2))
       foxts:
         specifier: ^1.5.1
         version: 1.5.1
@@ -175,6 +172,9 @@ importers:
       '@eslint-sukka/rollup-config':
         specifier: workspace:*
         version: link:../rollup-config
+      '@eslint-sukka/yaml':
+        specifier: workspace:*
+        version: link:../yaml
       '@eslint/markdown':
         specifier: ^6.2.2
         version: 6.2.2
@@ -414,6 +414,19 @@ importers:
       globals:
         specifier: ^15.15.0
         version: 15.15.0
+
+  packages/yaml:
+    dependencies:
+      '@eslint-sukka/shared':
+        specifier: workspace:*
+        version: link:../shared
+      eslint-plugin-yml:
+        specifier: ^1.17.0
+        version: 1.17.0(eslint@9.20.1(jiti@2.4.2))
+    devDependencies:
+      '@eslint-sukka/rollup-config':
+        specifier: workspace:*
+        version: link:../rollup-config
 
 packages:
 
