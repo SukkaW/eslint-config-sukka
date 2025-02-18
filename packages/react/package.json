@@ -38,7 +38,6 @@
     "@next/eslint-plugin-next": "^15.1.7",
     "@stylexjs/eslint-plugin": "^0.10.1",
     "@stylexjs/shared": "^0.10.1",
-    "@stylistic/eslint-plugin-jsx": "^3.1.0",
     "eslint-plugin-react-compiler": "^19.0.0-beta-e552027-20250112",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
@@ -46,6 +45,7 @@
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
+    "@stylistic/eslint-plugin-jsx": "^4.0.0",
     "eslint-plugin-react-prefer-function-component": "^3.4.0"
   }
 }

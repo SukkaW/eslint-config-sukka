@@ -36,9 +36,6 @@
     "@eslint-sukka/shared": "workspace:*",
     "@eslint/js": "^9.20.0",
     "@eslint/markdown": "^6.2.2",
-    "@stylistic/eslint-plugin-js": "^3.1.0",
-    "@stylistic/eslint-plugin-plus": "^3.1.0",
-    "@stylistic/eslint-plugin-ts": "^3.1.0",
     "@typescript-eslint/parser": "^8.24.1",
     "ci-info": "^4.1.0",
     "defu": "^6.1.4",
@@ -63,6 +60,9 @@
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
+    "@stylistic/eslint-plugin-js": "^4.0.0",
+    "@stylistic/eslint-plugin-plus": "^4.0.0",
+    "@stylistic/eslint-plugin-ts": "^4.0.0",
     "eslint-config-flat-gitignore": "^2.1.0",
     "eslint-plugin-antfu": "^3.1.0"
   }
