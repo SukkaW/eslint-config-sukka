@@ -29,6 +29,7 @@ import type { OptionsReact, OptionsStyleX } from '../../react';
 import type { OptionsNode } from '../../node';
 import { foxquire } from './foxquire';
 import { isInEditorEnv } from './is-in-editor';
+import { markdown } from './modules/markdown';
 
 type SharedOptions<T = object> = Omit<T, 'isInEditor' | 'enable'> & {
   enable?: boolean
@@ -40,6 +41,8 @@ interface ESLintSukkaOptions {
   js?: SharedOptions<OptionsJavaScript> | boolean,
   json?: boolean,
   ts?: SharedOptions<OptionsTypeScript> | boolean,
+  markdown?: boolean,
+  yaml?: boolean,
   react?: SharedOptions<OptionsReact> | boolean,
   stylex?: SharedOptions<OptionsStyleX> | boolean,
   next?: boolean,
@@ -103,6 +106,17 @@ export async function sukka(options?: ESLintSukkaOptions, ...userConfig: FlatESL
       promise({ typescript: typescriptEnabled }),
       regexp()
     );
+  }
+  if (enabled(options?.markdown, true)) {
+    flatConfigs.push(markdown());
+  }
+  if (
+    enabled(
+      options?.yaml,
+      isPackageExists('yaml') || isPackageExists('js-yaml')
+    )
+  ) {
+    flatConfigs.push(markdown());
   }
   // json
   if (enabled(options?.json, true)) {
