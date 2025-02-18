@@ -1,6 +1,6 @@
 import { runTest } from '@eslint-sukka/internal';
 import mod from '.';
-import dedent from 'ts-dedent';
+import { dedent } from 'ts-dedent';
 
 /*
  * SonarQube JavaScript Plugin
