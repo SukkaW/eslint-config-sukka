@@ -1,6 +1,6 @@
 {
   "name": "@eslint-sukka/node",
-  "version": "6.15.1",
+  "version": "6.15.2",
   "description": "Sukka's ESLint config",
   "homepage": "https://github.com/SukkaW/eslint-config-sukka",
   "repository": {
