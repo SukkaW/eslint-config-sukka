@@ -4,7 +4,7 @@
   "homepage": "https://github.com/SukkaW/eslint-config-sukka",
   "repository": {
     "url": "https://github.com/SukkaW/eslint-config-sukka",
-    "directory": "packages/eslint-plugin-r"
+    "directory": "packages/eslint-plugin-react-jsx-a11y"
   },
   "main": "dist/index.cjs",
   "types": "dist/index.d.ts",
