@@ -48,9 +48,6 @@ importers:
       '@swc/core':
         specifier: ^1.10.17
         version: 1.10.17
-      '@types/eslint':
-        specifier: ^9.6.1
-        version: 9.6.1
       '@types/node':
         specifier: ^22.13.4
         version: 22.13.4
@@ -401,9 +398,6 @@ importers:
       '@package-json/types':
         specifier: ^0.0.11
         version: 0.0.11
-      '@types/eslint':
-        specifier: ^9.6.1
-        version: 9.6.1
       '@typescript-eslint/utils':
         specifier: ^8.24.1
         version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
@@ -1333,9 +1327,6 @@ packages:
 
   '@types/doctrine@0.0.9':
     resolution: {integrity: sha512-eOIHzCUSH7SMfonMG1LsC2f8vxBFtho6NGBznK41R84YzPuvSBzrhEps33IsQiOW9+VL6NQ9DbjQJznk/S4uRA==}
-
-  '@types/eslint@9.6.1':
-    resolution: {integrity: sha512-FXx2pKgId/WyYo2jXw63kk7/+TY7u7AziEJxJAnSFzHlqTAS3Ync6SvgYAN/k4/PQpnnVuzoMuVnByKK2qp0ag==}
 
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
@@ -3936,11 +3927,6 @@ snapshots:
       '@types/ms': 2.1.0
 
   '@types/doctrine@0.0.9': {}
-
-  '@types/eslint@9.6.1':
-    dependencies:
-      '@types/estree': 1.0.6
-      '@types/json-schema': 7.0.15
 
   '@types/estree@1.0.6': {}
 
