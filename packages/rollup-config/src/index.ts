@@ -30,7 +30,11 @@ interface RollupConfigPlugin {
   foxquire?: boolean,
   // Rollup output behaviors
   buildCjsOnly?: boolean,
-  analyze?: boolean
+  analyze?: boolean,
+  /**
+   * @default true
+   */
+  externalLiveBindings?: boolean
 }
 
 const manualChunks: GetManualChunk = (id: string, { getModuleInfo }) => {
@@ -53,7 +57,13 @@ export function createRollupConfig(packageJsonPath: PathLike,
     alias = false,
     foxquire = false,
     buildCjsOnly = false,
-    analyze = false
+    analyze = false,
+    /**
+     * When enabled, this could prevent cjs-module-lexer from detecting re-exports
+     * However, it might trigger issues with circular dependencies when disabled
+     * Please disable it wisely, this is enabled by default
+     */
+    externalLiveBindings = true
   }: RollupConfigPlugin = {}): RollupOptions[] {
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8')) as PackageJson;
   const $external = Object.keys(packageJson.dependencies || {}).concat(Object.keys(packageJson.peerDependencies || {})).concat(builtinModules, externalDependencies, ['eslint']);
@@ -78,9 +88,9 @@ export function createRollupConfig(packageJsonPath: PathLike,
         manualChunks,
         // This could breaks rollup runtime
         compact: true,
-        // this could prevent cjs-module-lexer from detecting re-exports
+        //
         // however it might trigger issues with circular dependencies
-        externalLiveBindings: false
+        externalLiveBindings
       } satisfies RollupOutputOptions
       : [
         {
@@ -90,7 +100,8 @@ export function createRollupConfig(packageJsonPath: PathLike,
           minifyInternalExports: true, hoistTransitiveImports: false,
           manualChunks,
           // This could breaks rollup runtime
-          compact: false
+          compact: false,
+          externalLiveBindings
         },
         {
           dir: 'dist',
@@ -99,7 +110,8 @@ export function createRollupConfig(packageJsonPath: PathLike,
           minifyInternalExports: true, hoistTransitiveImports: false,
           manualChunks,
           // This could breaks rollup runtime
-          compact: false
+          compact: false,
+          externalLiveBindings
         }
       ] satisfies RollupOutputOptions[],
     plugins: [

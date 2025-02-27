@@ -5,5 +5,6 @@ export default createRollupConfig(new URL('./package.json', import.meta.url), []
   nodeResolve: true,
   commonjs: true,
   analyze: false,
-  buildCjsOnly: true
+  buildCjsOnly: true,
+  externalLiveBindings: false
 });
