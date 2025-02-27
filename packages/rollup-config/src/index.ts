@@ -33,8 +33,6 @@ interface RollupConfigPlugin {
   analyze?: boolean
 }
 
-const nonNullable = <T>(value: T): value is NonNullable<T> => value !== null && value !== undefined;
-
 const manualChunks: GetManualChunk = (id: string, { getModuleInfo }) => {
   if (id.includes('node_modules')) {
     const info = getModuleInfo(id);
@@ -71,19 +69,30 @@ export function createRollupConfig(packageJsonPath: PathLike,
 
   return [{
     input,
-    output: ([
-      {
+    output: buildCjsOnly
+      ? {
         dir: 'dist',
         format: 'cjs',
         chunkFileNames: '[name]-[hash].cjs', entryFileNames: 'index.cjs',
         minifyInternalExports: true, hoistTransitiveImports: false,
         manualChunks,
         // This could breaks rollup runtime
-        compact: false
-      },
-      buildCjsOnly
-        ? null
-        : {
+        compact: true,
+        // this could prevent cjs-module-lexer from detecting re-exports
+        // however it might trigger issues with circular dependencies
+        externalLiveBindings: false
+      } satisfies RollupOutputOptions
+      : [
+        {
+          dir: 'dist',
+          format: 'cjs',
+          chunkFileNames: '[name]-[hash].cjs', entryFileNames: 'index.cjs',
+          minifyInternalExports: true, hoistTransitiveImports: false,
+          manualChunks,
+          // This could breaks rollup runtime
+          compact: false
+        },
+        {
           dir: 'dist',
           format: 'esm',
           chunkFileNames: '[name]-[hash].mjs', entryFileNames: 'index.mjs',
@@ -92,7 +101,7 @@ export function createRollupConfig(packageJsonPath: PathLike,
           // This could breaks rollup runtime
           compact: false
         }
-    ] satisfies Array<RollupOutputOptions | null>).filter(nonNullable),
+      ] satisfies RollupOutputOptions[],
     plugins: [
       foxquire && rollupFoximport(),
       replace({
