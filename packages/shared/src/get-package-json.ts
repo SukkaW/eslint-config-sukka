@@ -115,3 +115,15 @@ export function getPackageJson(startPath = 'a.js'): PackageJson | null {
   cache.set(startDir, null);
   return null;
 }
+
+export function isDirectDependency(
+  name: string,
+  startPath = 'a.js'
+): boolean {
+  const pkg = getPackageJson(startPath);
+  if (!pkg) return false;
+  const deps = pkg.dependencies || {};
+  const devDeps = pkg.devDependencies || {};
+  const peerDeps = pkg.peerDependencies || {};
+  return Boolean(deps[name] || devDeps[name] || peerDeps[name]);
+}

@@ -18,7 +18,7 @@ import type { OptionsTypeScript } from './modules/typescript';
 import { legacy } from './modules/legacy';
 import type { OptionsLegacy } from './modules/legacy';
 
-import { isPackageExists } from '@eslint-sukka/shared';
+import { isPackageExists, isDirectDependency } from '@eslint-sukka/shared';
 import picocolors from 'picocolors';
 import { defu } from 'defu';
 // import { isCI } from 'ci-info';
@@ -110,12 +110,7 @@ export async function sukka(options?: ESLintSukkaOptions, ...userConfig: FlatESL
   if (enabled(options?.markdown, true)) {
     flatConfigs.push(markdown());
   }
-  if (
-    enabled(
-      options?.yaml,
-      isPackageExists('yaml') || isPackageExists('js-yaml')
-    )
-  ) {
+  if (enabled(options?.yaml, isDirectDependency('yaml') || isDirectDependency('js-yaml'))) {
     // yaml
     flatConfigs.push(
       (await foxquire<typeof import('@eslint-sukka/yaml')>('@eslint-sukka/yaml')).yaml()
