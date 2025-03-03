@@ -997,7 +997,7 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         // cause problem with alias import (new URL(, import.meta.url))
         // 'sukka/unicorn/relative-url-style': ['warn', 'always'], // prefer relative url starts with ./
         'sukka/unicorn/error-message': 'error', // Pass error message when throwing errors
-        'sukka/unicorn/no-instanceof-array': 'error', // Array.isArray
+        'sukka/unicorn/no-instanceof-builtins': 'error', // Array.isArray
         'sukka/unicorn/prefer-type-error': 'error', // throw new TypeError
         'sukka/unicorn/consistent-destructuring': 'warn',
         'sukka/unicorn/new-for-builtins': 'warn', // prefer new Map([...]) over Map([...])
@@ -1069,6 +1069,8 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         ],
         'sukka/unicorn/no-negation-in-equality-check': 'error',
         'sukka/unicorn/no-length-as-slice-end': 'error',
+        'sukka/unicorn/consistent-date-clone': 'error',
+        'sukka/unicorn/no-accessor-recursion': 'error',
 
         'no-restricted-imports': [
           'error',

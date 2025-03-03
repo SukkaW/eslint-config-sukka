@@ -1,4 +1,3 @@
-import { loadUnicorn } from './utils/unicorn';
 import type { ESLint } from 'eslint';
 
 // @masknet/eslint-plugin
@@ -104,7 +103,7 @@ import prefer_prototype_methods from 'eslint-plugin-unicorn/rules/prefer-prototy
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import error_message from 'eslint-plugin-unicorn/rules/error-message.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
-import no_instanceof_array from 'eslint-plugin-unicorn/rules/no-instanceof-array.js';
+import no_instanceof_builtins from 'eslint-plugin-unicorn/rules/no-instanceof-builtins.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_type_error from 'eslint-plugin-unicorn/rules/prefer-type-error.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
@@ -182,6 +181,12 @@ import prefer_negative_index from 'eslint-plugin-unicorn/rules/prefer-negative-i
 // import prefer_ternary from 'eslint-plugin-unicorn/rules/prefer-ternary.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_node_protocol from 'eslint-plugin-unicorn/rules/prefer-node-protocol.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import consistent_date_clone from 'eslint-plugin-unicorn/rules/consistent-date-clone.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_accessor_recursion from 'eslint-plugin-unicorn/rules/no-accessor-recursion.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import { createRule as loadUnicorn } from 'eslint-plugin-unicorn/rules/utils/rule.js';
 
 // eslint-plugin-sukka
 import ban_eslint_disable from './rules/ban-eslint-disable';
@@ -312,7 +317,7 @@ export default {
       'unicorn/prefer-prototype-methods': prefer_prototype_methods,
       // 'unicorn/relative-url-style': relative_url_style,
       'unicorn/error-message': error_message,
-      'unicorn/no-instanceof-array': no_instanceof_array,
+      'unicorn/no-instanceof-builtins': no_instanceof_builtins,
       'unicorn/prefer-type-error': prefer_type_error,
       'unicorn/consistent-destructuring': consistent_destructuring,
       'unicorn/new-for-builtins': new_for_builtins,
@@ -348,7 +353,9 @@ export default {
       'unicorn/no-negated-condition': no_negated_condition,
       'unicorn/no-object-as-default-parameter': no_object_as_default_parameter,
       'unicorn/prefer-negative-index': prefer_negative_index,
-      'unicorn/prefer-node-protocol': prefer_node_protocol
+      'unicorn/prefer-node-protocol': prefer_node_protocol,
+      'unicorn/consistent-date-clone': consistent_date_clone,
+      'unicorn/no-accessor-recursion': no_accessor_recursion
     }).reduce<Record<string, unknown>>((acc, [ruleId, rule]) => {
       acc[ruleId] = loadUnicorn(rule, ruleId);
       return acc;

@@ -13,7 +13,7 @@ import eslint_plugin_import_x from 'eslint-plugin-import-x';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import process from 'node:process';
 
-import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+import { createOxcImportResolver } from 'eslint-import-resolver-oxc';
 
 export interface OptionsTypeScript {
   allowJs?: boolean,
@@ -102,16 +102,7 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
         'import-x/extensions': allExtensions,
         'import-x/external-module-folders': ['node_modules', 'node_modules/@types'],
         'import-x/resolver-next': [
-          createTypeScriptImportResolver({
-            alwaysTryTypes: true,
-            extensions: allExtensions,
-            ...(tsconfigPath === true
-              ? {}
-              : {
-                project: tsconfigPath
-              }
-            )
-          })
+          createOxcImportResolver()
         ],
         'import-x/parsers': {
           [typescriptEslintParserPath]: typescriptExtensions

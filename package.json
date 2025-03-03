@@ -65,6 +65,9 @@
     "onlyBuiltDependencies": [
       "@swc/core",
       "esbuild"
-    ]
+    ],
+    "patchedDependencies": {
+      "eslint-plugin-unicorn": "patches/eslint-plugin-unicorn.patch"
+    }
   }
 }
