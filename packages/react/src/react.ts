@@ -3,8 +3,8 @@ import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import { eslint_plugin_jsx_a11y_minimal } from '@eslint-sukka/eslint-plugin-react-jsx-a11y';
 
-// @ts-expect-error -- no types
 import eslint_plugin_react_hooks from 'eslint-plugin-react-hooks';
+
 // @ts-expect-error -- no types
 import eslint_plugin_react_compiler from 'eslint-plugin-react-compiler';
 

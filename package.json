@@ -31,7 +31,7 @@
     "eslint-config-sukka": "workspace:*",
     "eslint-formatter-sukka": "workspace:*",
     "eslint-plugin-sukka": "workspace:*",
-    "rollup": "^4.34.8",
+    "rollup": "^4.34.9",
     "stringify-object": "5.0.0",
     "ts-dedent": "^2.2.0",
     "turbo": "^2.4.4",
