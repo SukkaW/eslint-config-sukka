@@ -11,6 +11,7 @@ module.exports = sukka(
       ]
     },
     node: true,
-    react: true
+    react: true,
+    yaml: true
   }
 );

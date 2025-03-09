@@ -109,7 +109,6 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         'import-x/extensions': allExtensions,
         'import-x/resolver-next': [
           createNodeResolver({
-            alwaysTryTypes: true,
             extensions: allExtensions
           })
         ]

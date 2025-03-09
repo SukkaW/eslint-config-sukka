@@ -32,9 +32,9 @@
   "dependencies": {
     "@eslint-community/eslint-plugin-eslint-comments": "^4.4.1",
     "@eslint-sukka/shared": "workspace:*",
-    "@eslint/js": "^9.21.0",
+    "@eslint/js": "^9.22.0",
     "@typescript-eslint/parser": "^8.26.0",
-    "ci-info": "^4.1.0",
+    "ci-info": "^4.2.0",
     "defu": "^6.1.4",
     "eslint-import-resolver-oxc": "^0.12.0",
     "eslint-plugin-autofix": "^2.2.0",
@@ -57,11 +57,11 @@
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
     "@eslint-sukka/yaml": "workspace:*",
-    "@eslint/markdown": "^6.2.2",
+    "@eslint/markdown": "^6.3.0",
     "@stylistic/eslint-plugin-js": "^4.2.0",
     "@stylistic/eslint-plugin-plus": "^4.2.0",
     "@stylistic/eslint-plugin-ts": "^4.2.0",
     "eslint-config-flat-gitignore": "^2.1.0",
-    "eslint-plugin-antfu": "^3.1.0"
+    "eslint-plugin-antfu": "^3.1.1"
   }
 }
