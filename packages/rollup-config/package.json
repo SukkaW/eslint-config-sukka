@@ -37,11 +37,11 @@
     "@rollup/plugin-alias": "^5.1.1",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-json": "^6.1.0",
-    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-replace": "^6.0.2",
     "rollup": "^4.35.0",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-swc3": "^0.12.1",
-    "vite-bundle-analyzer": "^0.17.1"
+    "vite-bundle-analyzer": "^0.17.3"
   }
 }
