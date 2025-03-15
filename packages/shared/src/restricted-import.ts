@@ -60,7 +60,9 @@ export const BETTER_ALTERNATIVES = Object.entries({
   'escape-html': npm('foxts'),
   'html-escaper': npm('foxts'),
   'escape-goat': npm('foxts'),
-  'lodash.escape': npm('foxts')
+  'lodash.escape': npm('foxts'),
+  'next-init': 'https://github.com/QuiiBz/next-international',
+  'https://github.com/i18next/next-i18next': 'https://github.com/QuiiBz/next-international'
 }).map(([key, value]) => ({ name: key, message: `Use ${value} instead.` }));
 
 const restricedImportBase = [
