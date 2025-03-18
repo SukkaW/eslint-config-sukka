@@ -213,5 +213,5 @@ export function isDefaultParameter(ref: TSESLint.Scope.Reference) {
   if (ref.identifier.type !== AST_NODE_TYPES.Identifier) {
     return false;
   }
-  return (ref.identifier.parent)?.type === AST_NODE_TYPES.AssignmentPattern;
+  return (ref.identifier.parent).type === AST_NODE_TYPES.AssignmentPattern;
 }

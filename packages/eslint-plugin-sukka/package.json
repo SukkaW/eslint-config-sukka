@@ -31,7 +31,7 @@
     "@eslint-sukka/shared": "workspace:*",
     "@typescript-eslint/type-utils": "^8.26.1",
     "@typescript-eslint/utils": "^8.26.1",
-    "foxts": "^1.7.0"
+    "foxts": "^2.0.1"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
