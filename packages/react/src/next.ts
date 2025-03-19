@@ -6,9 +6,7 @@ import eslint_plugin_next from '@next/eslint-plugin-next';
 
 export function next(): FlatESLintConfigItem[] {
   return [{
-    plugins: {
-      '@next/next': eslint_plugin_next
-    },
+    ...eslint_plugin_next.flatConfig.coreWebVitals,
     files: [
       constants.GLOB_TS,
       constants.GLOB_TSX,
@@ -16,9 +14,8 @@ export function next(): FlatESLintConfigItem[] {
       constants.GLOB_JSX
     ],
     rules: {
-      ...eslint_plugin_next.configs.recommended.rules,
-      ...eslint_plugin_next.configs['core-web-vitals'].rules,
-      '@next/next/no-img-element': 'off'
+      ...eslint_plugin_next.flatConfig.coreWebVitals.rules,
+      '@next/next/no-img-element': 'warn'
     }
   }];
 }
