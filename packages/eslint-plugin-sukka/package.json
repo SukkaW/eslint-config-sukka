@@ -29,8 +29,8 @@
   "dependencies": {
     "@eslint-community/regexpp": "^4.12.1",
     "@eslint-sukka/shared": "workspace:*",
-    "@typescript-eslint/type-utils": "^8.26.1",
-    "@typescript-eslint/utils": "^8.26.1",
+    "@typescript-eslint/type-utils": "^8.27.0",
+    "@typescript-eslint/utils": "^8.27.0",
     "foxts": "^2.0.1"
   },
   "devDependencies": {

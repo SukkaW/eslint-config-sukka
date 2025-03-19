@@ -33,13 +33,13 @@
     "@eslint-community/eslint-plugin-eslint-comments": "^4.4.1",
     "@eslint-sukka/shared": "workspace:*",
     "@eslint/js": "^9.22.0",
-    "@typescript-eslint/parser": "^8.26.1",
+    "@typescript-eslint/parser": "^8.27.0",
     "ci-info": "^4.2.0",
     "defu": "^6.1.4",
-    "eslint-import-resolver-typescript": "^4.2.1",
+    "eslint-import-resolver-typescript": "^4.2.2",
     "eslint-plugin-autofix": "^2.2.0",
     "eslint-plugin-de-morgan": "^1.2.1",
-    "eslint-plugin-import-x": "^4.8.1",
+    "eslint-plugin-import-x": "^4.9.1",
     "eslint-plugin-jsonc": "^2.19.1",
     "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-regexp": "^2.7.0",
@@ -48,7 +48,7 @@
     "foxts": "^2.0.1",
     "jsonc-eslint-parser": "^2.4.0",
     "picocolors": "^1.1.1",
-    "typescript-eslint": "^8.26.1"
+    "typescript-eslint": "^8.27.0"
   },
   "devDependencies": {
     "@antfu/install-pkg": "^1.0.0",
