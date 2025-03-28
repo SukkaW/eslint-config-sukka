@@ -9,6 +9,7 @@ import { configs as ts_eslint_configs } from 'typescript-eslint';
 import stylisticTs from '@stylistic/eslint-plugin-ts';
 
 import eslint_plugin_import_x from 'eslint-plugin-import-x';
+import eslint_plugin_paths from 'eslint-plugin-paths';
 
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import process from 'node:process';
@@ -64,7 +65,8 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
         ...ts_eslint_configs.base.plugins,
         '@stylistic/ts': memo(stylisticTs, '@stylistic/eslint-plugin-ts'),
         '@stylistic/plus': memo(stylisticPlus, '@stylistic/eslint-plugin-plus'),
-        'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x')
+        'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x'),
+        paths: eslint_plugin_paths
       },
       // extends: [
       //   'plugin:i/recommended',
@@ -397,7 +399,9 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
         // const bar = foo.bar
         'import-x/no-named-as-default-member': 'off', // import foo from 'foo';
         // typescript-eslint already supports this
-        'import-x/no-deprecated': 'off'
+        'import-x/no-deprecated': 'off',
+
+        'paths/alias': 'warn'
       }
     },
     {
