@@ -3,7 +3,7 @@ import process from 'node:process';
 
 import picocolors from 'picocolors';
 import fastStringWidth from 'fast-string-width';
-import { supportsHyperlink } from 'supports-hyperlinks';
+import { createSupportsHyperlinks } from 'supports-hyperlinks';
 
 import { link, iTermSetCwd } from './ansi-escape';
 import { isCI } from 'ci-info';
@@ -153,7 +153,7 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
     output += iTermSetCwd();
   }
 
-  const hasHyperlink = !isCI && supportsHyperlink(process.stdout);
+  const hasHyperlink = !isCI && createSupportsHyperlinks(process.stdout);
   const osHostname = hostname();
   const isGnomeTerminal = process.env.GNOME_TERMINAL_SCREEN;
 
