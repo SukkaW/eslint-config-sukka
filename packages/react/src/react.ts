@@ -5,7 +5,6 @@ import { eslint_plugin_jsx_a11y_minimal } from '@eslint-sukka/eslint-plugin-reac
 
 import eslint_plugin_react_hooks from 'eslint-plugin-react-hooks';
 
-// @ts-expect-error -- no types
 import eslint_plugin_react_compiler from 'eslint-plugin-react-compiler';
 
 import eslint_plugin_react_refresh from 'eslint-plugin-react-refresh';
