@@ -21,7 +21,7 @@ export interface OptionsTypeScript {
   isInEditor?: boolean,
   tsconfigPath?: string | string[] | true,
   tsconfigRootDir?: string,
-  componentExtentions?: string[],
+  componentExtensions?: string[],
   allowDefaultProject?: string[]
 }
 
@@ -37,7 +37,7 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
     allowJs = false,
     tsconfigPath = true,
     tsconfigRootDir = process.cwd(),
-    componentExtentions = [],
+    componentExtensions = [],
     isInEditor = false,
     allowDefaultProject = [
       'next.config.ts',
@@ -55,7 +55,7 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
       files: [
         constants.GLOB_TS,
         constants.GLOB_TSX,
-        ...componentExtentions.map(ext => `**/*.${ext}`),
+        ...componentExtensions.map(ext => `**/*.${ext}`),
         ...(allowJs
           ? [constants.GLOB_JS]
           : []
