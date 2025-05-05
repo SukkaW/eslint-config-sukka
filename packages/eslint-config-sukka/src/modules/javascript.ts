@@ -1000,7 +1000,7 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/unicorn/prefer-type-error': 'error', // throw new TypeError
         'sukka/unicorn/consistent-destructuring': 'warn',
         'sukka/unicorn/new-for-builtins': 'warn', // prefer new Map([...]) over Map([...])
-        'sukka/unicorn/no-array-push-push': 'warn', // array.push(...); array.push(...);
+        'sukka/unicorn/prefer-single-call': 'warn', // array.push(...); array.push(...);
         'sukka/unicorn/no-static-only-class': 'warn', // class Foo { static bar() {} }
         'sukka/unicorn/no-unreadable-array-destructuring': 'error', // [,,,,, bar] = arr;
         'sukka/unicorn/no-useless-spread': 'error', // const foo = undefined;
@@ -1067,9 +1067,11 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
           }
         ],
         'sukka/unicorn/no-negation-in-equality-check': 'error',
-        'sukka/unicorn/no-length-as-slice-end': 'error',
+        'sukka/unicorn/no-unnecessary-slice-end': 'error',
         'sukka/unicorn/consistent-date-clone': 'error',
         'sukka/unicorn/no-accessor-recursion': 'error',
+        'sukka/unicorn/no-unnecessary-array-flat-depth': 'error',
+        'sukka/unicorn/no-unnecessary-array-splice-count': 'error',
 
         'no-restricted-imports': [
           'error',

@@ -113,7 +113,7 @@ import new_for_builtins from 'eslint-plugin-unicorn/rules/new-for-builtins.js';
 // too many false positives
 // import no_array_method_this_argument from 'eslint-plugin-unicorn/rules/no-array-method-this-argument.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
-import no_array_push_push from 'eslint-plugin-unicorn/rules/no-array-push-push.js';
+import prefer_single_call from 'eslint-plugin-unicorn/rules/prefer-single-call.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import no_process_exit from 'eslint-plugin-unicorn/rules/no-process-exit.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
@@ -163,7 +163,7 @@ import no_await_in_promise_methods from 'eslint-plugin-unicorn/rules/no-await-in
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import no_negation_in_equality_check from 'eslint-plugin-unicorn/rules/no-negation-in-equality-check.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
-import no_length_as_slice_end from 'eslint-plugin-unicorn/rules/no-length-as-slice-end.js';
+import no_unnecessary_slice_end from 'eslint-plugin-unicorn/rules/no-unnecessary-slice-end.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import catch_error_name from 'eslint-plugin-unicorn/rules/catch-error-name.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
@@ -185,6 +185,12 @@ import prefer_node_protocol from 'eslint-plugin-unicorn/rules/prefer-node-protoc
 import consistent_date_clone from 'eslint-plugin-unicorn/rules/consistent-date-clone.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import no_accessor_recursion from 'eslint-plugin-unicorn/rules/no-accessor-recursion.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_import_meta_properties from 'eslint-plugin-unicorn/rules/prefer-import-meta-properties.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_unnecessary_array_flat_depth from 'eslint-plugin-unicorn/rules/no-unnecessary-array-flat-depth.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_unnecessary_array_splice_count from 'eslint-plugin-unicorn/rules/no-unnecessary-array-splice-count.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import { createRule as loadUnicorn } from 'eslint-plugin-unicorn/rules/utils/rule.js';
 
@@ -322,7 +328,7 @@ export default {
       'unicorn/consistent-destructuring': consistent_destructuring,
       'unicorn/new-for-builtins': new_for_builtins,
       // 'unicorn/no-array-method-this-argument': no_array_method_this_argument,
-      'unicorn/no-array-push-push': no_array_push_push,
+      'unicorn/prefer-single-call': prefer_single_call,
       'unicorn/no-process-exit': no_process_exit,
       'unicorn/no-static-only-class': no_static_only_class,
       'unicorn/no-unreadable-array-destructuring': no_unreadable_array_destructuring,
@@ -347,7 +353,7 @@ export default {
       'unicorn/no-single-promise-in-promise-methods': no_single_promise_in_promise_methods,
       'unicorn/no-await-in-promise-methods': no_await_in_promise_methods,
       'unicorn/no-negation-in-equality-check': no_negation_in_equality_check,
-      'unicorn/no-length-as-slice-end': no_length_as_slice_end,
+      'unicorn/no-unnecessary-slice-end': no_unnecessary_slice_end,
       'unicorn/no-lonely-if': no_lonely_if,
       'unicorn/no-magic-array-flat-depth': no_magic_array_flat_depth,
       'unicorn/no-negated-condition': no_negated_condition,
@@ -355,7 +361,10 @@ export default {
       'unicorn/prefer-negative-index': prefer_negative_index,
       'unicorn/prefer-node-protocol': prefer_node_protocol,
       'unicorn/consistent-date-clone': consistent_date_clone,
-      'unicorn/no-accessor-recursion': no_accessor_recursion
+      'unicorn/no-accessor-recursion': no_accessor_recursion,
+      'unicorn/prefer-import-meta-properties': prefer_import_meta_properties,
+      'unicorn/no-unnecessary-array-flat-depth': no_unnecessary_array_flat_depth,
+      'unicorn/no-unnecessary-array-splice-count': no_unnecessary_array_splice_count
     }).reduce<Record<string, unknown>>((acc, [ruleId, rule]) => {
       acc[ruleId] = loadUnicorn(rule, ruleId);
       return acc;

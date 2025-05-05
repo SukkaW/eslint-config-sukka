@@ -54,6 +54,7 @@ export function node(options: OptionsNode = {}): FlatESLintConfigItem[] {
         'no-process-exit': 'off',
         'n/no-process-exit': 'off',
         'sukka/unicorn/no-process-exit': 'warn',
+        'sukka/unicorn/prefer-import-meta-properties': 'error',
 
         // restrict usage of specified node modules
         'no-restricted-modules': 'off', // covered by ts presets
