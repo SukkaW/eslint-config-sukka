@@ -76,6 +76,8 @@ function config<T>(options: SharedOptions<T> | undefined | boolean, ...defaults:
 }
 
 export async function sukka(options?: ESLintSukkaOptions, ...userConfig: FlatESLintConfigItem[]): Promise<FlatESLintConfigItem[]> {
+  const start = Date.now();
+
   const flatConfigs: FlatESLintConfigItem[][] = [];
 
   await deprecate('@eslint-sukka/js');
@@ -168,5 +170,12 @@ export async function sukka(options?: ESLintSukkaOptions, ...userConfig: FlatESL
 
   flatConfigs.push(userConfig);
 
-  return flatConfigs.flat();
+  const result = flatConfigs.flat();
+
+  // ESLint uses TIMING=1 for profiling, so we borrow this as well.
+  if (process.env.TIMING) {
+    console.log(`[eslint-config-sukka] Timing: ${Date.now() - start}ms`);
+  }
+
+  return result;
 }
