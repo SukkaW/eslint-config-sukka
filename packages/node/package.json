@@ -32,7 +32,7 @@
   "license": "MIT",
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",
-    "eslint-plugin-n": "^17.17.0",
+    "eslint-plugin-n": "^17.18.0",
     "eslint-plugin-sukka": "workspace:*"
   },
   "devDependencies": {
