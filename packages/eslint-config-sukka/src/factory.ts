@@ -19,7 +19,6 @@ import { legacy } from './modules/legacy';
 import type { OptionsLegacy } from './modules/legacy';
 
 import { isPackageExists, isDirectDependency } from '@eslint-sukka/shared';
-import picocolors from 'picocolors';
 import { defu } from 'defu';
 // import { isCI } from 'ci-info';
 
@@ -30,6 +29,7 @@ import type { OptionsNode } from '../../node';
 import { foxquire } from './foxquire';
 import { isInEditorEnv } from './is-in-editor';
 import { markdown } from './modules/markdown';
+import { deprecate } from './deprecate';
 
 type SharedOptions<T = object> = Omit<T, 'isInEditor' | 'enable'> & {
   enable?: boolean
@@ -75,20 +75,13 @@ function config<T>(options: SharedOptions<T> | undefined | boolean, ...defaults:
   return rest as T;
 }
 
-function deprecate(pkg: string): void {
-  if (isPackageExists(pkg)) {
-    // eslint-disable-next-line no-console -- in cli warn
-    console.error(picocolors.yellow(`[eslint-config-sukka] "${pkg}" is deprecated and you should uninstall it`));
-  }
-}
-
 export async function sukka(options?: ESLintSukkaOptions, ...userConfig: FlatESLintConfigItem[]): Promise<FlatESLintConfigItem[]> {
   const flatConfigs: FlatESLintConfigItem[][] = [];
 
-  deprecate('@eslint-sukka/js');
-  deprecate('@eslint-sukka/json');
-  deprecate('@eslint-sukka/ts');
-  deprecate('@eslint-sukka/legacy');
+  await deprecate('@eslint-sukka/js');
+  await deprecate('@eslint-sukka/json');
+  await deprecate('@eslint-sukka/ts');
+  await deprecate('@eslint-sukka/legacy');
 
   const typescriptEnabled = enabled(options?.ts, isPackageExists('typescript'));
 
