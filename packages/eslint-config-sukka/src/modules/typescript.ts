@@ -163,10 +163,13 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
             trailingUnderscore: 'allowSingleOrDouble'
           }
         ],
+
         '@typescript-eslint/consistent-type-assertions': [
           'error',
           { assertionStyle: 'as', objectLiteralTypeAssertions: 'allow' }
         ],
+        '@typescript-eslint/no-unnecessary-type-conversion': 'error',
+
         '@typescript-eslint/require-await': 'error',
         '@typescript-eslint/await-thenable': 'error',
         '@typescript-eslint/no-for-in-array': 'error',
@@ -351,6 +354,9 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
 
         '@typescript-eslint/switch-exhaustiveness-check': ['error', { allowDefaultCaseForExhaustiveSwitch: true, considerDefaultExhaustiveForUnions: true }],
         '@typescript-eslint/parameter-properties': ['warn', { prefer: 'parameter-property' }],
+
+        'no-throw-literal': 'off',
+        '@typescript-eslint/only-throw-error': ['error', { allowRethrowing: true, allowThrowingAny: true, allowThrowingUnknown: true }],
 
         'sukka/string/no-unneeded-to-string': 'error',
         // If you have a good reason to do this, please ignore this error and provide a comment about why this is type safe.
