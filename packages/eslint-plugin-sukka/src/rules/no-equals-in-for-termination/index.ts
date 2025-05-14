@@ -84,7 +84,7 @@ export default createRule({
     ) {
       if (isUpdateByOne(update, loopBody)) {
         if (update.operator === '++' || update.operator === '+=') {
-          return +1;
+          return 1;
         }
         if (update.operator === '--' || update.operator === '-=') {
           return -1;

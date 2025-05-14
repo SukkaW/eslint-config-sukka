@@ -54,5 +54,5 @@ function isArrayHigherOrderFunction(node: TSESTree.Node): node is TSESTree.Membe
   if (node.property.type !== AST_NODE_TYPES.Identifier) {
     return false;
   }
-  return !!(ARRAY_HIGH_ORDER_FUNCTIONS.has(node.property.name) && node.parent.type === AST_NODE_TYPES.CallExpression);
+  return ARRAY_HIGH_ORDER_FUNCTIONS.has(node.property.name) && node.parent.type === AST_NODE_TYPES.CallExpression;
 }
