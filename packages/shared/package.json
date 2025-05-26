@@ -37,6 +37,6 @@
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
-    "globals": "^16.1.0"
+    "globals": "^16.2.0"
   }
 }
