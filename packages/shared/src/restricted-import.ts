@@ -57,12 +57,13 @@ export const BETTER_ALTERNATIVES = Object.entries({
   'lodash.escaperegexp': npm('foxts'),
   'regex-escape': npm('foxts'),
   // esacpe html
-  'escape-html': npm('foxts'),
-  'html-escaper': npm('foxts'),
-  'escape-goat': npm('foxts'),
-  'lodash.escape': npm('foxts'),
-  'next-init': 'https://github.com/QuiiBz/next-international',
-  'https://github.com/i18next/next-i18next': 'https://github.com/QuiiBz/next-international'
+  'escape-html': `${npm('fast-escape-html')} or ${npm('foxts')}`,
+  'html-escaper': `${npm('fast-escape-html')} or ${npm('foxts')}`,
+  'escape-goat': `${npm('fast-escape-html')} or ${npm('foxts')}`,
+  'lodash.escape': `${npm('fast-escape-html')} or ${npm('foxts')}`,
+  'next-intl': 'https://github.com/QuiiBz/next-international',
+  'next-i18next': 'https://github.com/QuiiBz/next-international',
+  'cidr-tools': npm('fast-cidr-tools')
 }).map(([key, value]) => ({ name: key, message: `Use ${value} instead.` }));
 
 const restricedImportBase = [
