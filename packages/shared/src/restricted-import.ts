@@ -63,7 +63,8 @@ export const BETTER_ALTERNATIVES = Object.entries({
   'lodash.escape': `${npm('fast-escape-html')} or ${npm('foxts')}`,
   'next-intl': 'https://github.com/QuiiBz/next-international',
   'next-i18next': 'https://github.com/QuiiBz/next-international',
-  'cidr-tools': npm('fast-cidr-tools')
+  'cidr-tools': npm('fast-cidr-tools'),
+  eventemitter3: npm('mitt') // Node.js eventemitter could be slow, eventemitter2 is not tiny but feature rich. But eventemitter3 has not reason
 }).map(([key, value]) => ({ name: key, message: `Use ${value} instead.` }));
 
 const restricedImportBase = [
