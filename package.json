@@ -24,8 +24,8 @@
     "@swc/core": "^1.11.29",
     "@types/node": "^22.15.29",
     "@types/stringify-object": "^4.0.5",
-    "@typescript-eslint/rule-tester": "^8.33.0",
-    "@typescript-eslint/utils": "^8.33.0",
+    "@typescript-eslint/rule-tester": "^8.33.1",
+    "@typescript-eslint/utils": "^8.33.1",
     "bumpp": "^10.1.1",
     "eslint": "^9.28.0",
     "eslint-config-sukka": "workspace:*",
@@ -36,9 +36,9 @@
     "ts-dedent": "^2.2.0",
     "turbo": "^2.5.4",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.4"
+    "vitest": "^3.2.1"
   },
-  "packageManager": "pnpm@10.11.0",
+  "packageManager": "pnpm@10.11.1",
   "pnpm": {
     "overrides": {
       "array-includes": "npm:@nolyfill/array-includes@^1.0.44",
