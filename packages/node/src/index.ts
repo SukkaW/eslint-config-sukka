@@ -89,6 +89,8 @@ export function node(options: OptionsNode = {}): FlatESLintConfigItem[] {
         'n/prefer-global/url': ['error', 'always'], // url is generally available
         'n/prefer-global/url-search-params': ['error', 'always'], // url-search-params is generally available
 
+        'n/no-top-level-await': 'error',
+
         // prefer-promise
         'n/prefer-promises/dns': 'error'
       },
