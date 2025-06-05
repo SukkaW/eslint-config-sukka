@@ -13,7 +13,7 @@ import eslint_plugin_react_prefer_function_component from 'eslint-plugin-react-p
 
 import eslint_react from '@eslint-react/eslint-plugin';
 
-import stylisticJsx from '@stylistic/eslint-plugin-jsx';
+import stylistic from '@stylistic/eslint-plugin';
 // @ts-expect-error -- no types
 import eslint_plugin_ssr_friendly from 'eslint-plugin-ssr-friendly';
 
@@ -89,7 +89,7 @@ export function react({
     plugins: {
       'jsx-a11y-minimal': memo(eslint_plugin_jsx_a11y_minimal, '@eslint-sukka/eslint-plugin-react-jsx-a11y#eslint_plugin_jsx_a11y_minimal'),
       'react-hooks': memo(eslint_plugin_react_hooks, 'eslint-plugin-react-hooks'),
-      '@stylistic/jsx': memo(stylisticJsx, '@stylistic/eslint-plugin-jsx'),
+      '@stylistic': memo(stylistic, '@stylistic/eslint-plugin'),
       'react-prefer-function-component': memo(eslint_plugin_react_prefer_function_component, 'eslint-plugin-react-prefer-function-component'),
       'react-compiler': memo(eslint_plugin_react_compiler, 'eslint-plugin-react-compiler'),
       ...memoized_eslint_react.configs.recommended.plugins as any,
@@ -116,7 +116,7 @@ export function react({
 
       // Enforce PascalCase for user-defined JSX components
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md
-      '@stylistic/jsx/jsx-pascal-case': ['error', {
+      '@stylistic/jsx-pascal-case': ['error', {
         allowAllCaps: true,
         ignore: []
       }],
@@ -223,7 +223,7 @@ export function react({
       // Prevent extra closing tags for components without children
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
       // 'react/self-closing-comp': 'off',
-      '@stylistic/jsx/jsx-self-closing-comp': 'error',
+      '@stylistic/jsx-self-closing-comp': 'error',
 
       // Enforce boolean attributes notation in JSX
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md
@@ -232,7 +232,7 @@ export function react({
 
       // Enforce or disallow spaces inside of curly braces in JSX attributes
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-curly-spacing.md
-      '@stylistic/jsx/jsx-curly-spacing': ['error', 'never', { allowMultiline: true }],
+      '@stylistic/jsx-curly-spacing': ['error', 'never', { allowMultiline: true }],
       // Enforce event handler naming conventions in JSX
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md
       // 'react/jsx-handler-names': ['off', {
@@ -241,14 +241,14 @@ export function react({
       // }],
       // Validate props indentation in JSX
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-indent-props.md
-      '@stylistic/jsx/jsx-indent-props': ['error', 2],
+      '@stylistic/jsx-indent-props': ['error', 2],
       // Limit maximum of props on a single line in JSX
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-max-props-per-line.md
-      '@stylistic/jsx/jsx-max-props-per-line': ['error', { maximum: 1, when: 'multiline' }],
+      '@stylistic/jsx-max-props-per-line': ['error', { maximum: 1, when: 'multiline' }],
 
       // Prevent missing parentheses around multilines JSX
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/jsx-wrap-multilines.md
-      '@stylistic/jsx/jsx-wrap-multilines': ['error', {
+      '@stylistic/jsx-wrap-multilines': ['error', {
         declaration: 'parens-new-line',
         assignment: 'parens-new-line',
         return: 'parens-new-line',
@@ -259,27 +259,27 @@ export function react({
       }],
       // Require that the first prop in a JSX element be on a new line when the element is multiline
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-first-prop-new-line.md
-      '@stylistic/jsx/jsx-first-prop-new-line': ['error', 'multiline-multiprop'],
+      '@stylistic/jsx-first-prop-new-line': ['error', 'multiline-multiprop'],
 
       // https://eslint.style/rules/jsx/jsx-function-call-newline
-      '@stylistic/jsx/jsx-function-call-newline': ['error', 'multiline'],
+      '@stylistic/jsx-function-call-newline': ['error', 'multiline'],
       // Enforce spacing around jsx equals signs
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-equals-spacing.md
-      '@stylistic/jsx/jsx-equals-spacing': ['error', 'never'],
+      '@stylistic/jsx-equals-spacing': ['error', 'never'],
       // Enforce JSX indentation
       // https://github.com/eslint-stylistic/eslint-stylistic/pull/413
-      // `@stylistic/jsx/jsx-indent` is replaced by `@stylistic/js/indent`
-      '@stylistic/jsx/jsx-indent': 'off',
+      // `@stylistic/jsx-indent` is replaced by `@stylistic/js/indent`
+      '@stylistic/jsx-indent': 'off',
 
       // https://eslint.style/rules/jsx/jsx-child-element-spacing
-      '@stylistic/jsx/jsx-child-element-spacing': 'error',
+      '@stylistic/jsx-child-element-spacing': 'error',
 
       // https://eslint.style/rules/jsx/jsx-closing-bracket-location
-      '@stylistic/jsx/jsx-closing-bracket-location': ['error', 'line-aligned'],
+      '@stylistic/jsx-closing-bracket-location': ['error', 'line-aligned'],
 
       // Validate whitespace in and around the JSX opening and closing brackets
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/jsx-tag-spacing.md
-      '@stylistic/jsx/jsx-tag-spacing': ['error', {
+      '@stylistic/jsx-tag-spacing': ['error', {
         closingSlash: 'never',
         beforeSelfClosing: 'always',
         afterOpening: 'never',
@@ -293,7 +293,7 @@ export function react({
 
       // Enforce curly braces or disallow unnecessary curly braces in JSX props and/or children
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md
-      '@stylistic/jsx/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }],
+      '@stylistic/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }],
 
       // Prevent this from being used in stateless functional components
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/no-this-in-sfc.md
@@ -301,7 +301,7 @@ export function react({
 
       // Disallow multiple spaces between inline JSX props
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/ac102885765be5ff37847a871f239c6703e1c7cc/docs/rules/jsx-props-no-multi-spaces.md
-      '@stylistic/jsx/jsx-props-no-multi-spaces': 'error',
+      '@stylistic/jsx-props-no-multi-spaces': 'error',
 
       // Enforce shorthand or standard form for React fragments
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/bc976b837abeab1dffd90ac6168b746a83fc83cc/docs/rules/jsx-fragments.md
@@ -310,7 +310,7 @@ export function react({
 
       // Enforce linebreaks in curly braces in JSX attributes and expressions.
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-curly-newline.md
-      '@stylistic/jsx/jsx-curly-newline': ['error', {
+      '@stylistic/jsx-curly-newline': ['error', {
         multiline: 'consistent',
         singleline: 'consistent'
       }],

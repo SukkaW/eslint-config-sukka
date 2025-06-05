@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
-    "@stylistic/eslint-plugin-jsx": "^4.4.0",
+    "@stylistic/eslint-plugin": "^4.4.0",
     "eslint-plugin-react-prefer-function-component": "^4.0.1"
   }
 }

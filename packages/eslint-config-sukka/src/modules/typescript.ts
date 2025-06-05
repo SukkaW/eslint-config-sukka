@@ -1,12 +1,11 @@
 import { constants, memo, importMetaResolve, RESTRICTED_IMPORT_TS } from '@eslint-sukka/shared';
 
 import { generated_typescript_overrides } from './_generated_typescript_overrides';
-import stylisticPlus from '@stylistic/eslint-plugin-plus';
 
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import { configs as ts_eslint_configs } from 'typescript-eslint';
-import stylisticTs from '@stylistic/eslint-plugin-ts';
+import stylistic from '@stylistic/eslint-plugin';
 
 import eslint_plugin_import_x from 'eslint-plugin-import-x';
 import eslint_plugin_paths from 'eslint-plugin-paths';
@@ -63,8 +62,7 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
       ],
       plugins: {
         ...ts_eslint_configs.base.plugins,
-        '@stylistic/ts': memo(stylisticTs, '@stylistic/eslint-plugin-ts'),
-        '@stylistic/plus': memo(stylisticPlus, '@stylistic/eslint-plugin-plus'),
+        '@stylistic/': memo(stylistic, '@stylistic/eslint-plugin'),
         'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x'),
         paths: eslint_plugin_paths
       },
@@ -315,17 +313,17 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
         ],
 
         // https://eslint.style/rules/ts/member-delimiter-style
-        '@stylistic/ts/member-delimiter-style': ['error', {
+        '@stylistic/member-delimiter-style': ['error', {
           multiline: { delimiter: 'comma', requireLast: false/** true */ },
           singleline: { delimiter: 'comma', requireLast: false }
         }],
         // https://eslint.style/rules/ts/lines-between-class-members
-        '@stylistic/ts/lines-between-class-members': [
+        '@stylistic/lines-between-class-members': [
           'error', 'always',
           { exceptAfterSingleLine: true, exceptAfterOverload: true }
         ],
         // https://eslint.style/rules/ts/padding-line-between-statements
-        '@stylistic/ts/padding-line-between-statements': [
+        '@stylistic/padding-line-between-statements': [
           'error',
           // add line after
           { blankLine: 'always', prev: 'directive', next: '*' },
@@ -335,7 +333,7 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
           { blankLine: 'any', prev: ['interface', 'type'], next: ['interface', 'type'] } // ts
         ],
         // https://eslint.style/rules/ts/type-annotation-spacing
-        '@stylistic/ts/type-annotation-spacing': ['error', {
+        '@stylistic/type-annotation-spacing': ['error', {
           before: false,
           after: true,
           overrides: {
@@ -370,8 +368,8 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
         'sukka/no-try-promise': 'error',
         'sukka/no-useless-string-operation': 'warn',
 
-        '@stylistic/plus/type-generic-spacing': 'error',
-        '@stylistic/plus/type-named-tuple-spacing': 'error',
+        '@stylistic/type-generic-spacing': 'error',
+        '@stylistic/type-named-tuple-spacing': 'error',
 
         // replaced by unused-imports/no-unused-imports
         '@typescript-eslint/no-unused-vars': 'off',

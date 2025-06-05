@@ -59,9 +59,7 @@
     "@eslint-sukka/rollup-config": "workspace:*",
     "@eslint-sukka/yaml": "workspace:*",
     "@eslint/markdown": "^6.4.0",
-    "@stylistic/eslint-plugin-js": "^4.4.0",
-    "@stylistic/eslint-plugin-plus": "^4.4.0",
-    "@stylistic/eslint-plugin-ts": "^4.4.0",
+    "@stylistic/eslint-plugin": "^4.4.0",
     "eslint-config-flat-gitignore": "^2.1.0",
     "eslint-plugin-antfu": "^3.1.1"
   }

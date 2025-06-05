@@ -1,8 +1,6 @@
 import { javascript as eslint_config_sukka_js } from '../src/modules/javascript';
 
 import { plugin as ts_eslint_plugin } from 'typescript-eslint';
-import stylistic_eslint_plugin_js from '@stylistic/eslint-plugin-js';
-import stylistic_eslint_plugin_ts from '@stylistic/eslint-plugin-ts';
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -14,8 +12,6 @@ const DISABLED_RULES = new Set([
 
 (async () => {
   const { default: stringifyObject } = await import('stringify-object');
-
-  const stylistic_eslint_plugin_ts_rulenames = new Set(Object.keys(stylistic_eslint_plugin_ts.rules));
 
   const TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN = new Map<string, string>(
     Object.entries(ts_eslint_plugin.rules!)
@@ -37,14 +33,6 @@ const DISABLED_RULES = new Set([
         return acc;
       }, [])
   );
-
-  const STYLISTIC_JS_RULES_TO_BE_OVERRIDEN = Object.keys(stylistic_eslint_plugin_js.rules)
-    .reduce<Set<string>>((acc, ruleName) => {
-      if (stylistic_eslint_plugin_ts_rulenames.has(ruleName)) {
-        acc.add(`@stylistic/js/${ruleName}`);
-      }
-      return acc;
-    }, new Set());
 
   const rules = Object.fromEntries(
     Object.entries(
@@ -109,12 +97,6 @@ const DISABLED_RULES = new Set([
               [baseRuleName, 'off'],
               [`autofix/${baseRuleName}`, 'off'],
               [`@typescript-eslint/${replacementRulename}`, value]
-            );
-          } else if (STYLISTIC_JS_RULES_TO_BE_OVERRIDEN.has(baseRuleName)) {
-            acc.push(
-              // @ts-expect-error -- no type overlap between eslint and typescript-eslint
-              [baseRuleName, 'off'],
-              [baseRuleName.replace('@stylistic/js/', '@stylistic/ts/'), value]
             );
           }
         }

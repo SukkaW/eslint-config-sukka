@@ -20,6 +20,7 @@
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
+    "@eslint-sukka/yaml": "workspace:*",
     "@swc-node/register": "^1.10.10",
     "@swc/core": "^1.11.29",
     "@types/node": "^22.15.29",
