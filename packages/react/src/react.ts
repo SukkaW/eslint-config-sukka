@@ -431,8 +431,9 @@ export function react({
   }, {
     // next.js/nextra naming convention
     files: [
-      '**/app/**/_*.?([cm])[jt]s?(x)',
-      String.raw`**/app/**/\[*.?([cm])[jt]s?(x)`
+      '**/app/**/_*.cjs',
+      String.raw`**/app/**/\[*.?([cm])[j]s?(x)`,
+      '**/pages/_(app|document).?([cm])[jt]s?(x)'
     ],
     rules: {
       '@eslint-react/naming-convention/filename': 'off'
