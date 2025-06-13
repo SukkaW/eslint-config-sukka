@@ -19,7 +19,7 @@
  */
 import mod from '.';
 import { runTest } from '@eslint-sukka/internal';
-import { describe } from 'vitest';
+import { describe } from 'mocha';
 
 runTest({
   module: mod,

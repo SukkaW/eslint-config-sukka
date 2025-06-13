@@ -2,7 +2,6 @@ import { createRule } from '@eslint-sukka/shared';
 import { escape, getFixer } from '@masknet/eslint-plugin/rules/unicode/specific-set.js';
 import type { TSESTree } from '@typescript-eslint/utils';
 import { AST_TOKEN_TYPES } from '@typescript-eslint/utils';
-import type { RuleListener } from '@typescript-eslint/utils/ts-eslint';
 
 const BIDI_PATTERN = /[\u061C\u202A-\u202E\u2066-\u2069]/;
 
@@ -21,34 +20,32 @@ export default createRule({
     }
   },
   create(context) {
-    return makeProgramListener(BIDI_PATTERN, (node, kind) => {
+    const onReport = (
+      node: TSESTree.Token,
+      kind: string
+    ) => {
       const matcher = new RegExp(BIDI_PATTERN.source, 'gu');
       const data = { kind, text: escape(node.value, matcher) };
       const fix = getFixer(node, matcher);
       context.report({ node, data, messageId: 'detected', fix });
-    });
+    };
+
+    return {
+      Program(program: TSESTree.Program) {
+        for (const token of program.tokens ?? []) {
+          const value = getValue(token);
+          if (value === false) continue;
+          if (!BIDI_PATTERN.test(value)) continue;
+          onReport(token, 'code');
+        }
+        for (const comment of program.comments ?? []) {
+          if (!BIDI_PATTERN.test(comment.value)) continue;
+          onReport(comment, 'comment');
+        }
+      }
+    };
   }
 });
-
-function makeProgramListener(
-  pattern: RegExp,
-  onReport: (node: TSESTree.Token, kind: string) => void
-): RuleListener {
-  return {
-    Program(program: TSESTree.Program) {
-      for (const token of program.tokens ?? []) {
-        const value = getValue(token);
-        if (value === false) continue;
-        if (!pattern.test(value)) continue;
-        onReport(token, 'code');
-      }
-      for (const comment of program.comments ?? []) {
-        if (!pattern.test(comment.value)) continue;
-        onReport(comment, 'comment');
-      }
-    }
-  };
-}
 
 function getValue(token: TSESTree.Token) {
   switch (token.type) {

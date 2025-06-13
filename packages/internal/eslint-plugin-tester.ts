@@ -3,12 +3,12 @@ import { RuleTester } from '@typescript-eslint/rule-tester';
 import type { InvalidTestCase, ValidTestCase } from '@typescript-eslint/rule-tester';
 
 import type { ExportedRuleModule } from '@eslint-sukka/shared';
-import { afterAll, describe, it } from 'vitest';
+import { after, describe, it } from 'mocha';
 import type { TSESLint } from '@typescript-eslint/utils';
 
 // import { globals } from '@eslint-sukka/shared';
 
-RuleTester.afterAll = afterAll;
+RuleTester.afterAll = after;
 RuleTester.it = it;
 RuleTester.itOnly = it.only;
 RuleTester.itSkip = it.skip;
