@@ -35,10 +35,10 @@
     "@eslint-sukka/eslint-plugin-react-jsx-a11y": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
     "@eslint/compat": "^1.3.0",
-    "@next/eslint-plugin-next": "^15.3.3",
+    "@next/eslint-plugin-next": "^15.3.4",
     "@stylexjs/eslint-plugin": "^0.13.1",
     "@stylexjs/shared": "^0.12.0",
-    "eslint-plugin-react-compiler": "^19.1.0-rc.2",
+    "eslint-plugin-react-compiler": "19.1.0-rc.2",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "eslint-plugin-ssr-friendly": "^1.3.0"

@@ -46,7 +46,7 @@
     "eslint-plugin-regexp": "^2.9.0",
     "eslint-plugin-sukka": "workspace:*",
     "eslint-plugin-unused-imports": "^4.1.4",
-    "foxts": "^3.4.0",
+    "foxts": "^3.6.0",
     "jsonc-eslint-parser": "^2.4.0",
     "picocolors": "^1.1.1",
     "typescript-eslint": "^8.34.1"
@@ -58,7 +58,7 @@
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
     "@eslint-sukka/yaml": "workspace:*",
-    "@eslint/markdown": "^6.5.0",
+    "@eslint/markdown": "^6.6.0",
     "@stylistic/eslint-plugin": "^4.4.1",
     "eslint-config-flat-gitignore": "^2.1.0",
     "eslint-plugin-antfu": "^3.1.1"
