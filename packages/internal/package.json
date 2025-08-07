@@ -1,6 +1,6 @@
 {
   "name": "@eslint-sukka/internal",
-  "version": "6.23.0",
+  "version": "6.23.1",
   "private": true,
   "main": "./index.ts",
   "types": "./index.ts",
