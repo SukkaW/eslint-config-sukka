@@ -270,9 +270,6 @@ importers:
 
   packages/eslint-plugin-sukka:
     dependencies:
-      '@eslint-community/regexpp':
-        specifier: ^4.12.1
-        version: 4.12.1
       '@eslint-sukka/shared':
         specifier: workspace:*
         version: link:../shared

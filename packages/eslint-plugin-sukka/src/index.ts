@@ -222,7 +222,6 @@ import noUnusedCollection from './rules/no-unused-collection';
 import noUselessPlusplus from './rules/no-useless-plusplus';
 import noChainArrayHigherOrderFunctions from './rules/no-chain-array-higher-order-functions';
 
-import prefer_string_starts_ends_with from './rules/prefer-string-starts-ends-with';
 import no_export_const_enum from './rules/no-export-const-enum';
 import noForInIterable from './rules/no-for-in-iterable';
 import onlyAwaitThenable from './rules/only-await-thenable';
@@ -271,7 +270,6 @@ export default {
       'no-useless-plusplus': noUselessPlusplus,
       'no-chain-array-higher-order-functions': noChainArrayHigherOrderFunctions,
       // require type-check
-      'string/prefer-string-starts-ends-with': prefer_string_starts_ends_with,
       'string/no-unneeded-to-string': string$no_unneeded_to_string,
       'type/no-force-cast-via-top-type': type$no_force_cast_via_top_type, // If you have a good reason to do this, please ignore this error and provide a comment about why this is type safe.
       'type/no-wrapper-type-reference': type$no_wrapper_type_reference,
