@@ -99,8 +99,7 @@ export default createRule({
         if (functionContextStack.length) {
           const currentContext = functionContextStack[functionContextStack.length - 1];
           const returnStatement = node as TSESTree.ReturnStatement;
-          currentContext.containsReturnWithoutValue
-            = currentContext.containsReturnWithoutValue || !returnStatement.argument;
+          currentContext.containsReturnWithoutValue = currentContext.containsReturnWithoutValue || !returnStatement.argument;
           currentContext.returnStatements.push(returnStatement);
         }
       },

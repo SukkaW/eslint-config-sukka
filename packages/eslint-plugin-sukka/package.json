@@ -29,14 +29,14 @@
   "dependencies": {
     "@eslint-community/regexpp": "^4.12.1",
     "@eslint-sukka/shared": "workspace:*",
-    "@typescript-eslint/type-utils": "^8.34.1",
-    "@typescript-eslint/utils": "^8.34.1",
-    "foxts": "^3.6.0"
+    "@typescript-eslint/type-utils": "^8.39.0",
+    "@typescript-eslint/utils": "^8.39.0",
+    "foxts": "^3.10.0"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
-    "@masknet/eslint-plugin": "^0.3.0",
-    "eslint-plugin-unicorn": "^59.0.1"
+    "@masknet/eslint-plugin": "^0.4.0",
+    "eslint-plugin-unicorn": "^60.0.0"
   },
   "peerDependencies": {
     "typescript": "*"

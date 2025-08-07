@@ -89,7 +89,7 @@ export function node(options: OptionsNode = {}): FlatESLintConfigItem[] {
         'n/prefer-global/url': ['error', 'always'], // url is generally available
         'n/prefer-global/url-search-params': ['error', 'always'], // url-search-params is generally available
 
-        'n/no-top-level-await': 'error',
+        // 'n/no-top-level-await': 'error', -- antfu's rule was used instead (applies to all projects)
 
         // prefer-promise
         'n/prefer-promises/dns': 'error'

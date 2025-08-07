@@ -7,7 +7,6 @@ import jsx$no_template_literal from '@masknet/eslint-plugin/rules/jsx/no-templat
 import jsx$no_unneeded_nested from '@masknet/eslint-plugin/rules/jsx/no-unneeded-nested.js';
 import string$no_locale_case from '@masknet/eslint-plugin/rules/string/no-locale-case.js';
 import string$no_simple_template_literal from '@masknet/eslint-plugin/rules/string/no-simple-template-literal.js';
-import type$no_instanceof_wrapper from '@masknet/eslint-plugin/rules/type/no-instanceof-wrapper.js';
 import unicode$no_bidi from '@masknet/eslint-plugin/rules/unicode/no-bidi.js';
 import unicode$no_invisible from '@masknet/eslint-plugin/rules/unicode/no-invisible.js';
 import no_redundant_variable from '@masknet/eslint-plugin/rules/no-redundant-variable.js';
@@ -192,7 +191,11 @@ import no_unnecessary_array_flat_depth from 'eslint-plugin-unicorn/rules/no-unne
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import no_unnecessary_array_splice_count from 'eslint-plugin-unicorn/rules/no-unnecessary-array-splice-count.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
-import { createRule as loadUnicorn } from 'eslint-plugin-unicorn/rules/utils/rule.js';
+import no_useless_error_capture_stack_trace from 'eslint-plugin-unicorn/rules/no-useless-error-capture-stack-trace.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_class_fields from 'eslint-plugin-unicorn/rules/prefer-class-fields.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import { createRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/utils/rule.js';
 
 // eslint-plugin-sukka
 import ban_eslint_disable from './rules/ban-eslint-disable';
@@ -229,59 +232,59 @@ import noUselessStringOperation from './rules/no-useless-string-operation';
 
 // eslint-disable-next-line sukka/type/no-force-cast-via-top-type -- bad @types/eslint type
 export default {
-  rules: {
-    'array/no-unneeded-flat-map': array$no_unneeded_flat_map,
-    'browser/prefer-location-assign': browser$prefer_location_assign,
-    'jsx/no-template-literal': jsx$no_template_literal,
-    'jsx/no-unneeded-nested': jsx$no_unneeded_nested,
-    'string/no-locale-case': string$no_locale_case,
-    'string/no-simple-template-literal': string$no_simple_template_literal,
-    'type/no-instanceof-wrapper': type$no_instanceof_wrapper,
-    'unicode/no-bidi': unicode$no_bidi,
-    'unicode/no-invisible': unicode$no_invisible,
-    'ban-eslint-disable': ban_eslint_disable,
-    'no-redundant-variable': no_redundant_variable,
-    'no-single-return': no_single_return,
-    'prefer-early-return': prefer_early_return,
-    'prefer-fetch': prefer_fetch,
-    'prefer-timer-id': prefer_timer_id,
-    'no-return-await': no_return_await,
-    'no-expression-empty-lines': no_expression_empty_lines,
-    'object-format': object_format,
-    'prefer-single-boolean-return': prefer_single_boolean_return,
-    'no-all-duplicated-branches': noAllDuplicatedBranches,
-    'no-duplicated-branches': noDuplicatedBranches,
-    'bool-param-default': boolParamDefault,
-    'call-argument-line': callArgumentLine,
-    'class-prototype': classPrototype,
-    'comma-or-logical-or-case': commaOrLogicalOrCase,
-    'track-todo-fixme-comment': trackTodoFixmeComment,
-    'no-element-overwrite': noElementOverwrite,
-    'no-empty-collection': noEmptyCollection,
-    'no-equals-in-for-termination': noEqualsInForTermination,
-    'no-top-level-this': noTopLevelThis,
-    'no-invariant-returns': noInvariantReturns,
-    'no-redundant-assignments': noRedundantAssignments,
-    'no-same-line-conditional': noSameLineConditional,
-    'no-small-switch': noSmallSwitch,
-    'no-unused-collection': noUnusedCollection,
-    'no-useless-plusplus': noUselessPlusplus,
-    'no-chain-array-higher-order-functions': noChainArrayHigherOrderFunctions,
-    // require type-check
-    'string/prefer-string-starts-ends-with': prefer_string_starts_ends_with,
-    'string/no-unneeded-to-string': string$no_unneeded_to_string,
-    'type/no-force-cast-via-top-type': type$no_force_cast_via_top_type, // If you have a good reason to do this, please ignore this error and provide a comment about why this is type safe.
-    'type/no-wrapper-type-reference': type$no_wrapper_type_reference,
-    'no-default-error': no_default_error,
-    'no-export-const-enum': no_export_const_enum,
-    'no-for-in-iterable': noForInIterable,
-    'only-await-thenable': onlyAwaitThenable,
-    'no-undefined-optional-parameters': noUndefinedOptionalParameters,
-    'no-try-promise': noTryPromise,
-    'no-useless-string-operation': noUselessStringOperation,
-
+  rules: Object.assign(
+    {
+      'array/no-unneeded-flat-map': array$no_unneeded_flat_map,
+      'browser/prefer-location-assign': browser$prefer_location_assign,
+      'jsx/no-template-literal': jsx$no_template_literal,
+      'jsx/no-unneeded-nested': jsx$no_unneeded_nested,
+      'string/no-locale-case': string$no_locale_case,
+      'string/no-simple-template-literal': string$no_simple_template_literal,
+      'unicode/no-bidi': unicode$no_bidi,
+      'unicode/no-invisible': unicode$no_invisible,
+      'ban-eslint-disable': ban_eslint_disable,
+      'no-redundant-variable': no_redundant_variable,
+      'no-single-return': no_single_return,
+      'prefer-early-return': prefer_early_return,
+      'prefer-fetch': prefer_fetch,
+      'prefer-timer-id': prefer_timer_id,
+      'no-return-await': no_return_await,
+      'no-expression-empty-lines': no_expression_empty_lines,
+      'object-format': object_format,
+      'prefer-single-boolean-return': prefer_single_boolean_return,
+      'no-all-duplicated-branches': noAllDuplicatedBranches,
+      'no-duplicated-branches': noDuplicatedBranches,
+      'bool-param-default': boolParamDefault,
+      'call-argument-line': callArgumentLine,
+      'class-prototype': classPrototype,
+      'comma-or-logical-or-case': commaOrLogicalOrCase,
+      'track-todo-fixme-comment': trackTodoFixmeComment,
+      'no-element-overwrite': noElementOverwrite,
+      'no-empty-collection': noEmptyCollection,
+      'no-equals-in-for-termination': noEqualsInForTermination,
+      'no-top-level-this': noTopLevelThis,
+      'no-invariant-returns': noInvariantReturns,
+      'no-redundant-assignments': noRedundantAssignments,
+      'no-same-line-conditional': noSameLineConditional,
+      'no-small-switch': noSmallSwitch,
+      'no-unused-collection': noUnusedCollection,
+      'no-useless-plusplus': noUselessPlusplus,
+      'no-chain-array-higher-order-functions': noChainArrayHigherOrderFunctions,
+      // require type-check
+      'string/prefer-string-starts-ends-with': prefer_string_starts_ends_with,
+      'string/no-unneeded-to-string': string$no_unneeded_to_string,
+      'type/no-force-cast-via-top-type': type$no_force_cast_via_top_type, // If you have a good reason to do this, please ignore this error and provide a comment about why this is type safe.
+      'type/no-wrapper-type-reference': type$no_wrapper_type_reference,
+      'no-default-error': no_default_error,
+      'no-export-const-enum': no_export_const_enum,
+      'no-for-in-iterable': noForInIterable,
+      'only-await-thenable': onlyAwaitThenable,
+      'no-undefined-optional-parameters': noUndefinedOptionalParameters,
+      'no-try-promise': noTryPromise,
+      'no-useless-string-operation': noUselessStringOperation
+    },
     // eslint-plugin-unicorn
-    ...Object.entries({
+    loadUnicorns({
       'unicorn/better-regex': better_regex,
       'unicorn/catch-error-name': catch_error_name,
       'unicorn/custom-error-definition': custom_error_definition,
@@ -364,10 +367,9 @@ export default {
       'unicorn/no-accessor-recursion': no_accessor_recursion,
       'unicorn/prefer-import-meta-properties': prefer_import_meta_properties,
       'unicorn/no-unnecessary-array-flat-depth': no_unnecessary_array_flat_depth,
-      'unicorn/no-unnecessary-array-splice-count': no_unnecessary_array_splice_count
-    }).reduce<Record<string, unknown>>((acc, [ruleId, rule]) => {
-      acc[ruleId] = loadUnicorn(rule, ruleId);
-      return acc;
-    }, {})
-  }
+      'unicorn/no-unnecessary-array-splice-count': no_unnecessary_array_splice_count,
+      'unicorn/no-useless-error-capture-stack-trace': no_useless_error_capture_stack_trace,
+      'unicorn/prefer-class-fields': prefer_class_fields
+    })
+  )
 } as unknown as ESLint.Plugin;

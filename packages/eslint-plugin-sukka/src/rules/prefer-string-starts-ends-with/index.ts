@@ -464,10 +464,9 @@ export default createRule({
           return;
         }
 
-        const parsed
-          = callNode.arguments.length === 1
-            ? parseRegExp(callNode.arguments[0])
-            : null;
+        const parsed = callNode.arguments.length === 1
+          ? parseRegExp(callNode.arguments[0])
+          : null;
         if (parsed == null) {
           return;
         }
@@ -557,8 +556,8 @@ export default createRule({
         }
 
         const eqNode = parentNode;
-        const negativeIndexSupported
-          = (node.property as TSESTree.Identifier).name === 'slice';
+        const negativeIndexSupported =
+          (node.property as TSESTree.Identifier).name === 'slice';
         context.report({
           node: parentNode,
           messageId: isStartsWith ? 'preferStartsWith' : 'preferEndsWith',
@@ -582,8 +581,8 @@ export default createRule({
               }
             } else {
               const posNode = callNode.arguments[0];
-              const posNodeIsAbsolutelyValid
-                = (
+              const posNodeIsAbsolutelyValid =
+                (
                   posNode.type === AST_NODE_TYPES.BinaryExpression
                   && posNode.operator === '-'
                   && isLengthExpression(posNode.left, node.object)
@@ -617,8 +616,8 @@ export default createRule({
         node: TSESTree.MemberExpression
       ): void {
         const callNode = getParent(node) as TSESTree.CallExpression;
-        const parsed
-          = callNode.arguments.length === 1 ? parseRegExp(node.object) : null;
+        const parsed =
+          callNode.arguments.length === 1 ? parseRegExp(node.object) : null;
         if (parsed == null) {
           return;
         }
@@ -631,12 +630,12 @@ export default createRule({
           messageId,
           *fix(fixer) {
             const argNode = callNode.arguments[0];
-            const needsParen
-              = argNode.type !== AST_NODE_TYPES.Literal
-                && argNode.type !== AST_NODE_TYPES.TemplateLiteral
-                && argNode.type !== AST_NODE_TYPES.Identifier
-                && argNode.type !== AST_NODE_TYPES.MemberExpression
-                && argNode.type !== AST_NODE_TYPES.CallExpression;
+            const needsParen =
+              argNode.type !== AST_NODE_TYPES.Literal
+              && argNode.type !== AST_NODE_TYPES.TemplateLiteral
+              && argNode.type !== AST_NODE_TYPES.Identifier
+              && argNode.type !== AST_NODE_TYPES.MemberExpression
+              && argNode.type !== AST_NODE_TYPES.CallExpression;
 
             yield fixer.removeRange([callNode.range[0], argNode.range[0]]);
             if (needsParen) {

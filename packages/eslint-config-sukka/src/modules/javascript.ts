@@ -635,8 +635,8 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         '@stylistic/eol-last': ['error', 'always'],
 
         // enforce spacing between functions and their invocations
-        // https://eslint.org/docs/rules/func-call-spacing
-        '@stylistic/func-call-spacing': ['error', 'never'],
+        // https://eslint.style/rules/function-call-spacing#function-call-spacing
+        '@stylistic/function-call-spacing': ['error', 'never'],
 
         // https://eslint.org/docs/rules/function-call-argument-newline
         '@stylistic/function-call-argument-newline': ['off', 'consistent'],
@@ -644,9 +644,6 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         // enforce consistent line breaks inside function parentheses
         // https://eslint.style/rules/js/function-paren-newline
         '@stylistic/function-paren-newline': ['error', 'consistent'],
-
-        // https://eslint.style/rules/default/function-call-spacing
-        '@stylistic/function-call-spacing': ['error', 'never'],
 
         // Enforce the location of arrow function bodies with implicit returns
         // https://eslint.style/rules/js/implicit-arrow-linebreak
@@ -799,8 +796,12 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         // https://eslint.org/docs/rules/prefer-exponentiation-operator
         'prefer-exponentiation-operator': 'error',
 
-        // https://eslint.style/rules/js/operator-linebreak
-        '@stylistic/operator-linebreak': ['error', 'before'],
+        // https://eslint.style/rules/operator-linebreak
+        '@stylistic/operator-linebreak': ['error', 'before', {
+          overrides: {
+            '=': 'after'
+          }
+        }],
 
         // https://eslint.style/rules/js/padded-blocks
         '@stylistic/padded-blocks': ['error', 'never'],
@@ -942,7 +943,6 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/jsx/no-unneeded-nested': 'error',
         'sukka/string/no-locale-case': 'warn',
         'sukka/string/no-simple-template-literal': 'error',
-        'sukka/type/no-instanceof-wrapper': 'error',
         'sukka/unicode/no-bidi': 'warn',
         'sukka/unicode/no-invisible': 'warn',
 
@@ -994,7 +994,7 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         // cause problem with alias import (new URL(, import.meta.url))
         // 'sukka/unicorn/relative-url-style': ['warn', 'always'], // prefer relative url starts with ./
         'sukka/unicorn/error-message': 'error', // Pass error message when throwing errors
-        'sukka/unicorn/no-instanceof-builtins': 'error', // Array.isArray
+        'sukka/unicorn/no-instanceof-builtins': ['error', { strategy: 'loose' }], // Array.isArray, typeof
         'sukka/unicorn/prefer-type-error': 'error', // throw new TypeError
         'sukka/unicorn/consistent-destructuring': 'warn',
         'sukka/unicorn/new-for-builtins': 'warn', // prefer new Map([...]) over Map([...])
@@ -1070,6 +1070,8 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/unicorn/no-accessor-recursion': 'error',
         'sukka/unicorn/no-unnecessary-array-flat-depth': 'error',
         'sukka/unicorn/no-unnecessary-array-splice-count': 'error',
+        'sukka/unicorn/no-useless-error-capture-stack-trace': 'error',
+        'sukka/unicorn/prefer-class-fields': 'error',
 
         'no-restricted-imports': [
           'error',

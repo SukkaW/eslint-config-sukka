@@ -1,5 +1,5 @@
 declare global {
-  // eslint-disable-next-line vars-on-top, no-var -- fuck
+  // eslint-disable-next-line vars-on-top -- fuck
   var __ESLINT_PLUGIN_MEMO__: Record<string, unknown> | undefined;
 }
 

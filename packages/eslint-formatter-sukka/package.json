@@ -31,12 +31,12 @@
   "author": "Sukka <https://skk.moe>",
   "license": "MIT",
   "dependencies": {
-    "ci-info": "^4.2.0",
+    "ci-info": "^4.3.0",
     "picocolors": "^1.1.1"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
-    "fast-string-width": "^1.1.0",
+    "fast-string-width": "^2.0.0",
     "supports-hyperlinks": "^4.1.0"
   }
 }
