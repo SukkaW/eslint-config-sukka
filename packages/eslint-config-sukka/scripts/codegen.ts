@@ -1,6 +1,6 @@
 import { javascript as eslint_config_sukka_js } from '../src/modules/javascript';
 
-import { plugin as ts_eslint_plugin } from 'typescript-eslint';
+import ts_eslint_plugin from '@typescript-eslint/eslint-plugin';
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -14,7 +14,7 @@ const DISABLED_RULES = new Set([
   const { default: stringifyObject } = await import('stringify-object');
 
   const TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN = new Map<string, string>(
-    Object.entries(ts_eslint_plugin.rules!)
+    Object.entries(ts_eslint_plugin.rules)
       // https://github.com/sweepline/eslint-plugin-unused-imports/blob/2563edf7d7894e0cc05163d9e9180bc3c56471cc/lib/rules/no-unused-imports.js#L15
       .reduce<Array<[baseRuleName: string, ruleName: string]>>((acc, [ruleName, rule]) => {
         if (

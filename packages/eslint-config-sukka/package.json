@@ -34,6 +34,7 @@
     "@eslint-sukka/shared": "workspace:*",
     "@eslint/js": "^9.33.0",
     "@typescript-eslint/parser": "^8.40.0",
+    "@typescript-eslint/eslint-plugin": "^8.40.0",
     "ci-info": "^4.3.0",
     "defu": "^6.1.4",
     "eslint-import-resolver-typescript": "^4.4.4",

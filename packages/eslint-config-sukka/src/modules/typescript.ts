@@ -5,6 +5,8 @@ import { generated_typescript_overrides } from './_generated_typescript_override
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import { configs as ts_eslint_configs } from 'typescript-eslint';
+import typescript_eslint_plugin from '@typescript-eslint/eslint-plugin';
+import typescript_eslint_parser from '@typescript-eslint/parser';
 import stylistic from '@stylistic/eslint-plugin';
 
 import eslint_plugin_import_x from 'eslint-plugin-import-x';
@@ -61,7 +63,7 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
         )
       ],
       plugins: {
-        ...ts_eslint_configs.base.plugins,
+        '@typescript-eslint': memo<any>(typescript_eslint_plugin, '@typescript-eslint/eslint-plugin'),
         '@stylistic/': memo(stylistic, '@stylistic/eslint-plugin'),
         'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x'),
         paths: eslint_plugin_paths
@@ -71,7 +73,7 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
       //   'plugin:i/typescript'
       // ],
       languageOptions: {
-        parser: ts_eslint_configs.base.languageOptions!.parser as any,
+        parser: typescript_eslint_parser,
         // always treats typescript files as module
         sourceType: 'module',
         parserOptions: {
@@ -430,7 +432,9 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
     {
       name: '@eslint-sukka/ts commonjs',
       files: ['**/*.js', '**/*.cjs'],
-      plugins: ts_eslint_configs.base.plugins as any,
+      plugins: {
+        '@typescript-eslint': memo<any>(typescript_eslint_plugin, '@typescript-eslint/eslint-plugin')
+      },
       rules: {
         '@typescript-eslint/no-require-imports': 'off'
       }
