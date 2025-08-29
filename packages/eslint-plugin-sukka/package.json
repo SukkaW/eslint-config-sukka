@@ -28,9 +28,9 @@
   "license": "MIT",
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",
-    "@typescript-eslint/type-utils": "^8.40.0",
-    "@typescript-eslint/utils": "^8.40.0",
-    "foxts": "^3.11.1"
+    "@typescript-eslint/type-utils": "^8.41.0",
+    "@typescript-eslint/utils": "^8.41.0",
+    "foxts": "^3.12.0"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
