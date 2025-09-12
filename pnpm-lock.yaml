@@ -87,6 +87,9 @@ importers:
       eslint-plugin-sukka:
         specifier: workspace:*
         version: link:packages/eslint-plugin-sukka
+      foxts:
+        specifier: ^3.13.0
+        version: 3.13.0
       mocha:
         specifier: ^11.7.2
         version: 11.7.2

@@ -5,6 +5,7 @@ import type { InvalidTestCase, ValidTestCase } from '@typescript-eslint/rule-tes
 import type { ExportedRuleModule } from '@eslint-sukka/shared';
 import { after, describe, it } from 'mocha';
 import type { TSESLint } from '@typescript-eslint/utils';
+import { identity } from 'foxts/identity';
 
 // import { globals } from '@eslint-sukka/shared';
 
@@ -95,7 +96,3 @@ runTest.skip = <TOptions extends readonly unknown[], TMessageIds extends string>
 ) => {
   // noop
 };
-
-function identity<T>(input: T): T {
-  return input;
-}
