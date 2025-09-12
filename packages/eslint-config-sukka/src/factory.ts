@@ -31,6 +31,8 @@ import { isInEditorEnv } from './is-in-editor';
 import { markdown } from './modules/markdown';
 import { deprecate } from './deprecate';
 
+// import { lazyValue } from 'foxts/lazy-value';
+
 type SharedOptions<T = object> = Omit<T, 'isInEditor' | 'enable'> & {
   enable?: boolean
 };
@@ -87,7 +89,14 @@ export async function sukka(options?: ESLintSukkaOptions, ...userConfig: FlatESL
   await deprecate('@eslint-sukka/ts');
   await deprecate('@eslint-sukka/legacy');
 
-  const typescriptEnabled = enabled(options?.ts, isPackageExists('typescript'));
+  // no need to lazy this, later @eslint-sukka/node will immediately need this value
+  const hasTypesNode = isPackageExists('@types/node');
+
+  const typescriptEnabled = enabled(
+    options?.ts,
+    isPackageExists('typescript')
+    || hasTypesNode // if you have @types/node installed, I assume you are using typescript as well~
+  );
 
   flatConfigs.push(
     // ignores
@@ -158,7 +167,7 @@ export async function sukka(options?: ESLintSukkaOptions, ...userConfig: FlatESL
     }
   }
   // node
-  if (enabled(options?.node, isPackageExists('@types/node') || isPackageExists('@types/bun'))) {
+  if (enabled(options?.node, hasTypesNode || isPackageExists('@types/bun'))) {
     flatConfigs.push((await foxquire<typeof import('@eslint-sukka/node')>('@eslint-sukka/node')).node({
       ...config(options?.node),
       hasTypeScript: typescriptEnabled,
