@@ -9,18 +9,21 @@ export type * from './types';
 export { createRule, ensureParserWithTypeInformation, isParserWithTypeInformation } from './create-eslint-rule';
 export type { RuleModule, ExportedRuleModule, RuleContext } from './create-eslint-rule';
 
-import { resolve as importMetaResolve } from '@dual-bundle/import-meta-resolve';
+import { EnforceExtension, ResolverFactory } from 'oxc-resolver';
 
-export function isPackageExists(pkg: string) {
-  try {
-    importMetaResolve(pkg, import.meta.url);
-    return true;
-  } catch {
-    return false;
-  }
+export const packageResolver = new ResolverFactory({
+  extensions: ['.mjs', '.cjs', '.js', '.json', '.node'],
+  enforceExtension: EnforceExtension.Auto,
+  conditionNames: ['node', 'import', 'require', 'default'],
+  mainFields: ['module', 'main'],
+  builtinModules: true
+});
+
+export function isPackageExists(pkg: string, parent = process.cwd()) {
+  const result = packageResolver.sync(parent, pkg);
+
+  return Boolean(result.builtin || result.path);
 }
-
-export { importMetaResolve };
 
 export * as globals from './globals';
 

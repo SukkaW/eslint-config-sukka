@@ -1,4 +1,4 @@
-import { constants, memo, importMetaResolve, RESTRICTED_IMPORT_TS } from '@eslint-sukka/shared';
+import { constants, memo, packageResolver, RESTRICTED_IMPORT_TS } from '@eslint-sukka/shared';
 
 import { generated_typescript_overrides } from './_generated_typescript_overrides';
 
@@ -12,10 +12,12 @@ import stylistic from '@stylistic/eslint-plugin';
 import eslint_plugin_import_x from 'eslint-plugin-import-x';
 import eslint_plugin_paths from 'eslint-plugin-paths';
 
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
 import process from 'node:process';
 
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+import { nullthrow } from 'foxts/guard';
 
 export interface OptionsTypeScript {
   allowJs?: boolean,
@@ -47,8 +49,13 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
     ]
   } = options;
 
-  const baseUrl = typeof __dirname === 'string' ? pathToFileURL(__dirname).href : import.meta.url;
-  const typescriptEslintParserPath = fileURLToPath(importMetaResolve('@typescript-eslint/parser', baseUrl));
+  const baseUrl = typeof __dirname === 'string' ? __dirname : fileURLToPath(import.meta.dirname);
+
+  const resolved = packageResolver.sync(baseUrl, '@typescript-eslint/parser');
+  const typescriptEslintParserPath = nullthrow(
+    resolved.path,
+    '[eslint-config-sukka#ts] Expect @typescript-eslint/parser to exist'
+  );
 
   return [
     {
