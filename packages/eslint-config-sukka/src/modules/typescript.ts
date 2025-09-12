@@ -2,7 +2,7 @@ import { constants, memo, packageResolver, RESTRICTED_IMPORT_TS } from '@eslint-
 
 import { generated_typescript_overrides } from './_generated_typescript_overrides';
 
-import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
+import type { FlatESLintConfigItem, ESLintRulesRecord } from '@eslint-sukka/shared';
 
 import { configs as ts_eslint_configs } from 'typescript-eslint';
 import typescript_eslint_plugin from '@typescript-eslint/eslint-plugin';
@@ -121,12 +121,12 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
         // plugin:@typescript-eslint/recommended
         ...ts_eslint_configs.base.rules,
         // plugin:@typescript-eslint/recommended-type-checked
-        ...ts_eslint_configs.recommendedTypeChecked.reduce<typeof ts_eslint_configs.base.rules>(
+        ...ts_eslint_configs.recommendedTypeChecked.reduce<ESLintRulesRecord>(
           (acc, curr) => ({ ...acc, ...curr.rules }),
           {}
         ),
         // plugin:@typescript-eslint/stylistic-type-checked
-        ...ts_eslint_configs.stylisticTypeChecked.reduce<typeof ts_eslint_configs.base.rules>(
+        ...ts_eslint_configs.stylisticTypeChecked.reduce<ESLintRulesRecord>(
           (acc, curr) => ({ ...acc, ...curr.rules }),
           {}
         ),
