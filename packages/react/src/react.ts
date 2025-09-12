@@ -299,10 +299,6 @@ export function react({
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/no-this-in-sfc.md
       // 'react/no-this-in-sfc': 'off', // covered by typescript
 
-      // Disallow multiple spaces between inline JSX props
-      // https://github.com/jsx-eslint/eslint-plugin-react/blob/ac102885765be5ff37847a871f239c6703e1c7cc/docs/rules/jsx-props-no-multi-spaces.md
-      '@stylistic/jsx-props-no-multi-spaces': 'error',
-
       // Enforce shorthand or standard form for React fragments
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/bc976b837abeab1dffd90ac6168b746a83fc83cc/docs/rules/jsx-fragments.md
       // 'react/jsx-fragments': 'off',
