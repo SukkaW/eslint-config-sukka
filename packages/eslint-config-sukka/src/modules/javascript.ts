@@ -1,7 +1,6 @@
 import eslint_js from '@eslint/js';
 import { memo, RESTRICTED_IMPORT_JS, constants, globals, getPackageJson } from '@eslint-sukka/shared';
 
-import stylistic from '@stylistic/eslint-plugin';
 import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
 import eslint_plugin_import_x, { createNodeResolver } from 'eslint-plugin-import-x';
 import eslint_plugin_sukka from 'eslint-plugin-sukka';
@@ -12,6 +11,7 @@ import eslint_plugin_demorgan from 'eslint-plugin-de-morgan';
 import eslint_plugin_autofix from 'eslint-plugin-autofix';
 // import eslint_plugin_no_secrets from 'eslint-plugin-no-secrets';
 
+import { stylistic_eslint_plugin } from '@eslint-sukka/shared';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 export interface OptionsJavaScript {
@@ -114,7 +114,7 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
       },
       plugins: {
         'unused-imports': memo(eslint_plugin_unused_imports, 'eslint-plugin-unused-imports'),
-        '@stylistic': memo(stylistic, '@stylistic/eslint-plugin'),
+        '@stylistic': stylistic_eslint_plugin,
         sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka'),
         'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x'),
         autofix: eslint_plugin_autofix,

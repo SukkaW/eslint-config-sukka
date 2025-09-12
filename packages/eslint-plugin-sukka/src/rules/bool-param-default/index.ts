@@ -72,7 +72,7 @@ function isOptionalBoolean(node: TSESTree.Identifier): boolean {
  */
 function usesQuestionOptionalSyntax(node: TSESTree.Identifier): boolean {
   return (
-    !!node.optional
+    node.optional
     && !!node.typeAnnotation
     && node.typeAnnotation.typeAnnotation.type === AST_NODE_TYPES.TSBooleanKeyword
   );

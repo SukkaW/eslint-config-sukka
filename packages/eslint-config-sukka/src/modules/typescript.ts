@@ -7,13 +7,11 @@ import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 import { configs as ts_eslint_configs } from 'typescript-eslint';
 import typescript_eslint_plugin from '@typescript-eslint/eslint-plugin';
 import typescript_eslint_parser from '@typescript-eslint/parser';
-import stylistic from '@stylistic/eslint-plugin';
 
 import eslint_plugin_import_x from 'eslint-plugin-import-x';
 import eslint_plugin_paths from 'eslint-plugin-paths';
+import { stylistic_eslint_plugin } from '@eslint-sukka/shared';
 
-import { fileURLToPath } from 'node:url';
-import { dirname } from 'node:path';
 import process from 'node:process';
 
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
@@ -49,7 +47,7 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
     ]
   } = options;
 
-  const baseUrl = typeof __dirname === 'string' ? __dirname : fileURLToPath(import.meta.dirname);
+  const baseUrl = typeof __dirname === 'string' ? __dirname : import.meta.dirname;
 
   const resolved = packageResolver.sync(baseUrl, '@typescript-eslint/parser');
   const typescriptEslintParserPath = nullthrow(
@@ -71,7 +69,7 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
       ],
       plugins: {
         '@typescript-eslint': memo<any>(typescript_eslint_plugin, '@typescript-eslint/eslint-plugin'),
-        '@stylistic/': memo(stylistic, '@stylistic/eslint-plugin'),
+        '@stylistic/': stylistic_eslint_plugin,
         'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x'),
         paths: eslint_plugin_paths
       },

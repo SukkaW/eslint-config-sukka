@@ -31,3 +31,5 @@ export function ruleopt<S extends Linter.RuleSeverity, Options extends unknown[]
   ...opt: Options): Linter.RuleEntry<Options> {
   return opt.length ? [severity, ...opt] as const : severity;
 }
+
+export { stylistic_eslint_plugin } from './deps/stylistic--eslint-plugin';

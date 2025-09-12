@@ -18,7 +18,7 @@ import type { OptionsTypeScript } from './modules/typescript';
 import { legacy } from './modules/legacy';
 import type { OptionsLegacy } from './modules/legacy';
 
-import { isPackageExists, isDirectDependency } from '@eslint-sukka/shared';
+import { isPackageExists as _isPackageExists, isDirectDependency } from '@eslint-sukka/shared';
 import { defu } from 'defu';
 // import { isCI } from 'ci-info';
 
@@ -74,6 +74,8 @@ function config<T>(options: SharedOptions<T> | undefined | boolean, ...defaults:
   }
   return rest as T;
 }
+
+const isPackageExists = (pkg: string) => _isPackageExists(pkg, typeof __dirname === 'string' ? __dirname : import.meta.dirname);
 
 export async function sukka(options?: ESLintSukkaOptions, ...userConfig: FlatESLintConfigItem[]): Promise<FlatESLintConfigItem[]> {
   const start = Date.now();

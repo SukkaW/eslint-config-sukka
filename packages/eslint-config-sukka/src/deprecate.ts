@@ -3,7 +3,7 @@ import { isCI } from 'ci-info';
 import picocolors from 'picocolors';
 
 export async function deprecate(pkg: string) {
-  if (!isPackageExists(pkg)) {
+  if (!isPackageExists(pkg, typeof __dirname === 'string' ? __dirname : import.meta.dirname)) {
     return;
   }
 

@@ -6,7 +6,7 @@ export async function foxquire<T>(pkg: string): Promise<T> {
   if (
     !isCI
     && process.stdout.isTTY
-    && !isPackageExists(pkg)
+    && !isPackageExists(pkg, typeof __dirname === 'string' ? __dirname : import.meta.dirname)
   ) {
     const { confirm } = await import('@clack/prompts');
     const result = await confirm({

@@ -47,6 +47,10 @@ const manualChunks: GetManualChunk = (id: string, { getModuleInfo }) => {
   }
 };
 
+const defaultExternal = [
+  'eslint'
+];
+
 export function createRollupConfig(packageJsonPath: PathLike,
   externalDependencies: string[] = [],
   {
@@ -66,11 +70,12 @@ export function createRollupConfig(packageJsonPath: PathLike,
     externalLiveBindings = true
   }: RollupConfigPlugin = {}): RollupOptions[] {
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8')) as PackageJson;
-  const $external = Object.keys(packageJson.dependencies || {}).concat(Object.keys(packageJson.peerDependencies || {})).concat(builtinModules, externalDependencies, ['eslint']);
+  const $external = Object.keys(packageJson.dependencies || {}).concat(Object.keys(packageJson.peerDependencies || {})).concat(builtinModules, externalDependencies, defaultExternal);
 
   const external = (source: string) => (
     source.startsWith('node:')
     || source.startsWith('bun:')
+    || source.startsWith('@eslint-sukka/')
     || $external.some((name) => source === name || source.startsWith(`${name}/`))
   );
 
@@ -137,24 +142,24 @@ export function createRollupConfig(packageJsonPath: PathLike,
         ...(typeof json === 'boolean' ? {} : json)
       }),
       swc({
-        minify: true,
-        jsc: {
-          minify: {
-            mangle: true,
-            compress: true,
-            module: true
-          },
-          transform: {
-            optimizer: {
-              globals: {
-                typeofs: {
-                  window: 'undefined',
-                  document: 'undefined'
-                }
-              }
-            }
-          }
-        }
+        // minify: true,
+        // jsc: {
+        //   minify: {
+        //     mangle: true,
+        //     compress: true,
+        //     module: true
+        //   },
+        //   transform: {
+        //     optimizer: {
+        //       globals: {
+        //         typeofs: {
+        //           window: 'undefined',
+        //           document: 'undefined'
+        //         }
+        //       }
+        //     }
+        //   }
+        // }
       }),
       analyze && bundleAnalyzer.adapter(bundleAnalyzer.analyzer())
     ],

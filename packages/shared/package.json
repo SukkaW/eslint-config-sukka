@@ -32,11 +32,13 @@
   "license": "MIT",
   "dependencies": {
     "@package-json/types": "^0.0.11",
+    "@typescript-eslint/types": "^8.43.0",
     "@typescript-eslint/utils": "^8.43.0",
     "oxc-resolver": "^11.7.2"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
+    "@stylistic/eslint-plugin": "^5.3.1",
     "globals": "^16.4.0"
   }
 }
