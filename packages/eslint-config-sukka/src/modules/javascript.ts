@@ -1072,6 +1072,9 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/unicorn/no-unnecessary-array-splice-count': 'error',
         'sukka/unicorn/no-useless-error-capture-stack-trace': 'error',
         'sukka/unicorn/prefer-class-fields': 'error',
+        'sukka/unicorn/prefer-bigint-literals': 'error',
+        'sukka/unicorn/prefer-classlist-toggle': 'warn',
+        'sukka/unicorn/require-module-attributes': 'error',
 
         'no-restricted-imports': [
           'error',

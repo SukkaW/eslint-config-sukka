@@ -195,6 +195,12 @@ import no_useless_error_capture_stack_trace from 'eslint-plugin-unicorn/rules/no
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_class_fields from 'eslint-plugin-unicorn/rules/prefer-class-fields.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_bigint_literals from 'eslint-plugin-unicorn/rules/prefer-bigint-literals.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_classlist_toggle from 'eslint-plugin-unicorn/rules/prefer-classlist-toggle.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import require_module_attributes from 'eslint-plugin-unicorn/rules/require-module-attributes.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
 import { createRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/utils/rule.js';
 
 // eslint-plugin-sukka
@@ -367,7 +373,10 @@ export default {
       'unicorn/no-unnecessary-array-flat-depth': no_unnecessary_array_flat_depth,
       'unicorn/no-unnecessary-array-splice-count': no_unnecessary_array_splice_count,
       'unicorn/no-useless-error-capture-stack-trace': no_useless_error_capture_stack_trace,
-      'unicorn/prefer-class-fields': prefer_class_fields
+      'unicorn/prefer-class-fields': prefer_class_fields,
+      'unicorn/prefer-bigint-literals': prefer_bigint_literals,
+      'unicorn/prefer-classlist-toggle': prefer_classlist_toggle,
+      'unicorn/require-module-attributes': require_module_attributes
     })
   )
 } as unknown as ESLint.Plugin;
