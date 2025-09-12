@@ -1,12 +1,11 @@
 import { constants } from '@eslint-sukka/shared';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
-// @ts-expect-error -- missing -types
-import eslint_plugin_next from '@next/eslint-plugin-next';
+import { flatConfig as eslint_plugin_next_flatconfig } from '@next/eslint-plugin-next';
 
 export function next(): FlatESLintConfigItem[] {
   return [{
-    ...eslint_plugin_next.flatConfig.coreWebVitals,
+    ...(eslint_plugin_next_flatconfig.coreWebVitals as any),
     files: [
       constants.GLOB_TS,
       constants.GLOB_TSX,
@@ -14,8 +13,8 @@ export function next(): FlatESLintConfigItem[] {
       constants.GLOB_JSX
     ],
     rules: {
-      ...eslint_plugin_next.flatConfig.coreWebVitals.rules,
-      '@next/next/no-img-element': 'warn'
+      ...eslint_plugin_next_flatconfig.coreWebVitals.rules as any,
+      '@next/next/no-img-element': 'off'
     }
   }];
 }

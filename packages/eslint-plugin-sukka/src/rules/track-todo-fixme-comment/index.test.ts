@@ -191,7 +191,7 @@ runTest({
 
       // valid end of file TODO
         `,
-      errors: createFixedArray(11).map(() => ({ messageId: 'todo' }))
+      errors: createFixedArray(11).map(() => ({ messageId: 'todo' } as const))
     }
   ]
 });

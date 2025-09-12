@@ -406,7 +406,7 @@ runTest({
         var arrowEquivalent5 = (p) => { if (p) { return "boolean"; } return typeof false; };
         var arrowEquivalent6 = (p) => { if (p) { return ~4; } return -5; };
       `,
-      errors: createFixedArray(8).map(() => ({ messageId: 'refactorReturn' }))
+      errors: createFixedArray(8).map(() => ({ messageId: 'refactorReturn' } as const))
     }
   ]
 });
