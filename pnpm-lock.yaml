@@ -114,6 +114,9 @@ importers:
       '@eslint-community/eslint-plugin-eslint-comments':
         specifier: ^4.5.0
         version: 4.5.0(eslint@9.35.0(jiti@2.5.1))
+      '@eslint-sukka/eslint-plugin-stylistic':
+        specifier: workspace:*
+        version: link:../eslint-plugin-stylistic
       '@eslint-sukka/shared':
         specifier: workspace:*
         version: link:../shared
@@ -274,6 +277,19 @@ importers:
         specifier: ^6.10.2
         version: 6.10.2(eslint@9.35.0(jiti@2.5.1))
 
+  packages/eslint-plugin-stylistic:
+    dependencies:
+      eslint:
+        specifier: '*'
+        version: 9.35.0(jiti@2.5.1)
+    devDependencies:
+      '@eslint-sukka/rollup-config':
+        specifier: workspace:*
+        version: link:../rollup-config
+      '@stylistic/eslint-plugin':
+        specifier: ^5.3.1
+        version: 5.3.1(eslint@9.35.0(jiti@2.5.1))
+
   packages/eslint-plugin-sukka:
     dependencies:
       '@eslint-sukka/shared':
@@ -328,6 +344,9 @@ importers:
       '@eslint-sukka/eslint-plugin-react-jsx-a11y':
         specifier: workspace:*
         version: link:../eslint-plugin-react-jsx-a11y
+      '@eslint-sukka/eslint-plugin-stylistic':
+        specifier: workspace:*
+        version: link:../eslint-plugin-stylistic
       '@eslint-sukka/shared':
         specifier: workspace:*
         version: link:../shared
@@ -414,9 +433,6 @@ importers:
       '@eslint-sukka/rollup-config':
         specifier: workspace:*
         version: link:../rollup-config
-      '@stylistic/eslint-plugin':
-        specifier: ^5.3.1
-        version: 5.3.1(eslint@9.35.0(jiti@2.5.1))
       globals:
         specifier: ^16.4.0
         version: 16.4.0
@@ -578,6 +594,12 @@ packages:
 
   '@eslint-community/eslint-utils@4.8.0':
     resolution: {integrity: sha512-MJQFqrZgcW0UNYLGOuQpey/oTN59vyWwplvCGZztn1cKz9agZPPYpJB7h2OMmuu7VLqkvEjN8feFZJmxNF9D+Q==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    peerDependencies:
+      eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
+
+  '@eslint-community/eslint-utils@4.9.0':
+    resolution: {integrity: sha512-ayVFHdtZ+hsq1t2Dy24wCmGXGe4q9Gu3smhLYALJrr473ZH27MsnSL+LKUlimp4BWJqMDMLmPpx/Q9R3OAlL4g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
@@ -3206,6 +3228,11 @@ snapshots:
       eslint: 9.35.0(jiti@2.5.1)
       eslint-visitor-keys: 3.4.3
 
+  '@eslint-community/eslint-utils@4.9.0(eslint@9.35.0(jiti@2.5.1))':
+    dependencies:
+      eslint: 9.35.0(jiti@2.5.1)
+      eslint-visitor-keys: 3.4.3
+
   '@eslint-community/regexpp@4.12.1': {}
 
   '@eslint-react/ast@1.53.1(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2)':
@@ -3725,7 +3752,7 @@ snapshots:
 
   '@stylistic/eslint-plugin@5.3.1(eslint@9.35.0(jiti@2.5.1))':
     dependencies:
-      '@eslint-community/eslint-utils': 4.8.0(eslint@9.35.0(jiti@2.5.1))
+      '@eslint-community/eslint-utils': 4.9.0(eslint@9.35.0(jiti@2.5.1))
       '@typescript-eslint/types': 8.43.0
       eslint: 9.35.0(jiti@2.5.1)
       eslint-visitor-keys: 4.2.1
@@ -4319,7 +4346,7 @@ snapshots:
 
   eslint-plugin-es-x@7.8.0(eslint@9.35.0(jiti@2.5.1)):
     dependencies:
-      '@eslint-community/eslint-utils': 4.8.0(eslint@9.35.0(jiti@2.5.1))
+      '@eslint-community/eslint-utils': 4.9.0(eslint@9.35.0(jiti@2.5.1))
       '@eslint-community/regexpp': 4.12.1
       eslint: 9.35.0(jiti@2.5.1)
       eslint-compat-utils: 0.5.1(eslint@9.35.0(jiti@2.5.1))
@@ -4376,7 +4403,7 @@ snapshots:
 
   eslint-plugin-n@17.21.3(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2):
     dependencies:
-      '@eslint-community/eslint-utils': 4.8.0(eslint@9.35.0(jiti@2.5.1))
+      '@eslint-community/eslint-utils': 4.9.0(eslint@9.35.0(jiti@2.5.1))
       enhanced-resolve: 5.18.3
       eslint: 9.35.0(jiti@2.5.1)
       eslint-plugin-es-x: 7.8.0(eslint@9.35.0(jiti@2.5.1))
@@ -4561,7 +4588,7 @@ snapshots:
   eslint-plugin-unicorn@61.0.2(patch_hash=9923e252d3283d4776b2d22ccc01043952f45b2200455877716e17fa7b8aa2de)(eslint@9.35.0(jiti@2.5.1)):
     dependencies:
       '@babel/helper-validator-identifier': 7.27.1
-      '@eslint-community/eslint-utils': 4.8.0(eslint@9.35.0(jiti@2.5.1))
+      '@eslint-community/eslint-utils': 4.9.0(eslint@9.35.0(jiti@2.5.1))
       '@eslint/plugin-kit': 0.3.5
       change-case: 5.4.4
       ci-info: 4.3.0

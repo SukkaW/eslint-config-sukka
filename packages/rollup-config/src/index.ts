@@ -10,6 +10,8 @@ import type { RollupAliasOptions } from '@rollup/plugin-alias';
 import * as bundleAnalyzer from 'vite-bundle-analyzer';
 import replace from '@rollup/plugin-replace';
 
+import type { RollupReplaceOptions } from '@rollup/plugin-replace';
+
 import { rollupFoximport } from './rollup-foxquire';
 
 import type { RollupOptions, OutputOptions as RollupOutputOptions, InputOption as RollupInputOption, GetManualChunk } from 'rollup';
@@ -34,7 +36,9 @@ interface RollupConfigPlugin {
   /**
    * @default true
    */
-  externalLiveBindings?: boolean
+  externalLiveBindings?: boolean,
+
+  replace?: RollupReplaceOptions
 }
 
 const manualChunks: GetManualChunk = (id: string, { getModuleInfo }) => {
@@ -67,7 +71,8 @@ export function createRollupConfig(packageJsonPath: PathLike,
      * However, it might trigger issues with circular dependencies when disabled
      * Please disable it wisely, this is enabled by default
      */
-    externalLiveBindings = true
+    externalLiveBindings = true,
+    replace: replaceOpt,
   }: RollupConfigPlugin = {}): RollupOptions[] {
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8')) as PackageJson;
   const $external = Object.keys(packageJson.dependencies || {}).concat(Object.keys(packageJson.peerDependencies || {})).concat(builtinModules, externalDependencies, defaultExternal);
@@ -121,14 +126,15 @@ export function createRollupConfig(packageJsonPath: PathLike,
       ] satisfies RollupOutputOptions[],
     plugins: [
       foxquire && rollupFoximport(),
+      alias && aliasPlugin(alias),
       replace({
         values: {
           'typeof window': JSON.stringify('undefined'),
-          'typeof document': JSON.stringify('undefined')
+          'typeof document': JSON.stringify('undefined'),
         },
+        ...replaceOpt,
         preventAssignment: true
       }),
-      alias && aliasPlugin(alias),
       nodeResolve && nodeResolvePlugin({
         exportConditions: ['node', 'import', 'require', 'default']
       }),
@@ -142,24 +148,24 @@ export function createRollupConfig(packageJsonPath: PathLike,
         ...(typeof json === 'boolean' ? {} : json)
       }),
       swc({
-        // minify: true,
-        // jsc: {
-        //   minify: {
-        //     mangle: true,
-        //     compress: true,
-        //     module: true
-        //   },
-        //   transform: {
-        //     optimizer: {
-        //       globals: {
-        //         typeofs: {
-        //           window: 'undefined',
-        //           document: 'undefined'
-        //         }
-        //       }
-        //     }
-        //   }
-        // }
+        minify: true,
+        jsc: {
+          minify: {
+            mangle: true,
+            compress: true,
+            module: true
+          },
+          transform: {
+            optimizer: {
+              globals: {
+                typeofs: {
+                  window: 'undefined',
+                  document: 'undefined'
+                }
+              }
+            }
+          }
+        }
       }),
       analyze && bundleAnalyzer.adapter(bundleAnalyzer.analyzer())
     ],

@@ -1,14 +1,12 @@
 {
-  "name": "@eslint-sukka/shared",
+  "name": "@eslint-sukka/eslint-plugin-stylistic",
   "version": "7.0.1",
-  "description": "Sukka's ESLint config",
   "homepage": "https://github.com/SukkaW/eslint-config-sukka",
   "repository": {
     "url": "https://github.com/SukkaW/eslint-config-sukka",
-    "directory": "packages/shared"
+    "directory": "packages/eslint-plugin-stylistic"
   },
   "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -16,7 +14,6 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
       "require": "./dist/index.cjs",
       "default": "./dist/index.cjs"
     },
@@ -25,19 +22,12 @@
   "scripts": {
     "build": "rollup -c rollup.config.ts --configPlugin swc3"
   },
-  "keywords": [
-    "eslint-config"
-  ],
-  "author": "Sukka <https://skk.moe>",
   "license": "MIT",
-  "dependencies": {
-    "@package-json/types": "^0.0.11",
-    "@typescript-eslint/types": "^8.43.0",
-    "@typescript-eslint/utils": "^8.43.0",
-    "oxc-resolver": "^11.7.2"
+  "peerDependencies": {
+    "eslint": "*"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
-    "globals": "^16.4.0"
+    "@stylistic/eslint-plugin": "^5.3.1"
   }
 }

@@ -8,7 +8,7 @@ import eslint_plugin_react_compiler from 'eslint-plugin-react-compiler';
 import eslint_plugin_react_refresh from 'eslint-plugin-react-refresh';
 import eslint_plugin_react_prefer_function_component from 'eslint-plugin-react-prefer-function-component';
 import eslint_react from '@eslint-react/eslint-plugin';
-import { stylistic_eslint_plugin } from '@eslint-sukka/shared';
+import { stylistic_eslint_plugin } from '@eslint-sukka/eslint-plugin-stylistic';
 
 // @ts-expect-error -- no types
 import eslint_plugin_ssr_friendly from 'eslint-plugin-ssr-friendly';
@@ -85,7 +85,7 @@ export function react({
     plugins: {
       'jsx-a11y-minimal': memo(eslint_plugin_jsx_a11y_minimal, '@eslint-sukka/eslint-plugin-react-jsx-a11y#eslint_plugin_jsx_a11y_minimal'),
       'react-hooks': memo(eslint_plugin_react_hooks, 'eslint-plugin-react-hooks'),
-      '@stylistic': stylistic_eslint_plugin,
+      '@stylistic': memo(stylistic_eslint_plugin, '@stylistic/eslint-plugin'),
       'react-prefer-function-component': memo(eslint_plugin_react_prefer_function_component, 'eslint-plugin-react-prefer-function-component'),
       'react-compiler': memo(eslint_plugin_react_compiler, 'eslint-plugin-react-compiler'),
       ...memoized_eslint_react.configs.recommended.plugins as any,

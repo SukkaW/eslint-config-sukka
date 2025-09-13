@@ -10,7 +10,7 @@ import typescript_eslint_parser from '@typescript-eslint/parser';
 
 import eslint_plugin_import_x from 'eslint-plugin-import-x';
 import eslint_plugin_paths from 'eslint-plugin-paths';
-import { stylistic_eslint_plugin } from '@eslint-sukka/shared';
+import { stylistic_eslint_plugin } from '@eslint-sukka/eslint-plugin-stylistic';
 
 import process from 'node:process';
 

@@ -11,7 +11,7 @@ import eslint_plugin_demorgan from 'eslint-plugin-de-morgan';
 import eslint_plugin_autofix from 'eslint-plugin-autofix';
 // import eslint_plugin_no_secrets from 'eslint-plugin-no-secrets';
 
-import { stylistic_eslint_plugin } from '@eslint-sukka/shared';
+import { stylistic_eslint_plugin } from '@eslint-sukka/eslint-plugin-stylistic';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 export interface OptionsJavaScript {
@@ -114,11 +114,11 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
       },
       plugins: {
         'unused-imports': memo(eslint_plugin_unused_imports, 'eslint-plugin-unused-imports'),
-        '@stylistic': stylistic_eslint_plugin,
+        '@stylistic': memo(stylistic_eslint_plugin, '@stylistic/eslint-plugin'),
         sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka'),
         'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x'),
         autofix: eslint_plugin_autofix,
-        antfu: memo<any>(eslint_plugin_antfu, 'eslint_plugin_antfu')
+        antfu: memo(eslint_plugin_antfu, 'eslint_plugin_antfu')
       },
       rules: {
         ...eslint_plugin_import_x.configs.recommended.rules,
