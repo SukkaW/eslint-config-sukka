@@ -56,118 +56,119 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
   let maxMessageWidth = 0;
   let showLineNumbers: number | boolean = false;
 
-  results
-    .sort((a, b) => {
-      if (a.errorCount === b.errorCount) {
-        if (a.warningCount === 0 && b.warningCount > 0) return 1;
-        if (a.warningCount > 0 && b.warningCount === 0) return -1;
+  results.sort((a, b) => {
+    if (a.errorCount === b.errorCount) {
+      return b.warningCount - a.warningCount;
+    }
 
-        return b.warningCount - a.warningCount;
-      }
-      if (a.errorCount === 0) return -1;
-      if (b.errorCount === 0) return 1;
-      return b.errorCount - a.errorCount;
-    })
-    .forEach(result => {
-      const { messages, filePath, usedDeprecatedRules } = result;
+    if (a.errorCount === 0) return -1;
+    if (b.errorCount === 0) return 1;
 
-      if (messages.length === 0) return;
+    return b.errorCount - a.errorCount;
+  });
 
-      errorCount += result.errorCount;
-      warningCount += result.warningCount;
-      fatalErrorCount += result.fatalErrorCount;
-      fixableCount += result.fixableWarningCount + result.fixableErrorCount;
+  for (let i = 0, len = results.length; i < len; i++) {
+    const result = results[i];
+    const { messages, filePath, usedDeprecatedRules } = result;
 
-      usedDeprecatedRules.forEach(d => {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- strictNullChecks
-        appendArrayInPlace((deprecatedReplacedBy[d.ruleId] ||= []), d.replacedBy);
-      });
+    if (messages.length === 0) continue;
 
-      if (lines.length !== 0) {
-        lines.push(separatorLine);
-      }
+    errorCount += result.errorCount;
+    warningCount += result.warningCount;
+    fatalErrorCount += result.fatalErrorCount;
+    fixableCount += result.fixableWarningCount + result.fixableErrorCount;
 
-      let firstErrorOrWarning: Linter.LintMessage | undefined;
-
-      const headerIndex = lines.push(null) - 1;
-
-      messages
-        .sort((a, b) => {
-          if (a.fatal === b.fatal && a.severity === b.severity) {
-            if (a.line === b.line) {
-              return a.column < b.column ? -1 : 1;
-            }
-
-            return a.line < b.line ? -1 : 1;
-          }
-
-          if ((a.fatal || a.severity === 2) && (!b.fatal || b.severity !== 2)) {
-            return 1;
-          }
-
-          return -1;
-        })
-        .forEach(x => {
-          const isError = x.severity === 2 || (x.severity as unknown) === 'error';
-
-          if (isError) {
-            firstErrorOrWarning ||= x;
-          }
-
-          // Stylize inline code blocks
-          const message = x.message.replaceAll(/\B`(.+?)`\B|\B'(.+?)'\B|\B"(.+?)"\B/g, (m, p1, p2, p3) => picocolors.bold(p1 || p2 || p3));
-
-          const line = String(x.line || 0);
-          const column = String(x.column || 0);
-          const lineWidth = fastStringWidth(line);
-          const columnWidth = fastStringWidth(column);
-          const messageWidth = fastStringWidth(message);
-
-          if (lineWidth > maxLineWidth) {
-            maxLineWidth = lineWidth;
-          }
-
-          if (columnWidth > maxColumnWidth) {
-            maxColumnWidth = columnWidth;
-          }
-          if (messageWidth > maxMessageWidth) {
-            maxMessageWidth = messageWidth;
-          }
-
-          showLineNumbers ||= x.line || x.column;
-
-          lines.push({
-            type: 'message',
-            severity: x.fatal
-              ? 'fatal'
-              : isError
-                ? 'error'
-                : 'warning',
-            line,
-            lineWidth,
-            column,
-            columnWidth,
-            message,
-            messageWidth,
-            ruleId: x.ruleId || ''
-          });
-        });
-
-      if (firstErrorOrWarning == null) {
-        firstErrorOrWarning = messages[0];
-      }
-
-      lines[headerIndex] = {
-        type: 'header',
-        filePath,
-        relativeFilePath: path.relative('.', filePath),
-        firstLineCol: `${firstErrorOrWarning.line}:${firstErrorOrWarning.column}`
-      } satisfies Header;
+    usedDeprecatedRules.forEach(d => {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- strictNullChecks
+      appendArrayInPlace((deprecatedReplacedBy[d.ruleId] ||= []), d.replacedBy);
     });
+
+    if (lines.length !== 0) {
+      lines.push(separatorLine);
+    }
+
+    let firstErrorOrWarning: Linter.LintMessage | undefined;
+
+    const headerIndex = lines.push(null) - 1;
+
+    messages.sort((a, b) => {
+      if (a.fatal === b.fatal && a.severity === b.severity) {
+        if (a.line === b.line) {
+          return a.column < b.column ? -1 : 1;
+        }
+
+        return a.line < b.line ? -1 : 1;
+      }
+
+      if ((a.fatal || a.severity === 2) && (!b.fatal || b.severity !== 2)) {
+        return 1;
+      }
+
+      return -1;
+    });
+
+    for (let j = 0, messageLen = messages.length; j < messageLen; j++) {
+      const x = messages[j];
+      const isError = x.severity === 2 || (x.severity as unknown) === 'error';
+
+      if (isError) {
+        firstErrorOrWarning ||= x;
+      }
+
+      // Stylize inline code blocks
+      const message = x.message.replaceAll(/\B`(.+?)`\B|\B'(.+?)'\B|\B"(.+?)"\B/g, (m, p1, p2, p3) => picocolors.bold(p1 || p2 || p3));
+
+      const line = String(x.line || 0);
+      const column = String(x.column || 0);
+      const lineWidth = fastStringWidth(line);
+      const columnWidth = fastStringWidth(column);
+      const messageWidth = fastStringWidth(message);
+
+      if (lineWidth > maxLineWidth) {
+        maxLineWidth = lineWidth;
+      }
+
+      if (columnWidth > maxColumnWidth) {
+        maxColumnWidth = columnWidth;
+      }
+      if (messageWidth > maxMessageWidth) {
+        maxMessageWidth = messageWidth;
+      }
+
+      showLineNumbers ||= x.line || x.column;
+
+      lines.push({
+        type: 'message',
+        severity: x.fatal
+          ? 'fatal'
+          : (isError
+            ? 'error'
+            : 'warning'),
+        line,
+        lineWidth,
+        column,
+        columnWidth,
+        message,
+        messageWidth,
+        ruleId: x.ruleId || ''
+      });
+    };
+
+    if (firstErrorOrWarning == null) {
+      firstErrorOrWarning = messages[0];
+    }
+
+    lines[headerIndex] = {
+      type: 'header',
+      filePath,
+      relativeFilePath: path.relative('.', filePath),
+      firstLineCol: `${firstErrorOrWarning.line}:${firstErrorOrWarning.column}`
+    } satisfies Header;
+  }
 
   let output = '\n';
 
-  if (process.stdout.isTTY && !isCI && process.env.TERM_PROGRAM === 'iTerm.app') {
+  if (process.stdout.isTTY && process.env.TERM_PROGRAM === 'iTerm.app' && !isCI) {
     // Make relative paths Command-clickable in iTerm
     output += iTermSetCwd();
   }
@@ -212,11 +213,11 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
             : '',
 
           ' '.repeat(maxColumnWidth - x.columnWidth) + x.message,
-          ' '.repeat(maxMessageWidth - x.messageWidth) + (
-            hasHyperlink && ruleUrl
-              ? link(picocolors.dim(x.ruleId), ruleUrl)
-              : picocolors.dim(x.ruleId)
-          )
+          ' '.repeat(maxMessageWidth - x.messageWidth),
+
+          hasHyperlink && ruleUrl
+            ? link(picocolors.dim(x.ruleId), ruleUrl)
+            : picocolors.dim(x.ruleId)
         ];
 
         return fastStringArrayJoin(line, ' ');
