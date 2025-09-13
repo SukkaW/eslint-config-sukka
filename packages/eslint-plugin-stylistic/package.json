@@ -23,11 +23,11 @@
     "build": "rollup -c rollup.config.ts --configPlugin swc3"
   },
   "license": "MIT",
-  "peerDependencies": {
-    "eslint": "*"
-  },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
     "@stylistic/eslint-plugin": "^5.3.1"
+  },
+  "peerDependencies": {
+    "eslint": "*"
   }
 }

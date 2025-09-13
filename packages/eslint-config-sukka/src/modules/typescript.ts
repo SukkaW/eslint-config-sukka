@@ -69,7 +69,7 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
       ],
       plugins: {
         '@typescript-eslint': memo<any>(typescript_eslint_plugin, '@typescript-eslint/eslint-plugin'),
-        '@stylistic/': stylistic_eslint_plugin,
+        '@stylistic': memo(stylistic_eslint_plugin, '@stylistic/eslint-plugin'),
         'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x'),
         paths: eslint_plugin_paths
       },

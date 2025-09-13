@@ -72,7 +72,7 @@ export function createRollupConfig(packageJsonPath: PathLike,
      * Please disable it wisely, this is enabled by default
      */
     externalLiveBindings = true,
-    replace: replaceOpt,
+    replace: replaceOpt
   }: RollupConfigPlugin = {}): RollupOptions[] {
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8')) as PackageJson;
   const $external = Object.keys(packageJson.dependencies || {}).concat(Object.keys(packageJson.peerDependencies || {})).concat(builtinModules, externalDependencies, defaultExternal);
@@ -130,7 +130,7 @@ export function createRollupConfig(packageJsonPath: PathLike,
       replace({
         values: {
           'typeof window': JSON.stringify('undefined'),
-          'typeof document': JSON.stringify('undefined'),
+          'typeof document': JSON.stringify('undefined')
         },
         ...replaceOpt,
         preventAssignment: true

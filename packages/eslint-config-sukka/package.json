@@ -36,7 +36,6 @@
     "@eslint/js": "^9.35.0",
     "@typescript-eslint/eslint-plugin": "^8.43.0",
     "@typescript-eslint/parser": "^8.43.0",
-    "@typescript-eslint/types": "^8.43.0",
     "ci-info": "^4.3.0",
     "defu": "^6.1.4",
     "eslint-import-resolver-typescript": "^4.4.4",
