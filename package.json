@@ -21,6 +21,7 @@
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
     "@eslint-sukka/yaml": "workspace:*",
+    "@eslint/core": "^0.15.2",
     "@swc-node/register": "^1.11.1",
     "@swc/core": "^1.13.5",
     "@types/mocha": "^10.0.10",

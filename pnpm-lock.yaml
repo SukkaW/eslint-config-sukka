@@ -51,6 +51,9 @@ importers:
       '@eslint-sukka/yaml':
         specifier: workspace:*
         version: link:packages/yaml
+      '@eslint/core':
+        specifier: ^0.15.2
+        version: 0.15.2
       '@swc-node/register':
         specifier: ^1.11.1
         version: 1.11.1(@swc/core@1.13.5)(@swc/types@0.1.24)(typescript@5.9.2)
@@ -304,6 +307,9 @@ importers:
       '@typescript-eslint/utils':
         specifier: ^8.43.0
         version: 8.43.0(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2)
+      eslint:
+        specifier: '*'
+        version: 9.35.0(jiti@2.5.1)
       foxts:
         specifier: ^3.13.0
         version: 3.13.0
