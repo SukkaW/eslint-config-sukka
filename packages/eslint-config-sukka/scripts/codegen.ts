@@ -67,7 +67,7 @@ const DISABLED_RULES = new Set([
             acc.push(
               // @ts-expect-error -- no type overlap between eslint and typescript-eslint
               [baseRuleName, 'off'],
-              ['@typescript-eslint/return-await', 'error']
+              ['@typescript-eslint/return-await', ['error', 'in-try-catch']]
             );
 
             break;
