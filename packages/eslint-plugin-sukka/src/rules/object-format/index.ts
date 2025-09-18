@@ -1,7 +1,7 @@
 import type { RuleFix } from '@typescript-eslint/utils/ts-eslint';
 import { createRule } from '@eslint-sukka/shared';
 import { detectEol } from 'foxts/detect-eol';
-import type { TSESTree } from '@typescript-eslint/utils';
+import type { TSESTree } from '@typescript-eslint/types';
 
 export interface Options {
   maxLineLength?: number,

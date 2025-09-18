@@ -20,8 +20,8 @@
 // https://sonarsource.github.io/rspec/#/rspec/S3616/javascript
 
 import { createRule } from '@eslint-sukka/shared';
-import { AST_NODE_TYPES } from '@typescript-eslint/utils';
-import type { TSESTree } from '@typescript-eslint/utils';
+import { AST_NODE_TYPES } from '@typescript-eslint/types';
+import type { TSESTree } from '@typescript-eslint/types';
 
 export default createRule({
   name: 'comma-or-logical-or-case',

@@ -21,8 +21,8 @@
 
 import * as ts from 'typescript';
 import { createRule, ensureParserWithTypeInformation } from '@eslint-sukka/shared';
-import { AST_NODE_TYPES } from '@typescript-eslint/utils';
-import type { TSESTree } from '@typescript-eslint/utils';
+import { AST_NODE_TYPES } from '@typescript-eslint/types';
+import type { TSESTree } from '@typescript-eslint/types';
 import { getTypeFromTreeNode } from '../no-for-in-iterable';
 
 export default createRule({

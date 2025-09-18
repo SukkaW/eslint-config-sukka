@@ -20,8 +20,9 @@
 // https://sonarsource.github.io/rspec/#/rspec/S2990/javascript
 
 import { createRule } from '@eslint-sukka/shared';
-import { AST_NODE_TYPES, TSESLint } from '@typescript-eslint/utils';
-import type { TSESTree } from '@typescript-eslint/utils';
+import { TSESLint } from '@typescript-eslint/utils';
+import { AST_NODE_TYPES } from '@typescript-eslint/types';
+import type { TSESTree } from '@typescript-eslint/types';
 
 type MessageIds = 'removeThis' | 'suggestRemoveThis' | 'suggestUseGlobalThis';
 

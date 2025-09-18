@@ -1,5 +1,6 @@
-import { AST_NODE_TYPES } from '@typescript-eslint/utils';
-import type { TSESLint, TSESTree } from '@typescript-eslint/utils';
+import { AST_NODE_TYPES } from '@typescript-eslint/types';
+import type { TSESTree } from '@typescript-eslint/types';
+import type { TSESLint } from '@typescript-eslint/utils';
 
 export function getVariableFromIdentifier(identifier: TSESTree.Identifier, scope: TSESLint.Scope.Scope) {
   let variable = scope.variables.find(value => value.name === identifier.name);

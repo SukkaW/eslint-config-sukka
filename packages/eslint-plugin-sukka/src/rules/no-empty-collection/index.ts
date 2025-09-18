@@ -19,8 +19,9 @@
  */
 // https://sonarsource.github.io/rspec/#/rspec/S4158
 
-import type { TSESTree } from '@typescript-eslint/utils';
-import { AST_NODE_TYPES, TSESLint } from '@typescript-eslint/utils';
+import { AST_NODE_TYPES } from '@typescript-eslint/types';
+import type { TSESTree } from '@typescript-eslint/types';
+import { TSESLint } from '@typescript-eslint/utils';
 import { createRule } from '@eslint-sukka/shared';
 
 // Methods that mutate the collection but can't add elements

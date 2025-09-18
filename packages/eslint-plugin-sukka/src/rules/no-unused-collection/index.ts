@@ -19,8 +19,9 @@
  */
 // https://sonarsource.github.io/rspec/#/rspec/S4030
 
-import type { TSESTree } from '@typescript-eslint/utils';
-import { TSESLint, AST_NODE_TYPES } from '@typescript-eslint/utils';
+import type { TSESTree } from '@typescript-eslint/types';
+import { AST_NODE_TYPES } from '@typescript-eslint/types';
+import { TSESLint } from '@typescript-eslint/utils';
 import { createRule } from '@eslint-sukka/shared';
 import { findFirstMatchingAncestor, isIdentifier, isReferenceTo } from '../no-empty-collection';
 import { isElementWrite } from '../no-invariant-returns';

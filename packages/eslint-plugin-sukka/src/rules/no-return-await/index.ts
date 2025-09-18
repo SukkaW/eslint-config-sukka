@@ -22,8 +22,9 @@ export default createRule({
 });
 
 // import { createRule } from '@eslint-sukka/shared';
-// import type { TSESTree } from '@typescript-eslint/utils';
-// import { ASTUtils, AST_NODE_TYPES } from '@typescript-eslint/utils';
+// import type { TSESTree } from '@typescript-eslint/types';
+// import { AST_NODE_TYPES } from '@typescript-eslint/types';
+// import { ASTUtils } from '@typescript-eslint/utils';
 
 // export default createRule({
 //   name: 'no-return-await',

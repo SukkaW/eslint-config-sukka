@@ -1,7 +1,7 @@
 import { createRule } from '@eslint-sukka/shared';
 import { escape, getFixer } from '@masknet/eslint-plugin/rules/unicode/specific-set.js';
-import type { TSESTree } from '@typescript-eslint/utils';
-import { AST_TOKEN_TYPES } from '@typescript-eslint/utils';
+import type { TSESTree } from '@typescript-eslint/types';
+import { AST_TOKEN_TYPES } from '@typescript-eslint/types';
 
 const BIDI_PATTERN = /[\u061C\u202A-\u202E\u2066-\u2069]/;
 

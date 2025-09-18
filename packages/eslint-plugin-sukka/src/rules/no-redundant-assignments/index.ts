@@ -19,8 +19,8 @@
  */
 // https://sonarsource.github.io/rspec/#/rspec/S4165/javascript
 
-import { AST_NODE_TYPES } from '@typescript-eslint/utils';
-import type { TSESTree } from '@typescript-eslint/utils';
+import { AST_NODE_TYPES } from '@typescript-eslint/types';
+import type { TSESTree } from '@typescript-eslint/types';
 import { TSESLint } from '@typescript-eslint/utils';
 import { createRule } from '@eslint-sukka/shared';
 import { peek, CodePathContext, ReachingDefinitions, isDefaultParameter, isCompoundAssignment, isSelfAssignement, reachingDefinitions, resolveAssignedValues, AssignmentContext } from './utils';

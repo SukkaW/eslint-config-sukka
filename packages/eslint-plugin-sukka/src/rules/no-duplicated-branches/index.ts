@@ -19,8 +19,9 @@
  */
 // https://sonarsource.github.io/rspec/#/rspec/S3923
 
-import { AST_NODE_TYPES } from '@typescript-eslint/utils';
-import type { TSESLint, TSESTree } from '@typescript-eslint/utils';
+import { AST_NODE_TYPES } from '@typescript-eslint/types';
+import type { TSESTree } from '@typescript-eslint/types';
+import type { TSESLint } from '@typescript-eslint/utils';
 import { createRule } from '@eslint-sukka/shared';
 import { collectSwitchBranches } from '../no-all-duplicated-branches';
 

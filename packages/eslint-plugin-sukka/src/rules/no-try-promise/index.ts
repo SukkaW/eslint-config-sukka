@@ -19,7 +19,7 @@
  */
 // https://sonarsource.github.io/rspec/#/rspec/S4822/javascript
 
-import { AST_NODE_TYPES } from '@typescript-eslint/utils';
+import { AST_NODE_TYPES } from '@typescript-eslint/types';
 import type { ParserServicesWithTypeInformation, TSESTree } from '@typescript-eslint/utils';
 import { ensureParserWithTypeInformation, createRule } from '@eslint-sukka/shared';
 import { CallLikeExpressionVisitor } from './utils';

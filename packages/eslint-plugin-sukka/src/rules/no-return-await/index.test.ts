@@ -3,7 +3,7 @@ import type { TestCaseError } from '@typescript-eslint/rule-tester';
 
 import module from './index';
 import { dedent } from 'ts-dedent';
-import { AST_NODE_TYPES } from '@typescript-eslint/utils';
+import { AST_NODE_TYPES } from '@typescript-eslint/types';
 
 function createErrorList({ suggestionOutput: output }: { suggestionOutput?: string } = {}): Array<TestCaseError<'removeAwait' | 'redundantUseOfAwait'>> {
   // pending https://github.com/eslint/espree/issues/304, the type should be "Keyword"

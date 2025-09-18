@@ -20,8 +20,8 @@
 // https://sonarsource.github.io/rspec/#/rspec/S4143
 
 import { createRule } from '@eslint-sukka/shared';
-import { AST_NODE_TYPES } from '@typescript-eslint/utils';
-import type { TSESTree } from '@typescript-eslint/utils';
+import { AST_NODE_TYPES } from '@typescript-eslint/types';
+import type { TSESTree } from '@typescript-eslint/types';
 import { areEquivalent } from '../no-all-duplicated-branches';
 
 export default createRule({

@@ -304,6 +304,9 @@ importers:
       '@typescript-eslint/type-utils':
         specifier: ^8.43.0
         version: 8.43.0(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2)
+      '@typescript-eslint/types':
+        specifier: ^8.43.0
+        version: 8.43.0
       '@typescript-eslint/utils':
         specifier: ^8.43.0
         version: 8.43.0(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2)

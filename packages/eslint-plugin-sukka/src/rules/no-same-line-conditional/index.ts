@@ -19,8 +19,9 @@
  */
 // https://sonarsource.github.io/rspec/#/rspec/S3972
 
-import { AST_NODE_TYPES } from '@typescript-eslint/utils';
-import type { TSESLint, TSESTree } from '@typescript-eslint/utils';
+import { AST_NODE_TYPES } from '@typescript-eslint/types';
+import type { TSESTree } from '@typescript-eslint/types';
+import type { TSESLint } from '@typescript-eslint/utils';
 import { createRule } from '@eslint-sukka/shared';
 
 interface SiblingIfStatement {

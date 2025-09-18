@@ -20,7 +20,7 @@
 // https://sonarsource.github.io/rspec/#/rspec/S3984/javascript
 
 import { createRule } from '@eslint-sukka/shared';
-import type { TSESTree } from '@typescript-eslint/utils';
+import type { TSESTree } from '@typescript-eslint/types';
 
 export default createRule({
   name: 'no-unthrown-error',
