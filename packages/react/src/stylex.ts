@@ -1,5 +1,6 @@
 import { constants } from '@eslint-sukka/shared';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
+import type { ESLint } from 'eslint';
 
 export interface OptionsStyleX {
   opt?: StyleXESLintOptions
@@ -56,11 +57,11 @@ interface PropLimits {
 }
 
 export async function stylex({ opt = {} }: OptionsStyleX = {}): Promise<FlatESLintConfigItem[]> {
-  const stylex_eslint_plugin = await import('@stylexjs/eslint-plugin');
+  const stylex_eslint_plugin = (await import('@stylexjs/eslint-plugin')).default;
 
   return [{
     plugins: {
-      '@stylexjs': stylex_eslint_plugin
+      '@stylexjs': stylex_eslint_plugin as object as ESLint.Plugin
     },
     files: [
       constants.GLOB_TS,

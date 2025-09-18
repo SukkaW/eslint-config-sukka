@@ -62,9 +62,8 @@ export default createRule<Options, [Options], MessageIds>({
     const hasTrailingComment = createHasTrailingComment(code);
 
     return {
-      ObjectExpression(node) {
-        const texts = node.properties
-          .map(property => getFullText(property).trim());
+      ObjectExpression(node: TSESTree.ObjectExpression) {
+        const texts = node.properties.map(property => getFullText(property).trim());
 
         if (texts.length > 0) {
           const text = context.sourceCode.getText(node);
@@ -110,7 +109,7 @@ export default createRule<Options, [Options], MessageIds>({
         }
 
         function predictedLength(): number {
-          const head = context.sourceCode.getLocFromIndex(node.range[0]).column;
+          const headPosition: TSESTree.Position = context.sourceCode.getLocFromIndex(node.range[0]);
           const contents = texts.reduce<number>((acc, cur) => acc + cur.length, 0);
 
           const commas = 2 * (texts.length - 1);
@@ -123,7 +122,7 @@ export default createRule<Options, [Options], MessageIds>({
             .replace(/^((?: as const)?\S*).*/u, '$1')
             .length;
 
-          return head + contents + commas + brackets + tail;
+          return headPosition.column + contents + commas + brackets + tail;
         }
       }
     };

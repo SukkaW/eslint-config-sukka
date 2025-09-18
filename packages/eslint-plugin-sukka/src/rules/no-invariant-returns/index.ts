@@ -24,7 +24,7 @@ import { AST_NODE_TYPES } from '@typescript-eslint/types';
 import type { TSESTree } from '@typescript-eslint/types';
 import { TSESLint } from '@typescript-eslint/utils';
 import { findFirstMatchingAncestor, isReferenceTo } from '../no-empty-collection';
-import { FUNCTION_TYPES } from '../class-prototype';
+import { isFunctionLike } from '../class-prototype';
 
 interface FunctionContext {
   codePath: TSESLint.CodePath,
@@ -168,7 +168,7 @@ function getSingleWriteDefinition(
 function isPossibleObjectUpdate(ref: TSESLint.Scope.Reference) {
   const expressionStatement = findFirstMatchingAncestor(
     ref.identifier as TSESTree.Node,
-    n => n.type === AST_NODE_TYPES.ExpressionStatement || FUNCTION_TYPES.has(n.type)
+    n => n.type === AST_NODE_TYPES.ExpressionStatement || isFunctionLike(n)
   );
 
   // To avoid FP, we consider method calls as write operations, since we do not know whether they will

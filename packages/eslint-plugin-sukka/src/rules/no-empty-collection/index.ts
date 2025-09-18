@@ -151,9 +151,9 @@ export default createRule({
   }
 });
 
-export function findFirstMatchingAncestor(
+export function findFirstMatchingAncestor<T extends TSESTree.Node>(
   node: TSESTree.Node,
-  predicate: (node: TSESTree.Node) => boolean
+  predicate: (node: TSESTree.Node) => node is T
 ) {
   return ancestorsChain(node, new Set()).find(predicate);
 }
@@ -239,7 +239,7 @@ function isForIterationPattern(ref: TSESLint.Scope.Reference) {
     n => n.type === AST_NODE_TYPES.ForOfStatement || n.type === AST_NODE_TYPES.ForInStatement
   );
 
-  return forInOrOfStatement && forInOrOfStatement.right === ref.identifier;
+  return forInOrOfStatement?.right === ref.identifier;
 }
 
 function isElementRead(ref: TSESLint.Scope.Reference) {

@@ -76,9 +76,9 @@ function isFunctionType(node: TSESTree.Node, services: Partial<ParserServices> |
   return !!type.symbol && (type.symbol.flags & tsSymbolFlags.Function) !== 0;
 }
 
-export const FUNCTION_TYPES = new Set(['FunctionDeclaration', 'FunctionExpression', 'ArrowFunctionExpression']);
+const FUNCTION_TYPES = new Set(['FunctionDeclaration', 'FunctionExpression', 'ArrowFunctionExpression']);
 
-function isFunctionLike(node: TSESTree.Node, _services: Partial<ParserServices> | undefined) {
+export function isFunctionLike(node: TSESTree.Node, _services?: Partial<ParserServices>): node is TSESTree.FunctionExpression | TSESTree.FunctionDeclaration | TSESTree.ArrowFunctionExpression {
   return FUNCTION_TYPES.has(
     node.type
   );

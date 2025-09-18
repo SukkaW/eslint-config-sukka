@@ -1,6 +1,6 @@
 import path from 'node:path';
 import { RuleTester } from '@typescript-eslint/rule-tester';
-import type { InvalidTestCase, ValidTestCase } from '@typescript-eslint/rule-tester';
+import type { InvalidTestCase, ValidTestCase, TestCaseError } from '@typescript-eslint/rule-tester';
 
 import type { ExportedRuleModule } from '@eslint-sukka/shared';
 import { after, describe, it } from 'mocha';
@@ -33,10 +33,14 @@ const $tester = new RuleTester({
 
 type TestCaseGenerator<T, R = T> = ((cast: (input: T) => T) => Generator<R>) | (readonly R[]);
 
+interface InvalidTestCaseWithNumberFormOfErrors<TMessageIds extends string, TOptions extends readonly unknown[]> extends Omit<InvalidTestCase<TMessageIds, TOptions>, 'errors'> {
+  errors: number | readonly TestCaseError<TMessageIds>[];
+}
+
 interface RunOptions<TOptions extends readonly unknown[], TMessageIds extends string> {
   module: ExportedRuleModule<TOptions, TMessageIds>,
   valid?: TestCaseGenerator<ValidTestCase<TOptions>, string | ValidTestCase<TOptions>>,
-  invalid?: TestCaseGenerator<InvalidTestCase<TMessageIds, TOptions>>
+  invalid?: TestCaseGenerator<InvalidTestCaseWithNumberFormOfErrors<TMessageIds, TOptions>>
 }
 
 export function runTest<TOptions extends readonly unknown[], TMessageIds extends string>(
@@ -87,7 +91,7 @@ export function runTest<TOptions extends readonly unknown[], TMessageIds extends
     invalid: $invalid.flat().map((item, index) => ({
       ...item,
       name: `${item.name || 'invalid'} #${index}`
-    }))
+    })) as any
   });
 }
 

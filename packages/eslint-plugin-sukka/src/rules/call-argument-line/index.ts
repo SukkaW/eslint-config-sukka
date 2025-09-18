@@ -103,10 +103,10 @@ function getCallee(call: TSESTree.CallExpression) {
   return (node.typeArguments ?? node.callee) as TSESTree.Node;
 }
 
-function isClosingParen(token: TSESTree.Token) {
+function isClosingParen(token: TSESTree.Token): token is TSESTree.PunctuatorToken {
   return token.type === AST_TOKEN_TYPES.Punctuator && token.value === ')';
 }
 
-function isNotClosingParen(token: TSESTree.Token) {
+function isNotClosingParen(token: TSESTree.Token): boolean {
   return !isClosingParen(token);
 }
