@@ -181,6 +181,7 @@ export async function sukka(options?: ESLintSukkaOptions, ...userConfig: FlatESL
 
   flatConfigs.push(userConfig);
 
+  // eslint-disable-next-line @typescript-eslint/await-thenable -- retain order
   const result = (await Promise.all(flatConfigs)).flat();
 
   // ESLint uses TIMING=1 for profiling, so we borrow this as well.

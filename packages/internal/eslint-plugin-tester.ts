@@ -34,7 +34,7 @@ const $tester = new RuleTester({
 type TestCaseGenerator<T, R = T> = ((cast: (input: T) => T) => Generator<R>) | (readonly R[]);
 
 interface InvalidTestCaseWithNumberFormOfErrors<TMessageIds extends string, TOptions extends readonly unknown[]> extends Omit<InvalidTestCase<TMessageIds, TOptions>, 'errors'> {
-  errors: number | readonly TestCaseError<TMessageIds>[];
+  errors: number | ReadonlyArray<TestCaseError<TMessageIds>>
 }
 
 interface RunOptions<TOptions extends readonly unknown[], TMessageIds extends string> {
