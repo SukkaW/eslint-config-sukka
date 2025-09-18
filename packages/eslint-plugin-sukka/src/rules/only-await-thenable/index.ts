@@ -75,8 +75,9 @@ function isException(node: TSESTree.AwaitExpression, services: ParserServicesWit
   return signature?.declaration && hasJsDocReturn(signature.declaration);
 }
 
+const RETURN_TAGS = new Set(['return', 'returns']);
+
 function hasJsDocReturn(declaration: ts.Declaration & { jsDoc?: ts.JSDoc[] }) {
-  const RETURN_TAGS = new Set(['return', 'returns']);
   if (!declaration.jsDoc) {
     return false;
   }
