@@ -3,8 +3,8 @@ import { nullthrow } from 'foxts/guard';
 import { createRule } from '@eslint-sukka/shared';
 
 const baseRule = nullthrow(
-  new Linter({ configType: 'eslintrc' }).getRules().get('no-unused-vars'),
-  '[eslint-plugin-sukka] no-unused-vars rule is removed from ESLint!'
+  new Linter({ configType: 'eslintrc' }).getRules().get('no-return-await'),
+  '[eslint-plugin-sukka] no-return-await rule is removed from ESLint!'
 );
 
 export default createRule({
