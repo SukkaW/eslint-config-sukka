@@ -20,7 +20,8 @@
 // https://sonarsource.github.io/rspec/#/rspec/S4623/javascript
 
 import { AST_NODE_TYPES } from '@typescript-eslint/types';
-import type { ParserServicesWithTypeInformation, TSESTree } from '@typescript-eslint/utils';
+import type { TSESTree } from '@typescript-eslint/types';
+import type { ParserServicesWithTypeInformation } from '@typescript-eslint/utils';
 import type ts from 'typescript';
 import { SyntaxKind as tsSyntaxKind } from 'typescript';
 import { createRule, ensureParserWithTypeInformation } from '@eslint-sukka/shared';
@@ -48,8 +49,7 @@ export default createRule({
     ensureParserWithTypeInformation(services);
 
     return {
-      CallExpression(node: TSESTree.Node) {
-        const call = node as TSESTree.CallExpression;
+      CallExpression(call: TSESTree.CallExpression) {
         const { arguments: args } = call;
         if (args.length === 0) {
           return;
@@ -67,8 +67,8 @@ export default createRule({
                   // eslint-disable-next-line sukka/unicorn/consistent-destructuring -- not necessary
                   if (call.arguments.length === 1) {
                     // eslint-disable-next-line sukka/unicorn/consistent-destructuring -- not necessary
-                    const openingParen = context.sourceCode.getTokenAfter(call.callee)!;
-                    const closingParen = context.sourceCode.getLastToken(node)!;
+                    const openingParen = context.sourceCode.getTokenAfter(call.callee)! as TSESTree.Token;
+                    const closingParen = context.sourceCode.getLastToken(call)! as TSESTree.Token;
                     const [, begin] = openingParen.range;
                     const [end] = closingParen.range;
                     return fixer.removeRange([begin, end]);

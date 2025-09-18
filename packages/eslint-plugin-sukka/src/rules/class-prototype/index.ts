@@ -78,7 +78,7 @@ function isFunctionType(node: TSESTree.Node, services: Partial<ParserServices> |
 
 const FUNCTION_TYPES = new Set(['FunctionDeclaration', 'FunctionExpression', 'ArrowFunctionExpression']);
 
-export function isFunctionLike(node: TSESTree.Node, _services?: Partial<ParserServices>): node is TSESTree.FunctionExpression | TSESTree.FunctionDeclaration | TSESTree.ArrowFunctionExpression {
+export function isFunctionLike(node: TSESTree.Node): node is TSESTree.FunctionExpression | TSESTree.FunctionDeclaration | TSESTree.ArrowFunctionExpression {
   return FUNCTION_TYPES.has(
     node.type
   );

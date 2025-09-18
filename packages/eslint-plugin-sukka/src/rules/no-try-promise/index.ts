@@ -57,7 +57,7 @@ export default createRule({
     ) {
       if (openPromises.length === 0 && capturedPromises.length > 0) {
         const ending = capturedPromises.length > 1 ? 's' : '';
-        const token = context.sourceCode.getFirstToken(tryStmt);
+        const token = context.sourceCode.getFirstToken(tryStmt) as TSESTree.Token;
         context.report({
           messageId: 'removeTry',
           data: { ending },
@@ -72,7 +72,7 @@ export default createRule({
     ) {
       if (openPromises.length > 0) {
         const ending = openPromises.length > 1 ? 's' : '';
-        const token = context.sourceCode.getFirstToken(tryStmt);
+        const token = context.sourceCode.getFirstToken(tryStmt) as TSESTree.Token;
         context.report({
           messageId: 'addAwait',
           data: { ending },

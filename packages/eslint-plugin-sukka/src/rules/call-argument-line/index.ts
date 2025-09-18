@@ -76,7 +76,7 @@ export default createRule({
       },
       TaggedTemplateExpression(node) {
         const { quasi } = node;
-        const tokenBefore = sourceCode.getTokenBefore(quasi);
+        const tokenBefore = sourceCode.getTokenBefore(quasi) as TSESTree.Token | null;
         if (tokenBefore && quasi.loc && tokenBefore.loc.end.line !== quasi.loc.start.line) {
           const loc = {
             start: quasi.loc.start,

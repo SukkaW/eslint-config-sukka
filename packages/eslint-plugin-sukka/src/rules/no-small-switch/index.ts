@@ -42,7 +42,7 @@ export default createRule({
         const { cases } = node;
         const hasDefault = cases.some(x => !x.test);
         if (cases.length < 2 || (cases.length === 2 && hasDefault)) {
-          const firstToken = context.sourceCode.getFirstToken(node);
+          const firstToken = context.sourceCode.getFirstToken(node) as TSESTree.Token | null;
           if (firstToken) {
             context.report({
               messageId: 'replaceSwitch',
