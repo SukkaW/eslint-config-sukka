@@ -6,7 +6,7 @@ export const BETTER_ALTERNATIVES = Object.entries({
   'deep-equal': npm('dequal'),
   'fast-deep-equal': npm('dequal'),
   // ansi color / cursor
-  chalk: `simple color ${npm('picocolors')}, hex color https://github.com/webdiscus/ansis`,
+  chalk: `simple color ${npm('picocolors')}, hex color or chain ${npm('ansis')}`,
   kleur: npm('picocolors'),
   'ansi-escapes': npm('sisteransi'),
   // mime
@@ -23,7 +23,7 @@ export const BETTER_ALTERNATIVES = Object.entries({
   'mk-dirs': 'Node.js built-in fs.mkdir API',
   // network
   axios: npm('ky'),
-  'node-fetch': `${npm('undici')} (preferred) or ${npm('node-fetch-native')}`,
+  'node-fetch': npm('undici'),
   got: `${npm('undici')} and ${npm('async-retry')}`,
   'get-port': npm('get-port-please'),
   // react
@@ -53,20 +53,21 @@ export const BETTER_ALTERNATIVES = Object.entries({
   'xxhash-wasm': `${npm('hash-wasm')}, significantly faster`,
   'string-width': npm('fast-string-width'),
   lodash: 'https://es-toolkit.slash.page',
+  jszip: npm('client-zip') + ' / ' + npm('fflate'),
   // escape string regexp
-  'escape-string-regexp': npm('foxts'),
-  'escape-regexp': npm('foxts'),
-  'lodash.escaperegexp': npm('foxts'),
-  'regex-escape': npm('foxts'),
+  'escape-string-regexp': npm('fast-escape-regexp'),
+  'escape-regexp': npm('fast-escape-regexp'),
+  'lodash.escaperegexp': npm('fast-escape-regexp'),
+  'regex-escape': npm('fast-escape-regexp'),
   // esacpe html
-  'escape-html': `${npm('fast-escape-html')} or ${npm('foxts')}`,
-  'html-escaper': `${npm('fast-escape-html')} or ${npm('foxts')}`,
-  'escape-goat': `${npm('fast-escape-html')} or ${npm('foxts')}`,
-  'lodash.escape': `${npm('fast-escape-html')} or ${npm('foxts')}`,
+  'escape-html': npm('fast-escape-html'),
+  'html-escaper': npm('fast-escape-html'),
+  'escape-goat': npm('fast-escape-html'),
+  'lodash.escape': npm('fast-escape-html'),
   'next-intl': 'https://github.com/QuiiBz/next-international',
   'next-i18next': 'https://github.com/QuiiBz/next-international',
   'cidr-tools': npm('fast-cidr-tools'),
-  eventemitter3: npm('mitt') // Node.js eventemitter could be slow, eventemitter2 is not tiny but feature rich. But eventemitter3 has not reason
+  eventemitter3: `${npm('mitt')}. Node.js' "eventemitter" could be slow, "eventemitter2" is not tiny/performant but it is feature rich. But "eventemitter3" has no reasons to be used`
 }).map(([key, value]) => ({ name: key, message: `Use ${value} instead.` }));
 
 const restricedImportBase = [
