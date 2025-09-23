@@ -1,3 +1,5 @@
+// Since both eslint-sukka/node and eslint-config-sukka requires these, they have to live in shared.
+
 const npm = (pkgName: string) => `https://www.npmjs.com/package/${pkgName}`;
 
 /** 福妮严选 */
