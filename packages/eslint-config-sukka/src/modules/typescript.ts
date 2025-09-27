@@ -424,7 +424,8 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
       },
       rules: {
         'import-x/no-duplicates': 'off',
-        'unused-imports/no-unused-vars': 'off'
+        'unused-imports/no-unused-vars': 'off',
+        'unused-imports/no-unused-imports': 'off'
       }
     },
     {
