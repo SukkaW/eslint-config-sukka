@@ -31,7 +31,7 @@
   "author": "Sukka <https://skk.moe>",
   "license": "MIT",
   "dependencies": {
-    "@package-json/types": "^0.0.11",
+    "@package-json/types": "^0.0.12",
     "@typescript-eslint/utils": "^8.44.1",
     "oxc-resolver": "^11.8.3"
   },

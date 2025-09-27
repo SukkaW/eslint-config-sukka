@@ -33,13 +33,13 @@
   "license": "MIT",
   "dependencies": {
     "@napi-rs/magic-string": "^0.3.4",
-    "@package-json/types": "^0.0.11",
+    "@package-json/types": "^0.0.12",
     "@rollup/plugin-alias": "^5.1.1",
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-replace": "^6.0.2",
-    "rollup": "^4.52.2",
+    "rollup": "^4.52.3",
     "rollup-plugin-dts": "^6.2.3",
     "rollup-plugin-swc3": "^0.12.1",
     "vite-bundle-analyzer": "^1.2.3"
