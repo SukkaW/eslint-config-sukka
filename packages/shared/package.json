@@ -33,7 +33,7 @@
   "dependencies": {
     "@package-json/types": "^0.0.12",
     "@typescript-eslint/utils": "^8.44.1",
-    "oxc-resolver": "^11.8.3"
+    "oxc-resolver": "^11.8.4"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
