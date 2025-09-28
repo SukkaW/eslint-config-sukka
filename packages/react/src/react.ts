@@ -173,7 +173,7 @@ export function react({
       ...memoized_eslint_react.configs.recommended.rules,
       // eslint-plugin-react recommended rules, migrated
       '@eslint-react/no-string-refs': 'error',
-      '@eslint-react/no-comment-textnodes': 'error',
+      '@eslint-react/jsx-no-comment-textnodes': 'error',
       '@eslint-react/dom/no-unsafe-target-blank': 'error',
       '@eslint-react/no-children-prop': 'error',
       '@eslint-react/dom/no-dangerously-set-innerhtml-with-children': 'error',
@@ -224,7 +224,7 @@ export function react({
       // Enforce boolean attributes notation in JSX
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md
       // 'react/jsx-boolean-value': 'off',
-      '@eslint-react/prefer-shorthand-boolean': 'error',
+      '@eslint-react/jsx-shorthand-boolean': 'error',
 
       // Enforce or disallow spaces inside of curly braces in JSX attributes
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-curly-spacing.md
@@ -285,7 +285,7 @@ export function react({
       // Prevent void DOM elements from receiving children
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/void-dom-elements-no-children.md
       // 'react/void-dom-elements-no-children': 'off',
-      '@eslint-react/dom/no-children-in-void-dom-elements': 'error',
+      '@eslint-react/dom/no-void-elements-with-children': 'error',
 
       // Enforce curly braces or disallow unnecessary curly braces in JSX props and/or children
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md
@@ -298,7 +298,7 @@ export function react({
       // Enforce shorthand or standard form for React fragments
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/bc976b837abeab1dffd90ac6168b746a83fc83cc/docs/rules/jsx-fragments.md
       // 'react/jsx-fragments': 'off',
-      '@eslint-react/prefer-shorthand-fragment': 'error',
+      '@eslint-react/jsx-shorthand-fragment': 'error',
 
       // Enforce linebreaks in curly braces in JSX attributes and expressions.
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-curly-newline.md
@@ -326,7 +326,7 @@ export function react({
       // Prevent creating uns dable components inside components
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/c2a790a3472eea0f6de984bdc3ee2a62197417fb/docs/rules/no-unstable-nested-components.md
       // 'react/no-unstable-nested-components': 'off',
-      '@eslint-react/no-nested-components': 'error',
+      '@eslint-react/no-nested-component-definitions': 'error',
 
       // Enforce sandbox attribute on iframe elements
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/c8833f301314dab3e79ef7ac4cf863e4d5fa0019/docs/rules/iframe-missing-sandbox.md
@@ -351,6 +351,11 @@ export function react({
       // <svg:rect> react does not support
       // 'react/no-namespace': 'off',
       '@eslint-react/dom/no-namespace': 'error',
+
+      '@eslint-react/no-unnecessary-use-callback': 'error',
+      '@eslint-react/no-unnecessary-use-memo': 'error',
+      '@eslint-react/no-unnecessary-use-prefix': 'error',
+      '@eslint-react/prefer-use-state-lazy-initialization': 'error',
 
       '@typescript-eslint/class-methods-use-this': ['error', {
         exceptMethods: [

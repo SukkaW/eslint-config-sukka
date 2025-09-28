@@ -30,7 +30,8 @@
     },
     "eslint-config-sukka#build": {
       "dependsOn": [
-        "eslint-config-sukka#codegen"
+        "eslint-config-sukka#codegen",
+        "@eslint-sukka/react#build"
       ]
     },
     "//#lint:root": {
