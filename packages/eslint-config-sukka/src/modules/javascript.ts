@@ -415,7 +415,7 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         'no-console': 'warn',
 
         // disallow use of constant expressions in conditions
-        'no-constant-condition': 'warn',
+        'no-constant-condition': ['warn', { checkLoops: 'allExceptWhileTrue' }],
 
         'no-empty-function': 'error',
         'no-empty': ['error', { allowEmptyCatch: true }],
