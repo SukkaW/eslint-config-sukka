@@ -51,7 +51,7 @@ const memoized_eslint_plugin_ssr_friendly = memo(fixupPluginRules(eslint_plugin_
 
 export function react({
   reactCompiler = 'error',
-  additionalHooks = '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)',
+  additionalHooks = '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample|useAbortableEffect)',
   nextjs = false,
   remix = false,
   reactRefresh = {},
@@ -104,7 +104,7 @@ export function react({
     },
     rules: {
       // plugin:react-hooks/recommended
-      ...eslint_plugin_react_hooks.configs.recommended.rules,
+      ...eslint_plugin_react_hooks.configs['recommended-latest'].rules,
       // react compiler rule
       'react-compiler/react-compiler': reactCompiler,
 
