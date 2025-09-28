@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-sukka-monorepo",
-  "version": "7.1.2",
+  "version": "7.2.0",
   "private": true,
   "description": "",
   "scripts": {
