@@ -32,7 +32,7 @@
   "license": "MIT",
   "dependencies": {
     "ci-info": "^4.3.0",
-    "foxts": "^3.14.1",
+    "foxts": "^3.15.0",
     "picocolors": "^1.1.1"
   },
   "devDependencies": {
