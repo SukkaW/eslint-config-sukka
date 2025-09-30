@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
-    "fast-string-width": "^3.0.1",
+    "fast-string-width": "^3.0.2",
     "supports-hyperlinks": "^4.3.0"
   },
   "peerDependencies": {
