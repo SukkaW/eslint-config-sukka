@@ -273,13 +273,13 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
         ],
         '@typescript-eslint/no-unsafe-assignment': 'off', // bans a = any
         '@typescript-eslint/no-unsafe-argument': 'off', // bans call(any)
+        '@typescript-eslint/no-unsafe-return': 'off', // bans return any
+        '@typescript-eslint/no-unsafe-call': 'off', // bans any()
+        '@typescript-eslint/no-unsafe-member-access': 'off', // bans a = any.prop
         '@typescript-eslint/no-explicit-any': 'warn',
         '@typescript-eslint/no-loop-func': 'warn',
         '@typescript-eslint/no-redundant-type-constituents': 'off',
         '@typescript-eslint/no-floating-promises': 'off',
-        '@typescript-eslint/no-unsafe-call': 'off', // bans any()
-        '@typescript-eslint/no-unsafe-member-access': 'off', // bans a = any.prop
-        '@typescript-eslint/no-unsafe-return': 'off', // bans return any
         '@typescript-eslint/no-unsafe-enum-comparison': 'warn',
         '@typescript-eslint/prefer-regexp-exec': 'warn', // more performant than String#match
         '@typescript-eslint/no-deprecated': 'warn',
