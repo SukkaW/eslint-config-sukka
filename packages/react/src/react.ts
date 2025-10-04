@@ -104,7 +104,7 @@ export function react({
     },
     rules: {
       // plugin:react-hooks/recommended
-      ...eslint_plugin_react_hooks.configs['recommended-latest'].rules,
+      ...(eslint_plugin_react_hooks as any).configs['recommended-latest'].rules,
       // react compiler rule
       'react-compiler/react-compiler': reactCompiler,
 
