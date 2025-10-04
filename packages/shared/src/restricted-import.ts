@@ -26,7 +26,7 @@ export const BETTER_ALTERNATIVES = Object.entries({
   // network
   axios: npm('ky'),
   'node-fetch': npm('undici'),
-  got: `${npm('undici')} and ${npm('async-retry')}`,
+  got: `${npm('undici')} and foxts/async-retry`,
   'get-port': npm('get-port-please'),
   // react
   'react-query': 'https://swr.vercel.app',
@@ -39,23 +39,6 @@ export const BETTER_ALTERNATIVES = Object.entries({
   'fast-copy': `${npm('rfdc')} for Node.js / ${npm('klona')} for Browser`,
   'lodash.clonedeep': `${npm('rfdc')} for Node.js / ${npm('klona')} for Browser`,
   clone: `${npm('rfdc')} for Node.js / ${npm('klona')} for Browser`,
-  // misc
-  ms: npm('@lukeed/ms'),
-  classnames: npm('clsx'),
-  classcat: npm('clsx'),
-  'p-limit': `${npm('superlock')} / ${npm('@henrygd/queue')} / ${npm('async-sema')} / ${npm('@livekit/mutex')}`,
-  'p-mutex': npm('@livekit/mutex'),
-  'p-queue': npm('@henrygd/queue'),
-  'p-retry': npm('async-retry'),
-  ora: npm('nanospinner'),
-  'ts-results': npm('ts-results-es'),
-  dayjs: npm('date-fns'),
-  tldjs: npm('tldts'),
-  'types-package-json': npm('@package-json/types'),
-  'xxhash-wasm': `${npm('hash-wasm')}, significantly faster`,
-  'string-width': npm('fast-string-width'),
-  lodash: 'https://es-toolkit.slash.page',
-  jszip: npm('client-zip') + ' / ' + npm('fflate'),
   // escape string regexp
   'escape-string-regexp': npm('fast-escape-regexp'),
   'escape-regexp': npm('fast-escape-regexp'),
@@ -66,8 +49,29 @@ export const BETTER_ALTERNATIVES = Object.entries({
   'html-escaper': npm('fast-escape-html'),
   'escape-goat': npm('fast-escape-html'),
   'lodash.escape': npm('fast-escape-html'),
+  // React i18n
   'next-intl': 'https://github.com/QuiiBz/next-international',
   'next-i18next': 'https://github.com/QuiiBz/next-international',
+  // misc
+  ms: npm('@lukeed/ms'),
+  classnames: npm('clsx'),
+  classcat: npm('clsx'),
+  'p-limit': `${npm('superlock')} / ${npm('@henrygd/queue')} / ${npm('async-sema')} / ${npm('@livekit/mutex')}`,
+  'p-mutex': npm('@livekit/mutex'),
+  'p-queue': npm('@henrygd/queue'),
+  'is-network-error': `${npm('foxts')}, foxts/is-network-error`,
+  'p-retry': 'foxts/async-retry',
+  'async-retry': 'foxts/async-retry',
+  ora: npm('nanospinner'),
+  'ts-results': npm('ts-results-es'),
+  dayjs: npm('date-fns'),
+  tldjs: npm('tldts'),
+  'types-package-json': npm('@package-json/types'),
+  'xxhash-wasm': `${npm('hash-wasm')}, significantly faster`,
+  'string-width': npm('fast-string-width'),
+  lodash: 'https://es-toolkit.slash.page',
+  jszip: npm('client-zip') + ' / ' + npm('fflate'),
+
   'cidr-tools': npm('fast-cidr-tools'),
   eventemitter3: `${npm('mitt')}. Node.js' "eventemitter" could be slow, "eventemitter2" is not tiny/performant but it is feature rich. But "eventemitter3" has no reasons to be used`
 }).map(([key, value]) => ({ name: key, message: `Use ${value} instead.` }));
