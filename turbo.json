@@ -25,7 +25,8 @@
     "eslint-config-sukka#codegen": {
       "dependsOn": [
         "@eslint-sukka/shared#build",
-        "eslint-plugin-sukka#build"
+        "eslint-plugin-sukka#build",
+        "@eslint-sukka/eslint-plugin-stylistic#build"
       ]
     },
     "eslint-config-sukka#build": {
