@@ -73,7 +73,9 @@ export const BETTER_ALTERNATIVES = Object.entries({
   jszip: npm('client-zip') + ' / ' + npm('fflate'),
 
   'cidr-tools': npm('fast-cidr-tools'),
-  eventemitter3: `${npm('mitt')}. Node.js' "eventemitter" could be slow, "eventemitter2" is not tiny/performant but it is feature rich. But "eventemitter3" has no reasons to be used`
+  eventemitter3: `${npm('mitt')}. Node.js' "eventemitter" could be slow, "eventemitter2" is not tiny/performant but it is feature rich. But "eventemitter3" has no reasons to be used`,
+  fnv1a: `${npm('foxts')}, foxts/fnv1a is 6x faster`,
+  '@sindresorhus/fnv1a': `${npm('foxts')}, foxts/fnv1a is 6x faster`
 }).map(([key, value]) => ({ name: key, message: `Use ${value} instead.` }));
 
 const restricedImportBase = [
