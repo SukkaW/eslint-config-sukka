@@ -40,5 +40,8 @@ export const GLOB_EXCLUDE = [
   '**/__snapshots__',
   '**/fixtures',
   '**/auto-import?(s).d.ts',
-  '**/components.d.ts'
+  '**/components.d.ts',
+
+  // @eslint-sukka/yaml
+  '**/pnpm-lock.yaml'
 ];
