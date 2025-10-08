@@ -1,5 +1,6 @@
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 import eslint_plugin_yml from 'eslint-plugin-yml';
+import { appendArrayInPlace } from 'foxts/append-array-in-place';
 
 export function yaml(): FlatESLintConfigItem[] {
   const myCfg: FlatESLintConfigItem[] = [
@@ -48,10 +49,6 @@ export function yaml(): FlatESLintConfigItem[] {
     }
   ];
 
-  const cfg = eslint_plugin_yml.configs['flat/standard'];
-  if (Array.isArray(cfg)) {
-    return [...cfg, ...myCfg];
-  }
-
-  return [cfg as FlatESLintConfigItem, ...myCfg];
+  const cfg = eslint_plugin_yml.configs['flat/recommended'];
+  return appendArrayInPlace(myCfg, cfg);
 }
