@@ -6,10 +6,10 @@ export function yaml(): FlatESLintConfigItem[] {
   const myCfg: FlatESLintConfigItem[] = [
     {
       name: 'sukka/yaml disable spaced-comment',
-      files: ['**/*.yaml', '**/*.yml'],
+      files: ['*.yaml', '*.yml'],
       rules: {
         // FIXME: https://github.com/ota-meshi/eslint-plugin-yml/issues/277
-        '@stylistic/js/spaced-comment': 'off'
+        '@stylistic/spaced-comment': 'off'
       }
     },
     {
