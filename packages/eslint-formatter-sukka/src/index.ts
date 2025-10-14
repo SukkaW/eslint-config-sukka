@@ -122,7 +122,15 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
       const column = String(x.column || 0);
       const lineWidth = fastStringWidth(line);
       const columnWidth = fastStringWidth(column);
-      const messageWidth = fastStringWidth(message);
+
+      let messageWidth = 0;
+      if (message.includes('\n')) {
+        // multi-line message, take the last line
+        messageWidth = fastStringWidth(message.split('\n').pop() || message);
+      } else {
+        // single line message
+        messageWidth = fastStringWidth(message);
+      }
 
       if (lineWidth > maxLineWidth) {
         maxLineWidth = lineWidth;
