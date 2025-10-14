@@ -1,6 +1,6 @@
 {
   "name": "@eslint-sukka/yaml",
-  "version": "7.3.3",
+  "version": "7.3.4",
   "description": "Sukka's ESLint config",
   "homepage": "https://github.com/SukkaW/eslint-config-sukka",
   "repository": {
