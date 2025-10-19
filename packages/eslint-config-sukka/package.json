@@ -33,9 +33,9 @@
     "@eslint-community/eslint-plugin-eslint-comments": "^4.5.0",
     "@eslint-sukka/eslint-plugin-stylistic": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
-    "@eslint/js": "^9.37.0",
-    "@typescript-eslint/eslint-plugin": "^8.46.0",
-    "@typescript-eslint/parser": "^8.46.0",
+    "@eslint/js": "^9.38.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
     "ci-info": "^4.3.1",
     "defu": "^6.1.4",
     "eslint-import-resolver-typescript": "^4.4.4",
@@ -46,11 +46,11 @@
     "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-regexp": "^2.10.0",
     "eslint-plugin-sukka": "workspace:*",
-    "eslint-plugin-unused-imports": "^4.2.0",
-    "foxts": "^4.3.1",
+    "eslint-plugin-unused-imports": "^4.3.0",
+    "foxts": "^4.6.0",
     "jsonc-eslint-parser": "^2.4.1",
     "picocolors": "^1.1.1",
-    "typescript-eslint": "^8.46.0"
+    "typescript-eslint": "^8.46.2"
   },
   "devDependencies": {
     "@antfu/install-pkg": "^1.1.0",
@@ -59,7 +59,7 @@
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
     "@eslint-sukka/yaml": "workspace:*",
-    "@eslint/markdown": "^7.4.0",
+    "@eslint/markdown": "^7.4.1",
     "eslint-config-flat-gitignore": "^2.1.0",
     "eslint-plugin-antfu": "^3.1.1",
     "eslint-plugin-de-morgan": "^2.0.0"

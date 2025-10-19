@@ -132,8 +132,6 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         // prevent monorepo sibling imports
         'import-x/no-relative-packages': 'warn',
 
-        // 'no-secrets/no-secrets': 'error',
-
         // enforces getter/setter pairs in objects
         // https://eslint.org/docs/rules/accessor-pairs
         'accessor-pairs': 'off',
