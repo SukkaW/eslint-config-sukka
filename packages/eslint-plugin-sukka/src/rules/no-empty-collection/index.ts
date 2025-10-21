@@ -257,7 +257,7 @@ export function isElementWrite(memberExpression: TSESTree.MemberExpression) {
   const assignment = ancestors.find(
     n => n.type === AST_NODE_TYPES.AssignmentExpression
   );
-  if (assignment && assignment.operator === '=') {
+  if (assignment?.operator === '=') {
     return [memberExpression, ...ancestors].includes(assignment.left);
   }
   return false;
