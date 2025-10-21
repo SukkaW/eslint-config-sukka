@@ -2,14 +2,14 @@ import { memo } from '@eslint-sukka/shared';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 // @ts-expect-error -- no types
 import eslint_plugin_eslint_comments from '@eslint-community/eslint-plugin-eslint-comments';
-import eslint_plugin_sukka from 'eslint-plugin-sukka';
+import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
 
 export function comment(): FlatESLintConfigItem[] {
   return [{
     name: 'sukka/eslint-comments',
     plugins: {
       '@eslint-community/eslint-comments': eslint_plugin_eslint_comments,
-      sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka')
+      sukka: memo(eslint_plugin_sukka, '@eslint-sukka/eslint-plugin-sukka-full')
     },
     rules: {
       'sukka/ban-eslint-disable': ['error', 'allow-with-description'],

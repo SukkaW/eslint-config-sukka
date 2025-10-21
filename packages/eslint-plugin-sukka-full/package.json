@@ -1,14 +1,12 @@
 {
-  "name": "@eslint-sukka/node",
+  "name": "@eslint-sukka/eslint-plugin-sukka-full",
   "version": "7.3.5",
-  "description": "Sukka's ESLint config",
   "homepage": "https://github.com/SukkaW/eslint-config-sukka",
   "repository": {
     "url": "https://github.com/SukkaW/eslint-config-sukka",
-    "directory": "packages/node"
+    "directory": "packages/eslint-plugin-sukka-full"
   },
   "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -16,26 +14,31 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
       "require": "./dist/index.cjs",
       "default": "./dist/index.cjs"
     },
     "./package.json": "./package.json"
   },
   "scripts": {
+    "test": "mocha --require @swc-node/register src/rules/**/*.test.ts",
     "build": "rollup -c rollup.config.ts --configPlugin swc3"
   },
-  "keywords": [
-    "eslint-config"
-  ],
-  "author": "Sukka <https://skk.moe>",
   "license": "MIT",
   "dependencies": {
-    "@eslint-sukka/eslint-plugin-sukka-full": "workspace:*",
-    "@eslint-sukka/shared": "workspace:*",
-    "eslint-plugin-n": "^17.23.1"
+    "eslint-plugin-sukka": "workspace:*"
   },
   "devDependencies": {
-    "@eslint-sukka/rollup-config": "workspace:*"
+    "@eslint-sukka/rollup-config": "workspace:*",
+    "@masknet/eslint-plugin": "^0.4.0",
+    "eslint-plugin-unicorn": "^61.0.2"
+  },
+  "peerDependencies": {
+    "eslint": "*",
+    "typescript": "*"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
   }
 }

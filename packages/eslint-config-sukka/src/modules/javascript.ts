@@ -3,7 +3,7 @@ import { memo, RESTRICTED_IMPORT_JS, constants, globals, getPackageJson } from '
 
 import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
 import eslint_plugin_import_x, { createNodeResolver } from 'eslint-plugin-import-x';
-import eslint_plugin_sukka from 'eslint-plugin-sukka';
+import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
 import eslint_plugin_antfu from 'eslint-plugin-antfu';
 import eslint_plugin_demorgan from 'eslint-plugin-de-morgan';
 
@@ -115,7 +115,7 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
       plugins: {
         'unused-imports': memo(eslint_plugin_unused_imports, 'eslint-plugin-unused-imports'),
         '@stylistic': memo(stylistic_eslint_plugin, '@stylistic/eslint-plugin'),
-        sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka'),
+        sukka: memo(eslint_plugin_sukka, '@eslint-sukka/eslint-plugin-sukka-full'),
         'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x'),
         autofix: eslint_plugin_autofix,
         antfu: memo(eslint_plugin_antfu, 'eslint_plugin_antfu')

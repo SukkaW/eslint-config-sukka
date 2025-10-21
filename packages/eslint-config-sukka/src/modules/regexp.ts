@@ -1,4 +1,4 @@
-import eslint_plugin_sukka from 'eslint-plugin-sukka';
+import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
 
 import { memo } from '@eslint-sukka/shared';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
@@ -9,7 +9,7 @@ export function regexp(): FlatESLintConfigItem[] {
   return [{
     name: 'sukka/regexp',
     plugins: {
-      sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka'),
+      sukka: memo(eslint_plugin_sukka, '@eslint-sukka/eslint-plugin-sukka-full'),
       regexp: memo(eslint_plugin_regexp, 'eslint-plugin-regexp')
     },
     rules: {

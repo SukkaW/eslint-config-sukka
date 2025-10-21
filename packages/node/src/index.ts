@@ -2,7 +2,7 @@ import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import { RESTRICTED_IMPORT_NODE_REQUIRE, getPackageJson, globals, memo } from '@eslint-sukka/shared';
 
-import eslint_plugin_sukka from 'eslint-plugin-sukka';
+import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
 import eslint_plugin_n from 'eslint-plugin-n';
 
 export interface OptionsNode {
@@ -20,7 +20,7 @@ export function node(options: OptionsNode = {}): FlatESLintConfigItem[] {
     {
       name: '@eslint-sukka/node base',
       plugins: {
-        sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka'),
+        sukka: memo(eslint_plugin_sukka, '@eslint-sukka/eslint-plugin-sukka-full'),
         n: memo(eslint_plugin_n, 'eslint-plugin-n')
       },
       rules: {
