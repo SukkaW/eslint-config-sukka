@@ -43,12 +43,7 @@ export function yaml(): FlatESLintConfigItem[] {
           }
         ]
       }
-    },
-    {
-
     }
   ];
-
-  const cfg = eslint_plugin_yml.configs['flat/recommended'];
-  return appendArrayInPlace(myCfg, cfg);
+  return appendArrayInPlace(myCfg, eslint_plugin_yml.configs['flat/recommended']);
 }
