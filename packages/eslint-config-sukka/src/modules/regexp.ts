@@ -14,7 +14,6 @@ export function regexp(): FlatESLintConfigItem[] {
         regexp: memo(eslint_plugin_regexp, 'eslint-plugin-regexp')
       },
       rules: {
-        'sukka/unicorn/better-regex': 'warn', // RegEx[]
         ...eslint_pluin_regexp_configs['flat/recommended'].rules,
         'regexp/strict': 'off' // we accepts Annex B regex from better-regex
       }
