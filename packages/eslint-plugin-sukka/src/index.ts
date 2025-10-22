@@ -1,4 +1,4 @@
-import type { ESLint } from 'eslint';
+import type { Linter } from 'eslint';
 
 // eslint-plugin-sukka
 import ban_eslint_disable from './rules/ban-eslint-disable';
@@ -30,10 +30,70 @@ import noForInIterable from './rules/no-for-in-iterable';
 import onlyAwaitThenable from './rules/only-await-thenable';
 import noUndefinedOptionalParameters from './rules/no-undefined-optional-parameters';
 import noTryPromise from './rules/no-try-promise';
+import noUnthrownError from './rules/no-unthrown-error';
 import noUselessStringOperation from './rules/no-useless-string-operation';
 
-// eslint-disable-next-line sukka/type/no-force-cast-via-top-type -- bad @types/eslint type
-export default {
+const plugin = {
+  configs: {
+    recommended: {
+      name: 'eslint-plugin-sukka/recommended',
+      plugins: {
+        get sukka() {
+          return plugin;
+        }
+      },
+      rules: {
+        'sukka/ban-eslint-disable': ['error', 'allow-with-description'],
+
+        'sukka/bool-param-default': 'error',
+        'sukka/call-argument-line': 'error',
+        'sukka/class-prototype': 'warn',
+        'sukka/comma-or-logical-or-case': 'error',
+        'sukka/no-all-duplicated-branches': 'error',
+        'sukka/no-chain-array-higher-order-functions': 'error',
+        'sukka/no-duplicated-branches': 'error',
+        'sukka/no-element-overwrite': 'warn',
+        'sukka/no-empty-collection': 'warn',
+        'sukka/no-equals-in-for-termination': 'error',
+        'sukka/no-export-const-enum': 'error', // not tree-shakable by swc/babel/esbuild
+        'sukka/no-expression-empty-lines': 'error',
+        'sukka/no-invariant-returns': 'error',
+        'sukka/no-redundant-assignments': 'warn',
+
+        // disallow redundant `return await`
+        'no-return-await': 'off',
+        'sukka/no-return-await': 'error',
+
+        'sukka/no-same-line-conditional': 'error',
+        'sukka/no-small-switch': 'error',
+        'sukka/no-top-level-this': 'error',
+        'sukka/no-unthrown-error': 'warn',
+        'sukka/no-unused-collection': 'error',
+
+        'sukka/no-useless-plusplus': 'error',
+
+        'sukka/object-format': 'off', // do not enable by default
+
+        'sukka/prefer-single-boolean-return': 'error',
+        'sukka/track-todo-fixme-comment': 'warn'
+      } as Linter.RulesRecord
+    },
+    recommended_extra_with_typed_lint: {
+      name: 'eslint-plugin-sukka/recommended_extra_with_typed_lint',
+      plugins: {
+        get sukka() {
+          return plugin;
+        }
+      },
+      rules: {
+        'sukka/no-for-in-iterable': 'error',
+        'sukka/no-try-promise': 'error',
+        'sukka/no-undefined-optional-parameters': 'warn',
+        'sukka/no-useless-string-operation': 'warn',
+        'sukka/only-await-thenable': 'error'
+      } as Linter.RulesRecord
+    }
+  },
   rules: {
     'ban-eslint-disable': ban_eslint_disable,
 
@@ -64,6 +124,9 @@ export default {
     'only-await-thenable': onlyAwaitThenable,
     'no-undefined-optional-parameters': noUndefinedOptionalParameters,
     'no-try-promise': noTryPromise,
+    'no-unthrown-error': noUnthrownError,
     'no-useless-string-operation': noUselessStringOperation
   }
-} as unknown as ESLint.Plugin;
+} as const;
+
+export default plugin;

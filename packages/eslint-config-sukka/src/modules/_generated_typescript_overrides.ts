@@ -41,11 +41,6 @@ export const generated_typescript_overrides: SukkaESLintRuleConfig = {
     '@typescript-eslint/no-invalid-this': 'off',
     'no-loop-func': 'off',
     '@typescript-eslint/no-loop-func': 'error',
-    'sukka/no-return-await': 'off',
-    '@typescript-eslint/return-await': [
-      'error',
-      'in-try-catch'
-    ],
     'no-unused-expressions': 'off',
     '@typescript-eslint/no-unused-expressions': [
       'error',
@@ -80,6 +75,11 @@ export const generated_typescript_overrides: SukkaESLintRuleConfig = {
         variables: true
       }
     ],
-    'no-restricted-imports': 'off'
+    'no-restricted-imports': 'off',
+    'sukka/no-return-await': 'off',
+    '@typescript-eslint/return-await': [
+      'error',
+      'in-try-catch'
+    ]
   }
 };

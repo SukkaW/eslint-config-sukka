@@ -31,9 +31,13 @@ export function isPackageExists(pkg: string, parent = process.cwd()) {
 
 export * as globals from './globals';
 
-export function withFiles(configs: FlatESLintConfigItem, files: string | string[]): FlatESLintConfigItem;
-export function withFiles(configs: FlatESLintConfigItem[], files: string | string[]): FlatESLintConfigItem[];
-export function withFiles(configs: FlatESLintConfigItem | FlatESLintConfigItem[], files: string | string[]) {
+export function withFiles(configs: FlatESLintConfigItem, files: string | string[] | undefined | null): FlatESLintConfigItem;
+export function withFiles(configs: FlatESLintConfigItem[], files: string | string[] | undefined | null): FlatESLintConfigItem[];
+export function withFiles(configs: FlatESLintConfigItem | FlatESLintConfigItem[], files: string | string[] | undefined | null) {
+  if (files == null) {
+    return configs;
+  }
+
   files = castArray(files);
 
   if (!Array.isArray(configs)) {

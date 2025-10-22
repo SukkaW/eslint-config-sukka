@@ -1,4 +1,4 @@
-import { constants, memo, packageResolver, RESTRICTED_IMPORT_TS } from '@eslint-sukka/shared';
+import { constants, memo, packageResolver, RESTRICTED_IMPORT_TS, withFiles } from '@eslint-sukka/shared';
 
 import { generated_typescript_overrides } from './_generated_typescript_overrides';
 
@@ -8,6 +8,7 @@ import { configs as ts_eslint_configs } from 'typescript-eslint';
 import typescript_eslint_plugin from '@typescript-eslint/eslint-plugin';
 import typescript_eslint_parser from '@typescript-eslint/parser';
 
+import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
 import eslint_plugin_import_x from 'eslint-plugin-import-x';
 import eslint_plugin_paths from 'eslint-plugin-paths';
 import { stylistic_eslint_plugin } from '@eslint-sukka/eslint-plugin-stylistic';
@@ -55,18 +56,20 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
     '[eslint-config-sukka#ts] Expect @typescript-eslint/parser to exist'
   );
 
+  const files = [
+    constants.GLOB_TS,
+    constants.GLOB_TSX,
+    ...componentExtensions.map(ext => `**/*.${ext}`),
+    ...(allowJs
+      ? [constants.GLOB_JS]
+      : []
+    )
+  ];
+
   return [
     {
       name: '@eslint-sukka/ts base',
-      files: [
-        constants.GLOB_TS,
-        constants.GLOB_TSX,
-        ...componentExtensions.map(ext => `**/*.${ext}`),
-        ...(allowJs
-          ? [constants.GLOB_JS]
-          : []
-        )
-      ],
+      files,
       plugins: {
         '@typescript-eslint': memo<any>(typescript_eslint_plugin, '@typescript-eslint/eslint-plugin'),
         '@stylistic': memo(stylistic_eslint_plugin, '@stylistic/eslint-plugin'),
@@ -369,12 +372,6 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
         'sukka/type/no-force-cast-via-top-type': 'error',
         'sukka/type/no-wrapper-type-reference': 'error',
         'sukka/no-default-error': 'off', // disable since this is way too slow
-        'sukka/no-export-const-enum': 'error', // not tree-shakable by swc/babel/esbuild
-        'sukka/no-for-in-iterable': 'error',
-        'sukka/only-await-thenable': 'error',
-        'sukka/no-undefined-optional-parameters': 'warn',
-        'sukka/no-try-promise': 'error',
-        'sukka/no-useless-string-operation': 'warn',
 
         '@stylistic/type-generic-spacing': 'error',
         '@stylistic/type-named-tuple-spacing': 'error',
@@ -416,6 +413,7 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
         'paths/alias': 'warn'
       }
     },
+    withFiles(eslint_plugin_sukka.configs.recommended_extra_with_typed_lint, files),
     {
       name: '@eslint-sukka/ts dts',
       files: ['**/*.d.ts'],

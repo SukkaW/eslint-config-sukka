@@ -203,7 +203,8 @@ import require_module_attributes from 'eslint-plugin-unicorn/rules/require-modul
 
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import { createRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/utils/rule.js';
-import type { Linter } from '@typescript-eslint/utils/ts-eslint';
+
+import type { Linter } from 'eslint';
 
 const plugin = {
   configs: {
@@ -249,6 +250,22 @@ const plugin = {
       rules: {
         'sukka/unicorn/better-regex': 'warn' // RegEx[]
       } as Linter.RulesRecord
+    },
+    recommended: {
+      ...eslint_plugin_sukka.configs.recommended,
+      plugins: {
+        get sukka() {
+          return plugin;
+        }
+      }
+    },
+    recommended_extra_with_typed_lint: {
+      ...eslint_plugin_sukka.configs.recommended_extra_with_typed_lint,
+      plugins: {
+        get sukka() {
+          return plugin;
+        }
+      }
     }
   },
   rules: Object.assign<any, unknown, unknown>(
@@ -273,7 +290,6 @@ const plugin = {
       'type/no-wrapper-type-reference': type$no_wrapper_type_reference,
       'no-default-error': no_default_error
     },
-
     // eslint-plugin-unicorn
     loadUnicorns({
       'unicorn/better-regex': better_regex,

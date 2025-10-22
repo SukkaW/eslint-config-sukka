@@ -1,5 +1,5 @@
 import eslint_js from '@eslint/js';
-import { memo, RESTRICTED_IMPORT_JS, constants, globals, getPackageJson } from '@eslint-sukka/shared';
+import { memo, RESTRICTED_IMPORT_JS, constants, globals, getPackageJson, withFiles } from '@eslint-sukka/shared';
 
 import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
 import eslint_plugin_import_x, { createNodeResolver } from 'eslint-plugin-import-x';
@@ -21,7 +21,7 @@ export interface OptionsJavaScript {
    *
    * @default undefined
    */
-  files?: FlatESLintConfigItem['files'] | undefined,
+  files?: string | string[] | undefined | null,
   /**
    * Disable `no-console` rule in CLI files.
    *
@@ -80,9 +80,8 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
       }
     },
     eslint_js.configs.recommended,
-    {
+    withFiles({
       name: '@eslint-sukka/js base',
-      ...(files ? { files } : {}),
       languageOptions: {
         ecmaVersion: 'latest',
         sourceType: isModule ? 'module' : 'commonjs',
@@ -314,10 +313,6 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
 
         // disallow use of assignment in return statement
         'no-return-assign': ['error', 'always'],
-
-        // disallow redundant `return await`
-        'no-return-await': 'off',
-        'sukka/no-return-await': 'error',
 
         // comparisons where both sides are exactly the same
         // This is way faster than Number.isNaN
@@ -914,24 +909,6 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         // disallow use of undefined when initializing variables
         'no-undef-init': 'error',
 
-        'sukka/no-expression-empty-lines': 'error',
-        'sukka/prefer-single-boolean-return': 'error',
-        'sukka/no-all-duplicated-branches': 'error',
-        'sukka/no-duplicated-branches': 'error',
-        'sukka/bool-param-default': 'error',
-        'sukka/call-argument-line': 'error',
-        'sukka/class-prototype': 'warn',
-        'sukka/comma-or-logical-or-case': 'error',
-        'sukka/track-todo-fixme-comment': 'warn',
-        'sukka/no-element-overwrite': 'warn',
-        'sukka/no-empty-collection': 'warn',
-        'sukka/no-equals-in-for-termination': 'error',
-        'sukka/no-top-level-this': 'error',
-        'sukka/no-invariant-returns': 'error',
-        'sukka/no-redundant-assignments': 'warn',
-        'sukka/no-same-line-conditional': 'error',
-        'sukka/no-small-switch': 'error',
-
         'sukka/array/no-unneeded-flat-map': 'error',
         'sukka/browser/prefer-location-assign': 'warn',
         'sukka/jsx/no-template-literal': 'error',
@@ -942,12 +919,10 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/unicode/no-invisible': 'warn',
 
         'sukka/no-redundant-variable': 'error',
-        'sukka/no-single-return': 'error',
+        'sukka/no-single-return': 'warn',
         'sukka/prefer-early-return': ['error', { maximumStatements: 16 }],
         'sukka/prefer-fetch': 'error',
         'sukka/prefer-timer-id': 'warn',
-        'sukka/no-useless-plusplus': 'error',
-        'sukka/no-chain-array-higher-order-functions': 'error',
 
         'sukka/unicorn/catch-error-name': ['error', { ignore: [/^(?:e|err|error|\w+Err|\w+Error)[\d_]?$/] }],
         'sukka/unicorn/custom-error-definition': 'error',
@@ -1083,8 +1058,9 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         'antfu/no-top-level-await': 'error',
         'antfu/top-level-function': 'warn'
       }
-    },
-    eslint_plugin_demorgan.configs.recommended
+    }, files),
+    withFiles(eslint_plugin_demorgan.configs.recommended, files),
+    withFiles(eslint_plugin_sukka.configs.recommended, files)
   ];
 
   if (disableNoConsoleInCLI !== false) {
