@@ -9,5 +9,5 @@ export default createRollupConfig(new URL('./package.json', import.meta.url), []
       { find: 'lodash', replacement: 'lodash-unified' }
     ]
   },
-  buildCjsOnly: false
+  buildCjsOnly: true
 });

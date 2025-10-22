@@ -2,7 +2,7 @@ import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import { RESTRICTED_IMPORT_NODE_REQUIRE, getPackageJson, globals, memo } from '@eslint-sukka/shared';
 
-import eslint_plugin_sukka from 'eslint-plugin-sukka';
+import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
 import eslint_plugin_n from 'eslint-plugin-n';
 
 export interface OptionsNode {
@@ -17,10 +17,10 @@ export function node(options: OptionsNode = {}): FlatESLintConfigItem[] {
   const isModule = options.module ?? (getPackageJson()?.type === 'module');
 
   const configs: FlatESLintConfigItem[] = [
+    eslint_plugin_sukka.configs.node,
     {
       name: '@eslint-sukka/node base',
       plugins: {
-        sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka'),
         n: memo(eslint_plugin_n, 'eslint-plugin-n')
       },
       rules: {
@@ -28,12 +28,6 @@ export function node(options: OptionsNode = {}): FlatESLintConfigItem[] {
 
         // enforces error handling in callbacks (node environment)
         'handle-callback-err': 'off',
-
-        // disallow use of the Buffer() constructor
-        // https://eslint.org/docs/rules/no-buffer-constructor
-        // replaced by sukka/unicorn/no-new-buffer
-        'no-buffer-constructor': 'off',
-        'sukka/unicorn/no-new-buffer': 'error', // ban new Buffer, prefer Buffer.from
 
         // disallow use of new operator with the require function
         // replaced by eslint-plugin-n
@@ -51,10 +45,7 @@ export function node(options: OptionsNode = {}): FlatESLintConfigItem[] {
 
         // disallow process.exit()
         // replaced by sukka/unicorn/no-process-exit
-        'no-process-exit': 'off',
-        'n/no-process-exit': 'off',
-        'sukka/unicorn/no-process-exit': 'warn',
-        'sukka/unicorn/prefer-import-meta-properties': 'error',
+        'n/no-process-exit': 'off', // replaced by sukka/unicorn/no-process-exit
 
         // restrict usage of specified node modules
         'no-restricted-modules': 'off', // covered by ts presets
@@ -76,7 +67,6 @@ export function node(options: OptionsNode = {}): FlatESLintConfigItem[] {
 
         'n/no-restricted-require': options.hasTypeScript ? 'off' /** covered by ts presets */ : ['error', RESTRICTED_IMPORT_NODE_REQUIRE],
         'n/prefer-node-protocol': 'off', // slower
-        'sukka/unicorn/prefer-node-protocol': 'error',
 
         'n/process-exit-as-throw': 'error',
 

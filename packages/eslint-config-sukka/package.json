@@ -32,6 +32,7 @@
   "dependencies": {
     "@eslint-community/eslint-plugin-eslint-comments": "^4.5.0",
     "@eslint-sukka/eslint-plugin-stylistic": "workspace:*",
+    "@eslint-sukka/eslint-plugin-sukka-full": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
     "@eslint/js": "^9.38.0",
     "@typescript-eslint/eslint-plugin": "^8.46.2",
@@ -45,7 +46,6 @@
     "eslint-plugin-paths": "^1.1.0",
     "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-regexp": "^2.10.0",
-    "eslint-plugin-sukka": "workspace:*",
     "eslint-plugin-unused-imports": "^4.3.0",
     "foxts": "^4.6.0",
     "jsonc-eslint-parser": "^2.4.1",

@@ -1,7 +1,5 @@
-import { memo, globals } from '@eslint-sukka/shared';
+import { globals } from '@eslint-sukka/shared';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
-
-import eslint_plugin_sukka from 'eslint-plugin-sukka';
 
 export interface OptionsLegacy {
   browser?: boolean,
@@ -13,9 +11,10 @@ export function legacy(options: OptionsLegacy = {}): FlatESLintConfigItem[] {
   return [{
     name: '@eslint-sukka/legacy base',
     ...(options.files ? { files: options.files } : {}),
-    plugins: {
-      sukka: memo(eslint_plugin_sukka, 'eslint-plugin-sukka')
-    },
+    // only turn off rules
+    // plugins: {
+    //   sukka: memo(eslint_plugin_sukka, '@eslint-sukka/eslint-plugin-sukka-full')
+    // },
     rules: {
       'prefer-numeric-literals': 'off',
       'no-restricted-properties': ['error', {
