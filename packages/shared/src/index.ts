@@ -8,6 +8,9 @@ export { createRule, ensureParserWithTypeInformation, isParserWithTypeInformatio
 export type { RuleModule, ExportedRuleModule, RuleContext } from './create-eslint-rule';
 
 import { EnforceExtension, ResolverFactory } from 'oxc-resolver';
+import type { FlatESLintConfigItem } from './types';
+
+import { castArray } from 'foxts/cast-array';
 
 export const packageResolver = new ResolverFactory({
   extensions: ['.mjs', '.cjs', '.js', '.json', '.node'],
@@ -24,3 +27,20 @@ export function isPackageExists(pkg: string, parent = process.cwd()) {
 }
 
 export * as globals from './globals';
+
+export function withFiles(configs: FlatESLintConfigItem, files: string | string[]): FlatESLintConfigItem;
+export function withFiles(configs: FlatESLintConfigItem[], files: string | string[]): FlatESLintConfigItem[];
+export function withFiles(configs: FlatESLintConfigItem | FlatESLintConfigItem[], files: string | string[]) {
+  files = castArray(files);
+
+  if (!Array.isArray(configs)) {
+    configs.files = files;
+    return configs;
+  }
+
+  for (let i = 0, len = configs.length; i < len; i++) {
+    configs[i].files = files;
+  }
+
+  return configs;
+}
