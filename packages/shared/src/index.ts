@@ -1,5 +1,3 @@
-import type { Linter } from 'eslint';
-
 export * as constants from './constants';
 export { getPackageJson, isDirectDependency } from './get-package-json';
 export * from './restricted-import';
@@ -26,8 +24,3 @@ export function isPackageExists(pkg: string, parent = process.cwd()) {
 }
 
 export * as globals from './globals';
-
-export function ruleopt<S extends Linter.RuleSeverity, Options extends unknown[] = unknown[]>(severity: S,
-  ...opt: Options): Linter.RuleEntry<Options> {
-  return opt.length ? [severity, ...opt] as const : severity;
-}
