@@ -14,6 +14,8 @@ import eslint_plugin_ssr_friendly from 'eslint-plugin-ssr-friendly';
 import { fixupPluginRules } from '@eslint/compat';
 import { eslint_plugin_jsx_a11y_minimal } from '@eslint-sukka/eslint-plugin-react-jsx-a11y';
 
+import { castArray } from 'foxts/cast-array';
+
 interface EslintReactAdditionalComponents {
   name: string,
   as: string,
@@ -25,6 +27,7 @@ interface EslintReactAdditionalComponents {
 }
 
 export interface OptionsReact {
+  files?: string | string[] | ((builtinFiles: string[]) => string[]),
   /**
    * @default '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample)'
    */
@@ -49,6 +52,12 @@ const memoized_eslint_react = memo(eslint_react, '@eslint-react/eslint-plugin');
 const memoized_eslint_plugin_ssr_friendly = memo(fixupPluginRules(eslint_plugin_ssr_friendly), 'eslint-plugin-ssr-friendly');
 
 export function react({
+  files = [
+    constants.GLOB_TS,
+    constants.GLOB_TSX,
+    // constants.GLOB_JS,
+    constants.GLOB_JSX
+  ],
   reactCompiler = 'error',
   additionalHooks = '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample|useAbortableEffect)',
   nextjs = false,
@@ -73,15 +82,21 @@ export function react({
     allowConstantExport = false
   } = reactRefresh;
 
+  if (typeof files === 'function') {
+    files = files([
+      constants.GLOB_TS,
+      constants.GLOB_TSX,
+      // constants.GLOB_JS,
+      constants.GLOB_JSX
+    ]);
+  } else {
+    files = castArray(files);
+  }
+
   return [
     {
       name: '@eslint-sukka/react base',
-      files: [
-        constants.GLOB_TS,
-        constants.GLOB_TSX,
-        // constants.GLOB_JS,
-        constants.GLOB_JSX
-      ],
+      files,
       plugins: {
         'react-hooks': memo(eslint_plugin_react_hooks, 'eslint-plugin-react-hooks'),
         '@stylistic': memo(stylistic_eslint_plugin, '@stylistic/eslint-plugin'),
@@ -102,7 +117,7 @@ export function react({
         globals: globals.browser
       },
       rules: {
-      // plugin:react-hooks/recommended
+        // plugin:react-hooks/recommended
         ...(eslint_plugin_react_hooks as any).configs['recommended-latest'].rules,
         // react compiler rule
         'react-compiler/react-compiler': reactCompiler,
@@ -410,12 +425,7 @@ export function react({
     },
     withFiles(
       eslint_plugin_jsx_a11y_minimal.configs.minimal,
-      [
-        constants.GLOB_TS,
-        constants.GLOB_TSX,
-        // constants.GLOB_JS,
-        constants.GLOB_JSX
-      ]
+      files
     ),
     {
       name: 'sukka/react next.js/nextra naming convention',
