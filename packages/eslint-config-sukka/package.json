@@ -48,7 +48,7 @@
     "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-regexp": "^2.10.0",
     "eslint-plugin-unused-imports": "^4.3.0",
-    "foxts": "^4.6.0",
+    "foxts": "^5.0.0",
     "jsonc-eslint-parser": "^2.4.1",
     "picocolors": "^1.1.1",
     "typescript-eslint": "^8.46.2"

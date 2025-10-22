@@ -94,8 +94,8 @@ importers:
         specifier: workspace:*
         version: link:packages/eslint-plugin-sukka
       foxts:
-        specifier: ^4.6.0
-        version: 4.6.0
+        specifier: ^5.0.0
+        version: 5.0.0
       mocha:
         specifier: ^11.7.4
         version: 11.7.4
@@ -172,8 +172,8 @@ importers:
         specifier: ^4.3.0
         version: 4.3.0(@typescript-eslint/eslint-plugin@8.46.2(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.5.1))(typescript@5.9.3))(eslint@9.38.0(jiti@2.5.1))(typescript@5.9.3))(eslint@9.38.0(jiti@2.5.1))
       foxts:
-        specifier: ^4.6.0
-        version: 4.6.0
+        specifier: ^5.0.0
+        version: 5.0.0
       jsonc-eslint-parser:
         specifier: ^2.4.1
         version: 2.4.1
@@ -224,8 +224,8 @@ importers:
         specifier: '*'
         version: 9.38.0(jiti@2.5.1)
       foxts:
-        specifier: ^4.6.0
-        version: 4.6.0
+        specifier: ^5.0.0
+        version: 5.0.0
       picocolors:
         specifier: ^1.1.1
         version: 1.1.1
@@ -320,8 +320,8 @@ importers:
         specifier: '*'
         version: 9.38.0(jiti@2.5.1)
       foxts:
-        specifier: ^4.6.0
-        version: 4.6.0
+        specifier: ^5.0.0
+        version: 5.0.0
       typescript:
         specifier: '*'
         version: 5.9.3
@@ -409,8 +409,8 @@ importers:
         specifier: ^1.3.0
         version: 1.3.0(eslint@9.38.0(jiti@2.5.1))
       foxts:
-        specifier: ^4.6.0
-        version: 4.6.0
+        specifier: ^5.0.0
+        version: 5.0.0
     devDependencies:
       '@eslint-react/eslint-plugin':
         specifier: ^2.2.3
@@ -467,8 +467,8 @@ importers:
         specifier: ^8.46.2
         version: 8.46.2(eslint@9.38.0(jiti@2.5.1))(typescript@5.9.3)
       foxts:
-        specifier: ^4.6.0
-        version: 4.6.0
+        specifier: ^5.0.0
+        version: 5.0.0
       oxc-resolver:
         specifier: ^11.11.1
         version: 11.11.1
@@ -489,8 +489,8 @@ importers:
         specifier: ^1.19.0
         version: 1.19.0(eslint@9.38.0(jiti@2.5.1))
       foxts:
-        specifier: ^4.6.0
-        version: 4.6.0
+        specifier: ^5.0.0
+        version: 5.0.0
       yaml-eslint-parser:
         specifier: ^1.3.0
         version: 1.3.0
@@ -2056,12 +2056,6 @@ packages:
   fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
 
-  fast-escape-html@1.1.0:
-    resolution: {integrity: sha512-nRvjfywv8gzIBs0fM/ht6S5scNUamm+o+91p/69cYYNWODb7b/UiQfjFx+6n8NMtdHs6K80kh+hW1dPNS/opIA==}
-
-  fast-escape-regexp@1.0.1:
-    resolution: {integrity: sha512-VSnAgWEYHdyyVegVfN/TUCa6hDQ7PIxdIJVWq4RWqyegkG9zFwNb21uykT0hAyvKlKnFR+zOu/25434pHBXtLA==}
-
   fast-glob@3.3.1:
     resolution: {integrity: sha512-kNFPyjhh5cKjrUltxs+wFx+ZkbRaxxmZ+X0ZU31SOsxCEtP9VPgtq2teZw1DebupL5GmDaNQ6yKMMVcM41iqDg==}
     engines: {node: '>=8.6.0'}
@@ -2132,8 +2126,8 @@ packages:
     resolution: {integrity: sha512-wzsgA6WOq+09wrU1tsJ09udeR/YZRaeArL9e1wPbFg3GG2yDnC2ldKpxs4xunpFF9DgqCqOIra3bc1HWrJ37Ww==}
     engines: {node: '>=0.4.x'}
 
-  foxts@4.6.0:
-    resolution: {integrity: sha512-Sq6k7CDUAz1/MOiwRiV59tblzsaWGOQitYxvF/l7H5Z/9gZNBvWKWsRcXLS7T7FLKRKO0LmETiefkVUm5omESg==}
+  foxts@5.0.0:
+    resolution: {integrity: sha512-7DFosPyxBY+PlOblM2afOqqCY+3l/KAWq0qVQ5CLXzHkjLJfdzFON1YZYpPG9VXR+e5R2dgcZxDQWzWk2uudtQ==}
 
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
@@ -4707,10 +4701,6 @@ snapshots:
 
   fast-deep-equal@3.1.3: {}
 
-  fast-escape-html@1.1.0: {}
-
-  fast-escape-regexp@1.0.1: {}
-
   fast-glob@3.3.1:
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -4780,10 +4770,7 @@ snapshots:
 
   format@0.2.2: {}
 
-  foxts@4.6.0:
-    dependencies:
-      fast-escape-html: 1.1.0
-      fast-escape-regexp: 1.0.1
+  foxts@5.0.0: {}
 
   fsevents@2.3.3:
     optional: true
