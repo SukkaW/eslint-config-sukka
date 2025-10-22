@@ -90,7 +90,7 @@ const plugin = {
         'sukka/no-try-promise': 'error',
         'sukka/no-undefined-optional-parameters': 'warn',
         'sukka/no-useless-string-operation': 'warn',
-        'sukka/only-await-thenable': 'error'
+        'sukka/only-await-thenable': 'off' // replaced by typescript-eslint await-thenable rule
       } as Linter.RulesRecord
     }
   },
