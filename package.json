@@ -43,7 +43,7 @@
     "turbo": "^2.5.8",
     "typescript": "^5.9.3"
   },
-  "packageManager": "pnpm@10.18.3",
+  "packageManager": "pnpm@10.19.0",
   "pnpm": {
     "overrides": {
       "array-includes": "npm:@nolyfill/array-includes@^1.0.44",
