@@ -1,3 +1,4 @@
+import { constants } from '@eslint-sukka/shared';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 import eslint_plugin_yml from 'eslint-plugin-yml';
 import { appendArrayInPlace } from 'foxts/append-array-in-place';
@@ -6,7 +7,7 @@ export function yaml(): FlatESLintConfigItem[] {
   const myCfg: FlatESLintConfigItem[] = [
     {
       name: 'sukka/yaml disable spaced-comment',
-      files: ['**/*.yaml', '**/*.yml'],
+      files: constants.GLOB_YML,
       rules: {
         // FIXME: https://github.com/ota-meshi/eslint-plugin-yml/issues/277
         '@stylistic/spaced-comment': 'off'

@@ -4,6 +4,7 @@ import { RESTRICTED_IMPORT_NODE_REQUIRE, getPackageJson, globals, memo } from '@
 
 import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
 import eslint_plugin_n from 'eslint-plugin-n';
+import { UNSAFE_excludeJsonYamlFiles } from '@eslint-sukka/shared';
 
 export interface OptionsNode {
   strict?: boolean,
@@ -16,7 +17,8 @@ export interface OptionsNode {
 export function node(options: OptionsNode = {}): FlatESLintConfigItem[] {
   const isModule = options.module ?? (getPackageJson()?.type === 'module');
 
-  const configs: FlatESLintConfigItem[] = [
+  // this is safe because Node.js specific rules should not apply to JSON/YAML files
+  const configs: FlatESLintConfigItem[] = UNSAFE_excludeJsonYamlFiles([
     eslint_plugin_sukka.configs.node,
     {
       name: '@eslint-sukka/node base',
@@ -88,7 +90,7 @@ export function node(options: OptionsNode = {}): FlatESLintConfigItem[] {
         globals: globals.node
       }
     }
-  ];
+  ]);
 
   if (options.strict !== false) {
     configs.push({

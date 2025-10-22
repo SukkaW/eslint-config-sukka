@@ -1,4 +1,5 @@
 import eslint_plugin_sukka from 'eslint-plugin-sukka';
+import { constants } from '@eslint-sukka/shared';
 
 // @masknet/eslint-plugin
 import array$no_unneeded_flat_map from '@masknet/eslint-plugin/rules/array/no-unneeded-flat-map.js';
@@ -209,6 +210,7 @@ const plugin = {
   configs: {
     node: {
       name: '@eslint-sukka/eslint-plugin-sukka-full node preset',
+      ignores: constants.GLOB_NON_JS_TS,
       plugins: {
         get sukka() {
           return plugin;
@@ -241,6 +243,7 @@ const plugin = {
     },
     regexp: {
       name: '@eslint-sukka/eslint-plugin-sukka-full regexp preset',
+      ignores: constants.GLOB_NON_JS_TS,
       plugins: {
         get sukka() {
           return plugin;

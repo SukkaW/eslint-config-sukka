@@ -15,6 +15,7 @@ import { fixupPluginRules } from '@eslint/compat';
 import { eslint_plugin_jsx_a11y_minimal } from '@eslint-sukka/eslint-plugin-react-jsx-a11y';
 
 import { castArray } from 'foxts/cast-array';
+import { UNSAFE_excludeJsonYamlFiles } from '@eslint-sukka/shared';
 
 interface EslintReactAdditionalComponents {
   name: string,
@@ -94,7 +95,8 @@ export function react({
   }
 
   return [
-    {
+    // this is safe because A11Y doesn't apply to JSON/YAML files
+    UNSAFE_excludeJsonYamlFiles({
       name: '@eslint-sukka/react base',
       files,
       plugins: {
@@ -422,9 +424,10 @@ export function react({
           }
         ]
       }
-    },
+    }),
     withFiles(
-      eslint_plugin_jsx_a11y_minimal.configs.minimal,
+      // this is safe because A11Y doesn't apply to JSON/YAML files
+      UNSAFE_excludeJsonYamlFiles(eslint_plugin_jsx_a11y_minimal.configs.minimal),
       files
     ),
     {

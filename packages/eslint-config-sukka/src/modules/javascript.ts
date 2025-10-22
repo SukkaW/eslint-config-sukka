@@ -79,10 +79,7 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         reportUnusedDisableDirectives: true
       }
     },
-    {
-      name: '@eslint/js recommended',
-      ...eslint_js.configs.recommended
-    },
+    eslint_js.configs.recommended,
     {
       name: '@eslint-sukka/js base',
       ...(files ? { files } : {}),
