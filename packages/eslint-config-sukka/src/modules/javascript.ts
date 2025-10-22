@@ -1,5 +1,5 @@
 import eslint_js from '@eslint/js';
-import { memo, RESTRICTED_IMPORT_JS, constants, globals, getPackageJson, withFiles } from '@eslint-sukka/shared';
+import { memo, RESTRICTED_IMPORT_JS, constants, globals, getPackageJson, withFiles, UNSAFE_excludeJsonYamlFiles } from '@eslint-sukka/shared';
 
 import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
 import eslint_plugin_import_x, { createNodeResolver } from 'eslint-plugin-import-x';
@@ -100,34 +100,14 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
           ...customGlobals
         }
       } satisfies FlatESLintConfigItem['languageOptions'],
-      settings: {
-        'import-x/extensions': allExtensions,
-        'import-x/resolver-next': [
-          createNodeResolver({
-            extensions: allExtensions
-          })
-        ]
-      },
       plugins: {
         'unused-imports': memo(eslint_plugin_unused_imports, 'eslint-plugin-unused-imports'),
         '@stylistic': memo(stylistic_eslint_plugin, '@stylistic/eslint-plugin'),
         sukka: memo(eslint_plugin_sukka, '@eslint-sukka/eslint-plugin-sukka-full'),
-        'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x'),
         autofix: eslint_plugin_autofix,
         antfu: memo(eslint_plugin_antfu, 'eslint_plugin_antfu')
       },
       rules: {
-        ...eslint_plugin_import_x.configs.recommended.rules,
-
-        'import-x/newline-after-import': ['error', { considerComments: false }],
-        'import-x/no-absolute-path': 'error',
-        'import-x/no-empty-named-blocks': 'error',
-        'import-x/no-mutable-exports': 'error',
-        'import-x/no-useless-path-segments': 'warn',
-        'import-x/no-webpack-loader-syntax': 'error',
-        // prevent monorepo sibling imports
-        'import-x/no-relative-packages': 'warn',
-
         // enforces getter/setter pairs in objects
         // https://eslint.org/docs/rules/accessor-pairs
         'accessor-pairs': 'off',
@@ -1059,6 +1039,31 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         'antfu/top-level-function': 'warn'
       }
     }, files),
+    // As one of the maintainer of eslint-plugin-import-x, I know how rule works. JSON/YAML won't have import syntax
+    withFiles(UNSAFE_excludeJsonYamlFiles({
+      plugins: {
+        'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x')
+      },
+      settings: {
+        'import-x/extensions': allExtensions,
+        'import-x/resolver-next': [
+          createNodeResolver({
+            extensions: allExtensions
+          })
+        ]
+      },
+      rules: {
+        ...eslint_plugin_import_x.configs.recommended.rules,
+        'import-x/newline-after-import': ['error', { considerComments: false }],
+        'import-x/no-absolute-path': 'error',
+        'import-x/no-empty-named-blocks': 'error',
+        'import-x/no-mutable-exports': 'error',
+        'import-x/no-useless-path-segments': 'warn',
+        'import-x/no-webpack-loader-syntax': 'error',
+        // prevent monorepo sibling imports
+        'import-x/no-relative-packages': 'warn'
+      }
+    }), files),
     withFiles(eslint_plugin_demorgan.configs.recommended, files),
     withFiles(eslint_plugin_sukka.configs.recommended, files)
   ];
