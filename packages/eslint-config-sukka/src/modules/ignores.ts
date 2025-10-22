@@ -3,6 +3,8 @@ import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 import eslint_config_flat_gitignore from 'eslint-config-flat-gitignore';
 import { never } from 'foxts/guard';
 
+import { globalIgnores } from '@eslint/config-helpers';
+
 export interface OptionsIgnores {
   /**
    * If `customGlobs` is not provided, or provided one is set to `false` or `null`, only the built-in globs will be used.
@@ -35,7 +37,8 @@ export function ignores(options: OptionsIgnores = {}): FlatESLintConfigItem[] {
   } else {
     never(customGlobs);
   }
-  configs.push({ ignores });
+
+  configs.push(globalIgnores(ignores));
 
   if (gitignore === false || gitignore === null) {
     // do nothing
