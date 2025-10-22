@@ -203,10 +203,54 @@ import require_module_attributes from 'eslint-plugin-unicorn/rules/require-modul
 
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import { createRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/utils/rule.js';
-import type { ESLint } from 'eslint';
+import type { Linter } from '@typescript-eslint/utils/ts-eslint';
 
-// eslint-disable-next-line sukka/type/no-force-cast-via-top-type -- bad @types/eslint type
-export default {
+const plugin = {
+  configs: {
+    node: {
+      name: '@eslint-sukka/eslint-plugin-sukka-full node preset',
+      plugins: {
+        get sukka() {
+          return plugin;
+        }
+      },
+      rules: {
+        'sukka/unicorn/prefer-node-protocol': 'error',
+        'sukka/unicorn/prefer-import-meta-properties': 'error',
+
+        'no-process-exit': 'off',
+        'sukka/unicorn/no-process-exit': 'warn',
+
+        // disallow use of the Buffer() constructor
+        // https://eslint.org/docs/rules/no-buffer-constructor
+        // replaced by sukka/unicorn/no-new-buffer
+        'no-buffer-constructor': 'off',
+        'sukka/unicorn/no-new-buffer': 'error' // ban new Buffer, prefer Buffer.from
+      } as Linter.RulesRecord
+    },
+    comment: {
+      name: '@eslint-sukka/eslint-plugin-sukka-full comments preset',
+      plugins: {
+        get sukka() {
+          return plugin;
+        }
+      },
+      rules: {
+        'sukka/ban-eslint-disable': ['error', 'allow-with-description']
+      } as Linter.RulesRecord
+    },
+    regexp: {
+      name: '@eslint-sukka/eslint-plugin-sukka-full regexp preset',
+      plugins: {
+        get sukka() {
+          return plugin;
+        }
+      },
+      rules: {
+        'sukka/unicorn/better-regex': 'warn' // RegEx[]
+      } as Linter.RulesRecord
+    }
+  },
   rules: Object.assign<any, unknown, unknown>(
     eslint_plugin_sukka.rules,
     {
@@ -322,4 +366,6 @@ export default {
       'unicorn/require-module-attributes': require_module_attributes
     })
   )
-} as unknown as ESLint.Plugin;
+} as const;
+
+export default plugin;

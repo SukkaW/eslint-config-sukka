@@ -34,39 +34,36 @@ import noUselessStringOperation from './rules/no-useless-string-operation';
 
 // eslint-disable-next-line sukka/type/no-force-cast-via-top-type -- bad @types/eslint type
 export default {
-  rules: Object.assign(
-    {
+  rules: {
+    'ban-eslint-disable': ban_eslint_disable,
 
-      'ban-eslint-disable': ban_eslint_disable,
-
-      'no-return-await': no_return_await,
-      'no-expression-empty-lines': no_expression_empty_lines,
-      'object-format': object_format,
-      'prefer-single-boolean-return': prefer_single_boolean_return,
-      'no-all-duplicated-branches': noAllDuplicatedBranches,
-      'no-duplicated-branches': noDuplicatedBranches,
-      'bool-param-default': boolParamDefault,
-      'call-argument-line': callArgumentLine,
-      'class-prototype': classPrototype,
-      'comma-or-logical-or-case': commaOrLogicalOrCase,
-      'track-todo-fixme-comment': trackTodoFixmeComment,
-      'no-element-overwrite': noElementOverwrite,
-      'no-empty-collection': noEmptyCollection,
-      'no-equals-in-for-termination': noEqualsInForTermination,
-      'no-top-level-this': noTopLevelThis,
-      'no-invariant-returns': noInvariantReturns,
-      'no-redundant-assignments': noRedundantAssignments,
-      'no-same-line-conditional': noSameLineConditional,
-      'no-small-switch': noSmallSwitch,
-      'no-unused-collection': noUnusedCollection,
-      'no-useless-plusplus': noUselessPlusplus,
-      'no-chain-array-higher-order-functions': noChainArrayHigherOrderFunctions,
-      'no-export-const-enum': no_export_const_enum,
-      'no-for-in-iterable': noForInIterable,
-      'only-await-thenable': onlyAwaitThenable,
-      'no-undefined-optional-parameters': noUndefinedOptionalParameters,
-      'no-try-promise': noTryPromise,
-      'no-useless-string-operation': noUselessStringOperation
-    }
-  )
+    'no-return-await': no_return_await,
+    'no-expression-empty-lines': no_expression_empty_lines,
+    'object-format': object_format,
+    'prefer-single-boolean-return': prefer_single_boolean_return,
+    'no-all-duplicated-branches': noAllDuplicatedBranches,
+    'no-duplicated-branches': noDuplicatedBranches,
+    'bool-param-default': boolParamDefault,
+    'call-argument-line': callArgumentLine,
+    'class-prototype': classPrototype,
+    'comma-or-logical-or-case': commaOrLogicalOrCase,
+    'track-todo-fixme-comment': trackTodoFixmeComment,
+    'no-element-overwrite': noElementOverwrite,
+    'no-empty-collection': noEmptyCollection,
+    'no-equals-in-for-termination': noEqualsInForTermination,
+    'no-top-level-this': noTopLevelThis,
+    'no-invariant-returns': noInvariantReturns,
+    'no-redundant-assignments': noRedundantAssignments,
+    'no-same-line-conditional': noSameLineConditional,
+    'no-small-switch': noSmallSwitch,
+    'no-unused-collection': noUnusedCollection,
+    'no-useless-plusplus': noUselessPlusplus,
+    'no-chain-array-higher-order-functions': noChainArrayHigherOrderFunctions,
+    'no-export-const-enum': no_export_const_enum,
+    'no-for-in-iterable': noForInIterable,
+    'only-await-thenable': onlyAwaitThenable,
+    'no-undefined-optional-parameters': noUndefinedOptionalParameters,
+    'no-try-promise': noTryPromise,
+    'no-useless-string-operation': noUselessStringOperation
+  }
 } as unknown as ESLint.Plugin;

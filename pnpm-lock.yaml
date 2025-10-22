@@ -332,6 +332,9 @@ importers:
 
   packages/eslint-plugin-sukka-full:
     dependencies:
+      '@eslint-sukka/shared':
+        specifier: workspace:*
+        version: link:../shared
       eslint:
         specifier: '*'
         version: 9.38.0(jiti@2.5.1)
