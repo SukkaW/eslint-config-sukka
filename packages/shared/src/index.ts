@@ -52,36 +52,31 @@ export function withFiles(configs: FlatESLintConfigItem | FlatESLintConfigItem[]
   return configs;
 }
 
+function addIgnore(config: FlatESLintConfigItem, ignores: string[]) {
+  if (config.ignores) {
+    appendArrayInPlace(config.ignores, ignores);
+  } else if (Object.isExtensible(config)) { // @eslint/js Object.freeze before export
+    config.ignores = ignores;
+  } else {
+    config = {
+      ...config,
+      ignores
+    };
+  }
+  return config;
+}
+
 export function withIgnores(configs: FlatESLintConfigItem, ignores: string | string[]): FlatESLintConfigItem;
 export function withIgnores(configs: FlatESLintConfigItem[], ignores: string | string[]): FlatESLintConfigItem[];
 export function withIgnores(configs: FlatESLintConfigItem | FlatESLintConfigItem[], ignores: string | string[]) {
   ignores = castArray(ignores);
 
   if (!Array.isArray(configs)) {
-    if (configs.ignores) {
-      appendArrayInPlace(configs.ignores, ignores);
-    } else if (Object.isExtensible(configs)) {
-      configs.ignores = ignores;
-    } else {
-      configs = {
-        ...configs,
-        ignores
-      };
-    }
-    return configs;
+    return addIgnore(configs, ignores);
   }
 
   for (let i = 0, len = configs.length; i < len; i++) {
-    if (configs[i].ignores) {
-      appendArrayInPlace(configs[i].ignores!, ignores);
-    } else if (Object.isExtensible(configs[i])) {
-      configs[i].ignores = ignores;
-    } else {
-      configs[i] = {
-        ...configs[i],
-        ignores
-      };
-    }
+    configs[i] = addIgnore(configs[i], ignores);
   }
 
   return configs;
@@ -91,6 +86,7 @@ const GLOB_NON_JS_TS = [
   ...GLOB_ALL_JSON,
   ...GLOB_YML
 ];
+const jsonYamlExcluded = new WeakSet<FlatESLintConfigItem>();
 /**
  * This ignores JSON and YAML files from config item(s). USE WITH CAUTION.
  *
@@ -107,5 +103,27 @@ export function UNSAFE_excludeJsonYamlFiles(configs: FlatESLintConfigItem): Flat
 export function UNSAFE_excludeJsonYamlFiles(configs: FlatESLintConfigItem[]): FlatESLintConfigItem[];
 // eslint-disable-next-line @typescript-eslint/naming-convention -- UNSAFE_
 export function UNSAFE_excludeJsonYamlFiles(configs: FlatESLintConfigItem | FlatESLintConfigItem[]): FlatESLintConfigItem | FlatESLintConfigItem[] {
-  return withIgnores(configs as any, GLOB_NON_JS_TS);
+  if (!Array.isArray(configs)) {
+    if (jsonYamlExcluded.has(configs)) {
+      return configs;
+    }
+    configs = addIgnore(configs, GLOB_NON_JS_TS);
+    // Mark processed as excluded, because next time the .has would be call against processed one
+    // And `addIgnore` may return a new object
+    jsonYamlExcluded.add(configs);
+    return configs;
+  }
+
+  for (let i = 0, len = configs.length; i < len; i++) {
+    if (jsonYamlExcluded.has(configs[i])) {
+      continue;
+    }
+
+    configs[i] = addIgnore(configs[i], GLOB_NON_JS_TS);
+    // Mark processed as excluded, because next time the .has would be call against processed one
+    // And `addIgnore` may return a new object
+    jsonYamlExcluded.add(configs[i]);
+  }
+
+  return configs;
 }
