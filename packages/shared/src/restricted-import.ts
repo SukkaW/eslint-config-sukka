@@ -52,6 +52,15 @@ export const BETTER_ALTERNATIVES = Object.entries({
   // React i18n
   'next-intl': 'https://github.com/QuiiBz/next-international',
   'next-i18next': 'https://github.com/QuiiBz/next-international',
+  // React Virtual Scroll
+  'react-virtuoso': npm('virtua'),
+  '@tanstack/react-virtual': npm('virtua'),
+  '@tanstack/solid-virtual': npm('virtua'),
+  '@tanstack/svelte-virtual': npm('virtua'),
+  '@tanstack/vue-virtual': npm('virtua'),
+  '@tanstack/lit-virtual': npm('virtua'),
+  '@tanstack/angular-virtual': npm('virtua'),
+  '@tanstack/virtual-core': npm('virtua'),
   // misc
   ms: npm('@lukeed/ms'),
   classnames: npm('clsx'),
