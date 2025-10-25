@@ -16,6 +16,7 @@ import { eslint_plugin_jsx_a11y_minimal } from '@eslint-sukka/eslint-plugin-reac
 
 import { castArray } from 'foxts/cast-array';
 import { UNSAFE_excludeJsonYamlFiles } from '@eslint-sukka/shared';
+import type { Linter } from 'eslint';
 
 interface EslintReactAdditionalComponents {
   name: string,
@@ -59,7 +60,7 @@ export function react({
     // constants.GLOB_JS,
     constants.GLOB_JSX
   ],
-  reactCompiler = 'error',
+  reactCompiler,
   additionalHooks = '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample|useAbortableEffect)',
   nextjs = false,
   remix = false,
@@ -100,10 +101,8 @@ export function react({
       name: '@eslint-sukka/react base',
       files,
       plugins: {
-        'react-hooks': memo(eslint_plugin_react_hooks, 'eslint-plugin-react-hooks'),
         '@stylistic': memo(stylistic_eslint_plugin, '@stylistic/eslint-plugin'),
         'react-prefer-function-component': memo(eslint_plugin_react_prefer_function_component, 'eslint-plugin-react-prefer-function-component'),
-        'react-compiler': memo(eslint_plugin_react_compiler, 'eslint-plugin-react-compiler'),
         ...memoized_eslint_react.configs.recommended.plugins as any,
         'ssr-friendly': memoized_eslint_plugin_ssr_friendly,
         'react-refresh': eslint_plugin_react_refresh
@@ -119,13 +118,6 @@ export function react({
         globals: globals.browser
       },
       rules: {
-        // plugin:react-hooks/recommended
-        ...(eslint_plugin_react_hooks as any).configs['recommended-latest'].rules,
-        // react compiler rule
-        'react-compiler/react-compiler': reactCompiler,
-
-        'react-hooks/exhaustive-deps': ['error', { additionalHooks }],
-
         // Enforce PascalCase for user-defined JSX components
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md
         '@stylistic/jsx-pascal-case': ['error', {
@@ -425,13 +417,40 @@ export function react({
         ]
       }
     }),
+    // plugin:react-hooks/recommended
+    withFiles(
+      // this is safe because A11Y doesn't apply to JSON/YAML files
+      UNSAFE_excludeJsonYamlFiles({
+        ...eslint_plugin_react_hooks.configs.flat['recommended-latest'],
+        rules: {
+          ...eslint_plugin_react_hooks.configs.flat['recommended-latest'].rules,
+          'react-hooks/exhaustive-deps': ['error', { additionalHooks }]
+        }
+      }),
+      files
+    ),
+    withFiles(
+      // this is safe because A11Y doesn't apply to JSON/YAML files
+      UNSAFE_excludeJsonYamlFiles(
+        reactCompiler == null
+          ? eslint_plugin_react_compiler.configs.recommended
+          : {
+            ...eslint_plugin_react_compiler.configs.recommended,
+            rules: Object.entries(eslint_plugin_react_compiler.configs.recommended.rules).reduce<Linter.RulesRecord>((acc, [k, v]) => {
+              acc[k] = reactCompiler;
+              return acc;
+            }, {})
+          }
+      ),
+      files
+    ),
     withFiles(
       // this is safe because A11Y doesn't apply to JSON/YAML files
       UNSAFE_excludeJsonYamlFiles(eslint_plugin_jsx_a11y_minimal.configs.minimal),
       files
     ),
     {
-      name: 'sukka/react next.js/nextra naming convention',
+      name: '@eslint-sukka/react next.js/nextra naming convention',
       files: [
         '**/app/**/_*.cjs',
         String.raw`**/app/**/\[*.?([cm])[j]s?(x)`,
