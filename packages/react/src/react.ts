@@ -437,7 +437,11 @@ export function react({
           : {
             ...eslint_plugin_react_compiler.configs.recommended,
             rules: Object.entries(eslint_plugin_react_compiler.configs.recommended.rules).reduce<Linter.RulesRecord>((acc, [k, v]) => {
-              acc[k] = reactCompiler;
+              if (typeof v === 'string') {
+                acc[k] = reactCompiler;
+              }/*  else if (Array.isArray(v)) {
+                acc[k] = [reactCompiler, ...v.slice(1)];
+              } */
               return acc;
             }, {})
           }
