@@ -8,6 +8,7 @@ import { configs as ts_eslint_configs } from 'typescript-eslint';
 import typescript_eslint_plugin from '@typescript-eslint/eslint-plugin';
 import typescript_eslint_parser from '@typescript-eslint/parser';
 
+import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
 import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
 import eslint_plugin_import_x from 'eslint-plugin-import-x';
 import eslint_plugin_paths from 'eslint-plugin-paths';
@@ -74,7 +75,8 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
         '@typescript-eslint': memo<any>(typescript_eslint_plugin, '@typescript-eslint/eslint-plugin'),
         '@stylistic': memo(stylistic_eslint_plugin, '@stylistic/eslint-plugin'),
         'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x'),
-        paths: eslint_plugin_paths
+        paths: eslint_plugin_paths,
+        'unused-imports': memo(eslint_plugin_unused_imports, 'eslint-plugin-unused-imports')
       },
       // extends: [
       //   'plugin:i/recommended',

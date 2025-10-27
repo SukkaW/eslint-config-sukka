@@ -1,6 +1,6 @@
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
-import { RESTRICTED_IMPORT_NODE_REQUIRE, getPackageJson, globals, memo } from '@eslint-sukka/shared';
+import { RESTRICTED_IMPORT_NODE_REQUIRE, getPackageJson, globals } from '@eslint-sukka/shared';
 
 import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
 import eslint_plugin_n from 'eslint-plugin-n';
@@ -23,7 +23,7 @@ export function node(options: OptionsNode = {}): FlatESLintConfigItem[] {
     {
       name: '@eslint-sukka/node base',
       plugins: {
-        n: memo(eslint_plugin_n, 'eslint-plugin-n')
+        n: eslint_plugin_n
       },
       rules: {
         'n/no-unsupported-features/es-syntax': 'off',

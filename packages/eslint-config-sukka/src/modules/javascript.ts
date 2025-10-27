@@ -105,7 +105,7 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         '@stylistic': memo(stylistic_eslint_plugin, '@stylistic/eslint-plugin'),
         sukka: memo(eslint_plugin_sukka, '@eslint-sukka/eslint-plugin-sukka-full'),
         autofix: eslint_plugin_autofix,
-        antfu: memo(eslint_plugin_antfu, 'eslint_plugin_antfu')
+        antfu: eslint_plugin_antfu
       },
       rules: {
         // enforces getter/setter pairs in objects
