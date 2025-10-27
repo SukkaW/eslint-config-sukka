@@ -42,7 +42,7 @@
     "foxts": "^5.0.0"
   },
   "devDependencies": {
-    "@eslint-react/eslint-plugin": "^2.2.3",
+    "@eslint-react/eslint-plugin": "^2.2.4",
     "@eslint-sukka/rollup-config": "workspace:*",
     "eslint-plugin-react-prefer-function-component": "^4.0.1"
   }
