@@ -2,7 +2,6 @@ import { constants, memo, globals, withFiles } from '@eslint-sukka/shared';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import eslint_plugin_react_hooks from 'eslint-plugin-react-hooks';
-import eslint_plugin_react_compiler from 'eslint-plugin-react-compiler';
 import eslint_plugin_react_refresh from 'eslint-plugin-react-refresh';
 import eslint_plugin_react_prefer_function_component from 'eslint-plugin-react-prefer-function-component';
 import eslint_react from '@eslint-react/eslint-plugin';
@@ -16,7 +15,6 @@ import { eslint_plugin_jsx_a11y_minimal } from '@eslint-sukka/eslint-plugin-reac
 
 import { castArray } from 'foxts/cast-array';
 import { UNSAFE_excludeJsonYamlFiles } from '@eslint-sukka/shared';
-import type { Linter } from 'eslint';
 
 interface EslintReactAdditionalComponents {
   name: string,
@@ -41,7 +39,7 @@ export interface OptionsReact {
   /**
    * @default 'error'
    */
-  reactCompiler?: 'off' | 'warn' | 'error',
+  reactCompiler?: boolean,
 
   nextjs?: boolean,
   remix?: boolean,
@@ -53,7 +51,7 @@ export interface OptionsReact {
 const memoized_eslint_react = memo(eslint_react, '@eslint-react/eslint-plugin');
 const memoized_eslint_plugin_ssr_friendly = memo(fixupPluginRules(eslint_plugin_ssr_friendly), 'eslint-plugin-ssr-friendly');
 
-export function react({
+export async function react({
   files = [
     constants.GLOB_TS,
     constants.GLOB_TSX,
@@ -79,7 +77,7 @@ export function react({
       ]
     }
   ]
-}: OptionsReact = {}): FlatESLintConfigItem[] {
+}: OptionsReact = {}): Promise<FlatESLintConfigItem[]> {
   const {
     allowConstantExport = false
   } = reactRefresh;
@@ -95,7 +93,7 @@ export function react({
     files = castArray(files);
   }
 
-  return [
+  const result: FlatESLintConfigItem[] = [
     // this is safe because A11Y doesn't apply to JSON/YAML files
     UNSAFE_excludeJsonYamlFiles({
       name: '@eslint-sukka/react base',
@@ -431,25 +429,6 @@ export function react({
     ),
     withFiles(
       // this is safe because A11Y doesn't apply to JSON/YAML files
-      UNSAFE_excludeJsonYamlFiles(
-        reactCompiler == null
-          ? eslint_plugin_react_compiler.configs.recommended
-          : {
-            ...eslint_plugin_react_compiler.configs.recommended,
-            rules: Object.entries(eslint_plugin_react_compiler.configs.recommended.rules).reduce<Linter.RulesRecord>((acc, [k, v]) => {
-              if (typeof v === 'string') {
-                acc[k] = reactCompiler;
-              }/*  else if (Array.isArray(v)) {
-                acc[k] = [reactCompiler, ...v.slice(1)];
-              } */
-              return acc;
-            }, {})
-          }
-      ),
-      files
-    ),
-    withFiles(
-      // this is safe because A11Y doesn't apply to JSON/YAML files
       UNSAFE_excludeJsonYamlFiles(eslint_plugin_jsx_a11y_minimal.configs.minimal),
       files
     ),
@@ -465,4 +444,20 @@ export function react({
       }
     }
   ];
+
+  if (reactCompiler) {
+    const { default: eslint_plugin_react_compiler } = await import('eslint-plugin-react-compiler');
+
+    result.push(
+      withFiles(
+        // this is safe because react compiler doesn't apply to JSON/YAML files
+        UNSAFE_excludeJsonYamlFiles(
+          eslint_plugin_react_compiler.configs.recommended
+        ),
+        files
+      )
+    );
+  }
+
+  return result;
 }

@@ -36,7 +36,7 @@ const DISABLED_RULES = new Set([
 
   const rules = Object.fromEntries(
     Object.entries(
-      eslint_config_sukka_js()
+      (await eslint_config_sukka_js())
         .reduce((acc, cur) => ({ ...acc, ...cur.rules }), {})
     )
       // .filter(([, value]) => {

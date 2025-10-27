@@ -4,7 +4,6 @@ import { memo, RESTRICTED_IMPORT_JS, constants, globals, getPackageJson, withFil
 import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
 import eslint_plugin_import_x, { createNodeResolver } from 'eslint-plugin-import-x';
 import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
-import eslint_plugin_antfu from 'eslint-plugin-antfu';
 import eslint_plugin_demorgan from 'eslint-plugin-de-morgan';
 
 // @ts-expect-error -- no types
@@ -63,7 +62,7 @@ export interface OptionsJavaScript {
 
 const allExtensions = ['.js', '.jsx', '.mjs', '.cjs'];
 
-export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigItem[] {
+export async function javascript(options: OptionsJavaScript = {}): Promise<FlatESLintConfigItem[]> {
   const {
     files,
     disableNoConsoleInCLI = true,
@@ -72,6 +71,8 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
   const { browser = true, webextensions = false, greasemonkey = false, customGlobals = {} } = env;
 
   const isModule = options.module ?? (getPackageJson()?.type === 'module');
+
+  const { default: eslint_plugin_antfu } = await import('eslint-plugin-antfu');
 
   const configs: FlatESLintConfigItem[] = [
     {
