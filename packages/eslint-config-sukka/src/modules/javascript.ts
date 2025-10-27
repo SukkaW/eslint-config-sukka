@@ -1025,6 +1025,9 @@ export function javascript(options: OptionsJavaScript = {}): FlatESLintConfigIte
         'sukka/unicorn/prefer-bigint-literals': 'error',
         'sukka/unicorn/prefer-classlist-toggle': 'warn',
         'sukka/unicorn/require-module-attributes': 'error',
+        'sukka/unicorn/no-immediate-mutation': 'error',
+        'sukka/unicorn/no-useless-collection-argument': 'error',
+        'sukka/unicorn/prefer-response-static-json': 'error',
 
         'no-restricted-imports': [
           'error',

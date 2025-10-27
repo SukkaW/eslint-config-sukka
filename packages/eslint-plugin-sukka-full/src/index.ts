@@ -200,9 +200,15 @@ import prefer_bigint_literals from 'eslint-plugin-unicorn/rules/prefer-bigint-li
 import prefer_classlist_toggle from 'eslint-plugin-unicorn/rules/prefer-classlist-toggle.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import require_module_attributes from 'eslint-plugin-unicorn/rules/require-module-attributes.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_immediate_mutation from 'eslint-plugin-unicorn/rules/no-immediate-mutation.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_useless_collection_argument from 'eslint-plugin-unicorn/rules/no-useless-collection-argument.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_response_static_json from 'eslint-plugin-unicorn/rules/prefer-response-static-json.js';
 
 // @ts-expect-error - eslint-plugin-unicorn does not have types
-import { createRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/utils/rule.js';
+import { createRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/rule/index.js';
 
 import type { Linter } from 'eslint';
 
@@ -379,7 +385,10 @@ const plugin = {
       'unicorn/prefer-class-fields': prefer_class_fields,
       'unicorn/prefer-bigint-literals': prefer_bigint_literals,
       'unicorn/prefer-classlist-toggle': prefer_classlist_toggle,
-      'unicorn/require-module-attributes': require_module_attributes
+      'unicorn/require-module-attributes': require_module_attributes,
+      'unicorn/no-immediate-mutation': no_immediate_mutation,
+      'unicorn/no-useless-collection-argument': no_useless_collection_argument,
+      'unicorn/prefer-response-static-json': prefer_response_static_json
     })
   )
 } as const;
