@@ -28,7 +28,6 @@ import type { OptionsReact, OptionsStyleX } from '../../react';
 import type { OptionsNode } from '../../node';
 import { foxquire } from './foxquire';
 import { isInEditorEnv } from './is-in-editor';
-import { markdown } from './modules/markdown';
 import { deprecate } from './deprecate';
 
 // import { lazyValue } from 'foxts/lazy-value';
@@ -43,7 +42,7 @@ interface ESLintSukkaOptions {
   js?: SharedOptions<OptionsJavaScript> | boolean,
   json?: boolean,
   ts?: SharedOptions<OptionsTypeScript> | boolean,
-  markdown?: boolean,
+  // markdown?: boolean,
   yaml?: boolean,
   react?: SharedOptions<OptionsReact> | boolean,
   stylex?: SharedOptions<OptionsStyleX> | boolean,
@@ -121,9 +120,9 @@ export async function sukka(options?: ESLintSukkaOptions, ...userConfig: FlatESL
       regexp()
     );
   }
-  if (enabled(options?.markdown, true)) {
-    flatConfigs.push(markdown());
-  }
+  // if (enabled(options?.markdown, true)) {
+  //   flatConfigs.push(markdown());
+  // }
   if (enabled(options?.yaml, isDirectDependency('yaml') || isDirectDependency('js-yaml'))) {
     // yaml
     flatConfigs.push(
