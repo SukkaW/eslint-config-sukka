@@ -28,9 +28,9 @@
   "license": "MIT",
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",
-    "@typescript-eslint/type-utils": "^8.46.2",
-    "@typescript-eslint/types": "^8.46.2",
-    "@typescript-eslint/utils": "^8.46.2",
+    "@typescript-eslint/type-utils": "^8.46.3",
+    "@typescript-eslint/types": "^8.46.3",
+    "@typescript-eslint/utils": "^8.46.3",
     "foxts": "^5.0.0"
   },
   "devDependencies": {
