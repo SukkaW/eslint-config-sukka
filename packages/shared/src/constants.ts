@@ -46,6 +46,8 @@ export const GLOB_EXCLUDE = [
   '**/auto-import?(s).d.ts',
   '**/components.d.ts',
 
+  '**/next-env.d.ts', // codegen by Next.js, not for eslint
+
   // @eslint-sukka/yaml
   '**/pnpm-lock.yaml'
 ];
