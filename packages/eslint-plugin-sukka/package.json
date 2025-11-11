@@ -28,14 +28,14 @@
   "license": "MIT",
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",
-    "@typescript-eslint/type-utils": "^8.46.3",
-    "@typescript-eslint/types": "^8.46.3",
-    "@typescript-eslint/utils": "^8.46.3",
+    "@typescript-eslint/type-utils": "^8.46.4",
+    "@typescript-eslint/types": "^8.46.4",
+    "@typescript-eslint/utils": "^8.46.4",
     "foxts": "^5.0.0"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
-    "@masknet/eslint-plugin": "^0.4.0"
+    "@masknet/eslint-plugin": "^0.4.1"
   },
   "peerDependencies": {
     "eslint": "*",
