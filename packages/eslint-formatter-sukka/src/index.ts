@@ -69,14 +69,17 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
 
   for (let i = 0, len = results.length; i < len; i++) {
     const result = results[i];
-    const { messages, filePath, usedDeprecatedRules } = result;
+    const {
+      messages, filePath, usedDeprecatedRules,
+      fixableWarningCount, fixableErrorCount
+    } = result;
 
     if (messages.length === 0) continue;
 
     errorCount += result.errorCount;
     warningCount += result.warningCount;
     fatalErrorCount += result.fatalErrorCount;
-    fixableCount += result.fixableWarningCount + result.fixableErrorCount;
+    fixableCount += fixableWarningCount + fixableErrorCount;
 
     usedDeprecatedRules.forEach(d => {
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- strictNullChecks
