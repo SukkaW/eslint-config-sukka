@@ -16,7 +16,7 @@ export class CallLikeExpressionVisitor<TRuleContext extends RuleContext<string, 
     return visitor.callLikeExpressions;
   };
 
-  private visit(root: TSESTree.Node, context: TRuleContext) {
+  protected visit(root: TSESTree.Node, context: TRuleContext) {
     const visitNode = (node: TSESTree.Node) => {
       switch (node.type) {
         case AST_NODE_TYPES.AwaitExpression:

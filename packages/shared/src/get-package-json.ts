@@ -88,8 +88,9 @@ function readPackageJson(dir: string): PackageJson | null {
 export function getPackageJson(startPath = 'a.js'): PackageJson | null {
   const startDir = path.dirname(path.resolve(startPath));
   let dir: string = startDir;
+  // eslint-disable-next-line no-useless-assignment -- pre-init value with empty string for boosting performance
   let prevDir = '';
-  let data: PackageJson | null = null;
+  let data: PackageJson;
 
   do {
     data = cache.get(dir);

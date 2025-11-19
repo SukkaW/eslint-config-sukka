@@ -431,7 +431,7 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
         'unused-imports/no-unused-imports': 'off',
 
         'no-unassigned-vars': 'error',
-        'no-useless-assignment': 'error',
+        'no-useless-assignment': 'warn',
 
         // Disallow Unused Private Class Members
         // https://eslint.org/docs/rules/no-unused-private-class-members

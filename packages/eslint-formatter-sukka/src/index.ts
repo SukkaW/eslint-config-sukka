@@ -126,6 +126,7 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
       const lineWidth = fastStringWidth(line);
       const columnWidth = fastStringWidth(column);
 
+      // eslint-disable-next-line no-useless-assignment -- prepopulate variable for type-hint and boosting performance
       let messageWidth = 0;
       if (message.includes('\n')) {
         // multi-line message, take the last line

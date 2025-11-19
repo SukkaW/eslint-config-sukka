@@ -346,17 +346,15 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
           { blankLine: 'always', prev: ['class', 'with'], next: '*' },
           { blankLine: 'any', prev: ['interface', 'type'], next: ['interface', 'type'] } // ts
         ],
-        // https://eslint.style/rules/ts/type-annotation-spacing
-        '@stylistic/type-annotation-spacing': ['error', {
-          before: false,
-          after: true,
-          overrides: {
-            arrow: {
-              before: true,
-              after: true
-            }
+        // https://eslint.style/rules/type-annotation-spacing
+        '@stylistic/type-annotation-spacing': 'error',
+        '@stylistic/arrow-spacing': [
+          'error',
+          {
+            before: true,
+            after: true
           }
-        }],
+        ],
         '@typescript-eslint/no-namespace': 'off',
 
         // prefer string.startsWith() and string.endsWith() over more complex alternatives
