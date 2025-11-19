@@ -38,7 +38,7 @@ export function ignores(options: OptionsIgnores = {}): FlatESLintConfigItem[] {
     never(customGlobs);
   }
 
-  configs.push(globalIgnores(ignores));
+  configs.push(globalIgnores(ignores, '@eslint-sukka global ignores'));
 
   if (gitignore === false || gitignore === null) {
     // do nothing

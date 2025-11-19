@@ -8,6 +8,8 @@ export const generated_typescript_overrides: SukkaESLintRuleConfig = {
     '@typescript-eslint/no-dupe-class-members': 'off',
     'no-redeclare': 'off',
     '@typescript-eslint/no-redeclare': 'off',
+    'no-unused-private-class-members': 'off',
+    '@typescript-eslint/no-unused-private-class-members': 'error',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': [
       'error',
