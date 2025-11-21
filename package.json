@@ -23,7 +23,7 @@
     "@eslint-sukka/yaml": "workspace:*",
     "@eslint/core": "^0.17.0",
     "@swc-node/register": "^1.11.1",
-    "@swc/core": "^1.15.2",
+    "@swc/core": "^1.15.3",
     "@types/mocha": "^10.0.10",
     "@types/node": "^24.10.1",
     "@types/stringify-object": "^4.0.5",
