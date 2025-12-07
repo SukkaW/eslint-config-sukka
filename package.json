@@ -40,7 +40,7 @@
     "rollup": "^4.53.3",
     "stringify-object": "5.0.0",
     "ts-dedent": "^2.2.0",
-    "turbo": "^2.6.1",
+    "turbo": "^2.6.3",
     "typescript": "^5.9.3"
   },
   "packageManager": "pnpm@10.24.0",
