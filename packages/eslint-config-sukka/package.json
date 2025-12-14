@@ -36,9 +36,9 @@
     "@eslint-sukka/eslint-plugin-sukka-full": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
     "@eslint/config-helpers": "^0.5.0",
-    "@eslint/js": "^9.39.1",
-    "@typescript-eslint/eslint-plugin": "^8.48.1",
-    "@typescript-eslint/parser": "^8.48.1",
+    "@eslint/js": "^9.39.2",
+    "@typescript-eslint/eslint-plugin": "^8.49.0",
+    "@typescript-eslint/parser": "^8.49.0",
     "ci-info": "^4.3.1",
     "defu": "^6.1.4",
     "eslint-import-resolver-typescript": "^4.4.4",
@@ -49,10 +49,10 @@
     "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-regexp": "^2.10.0",
     "eslint-plugin-unused-imports": "^4.3.0",
-    "foxts": "^5.0.2",
-    "jsonc-eslint-parser": "^2.4.1",
+    "foxts": "^5.0.3",
+    "jsonc-eslint-parser": "^2.4.2",
     "picocolors": "^1.1.1",
-    "typescript-eslint": "^8.48.1"
+    "typescript-eslint": "^8.49.0"
   },
   "devDependencies": {
     "@clack/prompts": "^0.11.0",
