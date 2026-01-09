@@ -152,7 +152,7 @@ function isReferenceAssigningCollection(ref: TSESLint.Scope.Reference) {
 }
 
 function isCollectionType(node: TSESTree.Node | null) {
-  if (node && node.type === AST_NODE_TYPES.ArrayExpression) {
+  if (node?.type === AST_NODE_TYPES.ArrayExpression) {
     return true;
   }
   if (node && (node.type === AST_NODE_TYPES.CallExpression || node.type === AST_NODE_TYPES.NewExpression)) {

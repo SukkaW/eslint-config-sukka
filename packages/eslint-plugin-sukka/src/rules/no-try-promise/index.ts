@@ -133,8 +133,7 @@ function isAwaitLike(callExpr: CallLikeExpression) {
 
 function isThened(callExpr: CallLikeExpression) {
   return (
-    callExpr.parent
-    && callExpr.parent.type === AST_NODE_TYPES.MemberExpression
+    callExpr.parent?.type === AST_NODE_TYPES.MemberExpression
     && callExpr.parent.property.type === AST_NODE_TYPES.Identifier
     && callExpr.parent.property.name === 'then'
   );
@@ -142,8 +141,7 @@ function isThened(callExpr: CallLikeExpression) {
 
 function isCaught(callExpr: CallLikeExpression) {
   return (
-    callExpr.parent
-    && callExpr.parent.type === AST_NODE_TYPES.MemberExpression
+    callExpr.parent?.type === AST_NODE_TYPES.MemberExpression
     && callExpr.parent.property.type === AST_NODE_TYPES.Identifier
     && callExpr.parent.property.name === 'catch'
   );

@@ -205,7 +205,7 @@ export function isSelfAssignement(ref: TSESLint.Scope.Reference) {
 export function isCompoundAssignment(writeExpr: TSESTree.Node | null | undefined) {
   if (writeExpr?.parent) {
     const node = writeExpr.parent;
-    return node && node.type === AST_NODE_TYPES.AssignmentExpression && node.operator !== '=';
+    return node?.type === AST_NODE_TYPES.AssignmentExpression && node.operator !== '=';
   }
   return false;
 }

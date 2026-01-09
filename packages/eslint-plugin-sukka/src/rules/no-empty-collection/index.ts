@@ -199,7 +199,7 @@ export function isReferenceTo(ref: TSESLint.Scope.Reference, node: TSESTree.Node
 }
 
 function isEmptyCollectionType(node: TSESTree.Node | undefined) {
-  if (node && node.type === AST_NODE_TYPES.ArrayExpression) {
+  if (node?.type === AST_NODE_TYPES.ArrayExpression) {
     return node.elements.length === 0;
   }
   if (node && (node.type === AST_NODE_TYPES.CallExpression || node.type === AST_NODE_TYPES.NewExpression)) {
@@ -224,9 +224,9 @@ export function isIdentifier(
 
 function isStrictlyReadingMethodCall(usage: TSESLint.Scope.Reference) {
   const { parent } = usage.identifier;
-  if ((parent) && parent.type === AST_NODE_TYPES.MemberExpression) {
+  if (parent?.type === AST_NODE_TYPES.MemberExpression) {
     const memberExpressionParent = parent.parent;
-    if (memberExpressionParent && memberExpressionParent.type === AST_NODE_TYPES.CallExpression) {
+    if (memberExpressionParent?.type === AST_NODE_TYPES.CallExpression) {
       return isIdentifier(parent.property, ...strictlyReadingMethods);
     }
   }
@@ -245,8 +245,7 @@ function isForIterationPattern(ref: TSESLint.Scope.Reference) {
 function isElementRead(ref: TSESLint.Scope.Reference) {
   const { parent } = ref.identifier;
   return (
-    (parent)
-    && parent.type === AST_NODE_TYPES.MemberExpression
+    parent?.type === AST_NODE_TYPES.MemberExpression
     && parent.computed
     && !isElementWrite(parent)
   );

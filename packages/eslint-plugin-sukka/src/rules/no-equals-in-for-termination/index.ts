@@ -196,7 +196,7 @@ function collectCounters(expression: TSESTree.Expression, counters: string[]) {
     expression.expressions.forEach(e => collectCounters(e, counters));
   }
 
-  if (counter && counter.type === AST_NODE_TYPES.Identifier) {
+  if (counter?.type === AST_NODE_TYPES.Identifier) {
     counters.push(counter.name);
   }
 }
@@ -223,7 +223,7 @@ function getValue(node: TSESTree.Node) {
 }
 
 function getInteger(node: TSESTree.Node | undefined | null) {
-  if (node && node.type === AST_NODE_TYPES.Literal && typeof node.value === 'number') {
+  if (node?.type === AST_NODE_TYPES.Literal && typeof node.value === 'number') {
     return node.value;
   }
 }

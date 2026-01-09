@@ -174,8 +174,7 @@ function isPossibleObjectUpdate(ref: TSESLint.Scope.Reference) {
   // To avoid FP, we consider method calls as write operations, since we do not know whether they will
   // update the object state or not.
   return (
-    expressionStatement
-    && expressionStatement.type === AST_NODE_TYPES.ExpressionStatement
+    expressionStatement?.type === AST_NODE_TYPES.ExpressionStatement
     && (isElementWrite(expressionStatement, ref)
       || expressionStatement.expression.type === AST_NODE_TYPES.CallExpression)
   );

@@ -53,8 +53,7 @@ export default createRule({
         const precedingIf = siblingIfStatement.first;
         const followingIf = siblingIfStatement.following;
         if (
-          precedingIf.loc && followingIf.loc
-          && precedingIf.loc.end.line === followingIf.loc.start.line
+          precedingIf.loc?.end.line === followingIf.loc?.start.line
           && precedingIf.loc.start.line !== followingIf.loc.end.line
         ) {
           // const precedingIfLastToken = sourceCode.getLastToken(
