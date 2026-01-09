@@ -291,6 +291,7 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
         '@typescript-eslint/no-unnecessary-template-expression': 'warn',
         '@typescript-eslint/prefer-readonly': 'error',
         '@typescript-eslint/class-literal-property-style': 'error',
+        '@typescript-eslint/no-useless-default-assignment': 'warn',
 
         '@typescript-eslint/class-methods-use-this': [
           'error',
