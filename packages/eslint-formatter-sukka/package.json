@@ -32,13 +32,13 @@
   "license": "MIT",
   "dependencies": {
     "ci-info": "^4.3.1",
-    "foxts": "^5.0.3",
+    "foxts": "^5.0.4",
     "picocolors": "^1.1.1"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
     "fast-string-width": "^3.0.2",
-    "supports-hyperlinks": "^4.3.0"
+    "supports-hyperlinks": "^4.4.0"
   },
   "peerDependencies": {
     "eslint": "*"
