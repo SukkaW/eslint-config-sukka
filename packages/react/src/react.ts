@@ -361,6 +361,7 @@ export async function react({
         '@eslint-react/no-unnecessary-use-callback': 'error',
         '@eslint-react/no-unnecessary-use-memo': 'error',
         '@eslint-react/no-unnecessary-use-prefix': 'error',
+        '@eslint-react/no-unnecessary-use-ref': 'error',
         '@eslint-react/prefer-use-state-lazy-initialization': 'error',
 
         '@typescript-eslint/class-methods-use-this': ['error', {
