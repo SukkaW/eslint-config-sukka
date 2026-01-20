@@ -372,8 +372,8 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
         'vars-on-top': 'error',
 
         // require immediate function invocation to be wrapped in parentheses
-        // https://eslint.org/docs/rules/wrap-iife.html
-        '@stylistic/wrap-iife': ['error', 'outside', { functionPrototypeMethods: false }],
+        // https://eslint.style/rules/wrap-iife
+        '@stylistic/wrap-iife': ['error', 'inside', { functionPrototypeMethods: false }],
 
         // require or disallow Yoda conditions
         yoda: 'error',
