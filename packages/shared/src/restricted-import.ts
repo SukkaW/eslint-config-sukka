@@ -80,9 +80,10 @@ export const BETTER_ALTERNATIVES = Object.entries({
   'string-width': npm('fast-string-width'),
   lodash: 'https://es-toolkit.slash.page',
   jszip: npm('client-zip') + ' / ' + npm('fflate'),
+  pako: npm('fflate') + ' is 80% smaller, up to 50% faster, can works with streams, and has built-in TypeScript support. it provides built-in string utilities',
 
   'cidr-tools': npm('fast-cidr-tools'),
-  eventemitter3: `${npm('mitt')}. Node.js' "eventemitter" could be slow, "eventemitter2" is not tiny/performant but it is feature rich. But "eventemitter3" has no reasons to be used`,
+  eventemitter3: `${npm('mitt')}. "node:eventemitter" is slow, "eventemitter2" is slow/huge but at least feature rich. But "eventemitter3" just has no reasons to be used`,
   fnv1a: `${npm('foxts')}, foxts/fnv1a is 6x faster`,
   '@sindresorhus/fnv1a': `${npm('foxts')}, foxts/fnv1a is 6x faster`
 }).map(([key, value]) => ({ name: key, message: `Use ${value} instead.` }));
