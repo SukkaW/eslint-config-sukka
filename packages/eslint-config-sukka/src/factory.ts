@@ -7,6 +7,8 @@ import { comment } from './modules/eslint-comment';
 import { promise } from './modules/promise';
 import { regexp } from './modules/regexp';
 
+import { stylistic } from './modules/stylistic';
+
 import { javascript } from './modules/javascript';
 import type { OptionsJavaScript } from './modules/javascript';
 
@@ -48,7 +50,9 @@ interface ESLintSukkaOptions {
   stylex?: SharedOptions<OptionsStyleX> | boolean,
   next?: boolean,
   node?: SharedOptions<OptionsNode> | boolean,
-  legacy?: SharedOptions<OptionsLegacy> | boolean
+  legacy?: SharedOptions<OptionsLegacy> | boolean,
+
+  stylistic?: boolean
 }
 
 // function enabled<T extends boolean>(options: T): options is T;
@@ -104,6 +108,8 @@ export async function sukka(options?: ESLintSukkaOptions, ...userConfig: FlatESL
     isPackageExists('typescript')
     || hasTypesNode // if you have @types/node installed, I assume you are using typescript as well~
   );
+  const nextjsInstalled = isPackageExists('next');
+  const reactEnabled = enabled(options?.react, nextjsInstalled || isPackageExists('react') || isPackageExists('@types/react'));
 
   flatConfigs.push(
     // ignores
@@ -111,6 +117,17 @@ export async function sukka(options?: ESLintSukkaOptions, ...userConfig: FlatESL
     // comments
     comment()
   );
+
+  if (enabled(options?.stylistic, true)) {
+    // stylistic
+    flatConfigs.push(
+      stylistic({
+        ts: typescriptEnabled,
+        react: reactEnabled
+      })
+    );
+  }
+
   if (enabled(options?.js, true)) {
     flatConfigs.push(
       // javascript
@@ -143,8 +160,6 @@ export async function sukka(options?: ESLintSukkaOptions, ...userConfig: FlatESL
     }));
   }
   // react
-  const nextjsInstalled = isPackageExists('next');
-  const reactEnabled = enabled(options?.react, nextjsInstalled || isPackageExists('react') || isPackageExists('@types/react'));
   if (reactEnabled) {
     if (typescriptEnabled) {
       const eslint_sukka_react = (await foxquire<typeof import('@eslint-sukka/react')>('@eslint-sukka/react'));

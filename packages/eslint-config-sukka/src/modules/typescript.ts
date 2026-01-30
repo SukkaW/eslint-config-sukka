@@ -12,7 +12,6 @@ import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
 import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
 import eslint_plugin_import_x from 'eslint-plugin-import-x';
 import eslint_plugin_paths from 'eslint-plugin-paths';
-import { stylistic_eslint_plugin } from '@eslint-sukka/eslint-plugin-stylistic';
 
 import process from 'node:process';
 
@@ -73,7 +72,6 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
       files,
       plugins: {
         '@typescript-eslint': memo<any>(typescript_eslint_plugin, '@typescript-eslint/eslint-plugin'),
-        '@stylistic': memo(stylistic_eslint_plugin, '@stylistic/eslint-plugin'),
         'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x'),
         paths: eslint_plugin_paths,
         'unused-imports': memo(eslint_plugin_unused_imports, 'eslint-plugin-unused-imports')
@@ -327,35 +325,6 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
           }
         ],
 
-        // https://eslint.style/rules/ts/member-delimiter-style
-        '@stylistic/member-delimiter-style': ['error', {
-          multiline: { delimiter: 'comma', requireLast: false/** true */ },
-          singleline: { delimiter: 'comma', requireLast: false }
-        }],
-        // https://eslint.style/rules/ts/lines-between-class-members
-        '@stylistic/lines-between-class-members': [
-          'error', 'always',
-          { exceptAfterSingleLine: true, exceptAfterOverload: true }
-        ],
-        // https://eslint.style/rules/ts/padding-line-between-statements
-        '@stylistic/padding-line-between-statements': [
-          'error',
-          // add line after
-          { blankLine: 'always', prev: 'directive', next: '*' },
-          // add line around (both before and after)
-          { blankLine: 'always', prev: '*', next: ['class', 'with'] },
-          { blankLine: 'always', prev: ['class', 'with'], next: '*' },
-          { blankLine: 'any', prev: ['interface', 'type'], next: ['interface', 'type'] } // ts
-        ],
-        // https://eslint.style/rules/type-annotation-spacing
-        '@stylistic/type-annotation-spacing': 'error',
-        '@stylistic/arrow-spacing': [
-          'error',
-          {
-            before: true,
-            after: true
-          }
-        ],
         '@typescript-eslint/no-namespace': 'off',
 
         // prefer string.startsWith() and string.endsWith() over more complex alternatives
@@ -373,9 +342,6 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
         'sukka/type/no-force-cast-via-top-type': 'error',
         'sukka/type/no-wrapper-type-reference': 'error',
         'sukka/no-default-error': 'off', // disable since this is way too slow
-
-        '@stylistic/type-generic-spacing': 'error',
-        '@stylistic/type-named-tuple-spacing': 'error',
 
         // replaced by unused-imports/no-unused-imports
         '@typescript-eslint/no-unused-vars': 'off',
