@@ -32,12 +32,12 @@
   "license": "MIT",
   "dependencies": {
     "@package-json/types": "^0.0.12",
-    "@typescript-eslint/utils": "^8.53.0",
-    "foxts": "^5.0.4",
-    "oxc-resolver": "^11.16.3"
+    "@typescript-eslint/utils": "^8.54.0",
+    "foxts": "^5.2.1",
+    "oxc-resolver": "^11.17.0"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
-    "globals": "^17.0.0"
+    "globals": "^17.2.0"
   }
 }
