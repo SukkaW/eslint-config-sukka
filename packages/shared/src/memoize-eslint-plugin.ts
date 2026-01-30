@@ -1,10 +1,5 @@
 import type { ESLint } from 'eslint';
 
-declare global {
-  // eslint-disable-next-line vars-on-top -- fuck
-  var __ESLINT_PLUGIN_MEMO__: Record<string, unknown> | undefined;
-}
-
 /**
  * Every package manager has this flaw: Even if a pinned, same version of transive dependency
  * is depended on by multiple packages, all npm/pnpm/yarn/bun will not dedupe it, some package

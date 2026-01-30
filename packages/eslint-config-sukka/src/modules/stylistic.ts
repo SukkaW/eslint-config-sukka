@@ -14,7 +14,7 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
   return [{
     name: 'sukka/stylistic',
     plugins: {
-      stylistic: stylistic_eslint_plugin
+      '@stylistic': stylistic_eslint_plugin
     },
     rules: Object.assign<Linter.RulesRecord, Linter.RulesRecord, Linter.RulesRecord>(
       {
