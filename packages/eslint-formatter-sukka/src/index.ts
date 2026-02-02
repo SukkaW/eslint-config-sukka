@@ -1,9 +1,9 @@
-import path from 'node:path';
 import process from 'node:process';
+import path from 'node:path';
 
 import picocolors from 'picocolors';
 import fastStringWidth from 'fast-string-width';
-import { createSupportsHyperlinks } from 'supports-hyperlinks';
+import supportsHyperlinks from 'supports-hyperlinks';
 
 import { link, iTermSetCwd } from './ansi-escape';
 import { isCI } from 'ci-info';
@@ -15,6 +15,7 @@ import { hostname } from 'node:os';
 import { fastStringArrayJoin } from 'foxts/fast-string-array-join';
 import { appendArrayInPlace } from 'foxts/append-array-in-place';
 import { never } from 'foxts/guard';
+import { lazyValue } from 'foxts/lazy-value';
 
 const separatorLine = {
   type: 'separator'
@@ -49,13 +50,48 @@ interface Line {
   column: string
 }
 
-const severityToAnsiColorMap = {
+const severityToAnsiColoredPrefixMap = {
   [Severity.Warn]: picocolors.yellow('warn '),
   [Severity.Error]: picocolors.red('error'),
   [Severity.Fatal]: picocolors.redBright('fatal')
 };
 
 const rQuoteStyle = /\B`(.+?)`\B|\B'(.+?)'\B|\B"(.+?)"\B/g;
+
+// Cache hostname for performance
+const osHostname = lazyValue(hostname);
+
+// Pre-determine Header render method (based on env), to avoid `if` in the loop
+let renderHeader: (header: Header, position: string) => string;
+if (process.env.GNOME_TERMINAL_SCREEN) {
+  // GNOME Terminal Link only accepts URL, need special handling
+  renderHeader = (header, position) => {
+    const fileUrl = pathToFileURL(header.filePath, {});
+    fileUrl.hostname = osHostname();
+    return link(header.relativeFilePath, fileUrl.href) + position;
+  };
+} else {
+  renderHeader = (header, position) => picocolors.underline(header.relativeFilePath) + position;
+}
+
+const hasHyperlink = !isCI && supportsHyperlinks.stdout && supportsHyperlinks.stderr;
+
+// Pre-determine ruleId render method (based on hyperlinks support), to avoid `if` in the loop
+let renderRuleId: (ruleId: string, data: ESLint.LintResultData) => string;
+if (hasHyperlink) {
+  renderRuleId = (ruleId, data: ESLint.LintResultData) => {
+    if ('rulesMeta' in data && ruleId in data.rulesMeta) {
+      const ruleUrl = data.rulesMeta[ruleId].docs?.url;
+      if (ruleUrl) {
+        return link(picocolors.dim(ruleId), ruleUrl);
+      }
+    }
+
+    return picocolors.dim(ruleId);
+  };
+} else {
+  renderRuleId = (ruleId, _) => picocolors.dim(ruleId);
+}
 
 const pretty: ESLint.FormatterFunction = (results, data): string => {
   const lines: Array<Line | Separator | Header> = [];
@@ -64,7 +100,7 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
   let fatalErrorCount = 0;
   let fixableCount = 0;
 
-  let suppressedCount = 0;
+  // let suppressedCount = 0;
 
   const deprecatedReplacedBy: Record<string, string[]> = {};
 
@@ -82,10 +118,10 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
       fixableWarningCount, fixableErrorCount
     } = result;
 
-    if ('suppressedMessages' in result) {
-      // eslint-disable-next-line sukka/unicorn/consistent-destructuring -- suppressedMessages may not exist, need type guard
-      suppressedCount += result.suppressedMessages.length;
-    }
+    // if ('suppressedMessages' in result) {
+    //   // eslint-disable-next-line sukka/unicorn/consistent-destructuring -- suppressedMessages may not exist, need type guard
+    //   suppressedCount += result.suppressedMessages.length;
+    // }
 
     if (messages.length === 0) continue;
 
@@ -125,7 +161,7 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
       }
 
       // Stylize inline code blocks
-      const message = x.message.replaceAll(rQuoteStyle, (m, p1, p2, p3) => picocolors.bold(p1 || p2 || p3));
+      const message = x.message.trim().replaceAll(rQuoteStyle, (m, p1, p2, p3) => picocolors.bold(p1 || p2 || p3));
 
       const line = String(x.line || 0);
       const column = String(x.column || 0);
@@ -180,9 +216,8 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
       });
     };
 
-    if (firstErrorInThisFile == null) {
-      firstErrorInThisFile = messages[0];
-    }
+    // if no error found, take the first message then
+    firstErrorInThisFile ??= messages[0];
 
     header.firstLineCol = `${firstErrorInThisFile.line}:${firstErrorInThisFile.column}`;
   }
@@ -194,55 +229,44 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
     output += iTermSetCwd();
   }
 
-  const hasHyperlink = !isCI && createSupportsHyperlinks(process.stdout);
-  const osHostname = hostname();
-  const isGnomeTerminal = process.env.GNOME_TERMINAL_SCREEN;
+  // Since we already know `showLineNumbers` at this point, we can avoid `if` in the loop
+  let renderHeaderPosition: (header: Header) => string;
+  if (showLineNumbers) {
+    renderHeaderPosition = (header) => picocolors.hidden(picocolors.dim(picocolors.gray(`:${header.firstLineCol}`)));
+  } else {
+    renderHeaderPosition = () => '';
+  }
+  let renderMessagePosition: (line: Line) => string;
+  if (showLineNumbers) {
+    renderMessagePosition = (x) => ' '.repeat(maxLineWidth - x.lineWidth) + picocolors.dim(x.line + picocolors.gray(':') + x.column);
+  } else {
+    renderMessagePosition = () => '';
+  }
 
   output += fastStringArrayJoin(
     lines.map(x => {
-      if (x.type === 'header') {
-        // Add the line number so it's Command-click'able in some terminals
-        // Use dim & gray for terminals like iTerm that doesn't support `hidden`
-        const position = showLineNumbers ? picocolors.hidden(picocolors.dim(picocolors.gray(`:${x.firstLineCol}`))) : '';
-
-        if (isGnomeTerminal) {
-          const fileUrl = pathToFileURL(x.filePath, {});
-
-          fileUrl.hostname = osHostname;
-
-          return link(x.relativeFilePath, fileUrl.href) + position;
-        }
-
-        return picocolors.underline(x.relativeFilePath) + position;
+      switch (x.type) {
+        case 'header':
+          return renderHeader(x, renderHeaderPosition(x));
+        case 'message':
+          return (
+            ' ' // add a prefix whitespace for better readability under file header
+            + fastStringArrayJoin([
+              // severity
+              severityToAnsiColoredPrefixMap[x.severity],
+              // position
+              renderMessagePosition(x),
+              // message
+              ' '.repeat(maxColumnWidth - x.columnWidth) + x.message,
+              // padding to make ruleId aligned
+              ' '.repeat(maxMessageWidth - x.messageWidth),
+              // ruleId
+              renderRuleId(x.ruleId, data)
+            ], ' ')
+          );
+        default:
+          return ''; // separator
       }
-
-      if (x.type === 'message') {
-        let ruleUrl;
-
-        if (hasHyperlink && 'rulesMeta' in data && x.ruleId in data.rulesMeta) {
-          ruleUrl = data.rulesMeta[x.ruleId].docs?.url;
-        }
-
-        return (
-          ' ' // add a prefix whitespace for better readability under file header
-          + fastStringArrayJoin([
-            severityToAnsiColorMap[x.severity],
-
-            showLineNumbers
-              ? ' '.repeat(maxLineWidth - x.lineWidth) + picocolors.dim(x.line + picocolors.gray(':') + x.column)
-              : '',
-
-            ' '.repeat(maxColumnWidth - x.columnWidth) + x.message,
-            ' '.repeat(maxMessageWidth - x.messageWidth),
-
-            hasHyperlink && ruleUrl
-              ? link(picocolors.dim(x.ruleId), ruleUrl)
-              : picocolors.dim(x.ruleId)
-          ], ' ')
-        );
-      }
-
-      return '';
     }),
     '\n'
   );
@@ -251,13 +275,18 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
   const deprecatedEntries = Object.entries(deprecatedReplacedBy);
   const deprecatedCount = deprecatedEntries.length;
 
+  // early bailout if no problems found
+  if (errorCount + warningCount + fatalErrorCount + deprecatedCount <= 0) {
+    return '';
+  }
+
   const stats = ([
     ['problem', true, errorCount + warningCount + fatalErrorCount] as const,
     ['warning', true, warningCount > 0 ? picocolors.yellow(warningCount) : picocolors.green(0)] as const,
     ['error', true, errorCount > 0 ? picocolors.red(errorCount) : picocolors.green(0)] as const,
     ['fatal', fatalErrorCount > 0, picocolors.red(fatalErrorCount)] as const,
     ['fixable', fixableCount > 0, fixableCount] as const,
-    ['suppressed', suppressedCount > 0, picocolors.gray(suppressedCount)] as const,
+    // ['suppressed', suppressedCount > 0, picocolors.gray(suppressedCount)] as const,
     ['deprecated', deprecatedCount > 0, picocolors.bold(picocolors.gray(deprecatedCount))] as const
   ]).filter(([, show]) => show);
 
@@ -278,7 +307,7 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
 
   output += '\n';
 
-  return (errorCount + warningCount + fatalErrorCount + deprecatedCount) > 0 ? output : '';
+  return output;
 };
 
 export default pretty;
