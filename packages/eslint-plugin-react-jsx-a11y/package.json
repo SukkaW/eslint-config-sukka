@@ -27,15 +27,10 @@
     "@nolyfill/array-includes": "^1.0.44",
     "@nolyfill/array.prototype.flat": "^1.0.44",
     "@nolyfill/array.prototype.flatmap": "^1.0.44",
-    "@nolyfill/array.prototype.tosorted": "^1.0.44",
-    "@nolyfill/deep-equal": "^1.0.44",
-    "@nolyfill/es-iterator-helpers": "^1.0.21",
     "@nolyfill/hasown": "^1.0.44",
     "@nolyfill/object.assign": "^1.0.44",
     "@nolyfill/object.fromentries": "^1.0.44",
-    "@nolyfill/object.hasown": "^1.0.44",
     "@nolyfill/object.values": "^1.0.44",
-    "@nolyfill/safe-regex-test": "^1.0.44",
     "@nolyfill/string.prototype.includes": "^1.0.44"
   },
   "devDependencies": {
