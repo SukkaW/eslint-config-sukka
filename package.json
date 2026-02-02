@@ -66,7 +66,9 @@
       "object.values": "npm:@nolyfill/object.values@^1.0.44",
       "safe-regex-test": "npm:@nolyfill/safe-regex-test@^1.0.44",
       "string.prototype.includes": "npm:@nolyfill/string.prototype.includes@^1.0.44",
-      "string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@^1.0.44"
+      "string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@^1.0.44",
+
+      "eslint-plugin-unicorn>core-js-compat": "-"
     },
     "onlyBuiltDependencies": [
       "@swc/core",
