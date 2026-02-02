@@ -27,6 +27,10 @@ export interface OptionsTypeScript {
   allowDefaultProject?: string[]
 }
 
+export interface OptionsTypeScriptWithInternalOptions extends OptionsTypeScript {
+  '~_internal_react_enabled_do_not_use_or_you_will_be_fired': boolean
+}
+
 const javaScriptExtensions = ['.js', '.jsx', '.mjs', '.cjs'];
 const typescriptExtensions = ['.ts', '.cts', '.mts', '.tsx', '.d.ts'];
 const allExtensions = [...typescriptExtensions, ...javaScriptExtensions];
@@ -34,7 +38,7 @@ const allExtensions = [...typescriptExtensions, ...javaScriptExtensions];
 // types are resolved, and 2) it would mask an unresolved
 // `.ts`/`.tsx`/`.js`/`.jsx` implementation.
 
-export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigItem[] {
+export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatESLintConfigItem[] {
   const {
     allowJs = false,
     tsconfigPath = true,
@@ -322,7 +326,27 @@ export function typescript(options: OptionsTypeScript = {}): FlatESLintConfigIte
             message: 'Public "static" fields should be read-only',
             selector:
               'PropertyDefinition[readonly!=true][static=true][accessibility!="private"][accessibility!="protected"]'
-          }
+          },
+          ...(options['~_internal_react_enabled_do_not_use_or_you_will_be_fired']
+            ? [
+              // no react string refs
+              {
+                selector: 'JSXAttribute[name.name=\'ref\'][value.type=\'Literal\']',
+                message: '[Deprecated] Use callback refs instead.'
+              },
+              // no react prop types
+              {
+                selector: 'AssignmentExpression[operator=\'=\'][left.property.name=\'propTypes\']',
+                message: '[Deprecated] Use TypeScript or another type-checking solution instead.'
+              },
+              // no react default props
+              {
+                selector: 'AssignmentExpression[operator=\'=\'][left.property.name=\'defaultProps\']',
+                message: '[Deprecated] Use ES6 default parameters instead.'
+              }
+            ]
+            : []
+          )
         ],
 
         '@typescript-eslint/no-namespace': 'off',

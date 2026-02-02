@@ -170,7 +170,7 @@ export function react({
         ...memoized_eslint_react.configs['strict-type-checked'].rules,
         ...memoized_eslint_react.configs.rsc.rules,
         // eslint-plugin-react recommended rules, migrated
-        '@eslint-react/no-string-refs': 'error',
+        // '@eslint-react/no-string-refs': 'error', -- replaced by no-restricted-syntax
         '@eslint-react/jsx-no-comment-textnodes': 'error',
         '@eslint-react/dom/no-unsafe-target-blank': 'error',
         '@eslint-react/no-children-prop': 'error',

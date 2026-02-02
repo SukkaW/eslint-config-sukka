@@ -156,7 +156,8 @@ export async function sukka(options?: ESLintSukkaOptions, ...userConfig: FlatESL
 
     flatConfigs.push(typescript({
       isInEditor,
-      ...config(options?.ts)
+      ...config(options?.ts),
+      '~_internal_react_enabled_do_not_use_or_you_will_be_fired': reactEnabled
     }));
   }
   // react
