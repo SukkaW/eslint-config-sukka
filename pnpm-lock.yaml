@@ -252,9 +252,6 @@ importers:
       '@nolyfill/object.values':
         specifier: ^1.0.44
         version: 1.0.44
-      '@nolyfill/string.prototype.includes':
-        specifier: ^1.0.44
-        version: 1.0.44
     devDependencies:
       '@eslint-sukka/rollup-config':
         specifier: workspace:*
@@ -860,10 +857,6 @@ packages:
 
   '@nolyfill/shared@1.0.44':
     resolution: {integrity: sha512-NI1zxDh4LYL7PYlKKCwojjuc5CEZslywrOTKBNyodjmWjRiZ4AlCMs3Gp+zDoPQPNkYCSQp/luNojHmJWWfCbw==}
-
-  '@nolyfill/string.prototype.includes@1.0.44':
-    resolution: {integrity: sha512-d1t7rnoAYyoap0X3a/gCnusCvxzK6v7uMFzW8k0mI2WtAK8HiKuzaQUwAriyVPh63GsvQCqvXx8Y5gtdh4LjSA==}
-    engines: {node: '>=12.4.0'}
 
   '@oxc-resolver/binding-android-arm-eabi@11.17.0':
     resolution: {integrity: sha512-kVnY21v0GyZ/+LG6EIO48wK3mE79BUuakHUYLIqobO/Qqq4mJsjuYXMSn3JtLcKZpN1HDVit4UHpGJHef1lrlw==}
@@ -3246,10 +3239,6 @@ snapshots:
   '@nolyfill/safe-regex-test@1.0.44': {}
 
   '@nolyfill/shared@1.0.44': {}
-
-  '@nolyfill/string.prototype.includes@1.0.44':
-    dependencies:
-      '@nolyfill/shared': 1.0.44
 
   '@oxc-resolver/binding-android-arm-eabi@11.17.0':
     optional: true

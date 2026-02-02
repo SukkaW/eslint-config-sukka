@@ -30,8 +30,7 @@
     "@nolyfill/hasown": "^1.0.44",
     "@nolyfill/object.assign": "^1.0.44",
     "@nolyfill/object.fromentries": "^1.0.44",
-    "@nolyfill/object.values": "^1.0.44",
-    "@nolyfill/string.prototype.includes": "^1.0.44"
+    "@nolyfill/object.values": "^1.0.44"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
