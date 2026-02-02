@@ -37,10 +37,10 @@
     "eslint-plugin-sukka": "workspace:*",
     "foxts": "^5.2.1",
     "mocha": "^11.7.5",
-    "rollup": "^4.57.0",
+    "rollup": "^4.57.1",
     "stringify-object": "5.0.0",
     "ts-dedent": "^2.2.0",
-    "turbo": "^2.8.0",
+    "turbo": "^2.8.1",
     "typescript": "^5.9.3"
   },
   "packageManager": "pnpm@10.28.2",
