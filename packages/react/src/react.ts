@@ -2,7 +2,7 @@ import { constants, memo, globals, withFiles } from '@eslint-sukka/shared';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import eslint_plugin_react_hooks from 'eslint-plugin-react-hooks';
-import eslint_plugin_react_refresh from 'eslint-plugin-react-refresh';
+import { reactRefresh as eslint_plugin_react_refresh } from 'eslint-plugin-react-refresh';
 import eslint_plugin_react_prefer_function_component from 'eslint-plugin-react-prefer-function-component';
 import eslint_react from '@eslint-react/eslint-plugin';
 
@@ -91,16 +91,16 @@ export function react({
     files = castArray(files);
   }
 
-  return [
+  const results: FlatESLintConfigItem[] = [
     // this is safe because A11Y doesn't apply to JSON/YAML files
     UNSAFE_excludeJsonYamlFiles({
       name: '@eslint-sukka/react base',
       files,
       plugins: {
         'react-prefer-function-component': memo(eslint_plugin_react_prefer_function_component, 'eslint-plugin-react-prefer-function-component'),
-        ...memoized_eslint_react.configs.recommended.plugins as any,
-        'ssr-friendly': memoized_eslint_plugin_ssr_friendly,
-        'react-refresh': eslint_plugin_react_refresh
+        ...memoized_eslint_react.configs['strict-type-checked'].plugins,
+        ...memoized_eslint_react.configs.rsc.plugins,
+        'ssr-friendly': memoized_eslint_plugin_ssr_friendly
       },
       settings: {
         'react-x': {
@@ -167,7 +167,8 @@ export function react({
 
         // ====================================================================
 
-        ...memoized_eslint_react.configs.recommended.rules,
+        ...memoized_eslint_react.configs['strict-type-checked'].rules,
+        ...memoized_eslint_react.configs.rsc.rules,
         // eslint-plugin-react recommended rules, migrated
         '@eslint-react/no-string-refs': 'error',
         '@eslint-react/jsx-no-comment-textnodes': 'error',
@@ -303,36 +304,7 @@ export function react({
             'getSnapshotBeforeUpdate'
           ],
           ignoreClassesThatImplementAnInterface: 'public-fields'
-        }],
-
-        // react refresh
-        'react-refresh/only-export-components': [
-          'warn',
-          {
-            allowConstantExport,
-            allowExportNames: [
-              ...(nextjs
-                ? [
-                  'config',
-                  'generateStaticParams',
-                  'metadata',
-                  'generateMetadata',
-                  'viewport',
-                  'generateViewport'
-                ]
-                : []),
-              ...(remix
-                ? [
-                  'meta',
-                  'links',
-                  'headers',
-                  'loader',
-                  'action'
-                ]
-                : [])
-            ]
-          }
-        ]
+        }]
       }
     }),
     // plugin:react-hooks/recommended
@@ -364,4 +336,32 @@ export function react({
       }
     }
   ];
+
+  if (nextjs) {
+    results.push(
+      eslint_plugin_react_refresh.configs.next({
+        allowConstantExport
+      })
+    );
+  } else if (remix) {
+    results.push(
+      eslint_plugin_react_refresh.configs.vite({
+        allowExportNames: [
+          'meta',
+          'links',
+          'headers',
+          'loader',
+          'action'
+        ]
+      })
+    );
+  } else {
+    results.push(
+      eslint_plugin_react_refresh.configs.recommended({
+        allowConstantExport
+      })
+    );
+  };
+
+  return results;
 }
