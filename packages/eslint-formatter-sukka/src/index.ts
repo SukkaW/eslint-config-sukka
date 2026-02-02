@@ -14,7 +14,7 @@ import { hostname } from 'node:os';
 
 import { fastStringArrayJoin } from 'foxts/fast-string-array-join';
 import { appendArrayInPlace } from 'foxts/append-array-in-place';
-import { invariant } from 'foxts/guard';
+import { never } from 'foxts/guard';
 
 const separatorLine = {
   type: 'separator'
@@ -29,10 +29,16 @@ interface Header {
   firstLineCol: `${string | number}:${string | number}`
 }
 
+const enum Severity {
+  Warn = 1,
+  Error = 2,
+  Fatal = 3
+}
+
 interface Line {
   type: 'message',
   relativeFilePath?: string,
-  severity?: 'fatal' | 'error' | 'warning',
+  severity: Severity,
   firstLineCol?: `${string}:${string}`,
   ruleId: string,
   lineWidth: number,
@@ -43,10 +49,16 @@ interface Line {
   column: string
 }
 
+const severityToAnsiColorMap = {
+  [Severity.Warn]: picocolors.yellow('warn '),
+  [Severity.Error]: picocolors.red('error'),
+  [Severity.Fatal]: picocolors.redBright('fatal')
+};
+
 const rQuoteStyle = /\B`(.+?)`\B|\B'(.+?)'\B|\B"(.+?)"\B/g;
 
 const pretty: ESLint.FormatterFunction = (results, data): string => {
-  const lines: Array<Line | Separator | Header | null> = [];
+  const lines: Array<Line | Separator | Header> = [];
   let errorCount = 0;
   let warningCount = 0;
   let fatalErrorCount = 0;
@@ -61,16 +73,7 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
   let maxMessageWidth = 0;
   let showLineNumbers: number | boolean = false;
 
-  results.sort((a, b) => {
-    if (a.errorCount === b.errorCount) {
-      return b.warningCount - a.warningCount;
-    }
-
-    if (a.errorCount === 0) return -1;
-    if (b.errorCount === 0) return 1;
-
-    return b.errorCount - a.errorCount;
-  });
+  results.sort(lintResultSorter);
 
   for (let i = 0, len = results.length; i < len; i++) {
     const result = results[i];
@@ -96,36 +99,29 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
       appendArrayInPlace((deprecatedReplacedBy[d.ruleId] ||= []), d.replacedBy);
     });
 
-    if (lines.length !== 0) {
+    if (lines.length > 0) {
       lines.push(separatorLine);
     }
 
-    let firstErrorOrWarning: Linter.LintMessage | undefined;
+    let firstErrorInThisFile: Linter.LintMessage | undefined;
 
-    const headerIndex = lines.push(null) - 1;
+    // create a placeholder for header
+    const header: Header = {
+      type: 'header',
+      filePath,
+      relativeFilePath: path.relative('.', filePath),
+      firstLineCol: '__placeholder__:__placeholder__'
+    };
 
-    messages.sort((a, b) => {
-      if (a.fatal === b.fatal && a.severity === b.severity) {
-        if (a.line === b.line) {
-          return a.column < b.column ? -1 : 1;
-        }
+    lines.push(header);
 
-        return a.line < b.line ? -1 : 1;
-      }
-
-      if ((a.fatal || a.severity === 2) && (!b.fatal || b.severity !== 2)) {
-        return 1;
-      }
-
-      return -1;
-    });
+    messages.sort(lintMessageSorter);
 
     for (let j = 0, messageLen = messages.length; j < messageLen; j++) {
       const x = messages[j];
-      const isError = x.severity === 2 || (x.severity as unknown) === 'error';
 
-      if (isError) {
-        firstErrorOrWarning ||= x;
+      if (x.severity === 2 || x.fatal) {
+        firstErrorInThisFile ||= x;
       }
 
       // Stylize inline code blocks
@@ -159,13 +155,21 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
 
       showLineNumbers ||= x.line || x.column;
 
+      let severity: Severity;
+      if (x.fatal) {
+        severity = Severity.Fatal;
+      } else if (x.severity === 2) {
+        severity = Severity.Error;
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- never guard
+      } else if (x.severity === 1) {
+        severity = Severity.Warn;
+      } else {
+        never(x.severity, 'x.serverity');
+      }
+
       lines.push({
         type: 'message',
-        severity: x.fatal
-          ? 'fatal'
-          : (isError
-            ? 'error'
-            : 'warning'),
+        severity,
         line,
         lineWidth,
         column,
@@ -176,16 +180,11 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
       });
     };
 
-    if (firstErrorOrWarning == null) {
-      firstErrorOrWarning = messages[0];
+    if (firstErrorInThisFile == null) {
+      firstErrorInThisFile = messages[0];
     }
 
-    lines[headerIndex] = {
-      type: 'header',
-      filePath,
-      relativeFilePath: path.relative('.', filePath),
-      firstLineCol: `${firstErrorOrWarning.line}:${firstErrorOrWarning.column}`
-    } satisfies Header;
+    header.firstLineCol = `${firstErrorInThisFile.line}:${firstErrorInThisFile.column}`;
   }
 
   let output = '\n';
@@ -201,8 +200,6 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
 
   output += fastStringArrayJoin(
     lines.map(x => {
-      invariant(x, '[eslint-formatter-sukka] message can not be null');
-
       if (x.type === 'header') {
         // Add the line number so it's Command-click'able in some terminals
         // Use dim & gray for terminals like iTerm that doesn't support `hidden`
@@ -222,27 +219,27 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
       if (x.type === 'message') {
         let ruleUrl;
 
-        if (hasHyperlink && data && 'rulesMeta' in data && x.ruleId in data.rulesMeta) {
+        if (hasHyperlink && 'rulesMeta' in data && x.ruleId in data.rulesMeta) {
           ruleUrl = data.rulesMeta[x.ruleId].docs?.url;
         }
 
-        const line = [
-          '',
-          x.severity === 'warning' ? picocolors.yellow('warn ') : picocolors.red('error'),
+        return (
+          ' ' // add a prefix whitespace for better readability under file header
+          + fastStringArrayJoin([
+            severityToAnsiColorMap[x.severity],
 
-          showLineNumbers
-            ? ' '.repeat(maxLineWidth - x.lineWidth) + picocolors.dim(x.line + picocolors.gray(':') + x.column)
-            : '',
+            showLineNumbers
+              ? ' '.repeat(maxLineWidth - x.lineWidth) + picocolors.dim(x.line + picocolors.gray(':') + x.column)
+              : '',
 
-          ' '.repeat(maxColumnWidth - x.columnWidth) + x.message,
-          ' '.repeat(maxMessageWidth - x.messageWidth),
+            ' '.repeat(maxColumnWidth - x.columnWidth) + x.message,
+            ' '.repeat(maxMessageWidth - x.messageWidth),
 
-          hasHyperlink && ruleUrl
-            ? link(picocolors.dim(x.ruleId), ruleUrl)
-            : picocolors.dim(x.ruleId)
-        ];
-
-        return fastStringArrayJoin(line, ' ');
+            hasHyperlink && ruleUrl
+              ? link(picocolors.dim(x.ruleId), ruleUrl)
+              : picocolors.dim(x.ruleId)
+          ], ' ')
+        );
       }
 
       return '';
@@ -285,3 +282,30 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
 };
 
 export default pretty;
+
+function lintResultSorter(a: ESLint.LintResult, b: ESLint.LintResult): number {
+  if (a.errorCount === b.errorCount) {
+    return b.warningCount - a.warningCount;
+  }
+
+  if (a.errorCount === 0) return -1;
+  if (b.errorCount === 0) return 1;
+
+  return b.errorCount - a.errorCount;
+}
+
+function lintMessageSorter(a: Linter.LintMessage, b: Linter.LintMessage): number {
+  if (a.fatal === b.fatal && a.severity === b.severity) {
+    if (a.line === b.line) {
+      return a.column < b.column ? -1 : 1; // same line, put happen earlier column first
+    }
+
+    return a.line - b.line; // put happen earlier line first
+  }
+
+  if ((a.fatal || a.severity === 2) && (!b.fatal || b.severity !== 2)) {
+    return 1;
+  }
+
+  return -1;
+}
