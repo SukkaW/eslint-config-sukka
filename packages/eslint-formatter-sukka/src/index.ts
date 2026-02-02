@@ -43,6 +43,8 @@ interface Line {
   column: string
 }
 
+const rQuoteStyle = /\B`(.+?)`\B|\B'(.+?)'\B|\B"(.+?)"\B/g;
+
 const pretty: ESLint.FormatterFunction = (results, data): string => {
   const lines: Array<Line | Separator | Header | null> = [];
   let errorCount = 0;
@@ -119,7 +121,7 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
       }
 
       // Stylize inline code blocks
-      const message = x.message.replaceAll(/\B`(.+?)`\B|\B'(.+?)'\B|\B"(.+?)"\B/g, (m, p1, p2, p3) => picocolors.bold(p1 || p2 || p3));
+      const message = x.message.replaceAll(rQuoteStyle, (m, p1, p2, p3) => picocolors.bold(p1 || p2 || p3));
 
       const line = String(x.line || 0);
       const column = String(x.column || 0);
