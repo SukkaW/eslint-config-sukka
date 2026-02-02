@@ -37,6 +37,7 @@
     },
     "//#lint:root": {
       "dependsOn": [
+        "eslint-formatter-sukka#build",
         "eslint-config-sukka#build"
       ]
     }
