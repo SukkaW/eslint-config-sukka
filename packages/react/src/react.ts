@@ -239,7 +239,7 @@ export function react({
         '@eslint-react/no-duplicate-key': 'error',
         '@eslint-react/no-implicit-key': 'error',
 
-        '@eslint-react/jsx-uses-react': 'off',
+        '@eslint-react/jsx-uses-react': 'off', // we are using new jsx transform
 
         // Disallow unnecessary fragments
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-useless-fragment.md
