@@ -174,8 +174,7 @@ export async function sukka(options?: ESLintSukkaOptions, ...userConfig: FlatESL
         remix: remixInstalled,
         reactRefresh: {
           allowConstantExport: isPackageExists('vite')
-        },
-        reactCompiler: isPackageExists('babel-plugin-react-compiler') || isPackageExists('react-compiler-webpack')
+        }
       })));
       if (enabled(options?.next, nextjsInstalled)) {
         flatConfigs.push(eslint_sukka_react.next());

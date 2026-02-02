@@ -50,14 +50,13 @@ export interface OptionsReact {
 const memoized_eslint_react = memo(eslint_react, '@eslint-react/eslint-plugin');
 const memoized_eslint_plugin_ssr_friendly = memo(fixupPluginRules(eslint_plugin_ssr_friendly), 'eslint-plugin-ssr-friendly');
 
-export async function react({
+export function react({
   files = [
     constants.GLOB_TS,
     constants.GLOB_TSX,
     // constants.GLOB_JS,
     constants.GLOB_JSX
   ],
-  reactCompiler,
   additionalHooks = '(useIsomorphicLayoutEffect|useSukkaManyOtherCustomEffectHookExample|useAbortableEffect)',
   nextjs = false,
   remix = false,
@@ -76,7 +75,7 @@ export async function react({
       ]
     }
   ]
-}: OptionsReact = {}): Promise<FlatESLintConfigItem[]> {
+}: OptionsReact = {}): FlatESLintConfigItem[] {
   const {
     allowConstantExport = false
   } = reactRefresh;
@@ -92,7 +91,7 @@ export async function react({
     files = castArray(files);
   }
 
-  const result: FlatESLintConfigItem[] = [
+  return [
     // this is safe because A11Y doesn't apply to JSON/YAML files
     UNSAFE_excludeJsonYamlFiles({
       name: '@eslint-sukka/react base',
@@ -365,20 +364,4 @@ export async function react({
       }
     }
   ];
-
-  if (reactCompiler) {
-    const { default: eslint_plugin_react_compiler } = await import('eslint-plugin-react-compiler');
-
-    result.push(
-      withFiles(
-        // this is safe because react compiler doesn't apply to JSON/YAML files
-        UNSAFE_excludeJsonYamlFiles(
-          eslint_plugin_react_compiler.configs.recommended
-        ),
-        files
-      )
-    );
-  }
-
-  return result;
 }
