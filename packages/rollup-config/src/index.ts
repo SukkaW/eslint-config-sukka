@@ -37,6 +37,7 @@ interface RollupConfigPlugin {
    * @default true
    */
   externalLiveBindings?: boolean,
+  minify?: boolean,
 
   replace?: RollupReplaceOptions
 }
@@ -66,6 +67,7 @@ export function createRollupConfig(packageJsonPath: PathLike,
     foxquire = false,
     buildCjsOnly = false,
     analyze = false,
+    minify = true,
     /**
      * When enabled, this could prevent cjs-module-lexer from detecting re-exports
      * However, it might trigger issues with circular dependencies when disabled
@@ -96,8 +98,7 @@ export function createRollupConfig(packageJsonPath: PathLike,
         chunkFileNames: '[name]-[hash].cjs', entryFileNames: 'index.cjs',
         minifyInternalExports: true, hoistTransitiveImports: false,
         manualChunks,
-        // This could breaks rollup runtime
-        compact: true,
+        compact: minify,
         //
         // however it might trigger issues with circular dependencies
         externalLiveBindings
@@ -109,8 +110,7 @@ export function createRollupConfig(packageJsonPath: PathLike,
           chunkFileNames: '[name]-[hash].cjs', entryFileNames: 'index.cjs',
           minifyInternalExports: true, hoistTransitiveImports: false,
           manualChunks,
-          // This could breaks rollup runtime
-          compact: false,
+          compact: minify,
           externalLiveBindings
         },
         {
@@ -119,8 +119,7 @@ export function createRollupConfig(packageJsonPath: PathLike,
           chunkFileNames: '[name]-[hash].mjs', entryFileNames: 'index.mjs',
           minifyInternalExports: true, hoistTransitiveImports: false,
           manualChunks,
-          // This could breaks rollup runtime
-          compact: false,
+          compact: minify,
           externalLiveBindings
         }
       ] satisfies RollupOutputOptions[],
@@ -148,11 +147,11 @@ export function createRollupConfig(packageJsonPath: PathLike,
         ...(typeof json === 'boolean' ? {} : json)
       }),
       swc({
-        minify: true,
+        minify,
         jsc: {
           minify: {
-            mangle: true,
-            compress: true,
+            mangle: minify,
+            compress: minify,
             module: true
           },
           transform: {
