@@ -51,6 +51,9 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
   let warningCount = 0;
   let fatalErrorCount = 0;
   let fixableCount = 0;
+
+  let suppressedCount = 0;
+
   const deprecatedReplacedBy: Record<string, string[]> = {};
 
   let maxLineWidth = 0;
@@ -75,6 +78,11 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
       messages, filePath, usedDeprecatedRules,
       fixableWarningCount, fixableErrorCount
     } = result;
+
+    if ('suppressedMessages' in result) {
+      // eslint-disable-next-line sukka/unicorn/consistent-destructuring -- suppressedMessages may not exist, need type guard
+      suppressedCount += result.suppressedMessages.length;
+    }
 
     if (messages.length === 0) continue;
 
@@ -252,6 +260,7 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
     ['error', true, errorCount > 0 ? picocolors.red(errorCount) : picocolors.green(0)] as const,
     ['fatal', fatalErrorCount > 0, picocolors.red(fatalErrorCount)] as const,
     ['fixable', fixableCount > 0, fixableCount] as const,
+    ['suppressed', suppressedCount > 0, picocolors.gray(suppressedCount)] as const,
     ['deprecated', deprecatedCount > 0, picocolors.bold(picocolors.gray(deprecatedCount))] as const
   ]).filter(([, show]) => show);
 
