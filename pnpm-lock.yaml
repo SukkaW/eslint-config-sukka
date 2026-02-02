@@ -12,12 +12,12 @@ overrides:
   eslint-plugin-unicorn>core-js-compat: '-'
   eslint>chalk: npm:ansis@^4.2.0-node10
   hasown: '-'
-  is-core-module: '-'
   object.assign: '-'
   object.fromentries: '-'
   object.values: '-'
   safe-buffer: '-'
   string.prototype.includes: '-'
+  is-core-module: npm:@nolyfill/is-core-module@^1
 
 patchedDependencies:
   eslint-plugin-unicorn:
@@ -837,6 +837,10 @@ packages:
 
   '@nolyfill/hasown@1.0.44':
     resolution: {integrity: sha512-GA/21lkTr2PAQuT6jGnhLuBD5IFd/AEhBXJ/tf33+/bVxPxg+5ejKx9jGQGnyV/P0eSmdup5E+s8b2HL6lOrwQ==}
+    engines: {node: '>=12.4.0'}
+
+  '@nolyfill/is-core-module@1.0.39':
+    resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
 
   '@nolyfill/object.assign@1.0.44':
@@ -3224,6 +3228,8 @@ snapshots:
 
   '@nolyfill/hasown@1.0.44': {}
 
+  '@nolyfill/is-core-module@1.0.39': {}
+
   '@nolyfill/object.assign@1.0.44':
     dependencies:
       '@nolyfill/shared': 1.0.44
@@ -4776,6 +4782,7 @@ snapshots:
 
   resolve@1.22.10:
     dependencies:
+      is-core-module: '@nolyfill/is-core-module@1.0.39'
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 

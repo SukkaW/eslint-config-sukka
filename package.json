@@ -53,12 +53,12 @@
       "eslint-plugin-unicorn>core-js-compat": "-",
       "eslint>chalk": "npm:ansis@^4.2.0-node10",
       "hasown": "-",
-      "is-core-module": "-",
       "object.assign": "-",
       "object.fromentries": "-",
       "object.values": "-",
       "safe-buffer": "-",
-      "string.prototype.includes": "-"
+      "string.prototype.includes": "-",
+      "is-core-module": "npm:@nolyfill/is-core-module@^1"
     },
     "onlyBuiltDependencies": [
       "@swc/core",
