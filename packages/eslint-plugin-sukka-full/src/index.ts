@@ -1,4 +1,4 @@
-import eslint_plugin_sukka from 'eslint-plugin-sukka';
+import { eslint_plugin_sukka } from 'eslint-plugin-sukka';
 
 // @masknet/eslint-plugin
 import array$no_unneeded_flat_map from '@masknet/eslint-plugin/rules/array/no-unneeded-flat-map.js';

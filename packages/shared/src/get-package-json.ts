@@ -90,7 +90,7 @@ export function getPackageJson(startPath = 'a.js'): PackageJson | null {
   let dir: string = startDir;
   // eslint-disable-next-line no-useless-assignment -- pre-init value with empty string for boosting performance
   let prevDir = '';
-  let data: PackageJson;
+  let data: PackageJson | null;
 
   do {
     data = cache.get(dir);

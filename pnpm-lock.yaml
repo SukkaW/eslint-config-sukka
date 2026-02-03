@@ -28,9 +28,6 @@ importers:
 
   .:
     devDependencies:
-      '@eslint-sukka/internal':
-        specifier: workspace:*
-        version: link:packages/internal
       '@eslint-sukka/node':
         specifier: workspace:*
         version: link:packages/node
@@ -83,8 +80,8 @@ importers:
         specifier: workspace:*
         version: link:packages/eslint-formatter-sukka
       eslint-plugin-sukka:
-        specifier: workspace:*
-        version: link:packages/eslint-plugin-sukka
+        specifier: ^9.0.2
+        version: 9.0.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       foxts:
         specifier: ^5.2.1
         version: 5.2.1
@@ -273,45 +270,14 @@ importers:
         specifier: ^5.7.1
         version: 5.7.1(eslint@9.39.2(jiti@2.6.1))
 
-  packages/eslint-plugin-sukka:
-    dependencies:
-      '@eslint-sukka/shared':
-        specifier: workspace:*
-        version: link:../shared
-      '@typescript-eslint/type-utils':
-        specifier: ^8.54.0
-        version: 8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
-      '@typescript-eslint/types':
-        specifier: ^8.54.0
-        version: 8.54.0
-      '@typescript-eslint/utils':
-        specifier: ^8.54.0
-        version: 8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
-      eslint:
-        specifier: '*'
-        version: 9.39.2(jiti@2.6.1)
-      foxts:
-        specifier: ^5.2.1
-        version: 5.2.1
-      typescript:
-        specifier: '*'
-        version: 5.9.3
-    devDependencies:
-      '@eslint-sukka/rollup-config':
-        specifier: workspace:*
-        version: link:../rollup-config
-      '@masknet/eslint-plugin':
-        specifier: ^0.4.1
-        version: 0.4.1(eslint@9.39.2(jiti@2.6.1))
-
   packages/eslint-plugin-sukka-full:
     dependencies:
       eslint:
         specifier: '*'
         version: 9.39.2(jiti@2.6.1)
       eslint-plugin-sukka:
-        specifier: workspace:*
-        version: link:../eslint-plugin-sukka
+        specifier: ^9.0.2
+        version: 9.0.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       typescript:
         specifier: '*'
         version: 5.9.3
@@ -325,8 +291,6 @@ importers:
       eslint-plugin-unicorn:
         specifier: ^62.0.0
         version: 62.0.0(patch_hash=9923e252d3283d4776b2d22ccc01043952f45b2200455877716e17fa7b8aa2de)(eslint@9.39.2(jiti@2.6.1))
-
-  packages/internal: {}
 
   packages/node:
     dependencies:
@@ -1911,6 +1875,12 @@ packages:
     resolution: {integrity: sha512-VOYl9OgK9mSVWxwl3pSTzNmBUMhPYjDGmxgyjSM9Agdve4GHjn0gAcCG/seg1taaW/aBWTkb7Aw4GIBsxVhL9Q==}
     peerDependencies:
       eslint: '>=0.8.0'
+
+  eslint-plugin-sukka@9.0.2:
+    resolution: {integrity: sha512-UrhK7RAEMbk3vIWtfLOw2yP36GRH3XfyVV79hiqQWavk/rCaKMfJCcHAA23nvIEfCgYsxnMNXJmpn1FgimIRvg==}
+    peerDependencies:
+      eslint: '*'
+      typescript: '*'
 
   eslint-plugin-unicorn@62.0.0:
     resolution: {integrity: sha512-HIlIkGLkvf29YEiS/ImuDZQbP12gWyx5i3C6XrRxMvVdqMroCI9qoVYCoIl17ChN+U89pn9sVwLxhIWj5nEc7g==}
@@ -4210,6 +4180,17 @@ snapshots:
     dependencies:
       eslint: 9.39.2(jiti@2.6.1)
       globals: 13.24.0
+
+  eslint-plugin-sukka@9.0.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3):
+    dependencies:
+      '@typescript-eslint/type-utils': 8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
+      '@typescript-eslint/types': 8.54.0
+      '@typescript-eslint/utils': 8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
+      eslint: 9.39.2(jiti@2.6.1)
+      foxts: 5.2.1
+      typescript: 5.9.3
+    transitivePeerDependencies:
+      - supports-color
 
   eslint-plugin-unicorn@62.0.0(patch_hash=9923e252d3283d4776b2d22ccc01043952f45b2200455877716e17fa7b8aa2de)(eslint@9.39.2(jiti@2.6.1)):
     dependencies:

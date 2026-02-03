@@ -16,7 +16,6 @@
   "author": "Sukka <https://skk.moe>",
   "license": "MIT",
   "devDependencies": {
-    "@eslint-sukka/internal": "workspace:*",
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
@@ -34,7 +33,7 @@
     "eslint": "^9.39.2",
     "eslint-config-sukka": "workspace:*",
     "eslint-formatter-sukka": "workspace:*",
-    "eslint-plugin-sukka": "workspace:*",
+    "eslint-plugin-sukka": "^9.0.2",
     "foxts": "^5.2.1",
     "mocha": "^11.7.5",
     "rollup": "^4.57.1",
