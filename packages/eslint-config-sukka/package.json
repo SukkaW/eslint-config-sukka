@@ -36,23 +36,23 @@
     "@eslint-sukka/eslint-plugin-sukka-full": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
     "@eslint/config-helpers": "^0.5.2",
-    "@eslint/js": "^9.39.2",
-    "@typescript-eslint/eslint-plugin": "^8.54.0",
-    "@typescript-eslint/parser": "^8.54.0",
+    "@eslint/js": "^9.39.3",
+    "@typescript-eslint/eslint-plugin": "^8.56.0",
+    "@typescript-eslint/parser": "^8.56.0",
     "ci-info": "^4.4.0",
     "defu": "^6.1.4",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-autofix": "^2.2.0",
     "eslint-plugin-import-x": "^4.16.1",
-    "eslint-plugin-jsonc": "^2.21.0",
+    "eslint-plugin-jsonc": "^2.21.1",
     "eslint-plugin-paths": "^1.1.0",
     "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-regexp": "^2.10.0",
-    "eslint-plugin-unused-imports": "^4.3.0",
+    "eslint-plugin-unused-imports": "^4.4.1",
     "foxts": "^5.2.1",
     "jsonc-eslint-parser": "^2.4.2",
     "picocolors": "^1.1.1",
-    "typescript-eslint": "^8.54.0"
+    "typescript-eslint": "^8.56.0"
   },
   "devDependencies": {
     "@clack/prompts": "^0.11.0",
@@ -60,8 +60,8 @@
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
     "@eslint-sukka/yaml": "workspace:*",
-    "eslint-config-flat-gitignore": "^2.1.0",
-    "eslint-plugin-antfu": "^3.2.0",
+    "eslint-config-flat-gitignore": "^2.2.1",
+    "eslint-plugin-antfu": "^3.2.2",
     "eslint-plugin-de-morgan": "^2.0.0"
   }
 }
