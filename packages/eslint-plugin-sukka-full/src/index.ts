@@ -208,7 +208,7 @@ import no_useless_collection_argument from 'eslint-plugin-unicorn/rules/no-usele
 import prefer_response_static_json from 'eslint-plugin-unicorn/rules/prefer-response-static-json.js';
 
 // @ts-expect-error - eslint-plugin-unicorn does not have types
-import { createRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/rule/index.js';
+import { toEslintRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/rule/index.js';
 
 import type { Linter } from 'eslint';
 
