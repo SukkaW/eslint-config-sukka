@@ -39,5 +39,8 @@
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
     "globals": "^17.3.0"
+  },
+  "peerDependencies": {
+    "eslint": "*"
   }
 }

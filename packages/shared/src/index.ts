@@ -127,3 +127,26 @@ export function UNSAFE_excludeJsonYamlFiles(configs: FlatESLintConfigItem | Flat
 
   return configs;
 }
+
+import type { Linter } from 'eslint';
+
+/**
+ * Extract a plain rules record from an array of plugin-style configs.
+ *
+ * Those configs are generically typed by the plugin and often turn out to
+ * be incompatible with our own `RulesRecord` alias, which triggers long,
+ * unhelpful error messages when spreading later.  We just need the rule map
+ * itself so coerce to `any` during the reduction and give the result a
+ * proper Linter.RulesRecord type.
+ */
+export function collectRules(configs: Array<{ rules?: Partial<Linter.RulesRecord> }>): Partial<Linter.RulesRecord> {
+  return configs.reduce<Partial<Linter.RulesRecord>>((acc, cur) => {
+    if (!cur.rules) {
+      return acc;
+    }
+    return {
+      ...acc,
+      ...cur.rules
+    };
+  }, {});
+}

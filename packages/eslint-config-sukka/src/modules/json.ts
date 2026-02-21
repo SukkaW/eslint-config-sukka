@@ -1,61 +1,50 @@
-import eslint_plugin_jsonc from 'eslint-plugin-jsonc';
-import jsonc_eslint_parser from 'jsonc-eslint-parser';
-
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
-import { constants, memo } from '@eslint-sukka/shared';
+import { constants, collectRules } from '@eslint-sukka/shared';
 
-import type { Linter } from 'eslint';
+export async function json(): Promise<FlatESLintConfigItem[]> {
+  const SHARED_OPTIONS: Pick<FlatESLintConfigItem, 'plugins' | 'languageOptions'> = {
+    languageOptions: {
+      parser: await import('jsonc-eslint-parser')
+    }
+  };
 
-export const SHARED_OPTIONS: Pick<FlatESLintConfigItem, 'plugins' | 'languageOptions'> = {
-  plugins: {
-    jsonc: memo<any>(eslint_plugin_jsonc, 'eslint-plugin-jsonc')
-  },
-  languageOptions: {
-    parser: jsonc_eslint_parser
-  }
-};
+  const eslint_plugin_jsonc = await import('eslint-plugin-jsonc');
 
-const SHARED_RULES: Linter.RulesRecord = {
-  'jsonc/array-bracket-spacing': ['error', 'never'],
-  'jsonc/comma-dangle': ['error', 'never'],
-  'jsonc/comma-style': ['error', 'last'],
-  'jsonc/indent': ['error', 2],
-  'jsonc/key-spacing': ['error', { beforeColon: false, afterColon: true }],
-  'jsonc/object-curly-newline': 'off', // ['error', { consistent: true, multiline: true }],
-  'jsonc/object-curly-spacing': ['error', 'always'],
-  'jsonc/object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }],
-  'jsonc/quote-props': 'error',
-  'jsonc/quotes': 'error'
-};
-
-export function json(): FlatESLintConfigItem[] {
   return [
-    ...eslint_plugin_jsonc.configs['flat/base'],
+    ...eslint_plugin_jsonc.configs.base,
+    {
+      name: '@eslint-sukka/json shared rules',
+      files: [constants.GLOB_JSON, constants.GLOB_JSON5, constants.GLOB_JSONC],
+      rules: {
+        'jsonc/array-bracket-spacing': ['error', 'never'],
+        'jsonc/comma-dangle': ['error', 'never'],
+        'jsonc/comma-style': ['error', 'last'],
+        'jsonc/indent': ['error', 2],
+        'jsonc/key-spacing': ['error', { beforeColon: false, afterColon: true }],
+        'jsonc/object-curly-newline': 'off', // ['error', { consistent: true, multiline: true }],
+        'jsonc/object-curly-spacing': ['error', 'always'],
+        'jsonc/object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }],
+        'jsonc/quote-props': 'error',
+        'jsonc/quotes': 'error'
+      }
+    },
     {
       name: '@eslint-sukka/json json',
+      ...SHARED_OPTIONS,
       files: [constants.GLOB_JSON],
-      rules: {
-        ...eslint_plugin_jsonc.configs['flat/recommended-with-json'].reduce((acc, cur) => ({ ...acc, ...cur.rules }), {}),
-        ...SHARED_RULES
-      }
+      rules: collectRules(eslint_plugin_jsonc.configs['recommended-with-json'])
     },
     {
       name: '@eslint-sukka/json json5',
       ...SHARED_OPTIONS,
       files: [constants.GLOB_JSON5],
-      rules: {
-        ...eslint_plugin_jsonc.configs['flat/recommended-with-json5'].reduce((acc, cur) => ({ ...acc, ...cur.rules }), {}),
-        ...SHARED_RULES
-      }
+      rules: collectRules(eslint_plugin_jsonc.configs['recommended-with-json5'])
     },
     {
       name: '@eslint-sukka/json jsonc',
       ...SHARED_OPTIONS,
       files: [constants.GLOB_JSONC],
-      rules: {
-        ...eslint_plugin_jsonc.configs['flat/recommended-with-jsonc'].reduce((acc, cur) => ({ ...acc, ...cur.rules }), {}),
-        ...SHARED_RULES
-      }
+      rules: collectRules(eslint_plugin_jsonc.configs['recommended-with-jsonc'])
     },
     // package.json
     {
@@ -168,7 +157,7 @@ export function json(): FlatESLintConfigItem[] {
           },
           {
             order: [
-            /* Projects */
+              /* Projects */
               'incremental',
               'composite',
               'tsBuildInfoFile',
