@@ -6,8 +6,6 @@ import eslint_plugin_import_x, { createNodeResolver } from 'eslint-plugin-import
 import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
 import eslint_plugin_demorgan from 'eslint-plugin-de-morgan';
 
-// @ts-expect-error -- no types
-import eslint_plugin_autofix from 'eslint-plugin-autofix';
 // import eslint_plugin_no_secrets from 'eslint-plugin-no-secrets';
 
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
@@ -103,7 +101,6 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
       plugins: {
         'unused-imports': memo(eslint_plugin_unused_imports, 'eslint-plugin-unused-imports'),
         sukka: memo(eslint_plugin_sukka, '@eslint-sukka/eslint-plugin-sukka-full'),
-        autofix: eslint_plugin_autofix,
         antfu: eslint_plugin_antfu
       },
       rules: {
@@ -162,8 +159,7 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
         'no-alert': 'warn',
 
         // disallow use of arguments.caller or arguments.callee
-        'no-caller': 'off',
-        'autofix/no-caller': 'error',
+        'no-caller': 'error',
 
         // Disallow returning value in constructor
         // https://eslint.org/docs/rules/no-constructor-return
@@ -242,8 +238,7 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
         'no-octal-escape': 'error',
 
         // disallow usage of __proto__ property
-        'no-proto': 'off',
-        'autofix/no-proto': 'error',
+        'no-proto': 'error',
 
         // disallow certain object properties
         // https://eslint.org/docs/rules/no-restricted-properties
@@ -307,13 +302,11 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
 
         // Disallow unnecessary catch clauses
         // https://eslint.org/docs/rules/no-useless-catch
-        'no-useless-catch': 'off',
-        'autofix/no-useless-catch': 'error',
+        'no-useless-catch': 'error', // TODO: contribute autofix to upstream
 
         // disallow useless string concatenation
         // https://eslint.org/docs/rules/no-useless-concat
-        'no-useless-concat': 'off',
-        'autofix/no-useless-concat': 'error',
+        'no-useless-concat': 'error', // TODO: contribute autofix to upstream
 
         // disallow unnecessary string escaping
         // https://eslint.org/docs/rules/no-useless-escape
@@ -345,8 +338,7 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
         }],
 
         // require use of the second argument for parseInt()
-        radix: 'off',
-        'autofix/radix': 'error',
+        radix: 'error', // TODO: contribute autofix to upstream
 
         // require `await` in `async function`
         // https://eslint.org/docs/rules/require-await
@@ -431,13 +423,11 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
 
         // ensure that the results of typeof are compared against a valid string
         // https://eslint.org/docs/rules/valid-typeof
-        'valid-typeof': 'off',
-        'autofix/valid-typeof': ['error', { requireStringLiterals: true }],
+        'valid-typeof': ['error', { requireStringLiterals: true }], // TODO: contribute autofix to upstream
 
         // Disallow new operators with global non-constructor functions
         // https://eslint.org/docs/latest/rules/no-new-native-nonconstructor
-        'no-new-native-nonconstructor': 'off',
-        'autofix/no-new-native-nonconstructor': 'error',
+        'no-new-native-nonconstructor': 'error',
 
         // disallow importing from the same path more than once
         // https://eslint.org/docs/rules/no-duplicate-imports
@@ -727,8 +717,7 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
           'error',
           { paths: RESTRICTED_IMPORT_JS }
         ],
-        'no-prototype-builtins': 'off',
-        'autofix/no-prototype-builtins': 'error',
+        'no-prototype-builtins': 'error', // TODO: contribute autofix to upstream
 
         'antfu/import-dedupe': 'error', // ban import { a, b, a, a, c, a } from 'sukka'
         'antfu/consistent-chaining': 'error',

@@ -1,2 +1,6 @@
 packages:
   - 'packages/*'
+
+# Fuck pnpm on missing deps, eslint marks @eslint/core as its explict dependencies
+# then import types from it, but pnpm refuse to link @eslint/core
+shamefullyHoist: true
