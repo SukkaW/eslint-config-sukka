@@ -11,7 +11,6 @@ import typescript_eslint_parser from '@typescript-eslint/parser';
 import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
 import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
 import eslint_plugin_import_x from 'eslint-plugin-import-x';
-import eslint_plugin_paths from 'eslint-plugin-paths';
 
 import process from 'node:process';
 
@@ -77,7 +76,6 @@ export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatE
       plugins: {
         '@typescript-eslint': memo<any>(typescript_eslint_plugin, '@typescript-eslint/eslint-plugin'),
         'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x'),
-        paths: eslint_plugin_paths,
         'unused-imports': memo(eslint_plugin_unused_imports, 'eslint-plugin-unused-imports')
       },
       // extends: [
@@ -396,9 +394,7 @@ export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatE
         // const bar = foo.bar
         'import-x/no-named-as-default-member': 'off', // import foo from 'foo';
         // typescript-eslint already supports this
-        'import-x/no-deprecated': 'off',
-
-        'paths/alias': 'warn'
+        'import-x/no-deprecated': 'off'
       }
     },
     withFiles(eslint_plugin_sukka.configs.recommended_extra_with_typed_lint, files),
