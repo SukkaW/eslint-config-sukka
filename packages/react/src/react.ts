@@ -1,4 +1,4 @@
-import { constants, memo, globals, withFiles } from '@eslint-sukka/shared';
+import { constants, memo, globals, withFiles, collectPlugins, UNSAFE_excludeJsonYamlFiles } from '@eslint-sukka/shared';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import eslint_plugin_react_hooks from 'eslint-plugin-react-hooks';
@@ -13,7 +13,6 @@ import { fixupPluginRules } from '@eslint/compat';
 import { eslint_plugin_jsx_a11y_minimal } from '@eslint-sukka/eslint-plugin-react-jsx-a11y';
 
 import { castArray } from 'foxts/cast-array';
-import { UNSAFE_excludeJsonYamlFiles } from '@eslint-sukka/shared';
 
 interface EslintReactAdditionalComponents {
   name: string,
@@ -98,8 +97,7 @@ export function react({
       files,
       plugins: {
         'react-prefer-function-component': memo(eslint_plugin_react_prefer_function_component, 'eslint-plugin-react-prefer-function-component'),
-        ...memoized_eslint_react.configs['strict-type-checked'].plugins,
-        ...memoized_eslint_react.configs.rsc.plugins,
+        ...collectPlugins([memoized_eslint_react.configs['strict-type-checked'], memoized_eslint_react.configs.rsc]),
         'ssr-friendly': memoized_eslint_plugin_ssr_friendly
       },
       settings: {

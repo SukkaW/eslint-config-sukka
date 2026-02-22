@@ -128,7 +128,7 @@ export function UNSAFE_excludeJsonYamlFiles(configs: FlatESLintConfigItem | Flat
   return configs;
 }
 
-import type { Linter } from 'eslint';
+import type { Linter, ESLint } from 'eslint';
 
 /**
  * Extract a plain rules record from an array of plugin-style configs.
@@ -147,6 +147,18 @@ export function collectRules(configs: Array<{ rules?: Partial<Linter.RulesRecord
     return {
       ...acc,
       ...cur.rules
+    };
+  }, {});
+}
+
+export function collectPlugins(configs: Array<{ plugins?: Record<string, ESLint.Plugin> } & object>): Record<string, ESLint.Plugin> {
+  return configs.reduce<Record<string, ESLint.Plugin>>((acc, cur) => {
+    if (!cur.plugins) {
+      return acc;
+    }
+    return {
+      ...acc,
+      ...cur.plugins
     };
   }, {});
 }
