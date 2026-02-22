@@ -10,7 +10,7 @@ export { createRule, ensureParserWithTypeInformation, isParserWithTypeInformatio
 export type { RuleModule, ExportedRuleModule, RuleContext } from './create-eslint-rule';
 
 import { EnforceExtension, ResolverFactory } from 'oxc-resolver';
-import type { FlatESLintConfigItem } from './types';
+import type { FlatESLintConfigItem, ESLintRulesRecord } from './types';
 
 import { castArray } from 'foxts/cast-array';
 import { appendArrayInPlace } from 'foxts/append-array-in-place';
@@ -128,7 +128,7 @@ export function UNSAFE_excludeJsonYamlFiles(configs: FlatESLintConfigItem | Flat
   return configs;
 }
 
-import type { Linter, ESLint } from 'eslint';
+import type { ESLint } from 'eslint';
 
 /**
  * Extract a plain rules record from an array of plugin-style configs.
@@ -139,8 +139,8 @@ import type { Linter, ESLint } from 'eslint';
  * itself so coerce to `any` during the reduction and give the result a
  * proper Linter.RulesRecord type.
  */
-export function collectRules(configs: Array<{ rules?: Partial<Linter.RulesRecord> }>): Partial<Linter.RulesRecord> {
-  return configs.reduce<Partial<Linter.RulesRecord>>((acc, cur) => {
+export function collectRules(configs: Array<{ rules?: Partial<ESLintRulesRecord> }>): Partial<ESLintRulesRecord> {
+  return configs.reduce<Partial<ESLintRulesRecord>>((acc, cur) => {
     if (!cur.rules) {
       return acc;
     }
