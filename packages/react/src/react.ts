@@ -39,8 +39,9 @@ export interface OptionsReact {
    */
   reactCompiler?: boolean,
 
-  nextjs?: boolean,
-  remix?: boolean,
+  nextjs?: boolean | string | string[],
+  remix?: boolean | string | string[],
+
   reactRefresh?: {
     allowConstantExport?: boolean
   }
@@ -76,7 +77,7 @@ export function react({
   ]
 }: OptionsReact = {}): FlatESLintConfigItem[] {
   const {
-    allowConstantExport = false
+    allowConstantExport
   } = reactRefresh;
 
   if (typeof files === 'function') {
@@ -337,21 +338,28 @@ export function react({
 
   if (nextjs) {
     results.push(
-      eslint_plugin_react_refresh.configs.next({
-        allowConstantExport
-      })
+      withFiles(
+        eslint_plugin_react_refresh.configs.next({
+          allowConstantExport
+        }),
+        nextjs
+      )
     );
   } else if (remix) {
     results.push(
-      eslint_plugin_react_refresh.configs.vite({
-        allowExportNames: [
-          'meta',
-          'links',
-          'headers',
-          'loader',
-          'action'
-        ]
-      })
+      withFiles(
+        eslint_plugin_react_refresh.configs.vite({
+          allowExportNames: [
+            'meta',
+            'links',
+            'headers',
+            'loader',
+            'action'
+          ],
+          allowConstantExport
+        }),
+        remix
+      )
     );
   } else {
     results.push(
