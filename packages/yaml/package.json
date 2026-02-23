@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
-    "eslint-plugin-yml": "^3.2.1",
+    "eslint-plugin-yml": "^3.2.2",
     "yaml-eslint-parser": "^2.0.0"
   }
 }
