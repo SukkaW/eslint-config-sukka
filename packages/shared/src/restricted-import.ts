@@ -85,7 +85,9 @@ export const BETTER_ALTERNATIVES = Object.entries({
   'cidr-tools': npm('fast-cidr-tools'),
   eventemitter3: `${npm('mitt')}. "node:eventemitter" is slow, "eventemitter2" is slow/huge but at least feature rich. But "eventemitter3" just has no reasons to be used`,
   fnv1a: `${npm('foxts')}, foxts/fnv1a is 6x faster`,
-  '@sindresorhus/fnv1a': `${npm('foxts')}, foxts/fnv1a is 6x faster`
+  '@sindresorhus/fnv1a': `${npm('foxts')}, foxts/fnv1a is 6x faster`,
+
+  expect: `${npm('earl')}. if you are using Jest, import "expect" from "@jest/globals" or "@jest/expect" instead`
 }).map(([key, value]) => ({ name: key, message: `Use ${value} instead.` }));
 
 const restricedImportBase = [
