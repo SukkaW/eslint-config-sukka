@@ -74,7 +74,8 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
   const configs: FlatESLintConfigItem[] = [
     {
       linterOptions: {
-        reportUnusedDisableDirectives: true
+        reportUnusedDisableDirectives: 'error',
+        reportUnusedInlineConfigs: 'warn'
       }
     },
     eslint_js.configs.recommended,
