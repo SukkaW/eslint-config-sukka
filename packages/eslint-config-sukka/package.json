@@ -31,7 +31,7 @@
   "license": "MIT",
   "dependencies": {
     "@antfu/install-pkg": "^1.1.0",
-    "@eslint-community/eslint-plugin-eslint-comments": "^4.6.0",
+    "@eslint-community/eslint-plugin-eslint-comments": "^4.7.1",
     "@eslint-sukka/eslint-plugin-stylistic": "workspace:*",
     "@eslint-sukka/eslint-plugin-sukka-full": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
