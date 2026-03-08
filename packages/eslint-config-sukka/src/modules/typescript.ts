@@ -380,8 +380,6 @@ export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatE
         'import-x/namespace': 'off',
         'import-x/default': 'off',
 
-        'import-x/no-duplicates': 'off',
-
         // file:foo.js
         // export default 'foo'
         // export const bar = 'baz'

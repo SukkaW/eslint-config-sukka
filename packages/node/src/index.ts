@@ -1,10 +1,9 @@
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
-import { RESTRICTED_IMPORT_NODE_REQUIRE, getPackageJson, globals } from '@eslint-sukka/shared';
+import { RESTRICTED_IMPORT_NODE_REQUIRE, getPackageJson, globals, UNSAFE_excludeJsonYamlFiles } from '@eslint-sukka/shared';
 
 import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
 import eslint_plugin_n from 'eslint-plugin-n';
-import { UNSAFE_excludeJsonYamlFiles } from '@eslint-sukka/shared';
 
 export interface OptionsNode {
   strict?: boolean,
