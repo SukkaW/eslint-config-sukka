@@ -75,7 +75,7 @@ export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatE
       files,
       plugins: {
         '@typescript-eslint': memo<any>(typescript_eslint_plugin, '@typescript-eslint/eslint-plugin'),
-        'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x'),
+        'import-x': eslint_plugin_import_x,
         'unused-imports': memo(eslint_plugin_unused_imports, 'eslint-plugin-unused-imports')
       },
       // extends: [
@@ -400,7 +400,7 @@ export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatE
       name: '@eslint-sukka/ts dts',
       files: ['**/*.d.ts'],
       plugins: {
-        'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x')
+        'import-x': eslint_plugin_import_x
       },
       rules: {
         'import-x/no-duplicates': 'off',

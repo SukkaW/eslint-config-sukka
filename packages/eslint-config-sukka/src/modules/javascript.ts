@@ -729,7 +729,7 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
     // As one of the maintainer of eslint-plugin-import-x, I know how rule works. JSON/YAML won't have import syntax
     withFiles(UNSAFE_excludeJsonYamlFiles({
       plugins: {
-        'import-x': memo<any>(eslint_plugin_import_x, 'eslint-plugin-import-x')
+        'import-x': eslint_plugin_import_x
       },
       settings: {
         'import-x/extensions': allExtensions,
