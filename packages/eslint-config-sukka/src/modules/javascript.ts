@@ -740,7 +740,7 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
         ]
       },
       rules: {
-        ...eslint_plugin_import_x.configs.recommended.rules,
+        ...eslint_plugin_import_x.configs['flat/recommended'].rules,
         'import-x/newline-after-import': ['error', { considerComments: false }],
         'import-x/no-absolute-path': 'error',
         'import-x/no-empty-named-blocks': 'error',
