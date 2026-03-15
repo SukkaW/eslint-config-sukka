@@ -68,7 +68,7 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
 
         // enforce line breaks after opening and before closing array brackets
         // https://eslint.org/docs/rules/array-bracket-newline
-        '@stylistic/array-bracket-newline': ['off', 'consistent'], // object option alternative: { multiline: true, minItems: 3 }
+        '@stylistic/array-bracket-newline': ['error', 'consistent'], // object option alternative: { multiline: true, minItems: 3 }
 
         // enforce spacing inside array
         // https://eslint.style/rules/js/array-bracket-spacing
