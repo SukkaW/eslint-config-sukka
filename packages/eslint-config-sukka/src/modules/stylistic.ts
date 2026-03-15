@@ -134,7 +134,15 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
         '@stylistic/implicit-arrow-linebreak': ['error', 'beside'],
 
         // https://eslint.style/rules/js/indent
-        '@stylistic/indent': ['error', 2, { SwitchCase: 1 }],
+        '@stylistic/indent': [
+          'error', 2,
+          {
+            SwitchCase: 1,
+            VariableDeclarator: 'first',
+            MemberExpression: 1,
+            StaticBlock: { body: 1 }
+          }
+        ],
         '@stylistic/indent-binary-ops': ['error', 2],
 
         // enforces spacing between keys and values in object literal properties
@@ -142,7 +150,7 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
         '@stylistic/key-spacing': ['error', { beforeColon: false, afterColon: true }],
 
         // https://eslint.style/rules/js/linebreak-style
-        '@stylistic/linebreak-style': 'error',
+        '@stylistic/linebreak-style': ['error', 'unix'],
 
         // https://eslint.style/rules/js/lines-around-comment
         '@stylistic/lines-around-comment': 'off',
@@ -209,7 +217,7 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
         '@stylistic/nonblock-statement-body-position': 'error',
 
         // https://eslint.style/rules/js/object-curly-newline
-        '@stylistic/object-curly-newline': 'off',
+        '@stylistic/object-curly-newline': ['error', { consistent: true }],
 
         // Enforce consistent spacing inside braces
         // https://eslint.style/rules/js/object-curly-spacing
@@ -409,6 +417,7 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
 
           // https://eslint.style/rules/jsx/jsx-function-call-newline
           '@stylistic/jsx-function-call-newline': ['error', 'multiline'],
+
           // Enforce spacing around jsx equals signs
           // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-equals-spacing.md
           '@stylistic/jsx-equals-spacing': ['error', 'never'],

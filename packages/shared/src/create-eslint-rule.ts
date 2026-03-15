@@ -4,8 +4,8 @@ export type { RuleContext } from '@typescript-eslint/utils/ts-eslint';
 
 const BASE_URL = 'https://eslint-plugin.skk.moe/src/rules/';
 
-interface Metadata<MessageIDs extends string, PluginDocs = unknown> extends TSESLint.RuleMetaData<MessageIDs, PluginDocs & { recommended?: TSESLint.RuleRecommendation
-}> {
+interface Metadata<
+  MessageIDs extends string, PluginDocs = unknown> extends TSESLint.RuleMetaData<MessageIDs, PluginDocs & { recommended?: TSESLint.RuleRecommendation }> {
   hidden?: boolean
 }
 

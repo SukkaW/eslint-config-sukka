@@ -27,6 +27,9 @@
         "@eslint-sukka/shared#build",
         "@eslint-sukka/eslint-plugin-sukka-full#build",
         "@eslint-sukka/eslint-plugin-stylistic#build"
+      ],
+      "outputs": [
+        "src/modules/_generated_typescript_overrides.ts"
       ]
     },
     "eslint-config-sukka#build": {
