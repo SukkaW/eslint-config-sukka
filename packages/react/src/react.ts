@@ -197,15 +197,11 @@ export function react({
         '@eslint-react/no-unused-class-component-members': 'error',
 
         // Other rules
-        '@eslint-react/naming-convention/component-name': ['error', { rule: 'PascalCase' }],
-        '@eslint-react/naming-convention/filename': ['error', { rule: 'kebab-case' }],
-        '@eslint-react/naming-convention/filename-extension': ['error', { allow: 'as-needed' }],
-
-        // Ensure destructuring and symmetric naming of useState hook value and setter variables
-        // https://github.com/jsx-eslint/eslint-plugin-react/blob/c8833f301314dab3e79ef7ac4cf863e4d5fa0019/docs/rules/hook-use-state.md
-        // Disable for now, fxxking way too many false positives, re-implement it in eslint-react
-        // 'react/hook-use-state': 'off',
-        '@eslint-react/naming-convention/use-state': 'error',
+        // Note: In v3.0.0, the following rules were removed:
+        // - @eslint-react/naming-convention/component-name (removed)
+        // - @eslint-react/naming-convention/filename (removed)
+        // - @eslint-react/naming-convention/filename-extension (removed)
+        // - @eslint-react/naming-convention/use-state now migrated to @eslint-react/use-state
 
         // Require stateless functions when not using lifecycle methods, setState or ref
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md
@@ -237,8 +233,6 @@ export function react({
         '@eslint-react/no-array-index-key': 'error',
         '@eslint-react/no-duplicate-key': 'error',
         '@eslint-react/no-implicit-key': 'error',
-
-        '@eslint-react/jsx-uses-react': 'off', // we are using new jsx transform
 
         // Disallow unnecessary fragments
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-useless-fragment.md
@@ -280,8 +274,7 @@ export function react({
         '@eslint-react/no-unnecessary-use-callback': 'error',
         '@eslint-react/no-unnecessary-use-memo': 'error',
         '@eslint-react/no-unnecessary-use-prefix': 'error',
-        '@eslint-react/no-unnecessary-use-ref': 'error',
-        '@eslint-react/prefer-use-state-lazy-initialization': 'error',
+        '@eslint-react/use-state': 'error',
 
         '@typescript-eslint/class-methods-use-this': ['error', {
           exceptMethods: [
