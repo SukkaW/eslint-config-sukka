@@ -274,6 +274,14 @@ const plugin = {
           return plugin;
         }
       }
+    },
+    recommended_react: {
+      ...eslint_plugin_sukka.configs.recommended_react,
+      plugins: {
+        get sukka() {
+          return plugin;
+        }
+      }
     }
   },
   rules: Object.assign<any, unknown, unknown>(

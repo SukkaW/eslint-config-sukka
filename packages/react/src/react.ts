@@ -5,6 +5,7 @@ import eslint_plugin_react_hooks from 'eslint-plugin-react-hooks';
 import { reactRefresh as eslint_plugin_react_refresh } from 'eslint-plugin-react-refresh';
 import eslint_plugin_react_prefer_function_component from 'eslint-plugin-react-prefer-function-component';
 import eslint_react from '@eslint-react/eslint-plugin';
+import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
 
 // @ts-expect-error -- no types
 import eslint_plugin_ssr_friendly from 'eslint-plugin-ssr-friendly';
@@ -197,12 +198,6 @@ export function react({
         '@eslint-react/no-unused-class-component-members': 'error',
 
         // Other rules
-        // Note: In v3.0.0, the following rules were removed:
-        // - @eslint-react/naming-convention/component-name (removed)
-        // - @eslint-react/naming-convention/filename (removed)
-        // - @eslint-react/naming-convention/filename-extension (removed)
-        // - @eslint-react/naming-convention/use-state now migrated to @eslint-react/use-state
-
         // Require stateless functions when not using lifecycle methods, setState or ref
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md
         // Replaced by eslint-plugin-react-prefer-function-component
@@ -316,17 +311,22 @@ export function react({
       UNSAFE_excludeJsonYamlFiles(eslint_plugin_jsx_a11y_minimal.configs.minimal),
       files
     ),
-    {
-      name: '@eslint-sukka/react next.js/nextra naming convention',
-      files: [
-        '**/app/**/_*.cjs',
-        String.raw`**/app/**/\[*.?([cm])[j]s?(x)`,
-        '**/pages/_(app|document).?([cm])[jt]s?(x)'
-      ],
-      rules: {
-        '@eslint-react/naming-convention/filename': 'off'
-      }
-    }
+    withFiles(
+      // this is safe because react-filename-extension doesn't apply to JSON/YAML files
+      UNSAFE_excludeJsonYamlFiles(eslint_plugin_sukka.configs.recommended_react),
+      files
+    )
+    // {
+    //   name: '@eslint-sukka/react next.js/nextra naming convention',
+    //   files: [
+    //     '**/app/**/_*.cjs',
+    //     String.raw`**/app/**/\[*.?([cm])[j]s?(x)`,
+    //     '**/pages/_(app|document).?([cm])[jt]s?(x)'
+    //   ],
+    //   rules: {
+    //     '@eslint-react/naming-convention/filename': 'off'
+    //   }
+    // }
   ];
 
   if (nextjs) {
