@@ -206,6 +206,8 @@ import no_immediate_mutation from 'eslint-plugin-unicorn/rules/no-immediate-muta
 import no_useless_collection_argument from 'eslint-plugin-unicorn/rules/no-useless-collection-argument.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_response_static_json from 'eslint-plugin-unicorn/rules/prefer-response-static-json.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import filename_case from 'eslint-plugin-unicorn/rules/filename-case.js';
 
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import { toEslintRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/rule/index.js';
@@ -388,7 +390,8 @@ const plugin = {
       'unicorn/require-module-attributes': require_module_attributes,
       'unicorn/no-immediate-mutation': no_immediate_mutation,
       'unicorn/no-useless-collection-argument': no_useless_collection_argument,
-      'unicorn/prefer-response-static-json': prefer_response_static_json
+      'unicorn/prefer-response-static-json': prefer_response_static_json,
+      'unicorn/filename-case': filename_case
     })
   )
 } as const;

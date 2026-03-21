@@ -1,7 +1,10 @@
 import { stylistic_eslint_plugin } from '@eslint-sukka/eslint-plugin-stylistic';
+import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
+
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import type { Linter } from 'eslint';
+import { memo } from '@eslint-sukka/shared';
 
 /** Private Options, not intended to be exposed to factory */
 interface OptionsStylistic {
@@ -14,7 +17,8 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
   return [{
     name: 'sukka/stylistic',
     plugins: {
-      '@stylistic': stylistic_eslint_plugin
+      '@stylistic': stylistic_eslint_plugin,
+      sukka: memo(eslint_plugin_sukka, '@eslint-sukka/eslint-plugin-sukka-full')
     },
     rules: Object.assign<Linter.RulesRecord, Linter.RulesRecord, Linter.RulesRecord>(
       {
@@ -334,6 +338,13 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
             return: { after: true },
             throw: { after: true },
             case: { after: true }
+          }
+        }],
+
+        'sukka/unicorn/filename-case': ['error', {
+          cases: {
+            kebabCase: true,
+            snakeCase: true
           }
         }]
       },
