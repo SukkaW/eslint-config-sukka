@@ -713,6 +713,10 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
         'sukka/unicorn/no-immediate-mutation': 'error',
         'sukka/unicorn/no-useless-collection-argument': 'error',
         'sukka/unicorn/prefer-response-static-json': 'error',
+        'sukka/unicorn/consistent-template-literal-escape': 'error',
+        'sukka/unicorn/no-useless-iterator-to-array': 'error',
+        'sukka/unicorn/prefer-simple-condition-first': 'error',
+        'sukka/unicorn/switch-case-break-position': 'error',
 
         'no-restricted-imports': [
           'error',

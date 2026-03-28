@@ -208,6 +208,14 @@ import no_useless_collection_argument from 'eslint-plugin-unicorn/rules/no-usele
 import prefer_response_static_json from 'eslint-plugin-unicorn/rules/prefer-response-static-json.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import filename_case from 'eslint-plugin-unicorn/rules/filename-case.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import consistent_template_literal_escape from 'eslint-plugin-unicorn/rules/consistent-template-literal-escape.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_useless_iterator_to_array from 'eslint-plugin-unicorn/rules/no-useless-iterator-to-array.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_simple_condition_first from 'eslint-plugin-unicorn/rules/prefer-simple-condition-first.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import switch_case_break_position from 'eslint-plugin-unicorn/rules/switch-case-break-position.js';
 
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import { toEslintRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/rule/index.js';
@@ -399,7 +407,11 @@ const plugin = {
       'unicorn/no-immediate-mutation': no_immediate_mutation,
       'unicorn/no-useless-collection-argument': no_useless_collection_argument,
       'unicorn/prefer-response-static-json': prefer_response_static_json,
-      'unicorn/filename-case': filename_case
+      'unicorn/filename-case': filename_case,
+      'unicorn/consistent-template-literal-escape': consistent_template_literal_escape,
+      'unicorn/no-useless-iterator-to-array': no_useless_iterator_to_array,
+      'unicorn/prefer-simple-condition-first': prefer_simple_condition_first,
+      'unicorn/switch-case-break-position': switch_case_break_position
     })
   )
 } as const;

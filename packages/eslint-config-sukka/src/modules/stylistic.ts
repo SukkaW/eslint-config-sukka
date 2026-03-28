@@ -3,7 +3,6 @@ import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
 
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
-import type { Linter } from 'eslint';
 import { memo } from '@eslint-sukka/shared';
 
 /** Private Options, not intended to be exposed to factory */
@@ -20,7 +19,7 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
       '@stylistic': stylistic_eslint_plugin,
       sukka: memo(eslint_plugin_sukka, '@eslint-sukka/eslint-plugin-sukka-full')
     },
-    rules: Object.assign<Linter.RulesRecord, Linter.RulesRecord, Linter.RulesRecord>(
+    rules: Object.assign(
       {
         /** JavaScript */
 

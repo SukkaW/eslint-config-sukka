@@ -34,7 +34,7 @@ import { deprecate } from './deprecate';
 
 // import { lazyValue } from 'foxts/lazy-value';
 
-type SharedOptions<T = object> = Omit<T, 'isInEditor' | 'enable'> & {
+type SharedOptions<T extends object> = Omit<T, 'isInEditor' | 'enable'> & {
   enable?: boolean
 };
 
