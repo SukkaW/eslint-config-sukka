@@ -5,6 +5,8 @@ import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import { memo } from '@eslint-sukka/shared';
 
+import { literal } from 'foxts/literal';
+
 /** Private Options, not intended to be exposed to factory */
 interface OptionsStylistic {
   ts: boolean,
@@ -20,7 +22,7 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
       sukka: memo(eslint_plugin_sukka, '@eslint-sukka/eslint-plugin-sukka-full')
     },
     rules: Object.assign(
-      {
+      literal({
         /** JavaScript */
 
         // enforces consistent newlines before or after dots
@@ -346,10 +348,10 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
             snakeCase: true
           }
         }]
-      },
+      }),
       /** TypeScript */
       ts
-        ? {
+        ? literal({
           // https://eslint.style/rules/ts/member-delimiter-style
           '@stylistic/member-delimiter-style': ['error', {
             multiline: { delimiter: 'comma', requireLast: false/** true */ },
@@ -382,11 +384,11 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
 
           '@stylistic/type-generic-spacing': 'error',
           '@stylistic/type-named-tuple-spacing': 'error'
-        }
+        })
         : {},
       /** React */
       react
-        ? {
+        ? literal({
           // Enforce PascalCase for user-defined JSX components
           // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md
           '@stylistic/jsx-pascal-case': ['error', {
@@ -466,7 +468,7 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
             multiline: 'consistent',
             singleline: 'consistent'
           }]
-        }
+        })
         : {}
     )
   }];
