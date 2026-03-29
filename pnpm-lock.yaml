@@ -71,8 +71,8 @@ importers:
         specifier: ^9.1.0
         version: 9.1.0(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       foxts:
-        specifier: ^5.3.0
-        version: 5.3.0
+        specifier: ^5.4.0
+        version: 5.4.0
       rollup:
         specifier: ^4.60.0
         version: 4.60.0
@@ -143,8 +143,8 @@ importers:
         specifier: ^4.4.1
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.57.2(@typescript-eslint/parser@8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2))(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2))(eslint@10.1.0(jiti@2.6.1))
       foxts:
-        specifier: ^5.3.0
-        version: 5.3.0
+        specifier: ^5.4.0
+        version: 5.4.0
       jsonc-eslint-parser:
         specifier: ^3.1.0
         version: 3.1.0
@@ -189,8 +189,8 @@ importers:
         specifier: '*'
         version: 10.1.0(jiti@2.6.1)
       foxts:
-        specifier: ^5.3.0
-        version: 5.3.0
+        specifier: ^5.4.0
+        version: 5.4.0
       picocolors:
         specifier: ^1.1.1
         version: 1.1.1
@@ -314,8 +314,8 @@ importers:
         specifier: ^1.3.0
         version: 1.3.0(eslint@10.1.0(jiti@2.6.1))
       foxts:
-        specifier: ^5.3.0
-        version: 5.3.0
+        specifier: ^5.4.0
+        version: 5.4.0
     devDependencies:
       '@eslint-react/eslint-plugin':
         specifier: ^3.0.0
@@ -378,8 +378,8 @@ importers:
         specifier: '*'
         version: 10.1.0(jiti@2.6.1)
       foxts:
-        specifier: ^5.3.0
-        version: 5.3.0
+        specifier: ^5.4.0
+        version: 5.4.0
       oxc-resolver:
         specifier: ^11.19.1
         version: 11.19.1
@@ -397,8 +397,8 @@ importers:
         specifier: workspace:*
         version: link:../shared
       foxts:
-        specifier: ^5.3.0
-        version: 5.3.0
+        specifier: ^5.4.0
+        version: 5.4.0
     devDependencies:
       '@eslint-sukka/rollup-config':
         specifier: workspace:*
@@ -1948,8 +1948,8 @@ packages:
   flatted@3.3.3:
     resolution: {integrity: sha512-GX+ysw4PBCz0PzosHDepZGANEuFCMLrnRTiEy9McGjmkCQYwRq4A/X786G/fjM/+OjsWSU1ZrY5qyARZmO/uwg==}
 
-  foxts@5.3.0:
-    resolution: {integrity: sha512-mj26vbVZmsu183PXwE7Nike91vuxhaDHtQGJmiEpQkdiuJYhDB91ZsdKJN54oSqUhMWj1DmUTEqSkguJCNM2Sg==}
+  foxts@5.4.0:
+    resolution: {integrity: sha512-guuVqmx+BTI8Sv8C+KGCREvpGmirdUDFTiENJdi3Zru+0odfcc/bhOdc5DQUUkAAmaDx4XnudGO9ZGS3aamndw==}
 
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
@@ -3842,7 +3842,7 @@ snapshots:
       '@typescript-eslint/types': 8.57.2
       '@typescript-eslint/utils': 8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@6.0.2)
       eslint: 10.1.0(jiti@2.6.1)
-      foxts: 5.3.0
+      foxts: 5.4.0
       typescript: 6.0.2
     transitivePeerDependencies:
       - supports-color
@@ -4014,7 +4014,7 @@ snapshots:
 
   flatted@3.3.3: {}
 
-  foxts@5.3.0: {}
+  foxts@5.4.0: {}
 
   fsevents@2.3.3:
     optional: true
