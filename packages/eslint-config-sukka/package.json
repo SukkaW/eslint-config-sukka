@@ -37,10 +37,10 @@
     "@eslint-sukka/shared": "workspace:*",
     "@eslint/config-helpers": "^0.5.3",
     "@eslint/js": "^10.0.1",
-    "@typescript-eslint/eslint-plugin": "^8.57.2",
-    "@typescript-eslint/parser": "^8.57.2",
+    "@typescript-eslint/eslint-plugin": "^8.58.0",
+    "@typescript-eslint/parser": "^8.58.0",
     "ci-info": "^4.4.0",
-    "defu": "^6.1.4",
+    "defu": "^6.1.6",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import-x": "^4.16.2",
     "eslint-plugin-jsonc": "^3.1.2",
@@ -50,10 +50,10 @@
     "foxts": "^5.4.0",
     "jsonc-eslint-parser": "^3.1.0",
     "picocolors": "^1.1.1",
-    "typescript-eslint": "^8.57.2"
+    "typescript-eslint": "^8.58.0"
   },
   "devDependencies": {
-    "@clack/prompts": "^1.1.0",
+    "@clack/prompts": "^1.2.0",
     "@eslint-sukka/node": "workspace:*",
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/rollup-config": "workspace:*",
