@@ -7,6 +7,8 @@ import eslint_plugin_react_prefer_function_component from 'eslint-plugin-react-p
 import eslint_react from '@eslint-react/eslint-plugin';
 import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
 
+import { eslintReactKitConfig } from './eslint-react-kit-recipes';
+
 // @ts-expect-error -- no types
 import eslint_plugin_ssr_friendly from 'eslint-plugin-ssr-friendly';
 
@@ -172,12 +174,12 @@ export function react({
         // eslint-plugin-react recommended rules, migrated
         // '@eslint-react/no-string-refs': 'error', -- replaced by no-restricted-syntax
         '@eslint-react/jsx-no-comment-textnodes': 'error',
-        '@eslint-react/dom/no-unsafe-target-blank': 'error',
-        '@eslint-react/no-children-prop': 'error',
-        '@eslint-react/dom/no-dangerously-set-innerhtml-with-children': 'error',
-        '@eslint-react/dom/no-render-return-value': 'error',
+        '@eslint-react/dom-no-unsafe-target-blank': 'error',
+        '@eslint-react/jsx-no-children-prop': 'error',
+        '@eslint-react/dom-no-dangerously-set-innerhtml-with-children': 'error',
+        '@eslint-react/dom-no-render-return-value': 'error',
         '@eslint-react/no-direct-mutation-state': 'error',
-        '@eslint-react/dom/no-find-dom-node': 'error',
+        '@eslint-react/dom-no-find-dom-node': 'error',
         '@eslint-react/no-unsafe-component-will-mount': 'warn',
         '@eslint-react/no-unsafe-component-will-receive-props': 'warn',
         '@eslint-react/no-unsafe-component-will-update': 'warn',
@@ -191,7 +193,7 @@ export function react({
         '@eslint-react/no-access-state-in-setstate': 'error',
         // Prevent usage of any `javascript:` URLs
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-script-url.md
-        '@eslint-react/dom/no-script-url': 'error',
+        '@eslint-react/dom-no-script-url': 'error',
 
         // Prevent declaring unused methods of component class
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/21e01b61af7a38fc86d94f27eb66cda8054582ed/docs/rules/no-unused-class-component-methods.md
@@ -207,12 +209,12 @@ export function react({
         // Enforce boolean attributes notation in JSX
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md
         // 'react/jsx-boolean-value': 'off',
-        '@eslint-react/jsx-shorthand-boolean': 'error',
+        // Removed from @eslint-react v4, re-implemented via eslint-plugin-sukka
 
         // Prevent void DOM elements from receiving children
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/void-dom-elements-no-children.md
         // 'react/void-dom-elements-no-children': 'off',
-        '@eslint-react/dom/no-void-elements-with-children': 'error',
+        '@eslint-react/dom-no-void-elements-with-children': 'error',
 
         // Prevent this from being used in stateless functional components
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/no-this-in-sfc.md
@@ -221,7 +223,7 @@ export function react({
         // Enforce shorthand or standard form for React fragments
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/bc976b837abeab1dffd90ac6168b746a83fc83cc/docs/rules/jsx-fragments.md
         // 'react/jsx-fragments': 'off',
-        '@eslint-react/jsx-shorthand-fragment': 'error',
+        // Removed from @eslint-react v4, re-implemented via eslint-plugin-sukka
 
         // 'react/jsx-key': 'off', // ['warn', { checkFragmentShorthand: true, checkKeyMustBeforeSpread: true, warnOnDuplicates: true }],
         '@eslint-react/no-missing-key': 'error',
@@ -232,12 +234,12 @@ export function react({
         // Disallow unnecessary fragments
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-useless-fragment.md
         // 'react/jsx-no-useless-fragment': 'off',
-        '@eslint-react/no-useless-fragment': 'error',
+        '@eslint-react/jsx-no-useless-fragment': 'error',
 
         // Prevent react contexts from taking non-stable values
         '@eslint-react/no-unstable-context-value': 'error',
 
-        // Prevent creating uns dable components inside components
+        // Prevent creating unstable components inside components
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/c2a790a3472eea0f6de984bdc3ee2a62197417fb/docs/rules/no-unstable-nested-components.md
         // 'react/no-unstable-nested-components': 'off',
         '@eslint-react/no-nested-component-definitions': 'error',
@@ -245,8 +247,8 @@ export function react({
         // Enforce sandbox attribute on iframe elements
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/c8833f301314dab3e79ef7ac4cf863e4d5fa0019/docs/rules/iframe-missing-sandbox.md
         // 'react/iframe-missing-sandbox': 'off',
-        '@eslint-react/dom/no-missing-iframe-sandbox': 'warn',
-        '@eslint-react/dom/no-unsafe-iframe-sandbox': 'warn',
+        '@eslint-react/dom-no-missing-iframe-sandbox': 'warn',
+        '@eslint-react/dom-no-unsafe-iframe-sandbox': 'warn',
 
         // Prevent problematic leaked values from being rendered
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/c42b624d0fb9ad647583a775ab9751091eec066f/docs/rules/jsx-no-leaked-render.md
@@ -260,16 +262,18 @@ export function react({
 
         // default type is "submit" which refresh the page
         // 'react/button-has-type': 'off',
-        '@eslint-react/dom/no-missing-button-type': 'error',
+        '@eslint-react/dom-no-missing-button-type': 'error',
 
         // <svg:rect> react does not support
         // 'react/no-namespace': 'off',
-        '@eslint-react/dom/no-namespace': 'error',
+        '@eslint-react/jsx-no-namespace': 'error',
 
         '@eslint-react/no-unnecessary-use-callback': 'error',
         '@eslint-react/no-unnecessary-use-memo': 'error',
         '@eslint-react/no-unnecessary-use-prefix': 'error',
         '@eslint-react/use-state': 'error',
+        '@eslint-react/jsx-no-leaked-semicolon': 'warn',
+        '@eslint-react/jsx-no-leaked-dollar': 'warn',
 
         '@typescript-eslint/class-methods-use-this': ['error', {
           exceptMethods: [
@@ -315,6 +319,15 @@ export function react({
       // this is safe because react-filename-extension doesn't apply to JSON/YAML files
       UNSAFE_excludeJsonYamlFiles(eslint_plugin_sukka.configs.recommended_react),
       files
+    ),
+    Object.assign(
+      withFiles(
+        UNSAFE_excludeJsonYamlFiles(
+          eslintReactKitConfig
+        ),
+        files
+      ),
+      { name: '@eslint-sukka/react kit' }
     )
     // {
     //   name: '@eslint-sukka/react next.js/nextra naming convention',
