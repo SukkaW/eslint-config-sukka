@@ -282,7 +282,7 @@ export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatE
         '@typescript-eslint/no-loop-func': 'warn',
         '@typescript-eslint/no-redundant-type-constituents': 'off',
         '@typescript-eslint/no-floating-promises': 'off',
-        '@typescript-eslint/no-unsafe-enum-comparison': 'warn',
+        '@typescript-eslint/no-unsafe-enum-comparison': 'error',
         '@typescript-eslint/prefer-regexp-exec': 'warn', // more performant than String#match
         '@typescript-eslint/no-deprecated': 'warn',
         '@typescript-eslint/no-unnecessary-template-expression': 'warn',
