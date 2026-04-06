@@ -35,7 +35,7 @@
     "@eslint-sukka/eslint-plugin-stylistic": "workspace:*",
     "@eslint-sukka/eslint-plugin-sukka-full": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
-    "@eslint/config-helpers": "^0.5.3",
+    "@eslint/config-helpers": "^0.5.4",
     "@eslint/js": "^10.0.1",
     "@typescript-eslint/eslint-plugin": "^8.58.0",
     "@typescript-eslint/parser": "^8.58.0",
