@@ -35,12 +35,12 @@
     "@eslint-sukka/eslint-plugin-stylistic": "workspace:*",
     "@eslint-sukka/eslint-plugin-sukka-full": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
-    "@eslint/config-helpers": "^0.5.4",
+    "@eslint/config-helpers": "^0.5.5",
     "@eslint/js": "^10.0.1",
-    "@typescript-eslint/eslint-plugin": "^8.58.0",
-    "@typescript-eslint/parser": "^8.58.0",
+    "@typescript-eslint/eslint-plugin": "^8.58.1",
+    "@typescript-eslint/parser": "^8.58.1",
     "ci-info": "^4.4.0",
-    "defu": "^6.1.6",
+    "defu": "^6.1.7",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import-x": "^4.16.2",
     "eslint-plugin-jsonc": "^3.1.2",
@@ -50,7 +50,7 @@
     "foxts": "^5.4.0",
     "jsonc-eslint-parser": "^3.1.0",
     "picocolors": "^1.1.1",
-    "typescript-eslint": "^8.58.0"
+    "typescript-eslint": "^8.58.1"
   },
   "devDependencies": {
     "@clack/prompts": "^1.2.0",
