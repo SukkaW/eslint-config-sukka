@@ -33,7 +33,7 @@
     "@eslint-sukka/eslint-plugin-stylistic": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
     "@eslint/compat": "^2.0.5",
-    "@next/eslint-plugin-next": "^16.2.2",
+    "@next/eslint-plugin-next": "^16.2.3",
     "@stylexjs/eslint-plugin": "^0.18.2",
     "@typescript-eslint/types": "^8.58.1",
     "@typescript-eslint/utils": "^8.58.1",
