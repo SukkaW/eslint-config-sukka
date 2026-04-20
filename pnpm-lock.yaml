@@ -68,8 +68,8 @@ importers:
         specifier: workspace:*
         version: link:packages/eslint-formatter-sukka
       eslint-plugin-sukka:
-        specifier: ^9.3.0
-        version: 9.3.0(eslint@10.2.1(jiti@2.6.1))(typescript@6.0.3)
+        specifier: ^9.3.2
+        version: 9.3.2(eslint@10.2.1(jiti@2.6.1))(typescript@6.0.3)
       foxts:
         specifier: ^5.4.0
         version: 5.4.0
@@ -255,8 +255,8 @@ importers:
         specifier: '*'
         version: 10.2.1(jiti@2.6.1)
       eslint-plugin-sukka:
-        specifier: ^9.3.0
-        version: 9.3.0(eslint@10.2.1(jiti@2.6.1))(typescript@6.0.3)
+        specifier: ^9.3.2
+        version: 9.3.2(eslint@10.2.1(jiti@2.6.1))(typescript@6.0.3)
       typescript:
         specifier: '*'
         version: 6.0.3
@@ -305,8 +305,8 @@ importers:
         specifier: ^16.2.4
         version: 16.2.4
       '@stylexjs/eslint-plugin':
-        specifier: ^0.18.2
-        version: 0.18.2
+        specifier: ^0.18.3
+        version: 0.18.3
       '@typescript-eslint/types':
         specifier: ^8.58.2
         version: 8.58.2
@@ -1113,11 +1113,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@stylexjs/eslint-plugin@0.18.2':
-    resolution: {integrity: sha512-4eeAdsKJJM7j+Me4ADTrwKubsEynn7PiLC2ronuar/iI/GExzcl5eUqrGMuXFukt2cv2AtjXs4txqvtPV3j8pg==}
+  '@stylexjs/eslint-plugin@0.18.3':
+    resolution: {integrity: sha512-EHRBi0GkdlZFbO5/ZkBc7o5gIzMT7240Q8ebqkZIvZjQ2IbNajt25fHflv6nZ6kVxxKntJNQxn6hsJAANG0iDg==}
 
-  '@stylexjs/shared@0.18.2':
-    resolution: {integrity: sha512-CnHG0MWwtQt9DwP0ogl6C19fnKJtMcJq37vTyrfhlz9GOycdDh28Yza0flKikGUF5lQOmknatopwi1Y9XTxTzQ==}
+  '@stylexjs/shared@0.18.3':
+    resolution: {integrity: sha512-g72AKGGhLTFsaez19zod2je9IQeaub2eM85jwJPvfmxymKW8Aleoxm5/pYIsnyxx3MZNOB5AVN6khfo90f9Lgw==}
 
   '@stylistic/eslint-plugin@5.10.0':
     resolution: {integrity: sha512-nPK52ZHvot8Ju/0A4ucSX1dcPV2/1clx0kLcH5wDmrE4naKso7TUC/voUyU1O9OTKTrR6MYip6LP0ogEMQ9jPQ==}
@@ -1845,10 +1845,10 @@ packages:
     peerDependencies:
       eslint: '>=0.8.0'
 
-  eslint-plugin-sukka@9.3.0:
-    resolution: {integrity: sha512-GU+pA4AMbcYwk1THgszptraVuecUBEU2SbTKvQ+UNJKupbGiQhrnMXv1t/mLaja6XzwWnwQx2ngQH4+OMYSM2w==}
+  eslint-plugin-sukka@9.3.2:
+    resolution: {integrity: sha512-4UFgWgLJ9O/bN8L1CN8vYzFRqPqdVtQWOS7MeA/KRjceKHvuTzCaFNAW+Z8y0OJ/JZJNSwlcpak1q0JWgWYtEg==}
     peerDependencies:
-      eslint: '*'
+      eslint: '>=9.29.0'
       typescript: '*'
 
   eslint-plugin-unicorn@64.0.0:
@@ -3180,14 +3180,14 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.60.2':
     optional: true
 
-  '@stylexjs/eslint-plugin@0.18.2':
+  '@stylexjs/eslint-plugin@0.18.3':
     dependencies:
       '@csstools/css-tokenizer': 3.0.4
-      '@stylexjs/shared': 0.18.2
+      '@stylexjs/shared': 0.18.3
       micromatch: 4.0.8
       postcss-value-parser: 4.2.0
 
-  '@stylexjs/shared@0.18.2': {}
+  '@stylexjs/shared@0.18.3': {}
 
   '@stylistic/eslint-plugin@5.10.0(eslint@10.2.1(jiti@2.6.1))':
     dependencies:
@@ -3933,7 +3933,7 @@ snapshots:
       eslint: 10.2.1(jiti@2.6.1)
       globals: 13.24.0
 
-  eslint-plugin-sukka@9.3.0(eslint@10.2.1(jiti@2.6.1))(typescript@6.0.3):
+  eslint-plugin-sukka@9.3.2(eslint@10.2.1(jiti@2.6.1))(typescript@6.0.3):
     dependencies:
       '@typescript-eslint/type-utils': 8.58.2(eslint@10.2.1(jiti@2.6.1))(typescript@6.0.3)
       '@typescript-eslint/types': 8.58.2
