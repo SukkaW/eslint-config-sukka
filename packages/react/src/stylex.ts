@@ -1,6 +1,5 @@
-import { constants } from '@eslint-sukka/shared';
+import { constants, asPlugin } from '@eslint-sukka/shared';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
-import type { ESLint } from 'eslint';
 
 export interface OptionsStyleX {
   opt?: StyleXESLintOptions
@@ -61,7 +60,7 @@ export async function stylex({ opt = {} }: OptionsStyleX = {}): Promise<FlatESLi
 
   return [{
     plugins: {
-      '@stylexjs': stylex_eslint_plugin as object as ESLint.Plugin
+      '@stylexjs': asPlugin(stylex_eslint_plugin)
     },
     files: [
       constants.GLOB_TS,

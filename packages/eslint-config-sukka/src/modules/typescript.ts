@@ -1,4 +1,4 @@
-import { collectRules, constants, memo, packageResolver, RESTRICTED_IMPORT_TS, withFiles } from '@eslint-sukka/shared';
+import { collectRules, constants, memo, packageResolver, RESTRICTED_IMPORT_TS, withFiles, asPlugin } from '@eslint-sukka/shared';
 
 import { generated_typescript_overrides } from './_generated_typescript_overrides';
 
@@ -74,7 +74,7 @@ export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatE
       name: '@eslint-sukka/ts base',
       files,
       plugins: {
-        '@typescript-eslint': memo<any>(typescript_eslint_plugin, '@typescript-eslint/eslint-plugin'),
+        '@typescript-eslint': asPlugin(typescript_eslint_plugin),
         'import-x': eslint_plugin_import_x,
         'unused-imports': memo(eslint_plugin_unused_imports, 'eslint-plugin-unused-imports')
       },
@@ -419,7 +419,7 @@ export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatE
       name: '@eslint-sukka/ts commonjs',
       files: ['**/*.js', '**/*.cjs'],
       plugins: {
-        '@typescript-eslint': memo<any>(typescript_eslint_plugin, '@typescript-eslint/eslint-plugin')
+        '@typescript-eslint': asPlugin(typescript_eslint_plugin)
       },
       rules: {
         '@typescript-eslint/no-require-imports': 'off'
