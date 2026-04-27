@@ -21,7 +21,7 @@
     "@eslint-sukka/shared": "workspace:*",
     "@eslint-sukka/yaml": "workspace:*",
     "@swc-node/register": "^1.11.1",
-    "@swc/core": "^1.15.30",
+    "@swc/core": "^1.15.32",
     "@types/node": "^24.12.2",
     "@types/stringify-object": "^4.0.5",
     "@typescript-eslint/rule-tester": "^8.59.0",
