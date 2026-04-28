@@ -1,6 +1,27 @@
 packages:
-  - 'packages/*'
+  - "packages/*"
+allowBuilds:
+  "@swc/core": true
+  unrs-resolver: true
 
 # Fuck pnpm on missing deps, eslint marks @eslint/core as its explict dependencies
 # then import types from it, but pnpm refuse to link @eslint/core
 shamefullyHoist: true
+
+overrides:
+  array-includes: "-"
+  array.prototype.flat: "-"
+  array.prototype.flatmap: "-"
+  eslint-import-resolver-typescript>eslint-plugin-import: "-"
+  eslint-plugin-unicorn>core-js-compat: "-"
+  eslint>chalk: npm:ansis@^4.2.0
+  hasown: "-"
+  is-core-module: npm:@nolyfill/is-core-module@^1.0.39
+  object.assign: "-"
+  object.fromentries: "-"
+  object.values: "-"
+  safe-buffer: "-"
+  string.prototype.includes: "-"
+
+patchedDependencies:
+  eslint-plugin-unicorn: patches/eslint-plugin-unicorn.patch
