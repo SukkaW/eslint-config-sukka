@@ -30,7 +30,7 @@
   "license": "MIT",
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",
-    "foxts": "^5.4.0"
+    "foxts": "^5.4.1"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
