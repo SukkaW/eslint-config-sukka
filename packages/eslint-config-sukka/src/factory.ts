@@ -31,10 +31,11 @@ import type { OptionsNode } from '../../node';
 import { foxquire } from './foxquire';
 import { isInEditorEnv } from './is-in-editor';
 import { deprecate } from './deprecate';
+import { pnpm } from './modules/pnpm';
 
 // import { lazyValue } from 'foxts/lazy-value';
 
-type SharedOptions<T extends object> = Omit<T, 'isInEditor' | 'enable'> & {
+type SharedOptions<T extends object = object> = Omit<T, 'isInEditor' | 'enable'> & {
   enable?: boolean
 };
 
@@ -45,6 +46,7 @@ interface ESLintSukkaOptions {
   json?: boolean,
   ts?: SharedOptions<OptionsTypeScript> | boolean,
   // markdown?: boolean,
+  pnpm?: boolean,
   yaml?: boolean,
   react?: SharedOptions<OptionsReact> | boolean,
   stylex?: SharedOptions<OptionsStyleX> | boolean,
@@ -73,7 +75,7 @@ function enabled<T extends SharedOptions>(options: T | boolean | undefined, defa
   return defaults;
 }
 
-function config<T>(options: SharedOptions<T> | undefined | boolean, ...defaults: Array<Omit<T, 'isInEditor' | 'enable'>>): T | undefined {
+function config<T extends object>(options: SharedOptions<T> | undefined | boolean, ...defaults: Array<Omit<T, 'isInEditor' | 'enable'>>): T | undefined {
   let rest;
   if (typeof options === 'boolean' || typeof options === 'undefined') {
     rest = {} as SharedOptions<T>;
@@ -199,6 +201,9 @@ export async function sukka(options?: ESLintSukkaOptions, ...userConfig: FlatESL
   // legacy
   if (enabled(options?.legacy)) {
     flatConfigs.push(legacy(config(options?.legacy)));
+  }
+  if (enabled(options?.pnpm, true)) {
+    flatConfigs.push(pnpm());
   }
 
   flatConfigs.push(userConfig);
