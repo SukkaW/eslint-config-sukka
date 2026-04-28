@@ -22,6 +22,7 @@ overrides:
   object.values: "-"
   safe-buffer: "-"
   string.prototype.includes: "-"
+  safe-regex-test: "-"
 
 patchedDependencies:
   eslint-plugin-unicorn: patches/eslint-plugin-unicorn.patch
