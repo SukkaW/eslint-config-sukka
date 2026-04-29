@@ -10,7 +10,7 @@
     "lint": "turbo run lint:root",
     "lint:root": "eslint --format=sukka .",
     "prerelease": "pnpm run build && pnpm run lint",
-    "release": "bumpp -r --all --commit \"release: %s\" --tag \"%s\""
+    "release": "bumpp --install -r --all --commit \"release: %s\" --tag \"%s\""
   },
   "keywords": [],
   "author": "Sukka <https://skk.moe>",
