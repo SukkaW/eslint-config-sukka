@@ -28,7 +28,6 @@ jobs:
           check-latest: true
           cache: 'pnpm'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm install -g npm
       - run: pnpm install
       - run: pnpm run build
       - run: pnpm run lint
