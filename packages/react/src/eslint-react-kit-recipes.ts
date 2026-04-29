@@ -19,7 +19,6 @@ function preferStateUpdaterFunction(): RuleFunction {
     const pendingCalls: Array<{ callerVar: Scope.Variable, node: TSESTree.CallExpression }> = [];
 
     return {
-      // eslint-disable-next-line @eslint-react/component-hook-factories -- this is not a react component
       CallExpression(node: TSESTree.CallExpression) {
         // this special trick is to overcome is.useStateLikeCall's wrong types
         // where it return asserts node is TSESTree.CallExpression, but it actually
@@ -88,7 +87,6 @@ function noCircularEffect(): RuleFunction {
     const pendingEffects: TSESTree.CallExpression[] = [];
 
     return {
-      // eslint-disable-next-line @eslint-react/component-hook-factories -- this is not a react component
       CallExpression(node: TSESTree.CallExpression) {
         if (is.useStateLikeCall(node, additionalStateHooks)) {
           const { parent } = node;

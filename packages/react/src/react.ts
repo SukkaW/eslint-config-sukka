@@ -183,11 +183,7 @@ export function react({
         '@eslint-react/no-unsafe-component-will-mount': 'warn',
         '@eslint-react/no-unsafe-component-will-receive-props': 'warn',
         '@eslint-react/no-unsafe-component-will-update': 'warn',
-        '@eslint-react/prefer-destructuring-assignment': 'warn',
 
-        // Prevent unused state values
-        // https://github.com/jsx-eslint/eslint-plugin-react/pull/1103/
-        '@eslint-react/no-unused-state': 'error',
         // Prevent using this.state within a this.setState
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/no-access-state-in-setstate.md
         '@eslint-react/no-access-state-in-setstate': 'error',
@@ -268,8 +264,6 @@ export function react({
         // 'react/no-namespace': 'off',
         '@eslint-react/jsx-no-namespace': 'error',
 
-        '@eslint-react/no-unnecessary-use-callback': 'error',
-        '@eslint-react/no-unnecessary-use-memo': 'error',
         '@eslint-react/no-unnecessary-use-prefix': 'error',
         '@eslint-react/use-state': 'error',
         '@eslint-react/jsx-no-leaked-semicolon': 'warn',
