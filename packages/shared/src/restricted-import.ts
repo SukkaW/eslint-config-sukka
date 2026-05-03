@@ -105,30 +105,38 @@ const restrictedImportWithImportNames = [
   { name: 'lodash-es', message: `Use ${npm('rfdc')} for Node.js / ${npm('klona')} for Browser instead`, importNames: ['cloneDeep'] },
   { name: 'uuid', importNames: ['v4'], message: `Use ${npm('@lukeed/uuid')} instead` },
   { name: 'assert', importNames: ['deepEqual'], message: `Use ${npm('dequal')} instead` },
-  { name: 'react', importNames: ['useLayoutEffect'], message: 'Use https://foxact.skk.moe/use-isomorphic-layout-effect instead' }
+  { name: 'react', importNames: ['useLayoutEffect'], message: 'Use https://foxact.skk.moe/use-isomorphic-layout-effect instead' },
+  { name: '@typescript-eslint/utils', importNames: ['AST_NODE_TYPES', 'AST_TOKEN_TYPES', 'TSESTree'], message: 'Import from @typescript-eslint/types instead. @typescript-eslint/utils simply re-exports them from @typescript-eslint/types.' }
+];
+
+/**
+ * For @eslint/js and eslint-plugin-n/no-restricted-require, it doesn't
+ * support "allowTypeImports", so we have separate these and only add
+ * "allowTypeImports" for @typescript-eslint/restrict-imports
+ */
+const restrictedImportWithImportNamesButAllowWithType = [
+  { name: 'date-fns', message: 'Please use date-fns/{submodule} instead.' },
+  { name: 'async-call-rpc', message: 'Please use async-call-rpc/full instead.' }
 ];
 
 export const RESTRICTED_IMPORT_JS = [
-  { name: 'date-fns', message: 'Please use date-fns/{submodule} instead.' },
-  { name: 'async-call-rpc', message: 'Please use async-call-rpc/full instead.' },
-  { name: 'react', importNames: ['default'], message: 'Use named import instead' },
+  ...restrictedImportWithImportNamesButAllowWithType,
   ...restricedImportBase,
   ...BETTER_ALTERNATIVES,
-  ...restrictedImportWithImportNames
+  ...restrictedImportWithImportNames,
+  { name: 'react', importNames: ['default'], message: 'Use named import instead' }
 ];
 
 export const RESTRICTED_IMPORT_TS = [
-  { name: 'date-fns', message: 'Please use date-fns/{submodule} instead.', allowTypeImports: true },
-  { name: 'async-call-rpc', message: 'Please use async-call-rpc/full instead.', allowTypeImports: true },
-  { name: 'react', importNames: ['default'], message: 'Use named import instead', allowTypeImports: true },
+  ...restrictedImportWithImportNamesButAllowWithType.map(item => ({ ...item, allowTypeImports: true })),
   ...restricedImportBase,
   ...BETTER_ALTERNATIVES,
-  ...restrictedImportWithImportNames
+  ...restrictedImportWithImportNames,
+  { name: 'react', importNames: ['default'], message: 'Use named import instead', allowTypeImports: true }
 ];
 
 export const RESTRICTED_IMPORT_NODE_REQUIRE = [
-  { name: 'date-fns', message: 'Please use date-fns/{submodule} instead.' },
-  { name: 'async-call-rpc', message: 'Please use async-call-rpc/full instead.' },
+  ...restrictedImportWithImportNamesButAllowWithType,
   ...restricedImportBase,
   ...BETTER_ALTERNATIVES
 ];
