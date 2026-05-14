@@ -14,7 +14,6 @@ overrides:
   array.prototype.flatmap: "-"
   eslint-import-resolver-typescript>eslint-plugin-import: "-"
   eslint-plugin-unicorn>core-js-compat: "-"
-  eslint>chalk: npm:ansis@^4.2.0
   hasown: "-"
   is-core-module: npm:@nolyfill/is-core-module@^1.0.39
   object.assign: "-"
