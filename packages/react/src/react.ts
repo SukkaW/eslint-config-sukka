@@ -311,7 +311,7 @@ export function react({
       // this is safe because react-filename-extension doesn't apply to JSON/YAML files
       UNSAFE_excludeJsonYamlFiles(eslint_plugin_sukka.configs.recommended_react),
       files
-    ),
+    )
     // {
     //   name: '@eslint-sukka/react next.js/nextra naming convention',
     //   files: [
