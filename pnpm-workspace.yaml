@@ -12,7 +12,7 @@ overrides:
   array-includes: "-"
   array.prototype.flat: "-"
   array.prototype.flatmap: "-"
-  eslint-import-resolver-typescript>eslint-plugin-import: "-"
+  eslint-plugin-import: "-"
   eslint-plugin-unicorn>core-js-compat: "-"
   hasown: "-"
   is-core-module: npm:@nolyfill/is-core-module@^1.0.39

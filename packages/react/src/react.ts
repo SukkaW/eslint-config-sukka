@@ -7,8 +7,6 @@ import eslint_plugin_react_prefer_function_component from 'eslint-plugin-react-p
 import eslint_react from '@eslint-react/eslint-plugin';
 import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
 
-import { eslintReactKitConfig } from './eslint-react-kit-recipes';
-
 // @ts-expect-error -- no types
 import eslint_plugin_ssr_friendly from 'eslint-plugin-ssr-friendly';
 
@@ -314,15 +312,6 @@ export function react({
       UNSAFE_excludeJsonYamlFiles(eslint_plugin_sukka.configs.recommended_react),
       files
     ),
-    Object.assign(
-      withFiles(
-        UNSAFE_excludeJsonYamlFiles(
-          eslintReactKitConfig
-        ),
-        files
-      ),
-      { name: '@eslint-sukka/react kit' }
-    )
     // {
     //   name: '@eslint-sukka/react next.js/nextra naming convention',
     //   files: [
