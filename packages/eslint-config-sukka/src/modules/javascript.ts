@@ -525,11 +525,6 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
         'no-negated-condition': 'off',
         'sukka/unicorn/no-negated-condition': 'warn',
 
-        // disallow nested ternary expressions
-        'no-nested-ternary': 'off', // replaced by sukka/unicorn/no-nested-ternary
-        // disallow nested ternary expressions
-        'sukka/unicorn/no-nested-ternary': 'warn',
-
         // disallow use of the Object constructor
         // deprecated and replaced by no-object-constructor
         'no-new-object': 'off',

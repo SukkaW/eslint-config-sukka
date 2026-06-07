@@ -24,6 +24,10 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
     rules: Object.assign(
       literal({
         /** JavaScript */
+        // disallow nested ternary expressions
+        'no-nested-ternary': 'off', // replaced by sukka/unicorn/no-nested-ternary
+        // disallow nested ternary expressions
+        'sukka/unicorn/no-nested-ternary': 'warn',
 
         // enforces consistent newlines before or after dots
         // https://eslint.style/rules/js/dot-location
