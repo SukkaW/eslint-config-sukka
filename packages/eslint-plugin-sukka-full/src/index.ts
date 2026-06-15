@@ -69,7 +69,7 @@ import prefer_blob_reading_methods from 'eslint-plugin-unicorn/rules/prefer-blob
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_date_now from 'eslint-plugin-unicorn/rules/prefer-date-now.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
-import prefer_dom_node_dataset from 'eslint-plugin-unicorn/rules/prefer-dom-node-dataset.js';
+import dom_node_dataset from 'eslint-plugin-unicorn/rules/dom-node-dataset.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_modern_math_apis from 'eslint-plugin-unicorn/rules/prefer-modern-math-apis.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
@@ -91,11 +91,9 @@ import no_unreadable_iife from 'eslint-plugin-unicorn/rules/no-unreadable-iife.j
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import throw_new_error from 'eslint-plugin-unicorn/rules/throw-new-error.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
-import better_regex from 'eslint-plugin-unicorn/rules/better-regex.js';
-// @ts-expect-error - eslint-plugin-unicorn does not have types
 import escape_case from 'eslint-plugin-unicorn/rules/escape-case.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
-import no_hex_escape from 'eslint-plugin-unicorn/rules/no-hex-escape.js';
+import prefer_unicode_code_point_escapes from 'eslint-plugin-unicorn/rules/prefer-unicode-code-point-escapes.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_prototype_methods from 'eslint-plugin-unicorn/rules/prefer-prototype-methods.js';
 // import relative_url_style from 'eslint-plugin-unicorn/rules/relative-url-style.js';
@@ -217,6 +215,100 @@ import prefer_simple_condition_first from 'eslint-plugin-unicorn/rules/prefer-si
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import switch_case_break_position from 'eslint-plugin-unicorn/rules/switch-case-break-position.js';
 
+// v65 new rules
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import better_dom_traversing from 'eslint-plugin-unicorn/rules/better-dom-traversing.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import consistent_compound_words from 'eslint-plugin-unicorn/rules/consistent-compound-words.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_blob_to_file from 'eslint-plugin-unicorn/rules/no-blob-to-file.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_canvas_to_image from 'eslint-plugin-unicorn/rules/no-canvas-to-image.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_confusing_array_splice from 'eslint-plugin-unicorn/rules/no-confusing-array-splice.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_duplicate_set_values from 'eslint-plugin-unicorn/rules/no-duplicate-set-values.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_incorrect_query_selector from 'eslint-plugin-unicorn/rules/no-incorrect-query-selector.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_invalid_file_input_accept from 'eslint-plugin-unicorn/rules/no-invalid-file-input-accept.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_late_current_target_access from 'eslint-plugin-unicorn/rules/no-late-current-target-access.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_unnecessary_nested_ternary from 'eslint-plugin-unicorn/rules/no-unnecessary-nested-ternary.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_unused_array_method_return from 'eslint-plugin-unicorn/rules/no-unused-array-method-return.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_array_last_methods from 'eslint-plugin-unicorn/rules/prefer-array-last-methods.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_math_abs from 'eslint-plugin-unicorn/rules/prefer-math-abs.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_split_limit from 'eslint-plugin-unicorn/rules/prefer-split-limit.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_queue_microtask from 'eslint-plugin-unicorn/rules/prefer-queue-microtask.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_string_pad_start_end from 'eslint-plugin-unicorn/rules/prefer-string-pad-start-end.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import require_css_escape from 'eslint-plugin-unicorn/rules/require-css-escape.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import require_passive_events from 'eslint-plugin-unicorn/rules/require-passive-events.js';
+
+// v66 new rules
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import class_reference_in_static_methods from 'eslint-plugin-unicorn/rules/class-reference-in-static-methods.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import consistent_optional_chaining from 'eslint-plugin-unicorn/rules/consistent-optional-chaining.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import explicit_timer_delay from 'eslint-plugin-unicorn/rules/explicit-timer-delay.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_break_in_nested_loop from 'eslint-plugin-unicorn/rules/no-break-in-nested-loop.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_confusing_array_with from 'eslint-plugin-unicorn/rules/no-confusing-array-with.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_duplicate_loops from 'eslint-plugin-unicorn/rules/no-duplicate-loops.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_declarations_before_early_exit from 'eslint-plugin-unicorn/rules/no-declarations-before-early-exit.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_optional_chaining_on_undeclared_variable from 'eslint-plugin-unicorn/rules/no-optional-chaining-on-undeclared-variable.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_object_methods_with_collections from 'eslint-plugin-unicorn/rules/no-object-methods-with-collections.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_return_array_push from 'eslint-plugin-unicorn/rules/no-return-array-push.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_subtraction_comparison from 'eslint-plugin-unicorn/rules/no-subtraction-comparison.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_unnecessary_global_this from 'eslint-plugin-unicorn/rules/no-unnecessary-global-this.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_unreadable_object_destructuring from 'eslint-plugin-unicorn/rules/no-unreadable-object-destructuring.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_useless_else from 'eslint-plugin-unicorn/rules/no-useless-else.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_useless_recursion from 'eslint-plugin-unicorn/rules/no-useless-recursion.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_add_event_listener_options from 'eslint-plugin-unicorn/rules/prefer-add-event-listener-options.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_direct_iteration from 'eslint-plugin-unicorn/rules/prefer-direct-iteration.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_number_is_safe_integer from 'eslint-plugin-unicorn/rules/prefer-number-is-safe-integer.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_object_define_properties from 'eslint-plugin-unicorn/rules/prefer-object-define-properties.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_object_destructuring_defaults from 'eslint-plugin-unicorn/rules/prefer-object-destructuring-defaults.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_single_object_destructuring from 'eslint-plugin-unicorn/rules/prefer-single-object-destructuring.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_short_arrow_method from 'eslint-plugin-unicorn/rules/prefer-short-arrow-method.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_smaller_scope from 'eslint-plugin-unicorn/rules/prefer-smaller-scope.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_single_array_predicate from 'eslint-plugin-unicorn/rules/prefer-single-array-predicate.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_url_href from 'eslint-plugin-unicorn/rules/prefer-url-href.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_type_literal_last from 'eslint-plugin-unicorn/rules/prefer-type-literal-last.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import require_proxy_trap_boolean_return from 'eslint-plugin-unicorn/rules/require-proxy-trap-boolean-return.js';
+
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import { toEslintRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/rule/index.js';
 
@@ -254,17 +346,6 @@ const plugin = {
       },
       rules: {
         'sukka/ban-eslint-disable': ['error', 'allow-with-description']
-      } as Linter.RulesRecord
-    },
-    regexp: {
-      name: '@eslint-sukka/eslint-plugin-sukka-full regexp preset',
-      plugins: {
-        get sukka() {
-          return plugin;
-        }
-      },
-      rules: {
-        'sukka/unicorn/better-regex': 'warn' // RegEx[]
       } as Linter.RulesRecord
     },
     recommended: {
@@ -316,7 +397,6 @@ const plugin = {
     },
     // eslint-plugin-unicorn
     loadUnicorns({
-      'unicorn/better-regex': better_regex,
       'unicorn/catch-error-name': catch_error_name,
       'unicorn/custom-error-definition': custom_error_definition,
       'unicorn/no-nested-ternary': no_nested_ternary,
@@ -341,7 +421,7 @@ const plugin = {
       'unicorn/prefer-array-index-of': prefer_array_index_of,
       'unicorn/prefer-blob-reading-methods': prefer_blob_reading_methods,
       'unicorn/prefer-date-now': prefer_date_now,
-      'unicorn/prefer-dom-node-dataset': prefer_dom_node_dataset,
+      'unicorn/dom-node-dataset': dom_node_dataset,
       'unicorn/prefer-modern-math-apis': prefer_modern_math_apis,
       'unicorn/number-literal-case': number_literal_case,
       'unicorn/prefer-number-properties': prefer_number_properties,
@@ -353,7 +433,7 @@ const plugin = {
       'unicorn/no-unreadable-iife': no_unreadable_iife,
       'unicorn/throw-new-error': throw_new_error,
       'unicorn/escape-case': escape_case,
-      'unicorn/no-hex-escape': no_hex_escape,
+      'unicorn/prefer-unicode-code-point-escapes': prefer_unicode_code_point_escapes,
       'unicorn/prefer-prototype-methods': prefer_prototype_methods,
       // 'unicorn/relative-url-style': relative_url_style,
       'unicorn/error-message': error_message,
@@ -411,7 +491,54 @@ const plugin = {
       'unicorn/consistent-template-literal-escape': consistent_template_literal_escape,
       'unicorn/no-useless-iterator-to-array': no_useless_iterator_to_array,
       'unicorn/prefer-simple-condition-first': prefer_simple_condition_first,
-      'unicorn/switch-case-break-position': switch_case_break_position
+      'unicorn/switch-case-break-position': switch_case_break_position,
+      // v65 new rules
+      'unicorn/better-dom-traversing': better_dom_traversing,
+      'unicorn/consistent-compound-words': consistent_compound_words,
+      'unicorn/no-blob-to-file': no_blob_to_file,
+      'unicorn/no-canvas-to-image': no_canvas_to_image,
+      'unicorn/no-confusing-array-splice': no_confusing_array_splice,
+      'unicorn/no-duplicate-set-values': no_duplicate_set_values,
+      'unicorn/no-incorrect-query-selector': no_incorrect_query_selector,
+      'unicorn/no-invalid-file-input-accept': no_invalid_file_input_accept,
+      'unicorn/no-late-current-target-access': no_late_current_target_access,
+      'unicorn/no-unnecessary-nested-ternary': no_unnecessary_nested_ternary,
+      'unicorn/no-unused-array-method-return': no_unused_array_method_return,
+      'unicorn/prefer-array-last-methods': prefer_array_last_methods,
+      'unicorn/prefer-math-abs': prefer_math_abs,
+      'unicorn/prefer-split-limit': prefer_split_limit,
+      'unicorn/prefer-queue-microtask': prefer_queue_microtask,
+      'unicorn/prefer-string-pad-start-end': prefer_string_pad_start_end,
+      'unicorn/require-css-escape': require_css_escape,
+      'unicorn/require-passive-events': require_passive_events,
+      // v66 new rules
+      'unicorn/class-reference-in-static-methods': class_reference_in_static_methods,
+      'unicorn/consistent-optional-chaining': consistent_optional_chaining,
+      'unicorn/explicit-timer-delay': explicit_timer_delay,
+      'unicorn/no-break-in-nested-loop': no_break_in_nested_loop,
+      'unicorn/no-confusing-array-with': no_confusing_array_with,
+      'unicorn/no-duplicate-loops': no_duplicate_loops,
+      'unicorn/no-declarations-before-early-exit': no_declarations_before_early_exit,
+      'unicorn/no-optional-chaining-on-undeclared-variable': no_optional_chaining_on_undeclared_variable,
+      'unicorn/no-object-methods-with-collections': no_object_methods_with_collections,
+      'unicorn/no-return-array-push': no_return_array_push,
+      'unicorn/no-subtraction-comparison': no_subtraction_comparison,
+      'unicorn/no-unnecessary-global-this': no_unnecessary_global_this,
+      'unicorn/no-unreadable-object-destructuring': no_unreadable_object_destructuring,
+      'unicorn/no-useless-else': no_useless_else,
+      'unicorn/no-useless-recursion': no_useless_recursion,
+      'unicorn/prefer-add-event-listener-options': prefer_add_event_listener_options,
+      'unicorn/prefer-direct-iteration': prefer_direct_iteration,
+      'unicorn/prefer-number-is-safe-integer': prefer_number_is_safe_integer,
+      'unicorn/prefer-object-define-properties': prefer_object_define_properties,
+      'unicorn/prefer-object-destructuring-defaults': prefer_object_destructuring_defaults,
+      'unicorn/prefer-single-object-destructuring': prefer_single_object_destructuring,
+      'unicorn/prefer-short-arrow-method': prefer_short_arrow_method,
+      'unicorn/prefer-smaller-scope': prefer_smaller_scope,
+      'unicorn/prefer-single-array-predicate': prefer_single_array_predicate,
+      'unicorn/prefer-url-href': prefer_url_href,
+      'unicorn/prefer-type-literal-last': prefer_type_literal_last,
+      'unicorn/require-proxy-trap-boolean-return': require_proxy_trap_boolean_return
     })
   )
 } as const;

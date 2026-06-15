@@ -351,7 +351,11 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
             kebabCase: true,
             snakeCase: true
           }
-        }]
+        }],
+
+        'sukka/unicorn/no-unnecessary-nested-ternary': 'error',
+        'sukka/unicorn/no-unreadable-object-destructuring': 'error',
+        'sukka/unicorn/consistent-compound-words': 'warn'
       }),
       /** TypeScript */
       ts

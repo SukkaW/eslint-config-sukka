@@ -166,9 +166,7 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
         // https://eslint.org/docs/rules/no-constructor-return
         'no-constructor-return': 'error',
 
-        // disallow else after a return in an if
-        // https://eslint.org/docs/rules/no-else-return
-        'no-else-return': ['error', { allowElseIf: false }],
+        'no-else-return': 'off',
 
         // disallow empty destructuring patterns
         // https://eslint.org/docs/rules/no-empty-pattern
@@ -599,7 +597,7 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
         'sukka/unicorn/no-useless-length-check': 'warn', // array.length === 0 || array.every(...)
         'sukka/unicorn/no-useless-promise-resolve-reject': 'warn', // return Promise.resolve(value) in async function
         'sukka/unicorn/no-zero-fractions': 'warn', // 1.0
-        'sukka/unicorn/prefer-export-from': ['warn', { ignoreUsedVariables: true }], // prefer export { } from than import-and-export
+        'sukka/unicorn/prefer-export-from': ['warn', { checkUsedVariables: false }], // prefer export { } from than import-and-export
         'sukka/unicorn/prefer-native-coercion-functions': 'warn', // no coercion wrapper v => Boolean(v)
         'sukka/unicorn/prefer-negative-index': 'warn', // arr.slice(arr.length - 1) -> arr.slice(-1)
         'sukka/unicorn/no-document-cookie': 'error', // even if you have to do so, use CookieJar
@@ -607,7 +605,7 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
         'sukka/unicorn/prefer-array-index-of': 'warn',
         'sukka/unicorn/prefer-blob-reading-methods': 'warn',
         'sukka/unicorn/prefer-date-now': 'warn',
-        'sukka/unicorn/prefer-dom-node-dataset': 'warn',
+        'sukka/unicorn/dom-node-dataset': 'warn',
         'sukka/unicorn/prefer-modern-math-apis': 'warn',
         'sukka/unicorn/number-literal-case': 'error', // prefer 0x1 over 0X1
         'sukka/unicorn/prefer-number-properties': ['warn', { checkInfinity: false }],
@@ -619,7 +617,7 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
         'sukka/unicorn/no-unreadable-iife': 'warn', // (bar => (bar ? bar.baz : baz))(getBar())
         'sukka/unicorn/throw-new-error': 'warn',
         'sukka/unicorn/escape-case': 'warn', // correct casing of escape '\xA9'
-        'sukka/unicorn/no-hex-escape': 'warn', // correct casing of escape '\u001B'
+        'sukka/unicorn/prefer-unicode-code-point-escapes': 'warn',
         'sukka/unicorn/prefer-prototype-methods': 'warn', // prefer Array.prototype.slice than [].slice
         // cause problem with alias import (new URL(, import.meta.url))
         // 'sukka/unicorn/relative-url-style': ['warn', 'always'], // prefer relative url starts with ./
@@ -712,6 +710,51 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
         'sukka/unicorn/no-useless-iterator-to-array': 'error',
         'sukka/unicorn/prefer-simple-condition-first': 'error',
         'sukka/unicorn/switch-case-break-position': 'error',
+
+        // v65 new rules
+        'sukka/unicorn/better-dom-traversing': 'warn',
+        'sukka/unicorn/no-blob-to-file': 'error',
+        'sukka/unicorn/no-canvas-to-image': 'warn',
+        'sukka/unicorn/no-confusing-array-splice': 'error',
+        'sukka/unicorn/no-duplicate-set-values': 'error',
+        'sukka/unicorn/no-incorrect-query-selector': 'error',
+        'sukka/unicorn/no-invalid-file-input-accept': 'error',
+        'sukka/unicorn/no-late-current-target-access': 'error',
+        'sukka/unicorn/no-unused-array-method-return': 'error',
+        'sukka/unicorn/prefer-array-last-methods': 'warn',
+        'sukka/unicorn/prefer-math-abs': 'warn',
+        'sukka/unicorn/prefer-split-limit': 'warn',
+        'sukka/unicorn/prefer-queue-microtask': 'warn',
+        'sukka/unicorn/prefer-string-pad-start-end': 'warn',
+        'sukka/unicorn/require-css-escape': 'error',
+        'sukka/unicorn/require-passive-events': 'warn',
+
+        // v66 new rules
+        'sukka/unicorn/class-reference-in-static-methods': 'warn',
+        'sukka/unicorn/consistent-optional-chaining': 'error',
+        'sukka/unicorn/explicit-timer-delay': 'warn',
+        'sukka/unicorn/no-break-in-nested-loop': 'warn',
+        'sukka/unicorn/no-confusing-array-with': 'error',
+        'sukka/unicorn/no-duplicate-loops': 'warn',
+        'sukka/unicorn/no-declarations-before-early-exit': 'warn',
+        'sukka/unicorn/no-optional-chaining-on-undeclared-variable': 'error',
+        'sukka/unicorn/no-object-methods-with-collections': 'error',
+        'sukka/unicorn/no-return-array-push': 'error',
+        'sukka/unicorn/no-subtraction-comparison': 'warn',
+        'sukka/unicorn/no-unnecessary-global-this': 'warn',
+        'sukka/unicorn/no-useless-else': 'error',
+        'sukka/unicorn/no-useless-recursion': 'error',
+        'sukka/unicorn/prefer-add-event-listener-options': 'warn',
+        'sukka/unicorn/prefer-direct-iteration': 'warn',
+        'sukka/unicorn/prefer-number-is-safe-integer': 'warn',
+        'sukka/unicorn/prefer-object-define-properties': 'warn',
+        'sukka/unicorn/prefer-object-destructuring-defaults': 'warn',
+        'sukka/unicorn/prefer-single-object-destructuring': 'warn',
+        'sukka/unicorn/prefer-short-arrow-method': 'warn',
+        'sukka/unicorn/prefer-smaller-scope': 'warn',
+        'sukka/unicorn/prefer-single-array-predicate': 'warn',
+        'sukka/unicorn/prefer-url-href': 'warn',
+        'sukka/unicorn/require-proxy-trap-boolean-return': 'error',
 
         'no-restricted-imports': [
           'error',
