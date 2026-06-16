@@ -512,7 +512,6 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
         // disallow if as the only statement in an else block
         // https://eslint.org/docs/rules/no-lonely-if
         'no-lonely-if': 'error',
-        'sukka/unicorn/no-lonely-if': 'error',
 
         // disallow use of chained assignment expressions
         // https://eslint.org/docs/rules/no-multi-assign
@@ -521,7 +520,6 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
         // disallow negated conditions
         // https://eslint.org/docs/rules/no-negated-condition
         'no-negated-condition': 'off',
-        'sukka/unicorn/no-negated-condition': 'warn',
 
         // disallow use of the Object constructor
         // deprecated and replaced by no-object-constructor
@@ -581,6 +579,24 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
         'sukka/prefer-early-return': ['error', { maximumStatements: 16 }],
         'sukka/prefer-fetch': 'error',
         'sukka/prefer-timer-id': 'warn',
+
+        'no-restricted-imports': [
+          'error',
+          { paths: RESTRICTED_IMPORT_JS }
+        ],
+        'no-prototype-builtins': 'error', // TODO: contribute autofix to upstream
+
+        'antfu/import-dedupe': 'error', // ban import { a, b, a, a, c, a } from 'sukka'
+        'antfu/consistent-chaining': 'error',
+        'antfu/no-top-level-await': 'error',
+        'antfu/top-level-function': 'warn'
+      }
+    }, files),
+    withFiles(UNSAFE_excludeJsonYamlFiles({
+      name: '@eslint-sukka/js unicorn',
+      rules: {
+        'sukka/unicorn/no-lonely-if': 'error',
+        'sukka/unicorn/no-negated-condition': 'warn',
 
         'sukka/unicorn/catch-error-name': ['error', { ignore: [/^(?:e|err|error|\w+Err|\w+Error)[\d_]?$/] }],
         'sukka/unicorn/custom-error-definition': 'error',
@@ -754,20 +770,9 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
         'sukka/unicorn/prefer-smaller-scope': 'warn',
         'sukka/unicorn/prefer-single-array-predicate': 'warn',
         'sukka/unicorn/prefer-url-href': 'warn',
-        'sukka/unicorn/require-proxy-trap-boolean-return': 'error',
-
-        'no-restricted-imports': [
-          'error',
-          { paths: RESTRICTED_IMPORT_JS }
-        ],
-        'no-prototype-builtins': 'error', // TODO: contribute autofix to upstream
-
-        'antfu/import-dedupe': 'error', // ban import { a, b, a, a, c, a } from 'sukka'
-        'antfu/consistent-chaining': 'error',
-        'antfu/no-top-level-await': 'error',
-        'antfu/top-level-function': 'warn'
+        'sukka/unicorn/require-proxy-trap-boolean-return': 'error'
       }
-    }, files),
+    }), files),
     // As one of the maintainer of eslint-plugin-import-x, I know how rule works. JSON/YAML won't have import syntax
     withFiles(UNSAFE_excludeJsonYamlFiles({
       plugins: {

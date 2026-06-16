@@ -3,7 +3,7 @@ import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
 
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
-import { memo } from '@eslint-sukka/shared';
+import { memo, UNSAFE_excludeJsonYamlFiles } from '@eslint-sukka/shared';
 
 import { literal } from 'foxts/literal';
 
@@ -26,8 +26,6 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
         /** JavaScript */
         // disallow nested ternary expressions
         'no-nested-ternary': 'off', // replaced by sukka/unicorn/no-nested-ternary
-        // disallow nested ternary expressions
-        'sukka/unicorn/no-nested-ternary': 'warn',
 
         // enforces consistent newlines before or after dots
         // https://eslint.style/rules/js/dot-location
@@ -344,18 +342,8 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
             throw: { after: true },
             case: { after: true }
           }
-        }],
+        }]
 
-        'sukka/unicorn/filename-case': ['error', {
-          cases: {
-            kebabCase: true,
-            snakeCase: true
-          }
-        }],
-
-        'sukka/unicorn/no-unnecessary-nested-ternary': 'error',
-        'sukka/unicorn/no-unreadable-object-destructuring': 'error',
-        'sukka/unicorn/consistent-compound-words': 'warn'
       }),
       /** TypeScript */
       ts
@@ -479,5 +467,19 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
         })
         : {}
     )
-  }];
+  }, UNSAFE_excludeJsonYamlFiles({
+    name: 'sukka/stylistic unicorn',
+    rules: {
+      'sukka/unicorn/no-nested-ternary': 'warn',
+      'sukka/unicorn/filename-case': ['error', {
+        cases: {
+          kebabCase: true,
+          snakeCase: true
+        }
+      }],
+      'sukka/unicorn/no-unnecessary-nested-ternary': 'error',
+      'sukka/unicorn/no-unreadable-object-destructuring': 'error',
+      'sukka/unicorn/consistent-compound-words': 'warn'
+    }
+  })];
 }
