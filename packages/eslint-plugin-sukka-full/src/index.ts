@@ -310,6 +310,19 @@ import prefer_type_literal_last from 'eslint-plugin-unicorn/rules/prefer-type-li
 import require_proxy_trap_boolean_return from 'eslint-plugin-unicorn/rules/require-proxy-trap-boolean-return.js';
 
 // @ts-expect-error - eslint-plugin-unicorn does not have types
+import logical_assignment_operators from 'eslint-plugin-unicorn/rules/logical-assignment-operators.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_useless_coercion from 'eslint-plugin-unicorn/rules/no-useless-coercion.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_useless_boolean_cast from 'eslint-plugin-unicorn/rules/no-useless-boolean-cast.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_useless_continue from 'eslint-plugin-unicorn/rules/no-useless-continue.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_useless_override from 'eslint-plugin-unicorn/rules/no-useless-override.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_has_check from 'eslint-plugin-unicorn/rules/prefer-has-check.js';
+
+// @ts-expect-error - eslint-plugin-unicorn does not have types
 import { toEslintRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/rule/index.js';
 
 import type { Linter } from 'eslint';
@@ -538,7 +551,14 @@ const plugin = {
       'unicorn/prefer-single-array-predicate': prefer_single_array_predicate,
       'unicorn/prefer-url-href': prefer_url_href,
       'unicorn/prefer-type-literal-last': prefer_type_literal_last,
-      'unicorn/require-proxy-trap-boolean-return': require_proxy_trap_boolean_return
+      'unicorn/require-proxy-trap-boolean-return': require_proxy_trap_boolean_return,
+      // v67 new rules
+      'unicorn/logical-assignment-operators': logical_assignment_operators,
+      'unicorn/no-useless-coercion': no_useless_coercion,
+      'unicorn/no-useless-boolean-cast': no_useless_boolean_cast,
+      'unicorn/no-useless-continue': no_useless_continue,
+      'unicorn/no-useless-override': no_useless_override,
+      'unicorn/prefer-has-check': prefer_has_check
     })
   )
 } as const;

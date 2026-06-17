@@ -770,7 +770,15 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
         'sukka/unicorn/prefer-smaller-scope': 'warn',
         'sukka/unicorn/prefer-single-array-predicate': 'warn',
         'sukka/unicorn/prefer-url-href': 'warn',
-        'sukka/unicorn/require-proxy-trap-boolean-return': 'error'
+        'sukka/unicorn/require-proxy-trap-boolean-return': 'error',
+
+        // v67 new rules
+        'sukka/unicorn/logical-assignment-operators': 'error',
+        'sukka/unicorn/no-useless-coercion': 'error',
+        'sukka/unicorn/no-useless-boolean-cast': 'warn',
+        'sukka/unicorn/no-useless-continue': 'error',
+        'sukka/unicorn/no-useless-override': 'error',
+        'sukka/unicorn/prefer-has-check': 'warn'
       }
     }), files),
     // As one of the maintainer of eslint-plugin-import-x, I know how rule works. JSON/YAML won't have import syntax
