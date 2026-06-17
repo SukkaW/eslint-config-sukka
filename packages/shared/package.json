@@ -32,7 +32,7 @@
   "license": "MIT",
   "dependencies": {
     "@package-json/types": "^0.0.13",
-    "@typescript-eslint/utils": "^8.61.0",
+    "@typescript-eslint/utils": "^8.61.1",
     "foxts": "^5.5.1",
     "oxc-resolver": "^11.20.0"
   },
