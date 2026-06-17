@@ -475,7 +475,14 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
         cases: {
           kebabCase: true,
           snakeCase: true
-        }
+        },
+        ignore: [
+          /fixtures/i,
+          /^_/,
+          /^\./,
+          /rc$/i,
+          /\.(md|json|yaml|toml|yml|ini|conf|jsonc|json5)$/i
+        ]
       }],
       'sukka/unicorn/no-unnecessary-nested-ternary': 'error',
       'sukka/unicorn/no-unreadable-object-destructuring': 'error',
