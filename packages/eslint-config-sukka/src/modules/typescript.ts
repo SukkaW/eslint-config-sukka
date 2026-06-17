@@ -362,8 +362,6 @@ export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatE
         'sukka/type/no-wrapper-type-reference': 'error',
         'sukka/no-default-error': 'off', // disable since this is way too slow
 
-        'sukka/unicorn/prefer-type-literal-last': 'warn',
-
         // replaced by unused-imports/no-unused-imports
         '@typescript-eslint/no-unused-vars': 'off',
         'unused-imports/no-unused-vars': [

@@ -304,8 +304,7 @@ import prefer_smaller_scope from 'eslint-plugin-unicorn/rules/prefer-smaller-sco
 import prefer_single_array_predicate from 'eslint-plugin-unicorn/rules/prefer-single-array-predicate.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_url_href from 'eslint-plugin-unicorn/rules/prefer-url-href.js';
-// @ts-expect-error - eslint-plugin-unicorn does not have types
-import prefer_type_literal_last from 'eslint-plugin-unicorn/rules/prefer-type-literal-last.js';
+// import prefer_type_literal_last from 'eslint-plugin-unicorn/rules/prefer-type-literal-last.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import require_proxy_trap_boolean_return from 'eslint-plugin-unicorn/rules/require-proxy-trap-boolean-return.js';
 
@@ -550,7 +549,6 @@ const plugin = {
       'unicorn/prefer-smaller-scope': prefer_smaller_scope,
       'unicorn/prefer-single-array-predicate': prefer_single_array_predicate,
       'unicorn/prefer-url-href': prefer_url_href,
-      'unicorn/prefer-type-literal-last': prefer_type_literal_last,
       'unicorn/require-proxy-trap-boolean-return': require_proxy_trap_boolean_return,
       // v67 new rules
       'unicorn/logical-assignment-operators': logical_assignment_operators,
