@@ -1,8 +1,8 @@
 import process from 'node:process';
 
 // const ESC = '\u001B[';
-const OSC = '\u001B]';
-const BEL = '\u0007';
+const OSC = '\u{1B}]';
+const BEL = '\u{7}';
 const SEP = ';';
 
 const PARAM_SEP = ':';

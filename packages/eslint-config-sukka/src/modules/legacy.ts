@@ -10,7 +10,7 @@ export interface OptionsLegacy {
 export function legacy(options: OptionsLegacy = {}): FlatESLintConfigItem[] {
   return [{
     name: '@eslint-sukka/legacy base',
-    ...(options.files ? { files: options.files } : {}),
+    ...(options.files && { files: options.files }),
     // only turn off rules
     // plugins: {
     //   sukka: memo(eslint_plugin_sukka, '@eslint-sukka/eslint-plugin-sukka-full')
@@ -41,8 +41,8 @@ export function legacy(options: OptionsLegacy = {}): FlatESLintConfigItem[] {
     },
     languageOptions: {
       globals: {
-        ...((options.browser ?? true) ? globals.browser : {}),
-        ...((options.node ?? false) ? globals.node : {})
+        ...((options.browser ?? true) && globals.browser),
+        ...((options.node ?? false) && globals.node)
       }
     }
   }];

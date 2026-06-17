@@ -139,12 +139,12 @@ export function createRollupConfig(packageJsonPath: PathLike,
       }),
       commonjs && commonjsPlugin({
         esmExternals: true,
-        ...(typeof commonjs === 'boolean' ? {} : commonjs)
+        ...(typeof commonjs !== 'boolean' && commonjs)
       }),
       json && jsonPlugin({
         compact: true,
         preferConst: true,
-        ...(typeof json === 'boolean' ? {} : json)
+        ...(typeof json !== 'boolean' && json)
       }),
       swc({
         minify,
