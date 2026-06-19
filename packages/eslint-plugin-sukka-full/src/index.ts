@@ -261,8 +261,6 @@ import consistent_optional_chaining from 'eslint-plugin-unicorn/rules/consistent
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import explicit_timer_delay from 'eslint-plugin-unicorn/rules/explicit-timer-delay.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
-import no_break_in_nested_loop from 'eslint-plugin-unicorn/rules/no-break-in-nested-loop.js';
-// @ts-expect-error - eslint-plugin-unicorn does not have types
 import no_confusing_array_with from 'eslint-plugin-unicorn/rules/no-confusing-array-with.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import no_duplicate_loops from 'eslint-plugin-unicorn/rules/no-duplicate-loops.js';
@@ -272,8 +270,6 @@ import no_declarations_before_early_exit from 'eslint-plugin-unicorn/rules/no-de
 import no_optional_chaining_on_undeclared_variable from 'eslint-plugin-unicorn/rules/no-optional-chaining-on-undeclared-variable.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import no_object_methods_with_collections from 'eslint-plugin-unicorn/rules/no-object-methods-with-collections.js';
-// @ts-expect-error - eslint-plugin-unicorn does not have types
-import no_return_array_push from 'eslint-plugin-unicorn/rules/no-return-array-push.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import no_subtraction_comparison from 'eslint-plugin-unicorn/rules/no-subtraction-comparison.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
@@ -296,8 +292,6 @@ import prefer_object_define_properties from 'eslint-plugin-unicorn/rules/prefer-
 import prefer_object_destructuring_defaults from 'eslint-plugin-unicorn/rules/prefer-object-destructuring-defaults.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_single_object_destructuring from 'eslint-plugin-unicorn/rules/prefer-single-object-destructuring.js';
-// @ts-expect-error - eslint-plugin-unicorn does not have types
-import prefer_short_arrow_method from 'eslint-plugin-unicorn/rules/prefer-short-arrow-method.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_smaller_scope from 'eslint-plugin-unicorn/rules/prefer-smaller-scope.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
@@ -527,13 +521,11 @@ const plugin = {
       'unicorn/class-reference-in-static-methods': class_reference_in_static_methods,
       'unicorn/consistent-optional-chaining': consistent_optional_chaining,
       'unicorn/explicit-timer-delay': explicit_timer_delay,
-      'unicorn/no-break-in-nested-loop': no_break_in_nested_loop,
       'unicorn/no-confusing-array-with': no_confusing_array_with,
       'unicorn/no-duplicate-loops': no_duplicate_loops,
       'unicorn/no-declarations-before-early-exit': no_declarations_before_early_exit,
       'unicorn/no-optional-chaining-on-undeclared-variable': no_optional_chaining_on_undeclared_variable,
       'unicorn/no-object-methods-with-collections': no_object_methods_with_collections,
-      'unicorn/no-return-array-push': no_return_array_push,
       'unicorn/no-subtraction-comparison': no_subtraction_comparison,
       'unicorn/no-unnecessary-global-this': no_unnecessary_global_this,
       'unicorn/no-unreadable-object-destructuring': no_unreadable_object_destructuring,
@@ -545,7 +537,6 @@ const plugin = {
       'unicorn/prefer-object-define-properties': prefer_object_define_properties,
       'unicorn/prefer-object-destructuring-defaults': prefer_object_destructuring_defaults,
       'unicorn/prefer-single-object-destructuring': prefer_single_object_destructuring,
-      'unicorn/prefer-short-arrow-method': prefer_short_arrow_method,
       'unicorn/prefer-smaller-scope': prefer_smaller_scope,
       'unicorn/prefer-single-array-predicate': prefer_single_array_predicate,
       'unicorn/prefer-url-href': prefer_url_href,
