@@ -9,24 +9,36 @@ export type * from './types';
 export { createRule, ensureParserWithTypeInformation, isParserWithTypeInformation } from './create-eslint-rule';
 export type { RuleModule, ExportedRuleModule, RuleContext } from './create-eslint-rule';
 
-import { EnforceExtension, ResolverFactory } from 'oxc-resolver';
+import enhancedResolve from 'enhanced-resolve';
+import { builtinModules } from 'node:module';
 import type { FlatESLintConfigItem, ESLintRulesRecord } from './types';
 
 import { castArray } from 'foxts/cast-array';
 import { appendArrayInPlace } from 'foxts/append-array-in-place';
 
-export const packageResolver = new ResolverFactory({
+const builtins = new Set(builtinModules.flatMap(m => [m, `node:${m}`]));
+
+const resolveSync = enhancedResolve.create.sync({
   extensions: ['.mjs', '.cjs', '.js', '.json', '.node'],
-  enforceExtension: EnforceExtension.Auto,
   conditionNames: ['node', 'import', 'require', 'default'],
-  mainFields: ['module', 'main'],
-  builtinModules: true
+  mainFields: ['module', 'main']
 });
 
-export function isPackageExists(pkg: string, parent = process.cwd()) {
-  const result = packageResolver.sync(parent, pkg);
+export const packageResolver = {
+  sync(parent: string, request: string): { path: string | undefined } {
+    try {
+      const result = resolveSync(parent, request);
+      return { path: result || undefined };
+    } catch {
+      return { path: undefined };
+    }
+  }
+};
 
-  return Boolean(result.builtin || result.path);
+export function isPackageExists(pkg: string, parent = process.cwd()) {
+  if (builtins.has(pkg)) return true;
+  const result = packageResolver.sync(parent, pkg);
+  return result.path != null;
 }
 
 export * as globals from './globals';

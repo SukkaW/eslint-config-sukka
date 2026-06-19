@@ -381,15 +381,15 @@ importers:
       '@typescript-eslint/utils':
         specifier: ^8.61.1
         version: 8.61.1(eslint@10.5.0(jiti@2.6.1))(typescript@6.0.3)
+      enhanced-resolve:
+        specifier: ^5.19.0
+        version: 5.19.0
       eslint:
         specifier: '*'
         version: 10.5.0(jiti@2.6.1)
       foxts:
         specifier: ^5.5.1
         version: 5.5.1
-      oxc-resolver:
-        specifier: ^11.21.3
-        version: 11.21.3
     devDependencies:
       '@eslint-sukka/rollup-config':
         specifier: workspace:*
