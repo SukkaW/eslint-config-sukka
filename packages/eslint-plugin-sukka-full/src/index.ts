@@ -314,6 +314,52 @@ import no_useless_continue from 'eslint-plugin-unicorn/rules/no-useless-continue
 import no_useless_override from 'eslint-plugin-unicorn/rules/no-useless-override.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_has_check from 'eslint-plugin-unicorn/rules/prefer-has-check.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_minimal_ternary from 'eslint-plugin-unicorn/rules/prefer-minimal-ternary.js';
+
+// v68 new rules
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import consistent_conditional_object_spread from 'eslint-plugin-unicorn/rules/consistent-conditional-object-spread.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import default_export_style from 'eslint-plugin-unicorn/rules/default-export-style.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_array_concat_in_loop from 'eslint-plugin-unicorn/rules/no-array-concat-in-loop.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_array_front_mutation from 'eslint-plugin-unicorn/rules/no-array-front-mutation.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_array_sort_for_min_max from 'eslint-plugin-unicorn/rules/no-array-sort-for-min-max.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_boolean_sort_comparator from 'eslint-plugin-unicorn/rules/no-boolean-sort-comparator.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_chained_comparison from 'eslint-plugin-unicorn/rules/no-chained-comparison.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_constant_zero_expression from 'eslint-plugin-unicorn/rules/no-constant-zero-expression.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_duplicate_logical_operands from 'eslint-plugin-unicorn/rules/no-duplicate-logical-operands.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_impossible_length_comparison from 'eslint-plugin-unicorn/rules/no-impossible-length-comparison.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_invalid_character_comparison from 'eslint-plugin-unicorn/rules/no-invalid-character-comparison.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_loop_iterable_mutation from 'eslint-plugin-unicorn/rules/no-loop-iterable-mutation.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_selector_as_dom_name from 'eslint-plugin-unicorn/rules/no-selector-as-dom-name.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_useless_compound_assignment from 'eslint-plugin-unicorn/rules/no-useless-compound-assignment.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_useless_delete_check from 'eslint-plugin-unicorn/rules/no-useless-delete-check.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_useless_logical_operand from 'eslint-plugin-unicorn/rules/no-useless-logical-operand.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_boolean_return from 'eslint-plugin-unicorn/rules/prefer-boolean-return.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_continue from 'eslint-plugin-unicorn/rules/prefer-continue.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_flat_math_min_max from 'eslint-plugin-unicorn/rules/prefer-flat-math-min-max.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_hoisting_branch_code from 'eslint-plugin-unicorn/rules/prefer-hoisting-branch-code.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_single_replace from 'eslint-plugin-unicorn/rules/prefer-single-replace.js';
 
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import { toEslintRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/rule/index.js';
@@ -360,6 +406,10 @@ const plugin = {
         get sukka() {
           return plugin;
         }
+      },
+      rules: {
+        ...eslint_plugin_sukka.configs.recommended.rules,
+        'sukka/prefer-single-boolean-return': 'off'
       }
     },
     recommended_extra_with_typed_lint: {
@@ -547,7 +597,30 @@ const plugin = {
       'unicorn/no-useless-boolean-cast': no_useless_boolean_cast,
       'unicorn/no-useless-continue': no_useless_continue,
       'unicorn/no-useless-override': no_useless_override,
-      'unicorn/prefer-has-check': prefer_has_check
+      'unicorn/prefer-has-check': prefer_has_check,
+      'unicorn/prefer-minimal-ternary': prefer_minimal_ternary,
+      // v68 new rules
+      'unicorn/consistent-conditional-object-spread': consistent_conditional_object_spread,
+      'unicorn/default-export-style': default_export_style,
+      'unicorn/no-array-concat-in-loop': no_array_concat_in_loop,
+      'unicorn/no-array-front-mutation': no_array_front_mutation,
+      'unicorn/no-array-sort-for-min-max': no_array_sort_for_min_max,
+      'unicorn/no-boolean-sort-comparator': no_boolean_sort_comparator,
+      'unicorn/no-chained-comparison': no_chained_comparison,
+      'unicorn/no-constant-zero-expression': no_constant_zero_expression,
+      'unicorn/no-duplicate-logical-operands': no_duplicate_logical_operands,
+      'unicorn/no-impossible-length-comparison': no_impossible_length_comparison,
+      'unicorn/no-invalid-character-comparison': no_invalid_character_comparison,
+      'unicorn/no-loop-iterable-mutation': no_loop_iterable_mutation,
+      'unicorn/no-selector-as-dom-name': no_selector_as_dom_name,
+      'unicorn/no-useless-compound-assignment': no_useless_compound_assignment,
+      'unicorn/no-useless-delete-check': no_useless_delete_check,
+      'unicorn/no-useless-logical-operand': no_useless_logical_operand,
+      'unicorn/prefer-boolean-return': prefer_boolean_return,
+      'unicorn/prefer-continue': prefer_continue,
+      'unicorn/prefer-flat-math-min-max': prefer_flat_math_min_max,
+      'unicorn/prefer-hoisting-branch-code': prefer_hoisting_branch_code,
+      'unicorn/prefer-single-replace': prefer_single_replace
     })
   )
 } as const;

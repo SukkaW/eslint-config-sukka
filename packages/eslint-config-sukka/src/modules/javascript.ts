@@ -775,7 +775,30 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
         'sukka/unicorn/no-useless-boolean-cast': 'warn',
         'sukka/unicorn/no-useless-continue': 'error',
         'sukka/unicorn/no-useless-override': 'error',
-        'sukka/unicorn/prefer-has-check': 'warn'
+        'sukka/unicorn/prefer-has-check': 'warn',
+        'sukka/unicorn/prefer-minimal-ternary': 'warn',
+
+        // v68 new rules
+        'sukka/unicorn/consistent-conditional-object-spread': 'error',
+        'sukka/unicorn/no-boolean-sort-comparator': 'error',
+        'sukka/unicorn/no-chained-comparison': 'error',
+        'sukka/unicorn/no-constant-zero-expression': 'error',
+        'sukka/unicorn/no-duplicate-logical-operands': 'error',
+        'sukka/unicorn/no-impossible-length-comparison': 'error',
+        'sukka/unicorn/no-invalid-character-comparison': 'error',
+        'sukka/unicorn/no-loop-iterable-mutation': 'error',
+        'sukka/unicorn/no-selector-as-dom-name': 'error',
+        'sukka/unicorn/no-array-concat-in-loop': 'error',
+        'sukka/unicorn/no-array-front-mutation': 'warn',
+        'sukka/unicorn/no-array-sort-for-min-max': 'warn',
+        'sukka/unicorn/no-useless-compound-assignment': 'warn',
+        'sukka/unicorn/no-useless-delete-check': 'warn',
+        'sukka/unicorn/no-useless-logical-operand': 'error',
+        'sukka/unicorn/prefer-boolean-return': 'warn',
+        'sukka/unicorn/prefer-continue': 'warn',
+        'sukka/unicorn/prefer-flat-math-min-max': 'warn',
+        'sukka/unicorn/prefer-hoisting-branch-code': 'warn',
+        'sukka/unicorn/prefer-single-replace': 'warn'
       }
     }), files),
     // As one of the maintainer of eslint-plugin-import-x, I know how rule works. JSON/YAML won't have import syntax

@@ -486,7 +486,8 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
       }],
       'sukka/unicorn/no-unnecessary-nested-ternary': 'error',
       'sukka/unicorn/no-unreadable-object-destructuring': 'error',
-      'sukka/unicorn/consistent-compound-words': 'warn'
+      'sukka/unicorn/consistent-compound-words': 'warn',
+      'sukka/unicorn/default-export-style': 'warn'
     }
   })];
 }
