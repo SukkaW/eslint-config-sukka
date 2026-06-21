@@ -467,27 +467,5 @@ export function stylistic({ ts, react }: OptionsStylistic): FlatESLintConfigItem
         })
         : {}
     )
-  }, UNSAFE_excludeJsonYamlFiles({
-    name: 'sukka/stylistic unicorn',
-    rules: {
-      'sukka/unicorn/no-nested-ternary': 'warn',
-      'sukka/unicorn/filename-case': ['error', {
-        cases: {
-          kebabCase: true,
-          snakeCase: true
-        },
-        ignore: [
-          /fixtures/i,
-          /^_/,
-          /^\./,
-          /rc$/i,
-          /\.(md|json|yaml|toml|yml|ini|conf|jsonc|json5)$/i
-        ]
-      }],
-      'sukka/unicorn/no-unnecessary-nested-ternary': 'error',
-      'sukka/unicorn/no-unreadable-object-destructuring': 'error',
-      'sukka/unicorn/consistent-compound-words': 'warn',
-      'sukka/unicorn/default-export-style': 'warn'
-    }
-  })];
+  }, UNSAFE_excludeJsonYamlFiles(eslint_plugin_sukka.configs.stylistic_unicorn)];
 }

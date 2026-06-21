@@ -51,11 +51,13 @@ export function createRule<
       const rawListener = create(context, options);
 
       for (const key in rawListener) {
-        if (Object.hasOwn(rawListener, key)) {
-          const value = rawListener[key];
-          if (value) {
-            listener[key] = value;
-          }
+        if (!Object.hasOwn(rawListener, key)) {
+          continue;
+        }
+
+        const value = rawListener[key];
+        if (value) {
+          listener[key] = value;
         }
       }
 

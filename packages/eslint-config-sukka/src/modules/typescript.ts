@@ -356,12 +356,6 @@ export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatE
         'no-throw-literal': 'off',
         '@typescript-eslint/only-throw-error': ['error', { allowRethrowing: true, allowThrowingAny: true, allowThrowingUnknown: true }],
 
-        'sukka/string/no-unneeded-to-string': 'error',
-        // If you have a good reason to do this, please ignore this error and provide a comment about why this is type safe.
-        'sukka/type/no-force-cast-via-top-type': 'error',
-        'sukka/type/no-wrapper-type-reference': 'error',
-        'sukka/no-default-error': 'off', // disable since this is way too slow
-
         // replaced by unused-imports/no-unused-imports
         '@typescript-eslint/no-unused-vars': 'off',
         'unused-imports/no-unused-vars': [

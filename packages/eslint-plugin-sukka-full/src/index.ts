@@ -409,8 +409,263 @@ const plugin = {
       },
       rules: {
         ...eslint_plugin_sukka.configs.recommended.rules,
-        'sukka/prefer-single-boolean-return': 'off'
+        'sukka/prefer-single-boolean-return': 'off',
+
+        'sukka/array/no-unneeded-flat-map': 'error',
+        'sukka/browser/prefer-location-assign': 'warn',
+        'sukka/jsx/no-template-literal': 'error',
+        'sukka/jsx/no-unneeded-nested': 'error',
+        'sukka/string/no-locale-case': 'warn',
+        'sukka/string/no-simple-template-literal': 'error',
+        'sukka/unicode/no-bidi': 'warn',
+        'sukka/unicode/no-invisible': 'warn',
+
+        'sukka/no-redundant-variable': 'error',
+        'sukka/no-single-return': 'warn',
+        'sukka/prefer-early-return': ['error', { maximumStatements: 16 }],
+        'sukka/prefer-fetch': 'error',
+        'sukka/prefer-timer-id': 'warn'
       }
+    },
+    recommended_unicorn: {
+      name: '@eslint-sukka/eslint-plugin-sukka-full recommended unicorn preset',
+      plugins: {
+        get sukka() {
+          return plugin;
+        }
+      },
+      rules: {
+        'sukka/unicorn/no-lonely-if': 'error',
+        'sukka/unicorn/no-negated-condition': 'warn',
+
+        'sukka/unicorn/catch-error-name': ['error', { ignore: [/^(?:e|err|error|\w+Err|\w+Error)[\d_]?$/] }],
+        'sukka/unicorn/custom-error-definition': 'error',
+        'sukka/unicorn/require-array-join-separator': 'warn',
+        'sukka/unicorn/no-thenable': 'error',
+        'sukka/unicorn/no-invalid-remove-event-listener': 'error',
+        'sukka/unicorn/consistent-function-scoping': 'warn',
+        'sukka/unicorn/prefer-event-target': 'warn',
+        'sukka/unicorn/prefer-keyboard-event-key': 'warn',
+        'sukka/unicorn/prefer-text-content': 'warn',
+        'sukka/unicorn/no-console-spaces': 'warn',
+        'sukka/unicorn/no-empty-file': 'warn',
+        'sukka/unicorn/no-useless-fallback-in-spread': 'warn',
+        'sukka/unicorn/no-useless-length-check': 'warn',
+        'sukka/unicorn/no-useless-promise-resolve-reject': 'warn',
+        'sukka/unicorn/no-zero-fractions': 'warn',
+        'sukka/unicorn/prefer-export-from': ['warn', { checkUsedVariables: false }],
+        'sukka/unicorn/prefer-native-coercion-functions': 'warn',
+        'sukka/unicorn/prefer-negative-index': 'warn',
+        'sukka/unicorn/no-document-cookie': 'error',
+        'sukka/unicorn/prefer-add-event-listener': 'warn',
+        'sukka/unicorn/prefer-array-index-of': 'warn',
+        'sukka/unicorn/prefer-blob-reading-methods': 'warn',
+        'sukka/unicorn/prefer-date-now': 'warn',
+        'sukka/unicorn/dom-node-dataset': 'warn',
+        'sukka/unicorn/prefer-modern-math-apis': 'warn',
+        'sukka/unicorn/number-literal-case': 'error',
+        'sukka/unicorn/prefer-number-properties': ['warn', { checkInfinity: false }],
+        'sukka/unicorn/prefer-reflect-apply': 'warn',
+        'sukka/unicorn/prefer-set-size': 'warn',
+        'sukka/unicorn/prefer-string-replace-all': 'warn',
+        'sukka/unicorn/prefer-string-slice': 'warn',
+        'sukka/unicorn/prefer-string-trim-start-end': 'warn',
+        'sukka/unicorn/no-unreadable-iife': 'warn',
+        'sukka/unicorn/throw-new-error': 'warn',
+        'sukka/unicorn/escape-case': 'warn',
+        'sukka/unicorn/prefer-unicode-code-point-escapes': 'warn',
+        'sukka/unicorn/prefer-prototype-methods': 'warn',
+        'sukka/unicorn/error-message': 'error',
+        'sukka/unicorn/no-instanceof-builtins': ['error', { strategy: 'loose' }],
+        'sukka/unicorn/prefer-type-error': 'error',
+        'sukka/unicorn/consistent-destructuring': 'warn',
+        'sukka/unicorn/new-for-builtins': 'warn',
+        'sukka/unicorn/prefer-single-call': 'warn',
+        'sukka/unicorn/no-static-only-class': 'warn',
+        'sukka/unicorn/no-unreadable-array-destructuring': 'error',
+        'sukka/unicorn/no-useless-spread': 'error',
+        'sukka/unicorn/no-useless-switch-case': 'warn',
+        'sukka/unicorn/no-useless-undefined': ['error', { checkArguments: false }],
+        'sukka/unicorn/numeric-separators-style': [
+          'warn',
+          {
+            onlyIfContainsSeparator: false,
+            number: { minimumDigits: 7, groupLength: 3 },
+            binary: { minimumDigits: 9, groupLength: 4 },
+            octal: { minimumDigits: 9, groupLength: 4 },
+            hexadecimal: { minimumDigits: 5, groupLength: 2 }
+          }
+        ],
+        'sukka/unicorn/prefer-array-find': 'warn',
+        'sukka/unicorn/prefer-array-flat-map': 'warn',
+        'sukka/unicorn/prefer-array-flat': 'warn',
+        'sukka/unicorn/prefer-array-some': 'warn',
+        'sukka/unicorn/prefer-code-point': 'warn',
+        'sukka/unicorn/prefer-default-parameters': 'warn',
+        'sukka/unicorn/prefer-logical-operator-over-ternary': 'warn',
+        'sukka/unicorn/prefer-optional-catch-binding': 'error',
+        'sukka/unicorn/prefer-regexp-test': 'warn',
+        'sukka/unicorn/prefer-set-has': 'error',
+        'sukka/unicorn/prefer-switch': 'warn',
+        'sukka/unicorn/require-number-to-fixed-digits-argument': 'warn',
+        'sukka/unicorn/prefer-string-raw': 'warn',
+        'sukka/unicorn/no-single-promise-in-promise-methods': 'error',
+        'sukka/unicorn/no-await-in-promise-methods': 'error',
+        'sukka/unicorn/no-magic-array-flat-depth': 'error',
+        'sukka/unicorn/no-object-as-default-parameter': 'error',
+        'sukka/unicorn/template-indent': [
+          'warn',
+          {
+            tags: [
+              'outdent',
+              'dedent',
+              'gql',
+              'sql',
+              'html',
+              'styled',
+              'css'
+            ],
+            functions: [
+              'dedent',
+              'stripIndent',
+              'strip_indent',
+              'stripTags',
+              'striptags',
+              'strip_tags',
+              'stripHtml',
+              'stripHTML',
+              'strip_html'
+            ],
+            selectors: [],
+            comments: [
+              'HTML',
+              'html',
+              'CSS',
+              'css',
+              'indent'
+            ]
+          }
+        ],
+        'sukka/unicorn/no-negation-in-equality-check': 'error',
+        'sukka/unicorn/no-unnecessary-slice-end': 'error',
+        'sukka/unicorn/consistent-date-clone': 'error',
+        'sukka/unicorn/no-accessor-recursion': 'error',
+        'sukka/unicorn/no-unnecessary-array-flat-depth': 'error',
+        'sukka/unicorn/no-unnecessary-array-splice-count': 'error',
+        'sukka/unicorn/no-useless-error-capture-stack-trace': 'error',
+        'sukka/unicorn/prefer-class-fields': 'error',
+        'sukka/unicorn/prefer-bigint-literals': 'error',
+        'sukka/unicorn/prefer-classlist-toggle': 'warn',
+        'sukka/unicorn/require-module-attributes': 'error',
+        'sukka/unicorn/no-immediate-mutation': 'error',
+        'sukka/unicorn/no-useless-collection-argument': 'error',
+        'sukka/unicorn/prefer-response-static-json': 'error',
+        'sukka/unicorn/consistent-template-literal-escape': 'error',
+        'sukka/unicorn/no-useless-iterator-to-array': 'error',
+        'sukka/unicorn/prefer-simple-condition-first': 'error',
+        'sukka/unicorn/switch-case-break-position': 'error',
+
+        // v65 new rules
+        'sukka/unicorn/better-dom-traversing': 'warn',
+        'sukka/unicorn/no-blob-to-file': 'error',
+        'sukka/unicorn/no-canvas-to-image': 'warn',
+        'sukka/unicorn/no-confusing-array-splice': 'error',
+        'sukka/unicorn/no-duplicate-set-values': 'error',
+        'sukka/unicorn/no-incorrect-query-selector': 'error',
+        'sukka/unicorn/no-invalid-file-input-accept': 'error',
+        'sukka/unicorn/no-late-current-target-access': 'error',
+        'sukka/unicorn/no-unused-array-method-return': 'error',
+        'sukka/unicorn/prefer-array-last-methods': 'warn',
+        'sukka/unicorn/prefer-math-abs': 'warn',
+        'sukka/unicorn/prefer-split-limit': 'warn',
+        'sukka/unicorn/prefer-queue-microtask': 'warn',
+        'sukka/unicorn/prefer-string-pad-start-end': 'warn',
+        'sukka/unicorn/require-css-escape': 'error',
+        'sukka/unicorn/require-passive-events': 'warn',
+
+        // v66 new rules
+        'sukka/unicorn/class-reference-in-static-methods': 'warn',
+        'sukka/unicorn/consistent-optional-chaining': 'error',
+        'sukka/unicorn/explicit-timer-delay': 'warn',
+        'sukka/unicorn/no-confusing-array-with': 'error',
+        'sukka/unicorn/no-duplicate-loops': 'warn',
+        'sukka/unicorn/no-declarations-before-early-exit': 'warn',
+        'sukka/unicorn/no-optional-chaining-on-undeclared-variable': 'error',
+        'sukka/unicorn/no-object-methods-with-collections': 'error',
+        'sukka/unicorn/no-subtraction-comparison': 'warn',
+        'sukka/unicorn/no-unnecessary-global-this': 'warn',
+        'sukka/unicorn/no-useless-else': 'error',
+        'sukka/unicorn/no-useless-recursion': 'error',
+        'sukka/unicorn/prefer-add-event-listener-options': 'warn',
+        'sukka/unicorn/prefer-direct-iteration': 'warn',
+        'sukka/unicorn/prefer-number-is-safe-integer': 'warn',
+        'sukka/unicorn/prefer-object-define-properties': 'warn',
+        'sukka/unicorn/prefer-object-destructuring-defaults': 'warn',
+        'sukka/unicorn/prefer-single-object-destructuring': 'warn',
+        'sukka/unicorn/prefer-smaller-scope': 'warn',
+        'sukka/unicorn/prefer-single-array-predicate': 'warn',
+        'sukka/unicorn/prefer-url-href': 'warn',
+        'sukka/unicorn/require-proxy-trap-boolean-return': 'error',
+
+        // v67 new rules
+        'sukka/unicorn/logical-assignment-operators': 'error',
+        'sukka/unicorn/no-useless-coercion': 'error',
+        'sukka/unicorn/no-useless-boolean-cast': 'warn',
+        'sukka/unicorn/no-useless-continue': 'error',
+        'sukka/unicorn/no-useless-override': 'error',
+        'sukka/unicorn/prefer-has-check': 'warn',
+        'sukka/unicorn/prefer-minimal-ternary': 'warn',
+
+        // v68 new rules
+        'sukka/unicorn/consistent-conditional-object-spread': 'error',
+        'sukka/unicorn/no-boolean-sort-comparator': 'error',
+        'sukka/unicorn/no-chained-comparison': 'error',
+        'sukka/unicorn/no-constant-zero-expression': 'error',
+        'sukka/unicorn/no-duplicate-logical-operands': 'error',
+        'sukka/unicorn/no-impossible-length-comparison': 'error',
+        'sukka/unicorn/no-invalid-character-comparison': 'error',
+        'sukka/unicorn/no-loop-iterable-mutation': 'error',
+        'sukka/unicorn/no-selector-as-dom-name': 'error',
+        'sukka/unicorn/no-array-concat-in-loop': 'error',
+        'sukka/unicorn/no-array-front-mutation': 'warn',
+        'sukka/unicorn/no-array-sort-for-min-max': 'warn',
+        'sukka/unicorn/no-useless-compound-assignment': 'warn',
+        'sukka/unicorn/no-useless-delete-check': 'warn',
+        'sukka/unicorn/no-useless-logical-operand': 'error',
+        'sukka/unicorn/prefer-boolean-return': 'warn',
+        'sukka/unicorn/prefer-continue': 'warn',
+        'sukka/unicorn/prefer-flat-math-min-max': 'warn',
+        'sukka/unicorn/prefer-hoisting-branch-code': 'warn',
+        'sukka/unicorn/prefer-single-replace': 'warn'
+      } as Linter.RulesRecord
+    },
+    stylistic_unicorn: {
+      name: '@eslint-sukka/eslint-plugin-sukka-full stylistic unicorn preset',
+      plugins: {
+        get sukka() {
+          return plugin;
+        }
+      },
+      rules: {
+        'sukka/unicorn/no-nested-ternary': 'warn',
+        'sukka/unicorn/filename-case': ['error', {
+          cases: {
+            kebabCase: true,
+            snakeCase: true
+          },
+          ignore: [
+            /fixtures/i,
+            /^_/,
+            /^\./,
+            /rc$/i,
+            /\.(md|json|yaml|toml|yml|ini|conf|jsonc|json5)$/i
+          ]
+        }],
+        'sukka/unicorn/no-unnecessary-nested-ternary': 'error',
+        'sukka/unicorn/no-unreadable-object-destructuring': 'error',
+        'sukka/unicorn/consistent-compound-words': 'warn',
+        'sukka/unicorn/default-export-style': 'warn'
+      } as Linter.RulesRecord
     },
     recommended_extra_with_typed_lint: {
       ...eslint_plugin_sukka.configs.recommended_extra_with_typed_lint,
@@ -418,6 +673,13 @@ const plugin = {
         get sukka() {
           return plugin;
         }
+      },
+      rules: {
+        ...eslint_plugin_sukka.configs.recommended_extra_with_typed_lint.rules,
+        'sukka/string/no-unneeded-to-string': 'error',
+        'sukka/type/no-force-cast-via-top-type': 'error',
+        'sukka/type/no-wrapper-type-reference': 'error',
+        'sukka/no-default-error': 'off'
       }
     },
     recommended_react: {
