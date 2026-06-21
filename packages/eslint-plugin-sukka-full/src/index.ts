@@ -314,8 +314,6 @@ import no_useless_continue from 'eslint-plugin-unicorn/rules/no-useless-continue
 import no_useless_override from 'eslint-plugin-unicorn/rules/no-useless-override.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_has_check from 'eslint-plugin-unicorn/rules/prefer-has-check.js';
-// @ts-expect-error - eslint-plugin-unicorn does not have types
-import prefer_minimal_ternary from 'eslint-plugin-unicorn/rules/prefer-minimal-ternary.js';
 
 // v68 new rules
 // @ts-expect-error - eslint-plugin-unicorn does not have types
@@ -614,7 +612,6 @@ const plugin = {
         'sukka/unicorn/no-useless-continue': 'error',
         'sukka/unicorn/no-useless-override': 'error',
         'sukka/unicorn/prefer-has-check': 'warn',
-        'sukka/unicorn/prefer-minimal-ternary': 'warn',
 
         // v68 new rules
         'sukka/unicorn/consistent-conditional-object-spread': 'error',
@@ -860,7 +857,6 @@ const plugin = {
       'unicorn/no-useless-continue': no_useless_continue,
       'unicorn/no-useless-override': no_useless_override,
       'unicorn/prefer-has-check': prefer_has_check,
-      'unicorn/prefer-minimal-ternary': prefer_minimal_ternary,
       // v68 new rules
       'unicorn/consistent-conditional-object-spread': consistent_conditional_object_spread,
       'unicorn/default-export-style': default_export_style,
