@@ -31,11 +31,11 @@
     "eslint-formatter-sukka": "workspace:*",
     "eslint-plugin-sukka": "^9.6.0",
     "foxts": "^5.5.1",
-    "rollup": "^4.62.0",
+    "rollup": "^4.62.2",
     "stringify-object": "5.0.0",
     "ts-dedent": "^2.3.0",
     "turbo": "^2.9.18",
     "typescript": "^6.0.3"
   },
-  "packageManager": "pnpm@11.7.0"
+  "packageManager": "pnpm@11.8.0"
 }

@@ -33,7 +33,7 @@
   "dependencies": {
     "@package-json/types": "^0.0.13",
     "@typescript-eslint/utils": "^8.61.1",
-    "enhanced-resolve": "^5.19.0",
+    "enhanced-resolve": "^5.24.0",
     "foxts": "^5.5.1"
   },
   "devDependencies": {
