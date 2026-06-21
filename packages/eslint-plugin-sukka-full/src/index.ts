@@ -351,8 +351,6 @@ import no_useless_logical_operand from 'eslint-plugin-unicorn/rules/no-useless-l
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_boolean_return from 'eslint-plugin-unicorn/rules/prefer-boolean-return.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
-import prefer_continue from 'eslint-plugin-unicorn/rules/prefer-continue.js';
-// @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_flat_math_min_max from 'eslint-plugin-unicorn/rules/prefer-flat-math-min-max.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_hoisting_branch_code from 'eslint-plugin-unicorn/rules/prefer-hoisting-branch-code.js';
@@ -630,7 +628,6 @@ const plugin = {
         'sukka/unicorn/no-useless-delete-check': 'warn',
         'sukka/unicorn/no-useless-logical-operand': 'error',
         'sukka/unicorn/prefer-boolean-return': 'warn',
-        'sukka/unicorn/prefer-continue': 'warn',
         'sukka/unicorn/prefer-flat-math-min-max': 'warn',
         'sukka/unicorn/prefer-hoisting-branch-code': 'warn',
         'sukka/unicorn/prefer-single-replace': 'warn'
@@ -875,7 +872,6 @@ const plugin = {
       'unicorn/no-useless-delete-check': no_useless_delete_check,
       'unicorn/no-useless-logical-operand': no_useless_logical_operand,
       'unicorn/prefer-boolean-return': prefer_boolean_return,
-      'unicorn/prefer-continue': prefer_continue,
       'unicorn/prefer-flat-math-min-max': prefer_flat_math_min_max,
       'unicorn/prefer-hoisting-branch-code': prefer_hoisting_branch_code,
       'unicorn/prefer-single-replace': prefer_single_replace
