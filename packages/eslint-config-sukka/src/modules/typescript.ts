@@ -259,15 +259,15 @@ export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatE
                 fixWith: 'ComponentType'
               },
               'React.FC': {
-                message: 'To declare a component, you don\'t have to use React.FC to annotate it. To type something that accepts/is a React Component, use React.ComponentType<T>.',
+                message: 'To declare a component, simply use single object parameter that returns React.ReactNode. To type something that accepts/is a React Component, use React.ComponentType<T>.',
                 fixWith: 'React.ComponentType'
               },
               ReactElement: {
-                message: 'In most cases, you want ReactNode. Only ignore this rule when you want to use cloneElement.',
+                message: 'In most cases, you want ReactNode. Only ignore this rule when you working with cloneElement.',
                 fixWith: 'ReactNode'
               },
               'React.ReactElement': {
-                message: 'In most cases, you want React.ReactNode. Only ignore this rule when you want to use cloneElement.',
+                message: 'In most cases, you want React.ReactNode. Only ignore this rule when you are working with cloneElement.',
                 fixWith: 'React.ReactNode'
               }
             }
