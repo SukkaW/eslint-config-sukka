@@ -338,6 +338,11 @@ export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatE
               {
                 selector: 'AssignmentExpression[operator=\'=\'][left.property.name=\'defaultProps\']',
                 message: '[Deprecated] Use ES6 default parameters instead.'
+              },
+              // no react type named imports
+              {
+                selector: 'ImportDeclaration[importKind=\'type\'][source.value=\'react\']:has(ImportSpecifier)',
+                message: 'Use React UMD global types (e.g. React.ReactNode) instead of named type imports from \'react\'.'
               }
             ]
             : []
