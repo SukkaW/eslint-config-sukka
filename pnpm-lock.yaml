@@ -20,7 +20,7 @@ overrides:
   safe-regex-test: '-'
 
 patchedDependencies:
-  eslint-plugin-unicorn: 9923e252d3283d4776b2d22ccc01043952f45b2200455877716e17fa7b8aa2de
+  eslint-plugin-unicorn: 442650e601f1a61699cf467332e06b2fc96c60d6f832be2110950b40e41b9cdf
 
 importers:
 
@@ -266,8 +266,8 @@ importers:
         specifier: ^0.4.1
         version: 0.4.1(eslint@10.5.0(jiti@2.6.1))
       eslint-plugin-unicorn:
-        specifier: ^68.0.0
-        version: 68.0.0(patch_hash=9923e252d3283d4776b2d22ccc01043952f45b2200455877716e17fa7b8aa2de)(eslint@10.5.0(jiti@2.6.1))
+        specifier: ^69.0.0
+        version: 69.0.0(patch_hash=442650e601f1a61699cf467332e06b2fc96c60d6f832be2110950b40e41b9cdf)(eslint@10.5.0(jiti@2.6.1))
 
   packages/node:
     dependencies:
@@ -1814,8 +1814,8 @@ packages:
       eslint: '>=9.29.0'
       typescript: '*'
 
-  eslint-plugin-unicorn@68.0.0:
-    resolution: {integrity: sha512-mHYWvX948Q4H3bGc39bsNMxD/leOuNI+Iws9NVsoSz5VA7EGP86wnz7mZ/SPSvRhefT8L4hd8DHfDuGC+lIoCQ==}
+  eslint-plugin-unicorn@69.0.0:
+    resolution: {integrity: sha512-ZN/KtHr9hQ6AOByANSNJpsDbo/+Nn+EyQ6blK4w+dcmS/xpYkqLLfrUc+NA/wOK6vF5uEUvhn8my5B/3sruB9g==}
     engines: {node: '>=22'}
     peerDependencies:
       eslint: '>=10.4'
@@ -3808,7 +3808,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-unicorn@68.0.0(patch_hash=9923e252d3283d4776b2d22ccc01043952f45b2200455877716e17fa7b8aa2de)(eslint@10.5.0(jiti@2.6.1)):
+  eslint-plugin-unicorn@69.0.0(patch_hash=442650e601f1a61699cf467332e06b2fc96c60d6f832be2110950b40e41b9cdf)(eslint@10.5.0(jiti@2.6.1)):
     dependencies:
       '@babel/helper-validator-identifier': 7.29.7
       '@eslint-community/eslint-utils': 4.9.1(eslint@10.5.0(jiti@2.6.1))

@@ -357,6 +357,26 @@ import prefer_hoisting_branch_code from 'eslint-plugin-unicorn/rules/prefer-hois
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_single_replace from 'eslint-plugin-unicorn/rules/prefer-single-replace.js';
 
+// v69 new rules
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import consistent_tuple_labels from 'eslint-plugin-unicorn/rules/consistent-tuple-labels.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_invalid_well_known_symbol_methods from 'eslint-plugin-unicorn/rules/no-invalid-well-known-symbol-methods.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_late_event_control from 'eslint-plugin-unicorn/rules/no-late-event-control.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_abort_signal_timeout from 'eslint-plugin-unicorn/rules/prefer-abort-signal-timeout.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_aggregate_error from 'eslint-plugin-unicorn/rules/prefer-aggregate-error.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_observer_apis from 'eslint-plugin-unicorn/rules/prefer-observer-apis.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_set_methods from 'eslint-plugin-unicorn/rules/prefer-set-methods.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_toggle_attribute from 'eslint-plugin-unicorn/rules/prefer-toggle-attribute.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_url_search_parameters from 'eslint-plugin-unicorn/rules/prefer-url-search-parameters.js';
+
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import { toEslintRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/rule/index.js';
 
@@ -630,7 +650,17 @@ const plugin = {
         'sukka/unicorn/prefer-boolean-return': 'warn',
         'sukka/unicorn/prefer-flat-math-min-max': 'warn',
         'sukka/unicorn/prefer-hoisting-branch-code': 'warn',
-        'sukka/unicorn/prefer-single-replace': 'warn'
+        'sukka/unicorn/prefer-single-replace': 'warn',
+
+        // v69 new rules
+        'sukka/unicorn/no-invalid-well-known-symbol-methods': 'error',
+        'sukka/unicorn/no-late-event-control': 'error',
+        'sukka/unicorn/prefer-abort-signal-timeout': 'warn',
+        'sukka/unicorn/prefer-aggregate-error': 'warn',
+        'sukka/unicorn/prefer-observer-apis': 'warn',
+        'sukka/unicorn/prefer-set-methods': 'warn',
+        'sukka/unicorn/prefer-toggle-attribute': 'warn',
+        'sukka/unicorn/prefer-url-search-parameters': 'warn'
       } as Linter.RulesRecord
     },
     stylistic_unicorn: {
@@ -673,7 +703,9 @@ const plugin = {
         'sukka/string/no-unneeded-to-string': 'error',
         'sukka/type/no-force-cast-via-top-type': 'error',
         'sukka/type/no-wrapper-type-reference': 'error',
-        'sukka/no-default-error': 'off'
+        'sukka/no-default-error': 'off',
+
+        'sukka/unicorn/consistent-tuple-labels': 'warn'
       }
     },
     recommended_react: {
@@ -874,7 +906,17 @@ const plugin = {
       'unicorn/prefer-boolean-return': prefer_boolean_return,
       'unicorn/prefer-flat-math-min-max': prefer_flat_math_min_max,
       'unicorn/prefer-hoisting-branch-code': prefer_hoisting_branch_code,
-      'unicorn/prefer-single-replace': prefer_single_replace
+      'unicorn/prefer-single-replace': prefer_single_replace,
+      // v69 new rules
+      'unicorn/consistent-tuple-labels': consistent_tuple_labels,
+      'unicorn/no-invalid-well-known-symbol-methods': no_invalid_well_known_symbol_methods,
+      'unicorn/no-late-event-control': no_late_event_control,
+      'unicorn/prefer-abort-signal-timeout': prefer_abort_signal_timeout,
+      'unicorn/prefer-aggregate-error': prefer_aggregate_error,
+      'unicorn/prefer-observer-apis': prefer_observer_apis,
+      'unicorn/prefer-set-methods': prefer_set_methods,
+      'unicorn/prefer-toggle-attribute': prefer_toggle_attribute,
+      'unicorn/prefer-url-search-parameters': prefer_url_search_parameters
     })
   )
 } as const;

@@ -37,7 +37,15 @@ export function legacy(options: OptionsLegacy = {}): FlatESLintConfigItem[] {
       // nullable logical operator is not supported in legacy environment
       'sukka/unicorn/prefer-logical-operator-over-ternary': 'off', // foo ? foo : bar
       // optional catch binding is not supported in legacy environment
-      'sukka/unicorn/prefer-optional-catch-binding': 'off' // try {} catch {}
+      'sukka/unicorn/prefer-optional-catch-binding': 'off', // try {} catch {}
+      // AbortSignal.timeout() is not supported in legacy environment
+      'sukka/unicorn/prefer-abort-signal-timeout': 'off',
+      // AggregateError is not supported in legacy environment
+      'sukka/unicorn/prefer-aggregate-error': 'off',
+      // Observer APIs (IntersectionObserver, etc.) may not be available in legacy environment
+      'sukka/unicorn/prefer-observer-apis': 'off',
+      // Set methods (union, intersection, etc.) are not supported in legacy environment
+      'sukka/unicorn/prefer-set-methods': 'off'
     },
     languageOptions: {
       globals: {
