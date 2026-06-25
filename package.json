@@ -21,21 +21,20 @@
     "@eslint-sukka/shared": "workspace:*",
     "@eslint-sukka/yaml": "workspace:*",
     "@swc-node/register": "^1.11.1",
-    "@swc/core": "^1.15.41",
+    "@swc/core": "^1.15.43",
     "@types/node": "^24.13.2",
     "@types/stringify-object": "^4.0.5",
-    "@typescript-eslint/rule-tester": "^8.61.1",
     "bumpp": "^10.4.1",
     "eslint": "^10.5.0",
     "eslint-config-sukka": "workspace:*",
     "eslint-formatter-sukka": "workspace:*",
-    "eslint-plugin-sukka": "^9.6.0",
+    "eslint-plugin-sukka": "^9.8.0",
     "foxts": "^5.5.1",
     "rollup": "^4.62.2",
     "stringify-object": "5.0.0",
     "ts-dedent": "^2.3.0",
-    "turbo": "^2.9.18",
+    "turbo": "^2.10.0",
     "typescript": "^6.0.3"
   },
-  "packageManager": "pnpm@11.8.0"
+  "packageManager": "pnpm@11.9.0"
 }
