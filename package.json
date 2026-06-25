@@ -28,7 +28,6 @@
     "eslint": "^10.5.0",
     "eslint-config-sukka": "workspace:*",
     "eslint-formatter-sukka": "workspace:*",
-    "eslint-plugin-sukka": "^9.8.0",
     "foxts": "^5.5.1",
     "rollup": "^4.62.2",
     "stringify-object": "5.0.0",

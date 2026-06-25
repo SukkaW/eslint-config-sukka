@@ -62,9 +62,6 @@ importers:
       eslint-formatter-sukka:
         specifier: workspace:*
         version: link:packages/eslint-formatter-sukka
-      eslint-plugin-sukka:
-        specifier: ^9.8.0
-        version: 9.8.0(eslint@10.5.0(jiti@2.6.1))(typescript@6.0.3)
       foxts:
         specifier: ^5.5.1
         version: 5.5.1
@@ -253,8 +250,8 @@ importers:
         specifier: '*'
         version: 10.5.0(jiti@2.6.1)
       eslint-plugin-sukka:
-        specifier: ^9.8.0
-        version: 9.8.0(eslint@10.5.0(jiti@2.6.1))(typescript@6.0.3)
+        specifier: ^9.9.0
+        version: 9.9.0(eslint@10.5.0(jiti@2.6.1))(typescript@6.0.3)
       typescript:
         specifier: '*'
         version: 6.0.3
@@ -1808,8 +1805,8 @@ packages:
     peerDependencies:
       eslint: '>=0.8.0'
 
-  eslint-plugin-sukka@9.8.0:
-    resolution: {integrity: sha512-uHAtny4X3IzQXiXdF+u+wOS55XuJOeQ8dCLD+KJIRFUXMGWDpb6YRIcSW7lFXfUbdKW29BD1x634xEv8OnXXaA==}
+  eslint-plugin-sukka@9.9.0:
+    resolution: {integrity: sha512-atwfuL3DTIb8Vjmgw4xWvhmHq0SZ+1op8TT2i28pXexNP8yHxwqwKg6kp9RqZXJpwa3rb0RWbC+SfreyBblLjg==}
     peerDependencies:
       eslint: '>=9.29.0'
       typescript: '*'
@@ -3798,7 +3795,7 @@ snapshots:
       eslint: 10.5.0(jiti@2.6.1)
       globals: 13.24.0
 
-  eslint-plugin-sukka@9.8.0(eslint@10.5.0(jiti@2.6.1))(typescript@6.0.3):
+  eslint-plugin-sukka@9.9.0(eslint@10.5.0(jiti@2.6.1))(typescript@6.0.3):
     dependencies:
       '@typescript-eslint/types': 8.62.0
       '@typescript-eslint/utils': 8.62.0(eslint@10.5.0(jiti@2.6.1))(typescript@6.0.3)
