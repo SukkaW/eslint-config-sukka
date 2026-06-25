@@ -2,6 +2,7 @@ import { constants } from '@eslint-sukka/shared';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 import eslint_config_flat_gitignore from 'eslint-config-flat-gitignore';
 import { never } from 'foxts/guard';
+import { appendArrayInPlace } from 'foxts/append-array-in-place';
 
 import { globalIgnores } from '@eslint/config-helpers';
 
@@ -31,9 +32,11 @@ export function ignores(options: OptionsIgnores = {}): FlatESLintConfigItem[] {
   } else if (typeof customGlobs === 'function') {
     ignores = customGlobs(constants.GLOB_EXCLUDE);
   } else if (typeof customGlobs === 'string') {
-    ignores.push(...constants.GLOB_EXCLUDE, customGlobs);
+    appendArrayInPlace(ignores, constants.GLOB_EXCLUDE);
+    ignores.push(customGlobs);
   } else if (Array.isArray(customGlobs)) {
-    ignores.push(...constants.GLOB_EXCLUDE, ...customGlobs);
+    appendArrayInPlace(ignores, constants.GLOB_EXCLUDE);
+    appendArrayInPlace(ignores, customGlobs);
   } else {
     never(customGlobs);
   }
