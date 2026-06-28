@@ -24,7 +24,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "eslint-plugin-sukka": "^9.9.1"
+    "eslint-plugin-sukka": "^9.9.2"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
