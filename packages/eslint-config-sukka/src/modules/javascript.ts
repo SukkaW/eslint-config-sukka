@@ -297,7 +297,7 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
         }],
 
         // disallow unnecessary .call() and .apply()
-        'no-useless-call': 'off',
+        'no-useless-call': 'warn',
 
         // Disallow unnecessary catch clauses
         // https://eslint.org/docs/rules/no-useless-catch

@@ -379,8 +379,7 @@ import prefer_url_search_parameters from 'eslint-plugin-unicorn/rules/prefer-url
 
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import { toEslintRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/rule/index.js';
-
-import type { Linter } from 'eslint';
+import type { ESLint } from 'eslint';
 
 const plugin = {
   configs: {
@@ -403,7 +402,7 @@ const plugin = {
         // replaced by sukka/unicorn/no-new-buffer
         'no-buffer-constructor': 'off',
         'sukka/unicorn/no-new-buffer': 'error' // ban new Buffer, prefer Buffer.from
-      } as Linter.RulesRecord
+      }
     },
     comment: {
       name: '@eslint-sukka/eslint-plugin-sukka-full comments preset',
@@ -414,7 +413,7 @@ const plugin = {
       },
       rules: {
         'sukka/ban-eslint-disable': ['error', 'allow-with-description']
-      } as Linter.RulesRecord
+      }
     },
     recommended: {
       ...eslint_plugin_sukka.configs.recommended,
@@ -661,7 +660,7 @@ const plugin = {
         'sukka/unicorn/prefer-set-methods': 'warn',
         'sukka/unicorn/prefer-toggle-attribute': 'warn',
         'sukka/unicorn/prefer-url-search-parameters': 'warn'
-      } as Linter.RulesRecord
+      }
     },
     stylistic_unicorn: {
       name: '@eslint-sukka/eslint-plugin-sukka-full stylistic unicorn preset',
@@ -689,7 +688,7 @@ const plugin = {
         'sukka/unicorn/no-unreadable-object-destructuring': 'error',
         'sukka/unicorn/consistent-compound-words': 'warn',
         'sukka/unicorn/default-export-style': 'warn'
-      } as Linter.RulesRecord
+      }
     },
     recommended_extra_with_typed_lint: {
       ...eslint_plugin_sukka.configs.recommended_extra_with_typed_lint,
@@ -919,6 +918,6 @@ const plugin = {
       'unicorn/prefer-url-search-parameters': prefer_url_search_parameters
     })
   )
-} as const;
+} as ESLint.Plugin;
 
 export default plugin;
