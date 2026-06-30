@@ -599,7 +599,7 @@ const plugin = {
         'sukka/unicorn/require-passive-events': 'warn',
 
         // v66 new rules
-        'sukka/unicorn/class-reference-in-static-methods': 'warn',
+        'sukka/unicorn/class-reference-in-static-methods': ['warn', { preferThis: false, preferSuper: false }], // consistent with this: void
         'sukka/unicorn/consistent-optional-chaining': 'error',
         'sukka/unicorn/explicit-timer-delay': 'warn',
         'sukka/unicorn/no-confusing-array-with': 'error',
