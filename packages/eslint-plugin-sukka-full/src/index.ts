@@ -377,6 +377,14 @@ import prefer_toggle_attribute from 'eslint-plugin-unicorn/rules/prefer-toggle-a
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_url_search_parameters from 'eslint-plugin-unicorn/rules/prefer-url-search-parameters.js';
 
+// v70 new rules
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_unsafe_promise_all_settled_values from 'eslint-plugin-unicorn/rules/no-unsafe-promise-all-settled-values.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_abort_signal_any from 'eslint-plugin-unicorn/rules/prefer-abort-signal-any.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_block_statement_over_iife from 'eslint-plugin-unicorn/rules/prefer-block-statement-over-iife.js';
+
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import { toEslintRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/rule/index.js';
 import type { ESLint } from 'eslint';
@@ -659,7 +667,12 @@ const plugin = {
         'sukka/unicorn/prefer-observer-apis': 'warn',
         'sukka/unicorn/prefer-set-methods': 'warn',
         'sukka/unicorn/prefer-toggle-attribute': 'warn',
-        'sukka/unicorn/prefer-url-search-parameters': 'warn'
+        'sukka/unicorn/prefer-url-search-parameters': 'warn',
+
+        // v70 new rules
+        'sukka/unicorn/no-unsafe-promise-all-settled-values': 'error',
+        'sukka/unicorn/prefer-abort-signal-any': 'warn',
+        'sukka/unicorn/prefer-block-statement-over-iife': 'warn'
       }
     },
     stylistic_unicorn: {
@@ -915,7 +928,11 @@ const plugin = {
       'unicorn/prefer-observer-apis': prefer_observer_apis,
       'unicorn/prefer-set-methods': prefer_set_methods,
       'unicorn/prefer-toggle-attribute': prefer_toggle_attribute,
-      'unicorn/prefer-url-search-parameters': prefer_url_search_parameters
+      'unicorn/prefer-url-search-parameters': prefer_url_search_parameters,
+      // v70 new rules
+      'unicorn/no-unsafe-promise-all-settled-values': no_unsafe_promise_all_settled_values,
+      'unicorn/prefer-abort-signal-any': prefer_abort_signal_any,
+      'unicorn/prefer-block-statement-over-iife': prefer_block_statement_over_iife
     })
   )
 } as ESLint.Plugin;
