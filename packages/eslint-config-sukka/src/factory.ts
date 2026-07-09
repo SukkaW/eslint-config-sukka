@@ -32,6 +32,7 @@ import { foxquire } from './foxquire';
 import { isInEditorEnv } from './is-in-editor';
 import { deprecate } from './deprecate';
 import { pnpm } from './modules/pnpm';
+import { isObjectEmpty } from 'foxts/is-object-empty';
 
 // import { lazyValue } from 'foxts/lazy-value';
 
@@ -70,7 +71,7 @@ function enabled<T extends SharedOptions>(options: T | boolean | undefined, defa
     return defaults;
   }
 
-  if (Object.keys(options).length > 0) return true;
+  if (!isObjectEmpty(options)) return true;
 
   return defaults;
 }
