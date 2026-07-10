@@ -148,7 +148,14 @@ export function createRollupConfig(packageJsonPath: PathLike,
       }),
       swc({
         minify,
+        // The workspace tsconfig.json files only serve tsc/typescript-eslint (noEmit
+        // type checking) and must not drive the build: if swc read them, options like
+        // jsc.paths could rewrite workspace imports and bypass the external() check
+        // above. Everything the build needs from a tsconfig is pinned below instead.
+        tsconfig: false,
         jsc: {
+          target: 'es2020',
+          externalHelpers: false,
           minify: {
             mangle: minify,
             compress: minify,

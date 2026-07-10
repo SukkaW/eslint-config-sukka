@@ -387,7 +387,7 @@ import prefer_block_statement_over_iife from 'eslint-plugin-unicorn/rules/prefer
 
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import { toEslintRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/rule/index.js';
-import type { ESLint } from 'eslint';
+import type { ESLint, Linter } from 'eslint';
 
 const plugin = {
   configs: {
@@ -935,6 +935,11 @@ const plugin = {
       'unicorn/prefer-block-statement-over-iife': prefer_block_statement_over_iife
     })
   )
-} as ESLint.Plugin;
+} as ESLint.Plugin & {
+  configs: Record<
+    'node' | 'comment' | 'recommended' | 'recommended_unicorn' | 'stylistic_unicorn' | 'recommended_extra_with_typed_lint' | 'recommended_react',
+    Linter.Config
+  >
+};
 
 export default plugin;

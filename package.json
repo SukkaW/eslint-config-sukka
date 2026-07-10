@@ -9,7 +9,8 @@
     "test": "turbo test",
     "lint": "turbo run lint:root",
     "lint:root": "eslint --format=sukka .",
-    "prerelease": "pnpm run build && pnpm run lint",
+    "typecheck": "tsc --build --noEmit",
+    "prerelease": "pnpm run build && pnpm run typecheck && pnpm run lint",
     "release": "bumpp --install -r --all --commit \"release: %s\" --tag \"%s\""
   },
   "keywords": [],

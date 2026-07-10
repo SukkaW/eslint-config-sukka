@@ -3,6 +3,7 @@
   "globalDependencies": [
     "**/.env.*local",
     "tsconfig.json",
+    "tsconfig.base.json",
     "eslint.config.js"
   ],
   "tasks": {

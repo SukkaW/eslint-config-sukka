@@ -1,25 +1,15 @@
 {
-  "compilerOptions": {
-    "target": "es2020",
-    "lib": [
-      "ESNext"
-    ],
-    "module": "preserve",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "preserveSymlinks": true,
-    "strict": true,
-    "strictNullChecks": true,
-    "skipLibCheck": true
-  },
-  "include": [
-    "./packages/**/*.ts",
-    "./lib/**/*.ts"
+  "references": [
+    { "path": "./packages/eslint-config-sukka" },
+    { "path": "./packages/eslint-formatter-sukka" },
+    { "path": "./packages/eslint-plugin-react-jsx-a11y" },
+    { "path": "./packages/eslint-plugin-stylistic" },
+    { "path": "./packages/eslint-plugin-sukka-full" },
+    { "path": "./packages/node" },
+    { "path": "./packages/react" },
+    { "path": "./packages/rollup-config" },
+    { "path": "./packages/shared" },
+    { "path": "./packages/yaml" }
   ],
-  "exclude": [
-    "node_modules",
-    "**/fixtures/**/*",
-    "./packages/*/dist/**/*"
-  ]
+  "files": []
 }
