@@ -224,7 +224,7 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
 
   let output = '\n';
 
-  if (process.stdout.isTTY && process.env.TERM_PROGRAM === 'iTerm.app' && !isCI) {
+  if (!isCI && process.stdout.isTTY && process.env.TERM_PROGRAM === 'iTerm.app') {
     // Make relative paths Command-clickable in iTerm
     output += iTermSetCwd();
   }

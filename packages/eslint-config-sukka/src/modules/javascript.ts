@@ -9,6 +9,7 @@ import eslint_plugin_demorgan from 'eslint-plugin-de-morgan';
 // import eslint_plugin_no_secrets from 'eslint-plugin-no-secrets';
 
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
+import { castArray } from 'foxts/cast-array';
 
 export interface OptionsJavaScript {
   module?: boolean,
@@ -608,7 +609,7 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
   ];
 
   if (disableNoConsoleInCLI !== false) {
-    const customGlobs = typeof disableNoConsoleInCLI === 'boolean' ? null : (Array.isArray(disableNoConsoleInCLI) ? disableNoConsoleInCLI : [disableNoConsoleInCLI]);
+    const customGlobs = typeof disableNoConsoleInCLI === 'boolean' ? null : (castArray(disableNoConsoleInCLI));
     configs.push({
       name: '@eslint-sukka/js cli specific',
       files: customGlobs ?? [`**/scripts/${constants.GLOB_SRC}`, `**/cli/${constants.GLOB_SRC}`, `**/cli.${constants.GLOB_SRC_EXT}`],

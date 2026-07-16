@@ -1,7 +1,7 @@
 import { isCI } from 'ci-info';
 
 export function isInEditorEnv(): boolean {
-  if (process.env.CI || isCI) return false;
+  if (isCI || process.env.CI) return false;
 
   // is in git hooks or lint-staged
   if (

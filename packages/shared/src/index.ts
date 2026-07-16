@@ -50,7 +50,7 @@ export function asPlugin(plugin: { rules: unknown }): ESLint.Plugin {
 export function withFiles(configs: FlatESLintConfigItem, files: string | string[] | undefined | null | true): FlatESLintConfigItem;
 export function withFiles(configs: FlatESLintConfigItem[], files: string | string[] | undefined | null | true): FlatESLintConfigItem[];
 export function withFiles(configs: FlatESLintConfigItem | FlatESLintConfigItem[], files: string | string[] | undefined | null | true) {
-  if (files == null || files === true) {
+  if (files === true || files == null) {
     return configs;
   }
 
