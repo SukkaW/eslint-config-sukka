@@ -385,6 +385,14 @@ import prefer_abort_signal_any from 'eslint-plugin-unicorn/rules/prefer-abort-si
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_block_statement_over_iife from 'eslint-plugin-unicorn/rules/prefer-block-statement-over-iife.js';
 
+// v72 new rules
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_multiple_promise_resolver_calls from 'eslint-plugin-unicorn/rules/no-multiple-promise-resolver-calls.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_unnecessary_string_trim from 'eslint-plugin-unicorn/rules/no-unnecessary-string-trim.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_useless_re_export from 'eslint-plugin-unicorn/rules/no-useless-re-export.js';
+
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import { toEslintRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/rule/index.js';
 import type { ESLint, Linter } from 'eslint';
@@ -672,7 +680,12 @@ const plugin = {
         // v70 new rules
         'sukka/unicorn/no-unsafe-promise-all-settled-values': 'error',
         'sukka/unicorn/prefer-abort-signal-any': 'warn',
-        'sukka/unicorn/prefer-block-statement-over-iife': 'warn'
+        'sukka/unicorn/prefer-block-statement-over-iife': 'warn',
+
+        // v72 new rules
+        'sukka/unicorn/no-multiple-promise-resolver-calls': 'error',
+        'sukka/unicorn/no-unnecessary-string-trim': 'warn',
+        'sukka/unicorn/no-useless-re-export': 'warn'
       }
     },
     stylistic_unicorn: {
@@ -932,7 +945,11 @@ const plugin = {
       // v70 new rules
       'unicorn/no-unsafe-promise-all-settled-values': no_unsafe_promise_all_settled_values,
       'unicorn/prefer-abort-signal-any': prefer_abort_signal_any,
-      'unicorn/prefer-block-statement-over-iife': prefer_block_statement_over_iife
+      'unicorn/prefer-block-statement-over-iife': prefer_block_statement_over_iife,
+      // v72 new rules
+      'unicorn/no-multiple-promise-resolver-calls': no_multiple_promise_resolver_calls,
+      'unicorn/no-unnecessary-string-trim': no_unnecessary_string_trim,
+      'unicorn/no-useless-re-export': no_useless_re_export
     })
   )
 } as ESLint.Plugin & {

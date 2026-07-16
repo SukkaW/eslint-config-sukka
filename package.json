@@ -21,7 +21,7 @@
     "@eslint-sukka/react": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
     "@eslint-sukka/yaml": "workspace:*",
-    "@swc-node/register": "^1.11.1",
+    "@swc-node/register": "^1.12.0",
     "@swc/core": "^1.15.43",
     "@types/node": "^24.13.3",
     "@types/stringify-object": "^4.0.5",
@@ -33,8 +33,8 @@
     "rollup": "^4.62.2",
     "stringify-object": "5.0.0",
     "ts-dedent": "^2.3.0",
-    "turbo": "^2.10.4",
+    "turbo": "^2.10.5",
     "typescript": "^6.0.3"
   },
-  "packageManager": "pnpm@11.11.0"
+  "packageManager": "pnpm@11.13.1"
 }
