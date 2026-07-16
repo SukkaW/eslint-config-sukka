@@ -13,7 +13,7 @@ import { pathToFileURL } from 'node:url';
 import { hostname } from 'node:os';
 
 import { fastStringArrayJoin } from 'foxts/fast-string-array-join';
-import { appendArrayInPlace } from 'foxts/append-array-in-place';
+import { addArrayElementsToSet } from 'foxts/add-array-elements-to-set';
 import { never } from 'foxts/guard';
 import { lazyValue } from 'foxts/lazy-value';
 
@@ -102,7 +102,7 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
 
   // let suppressedCount = 0;
 
-  const deprecatedReplacedBy: Record<string, string[]> = {};
+  const deprecatedReplacedBy: Record<string, Set<string>> = {};
 
   let maxLineWidth = 0;
   let maxColumnWidth = 0;
@@ -132,7 +132,7 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
 
     usedDeprecatedRules.forEach(d => {
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- strictNullChecks
-      appendArrayInPlace((deprecatedReplacedBy[d.ruleId] ||= []), d.replacedBy);
+      addArrayElementsToSet((deprecatedReplacedBy[d.ruleId] ||= new Set()), d.replacedBy);
     });
 
     if (lines.length > 0) {
@@ -301,7 +301,7 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
     deprecatedEntries.forEach(([ruleId, replacedBy]) => {
       output += '\n';
       output += `${picocolors.gray('deprecated:')}  ${ruleId}`;
-      output += replacedBy.length > 0 ? picocolors.gray(` (replaced by ${fastStringArrayJoin(replacedBy.map(picocolors.white), ', ')})`) : '';
+      output += replacedBy.size > 0 ? picocolors.gray(` (replaced by ${fastStringArrayJoin(Array.from(replacedBy, picocolors.white), ', ')})`) : '';
     });
   }
 
