@@ -15,7 +15,10 @@ export function pnpm(): FlatESLintConfigItem[] {
     rules: {
       'pnpm/json-enforce-catalog': 'off',
       'pnpm/json-valid-catalog': 'error',
-      'pnpm/json-prefer-workspace-settings': 'error'
+      'pnpm/json-prefer-workspace-settings': 'error',
+      'pnpm/yaml-no-duplicate-catalog-item': ['error', { checkDuplicates: 'exact-version' }],
+      'pnpm/yaml-no-unused-catalog-item': 'error',
+      'pnpm/yaml-valid-packages': 'error'
     }
   }];
 };
