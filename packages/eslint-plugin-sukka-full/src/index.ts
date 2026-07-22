@@ -608,19 +608,19 @@ const plugin = {
         'sukka/unicorn/no-unused-array-method-return': 'error',
         'sukka/unicorn/prefer-array-last-methods': 'warn',
         'sukka/unicorn/prefer-math-abs': 'warn',
-        'sukka/unicorn/prefer-split-limit': 'warn',
+        'sukka/unicorn/prefer-split-limit': 'error',
         'sukka/unicorn/prefer-queue-microtask': 'warn',
         'sukka/unicorn/prefer-string-pad-start-end': 'warn',
-        'sukka/unicorn/require-css-escape': 'error',
+        'sukka/unicorn/require-css-escape': 'warn',
         'sukka/unicorn/require-passive-events': 'warn',
 
         // v66 new rules
         'sukka/unicorn/class-reference-in-static-methods': ['warn', { preferThis: false, preferSuper: false }], // consistent with this: void
         'sukka/unicorn/consistent-optional-chaining': 'error',
-        'sukka/unicorn/explicit-timer-delay': 'warn',
+        'sukka/unicorn/explicit-timer-delay': 'error',
         'sukka/unicorn/no-confusing-array-with': 'error',
         'sukka/unicorn/no-duplicate-loops': 'warn',
-        'sukka/unicorn/no-declarations-before-early-exit': 'warn',
+        'sukka/unicorn/no-declarations-before-early-exit': 'error',
         'sukka/unicorn/no-optional-chaining-on-undeclared-variable': 'error',
         'sukka/unicorn/no-object-methods-with-collections': 'error',
         'sukka/unicorn/no-subtraction-comparison': 'warn',
@@ -630,12 +630,12 @@ const plugin = {
         'sukka/unicorn/prefer-add-event-listener-options': 'warn',
         'sukka/unicorn/prefer-direct-iteration': 'warn',
         'sukka/unicorn/prefer-number-is-safe-integer': 'warn',
-        'sukka/unicorn/prefer-object-define-properties': 'warn',
+        'sukka/unicorn/prefer-object-define-properties': 'error',
         'sukka/unicorn/prefer-object-destructuring-defaults': 'warn',
         'sukka/unicorn/prefer-single-object-destructuring': 'warn',
         'sukka/unicorn/prefer-smaller-scope': 'warn',
         'sukka/unicorn/prefer-single-array-predicate': 'warn',
-        'sukka/unicorn/prefer-url-href': 'warn',
+        'sukka/unicorn/prefer-url-href': 'error',
         'sukka/unicorn/require-proxy-trap-boolean-return': 'error',
 
         // v67 new rules
@@ -658,7 +658,7 @@ const plugin = {
         'sukka/unicorn/no-selector-as-dom-name': 'error',
         'sukka/unicorn/no-array-concat-in-loop': 'error',
         'sukka/unicorn/no-array-front-mutation': 'warn',
-        'sukka/unicorn/no-array-sort-for-min-max': 'warn',
+        'sukka/unicorn/no-array-sort-for-min-max': 'error',
         'sukka/unicorn/no-useless-compound-assignment': 'warn',
         'sukka/unicorn/no-useless-delete-check': 'warn',
         'sukka/unicorn/no-useless-logical-operand': 'error',
@@ -684,7 +684,7 @@ const plugin = {
 
         // v72 new rules
         'sukka/unicorn/no-multiple-promise-resolver-calls': 'error',
-        'sukka/unicorn/no-unnecessary-string-trim': 'warn',
+        'sukka/unicorn/no-unnecessary-string-trim': 'error',
         'sukka/unicorn/no-useless-re-export': 'warn'
       }
     },
