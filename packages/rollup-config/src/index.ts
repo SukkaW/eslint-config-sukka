@@ -158,7 +158,11 @@ export function createRollupConfig(packageJsonPath: PathLike,
           externalHelpers: false,
           minify: {
             mangle: minify,
-            compress: minify,
+            compress: minify && {
+              passes: 2,
+              unsafe_hoist_static_method_alias: false,
+              unsafe_hoist_global_objects_alias: true
+            },
             module: true
           },
           transform: {
