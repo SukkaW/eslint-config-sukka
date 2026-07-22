@@ -4,7 +4,7 @@ allowBuilds:
   "@swc/core": true
   unrs-resolver: true
 
-# Fuck pnpm on missing deps, eslint marks @eslint/core as its explict dependencies
+# Fuck pnpm on missing deps, eslint marks @eslint/core as its explicit dependencies
 # then import types from it, but pnpm refuse to link @eslint/core
 shamefullyHoist: true
 
