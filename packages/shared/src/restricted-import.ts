@@ -44,7 +44,7 @@ export const BETTER_ALTERNATIVES = Object.entries({
   'escape-regexp': npm('fast-escape-regexp'),
   'lodash.escaperegexp': npm('fast-escape-regexp'),
   'regex-escape': npm('fast-escape-regexp'),
-  // esacpe html
+  // escape html
   'escape-html': npm('fast-escape-html'),
   'html-escaper': npm('fast-escape-html'),
   'escape-goat': npm('fast-escape-html'),
@@ -90,7 +90,7 @@ export const BETTER_ALTERNATIVES = Object.entries({
   expect: `${npm('earl')}. if you are using Jest, import "expect" from "@jest/globals" or "@jest/expect" instead`
 }).map(([key, value]) => ({ name: key, message: `Use ${value} instead.` }));
 
-const restricedImportBase = [
+const restrictedImportBase = [
   { name: 'date-fns/esm', message: 'Please use date-fns/{submodule} instead.' },
   { name: 'idb/with-async-ittr-cjs', message: 'Please use idb/with-async-ittr instead.' },
   { name: 'lodash-unified', message: 'Do not import lodash-unified directly' },
@@ -106,6 +106,7 @@ const restrictedImportWithImportNames = [
   { name: 'uuid', importNames: ['v4'], message: `Use ${npm('@lukeed/uuid')} instead` },
   { name: 'assert', importNames: ['deepEqual'], message: `Use ${npm('dequal')} instead` },
   { name: 'react', importNames: ['useLayoutEffect'], message: 'Use https://foxact.skk.moe/use-isomorphic-layout-effect instead' },
+  { name: 'foxact/use-abortable-effect', importNames: ['useAbortableEffect'], message: 'Use the useEffect named import instead' },
   { name: '@typescript-eslint/utils', importNames: ['AST_NODE_TYPES', 'AST_TOKEN_TYPES', 'TSESTree'], message: 'Import from @typescript-eslint/types instead. @typescript-eslint/utils simply re-exports them from @typescript-eslint/types.' }
 ];
 
@@ -121,7 +122,7 @@ const restrictedImportWithImportNamesButAllowWithType = [
 
 export const RESTRICTED_IMPORT_JS = [
   ...restrictedImportWithImportNamesButAllowWithType,
-  ...restricedImportBase,
+  ...restrictedImportBase,
   ...BETTER_ALTERNATIVES,
   ...restrictedImportWithImportNames,
   { name: 'react', importNames: ['default'], message: 'Use named import instead' }
@@ -129,7 +130,7 @@ export const RESTRICTED_IMPORT_JS = [
 
 export const RESTRICTED_IMPORT_TS = [
   ...restrictedImportWithImportNamesButAllowWithType.map(item => ({ ...item, allowTypeImports: true })),
-  ...restricedImportBase,
+  ...restrictedImportBase,
   ...BETTER_ALTERNATIVES,
   ...restrictedImportWithImportNames,
   { name: 'react', importNames: ['default'], message: 'Use named import instead', allowTypeImports: true }
@@ -137,6 +138,13 @@ export const RESTRICTED_IMPORT_TS = [
 
 export const RESTRICTED_IMPORT_NODE_REQUIRE = [
   ...restrictedImportWithImportNamesButAllowWithType,
-  ...restricedImportBase,
+  ...restrictedImportBase,
   ...BETTER_ALTERNATIVES
+];
+
+export const RESTRICTED_SYNTAX = [
+  {
+    selector: 'ImportDeclaration[source.value="foxact/use-abortable-effect"] > ImportSpecifier[imported.name="useEffect"][local.name="useAbortableEffect"]',
+    message: 'Use the useEffect named import without renaming it'
+  }
 ];

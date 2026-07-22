@@ -1,4 +1,4 @@
-import { collectRules, constants, memo, packageResolver, RESTRICTED_IMPORT_TS, withFiles, asPlugin } from '@eslint-sukka/shared';
+import { collectRules, constants, memo, packageResolver, RESTRICTED_SYNTAX, RESTRICTED_IMPORT_TS, withFiles, asPlugin } from '@eslint-sukka/shared';
 
 import { generated_typescript_overrides } from './_generated_typescript_overrides';
 
@@ -300,6 +300,7 @@ export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatE
 
         'no-restricted-syntax': [
           'error',
+          ...RESTRICTED_SYNTAX,
           {
             // https://github.com/iliubinskii/eslint-plugin-misc/blob/cebe0eb0bbc171e08684c4e9f1a0249c6bd6c9f7/src/core/no-unnecessary-as-const.ts
             message: 'Unnecessary "as const"',
@@ -321,6 +322,17 @@ export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatE
             message: 'Public "static" fields should be read-only',
             selector:
               'PropertyDefinition[readonly!=true][static=true][accessibility!="private"][accessibility!="protected"]'
+          },
+          {
+            // https://github.com/iliubinskii/eslint-plugin-misc/blob/cebe0eb0bbc171e08684c4e9f1a0249c6bd6c9f7/src/core/sort-construct-signature.ts
+            message: 'Construct signature should be first',
+            selector:
+        'TSInterfaceBody > TSConstructSignatureDeclaration:not(:first-child)'
+          },
+          {
+            // https://github.com/iliubinskii/eslint-plugin-misc/blob/cebe0eb0bbc171e08684c4e9f1a0249c6bd6c9f7/src/core/sort-call-signature.ts
+            message: 'Call signature should be first',
+            selector: 'TSInterfaceBody > TSCallSignatureDeclaration:not(:first-child)'
           },
           ...(options['~_internal_react_enabled_do_not_use_or_you_will_be_fired']
             ? [
