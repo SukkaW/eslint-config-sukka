@@ -16,7 +16,6 @@ overrides:
   eslint-plugin-unicorn>core-js-compat: "-"
   hasown: "-"
   is-core-module: npm:@nolyfill/is-core-module@^1.0.39
-  json-stable-stringify: npm:@nolyfill/json-stable-stringify@^1.0.44
   object.assign: "-"
   object.fromentries: "-"
   object.values: "-"
