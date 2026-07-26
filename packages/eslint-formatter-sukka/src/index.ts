@@ -4,6 +4,7 @@ import path from 'node:path';
 import picocolors from 'picocolors';
 import fastStringWidth from 'fast-string-width';
 import supportsHyperlinks from 'supports-hyperlinks';
+import terminalSize from 'terminal-size';
 
 import { link, iTermSetCwd } from './ansi-escape';
 import { isCI } from 'ci-info';
@@ -47,7 +48,46 @@ interface Line {
   messageWidth: number,
   line: string,
   message: string,
-  column: string
+  column: string,
+  /** alignment column shared by every message of the same file, resolved after the file is fully read */
+  align: { width: number }
+}
+
+/**
+ * Ratio of the terminal width that the message column is allowed to occupy. Beyond this, aligning
+ * the ruleId costs more readability (a screenful of blank padding) than it buys.
+ */
+const MAX_ALIGN_RATIO = 0.6;
+/** Never collapse alignment below this, even on a very narrow terminal. */
+const MIN_ALIGN_WIDTH = 20;
+
+// `terminalSize()` may shell out to `tput`/`stty` when stdout is not a TTY, so resolve it lazily and
+// only once per run -- and never at import time, since the formatter may be loaded without being used.
+const terminalWidth = lazyValue(() => terminalSize().columns);
+
+/**
+ * Pick the column at which ruleIds are aligned for a single file block.
+ *
+ * Aligning on the longest message means one outlier report pads every other line out to its width.
+ * Instead, cap the column at a fraction of the terminal and align on the widest message that still
+ * fits under that cap -- so every message narrower than the cap lines up exactly, and only the
+ * genuine outliers overflow and take a single space before their ruleId.
+ */
+function resolveAlignWidth(messageWidths: number[], reservedWidth: number): number {
+  const cap = Math.max(
+    MIN_ALIGN_WIDTH,
+    Math.trunc(terminalWidth() * MAX_ALIGN_RATIO) - reservedWidth
+  );
+
+  let width = 0;
+  for (let i = 0, len = messageWidths.length; i < len; i++) {
+    const messageWidth = messageWidths[i];
+    if (messageWidth > width && messageWidth <= cap) {
+      width = messageWidth;
+    }
+  }
+
+  return width;
 }
 
 const severityToAnsiColoredPrefixMap = {
@@ -106,8 +146,10 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
 
   let maxLineWidth = 0;
   let maxColumnWidth = 0;
-  let maxMessageWidth = 0;
   let showLineNumbers: number | boolean = false;
+
+  // Alignment is resolved per file, so every file block gets its own shared, mutable holder.
+  const alignments: Array<{ align: { width: number }, messageWidths: number[] }> = [];
 
   results.sort(lintResultSorter);
 
@@ -151,6 +193,11 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
 
     lines.push(header);
 
+    // Shared by every message of this file; its `width` is filled in once all messages are measured.
+    const align = { width: 0 };
+    const messageWidths: number[] = [];
+    alignments.push({ align, messageWidths });
+
     messages.sort(lintMessageSorter);
 
     for (let j = 0, messageLen = messages.length; j < messageLen; j++) {
@@ -185,9 +232,8 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
       if (columnWidth > maxColumnWidth) {
         maxColumnWidth = columnWidth;
       }
-      if (messageWidth > maxMessageWidth) {
-        maxMessageWidth = messageWidth;
-      }
+
+      messageWidths.push(messageWidth);
 
       showLineNumbers ||= x.line || x.column;
 
@@ -200,7 +246,7 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
       } else if (x.severity === 1) {
         severity = Severity.Warn;
       } else {
-        never(x.severity, 'x.serverity');
+        never(x.severity, 'x.severity');
       }
 
       lines.push({
@@ -212,6 +258,7 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
         columnWidth,
         message,
         messageWidth,
+        align,
         ruleId: x.ruleId || ''
       });
     };
@@ -220,6 +267,14 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
     firstErrorInThisFile ??= messages[0];
 
     header.firstLineCol = `${firstErrorInThisFile.line}:${firstErrorInThisFile.column}`;
+  }
+
+  // Width consumed by everything left of the message: leading space, severity, position and gaps.
+  const reservedWidth = 1 + 5 + 1 + (showLineNumbers ? maxLineWidth + 1 + maxColumnWidth + 1 : 0) + 1;
+
+  for (let i = 0, len = alignments.length; i < len; i++) {
+    const { align, messageWidths } = alignments[i];
+    align.width = resolveAlignWidth(messageWidths, reservedWidth);
   }
 
   let output = '\n';
@@ -256,10 +311,11 @@ const pretty: ESLint.FormatterFunction = (results, data): string => {
               severityToAnsiColoredPrefixMap[x.severity],
               // position
               renderMessagePosition(x),
-              // message
-              ' '.repeat(maxColumnWidth - x.columnWidth) + x.message,
-              // padding to make ruleId aligned
-              ' '.repeat(maxMessageWidth - x.messageWidth),
+              // message, then padding to align the ruleId -- messages wider than the alignment
+              // column overflow it and get only the single separator space added by the join
+              ' '.repeat(maxColumnWidth - x.columnWidth)
+              + x.message
+              + ' '.repeat(Math.max(0, x.align.width - x.messageWidth)),
               // ruleId
               renderRuleId(x.ruleId, data)
             ], ' ')
