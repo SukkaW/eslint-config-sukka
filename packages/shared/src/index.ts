@@ -146,6 +146,8 @@ export function UNSAFE_excludeJsonYamlFiles(configs: FlatESLintConfigItem | Flat
 
 import type { ESLint } from 'eslint';
 
+type MaybeArray<T> = T | T[];
+
 /**
  * Extract a plain rules record from an array of plugin-style configs.
  *
@@ -155,8 +157,8 @@ import type { ESLint } from 'eslint';
  * itself so coerce to `any` during the reduction and give the result a
  * proper Linter.RulesRecord type.
  */
-export function collectRules(configs: Array<{ rules?: Partial<ESLintRulesRecord> }>): Partial<ESLintRulesRecord> {
-  return configs.reduce<Partial<ESLintRulesRecord>>((acc, cur) => {
+export function collectRules(configs: MaybeArray<{ rules?: Partial<ESLintRulesRecord> }>): Partial<ESLintRulesRecord> {
+  return castArray(configs).reduce<Partial<ESLintRulesRecord>>((acc, cur) => {
     if (!cur.rules) {
       return acc;
     }
@@ -167,8 +169,8 @@ export function collectRules(configs: Array<{ rules?: Partial<ESLintRulesRecord>
   }, {});
 }
 
-export function collectPlugins(configs: Array<{ plugins?: Record<string, ESLint.Plugin> } & object>): Record<string, ESLint.Plugin> {
-  return configs.reduce<Record<string, ESLint.Plugin>>((acc, cur) => {
+export function collectPlugins(configs: MaybeArray<{ plugins?: Record<string, ESLint.Plugin> } & object>): Record<string, ESLint.Plugin> {
+  return castArray(configs).reduce<Record<string, ESLint.Plugin>>((acc, cur) => {
     if (!cur.plugins) {
       return acc;
     }

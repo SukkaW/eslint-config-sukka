@@ -1,4 +1,5 @@
 import { eslint_plugin_sukka } from 'eslint-plugin-sukka';
+import { collectRules } from '@eslint-sukka/shared';
 
 // @masknet/eslint-plugin
 import array$no_unneeded_flat_map from '@masknet/eslint-plugin/rules/array/no-unneeded-flat-map.js';
@@ -432,31 +433,33 @@ const plugin = {
       }
     },
     recommended: {
-      ...eslint_plugin_sukka.configs.recommended,
+      ...eslint_plugin_sukka.configs!.recommended,
       plugins: {
         get sukka() {
           return plugin;
         }
       },
-      rules: {
-        ...eslint_plugin_sukka.configs.recommended.rules,
-        'sukka/prefer-single-boolean-return': 'off',
+      rules: Object.assign(
+        {
+          'sukka/prefer-single-boolean-return': 'off',
 
-        'sukka/array/no-unneeded-flat-map': 'error',
-        'sukka/browser/prefer-location-assign': 'warn',
-        'sukka/jsx/no-template-literal': 'error',
-        'sukka/jsx/no-unneeded-nested': 'error',
-        'sukka/string/no-locale-case': 'warn',
-        'sukka/string/no-simple-template-literal': 'error',
-        'sukka/unicode/no-bidi': 'warn',
-        'sukka/unicode/no-invisible': 'warn',
+          'sukka/array/no-unneeded-flat-map': 'error',
+          'sukka/browser/prefer-location-assign': 'warn',
+          'sukka/jsx/no-template-literal': 'error',
+          'sukka/jsx/no-unneeded-nested': 'error',
+          'sukka/string/no-locale-case': 'warn',
+          'sukka/string/no-simple-template-literal': 'error',
+          'sukka/unicode/no-bidi': 'warn',
+          'sukka/unicode/no-invisible': 'warn',
 
-        'sukka/no-redundant-variable': 'error',
-        'sukka/no-single-return': 'warn',
-        'sukka/prefer-early-return': ['error', { maximumStatements: 16 }],
-        'sukka/prefer-fetch': 'error',
-        'sukka/prefer-timer-id': 'warn'
-      }
+          'sukka/no-redundant-variable': 'error',
+          'sukka/no-single-return': 'warn',
+          'sukka/prefer-early-return': ['error', { maximumStatements: 16 }],
+          'sukka/prefer-fetch': 'error',
+          'sukka/prefer-timer-id': 'warn'
+        },
+        collectRules(eslint_plugin_sukka.configs!.recommended)
+      )
     },
     recommended_unicorn: {
       name: '@eslint-sukka/eslint-plugin-sukka-full recommended unicorn preset',
@@ -717,24 +720,26 @@ const plugin = {
       }
     },
     recommended_extra_with_typed_lint: {
-      ...eslint_plugin_sukka.configs.recommended_extra_with_typed_lint,
+      ...eslint_plugin_sukka.configs!.recommended_extra_with_typed_lint,
       plugins: {
         get sukka() {
           return plugin;
         }
       },
-      rules: {
-        ...eslint_plugin_sukka.configs.recommended_extra_with_typed_lint.rules,
-        'sukka/string/no-unneeded-to-string': 'error',
-        'sukka/type/no-force-cast-via-top-type': 'error',
-        'sukka/type/no-wrapper-type-reference': 'error',
-        'sukka/no-default-error': 'off',
+      rules: Object.assign(
+        {
+          'sukka/string/no-unneeded-to-string': 'error',
+          'sukka/type/no-force-cast-via-top-type': 'error',
+          'sukka/type/no-wrapper-type-reference': 'error',
+          'sukka/no-default-error': 'off',
 
-        'sukka/unicorn/consistent-tuple-labels': 'warn'
-      }
+          'sukka/unicorn/consistent-tuple-labels': 'warn'
+        },
+        collectRules(eslint_plugin_sukka.configs!.recommended_extra_with_typed_lint)
+      )
     },
     recommended_react: {
-      ...eslint_plugin_sukka.configs.recommended_react,
+      ...eslint_plugin_sukka.configs!.recommended_react,
       plugins: {
         get sukka() {
           return plugin;
