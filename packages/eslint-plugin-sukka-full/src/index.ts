@@ -441,8 +441,6 @@ const plugin = {
       },
       rules: Object.assign(
         {
-          'sukka/prefer-single-boolean-return': 'off',
-
           'sukka/array/no-unneeded-flat-map': 'error',
           'sukka/browser/prefer-location-assign': 'warn',
           'sukka/jsx/no-template-literal': 'error',
@@ -458,7 +456,8 @@ const plugin = {
           'sukka/prefer-fetch': 'error',
           'sukka/prefer-timer-id': 'warn'
         },
-        collectRules(eslint_plugin_sukka.configs!.recommended)
+        collectRules(eslint_plugin_sukka.configs!.recommended),
+        { 'sukka/prefer-single-boolean-return': 'off' }
       )
     },
     recommended_unicorn: {
