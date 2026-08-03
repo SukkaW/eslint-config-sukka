@@ -30,10 +30,10 @@
     "eslint-config-sukka": "workspace:*",
     "eslint-formatter-sukka": "workspace:*",
     "foxts": "^5.8.1",
-    "rollup": "^4.62.3",
+    "rollup": "^4.62.4",
     "stringify-object": "5.0.0",
     "ts-dedent": "^2.3.0",
-    "turbo": "^2.10.7",
+    "turbo": "^2.10.8",
     "typescript": "^6.0.3"
   },
   "packageManager": "pnpm@11.18.0"
