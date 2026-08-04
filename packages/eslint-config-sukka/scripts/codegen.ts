@@ -1,6 +1,7 @@
 import { javascript as eslint_config_sukka_js } from '../src/modules/javascript';
 
 import ts_eslint_plugin from '@typescript-eslint/eslint-plugin';
+import type { Linter } from 'eslint';
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -34,64 +35,55 @@ const DISABLED_RULES = new Set([
       }, [])
   );
 
-  const rules = Object.fromEntries(
-    Object.entries(
-      (await eslint_config_sukka_js())
-        .reduce((acc, cur) => ({ ...acc, ...cur.rules }), {})
-    )
-      // .filter(([, value]) => {
-      //   if (typeof value === 'string') {
-      //     return value !== 'off';
-      //   }
-      //   if (typeof value === 'number') {
-      //     return value !== 0;
-      //   }
-      //   if (Array.isArray(value)) {
-      //     return value.length !== 0 && value[0] !== 'off';
-      //   }
-      //   return true;
-      // })
-      .reduce((acc, [baseRuleName, value]) => {
-        switch (baseRuleName) {
-          case 'camelcase':
-          case 'no-restricted-imports': {
-            // disable camelcase directly, use custom @typescript-eslint/naming-convention instead
-            // disable no-restricted-imports directly, use @typescript-eslint/no-restricted-imports instead
+  const rules = Object.entries(
+    (await eslint_config_sukka_js())
+      .reduce((acc, cur) => ({ ...acc, ...cur.rules }), {})
+  )
+    // .filter(([, value]) => {
+    //   if (typeof value === 'string') {
+    //     return value !== 'off';
+    //   }
+    //   if (typeof value === 'number') {
+    //     return value !== 0;
+    //   }
+    //   if (Array.isArray(value)) {
+    //     return value.length !== 0 && value[0] !== 'off';
+    //   }
+    //   return true;
+    // })
+    .reduce<Linter.RulesRecord>((acc, [baseRuleName, value]) => {
+      switch (baseRuleName) {
+        case 'camelcase':
+        case 'no-restricted-imports': {
+          // disable camelcase directly, use custom @typescript-eslint/naming-convention instead
+          // disable no-restricted-imports directly, use @typescript-eslint/no-restricted-imports instead
 
-            // @ts-expect-error -- no type overlap between eslint and typescript-eslint
-            acc.push([baseRuleName, 'off']);
+          acc[baseRuleName] = 'off';
 
-            break;
-          }
-          case 'sukka/no-return-await': {
-            acc.push(
-              // @ts-expect-error -- no type overlap between eslint and typescript-eslint
-              [baseRuleName, 'off'],
-              ['@typescript-eslint/return-await', ['error', 'in-try-catch']]
-            );
-
-            break;
-          }
-          case 'no-loss-of-precision': {
-            // do nothing
-
-            // @typescript-eslint/no-loss-of-precision is deprecated
-            // The original rule is recommended instead
-
-            break;
-          }
-          default: if (TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.has(baseRuleName)) {
-            const replacementRulename = TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.get(baseRuleName)!;
-            acc.push(
-              // @ts-expect-error -- no type overlap between eslint and typescript-eslint
-              [baseRuleName, 'off'],
-              [`@typescript-eslint/${replacementRulename}`, DISABLED_RULES.has(baseRuleName) ? 'off' : value]
-            );
-          }
+          break;
         }
-        return acc;
-      }, [])
-  );
+        case 'sukka/no-return-await': {
+          acc[baseRuleName] = 'off';
+          acc['@typescript-eslint/return-await'] = ['error', 'in-try-catch'];
+
+          break;
+        }
+        case 'no-loss-of-precision': {
+          // do nothing
+
+          // @typescript-eslint/no-loss-of-precision is deprecated
+          // The original rule is recommended instead
+
+          break;
+        }
+        default: if (TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.has(baseRuleName)) {
+          const replacementRulename = TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.get(baseRuleName)!;
+          acc[baseRuleName] = 'off';
+          acc[`@typescript-eslint/${replacementRulename}`] = DISABLED_RULES.has(baseRuleName) ? 'off' : value;
+        }
+      }
+      return acc;
+    }, {});
 
   fs.writeFileSync(
     path.resolve(__dirname, '../src/modules/_generated_typescript_overrides.ts'),

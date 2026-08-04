@@ -30,11 +30,11 @@
   "license": "MIT",
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",
-    "foxts": "^5.8.1"
+    "foxts": "^5.9.0"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
-    "eslint-plugin-yml": "^3.7.0",
+    "eslint-plugin-yml": "^3.8.0",
     "yaml-eslint-parser": "^2.1.0"
   }
 }

@@ -29,12 +29,12 @@
     "eslint": "^10.8.0",
     "eslint-config-sukka": "workspace:*",
     "eslint-formatter-sukka": "workspace:*",
-    "foxts": "^5.8.1",
+    "foxts": "^5.9.0",
     "rollup": "^4.62.4",
     "stringify-object": "5.0.0",
     "ts-dedent": "^2.3.0",
     "turbo": "^2.10.8",
     "typescript": "^6.0.3"
   },
-  "packageManager": "pnpm@11.18.0"
+  "packageManager": "pnpm@11.20.0"
 }

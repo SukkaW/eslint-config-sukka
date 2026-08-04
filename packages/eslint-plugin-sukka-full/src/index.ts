@@ -392,6 +392,10 @@ import no_unnecessary_string_trim from 'eslint-plugin-unicorn/rules/no-unnecessa
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import no_useless_re_export from 'eslint-plugin-unicorn/rules/no-useless-re-export.js';
 
+// v73 new rules
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import iteration_fallback_style from 'eslint-plugin-unicorn/rules/iteration-fallback-style.js';
+
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import { toEslintRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/rule/index.js';
 import type { ESLint, Linter } from 'eslint';
@@ -684,7 +688,11 @@ const plugin = {
         // v72 new rules
         'sukka/unicorn/no-multiple-promise-resolver-calls': 'error',
         'sukka/unicorn/no-unnecessary-string-trim': 'error',
-        'sukka/unicorn/no-useless-re-export': 'warn'
+        'sukka/unicorn/no-useless-re-export': 'warn',
+
+        // v73 new rules
+        // 'guard' is the rule default: prefer `if (items) { for ... }` over `for (... of items || [])`
+        'sukka/unicorn/iteration-fallback-style': 'warn'
       }
     },
     stylistic_unicorn: {
@@ -949,7 +957,9 @@ const plugin = {
       // v72 new rules
       'unicorn/no-multiple-promise-resolver-calls': no_multiple_promise_resolver_calls,
       'unicorn/no-unnecessary-string-trim': no_unnecessary_string_trim,
-      'unicorn/no-useless-re-export': no_useless_re_export
+      'unicorn/no-useless-re-export': no_useless_re_export,
+      // v73 new rules
+      'unicorn/iteration-fallback-style': iteration_fallback_style
     })
   )
 } as ESLint.Plugin & {
