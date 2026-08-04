@@ -137,8 +137,6 @@ import prefer_array_flat from 'eslint-plugin-unicorn/rules/prefer-array-flat.js'
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_array_some from 'eslint-plugin-unicorn/rules/prefer-array-some.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
-import prefer_code_point from 'eslint-plugin-unicorn/rules/prefer-code-point.js';
-// @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_default_parameters from 'eslint-plugin-unicorn/rules/prefer-default-parameters.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_logical_operator_over_ternary from 'eslint-plugin-unicorn/rules/prefer-logical-operator-over-ternary.js';
@@ -533,7 +531,6 @@ const plugin = {
         'sukka/unicorn/prefer-array-flat-map': 'warn',
         'sukka/unicorn/prefer-array-flat': 'warn',
         'sukka/unicorn/prefer-array-some': 'warn',
-        'sukka/unicorn/prefer-code-point': 'warn',
         'sukka/unicorn/prefer-default-parameters': 'warn',
         'sukka/unicorn/prefer-logical-operator-over-ternary': 'warn',
         'sukka/unicorn/prefer-optional-catch-binding': 'error',
@@ -827,7 +824,6 @@ const plugin = {
       'unicorn/prefer-array-flat-map': prefer_array_flat_map,
       'unicorn/prefer-array-flat': prefer_array_flat,
       'unicorn/prefer-array-some': prefer_array_some,
-      'unicorn/prefer-code-point': prefer_code_point,
       'unicorn/prefer-default-parameters': prefer_default_parameters,
       'unicorn/prefer-logical-operator-over-ternary': prefer_logical_operator_over_ternary,
       'unicorn/prefer-optional-catch-binding': prefer_optional_catch_binding,
