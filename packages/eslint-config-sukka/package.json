@@ -47,7 +47,7 @@
     "eslint-plugin-regexp": "^3.1.1",
     "eslint-plugin-unused-imports": "^4.4.1",
     "foxts": "^5.9.0",
-    "jsonc-eslint-parser": "^3.1.0",
+    "jsonc-eslint-parser": "^3.2.0",
     "picocolors": "^1.1.1",
     "typescript-eslint": "^8.66.0"
   },
