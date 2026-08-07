@@ -21,6 +21,7 @@ import string$no_unneeded_to_string from '@masknet/eslint-plugin/rules/string/no
 import type$no_force_cast_via_top_type from '@masknet/eslint-plugin/rules/type/no-force-cast-via-top-type.js';
 import type$no_wrapper_type_reference from '@masknet/eslint-plugin/rules/type/no-wrapper-type-reference.js';
 import no_default_error from '@masknet/eslint-plugin/rules/no-default-error.js';
+import require_project_reference from '@masknet/eslint-plugin/rules/require-project-reference.js';
 
 // eslint-plugin-unicorn
 // eslint-plugin-unicorn introduces way too many dependencies, let's bundle & tree shake them
@@ -735,6 +736,10 @@ const plugin = {
           'sukka/string/no-unneeded-to-string': 'error',
           'sukka/type/no-force-cast-via-top-type': 'error',
           'sukka/type/no-wrapper-type-reference': 'error',
+          // opt-in: requires every workspace package to be a composite project
+          // with per-package `references` + `declarationMap`, which conflicts
+          // with a solution-only/noEmit tsconfig layout.
+          'sukka/require-project-reference': 'off',
           'sukka/no-default-error': 'off',
 
           'sukka/unicorn/consistent-tuple-labels': 'warn'
@@ -771,7 +776,8 @@ const plugin = {
       'string/no-unneeded-to-string': string$no_unneeded_to_string,
       'type/no-force-cast-via-top-type': type$no_force_cast_via_top_type, // If you have a good reason to do this, please ignore this error and provide a comment about why this is type safe.
       'type/no-wrapper-type-reference': type$no_wrapper_type_reference,
-      'no-default-error': no_default_error
+      'no-default-error': no_default_error,
+      'require-project-reference': require_project_reference
     },
     // eslint-plugin-unicorn
     loadUnicorns({

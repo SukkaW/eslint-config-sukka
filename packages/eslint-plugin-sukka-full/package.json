@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
-    "@masknet/eslint-plugin": "^0.4.1",
+    "@masknet/eslint-plugin": "^0.5.4",
     "eslint-plugin-unicorn": "^73.0.0"
   },
   "peerDependencies": {
