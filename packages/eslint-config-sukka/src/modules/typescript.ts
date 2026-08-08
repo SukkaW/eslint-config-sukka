@@ -332,14 +332,19 @@ export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatE
           },
           {
             // https://github.com/iliubinskii/eslint-plugin-misc/blob/cebe0eb0bbc171e08684c4e9f1a0249c6bd6c9f7/src/core/sort-construct-signature.ts
+            // Only flag a construct signature preceded by a non-construct-signature member,
+            // so overloaded constructors (multiple leading construct signatures) are allowed.
             message: 'Construct signature should be first',
             selector:
-        'TSInterfaceBody > TSConstructSignatureDeclaration:not(:first-child)'
+        'TSInterfaceBody > :not(TSConstructSignatureDeclaration) ~ TSConstructSignatureDeclaration'
           },
           {
             // https://github.com/iliubinskii/eslint-plugin-misc/blob/cebe0eb0bbc171e08684c4e9f1a0249c6bd6c9f7/src/core/sort-call-signature.ts
+            // Only flag a call signature preceded by a member that is neither a call signature
+            // nor a construct signature, so overloaded callable interfaces are allowed and this
+            // stays compatible with the "construct signature should be first" rule above.
             message: 'Call signature should be first',
-            selector: 'TSInterfaceBody > TSCallSignatureDeclaration:not(:first-child)'
+            selector: 'TSInterfaceBody > :not(TSCallSignatureDeclaration, TSConstructSignatureDeclaration) ~ TSCallSignatureDeclaration'
           },
           ...(options['~_internal_react_enabled_do_not_use_or_you_will_be_fired']
             ? [
