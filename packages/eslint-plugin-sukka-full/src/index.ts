@@ -449,6 +449,8 @@ const plugin = {
           'sukka/prefer-timer-id': 'warn'
         },
         collectRules(eslint_plugin_sukka.configs!.recommended),
+        // deprecated upstream in favour of `unicorn/prefer-boolean-return`
+        // (enabled in the recommended unicorn preset), which covers more cases
         { 'sukka/prefer-single-boolean-return': 'off' }
       )
     },

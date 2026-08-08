@@ -11,6 +11,21 @@ const DISABLED_RULES = new Set([
   'no-dupe-class-members'
 ]);
 
+/**
+ * typescript-eslint rules that still extends from ESLint core rules, yet deprecated
+ * since ESLint core now supports the same functionality/syntax
+ *
+ * Those rules do not replace ESLint core rules anymore.
+ */
+const TS_ESLINT_EXTENSION_RULES_REPLACED_BY_BASE_RULE = new Set([
+  // the base rule is recommended by typescript-eslint instead
+  'no-loss-of-precision',
+  // deprecated in typescript-eslint 8.64.0, core rule handles TS syntax since ESLint 10.8.0
+  'no-loop-func',
+  // deprecated, the core rule now supports `allowTypeImports`
+  'no-restricted-imports'
+]);
+
 (async () => {
   const { default: stringifyObject } = await import('stringify-object');
 
@@ -23,6 +38,7 @@ const DISABLED_RULES = new Set([
           && 'docs' in rule.meta && typeof rule.meta.docs === 'object'
           && 'extendsBaseRule' in rule.meta.docs
           && rule.meta.docs.extendsBaseRule != null
+          && !TS_ESLINT_EXTENSION_RULES_REPLACED_BY_BASE_RULE.has(ruleName)
         ) {
           acc.push([
             typeof rule.meta.docs.extendsBaseRule === 'string'
@@ -53,29 +69,23 @@ const DISABLED_RULES = new Set([
     // })
     .reduce<Linter.RulesRecord>((acc, [baseRuleName, value]) => {
       switch (baseRuleName) {
-        case 'camelcase':
-        case 'no-restricted-imports': {
+        case 'camelcase': {
           // disable camelcase directly, use custom @typescript-eslint/naming-convention instead
-          // disable no-restricted-imports directly, use @typescript-eslint/no-restricted-imports instead
 
           acc[baseRuleName] = 'off';
 
           break;
         }
         case 'sukka/no-return-await': {
+          // the extension rule is named differently from the base rule, so the
+          // `extendsBaseRule` map above cannot pair them up automatically
           acc[baseRuleName] = 'off';
           acc['@typescript-eslint/return-await'] = ['error', 'in-try-catch'];
 
           break;
         }
-        case 'no-loss-of-precision': {
-          // do nothing
-
-          // @typescript-eslint/no-loss-of-precision is deprecated
-          // The original rule is recommended instead
-
-          break;
-        }
+        // Rules in TS_ESLINT_EXTENSION_RULES_REPLACED_BY_BASE_RULE need no case here:
+        // they were filtered out of the map, so this branch simply leaves them alone.
         default: if (TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.has(baseRuleName)) {
           const replacementRulename = TS_ESLINT_BASE_RULES_TO_BE_OVERRIDDEN.get(baseRuleName)!;
           acc[baseRuleName] = 'off';

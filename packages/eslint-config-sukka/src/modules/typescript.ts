@@ -1,4 +1,4 @@
-import { collectRules, constants, memo, packageResolver, RESTRICTED_SYNTAX, RESTRICTED_IMPORT_TS, withFiles, asPlugin, asFlatConfig } from '@eslint-sukka/shared';
+import { collectRules, constants, memo, packageResolver, RESTRICTED_SYNTAX, RESTRICTED_IMPORT, withFiles, asPlugin, asFlatConfig } from '@eslint-sukka/shared';
 
 import { generated_typescript_overrides } from './_generated_typescript_overrides';
 
@@ -232,10 +232,14 @@ export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatE
         '@typescript-eslint/no-meaningless-void-operator': 'warn', // void a_void_call()
         '@typescript-eslint/no-unnecessary-qualifier': 'warn', // no extra qualifier in enum/namespace
         '@typescript-eslint/array-type': ['warn', { default: 'array-simple' }], // prefer T[] than Array<T>
-        '@typescript-eslint/no-restricted-imports': [
+        // @typescript-eslint/no-restricted-imports is deprecated since 8.64.0;
+        // the ESLint built-in supports `allowTypeImports` since v10.8.0.
+        // Re-stated here (the JS module sets the same rule) because this config
+        // item is scoped to TS files and does not inherit the JS module's rules.
+        'no-restricted-imports': [
           'error',
           {
-            paths: RESTRICTED_IMPORT_TS
+            paths: RESTRICTED_IMPORT
           }
         ],
 
@@ -280,7 +284,9 @@ export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatE
         '@typescript-eslint/no-unsafe-call': 'off', // bans any()
         '@typescript-eslint/no-unsafe-member-access': 'off', // bans a = any.prop
         '@typescript-eslint/no-explicit-any': 'warn',
-        '@typescript-eslint/no-loop-func': 'warn',
+        // @typescript-eslint/no-loop-func is deprecated since 8.64.0,
+        // the ESLint built-in understands TypeScript syntax since v10.8.0
+        'no-loop-func': 'warn',
         '@typescript-eslint/no-redundant-type-constituents': 'off',
         '@typescript-eslint/no-floating-promises': 'off',
         '@typescript-eslint/no-unsafe-enum-comparison': 'error',

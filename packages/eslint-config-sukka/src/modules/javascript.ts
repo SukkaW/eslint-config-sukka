@@ -1,5 +1,5 @@
 import eslint_js from '@eslint/js';
-import { memo, RESTRICTED_IMPORT_JS, RESTRICTED_SYNTAX, constants, globals, getPackageJson, withFiles, asFlatConfig, UNSAFE_excludeJsonYamlFiles } from '@eslint-sukka/shared';
+import { memo, RESTRICTED_IMPORT, RESTRICTED_SYNTAX, constants, globals, getPackageJson, withFiles, asFlatConfig, UNSAFE_excludeJsonYamlFiles } from '@eslint-sukka/shared';
 
 import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
 import eslint_plugin_import_x, { createNodeResolver } from 'eslint-plugin-import-x';
@@ -569,7 +569,7 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
 
         'no-restricted-imports': [
           'error',
-          { paths: RESTRICTED_IMPORT_JS }
+          { paths: RESTRICTED_IMPORT }
         ],
         'no-restricted-syntax': ['error', ...RESTRICTED_SYNTAX],
         'no-prototype-builtins': 'error', // TODO: contribute autofix to upstream

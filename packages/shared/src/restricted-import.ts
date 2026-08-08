@@ -111,24 +111,20 @@ const restrictedImportWithImportNames = [
 ];
 
 /**
- * For @eslint/js and eslint-plugin-n/no-restricted-require, it doesn't
- * support "allowTypeImports", so we have separate these and only add
- * "allowTypeImports" for @typescript-eslint/restrict-imports
+ * eslint-plugin-n/no-restricted-require doesn't support "allowTypeImports",
+ * so it gets these entries without the option (see RESTRICTED_IMPORT_NODE_REQUIRE).
  */
 const restrictedImportWithImportNamesButAllowWithType = [
   { name: 'date-fns', message: 'Please use date-fns/{submodule} instead.' },
   { name: 'async-call-rpc', message: 'Please use async-call-rpc/full instead.' }
 ];
 
-export const RESTRICTED_IMPORT_JS = [
-  ...restrictedImportWithImportNamesButAllowWithType,
-  ...restrictedImportBase,
-  ...BETTER_ALTERNATIVES,
-  ...restrictedImportWithImportNames,
-  { name: 'react', importNames: ['default'], message: 'Use named import instead' }
-];
-
-export const RESTRICTED_IMPORT_TS = [
+/**
+ * Shared by the JS and TS presets: both configure the ESLint built-in
+ * `no-restricted-imports`, which supports "allowTypeImports" since ESLint v10.8.0.
+ * The option is simply inert on JavaScript, which has no type-only imports.
+ */
+export const RESTRICTED_IMPORT = [
   ...restrictedImportWithImportNamesButAllowWithType.map(item => ({ ...item, allowTypeImports: true })),
   ...restrictedImportBase,
   ...BETTER_ALTERNATIVES,
