@@ -1,4 +1,4 @@
-import { constants, memo, globals, withFiles, collectPlugins, UNSAFE_excludeJsonYamlFiles } from '@eslint-sukka/shared';
+import { constants, memo, globals, withFiles, asFlatConfig, collectPlugins, UNSAFE_excludeJsonYamlFiles } from '@eslint-sukka/shared';
 import type { FlatESLintConfigItem } from '@eslint-sukka/shared';
 
 import eslint_plugin_react_hooks from 'eslint-plugin-react-hooks';
@@ -6,6 +6,7 @@ import { reactRefresh as eslint_plugin_react_refresh } from 'eslint-plugin-react
 import eslint_plugin_react_prefer_function_component from 'eslint-plugin-react-prefer-function-component';
 import eslint_react from '@eslint-react/eslint-plugin';
 import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
+import { eslint_plugin_vibe_proof } from 'eslint-plugin-vibe-proof';
 
 // @ts-expect-error -- no types
 import eslint_plugin_ssr_friendly from 'eslint-plugin-ssr-friendly';
@@ -310,6 +311,16 @@ export function react({
     withFiles(
       // this is safe because react-filename-extension doesn't apply to JSON/YAML files
       UNSAFE_excludeJsonYamlFiles(eslint_plugin_sukka.configs.recommended_react),
+      files
+    ),
+    withFiles(
+      // this is safe because React rules don't apply to JSON/YAML files
+      UNSAFE_excludeJsonYamlFiles(asFlatConfig(eslint_plugin_vibe_proof.configs!.react)),
+      files
+    ),
+    withFiles(
+      // this is safe because React rules don't apply to JSON/YAML files
+      UNSAFE_excludeJsonYamlFiles(asFlatConfig(eslint_plugin_vibe_proof.configs!.react_type_checked)),
       files
     )
     // {

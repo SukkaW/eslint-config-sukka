@@ -1,4 +1,4 @@
-import { collectRules, constants, memo, packageResolver, RESTRICTED_SYNTAX, RESTRICTED_IMPORT_TS, withFiles, asPlugin } from '@eslint-sukka/shared';
+import { collectRules, constants, memo, packageResolver, RESTRICTED_SYNTAX, RESTRICTED_IMPORT_TS, withFiles, asPlugin, asFlatConfig } from '@eslint-sukka/shared';
 
 import { generated_typescript_overrides } from './_generated_typescript_overrides';
 
@@ -10,6 +10,7 @@ import typescript_eslint_parser from '@typescript-eslint/parser';
 
 import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
 import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
+import { eslint_plugin_vibe_proof } from 'eslint-plugin-vibe-proof';
 import eslint_plugin_import_x from 'eslint-plugin-import-x';
 
 import process from 'node:process';
@@ -407,6 +408,7 @@ export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatE
       }
     },
     withFiles(eslint_plugin_sukka.configs.recommended_extra_with_typed_lint, files),
+    withFiles(asFlatConfig(eslint_plugin_vibe_proof.configs!.common_type_checked), files),
     {
       name: '@eslint-sukka/ts dts',
       files: ['**/*.d.ts'],

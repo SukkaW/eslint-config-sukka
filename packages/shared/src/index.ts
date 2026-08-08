@@ -47,6 +47,15 @@ export function asPlugin(plugin: { rules: unknown }): ESLint.Plugin {
   return plugin as ESLint.Plugin;
 }
 
+/**
+ * Plugins typed as a bare `ESLint.Plugin` (eslint-plugin-sukka, eslint-plugin-vibe-proof)
+ * expose `configs` as an optional index signature of `Linter.Config | Linter.LegacyConfig`,
+ * so a known-flat preset needs narrowing before it can be passed to `withFiles` et al.
+ */
+export function asFlatConfig(config: unknown): FlatESLintConfigItem {
+  return config as FlatESLintConfigItem;
+}
+
 export function withFiles(configs: FlatESLintConfigItem, files: string | string[] | undefined | null | true): FlatESLintConfigItem;
 export function withFiles(configs: FlatESLintConfigItem[], files: string | string[] | undefined | null | true): FlatESLintConfigItem[];
 export function withFiles(configs: FlatESLintConfigItem | FlatESLintConfigItem[], files: string | string[] | undefined | null | true) {

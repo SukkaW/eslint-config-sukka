@@ -424,17 +424,6 @@ const plugin = {
         'sukka/unicorn/no-new-buffer': 'error' // ban new Buffer, prefer Buffer.from
       }
     },
-    comment: {
-      name: '@eslint-sukka/eslint-plugin-sukka-full comments preset',
-      plugins: {
-        get sukka() {
-          return plugin;
-        }
-      },
-      rules: {
-        'sukka/ban-eslint-disable': ['error', 'allow-with-description']
-      }
-    },
     recommended: {
       ...eslint_plugin_sukka.configs!.recommended,
       plugins: {
@@ -970,7 +959,7 @@ const plugin = {
   )
 } as ESLint.Plugin & {
   configs: Record<
-    'node' | 'comment' | 'recommended' | 'recommended_unicorn' | 'stylistic_unicorn' | 'recommended_extra_with_typed_lint' | 'recommended_react',
+    'node' | 'recommended' | 'recommended_unicorn' | 'stylistic_unicorn' | 'recommended_extra_with_typed_lint' | 'recommended_react',
     Linter.Config
   >
 };

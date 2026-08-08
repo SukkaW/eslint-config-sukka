@@ -1,9 +1,10 @@
 import eslint_js from '@eslint/js';
-import { memo, RESTRICTED_IMPORT_JS, RESTRICTED_SYNTAX, constants, globals, getPackageJson, withFiles, UNSAFE_excludeJsonYamlFiles } from '@eslint-sukka/shared';
+import { memo, RESTRICTED_IMPORT_JS, RESTRICTED_SYNTAX, constants, globals, getPackageJson, withFiles, asFlatConfig, UNSAFE_excludeJsonYamlFiles } from '@eslint-sukka/shared';
 
 import eslint_plugin_unused_imports from 'eslint-plugin-unused-imports';
 import eslint_plugin_import_x, { createNodeResolver } from 'eslint-plugin-import-x';
 import eslint_plugin_sukka from '@eslint-sukka/eslint-plugin-sukka-full';
+import { eslint_plugin_vibe_proof } from 'eslint-plugin-vibe-proof';
 import eslint_plugin_demorgan from 'eslint-plugin-de-morgan';
 
 // import eslint_plugin_no_secrets from 'eslint-plugin-no-secrets';
@@ -606,7 +607,15 @@ export async function javascript(options: OptionsJavaScript = {}): Promise<FlatE
       }
     }), files),
     withFiles(eslint_plugin_demorgan.configs.recommended, files),
-    withFiles(eslint_plugin_sukka.configs.recommended, files)
+    withFiles(eslint_plugin_sukka.configs.recommended, files),
+    withFiles(asFlatConfig(eslint_plugin_vibe_proof.configs!.common), files),
+    withFiles({
+      name: '@eslint-sukka/js vibe-proof overrides',
+      rules: {
+        // duplicates sukka/unicorn/prefer-array-some, which we prefer
+        'vibe-proof/prefer-array-some': 'off'
+      }
+    }, files)
   ];
 
   if (disableNoConsoleInCLI !== false) {
