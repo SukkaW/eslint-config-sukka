@@ -319,8 +319,6 @@ import prefer_has_check from 'eslint-plugin-unicorn/rules/prefer-has-check.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import consistent_conditional_object_spread from 'eslint-plugin-unicorn/rules/consistent-conditional-object-spread.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
-import default_export_style from 'eslint-plugin-unicorn/rules/default-export-style.js';
-// @ts-expect-error - eslint-plugin-unicorn does not have types
 import no_array_concat_in_loop from 'eslint-plugin-unicorn/rules/no-array-concat-in-loop.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import no_array_front_mutation from 'eslint-plugin-unicorn/rules/no-array-front-mutation.js';
@@ -711,8 +709,7 @@ const plugin = {
         }],
         'sukka/unicorn/no-unnecessary-nested-ternary': 'error',
         'sukka/unicorn/no-unreadable-object-destructuring': 'error',
-        'sukka/unicorn/consistent-compound-words': 'warn',
-        'sukka/unicorn/default-export-style': 'warn'
+        'sukka/unicorn/consistent-compound-words': 'warn'
       }
     },
     recommended_extra_with_typed_lint: {
@@ -918,7 +915,6 @@ const plugin = {
       'unicorn/prefer-has-check': prefer_has_check,
       // v68 new rules
       'unicorn/consistent-conditional-object-spread': consistent_conditional_object_spread,
-      'unicorn/default-export-style': default_export_style,
       'unicorn/no-array-concat-in-loop': no_array_concat_in_loop,
       'unicorn/no-array-front-mutation': no_array_front_mutation,
       'unicorn/no-array-sort-for-min-max': no_array_sort_for_min_max,
