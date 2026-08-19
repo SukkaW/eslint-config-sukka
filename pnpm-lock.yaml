@@ -262,8 +262,8 @@ importers:
         specifier: '*'
         version: 10.8.1(jiti@2.7.0)(supports-color@10.2.2)
       eslint-plugin-sukka:
-        specifier: ^10.1.1
-        version: 10.1.1(eslint@10.8.1(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
+        specifier: ^10.2.0
+        version: 10.2.0(eslint@10.8.1(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
       typescript:
         specifier: '*'
         version: 6.0.3
@@ -1932,8 +1932,8 @@ packages:
     peerDependencies:
       eslint: '>=0.8.0'
 
-  eslint-plugin-sukka@10.1.1:
-    resolution: {integrity: sha512-vDGK0LjhLEp5bMubIrVpGznnsdDKq07/u+AovsNTjhn7xBGzfktQAtUH5vNBzbYWfu1LkQg2ySvW+r4vhLZwLg==}
+  eslint-plugin-sukka@10.2.0:
+    resolution: {integrity: sha512-BbErYY/fymqL7Te5yiDeBGfSF7QMxzZrT4SQpFI2e8ecRun3oYbL5aJm4kzFfeUzNZ/hET8T7pedpaH1fuXXHg==}
     peerDependencies:
       eslint: '>=9.29.0'
       typescript: '*'
@@ -4086,7 +4086,7 @@ snapshots:
       eslint: 10.8.1(jiti@2.7.0)(supports-color@10.2.2)
       globals: 13.24.0
 
-  eslint-plugin-sukka@10.1.1(eslint@10.8.1(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3):
+  eslint-plugin-sukka@10.2.0(eslint@10.8.1(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3):
     dependencies:
       '@typescript-eslint/types': 8.67.0
       '@typescript-eslint/utils': 8.67.0(eslint@10.8.1(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
