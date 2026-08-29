@@ -1,9 +1,9 @@
 diff --git a/package.json b/package.json
-index 9ce98c446f2a4234daa86df48087d8a5e3c93460..647c3b0ff14f0cba32ba9aea5bd24a9e69a52f88 100644
+index 2c65ef6ba2372fdaeb50dca75788479ea489c56b..0d06088d1ef990bc2386e0cbfdaaad64e8caabf1 100644
 --- a/package.json
 +++ b/package.json
-@@ -15,8 +15,12 @@
- 	},
+@@ -8,8 +8,12 @@
+ 	"author": "Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)",
  	"type": "module",
  	"exports": {
 -		"types": "./index.d.ts",
