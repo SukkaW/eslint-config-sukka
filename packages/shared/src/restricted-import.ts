@@ -106,7 +106,8 @@ const restrictedImportWithImportNames = [
   { name: 'uuid', importNames: ['v4'], message: `Use ${npm('@lukeed/uuid')} instead` },
   { name: 'assert', importNames: ['deepEqual'], message: `Use ${npm('dequal')} instead` },
   { name: 'react', importNames: ['useLayoutEffect'], message: 'Use https://foxact.skk.moe/use-isomorphic-layout-effect instead' },
-  { name: 'foxact/use-abortable-effect', importNames: ['useAbortableEffect'], message: 'Use the useEffect named import instead' },
+  { name: 'foxact/use-abortable-effect', importNames: ['useAbortableEffect'], message: 'Use the "useEffect" named import instead' },
+  { name: 'foxact/use-isomorphic-layout-effect', importNames: ['useIsomorphicLayoutEffect'], message: 'Use the "useLayoutEffect" named import instead' },
   { name: '@typescript-eslint/utils', importNames: ['AST_NODE_TYPES', 'AST_TOKEN_TYPES', 'TSESTree'], message: 'Import from @typescript-eslint/types instead. @typescript-eslint/utils simply re-exports them from @typescript-eslint/types.' }
 ];
 
