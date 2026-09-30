@@ -237,7 +237,7 @@ import no_late_current_target_access from 'eslint-plugin-unicorn/rules/no-late-c
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import no_unnecessary_nested_ternary from 'eslint-plugin-unicorn/rules/no-unnecessary-nested-ternary.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
-import no_unused_array_method_return from 'eslint-plugin-unicorn/rules/no-unused-array-method-return.js';
+import no_unused_builtin_method_return from 'eslint-plugin-unicorn/rules/no-unused-builtin-method-return.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_array_last_methods from 'eslint-plugin-unicorn/rules/prefer-array-last-methods.js';
 // @ts-expect-error - eslint-plugin-unicorn does not have types
@@ -394,6 +394,26 @@ import no_useless_re_export from 'eslint-plugin-unicorn/rules/no-useless-re-expo
 // v73 new rules
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import iteration_fallback_style from 'eslint-plugin-unicorn/rules/iteration-fallback-style.js';
+
+// v75/v76 new rules
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_async_iterator_callback from 'eslint-plugin-unicorn/rules/no-async-iterator-callback.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_unused_iterator_helper from 'eslint-plugin-unicorn/rules/no-unused-iterator-helper.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_useless_set_construction from 'eslint-plugin-unicorn/rules/no-useless-set-construction.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_using_resource_escape from 'eslint-plugin-unicorn/rules/no-using-resource-escape.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_combined_guards from 'eslint-plugin-unicorn/rules/prefer-combined-guards.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_temporal_conversion from 'eslint-plugin-unicorn/rules/prefer-temporal-conversion.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_iterator_helpers from 'eslint-plugin-unicorn/rules/prefer-iterator-helpers.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_iterator_zip from 'eslint-plugin-unicorn/rules/prefer-iterator-zip.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_uint8array_hex from 'eslint-plugin-unicorn/rules/prefer-uint8array-hex.js';
 
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import { toEslintRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/rule/index.js';
@@ -598,7 +618,7 @@ const plugin = {
         'sukka/unicorn/no-incorrect-query-selector': 'error',
         'sukka/unicorn/no-invalid-file-input-accept': 'error',
         'sukka/unicorn/no-late-current-target-access': 'error',
-        'sukka/unicorn/no-unused-array-method-return': 'error',
+        'sukka/unicorn/no-unused-builtin-method-return': 'error',
         'sukka/unicorn/prefer-array-last-methods': 'warn',
         'sukka/unicorn/prefer-math-abs': 'warn',
         'sukka/unicorn/prefer-split-limit': 'error',
@@ -682,7 +702,19 @@ const plugin = {
 
         // v73 new rules
         // 'guard' is the rule default: prefer `if (items) { for ... }` over `for (... of items || [])`
-        'sukka/unicorn/iteration-fallback-style': 'warn'
+        'sukka/unicorn/iteration-fallback-style': 'warn',
+
+        // v75/v76 new rules
+        'sukka/unicorn/no-async-iterator-callback': 'error',
+        'sukka/unicorn/no-unused-iterator-helper': 'error',
+        'sukka/unicorn/no-useless-set-construction': 'warn',
+        'sukka/unicorn/no-using-resource-escape': 'error',
+        'sukka/unicorn/prefer-combined-guards': 'warn',
+        'sukka/unicorn/prefer-temporal-conversion': 'warn',
+        // bundled but disabled for now
+        'sukka/unicorn/prefer-iterator-helpers': 'off',
+        'sukka/unicorn/prefer-iterator-zip': 'off',
+        'sukka/unicorn/prefer-uint8array-hex': 'off'
       }
     },
     stylistic_unicorn: {
@@ -874,7 +906,7 @@ const plugin = {
       'unicorn/no-invalid-file-input-accept': no_invalid_file_input_accept,
       'unicorn/no-late-current-target-access': no_late_current_target_access,
       'unicorn/no-unnecessary-nested-ternary': no_unnecessary_nested_ternary,
-      'unicorn/no-unused-array-method-return': no_unused_array_method_return,
+      'unicorn/no-unused-builtin-method-return': no_unused_builtin_method_return,
       'unicorn/prefer-array-last-methods': prefer_array_last_methods,
       'unicorn/prefer-math-abs': prefer_math_abs,
       'unicorn/prefer-split-limit': prefer_split_limit,
@@ -952,7 +984,17 @@ const plugin = {
       'unicorn/no-unnecessary-string-trim': no_unnecessary_string_trim,
       'unicorn/no-useless-re-export': no_useless_re_export,
       // v73 new rules
-      'unicorn/iteration-fallback-style': iteration_fallback_style
+      'unicorn/iteration-fallback-style': iteration_fallback_style,
+      // v75/v76 new rules
+      'unicorn/no-async-iterator-callback': no_async_iterator_callback,
+      'unicorn/no-unused-iterator-helper': no_unused_iterator_helper,
+      'unicorn/no-useless-set-construction': no_useless_set_construction,
+      'unicorn/no-using-resource-escape': no_using_resource_escape,
+      'unicorn/prefer-combined-guards': prefer_combined_guards,
+      'unicorn/prefer-temporal-conversion': prefer_temporal_conversion,
+      'unicorn/prefer-iterator-helpers': prefer_iterator_helpers,
+      'unicorn/prefer-iterator-zip': prefer_iterator_zip,
+      'unicorn/prefer-uint8array-hex': prefer_uint8array_hex
     })
   )
 } as ESLint.Plugin & {

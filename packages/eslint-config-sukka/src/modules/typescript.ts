@@ -296,6 +296,7 @@ export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatE
         '@typescript-eslint/prefer-readonly': 'error',
         '@typescript-eslint/class-literal-property-style': 'error',
         '@typescript-eslint/no-useless-default-assignment': 'warn',
+        '@typescript-eslint/no-unsafe-enum-assignment': 'error',
 
         '@typescript-eslint/class-methods-use-this': [
           'error',
