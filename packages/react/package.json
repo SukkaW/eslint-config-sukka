@@ -33,7 +33,7 @@
     "@eslint-sukka/eslint-plugin-stylistic": "workspace:*",
     "@eslint-sukka/shared": "workspace:*",
     "@eslint/compat": "^2.1.1",
-    "@next/eslint-plugin-next": "^16.3.7",
+    "@next/eslint-plugin-next": "^16.3.8",
     "@stylexjs/eslint-plugin": "^0.19.1",
     "@typescript-eslint/types": "^8.71.0",
     "@typescript-eslint/utils": "^8.71.0",
@@ -43,7 +43,7 @@
     "foxts": "^5.9.1"
   },
   "devDependencies": {
-    "@eslint-react/eslint-plugin": "^5.23.1",
+    "@eslint-react/eslint-plugin": "^5.23.3",
     "@eslint-sukka/rollup-config": "workspace:*",
     "eslint-plugin-react-prefer-function-component": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.5.7"
