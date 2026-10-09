@@ -1,5 +1,5 @@
 {
-  "$schema": "https://v2-9-7.turborepo.dev/schema.json",
+  "$schema": "https://turborepo.dev/schema.json",
   "globalDependencies": [
     "**/.env.*local",
     "tsconfig.json",
@@ -45,5 +45,6 @@
         "eslint-config-sukka#build"
       ]
     }
-  }
+  },
+  "agentGuidance": false
 }

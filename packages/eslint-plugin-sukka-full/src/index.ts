@@ -415,6 +415,28 @@ import prefer_iterator_zip from 'eslint-plugin-unicorn/rules/prefer-iterator-zip
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import prefer_uint8array_hex from 'eslint-plugin-unicorn/rules/prefer-uint8array-hex.js';
 
+// v77 new rules
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_incomplete_accessor_override from 'eslint-plugin-unicorn/rules/no-incomplete-accessor-override.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_invalid_temporal_arithmetic from 'eslint-plugin-unicorn/rules/no-invalid-temporal-arithmetic.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_invalid_url_protocol_comparison from 'eslint-plugin-unicorn/rules/no-invalid-url-protocol-comparison.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_prevent_default_in_passive_listener from 'eslint-plugin-unicorn/rules/no-prevent-default-in-passive-listener.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_invalid_boolean_attribute_value from 'eslint-plugin-unicorn/rules/no-invalid-boolean-attribute-value.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import no_invalid_dom_token from 'eslint-plugin-unicorn/rules/no-invalid-dom-token.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import require_text_decoder_streaming from 'eslint-plugin-unicorn/rules/require-text-decoder-streaming.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_literal_ascii from 'eslint-plugin-unicorn/rules/prefer-literal-ascii.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_short_escape_sequences from 'eslint-plugin-unicorn/rules/prefer-short-escape-sequences.js';
+// @ts-expect-error - eslint-plugin-unicorn does not have types
+import prefer_escaped_irregular_whitespace from 'eslint-plugin-unicorn/rules/prefer-escaped-irregular-whitespace.js';
+
 // @ts-expect-error - eslint-plugin-unicorn does not have types
 import { toEslintRules as loadUnicorns } from 'eslint-plugin-unicorn/rules/rule/index.js';
 import type { ESLint, Linter } from 'eslint';
@@ -714,7 +736,19 @@ const plugin = {
         // bundled but disabled for now
         'sukka/unicorn/prefer-iterator-helpers': 'off',
         'sukka/unicorn/prefer-iterator-zip': 'off',
-        'sukka/unicorn/prefer-uint8array-hex': 'off'
+        'sukka/unicorn/prefer-uint8array-hex': 'off',
+
+        // v77 new rules
+        'sukka/unicorn/no-incomplete-accessor-override': 'error',
+        'sukka/unicorn/no-invalid-temporal-arithmetic': 'error',
+        'sukka/unicorn/no-invalid-url-protocol-comparison': 'error',
+        'sukka/unicorn/no-prevent-default-in-passive-listener': 'error',
+        'sukka/unicorn/no-invalid-boolean-attribute-value': 'error',
+        'sukka/unicorn/no-invalid-dom-token': 'error',
+        'sukka/unicorn/require-text-decoder-streaming': 'error',
+        'sukka/unicorn/prefer-literal-ascii': 'warn',
+        'sukka/unicorn/prefer-short-escape-sequences': 'warn',
+        'sukka/unicorn/prefer-escaped-irregular-whitespace': 'warn'
       }
     },
     stylistic_unicorn: {
@@ -994,7 +1028,18 @@ const plugin = {
       'unicorn/prefer-temporal-conversion': prefer_temporal_conversion,
       'unicorn/prefer-iterator-helpers': prefer_iterator_helpers,
       'unicorn/prefer-iterator-zip': prefer_iterator_zip,
-      'unicorn/prefer-uint8array-hex': prefer_uint8array_hex
+      'unicorn/prefer-uint8array-hex': prefer_uint8array_hex,
+      // v77 new rules
+      'unicorn/no-incomplete-accessor-override': no_incomplete_accessor_override,
+      'unicorn/no-invalid-temporal-arithmetic': no_invalid_temporal_arithmetic,
+      'unicorn/no-invalid-url-protocol-comparison': no_invalid_url_protocol_comparison,
+      'unicorn/no-prevent-default-in-passive-listener': no_prevent_default_in_passive_listener,
+      'unicorn/no-invalid-boolean-attribute-value': no_invalid_boolean_attribute_value,
+      'unicorn/no-invalid-dom-token': no_invalid_dom_token,
+      'unicorn/require-text-decoder-streaming': require_text_decoder_streaming,
+      'unicorn/prefer-literal-ascii': prefer_literal_ascii,
+      'unicorn/prefer-short-escape-sequences': prefer_short_escape_sequences,
+      'unicorn/prefer-escaped-irregular-whitespace': prefer_escaped_irregular_whitespace
     })
   )
 } as ESLint.Plugin & {
