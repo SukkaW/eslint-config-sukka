@@ -1,11 +1,11 @@
 import { isCI } from 'ci-info';
 
 export function isInEditorEnv(): boolean {
-  if (isCI || process.env.CI) return false;
-
-  // is in git hooks or lint-staged
   if (
-    process.env.GIT_PARAMS
+    // is in CI
+    isCI
+    // is in git hooks or lint-staged
+    || process.env.GIT_PARAMS
     || process.env.VSCODE_GIT_COMMAND
     || process.env.npm_lifecycle_script?.startsWith('lint-staged')
   ) return false;

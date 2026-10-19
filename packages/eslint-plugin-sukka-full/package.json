@@ -25,13 +25,13 @@
   "license": "MIT",
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",
-    "@eslint/css-tree": "^4.1.1",
+    "@eslint/css-tree": "^4.1.2",
     "eslint-plugin-sukka": "^10.4.0"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",
     "@masknet/eslint-plugin": "^0.5.5",
-    "eslint-plugin-unicorn": "^77.0.0"
+    "eslint-plugin-unicorn": "^78.0.0"
   },
   "peerDependencies": {
     "eslint": "*",
