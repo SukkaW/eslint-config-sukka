@@ -26,7 +26,7 @@
   "dependencies": {
     "@eslint-sukka/shared": "workspace:*",
     "@eslint/css-tree": "^4.1.2",
-    "eslint-plugin-sukka": "^10.4.0"
+    "eslint-plugin-sukka": "^10.5.0"
   },
   "devDependencies": {
     "@eslint-sukka/rollup-config": "workspace:*",

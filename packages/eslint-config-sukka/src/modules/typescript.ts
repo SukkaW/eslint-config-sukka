@@ -179,7 +179,7 @@ export function typescript(options: OptionsTypeScriptWithInternalOptions): FlatE
         '@typescript-eslint/no-unnecessary-type-conversion': 'error',
 
         '@typescript-eslint/require-await': 'error',
-        '@typescript-eslint/await-thenable': 'error',
+        '@typescript-eslint/await-thenable': ['error', { allowMixedPromiseArrays: true }],
         '@typescript-eslint/no-for-in-array': 'error',
         '@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
         '@typescript-eslint/no-unnecessary-type-assertion': 'error',
