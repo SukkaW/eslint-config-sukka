@@ -22,8 +22,6 @@ const separatorLine = {
   type: 'separator'
 } as const;
 
-type Separator = typeof separatorLine;
-
 interface Header {
   type: 'header',
   filePath: string,
@@ -134,6 +132,8 @@ if (hasHyperlink) {
 }
 
 const pretty: ESLint.FormatterFunction = (results, data): string => {
+  type Separator = typeof separatorLine;
+
   const lines: Array<Line | Separator | Header> = [];
   let errorCount = 0;
   let warningCount = 0;
